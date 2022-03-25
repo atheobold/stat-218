@@ -1,0 +1,93 @@
+---
+title: 'STAT 218: Course Calendar'
+author: "Spring 2022"
+output: html_document
+---
+
+# Course Organization
+
+This class is organized into six units. The skills learned at the beginning of
+the course will carry throughout the remainder of the course. I hope that you
+are able to see the connections between the topics of the different units, since
+they are all part of one big family---the regression family!
+
+
+## Unit 1: Foundations of Statistics (Week 1)
+
+This introductory unit has three big tasks, (1) review statistical and data 
+oriented concepts you have (likely) seen before, (2) think critically about 
+**why** statistics is used in science, and (3) think about **how**
+(historically) statistics has been used for inference.  
+
+Reading: Chapters 1 and 2 in *Introduction to Modern Statistics* (*IMS*), 
+with supplementary articles
+
+
+## Unit 2: Exploratory Data Analysis (Weeks 2 & 3)
+
+This unit focuses on building skills for working with and visualizing different 
+types of data. First, we will focus on categorical data--creating summary 
+tables and barcharts. Next, we will turn our attention to numerical 
+data--calculating summary statistics, histograms, scatterplots, and linegraphs. 
+
+This unit will pair:
+
+- Chapter 5 in *IMS* with Chapter 2 (sections 1-7) in *Modern Dive*
+- Chapter 4 in *IMS* with Chapter 2 (section 8) in *Modern Dive*
+
+
+## Unit 3: Regression Modeling (Weeks 4 & 5)
+
+In this unit we *finally* begin exploring statistical methods. You will put the
+tools you learned for wrangling and visualizing to work in the context of 
+linear regression. We will start in a (likely) familiar context--linear
+regression. Once we've explored the concepts of "simple" / basic regression 
+we will turn up the heat and add some additional explanatory variables with 
+multiple linear regression. 
+
+This unit will pair:
+
+- Chapter 7 in *IMS* with Chapter 5 in *Modern Dive*
+- Chapter 8 in *IMS* with Chapter 6 in *Modern Dive*
+
+
+## Unit 4: Foundations of Statistical Inference (Weeks 6 and 7)
+
+This unit will start with Chapter 7 in *Modern Dive*, setting the stage for why
+Statisticians care so much about variability. We will then use these ideas to 
+walk through chapters 11 through 13 in *Introduction to Modern Statistics*, 
+exploring different methods for summarizing the variability we might expect 
+to see in different samples. 
+
+We will use these avenues to explore concepts you have seen before: hypothesis 
+tests and confidence intervals. However, the main focus of these concepts will
+be on the idea of sampling variability **not** significance testing. We will
+visit the ideas of p-values and significance testing, with a emphasis on making 
+(and justifying) sound scientific decisions. 
+
+
+## Unit 5: Inference for Regression (Week 8 & 9)
+
+Now that we've discussed the ideas behind sampling variability and statistical 
+inference, we'll explore these ideas in the context of linear regression. We 
+will explore simple linear regression first, looking at how we can assess how 
+"good" of a job our explanatory variable does in explaining the response 
+variable. Next we'll discuss how we can extend these ideas to a regression with 
+multiple explanatory variables--using model selection criteria. 
+
+This unit will explore:
+
+- Chapter 24 in *IMS* with Chapter 10 in *Modern Dive* 
+- Chapter 25 in *IMS* 
+
+
+## Unit 6: ANOVA a (Boring) Case of Regression (Week 10)
+
+To wrap up the quarter, we will look at a special case of linear 
+regression--ANOVA. In this special case, our regression will include **only** 
+categorical variables as explanatory variables. We will first review how we 
+compare the means of two groups and then connect with what we learned about
+categorical variables in multiple linear to conceptualize how we can compare 
+the means of three or more groups. 
+
+This unit will explore Chapter 21 and 22 in *IMS*
