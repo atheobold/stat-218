@@ -1,0 +1,670 @@
+---
+title: 'STAT 218: Applied Statistics for the Life Sciences'
+author: 'Spring 2022'
+output:
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+    css: styles.css
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE, 
+                      message = FALSE)
+
+library(RColorBrewer)
+library(tidyverse)
+
+pal <- brewer.pal(n = 8, name = "Purples")
+```
+
+
+# STAT 218 Information {.tabset .tabset-fade}
+
+## Instructor Contact Information
+
+- Allison Theobold, Ph.D
+-	Email: atheobol@calpoly.edu
+-	Office: Building 25 Office 105 (by Statistics Department Office) 
+
+## Course Info
+
+**Room:** 
+
+- M, T, R  -- Engineering East 0139
+- W -- Kennedy Library 0111B
+
+**Times:** 
+
+- Section 07: 8:10-9:00am
+- Section 09: 9:10-10:00am
+
+
+## Office Hours
+
+Day        | Time
+-----------|------------------
+Tuesdays   | 1:45pm - 2:45pm (in-person)
+Tuesdays   | 2:45pm - 3:15pm (on Zoom) 
+Thursdays  | 1:45pm - 2:45pm (in-person)
+Thursdays  | 2:45pm - 3:15pm (on Zoom)
+
+Office hours held on Zoom are required to be scheduled at least 1-hour prior to 
+the meeting. You can schedule office hour appointments through Calendly, using
+the following link: 
+<https://calendly.com/allisontheobold/office-hour-appointment> 
+
+---
+
+# Course Resources {.tabset .tabset-fade}
+
+For this course we will be using one main textbook, accompanied by additional 
+resources. The textbooks we are using are free, but have the option to obtain 
+a printed copy if you wish. 
+
+## Textbooks 
+
+![Çetinkaya-Rundel and Hardin, __Introduction to Modern Statistics__. 
+<https://openintro-ims.netlify.app/>](course images/ims.jpeg){width=30%}
+
+## Required Technology 
+
+![`R` is the statistical software we will be using in this course 
+(<https://cran.r-project.org/>)](course images/R.jpeg){width=30%}
+
+![RStudio is the most popular way to interact with the `R` software. We will be 
+interacting with RStudio through RStudio Cloud (https://rstudio.cloud/). You 
+will join the Stat 218 workspace, and then be able to access the course homework
+and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width=40%}
+
+RStudio Cloud will be your resource for course lab assignments 
+
+- data sets
+- lab assignments
+- group projects
+- software resources
+
+## Canvas
+
+Canvas will be your resource for the course materials necessary for each week. 
+There will be a published "coursework" page which you can access through RStudio
+Connect. The page will walk you through what you are expected to do each week, 
+including:
+
+- textbook reading
+- lecture videos
+- homework questions
+- quiz questions
+
+  + *Important*: Make sure you are receiving email notifications for any Canvas 
+  activity. In Canvas, click on your name, then Notifications. Check that Canvas
+  is using an email address that you regularly check; you have the option of
+  registering a mobile number. Check the boxes to get notifications for
+  announcements, content, discussions, and grades. 
+  + If you have a question about the course materials, computing, or logistics,
+  please post your question to your Canvas discussion board instead of emailing
+  me! This ensures all students can benefit from the responses. Other students
+  are encouraged to respond!
+
+## Writing & Learning Center 
+
+There is free drop-in tutoring for 100- and 200-level math and stat courses
+through the writing and learning center! 
+
+The Writing and Learning Center offers virtual and in-person tutoring
+appointments with four locations across campus and hours available daily Sunday
+thru Friday. For more information on our hours and locations, visit the
+[Tutoring Hours](https://writingandlearning.calpoly.edu/hours) webpage.
+
+---
+
+# Welcoming Classroom
+
+I value diversity, inclusion and equity in this (and every) class. I hold the
+fundamental belief that everyone is fully capable of learning and doing 
+statistics. There is more than one way to address a statistical 
+problem, and our learning will be richer by being open to different ideas,
+rejecting stereotypes, and being aware of---in order to minimize---our biases.
+I look forward to getting to know you all as individuals and as a learning
+community. 
+
+---
+
+# Course description
+
+Stat 218 is designed to engage you in the statistical investigation process
+from developing a research question and data collection methods to analyzing and communicating results. This course introduces basic descriptive and inferential
+statistics using both traditional (normal and $t$-distribution) and simulation
+approaches including confidence intervals and hypothesis testing on means
+(one-sample, two-sample, paired), proportions (one-sample, two-sample),
+regression and correlation. You will be exposed to numerous examples of
+real-world applications of statistics that are designed to help you develop a
+conceptual understanding of statistics. 
+
+After taking this course, you will be able to:
+
+- Understand and appreciate how statistics affects your daily life and the
+fundamental role of statistics in all disciplines.
+- Evaluate statistics and statistical studies you encounter in your other
+courses.
+- Critically read news stories based on statistical studies as an informed
+consumer of data.
+- Assess the role of randomness and variability in different contexts.
+- Use basic methods to conduct and analyze statistical studies using statistical
+software.
+- Evaluate and communicate answers to the four pillars of statistical inference:
+How strong is the evidence of an effect? What is the size of the effect? How
+broadly do the conclusions apply? Can we say what caused the observed
+difference?
+
+<!-- ### Cal Poly STAT 218 learning outcomes -->
+
+<!-- 1. Use fundamental principles and techniques from statistics to determine -->
+<!-- probabilities of events, interpret summary statistics and to carry out -->
+<!-- statistical inferential procedures on real world data sets collected from a -->
+<!-- variety of disciplines. -->
+
+
+<!-- 2. Students will describe how variability arises indata collection, as well as -->
+<!-- how sampling variability and sample size affect conclusions made from -->
+<!-- statistical hypothesis tests and confidence intervals when these techniques are -->
+<!-- used to answer research questions aboutthe world. -->
+
+
+<!-- 3. Students will describe data collection plans and apply statistical  -->
+<!-- inferential procedures, such as hypothesis tests and confidence intervals, to -->
+<!-- answer research questions posed in other disciplines, as well as daily life.  -->
+
+<!-- 4. Students will use appropriate statistical language to describe statistical -->
+<!-- studies, as well as interpret data analysis results including summary statistics -->
+<!-- and probabilities. -->
+
+<!-- 5. Students will describe the biases present in different data collection plans, -->
+<!-- as well as the type and limits on scope of conclusions in statistical -->
+<!-- investigations. -->
+
+<!-- 6. Students will write clear and logical descriptions of data collection plans, -->
+<!-- as well as solutions for statistical inferential procedures in order to provide -->
+<!-- quantitative justification for decision-making in a variety of disciplines. -->
+
+
+### GE: Mathematics / Quantitative Reasoning
+
+This course fulfills the B4: Mathematics / Quantitative Reasoning requirement of 
+the General Education curriculum because learning probability and statistics
+allows us to disentangle what's really happening in nature from “noise” inherent
+in data collection. STAT 218 builds critical thinking skills which form the
+basis of statistical inference, allowing students to evaluate claims from data. 
+
+After completing an Area B4 course, students should be able to:
+
+* Calculate and interpret various descriptive statistics
+
+* Identify and describe data collection methods based on simple random sampling
+or simple experimental designs
+
+* Construct confidence intervals for a single mean, differences between means
+for independent and paired samples, a single proportion, and the difference
+between two proportions from independent samples, and interpret the results in
+the context of the life sciences
+
+* Formulate various decision problems in the life sciences in terms of
+hypothesis tests.
+
+* Calculate parametric hypothesis tests for the difference in two independent
+sample means and two independent sample proportions, Chi-square goodness-of-fit,
+Chi-square test for independence, and interpret the results in the context of
+the life sciences.
+
+* Calculate and interpret non-parametric hypothesis test for two independent
+sample means.
+
+* Describe relationships between two quantitative variables using simple linear
+regression.
+
+---
+ 
+# Prerequisites
+
+Entrance to STAT 218 requires at least one of the following be met:
+
+- Grade of C- or better in MATH 115
+- Grade of B or better in MATH 96
+- appropriate placement on the 
+[Math Placement Exam](https://math.calpoly.edu/mape)
+
+You should have familiarity with computers and technology (e.g., Internet
+browsing, word processing, opening/saving files, converting files to PDF format,
+sending and receiving e-mail, etc.).
+ 
+---
+ 
+# Course Assessment
+
+Your grade in STAT 218 will contain the following components:
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center"}
+grades <- tribble(
+  ~category,  ~percent,
+  "Reading & Videos", 10,
+  "Activities", 10,
+  "Labs", 10,
+  "Assignments", 15,
+  "Midterm Project", 10, 
+  "Midterm Exam", 15,
+  "Final Project", 15,
+  "Final Exam", 15
+) %>% 
+  mutate(category = factor(category, 
+                           levels = c(
+                             "Reading & Videos",
+                             "Activities",
+                             "Labs",
+                             "Assignments",
+                             "Midterm Project",
+                             "Midterm Exam",
+                             "Final Project",
+                             "Final Exam")
+                           )
+         ) %>% 
+  mutate(
+    location = rep(1, 8) 
+  )
+
+grades %>% 
+  ggplot(aes(x = location, y = percent)) +
+  geom_col(aes(fill = category), col = 'black') + 
+  guides(fill = "none") + 
+  geom_text(aes(x = rep(1, 8), 
+                label = c(
+                  "Reading & Videos (10%)",
+                  "Activities (10%)",
+                  "Labs (10%)",
+                  "Assignments (15%)",
+                  "Midterm Project (10%)",
+                  "Midterm Exam (15%)",
+                  "Final Project (15%)", 
+                  "Final Exam (15%)"
+                  ), 
+                y = c(96, 86, 75, 63, 51, 39, 24, 8)
+                )
+            ) + 
+  labs(x = '', y = 'Cumulative percent') + 
+  theme(axis.text.x = element_blank()) +
+  scale_fill_manual(values = pal)
+```
+
+---
+ 
+# Course Format & Organization
+ 
+Stat 218 will meet 4 times per week. Each week in STAT 218 will, for the most
+part, look something like this:
+
+## Individual Expectations
+
+```{r, fig.align = 'center', eval = FALSE}
+knitr::include_graphics('course images/individual_process.jpg')
+```
+
+## Group Expectations
+
+```{r, fig.align = 'center', eval = FALSE}
+knitr::include_graphics('course images/group_process.jpg')
+```
+
+
+### Communication 
+
+Every Sunday evening there will be an announcement on Canvas letting you know
+what is due over the next week, and the material we will be covering. The module 
+for each week will be released on Sunday by noon, so you can look over the 
+content and see what the plan is for the week. 
+
+We will use Canvas to manage questions and responses regarding course content. 
+There are discussion forums for the different components of each week (e.g., 
+Week 1 Lab Assignment). Please __do not__ send an email about homework questions
+or questions about the course material. It is incredibly helpful for others in
+the course to see the questions you have and the responses to those questions.
+I will try to answer any questions posted to Canvas within 3-4 hours (unless 
+it is posted at midnight). If you think you can answer another student’s
+question, please respond! 
+
+Generally, I will work **either** Saturday or Sunday each weekend, and will work 
+from approximately 6am to 4pm during the week. I will attempt to respond
+to emails in 24 hours, but emails sent on a Saturday night may not be responded
+to until Monday morning. If you don't hear back from me in 48 hours, assume I
+did not receive your email and resend it!
+
+
+### Reading & Videos (5%)
+
+You will be expected to complete the assigned textbook reading and course videos
+prior to attending the in-class activity for each week. As you complete the 
+reading and watch the videos, you should complete the concept check quiz
+questions. You can retake the video quizzes as many times as you like (the most
+recent grade will be recorded in Canvas) until the deadline.
+
+* Video quizzes are due **Monday at 8pm Pacific Time each week**.
+* The two lowest video grades will be dropped.
+
+### Activities (10%)
+
+Tuesday's and Thursday's classes will be dedicated to meeting with your
+classmates and instructor to work through that day's group activity. Attendance
+and completion of the activity counts towards this portion of your grade. 
+
+* Printed activities will be provided for you on Tuesday, with Word and PDF 
+files posted on Canvas
+
+* Activities will be checked for completion at the **beginning of class on 
+Wednesday.** 
+
+* If you have an excused absence the day the activity is due (e.g., quarantine
+or ill), you may email Dr. Theobold a scanned copy of the completed activity for
+credit. This must be received by **8pm Pacific Time on the day the activity
+would be checked in class**.
+
+* The lowest activity grade will be dropped.
+
+### Labs (15%)
+
+Every Wednesday, you will meet with your classmates and instructor to work
+through that week's Rstudio Cloud group lab.  The lab will reinforce the ideas
+learned in the activities completed Tuesday, using R to explore and analyze 
+data.  
+
+* Each group will turn in selected questions from the lab to Canvas. Labs are
+due **Friday at 8pm Pacific Time each week**.
+* The lowest lab grade will be dropped.
+* Each student will also turn in the entirety of each lab for completion at the
+**beginning of class on Monday**.
+
+
+### End of Week Quiz (5%)
+
+
+
+* Video quizzes are due **Friday at 8pm Pacific Time each week**.
+* The two lowest end of week quiz grades will be dropped.
+
+
+### Assignments (15%)
+
+You will complete weekly assignments in **Canvas**. These should be completed
+**individually** (meaning all answers should be written in your own words), but
+you may use your classmates, tutors, or your instructor for assistance. 
+
+* Weekly assignments are due **Sunday at 8pm Pacific Time each week**.
+* The lowest assignment grade will be dropped.
+
+### Projects
+
+There will be two projects throughout the quarter, where you will be asked to 
+apply the statistical concepts you have learned in the context of real data. 
+Each of these projects will be done in the teams you have been working with in 
+class. More details will be provided during class.
+
+### Midterm exams (30%)
+
+There will be one midterm exam (worth 15% of the course grade). The midterm
+exam will be taken in class during your normal in-class time. Each exam has a
+group (Wednesday) and individual (Friday) component.  A practice exam will be
+released in Canvas two weeks prior to the exam, with solutions to the practice
+exam released in Canvas one week prior to the exam. Further details, resources,
+and instructions for each exam will be posted the week prior to the exam in
+Canvas.
+
+#### _Group portion_:
+
+<!-- Group midterm exam will be:  -->
+
+* Group portions of the midterms are worth 20% of your midterm exam grade.
+* Group midterm exams are open book, open notes. 
+* You will be allowed a calculator on the group midterm exams. 
+* You **will** be required to use Rstudio on the group midterm exams.
+* **If you miss more than 33% of class days within a unit without communicating
+with your section instructor and group-mates, you must complete the group exam
+individually.**
+
+#### _Individual portion_:
+
+<!-- Individual midterm exam will be: **February 18th** -->
+
+* Individual portions of the midterms will be worth 80% of your midterm exam
+grade.
+* Potential individual midterm exam questions will be released one week prior to
+the exam. All exam questions will be selected from this set.
+* On the exam day, you will be given a randomly chosen subset of the previously
+released potential exam questions for your exam.
+* Individual midterm exams are closed book, closed notes. 
+* A formula sheet will be provided to use during the exam (also released with
+the potential midterm exam questions).
+* You will be allowed a calculator on the individual midterm exams. 
+* You will **not** be required to use Rstudio on the individual midterm exams.
+
+
+### Final exam (20%)
+
+The group final exam will be taken in class during your normal in-class time.
+A practice exam will be released in Canvas one week prior to the exam, with
+solutions to the practice exam released in Canvas the Sunday prior to the exam.
+Further details, resources, and instructions for each exam will be posted the
+week prior to the exam in Canvas.
+
+#### _Group portion_:
+
+Group final exam will be **Wednesday, June 1st (during normal class time)**. 
+
+* The group portion of the final exam will be worth 20% of your exam grade.
+* The group final exams is open book, open notes. 
+* You will be allowed a calculator on the group final exam. 
+* You **will** be required to use Rstudio on the group final exam.
+* **If you miss more than 33% of class days in Unit 3 without communicating with your section instructor and group-mates, you must complete the group exam individually.**
+
+#### _Individual portion_:
+
+Individual final exam will be:
+
+- **Section 07 (8:10am)** -- Wednesday, June 8, from 7:10am – 10:00am
+- **Section 09 (9:10am)** -- Friday, June 10 from 7:10am – 10:00am
+
+* The individual portion of the final exam will be worth 80% of your exam grade.
+* No potential final exam questions will be released.
+* The individual final exam is closed book. 
+* You will be allowed to create a one page note sheet for the exam.  You will
+also be provided a one page formula sheet during the exam.
+* You will be allowed a calculator on the individual final exam. 
+* You will **not** be required to use Rstudio on the individual final exams.
+
+---
+
+# Working in Teams 
+
+Working in teams is beneficial for *every* student, but only if each person
+meaningfully engages in the discussions being had. Each of you will work in a
+group of 2-3 students to discuss the course concepts and complete the course
+activities and labs. 
+
+To ensure the group's work is divided equitably each week, your team will be
+rotating through a set of group roles. This ensures one person doesn't act as
+the group leader for multiple sessions of class, while someone else is always 
+the note taker. You will circulate through the following roles each week: 
+
+
+|  Role         | Responsibilities | 
+|---------------|------------------|
+| Manager | Responsible for organizing the team work: making sure all roles were assigned and clear, leading discussion of the activity or lab assignment problems. |
+| Recorder | Responsible for collecting, organizing, and recording answers to the assignment during the discussions, compiling the summary of the answers discussed, sending summary to Editor. |
+| Editor | During the group discussions the editor is responsible for making sure everyone has a chance to contribute, asking quiet team members to speak up, asking loud team members to listen to others, and bringing the conversation back to the lab assignment if it deviates. The Editor is also responsible for reviewing the draft summary provided by the Recorder, sharing the summary with the team, soliciting feedback from the team, and submitting the final assignment by the deadline.|
+
+If you are in a group of two, the *Manager* also acts as the Editor*, and is 
+expected to both organize the team work, lead the discussion, and review the
+draft summary prepared by the Recorder.
+
+## Team Meetings
+
+There will be time in each class for your team to work on the assignment for 
+the week, however this time will not be sufficient to complete the assignments.
+Therefore, every group is expected to meet for at least 1-hour outside of
+class. 
+
+__If you are not in attendance for *more than one* of your team meetings that 
+week, you will be expected to complete that week's assignment on your own.__ 
+
+My hope is that each member of the group looks over the week's assignment on
+Monday while reading the week's chapter(s). Then, each member should have a 
+solid understanding of the content by Tuesday's activity. During Tuesday's
+activity and Wednesday's lab, the Team Manager is tasked with leading the
+discussion of the activity. The Reporter is tasked with recording the ideas 
+shared by the team. The editor is tasked with ensuring each team member has 
+the opportunity to share and, following the class meeting, is in charge of
+reviewing the draft submitted by the Recorder. 
+
+As a team, you can choose to work together or independently on the assignment's 
+problems between course meetings. The Manager is responsible for scheduling
+additional meetings, so that the Editor is able to submit the assignment on
+time. 
+
+---
+
+## Behavioral Expectations 
+
+This course will use group work and classroom activities to better engage your
+understanding of the material. The environment for these discussions and
+activities is expected to adhere to ground rules, so that we create an open
+space where everyone feels welcome and supported, and comfortable with voicing 
+their opinion. 
+
+By participating in this community, students accept to abide by the classroom 
+Code of Conduct and accept the procedures by which any Code of Conduct incidents
+are resolved. Any form of behavior to exclude, intimidate, or cause discomfort
+is a violation of the Code of Conduct. In order to foster a positive
+and professional learning environment we encourage the following kinds of
+behaviors in all platforms and events:
+
+- use welcoming and inclusive language
+- everyone participates and no one dominates
+- listen to understand
+- share airtime
+- one speaker at a time
+- disagree with respect
+- be respectful of different viewpoints and experiences
+- all ideas are valid
+- gracefully accept constructive criticism
+- treat everything you hear as an opportunity to learn and grow
+- seek common ground and understanding
+
+---
+
+# Late Work Policy 
+
+Assignments  are expected to be submitted on time. However, every
+student will be permitted to submit **one** individual assignment 24 hours late
+without question. You do not need to contact me to use this allowance, but if
+you find yourself in a position where you have used this allowance and you 
+cannot complete another assignment by the due date, __you are expected to email me__. Once you email me, we can work together to find a deadline that is fair 
+to both you and other students. If I do not hear from you, I will take a 5% reduction in score for every day an assignment is late, up to four days
+
+You are also expected to participate in the week's team collaborations in a
+timely manner. I will be able to monitor your involvement through your course 
+attendance. If you find that you are unable to participate in the week's team
+collaborations, __please let your team know and contact me__.
+Once you contact me, we can create a timeline that will both allow for you to
+engage in the assignment and allow for members of your team to receive
+feedback from you. 
+
+If you need to miss a class due to illness, quarantine, or other extenuating
+circumstances, please email Dr. Theobold and group-mates letting them know
+**prior to the class meeting**.  You may participate in the lab or activity via
+video conferencing if desired or you may complete the lab on your own.  If
+needed, I will determine an appropriate extension on the lab based on your
+individual circumstances.
+
+**Exams**: 
+- Students that are in quarantine but healthy enough to take the exam should
+email Dr. Theobold to arrange to take the exam at home while being proctored
+via Zoom.
+
+- If you are ill to the point of not being able to take the exam, please email
+Dr. Theobold to arrange a time to take the exam remotely via Zoom when you are
+feeling better within the week of the exam.
+
+- Students who miss the exam without contacting the Dr. Theobold prior to the
+exam will receive a zero on the exam.
+
+- Work is not a legitimate reason for an exam absence.
+
+---
+ 
+#### COVID-19 Addendum
+
+I understand and appreciate the strange world we find ourselves living in today. 
+Surrounded by a variety of factors, many of us find ourselves overwhelmed, 
+frustrated, confused, and sad. I appreciate all of these outside forces you are
+navigating, and will do my best to monitor the pace of our course so that no one
+feels left behind. Yes, this may mean that we may not hit every learning
+outcome. Instead, it is of utmost importance to me that you leave this course
+with an appreciation for the entire statistical investigation process
+from developing a research question and data collection methods to analyzing and communicating results, and that you participate in group conversations about
+statistical reasoning and problem solving. 
+
+---
+
+# Policy on academic misconduct
+
+Students in an academic setting are responsible for approaching all assignments
+with rigor, integrity, and in compliance with the University Code of Student
+Conduct. Students	are	expected to	be good citizens and to	engage in responsible
+behaviors that reflect well	upon their university, to	be civil to	one	another
+and	to others	in	the	campus community,	and	contribute positively	to student
+and	university life.	
+
+It is expected that students adhere to the following responsibilities: 
+
+1. consult and analyze sources that are relevant to the topic of inquiry;
+
+2. acknowledge when they draw from the ideas or the phrasing of those sources
+in their own writing;
+
+3. learn and use appropriate citation conventions within the field in which they
+are studying; and
+
+4. ask their instructor for guidance when they are uncertain of how to
+acknowledge the contributions of others in their thinking and writing.
+
+When students fail to adhere to these responsibilities, they may intentionally
+or unintentionally "use someone else’s language, ideas, or other original (not
+common-knowledge) material without properly acknowledging its source" [http://www.wpacouncil.org](http://www.wpacouncil.org). When the act is
+intentional, the student has engaged in plagiarism.
+
+Plagiarism is an act of academic misconduct, which carries with it consequences
+including, but not limited to, receiving a course grade of “F” and a report to
+the Office of the Dean of Students. Unfortunately, it is not always clear if the
+misuse of sources is intentional or unintentional, which means that you may be
+accused of plagiarism even if you do not intentionally plagiarize. If you have
+any questions regarding use and citation of sources in your academic writing,
+you are responsible for consulting with your instructor before the assignment
+due date. In addition, you can work with an Writing Center tutor at any point
+in your writing process, including when you are integrating or citing sources.
+
+**In STAT 218, students involved in plagiarism on assignments (all parties involved) will receive a zero grade on that assignment. The second offense will result in a zero on that assignment, and the incident will be reported to the Office of Students Rights and Responsibilities. Academic misconduct on an exam will result in a zero on that exam and will be reported to the Dean of Students, without exception.**
+
+---
+
+# Policy on intellectual property
+
+This syllabus, course lectures and presentations, and any course materials
+provided throughout this term are protected by U.S. copyright laws.  Students
+enrolled in the course may use them for their own research and educational
+purposes.  However, reproducing, selling or otherwise distributing these
+materials without written permission of the copyright owner is expressly
+prohibited, including providing materials to commercial platforms such as Chegg
+or CourseHero.  Doing so may constitute a violation of U.S. copyright law as
+well as Cal Poly’s Code of Student Conduct.

@@ -1,0 +1,9 @@
+.tocify-subheader > .tocify-item {
+  text-indent: initial;
+  padding-left: 2em;
+}
+
+.tocify-header > .tocify-item {
+  text-indent: initial;
+  padding-left: 1em;
+}
