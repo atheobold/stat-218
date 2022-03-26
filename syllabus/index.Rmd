@@ -25,11 +25,12 @@ pal <- brewer.pal(n = 8, name = "Purples")
 ```
 
 
-# STAT 218 Information {.tabset .tabset-fade}
+# {.tabset .tabset-fade}
 
 ## Instructor Contact Information
 
-- Allison Theobold, Ph.D
+**Allison Theobold, Ph.D**
+
 -	Email: atheobol@calpoly.edu
 -	Office: Building 25 Office 105 (by Statistics Department Office) 
 
@@ -76,12 +77,12 @@ a printed copy if you wish.
 ## Required Technology 
 
 ![`R` is the statistical software we will be using in this course 
-(<https://cran.r-project.org/>)](course images/R.jpeg){width=30%}
+(<https://cran.r-project.org/>)](course images/R.jpeg){width=15%}
 
 ![RStudio is the most popular way to interact with the `R` software. We will be 
 interacting with RStudio through RStudio Cloud (https://rstudio.cloud/). You 
 will join the Stat 218 workspace, and then be able to access the course homework
-and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width=40%}
+and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width=30%}
 
 RStudio Cloud will be your resource for course lab assignments 
 
@@ -102,15 +103,11 @@ including:
 - homework questions
 - quiz questions
 
-  + *Important*: Make sure you are receiving email notifications for any Canvas 
-  activity. In Canvas, click on your name, then Notifications. Check that Canvas
-  is using an email address that you regularly check; you have the option of
-  registering a mobile number. Check the boxes to get notifications for
-  announcements, content, discussions, and grades. 
-  + If you have a question about the course materials, computing, or logistics,
-  please post your question to your Canvas discussion board instead of emailing
-  me! This ensures all students can benefit from the responses. Other students
-  are encouraged to respond!
+***Important***: Make sure you are receiving email notifications for *any*
+Canvas activity. That includes: announcements, emails, comments, etc. In Canvas, click on your name, then Notifications. Check that Canvas
+is using an email address that you regularly check; you have the option of
+registering a mobile number. Check the boxes to get notifications for
+announcements, content, discussions, and grades. 
 
 ## Writing & Learning Center 
 
@@ -252,12 +249,12 @@ Your grade in STAT 218 will contain the following components:
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center"}
 grades <- tribble(
   ~category,  ~percent,
-  "Reading & Videos", 10,
+  "Reading & Videos", 5,
   "Activities", 10,
   "Labs", 10,
   "Assignments", 15,
   "Midterm Project", 10, 
-  "Midterm Exam", 15,
+  "Midterm Exams (2)", 20,
   "Final Project", 15,
   "Final Exam", 15
 ) %>% 
@@ -268,7 +265,7 @@ grades <- tribble(
                              "Labs",
                              "Assignments",
                              "Midterm Project",
-                             "Midterm Exam",
+                             "Midterm Exams (2)",
                              "Final Project",
                              "Final Exam")
                            )
@@ -283,16 +280,16 @@ grades %>%
   guides(fill = "none") + 
   geom_text(aes(x = rep(1, 8), 
                 label = c(
-                  "Reading & Videos (10%)",
+                  "Reading & Videos (5%)",
                   "Activities (10%)",
                   "Labs (10%)",
                   "Assignments (15%)",
                   "Midterm Project (10%)",
-                  "Midterm Exam (15%)",
+                  "Midterm Exams (20%)",
                   "Final Project (15%)", 
                   "Final Exam (15%)"
                   ), 
-                y = c(96, 86, 75, 63, 51, 39, 24, 8)
+                y = c(98, 90, 80, 68, 55, 40, 24, 8)
                 )
             ) + 
   labs(x = '', y = 'Cumulative percent') + 
@@ -304,22 +301,6 @@ grades %>%
  
 # Course Format & Organization
  
-Stat 218 will meet 4 times per week. Each week in STAT 218 will, for the most
-part, look something like this:
-
-## Individual Expectations
-
-```{r, fig.align = 'center', eval = FALSE}
-knitr::include_graphics('course images/individual_process.jpg')
-```
-
-## Group Expectations
-
-```{r, fig.align = 'center', eval = FALSE}
-knitr::include_graphics('course images/group_process.jpg')
-```
-
-
 ### Communication 
 
 Every Sunday evening there will be an announcement on Canvas letting you know
@@ -342,6 +323,16 @@ to emails in 24 hours, but emails sent on a Saturday night may not be responded
 to until Monday morning. If you don't hear back from me in 48 hours, assume I
 did not receive your email and resend it!
 
+### Weekly Layout
+ 
+Each week in STAT 218 will, for the most part, look something like this:
+
+```{r, fig.align = 'center'}
+knitr::include_graphics('course images/during_week.jpg')
+
+#knitr::include_graphics('course images/weekend.jpg')
+
+```
 
 ### Reading & Videos (5%)
 
@@ -351,16 +342,16 @@ reading and watch the videos, you should complete the concept check quiz
 questions. You can retake the video quizzes as many times as you like (the most
 recent grade will be recorded in Canvas) until the deadline.
 
-* Video quizzes are due **Monday at 8pm Pacific Time each week**.
-* The two lowest video grades will be dropped.
+* Concept check quizzes are due **Monday at 8pm Pacific Time each week**.
+* The two lowest concept check quiz grades will be dropped.
 
 ### Activities (10%)
 
-Tuesday's and Thursday's classes will be dedicated to meeting with your
-classmates and instructor to work through that day's group activity. Attendance
+Monday's and Tuesday's classes will be dedicated to meeting with your
+classmates and instructor to work through that week's group activity. Attendance
 and completion of the activity counts towards this portion of your grade. 
 
-* Printed activities will be provided for you on Tuesday, with Word and PDF 
+* Printed activities will be provided for you on Monday, with Word and PDF 
 files posted on Canvas
 
 * Activities will be checked for completion at the **beginning of class on 
@@ -373,27 +364,18 @@ would be checked in class**.
 
 * The lowest activity grade will be dropped.
 
-### Labs (15%)
+### Labs (10%)
 
 Every Wednesday, you will meet with your classmates and instructor to work
 through that week's Rstudio Cloud group lab.  The lab will reinforce the ideas
-learned in the activities completed Tuesday, using R to explore and analyze 
-data.  
+learned in the activities completed Monday and Tuesday, through the use of R to
+explore and analyze data.  
 
 * Each group will turn in selected questions from the lab to Canvas. Labs are
 due **Friday at 8pm Pacific Time each week**.
 * The lowest lab grade will be dropped.
 * Each student will also turn in the entirety of each lab for completion at the
 **beginning of class on Monday**.
-
-
-### End of Week Quiz (5%)
-
-
-
-* Video quizzes are due **Friday at 8pm Pacific Time each week**.
-* The two lowest end of week quiz grades will be dropped.
-
 
 ### Assignments (15%)
 
@@ -404,14 +386,14 @@ you may use your classmates, tutors, or your instructor for assistance.
 * Weekly assignments are due **Sunday at 8pm Pacific Time each week**.
 * The lowest assignment grade will be dropped.
 
-### Projects
+### Midterm & Final Projects (25%)
 
 There will be two projects throughout the quarter, where you will be asked to 
 apply the statistical concepts you have learned in the context of real data. 
 Each of these projects will be done in the teams you have been working with in 
 class. More details will be provided during class.
 
-### Midterm exams (30%)
+### Midterm exams (20%)
 
 There will be one midterm exam (worth 15% of the course grade). The midterm
 exam will be taken in class during your normal in-class time. Each exam has a
@@ -423,7 +405,8 @@ Canvas.
 
 #### _Group portion_:
 
-<!-- Group midterm exam will be:  -->
+Group midterm exam 1 will be: **Wednesday, April 27**
+Group midterm exam 2 will be: **Wednesday, May 18**
 
 * Group portions of the midterms are worth 20% of your midterm exam grade.
 * Group midterm exams are open book, open notes. 
@@ -435,7 +418,8 @@ individually.**
 
 #### _Individual portion_:
 
-<!-- Individual midterm exam will be: **February 18th** -->
+Individual midterm exam 1 will be: **Tuesday, April 26th**
+Individual midterm exam 2 will be: **Tuesday, May 17th**
 
 * Individual portions of the midterms will be worth 80% of your midterm exam
 grade.
@@ -450,7 +434,7 @@ the potential midterm exam questions).
 * You will **not** be required to use Rstudio on the individual midterm exams.
 
 
-### Final exam (20%)
+### Final exam (15%)
 
 The group final exam will be taken in class during your normal in-class time.
 A practice exam will be released in Canvas one week prior to the exam, with
