@@ -1,0 +1,148 @@
+---
+title: "Welcome to RStudio Cloud!"
+author: "Your Name Here!"
+date: "9/22/2021"
+output: html_document
+---
+
+### General information on Wednesday labs
+
+Each Wednesday you will complete a lab in class with your group. Questions are
+selected from each lab to be turned in on Canvas (one submission per group).
+The questions to be submitted on Canvas are bolded in the lab.  As you work
+through the lab with your group have the Canvas lab assignment open so that you
+can answer those questions as you go.  Today's activity is Lab 0 in Gradescope for practice submitting as a group.
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for
+authoring HTML, PDF, and Microsoft Word documents. 
+
+The document may look a bit different that you are used to, but we will break
+it down! 
+
+Section headers are defined with hashtags (#), where one # is the largest
+header, two ## is the second largest and so on.
+
+You can make words boldface with two ** or two __ (like **so** or __so__). 
+
+You can make words italicized with one * or one _ (like *so* or _so_). 
+
+You can make lists like so:  
+
+- item 1
+- item 2
+- item 3
+
+<!-- This is an RMarkdown comment. It WILL NOT show in your knitted document. -->
+
+<!-- Comments are great ways to leave yourself notes inside your RMarkdown
+document that no one can see!  -->
+
+
+## R Code 
+
+You can differentiate the R code within an RMarkdown file from the body of 
+the document, from the three tickmarks (```) they start and end with. 
+
+Here is an example of an R code chunk:
+
+```{r setup, include = FALSE}
+## This is an R comment. R knows this IS NOT code because it has a # in front! 
+
+knitr::opts_chunk$set(echo = TRUE)
+## Code to set the default for whether to output the code from a code chunk
+
+library(tidyverse)
+## Code to load in package we need
+
+```
+
+Notice that after the ``` you see a curly brace with an "r" in it ({r}), this 
+indicates to RMarkdown that the code inside of that code chunk is R code (not 
+Python code or another type of code). 
+
+Also, the "setup" after the "r" is the code chunk's name. It is good practice 
+to name your code chunks based on the action they perform. It makes it easier 
+to navigate to them in the navigation pane. 
+
+
+## Knitting 
+
+When you click the **Knit** button a document will be generated that includes
+both content as well as the output of any embedded R code chunks within the
+document. 
+
+
+__Your Turn: Do you see the above code chunk when you knit the document? Why do you think this is the case?__ 
+
+
+
+## Including Code Output
+
+You can include code output in your knitted document: 
+
+```{r cars}
+glimpse(mpg)
+```
+
+__Your Turn: What do you think the above code does? What output does it give you?__
+<!-- Type your answer below this line! -->
+
+
+
+## Including Plots
+
+You can also embed plots in the knitted document. 
+
+Here is an example of a plot. 
+
+```{r pressure, echo = FALSE}
+ggplot(data = mpg, 
+       mapping = aes(y = manufacturer, x = hwy)) + 
+  geom_boxplot() +
+  labs(x = "Highway Miles Per Gallon", 
+       y = "Car Manufacturer")
+```
+
+__Your Turn: What do you think the `echo = FALSE` option does in the above code chunk?__
+<!-- Type your answer below this line! -->
+
+#### Introduction to `R` {-}
+
+In Stat 216 we will use the statistical package `R` to analyze data through the IDE (integrated development environment) RStudio. Though it is possible to download `R` and RStudio on your own computer, we will use this program through the MSU RStudio server: [https://rstudio.math.montana.edu/](https://rstudio.math.montana.edu/). 
+
+Read through the preliminaries chapter in the textbook and watch the video "Starting with `R`" before completing the following questions.
+
+
+The RStudio workflow operates best by the use of "Projects". You should create a separate project for each activity or assignment in this course that requires the use of `R`. To get started with this activity, follow these steps:
+
+* Log onto the RStudio server using your NetID and password: [https://rstudio.math.montana.edu/](https://rstudio.math.montana.edu/). 
+    
+    * Please note: Your netID password expires every 6 months. It is HIGHLY recommended that you reset your netID password BEFORE attempting to login to the Rstudio server. You can reset your netID password in the MSU password portal (https://pwreset.montana.edu/react/).
+    
+* In the top right corner, you will see a dropdown menu next to "Project" that currently says "(None)". Click on this menu and choose "New Project". (Alternatively, you can click the "File" menu in the top left and select "New Project".) 
+    - A "New Project Wizard" window should pop up: click "New Directory", then click "New Project".
+    - Give your project directory a name (e.g., Activity1). _Do not use spaces or other characters in the name._ 
+    - Click "Browse" and choose a location where you would like to save your project (you can create a new folder if desired). Note that this location is on your server account, not on your computer.
+    - Leave all other boxes unchecked, and click "Create Project". (Now, if you click on the home icon in the top right, you will see your RStudio account, and the project should be listed under "Projects".)
+* Download the Martian Alphabet `R` script file from D2L.
+* Click "Upload" in the "Files" tab in the bottom right window of RStudio. Click "Choose File", and navigate to the folder where the Martian Alphabet `R` script file is saved. Then click "Open"; then click "Ok". 
+* You should see the uploaded file appear in the list of files. Click on the filename to open the file. 
+
+In the Martian Alphabet `R` script file, highlight the lines of code that starts with `library` and click "Run". This will load the **package** (or library) `catstats` needed for this activity; each package is a collection of `R` functions.  We review a few of these packages here. 
+
+* Throughout the semester we will use the package `tidyverse` to allow us to use chaining (see Section 1.7 in the textbook for more on this symbol `%>%`.)  Contained in `tidyverse` is the package `ggplot2`, used to create graphs in RStudio.
+* The package `mosaic` contains the `favstats()` function to find summary statistics for quantitative variables.
+* We will use the package `catstats`, starting in Chapter 5 (and in this activity), to create simulations for statistical inference.  
+
+These packages are already installed in the RStudio server, but you need to use the `library()` function to call the package into your R environment. We will only use the package `catstats` for this activity.
+
+The \# sign is not part of the `R` code. 
+It is used by these authors to add comments to the `R` code and explain what each call is telling the program to do.
+`R` will ignore everything after a \# sign when executing the code.
+
+In the Martian Alphabet `R` script file for the `one_proportion_test()` function arguments, enter your class size (Q3 from the in-class activity) for `sample_size` and the number of students who were correct in identifying Bumba (Q6 from the in-class activity) for `as_extreme_as` argument.  Highlight lines 3 -- 8 and click run.
+
+Is the distribution created from this code similar to what you saw in class in Q14?
