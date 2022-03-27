@@ -405,7 +405,8 @@ Canvas.
 
 #### _Group portion_:
 
-Group midterm exam 1 will be: **Wednesday, April 27**
+Group midterm exam 1 will be: **Wednesday, April 27**  
+
 Group midterm exam 2 will be: **Wednesday, May 18**
 
 * Group portions of the midterms are worth 20% of your midterm exam grade.
@@ -418,7 +419,8 @@ individually.**
 
 #### _Individual portion_:
 
-Individual midterm exam 1 will be: **Tuesday, April 26th**
+Individual midterm exam 1 will be: **Tuesday, April 26th**  
+
 Individual midterm exam 2 will be: **Tuesday, May 17th**
 
 * Individual portions of the midterms will be worth 80% of your midterm exam
@@ -569,6 +571,7 @@ needed, I will determine an appropriate extension on the lab based on your
 individual circumstances.
 
 **Exams**: 
+
 - Students that are in quarantine but healthy enough to take the exam should
 email Dr. Theobold to arrange to take the exam at home while being proctored
 via Zoom.
