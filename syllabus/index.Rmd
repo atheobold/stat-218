@@ -438,9 +438,9 @@ the potential midterm exam questions).
 
 The group final exam will be taken in class during your normal in-class time.
 A practice exam will be released in Canvas one week prior to the exam, with
-solutions to the practice exam released in Canvas the Sunday prior to the exam.
-Further details, resources, and instructions for each exam will be posted the
-week prior to the exam in Canvas.
+solutions to the practice exam released in Canvas the Wednesday prior to the
+exam. Further details, resources, and instructions for each exam will be posted
+the week prior to the exam in Canvas.
 
 #### _Group portion_:
 
@@ -454,10 +454,7 @@ Group final exam will be **Wednesday, June 1st (during normal class time)**.
 
 #### _Individual portion_:
 
-Individual final exam will be:
-
-- **Section 07 (8:10am)** -- Wednesday, June 8, from 7:10am – 10:00am
-- **Section 09 (9:10am)** -- Friday, June 10 from 7:10am – 10:00am
+Individual final exam will be: **Saturday, June 4, from 10:10am – 1:00pm** 
 
 * The individual portion of the final exam will be worth 80% of your exam grade.
 * No potential final exam questions will be released.
