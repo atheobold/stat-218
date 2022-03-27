@@ -75,8 +75,7 @@ When you click the **Knit** button a document will be generated that includes
 both content as well as the output of any embedded R code chunks within the
 document. 
 
-
-__Your Turn: Do you see the above code chunk when you knit the document? Why do you think this is the case?__ 
+__Question 1: Why do you not see the above code chunk (named setup) when you knit the document?__ 
 
 
 
@@ -88,8 +87,7 @@ You can include code output in your knitted document:
 glimpse(mpg)
 ```
 
-__Your Turn: What do you think the above code does? What output does it give you?__
-<!-- Type your answer below this line! -->
+__Question 2: What do you think the above code does? What output does it give you?__
 
 
 
@@ -107,28 +105,25 @@ ggplot(data = mpg,
        y = "Car Manufacturer")
 ```
 
-__Your Turn: What do you think the `echo = FALSE` option does in the above code chunk?__
-<!-- Type your answer below this line! -->
+__Question 3: What do you think the `echo = FALSE` option does in the above code chunk?__
 
-#### Introduction to `R` {-}
 
-* Download the Martian Alphabet `R` script file from D2L.
-* Click "Upload" in the "Files" tab in the bottom right window of RStudio. Click "Choose File", and navigate to the folder where the Martian Alphabet `R` script file is saved. Then click "Open"; then click "Ok". 
-* You should see the uploaded file appear in the list of files. Click on the filename to open the file. 
 
-In the Martian Alphabet `R` script file, highlight the lines of code that starts with `library` and click "Run". This will load the **package** (or library) `catstats` needed for this activity; each package is a collection of `R` functions.  We review a few of these packages here. 
+### Loading Data into `R` 
 
 * Throughout the semester we will use the package `tidyverse` to allow us to use chaining (see Section 1.7 in the textbook for more on this symbol `%>%`.)  Contained in `tidyverse` is the package `ggplot2`, used to create graphs in RStudio.
 * We will use the package `infer`, starting in Chapter 5 (and in this activity), to create simulations for statistical inference.  
 
 These packages are already installed in the RStudio server, but you need to use the `library()` function to call the package into your R environment. We will only use the package `tidyverse` for this activity.
 
-The \# sign is not part of the `R` code. 
+### Creating Another Simulation
 
-It is used by these authors to add comments to the `R` code and explain what each call is telling the program to do.
+```{r}
+# infer pipeline simulation
+# enter in numbers for the sze of the class and the number of reps
+```
 
-`R` will ignore everything after a \# sign when executing the code.
+__Question 4: Is the distribution created from this code similar to what you saw in class in Q14?__
 
-In the Martian Alphabet `R` script file for the `one_proportion_test()` function arguments, enter your class size (Q3 from the in-class activity) for `sample_size` and the number of students who were correct in identifying Bumba (Q6 from the in-class activity) for `as_extreme_as` argument.  Highlight lines 3 -- 8 and click run.
 
-Is the distribution created from this code similar to what you saw in class in Q14?
+
