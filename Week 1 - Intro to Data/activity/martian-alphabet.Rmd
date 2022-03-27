@@ -234,7 +234,7 @@ students “guessed” correctly in the simulation?
 
 14. If students really don’t know Martian and are just guessing which is Bouba,
 which seems more unusual: (1) the result from your class’s **simulation** or (2)
-the observed proportion of students in your class that were correct (this is
+the **observed proportion** of students in your class that were correct (this is
 your summary statistic from question 6)?  Explain your reasoning.
 
 </br>
@@ -287,7 +287,7 @@ appropriately.
 
 
 
-17. **What does one dot on the plot above represent in context of the problem?**
+17. What does one dot on the plot above represent in context of the problem?
 
 
 </br>
@@ -308,8 +308,8 @@ everyone was just guessing?  Explain your reasoning.
 </br>
 
 
-20.	**Is it *likely* that we could see our class results just by chance if
-everyone was just guessing?  Explain your reasoning.**
+20.	Is it *likely* that we could see our class results just by chance if
+everyone was just guessing?  Explain your reasoning.
 
 </br>
 
