@@ -1,0 +1,337 @@
+---
+title: "Week 2 Reading Guide"
+output: html_document
+---
+
+# Chapter 5: Exploring Numerical Data
+
+### Section 5.1: Scatterplots for Paired Data
+
+</br>
+
+__Scatterplot:__
+
+</br>
+</br>
+
+__Linear Relationship:__
+
+</br>
+</br>
+
+__Nonlinear Relationship:__
+
+</br>
+</br>
+
+#### Notes:
+
+__Four characteristics of a scatterplot:__
+
+- __Form:__
+
+</br>
+</br>
+
+- __Strength:__
+
+</br>
+</br>
+
+- __Direction:__
+
+</br>
+</br>
+
+- __Unusual observations or outliers:__
+
+</br>
+</br>
+
+Describe two variables that would have a horseshoe-shaped association in a scatterplot (∩ or ⌢).
+
+</br>
+</br> 
+
+---
+
+### Section 5.2: Dot Plots and the Mean
+
+</br>
+
+__Dot plot:__
+
+</br>
+</br>
+
+__Mean / Average:__
+
+</br>
+</br>
+
+__Distribution:__
+
+</br>
+</br>
+
+__$\mu$__:
+
+</br>
+</br>
+
+__$\bar{x}$__
+
+</br>
+</br>
+
+__Point Estimate:__
+
+</br>
+</br>
+
+---
+
+### Section 5.3: Histograms and Shape
+
+</br>
+
+__Histogram:__
+
+</br>
+</br>
+
+__Tail:__
+
+</br>
+</br>
+
+__Right Skewed:__
+
+</br>
+</br>
+
+__Left Skewed:__
+
+</br>
+</br>
+
+__Symmetric:__
+
+</br>
+</br>
+
+__Density Plot:__
+
+</br>
+</br>
+
+__Mode:__
+
+</br>
+</br>
+
+__Unimodal:__
+
+</br>
+</br>
+
+__Bimodal:__
+
+</br>
+</br>
+
+__Multimodal:__
+
+</br>
+</br>
+
+#### Notes:  
+
+__Four characteristics of the distribution of one quantitative variable:__
+
+- __Center:__
+
+</br>
+</br>
+
+- __Variability:__
+
+</br>
+</br>
+
+- __Shape:__
+
+</br>
+</br>
+
+- __Outliers:__
+
+</br>
+</br>
+
+---
+
+### Section 5.4: Variance and Standard Deviation
+
+</br>
+
+__Variability:__
+
+</br>
+</br>
+
+__Deviation:__
+
+</br>
+</br>
+
+__Variance:__
+
+</br>
+</br>
+
+__Standard Deviation:__
+
+</br>
+</br>
+
+__$\sigma$__
+
+</br>
+</br>
+
+---
+
+### Section 5.5: Boxplots, Quartiles & The Median
+
+</br>
+
+__Boxplot:__
+
+</br>
+</br>
+
+__Median:__
+
+</br>
+</br>
+
+__Inner Quartile Range (IQR):__
+
+</br>
+</br>
+
+__First Quartile (Q1):__
+
+</br>
+</br>
+
+__Third Quartile (Q3):__
+
+</br>
+</br>
+
+__Percentile:__
+
+</br>
+</br>
+
+__Whiskers:__
+
+</br>
+</br>
+
+__Outliers:__
+
+</br>
+</br>
+
+#### Notes:
+
+___How are outliers denoted on a box plot?  How can you mathematically determine
+if a data set has outliers?___
+
+</br>
+</br>
+</br>
+
+---
+
+### Section 5.6: Robust Statistics
+
+</br>
+
+__Sample Statistic:__
+
+</br>
+</br>
+
+__Robust Statistics:__
+
+</br>
+</br>
+
+#### Notes:
+
+___What are the two ways to measure the ‘center’ of a distribution?  Which one
+is considered robust to skew/outliers?___
+
+</br>
+</br>
+</br>
+
+___What are the three ways to measure the ‘variability’ of a distribution?
+Which one is considered robust to skew/outliers?___
+
+</br>
+</br>
+</br>
+
+---
+
+### Section 5.7: Transforming Data
+
+</br>
+
+__Transformation:__
+
+</br>
+</br>
+
+---
+
+### Wrap-up 
+
+</br>
+
+___What type of plot(s) are appropriate for displaying one quantitative
+variable?___
+
+</br>
+</br>
+
+___What type of plot(s) are appropriate for displaying two quantitative
+variables?___
+
+</br>
+</br>
+
+___How are variance and standard deviation related?___
+
+</br>
+</br>
+
+___Fill in the following table with the appropriate notation.___
+
+|Summary Measure     | Parameter | Statistic      |
+|:------------------:|:---------:|:--------------:|
+| Mean               |           |    </br></br>  |
+| Variance           |           |    </br></br>  |
+| Standard deviation |           |    </br></br>  |
+|                    |           |                |
+
+</br>
+
+***Statistics summarize _____________ .***  
+
+***Parameters summarize _____________.***
