@@ -1,27 +1,28 @@
-## Week 3 Lab:  IPEDs
-
-\setstretch{1}
+---
+title: "Exploring Numerical Variables"
+author: "Your Name Goes Here!"
+date: "The Date Goes Here!"
+output: html_document
+---
 
 ### Learning outcomes
 
-* Identify and create appropriate summary statistics and plots
-  given a data set or research question for data.
+* Identify and create appropriate summary statistics and plots given a data set
+or research question for data.
 
-* Interpret the following summary statistics in context:
-  median, lower quartile, upper quartile,
-  standard deviation, interquartile range.
+* Interpret the following summary statistics in context: median, lower quartile,
+upper quartile, standard deviation, interquartile range.
 
-* Given a plot or set of plots, describe and compare the distribution(s)
-  of a single quantitative variable
-  (center, variability, shape, outliers).
+* Given a plot or set of plots, describe and compare the distribution(s) of a
+single quantitative variable (center, variability, shape, outliers).
   
 * Use `R` to create graphs of variables.
 
 ### The Integrated Postsecondary Education Data System (IPEDS)
 
-Download and open the provided `R` script file for the week 3 lab to answer the following questions.  **Remember that bolded questions will be answered on Gradescope for your group.**
+**Remember that bolded questions will be answered on Canvas for your group.**
 
-These data are on a subset of institutions that met the following selection criteria [@ipeds]:
+These data are on a subset of institutions that met the following selection criteria:  [@ipeds]:
 
 *	Degree granting 
 
@@ -35,25 +36,34 @@ These data are on a subset of institutions that met the following selection crit
 
 * Has full-time first-time undergraduates
 
-* Note that several variables have missing values for some institutions (denoted by “NA”).
+* Note that several variables have missing values for some institutions (denoted
+by “NA”).
 
 ```{r, fig.align = "center", out.width="75%"}
 include_graphics("images/IPEDS_Description.png")
 ```
 
-#### Summarizing a single quantitative variable {-}
+### Identifying Observations & Variables
 
-1. What are the observational units for this study?
+__1. What are the observational units for this study?__
 
-\vspace{0.3in}
 
-2. Identify in the chart above which variables are categorical (C) and which variables are quantitative (Q).
+__2. Identify in the chart above which variables are categorical (C) and which variables are quantitative (Q).__
 
-\newpage
 
-Upload the data set `IPEDS_Data_2018` Click on Import Dataset in the Environment tab in the upper right hand corner.  Choose `From Text(base)` and select the correct csv file.  Be sure that `Yes` is selected next to `Heading` in the pop-up screen.  Click `Import`.
+### Loading in the Data
 
-Enter the name of the data set (see the environment tab) for `datasetname` in the `R` script file in line 6.  We will look at the retention rates for the 4-year institutions.  Enter the variable name `Retention` for `variable` in line 12.  Highlight and run lines 1 -- 12.  Note that the two lines of code (lines 8 and 10) are filtering to remove the 2-year institutions so we are only assessing Public 4-year and Private 4-year institutions.  
+```{r data, include = FALSE}
+IPEDS <- read_csv(here::here("data", 
+                             "IPEDS_Data_2018.csv")
+                  )
+```
+
+
+For our analysis, we will look at the retention rates for the 4-year
+institutions.  
+
+Enter the variable name `Retention` for `variable` in line 12.  Highlight and run lines 1 -- 12.  Note that the two lines of code (lines 8 and 10) are filtering to remove the 2-year institutions so we are only assessing Public 4-year and Private 4-year institutions.  
 
 ```{r, echo=TRUE, collapse = FALSE, eval=FALSE}
 IPEDS <- datasetname #Creates the object IPEDS 
@@ -61,23 +71,29 @@ IPEDS <- IPEDS %>%
   filter(Sector != "Public 2-year") #Filters the data set to remove Public 2-year
 IPEDS <- IPEDS %>%
   filter(Sector != "Private 2-year") #Filters the data set to remove Private 2-year
+```
+
+### Summarizing Retention Rates
+
+```{r summarize}
 IPEDS %>%
   summarise(favstats(variable)) #Gives the summary statistics
 ```
 
-3.  **Report the value for quartile 3 and interpret this value in context of the study.**
 
-\vspace{1in}
+3.  **Report the value for third quartile and interpret this value in context of the study.**
 
-4.  Calculate the interquartile range for this study.
 
-\vspace{0.5in}
+4.  **Calculate the interquartile range for this study.**
+
 
 5. Report and interpret the value of the standard deviation.
 
-\vspace{1in}
 
-6.  How many missing values are there?  What does this indicate?
+6.  **How many missing values are there?  What does this indicate?**
+
+
+### Visualizing Retention Rates
 
 \vspace{0.8in}
 
