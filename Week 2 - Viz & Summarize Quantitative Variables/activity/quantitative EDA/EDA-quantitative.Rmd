@@ -1,6 +1,8 @@
 ---
-title: "Week 2 Day 2 Activity: IMDb Movie Reviews --- Displaying Quantitative Variables"
-output: html_document
+title: 'Week 2 Day 2 Activity: IMDb Movie Reviews --- Displaying Quantitative Variables'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
@@ -8,7 +10,7 @@ library(tidyverse)
 library(mosaic)
 ```
 
-</br>
+\vspace{2cm}
 
 ```{r movies, echo = FALSE, out.width = c("25%", "25%", "25%", "25%")}
 
@@ -19,9 +21,9 @@ knitr::include_graphics("mr_church.jpg")
 
 ```
 
-</br>
+\vspace{2cm}
 
-### Learning outcomes
+## Learning outcomes
 
 * Identify and create appropriate summary statistics and plots given a data set
 or research question for quantitative data.
@@ -35,7 +37,9 @@ or research question for a single quantitative variable.
 * Given a plot or set of plots, describe and compare the distribution(s) of a
 single quantitative variable (center, variability, shape, outliers).
 
-### Terminology review
+\newpage
+
+## Terminology review
 
 In today's activity, we will review summary measures and plots for quantitative
 variables.  Some terms covered in this activity are:
@@ -47,7 +51,7 @@ variables.  Some terms covered in this activity are:
 
 * Types of graphs: box plots, dot plots, histograms
 
-### Movies released in 2016
+## Movies released in 2016
 
 A data set was collected on movies released in 2016.  Here is a list of some of
 the variables collected on the observational units, movies released in 2016.  
@@ -80,11 +84,9 @@ movies <- read_csv(here::here("Week 2 - Viz & Summarize Quantitative Variables",
 1. What are the three types of plots used to plot a single quantitative
 variable?
 
-</br>
-</br>
-</br>
+\newpage
 
----
+## Dotplot
 
 A dotplot will plot a dot for each value in the data set. The code below was 
 used to create a dotplot of the `imdb_scores` variable from the `movies`
@@ -103,16 +105,13 @@ ggplot(data = movies,
 
 2. What does each dot on the dotplot represent?
 
-</br>
-</br>
+\vspace{1cm}
 
 3. How would you describe the shape of the distribution of IMDb scores?
 
-</br>
-</br>
-</br>
+\newpage
 
----
+## Histogram
 
 To create a histogram of the IMDb scores, all we need to do is change the 
 geometric object we are displaying on our plot! In a dotplot we use dots, but in
@@ -134,36 +133,40 @@ ggplot(data = movies,
 
 4. Why did I **not** need to specify a `binwidth` in the dot plot I made?
 
-</br>
-</br>
+\vspace{2cm}
+\vspace{2cm}
 
 5. Which range of IMDb scores have the *highest* frequency?
 
-</br>
-</br>
+\vspace{2cm}
+\vspace{2cm}
 
 5. What IMDB scores are movies *rarely* rated?
 
-</br>
-</br>
+\vspace{2cm}
+\vspace{2cm}
 
 6. Are there IMDB scores that were possible but *no* movies in this sample were
 given those ratings?
 
-</br>
-</br>
+\vspace{2cm}
 
----
+## Boxplot
 
 7. Which five summary statistics are used to create a box plot? 
 
-- 
 -
+\vspace{0.5cm}
 -
+\vspace{0.5cm}
 -
+\vspace{0.5cm}
 -
+\vspace{0.5cm}
+-
+\vspace{0.5cm}
 
-</br>
+\newpage
 
 In the code below I've provided you with all of the statistics you listed in #7. 
 
@@ -177,25 +180,16 @@ summarize(movies,
           )
 ```
 
+\vspace{1cm}
 
 8. Using the summary statistics provided, sketch a box plot of IMDb scores. Be
 sure to label the axes!
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 9. How do you decide if a value is an "outlier" when creating a boxplot?
 
-</br>
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 In the code below, I'm providing you with the top 3 and the bottom 3 IMDb
 scores.
@@ -208,6 +202,8 @@ movies %>%
 
 ```
 
+\newpage
+
 __Top 3:__
 ```{r max}
 movies %>% 
@@ -219,48 +215,31 @@ movies %>%
 10. Revisit your previous boxplot to decide if any observations should be 
 plotted as outliers. 
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+\vspace{2cm}
 
----
 
-### Plot Comparison
+## Plot Comparison
 
 11. Compare the three graphs of IMDb scores created above.
 
 - Which graph(s) show the shape of the distribution?
 
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 - Which graph(s) show the outliers of the distribution?
 
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 - Which graph plots the *raw* data (individual observations)?
 
-</br>
-</br>
+\vspace{2cm}
 
----
-
-### Summarizing a single quantitative variable
+## Summarizing a single quantitative variable
 
 12. Based on the distributions provided, do you believe the *mean* IMDb score
 will be greater or less than the median? Explain why! 
 
-</br>
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 In the code below I've calculated the standard deviation of the IMDb scores. 
 
@@ -273,13 +252,11 @@ summarize(movies,
 
 13. Interpret the value of the standard deviation in the context of these data. 
 
-</br>
-</br>
-</br>
+\vspace{2cm}
 
 ---
 
-### Take-home messages
+### Take-Home Messages
 
 1. Histograms, box plots, and dot plots can all be used to graphically display
 a single quantitative variable.  

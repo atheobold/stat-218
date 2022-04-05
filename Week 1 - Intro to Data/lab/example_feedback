@@ -1,0 +1,33 @@
+# Example Feedback for Lab
+
+# Question 6
+
+Nice work using glimpse() to preview the dataset! This is a great function for obtaining information about the name of the columns and a preview of the observations within each column. 
+
+## If they use read_csv() with assignment
+
+The read_csv() function reads in the data, but it isn't a great function for previewing a dataset. The messages read_csv() gives you is about *how* it read in the dataset you specified, which isn't very helpful in getting information about the variables and the observations. I would recommend using the glimpse() function instead. 
+
+## If use read_csv() without assignment
+
+The read_csv() function reads in the data, but it isn't a great function for previewing a dataset. The messages read_csv() gives you is about *how* it read in the dataset you specified, which isn't very helpful in getting information about the variables and the observations. Technically, the only reason you are getting a preview of the dataset is because you didn't save the data anywhere (using a <-). 
+
+Although you get a preview of the dataset this way, I was hoping for you to use the glimpse() function instead. 
+
+
+# Question 7
+
+The rows are much more than *one* Broadway show! There are multiple rows for each Broadway show. Look again and see what separates these rows from each other!
+
+# Question 8
+
+## If use read_csv() without assignment
+
+The variables are all of the columns listed when you read in the dataset! read_csv() tells you what columns were read in as each type of data -- chr variables are categorical and dbl variables are numerical. 
+
+You also get this information from the data preview! 
+
+## If use read_csv() with assignment
+
+The variables are all of the columns listed when you read in the dataset! read_csv() tells you what columns were read in as each type of data -- chr variables are categorical and dbl variables are numerical. 
+
