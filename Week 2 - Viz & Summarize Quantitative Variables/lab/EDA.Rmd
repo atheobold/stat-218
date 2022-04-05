@@ -5,6 +5,18 @@ date: "The Date Goes Here!"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+# These are to make your lab reports look nice. 
+# Don't change these!
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+
+# This is the code to load in the packages we are using!
+library(tidyverse)
+library(mosaic)
+```
+
 ### Learning outcomes
 
 * Identify and create appropriate summary statistics and plots given a data set
@@ -20,9 +32,10 @@ single quantitative variable (center, variability, shape, outliers).
 
 ### The Integrated Postsecondary Education Data System (IPEDS)
 
-**Remember that bolded questions will be answered on Canvas for your group.**
+**Bolded questions will be answered on Canvas for your group.**
 
-These data are on a subset of institutions that met the following selection criteria:  [@ipeds]:
+These data are on a subset of institutions that met the following selection
+criteria:
 
 *	Degree granting 
 
@@ -36,110 +49,170 @@ These data are on a subset of institutions that met the following selection crit
 
 * Has full-time first-time undergraduates
 
-* Note that several variables have missing values for some institutions (denoted
+*Note:* Several variables have missing values for some institutions (denoted
 by “NA”).
 
-```{r, fig.align = "center", out.width="75%"}
-include_graphics("images/IPEDS_Description.png")
-```
-
+![](images/IPEDS_Description.png)
 ### Identifying Observations & Variables
 
 __1. What are the observational units for this study?__
+<!-- Your answer goes below this comment! -->
 
 
 __2. Identify in the chart above which variables are categorical (C) and which variables are quantitative (Q).__
+<!-- Your answer goes below this comment! -->
 
 
 ### Loading in the Data
 
 ```{r data, include = FALSE}
+
+IPEDS <- read_csv(here::here("Week 2 - Viz & Summarize Quantitative Variables", 
+                             "lab", 
+                             "data", 
+                             "IPEDS_Data_2018.csv")
+                  )
+
 IPEDS <- read_csv(here::here("data", 
                              "IPEDS_Data_2018.csv")
                   )
 ```
 
 
-For our analysis, we will look at the retention rates for the 4-year
-institutions.  
+For our analysis, we will look at the retention rates for *only* the 4-year
+institutions. In the code below I'm filtering the dataset down to ony include
+4-year institutions (eliminating 2-year institutions). 
 
-Enter the variable name `Retention` for `variable` in line 12.  Highlight and run lines 1 -- 12.  Note that the two lines of code (lines 8 and 10) are filtering to remove the 2-year institutions so we are only assessing Public 4-year and Private 4-year institutions.  
+```{r data-filter}
 
-```{r, echo=TRUE, collapse = FALSE, eval=FALSE}
-IPEDS <- datasetname #Creates the object IPEDS 
-IPEDS <- IPEDS %>%
-  filter(Sector != "Public 2-year") #Filters the data set to remove Public 2-year
-IPEDS <- IPEDS %>%
-  filter(Sector != "Private 2-year") #Filters the data set to remove Private 2-year
+IPEDS_fouryear <- IPEDS %>%
+  filter(Sector != "Public 2-year", 
+         Sector != "Private 2-year"
+         ) 
 ```
 
 ### Summarizing Retention Rates
 
+There is a great function from the **mosaic** package called `favstats()`. This
+function takes one or two variables and outputs the favorite statistics we are
+interested in! 
+
+The notation for the function is: 
+
+favstats(variable1 ~ variable2, data = dataset_name)
+
+In this case we are only interested in *one* variable, so we leave out
+variable1. But! We need to keep the ~ in the notation. So, the code looks like
+the following:
+
 ```{r summarize}
-IPEDS %>%
-  summarise(favstats(variable)) #Gives the summary statistics
+favstats(~ Retention, data = IPEDS_fouryear) 
 ```
 
 
 3.  **Report the value for third quartile and interpret this value in context of the study.**
+<!-- Your answer goes below this comment! -->
 
 
-4.  **Calculate the interquartile range for this study.**
+
+4.  **What is the interquartile range of the retention rates?**
+<!-- Your answer goes below this comment! -->
+
 
 
 5. Report and interpret the value of the standard deviation.
+<!-- Your answer goes below this comment! -->
 
 
-6.  **How many missing values are there?  What does this indicate?**
+
+6.  **How many missing values are there? Is this concerning?**
+<!-- Your answer goes below this comment! -->
+
 
 
 ### Visualizing Retention Rates
 
-\vspace{0.8in}
+#### Creating a Boxplot 
 
-Next we will create both a histogram and a boxplot of the variable `Retention`.  Enter the name of the variable in both line 16 and line 23 for `variable` in the `R` script file.  **Give each plot a descriptive title.**  Highlight and run lines 15 -- 27 to give the histogram and boxplot. **Export and upload both plots to Gradescope for your group.**  To export the graphs:  in the bottom right corner in the Plots tab, click on `Export`, then choose `Save as Image`.  Save the image as a png.  This will save your graph to the server.  In the Files tab, click on the box next to your saved image file, click `More` and choose `Export`.  This will save your file to your downloads folder on your computer.
+We will start by creating a boxplot of the retention rates for the 4-year
+institutions. You will get used to seeing the layout of the ggplot() code we
+will use to make visualizations, but since this is the first time you are seeing
+it I'm going to walk you through what the parts mean. 
 
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>% # Data set piped into...
-ggplot(aes(x = variable)) +   # Name variable to plot
-  geom_histogram(binwidth = 5) +  # Create histogram with specified binwidth 
-  labs(title = "Title", # Title for plot
-       x = "Rentention Rate", # Label for x axis
-       y = "Frequency") # Label for y axis
+The first line of code uses the ggplot() function to make a blank plot. Really, 
+the plot doesn't have anything on it! What the function does is (1) specify 
+where the data is coming from, and (2) specify what variables should be put
+where. 
+
+The next line tells ggplot() what to put on the blank plot. We get a boxplot
+by using the geom_boxplot() function, it is as simple as that! 
+
+The final line of code creates nicer axis labels. The default axis labels use 
+the name of the variables in the dataset, which sometimes aren't quite what
+we want. Using the labs() function, we can specify what labels we want on our 
+plot. 
+
+7. Fill in the code below with (1) the name of the variable you want to plot,
+and (2) a nice x-axis label to use. 
+
+```{r boxplot}
+ggplot(data = IPEDS, 
+       mapping = aes(x = ____)
+       ) +   
+  geom_boxplot() + 
+  labs(x = "_____") 
 ```
 
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>% # Data set piped into...
-ggplot(aes(x = variable)) +   # Name variable to plot
-  geom_boxplot() +  # Create boxplot 
-  labs(title = "Title", # Title for plot
-       x = "Retention Rates", # Label for x axis
-       y = "Frequency") # Label for y axis
+7.  How would you describe the shape of the distribution of retention rates?  
+<!-- Your answer goes below this comment! -->
+
+
+
+8.  Are there outliers present in the dataset? Describe where these outliers are
+located. 
+<!-- Your answer goes below this comment! -->
+
+
+
+#### Creating a Histogram
+
+Next, let's see how our impression of the distribution changes when we 
+visualize it with a histogram. 
+
+The code for a histogram is **very** similar to a boxplot. Really, all we need
+to change is the line saying to plot a boxplot: geom_boxplot(). For a 
+histogram, we use geom_histogram(). 
+
+Fill in the code below with (1) the name of the variable you want to plot, and
+(2) a nice x-axis label to use. 
+
+```{r histogram}
+ggplot(data = IPEDS, 
+       mapping = aes(x = ____)
+       ) +   
+  geom_histogram(binwidth = 5) + 
+  labs(x = "_____", 
+       y = "Frequency") 
 ```
 
-7.  What is the shape of the distribution of retention rates?  
 
-\vspace{0.3in}
+#### Robust Statistics
 
-8.  Identify any outliers in the data set.
+Let's examine how the presence of outliers affect the values of center and
+spread. 
 
-\vspace{0.3in}
+9.  **Report the two measures of center for retention given in the previous output from the favstats() function).**
+<!-- Your answer goes below this comment! -->
 
-#### Robust Statistics {-}
 
-Let's examine how the presence of outliers affect the values of center and spread. 
+10.  **Report the two measures of spread for retention given in the previous output (from the favstats() function).**
+<!-- Your answer goes below this comment! -->
 
-9.  Report the two measures of center for retention given in the `R` output.
 
-\vspace{0.8in}
 
-10.  Report the two measures of spread for retention given in the `R` output.
-
-\vspace{0.8in}
-
-\newpage
-
-To show the effect of outliers on the measures of center and spread, the smallest values of retention rate in the data set were increased by 30%. Highlight and run lines 30--38.  
+To show the effect of outliers on the measures of center and spread, the
+smallest values of retention rate in the data set were increased by 30%.
+Highlight and run lines 30--38.  
 
 ```{r, out.width="60%", echo=TRUE, eval=FALSE}
 IPEDS %>% # Data set piped into...
@@ -155,85 +228,18 @@ IPEDS %>% # Data set piped into...
        y = "Frequency") # Label for y axis
 ```
 
-11. Report the two measures of center for this new data set.
+11. **Report the two measures of center for these new (30% increased) retention rates.**
 
-\vspace{0.8in}
 
-12. Report the two measures of spread for this new data set.
 
-\vspace{0.8in}
+12. **Report the two measures of spread for these new (30% increased) retention rates.**
+
+
 
 13. **Which measure of center is robust to outliers? Explain your answer.**
 
-\vspace{0.5in}
+
 
 14.  Which measure of spread is robust to outliers?  Explain your answer.
 
-\vspace{0.5in}
 
-#### Summarizing a single categorical and single quantitative variable {-}
-
-Is there a difference in retention rates for public and private 4-year institutions?  In the next part of the activity we will compare retention rates for public and private 4-year institutions.  Note that this variable (public or private) is `Control` in the data set.
-
-15.  **Which variable will we treat as the explanatory variable?  Response variable?**
-
-\vspace{0.8in}
-
-Enter the name of the explanatory variable and the name of the response variable in lines 53 and 56 of the `R` script file.  Highlight and run lines 52 -- 60 to find the summary statistics and create side by side boxplots of the data.
-
-```{r, echo=TRUE, eval=FALSE}
-IPEDS %>%  # Data set piped into...
-  summarise(favstats(response~explanatory)) # Summary statistics for retention rates by sector
-```
-
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>%  # Data set piped into...
-  ggplot(aes(y = response, x = explanatory))+  # Identify variables
-  geom_boxplot()+  # Create box plot
-  labs(title = "Side by side box plot of retention rates by control",  # Title
-       x = "Control",    # x-axis label
-       y = "Retention Rates")  # y-axis label
-```
-
-16.  **Compare the two boxplots.**
-    
-     Which type of university has the highest center?
-     \vspace{0.3in}
-     
-     Largest spread?
-     \vspace{0.3in}
-     
-     What is the shape of each distribution?
-     \vspace{0.3in}
-     
-     Does either distribution have outliers?
-     \vspace{0.3in}
-     
-17. Report the difference in mean retention rates for private and public universities.  Use private minus public as the order of subtraction.  Use the appropriate notation.
-
-\vspace{0.8in}
-
-18.  Does there appear to be an association between retention rates and type of university?  Explain your answer.
-
-\newpage
-
-####  Summarizing two categorical variables {-}
-
-Are private 4-year institutions smaller than public one? The following set of code will create a segmented bar plot of size of the institution by sector.  Enter the variable `Sector` for explanatory and `Size` for response in line 64. Highlight and run lines 63--69 in the `R` script file.
-
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>%
-  ggplot(aes(x=explanatory, fill = response)) + # Enter the explanatory and response variables
-  geom_bar(stat = "count", position = "fill") + # Create a segmented bar plot
-  labs(title = "Segmented Bar Plot of Sector by Size", # Title
-       x = "Sector", # x-axis label
-       y = "") + # remove y-axis label
-  scale_fill_grey()
-```
-
-
-19.  **Does there appear to be an association between sector and size of 4-year institutions?  Explain your answer using the plot.** 
-\vspace{0.5in}
-
-
-\newpage
