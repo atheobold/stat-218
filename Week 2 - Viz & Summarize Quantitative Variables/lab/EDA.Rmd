@@ -209,30 +209,27 @@ spread.
 <!-- Your answer goes below this comment! -->
 
 
-
-To show the effect of outliers on the measures of center and spread, the
-smallest values of retention rate in the data set were increased by 30%.
+To show the effect of outliers on the measures of center and spread, in the 
+code below, I increase the smallest values of retention rate in the data by 30%.
 Highlight and run lines 30--38.  
 
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>% # Data set piped into...
-  summarise(favstats(Retention_Inc))
+```{r data-adjust}
+IPEDS_fouryear_adj <- IPEDS_fouryear %>% 
+  mutate(Retention = 
+           if_else(Retention == 0, -30, Retention), 
+         Retention = as.numeric(Retention)
+         )
 ```
 
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-IPEDS %>% # Data set piped into...
-  ggplot(aes(x = Retention_Inc)) +   # Name variable to plot
-  geom_boxplot() +  # Create boxplot
-  labs(title = "Boxplot of Adjusted Revenue of Movies in 2016", # Title for plot
-       x = "Revenue (in Millions)", # Label for x axis
-       y = "Frequency") # Label for y axis
+```{r new-summaries}
+favstats(~ ____, data = IPEDS_fouryear_adj) 
 ```
 
-11. **Report the two measures of center for these new (30% increased) retention rates.**
+11. **Report the two measures of center for these modified retention rates.**
 
 
 
-12. **Report the two measures of spread for these new (30% increased) retention rates.**
+12. **Report the two measures of spread for these modified retention rates.**
 
 
 
