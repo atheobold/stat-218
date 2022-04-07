@@ -1,0 +1,139 @@
+---
+title: "Week 3 Reading Guide Part 1: Hypothesis Testing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reminders from previous sections
+
+$n$ = sample size
+
+$\overline{x}$ = sample mean
+
+$s$ = sample standard deviation
+
+$\mu$ = population mean
+
+$\sigma$ = population standard deviation
+
+Parameter: a value summarizing a variable(s) for a population.
+
+Statistic: a value summarizing a variable(s) for a sample.
+
+## Chapter 11 Vocabulary
+
+__Hypothesis testing framework:__
+
+</br>
+
+### Section 11.1: Sex Discrimination Case Study
+
+__point estimate:__
+
+</br>
+</br>
+
+__hypothesis test:__
+
+</br>
+</br>
+
+__randomization:__
+
+</br>
+</br>
+
+__simulation:__
+
+</br>
+</br>
+
+__independent:__
+
+</br>
+</br>
+
+__statistic of interest / test statistic:__
+
+</br>
+</br>
+
+__Statistical inference:__
+
+</br>
+</br>
+
+### Section 11.2: Opportunity Cost Case Study
+
+### Section 11.3: Hypothesis Testing
+
+__Hypothesis test:__
+
+</br>
+</br>
+
+__Null hypothesis:__
+
+</br>
+</br>
+
+__Alternative hypothesis:__
+
+</br>
+</br>
+
+__p-value:__
+
+</br>
+</br>
+
+__Statistically significant:__
+
+</br>
+</br>
+
+---
+
+## Wrap-up Review
+
+__Hypothesis test:__ a process to determine how strong the evidence of an effect is. This procedure is also sometimes called a ‘significance test’.
+
+General steps of a hypothesis test:
+
+1. Frame the research question in terms of hypotheses.
+
+2. Collect and summarize data using a test statistic.
+	
+3. Assume the null hypothesis is true, and simulate a null distribution for the test statistic.
+
+4. Compare the observed test statistic to the null distribution to calculate a p-value.
+
+5. Make a conclusion based on the p-value and write the conclusion in context.
+
+__Null hypothesis ($H_0$):__ the skeptical perspective; no difference; no change; no effect; random chance; what the researcher hopes to prove is **wrong**.
+
+__Alternative hypothesis ($H_A$):__ the new perspective; a difference/increase/decrease; an effect; not random chance; what the researcher hopes to prove is **correct**.
+
+__Null value:__ the value of the parameter when we assume the null hypothesis is true (labeled as $\text{parameter}_0$).
+
+__Null distribution:__  the simulated or modeled distribution of statistics (sampling distribution) we would expect to occur if the null hypothesis is true.
+
+__P-value:__ probability of seeing the observed sample data, or something more extreme, assuming the null hypothesis is true.
+
+$\implies$ Lower the p-value the stronger the evidence AGAINST the null hypothesis, suggesting the alternative hypothesis makes more sense.
+
+__Decision:__ a determination of whether to reject or fail to reject a null hypothesis based on a p-value and a pre-set level of significance.
+
+- If p-value $\leq \alpha$, then reject $H_0$.
+
+- If p-value $> \alpha$, then fail to reject $H_0$.
+
+__Significance level ($\alpha$):__ a threshold used to determine if a p-value provides enough evidence to reject the null hypothesis or not.
+
+- Common levels of $\alpha$ include 0.01, 0.05, and 0.10.
+
+__Statistically significant:__ results are considered statistically significant if the p-value is below the significance level.
+
