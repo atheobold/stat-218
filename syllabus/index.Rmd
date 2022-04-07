@@ -413,7 +413,7 @@ Group midterm exam 2 will be: **Wednesday, May 18**
 * Group midterm exams are open book, open notes. 
 * You will be allowed a calculator on the group midterm exams. 
 * You **will** be required to use Rstudio on the group midterm exams.
-* **If you miss more than 33% of class days within a unit without communicating
+* **If you miss more than 25% of class days within a unit without communicating
 with your section instructor and group-mates, you must complete the group exam
 individually.**
 
@@ -452,7 +452,7 @@ Group final exam will be **Wednesday, June 1st (during normal class time)**.
 * The group final exams is open book, open notes. 
 * You will be allowed a calculator on the group final exam. 
 * You **will** be required to use Rstudio on the group final exam.
-* **If you miss more than 33% of class days in Unit 3 without communicating with your section instructor and group-mates, you must complete the group exam individually.**
+* **If you miss more than 25% of class days in Unit 3 without communicating with your section instructor and group-mates, you must complete the group exam individually.**
 
 #### _Individual portion_:
 
