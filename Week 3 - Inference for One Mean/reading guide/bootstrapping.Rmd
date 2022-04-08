@@ -1,5 +1,5 @@
 ---
-title: "Week 3 Reading Guide Part 1: Confidence Intervals"
+title: "Week 3 Reading Guide Part 2: Confidence Intervals"
 output: html_document
 ---
 
