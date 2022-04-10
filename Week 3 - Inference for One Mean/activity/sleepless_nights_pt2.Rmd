@@ -1,0 +1,9 @@
+---
+title: "Week 3 Day 2: Sleepless Nights"
+output: html_document
+---
+
+![](sheep.jpg)
+
+STEP 1: Research question. How much do STAT 218 students sleep on a typical night? Let’s make the question more clear: Is the average number of hours of sleep for any given night less than the recommended eight hours? How can we estimate this average?
+

@@ -1,0 +1,76 @@
+---
+title: "Week 3 Day 1: Sleepless Nights"
+output: html_document
+---
+
+
+![](sheep.jpg)
+
+## Step 1: Research Question
+
+For any statistical investigation, we need to start with a research question 
+we are interested in studying. For this activity, we will consider how much do
+STAT 218 students sleep on a typical night? Let’s make the question more clear:
+Is the average number of hours of sleep for any given night less than the
+recommended eight hours? 
+
+
+1. Based on the research question, what is the unit of study, the population of
+interest, the variable, and the parameter (and symbol)? 
+
+__Unit of Study:__
+
+\vspace{1cm}
+
+__Population:__
+
+\vspace{1cm}
+
+__Variable:__
+
+\vspace{1cm}
+
+__Parameter:__
+
+\vspace{1cm}
+
+__Parameter Symbol:__
+
+\vspace{1cm}
+
+
+## Step 2: Design a Study
+
+We will investigate whether the mean amount of sleep last night for the
+population of all STAT 218 students was less than 8 hours. 
+
+### Null and Alternative Hypotheses:
+
+Ho: The population mean hours of sleep for all 218 students is 8 hours.
+Ha: The population mean hours of sleep for all 218 students is less than 8
+hours.
+
+
+2. How would you write these hypotheses using notation instead of words? 
+
+__$H_0$:__
+
+__$H_A$:__
+
+\vspace{2cm}
+
+To test these hypotheses, we need to collect data. Ideally a simple random
+sample should be collected in order to avoid bias in our sampling method. 
+However, this would take a fair bit of work. 
+
+3.	Two sections of STAT 218 were randomly selected out of all of the sections
+of STAT 218 to obtain 50 STAT 218 students. What type of sampling method could
+this be?
+
+\vspace{2cm}
+
+
+This method of sampling could be biased in some form. We will revisit the
+implications of using two classes as a sample of STAT 218 students later when we
+evaluate the study. For now, let’s consider our results.
+
