@@ -1,0 +1,196 @@
+---
+title: "Week 3 Reading Guide Part 3: Inference for One Mean"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Section 19.1: Bootstrap Confidence Interval for a Mean
+
+__In the Awesome Auto example,__ 
+
+- What is the unit of study?
+
+</br>
+
+- What was the sample mean? 
+
+</br>
+
+- What sample size of cars was collected?
+
+</br>
+
+- What was the standard deviation of the sample?
+
+</br>
+
+#### 19.1.2
+
+__How is a bootstrap sample similar to collecting a new sample from the
+population?__
+
+</br>
+</br>
+
+__How is a bootstrap sample different from collecting a new sample from the
+population?__
+
+</br>
+</br>
+
+__To create a bootstrap distribution, for the Awesome Autos, how many cards will
+you need and how will the cards be labeled?__
+
+</br>
+</br>
+
+__What do you do with the cards after labeling them?__
+
+</br>
+</br>
+
+__After resampling, what value will be plotted on the bootstrap distribution?__
+
+</br>
+</br>
+
+__What was the 95% confidence interval obtained with the 1000 bootstrap samples?__
+
+</br>
+
+__How do you interpret this confidence interval in the context of the data?__
+
+</br>
+</br>
+
+__What percentiles were used to construct a 95% confidence interval?__
+
+</br>
+
+__What percentiles would you have used if you wanted a 90% confidence interval?__
+
+</br>
+</br>
+
+#### 19.1.3
+
+__When can use use the SE method to create a confidence interval?__
+_Hint:_ What does this distribution need to look like?
+
+</br>
+</br>
+
+__Where does the $2$ in the $2\times SE$ method come from?__
+
+</br>
+</br>
+
+__Standard error:__
+
+</br>
+</br>
+
+__Standard deviation:__
+
+</br>
+</br>
+
+__Where the percentile and SE confidence intervals similar?__
+__Why do you believe this was the case?__
+
+</br>
+</br>
+
+#### 19.1.4
+
+__Why would it have been inappropriate to use the SE method to find a confidence
+interval for the standard deviation?__
+
+</br>
+</br>
+
+__True or false: Bootstrapping can only be used if the sample size is small.__
+
+</br>
+
+### Section 19.2: Mathematical Model for a Mean
+
+__Conditions to use the CLT for means:__
+
+- __Independence:__ 
+
+</br>
+</br>
+
+  * Checked by: 
+
+</br>
+</br>
+
+- __Normality:__
+
+</br>
+</br>
+
+  * Checked by:
+
+</br>
+</br>
+
+__What is a "rule of thumb" that you can use to check the normality condition?__
+
+</br>
+</br>
+
+#### 19.2.3
+
+__$t$-distribution:__
+
+</br>
+</br>
+
+__How is the $t$-distribution different from the Normal distribution?__
+
+</br>
+</br>
+
+__How do we calculate degrees of freedom for the $t$-distribution?__
+
+</br>
+</br>
+
+#### Formulas
+
+__$SE(\overline{x})=$__
+
+</br>
+</br>
+
+__$t^*$:__
+
+</br>
+</br>
+ 
+__Margin of error:__
+
+</br>
+</br>
+
+__Confidence interval for a mean:__
+
+</br>
+</br>
+
+#### 19.2.5
+
+__$T=$__
+
+</br>
+
+__How do you get a p-value for the $T$ statistic you calculate?__
+
+</br>
+</br>
