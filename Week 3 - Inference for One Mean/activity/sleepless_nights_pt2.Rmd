@@ -7,3 +7,28 @@ output: html_document
 
 STEP 1: Research question. How much do STAT 218 students sleep on a typical night? Let’s make the question more clear: Is the average number of hours of sleep for any given night less than the recommended eight hours? How can we estimate this average?
 
+
+<!-- t-distribution -->
+
+<!-- SE method for CI -->
+
+<!-- t-based CI -->
+
+<!-- t-test for mu_0 -->
+
+__17. There is one requirement for using the SE method to construct a 
+confidence interval. What is this requirement? Can we safely use the SE method 
+to construct a confidence 
+
+
+```{r, echo = FALSE, eval = FALSE}
+sleep_hours %>%
+  specify(response = hours) %>% 
+  hypothesize(null = "point", mu = 8) %>% 
+  assume(distribution = "t") %>% 
+  visualize() +
+  labs(x = "t-statistic", 
+       y = "Density", 
+       title = "Theory-Based Null Distribution")
+
+```
