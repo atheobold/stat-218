@@ -127,6 +127,8 @@ sleep_hours <- rnorm(n = 50,
          ) %>% 
   arrange(student)
 
+#write_csv(sleep_hours, "sleep_hours.csv")
+
 
 ```
 
