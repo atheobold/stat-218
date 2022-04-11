@@ -68,8 +68,9 @@ population of all STAT 218 students was less than 8 hours.
 
 ### Null and Alternative Hypotheses:
 
-Ho: The population mean hours of sleep for all 218 students is 8 hours.
-Ha: The population mean hours of sleep for all 218 students is less than 8
+$H_0$: The population mean hours of sleep for all 218 students is 8 hours.
+
+$H_A$: The population mean hours of sleep for all 218 students is less than 8
 hours.
 
 
@@ -152,7 +153,9 @@ ggplot(data = sleep_hours,
   geom_histogram() +
   labs(x = "Hours Slept in Sample of 50 STAT 218 Students", 
        y = "Number of Students") + 
-  my_theme
+  my_theme + 
+  scale_x_continuous(breaks = seq(4.5, 9, by = 0.5)
+                     )
 
 # Add breaks at the half increments!
 ```
