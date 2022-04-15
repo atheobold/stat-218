@@ -27,12 +27,6 @@ library(openintro)
 ![Google search results for "attractive professors"](attractive_professors.png)
 
 ## Data Description
-<!-- This section has three tasks:
-1. Describe the context of your dataset in your own words!
-2. Tell me why you picked this dataset
-3. Describe the two variables you are interested in. One should be the
-explanatory variable and one should be the response.
--->
 
 Today, most colleges require the teaching of faculty to be evaluated through 
 anonymous student evaluations. Historically, student evaluations date back to 
@@ -75,9 +69,13 @@ evals %>%
        y = "Number of Professors")
 
 ```
-<!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
 
-
+In the histogram of course evaluation scores we see that the most frequent
+scores are around 4.5. The lowest scores these professors received was a 2 
+and the highest scores was a 5. The distribution is unimodal and left skewed,
+with most of the professors receiving scores over 3.5. Since the scores range
+from 0 to 5, this distribution suggests that, overall, students rate these 
+professors favorably. 
 
 ### Histogram of Average Attractiveness Scores
 
@@ -92,9 +90,15 @@ evals %>%
 ```
 <!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
 
+In the histogram of attractivness scores, we see a unimodal distribution with a
+slight right skew. The majority of professors received an average attractiveness
+score of about 4. There were a few professors who received low attractiveness 
+scores of about 2, but I would not consider these outliers as they are not far
+from the center of the distribtuion. However, there are professors who received
+average attractiveness scores of over 7.5, which I would classify as potential 
+outliers, as they are quite far from the center of the distribution.
 
-
-### Scatterplot of Avearge Beauty Score and Average Course Evaluation Score
+### Scatterplot of Avearge Beauty Score and Average Course Evalution Score
 
 ```{r scatterplot}
 evals %>% 
@@ -110,12 +114,28 @@ evals %>%
 
 <!-- Here is where you describe what you see in the scatterplot. Your description must include the following components: direction, shape, strength, outliers -->
 
+In the scattterplot we see a postive relationship between professor's
+attractivness and their course evaluation score. The relationship is weak to 
+moderate, as there is a great deal of varibility in course evaluation scores 
+across all levels of attractiveness. This variability makes it more difficult 
+to say the shape of the relationship, but I would say there is a weak linear
+relationship between these two variables. Finally, there are a few outliers, 
+namely the professors with course evaluation scores under 3 and attractiveness
+scores below 2. These are both far from the center (high leverage) and far from
+the regression line, which suggests they may be quite influential. 
 
-## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+## Linear Relationship Between Average Course Evaluation Scores and Average
+Beauty Score
 
 ### Model Conditions
 
-__Linearity:__
+There are four conditions required to be verified before we perform inference
+on the linear relationship between these two variables. These conditions are:
+linearity of the relationship, independence of observations, nearly normal
+residuals, and constant variability. 
+
+__Linearity:__ As seen 
 
 __Independence:__
 
