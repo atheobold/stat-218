@@ -24,6 +24,8 @@ library(knitr)
 library(openintro)
 ```
 
+![Google search results for "attractive professors"](attractive_professors.png)
+
 ## Data Description
 <!-- This section has three tasks:
 1. Describe the context of your dataset in your own words!
