@@ -1,0 +1,78 @@
+---
+title: "Week 4 Reading Guide Part 2: Inference for Simple Linear Regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#### Notes
+
+To create a **simulated null distribution** of sample slopes or sample correlations, 
+
+1. How many cards will you need and how will the cards be labeled?
+\rgs
+
+2. What do you do with the cards after labeling them?
+\rgs
+
+3. After shuffling, what value will be plotted on the simulated null distribution?
+\rgs
+
+To create a **bootstrap distribution** of sample slopes or sample correlations, 
+
+1. How many cards will you need and how will the cards be labeled?
+\rgs
+
+2. What do you do with the cards after labeling them?
+\rgs
+
+3. After shuffling, what value will be plotted on the bootstrap distribution?
+\rgs
+
+
+Conditions to use the CLT for testing slope (or correlation):
+
+\rgi Linearity: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+\rgi Independent observations: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+\rgi Nearly normal residuals: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+\rgi Constant or equal variance: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+In a theory-based test of slope or correlation, how are the degrees of freedom determined?
+\rgs	
+
+Explain why testing for slope is equivalent to testing for correlation.
+\rgs
+
+Where in the `R` output can $SE(b_1)$ be found?
+\rgs
+
+#### Formulas {-}
+
+$T=$
+\rgs
+
+Confidence interval: 
+\rgs
+
