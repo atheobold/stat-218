@@ -1,0 +1,144 @@
+---
+title: "Do more beautiful professors get better course evaluations?"
+subtitle: "Example Project Writeup"
+author: "by Dr. Theobold"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# This is code to make your report format look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(mosaic)
+library(moderndive)
+library(knitr)
+
+```
+
+```{r data}
+library(openintro)
+```
+
+## Data Description
+<!-- This section has three tasks:
+1. Describe the context of your dataset in your own words!
+2. Tell me why you picked this dataset
+3. Describe the two variables you are interested in. One should be the
+explanatory variable and one should be the response.
+-->
+
+Today, most colleges require the teaching of faculty to be evaluated through 
+anonymous student evaluations. Historically, student evaluations date back to 
+the 1920s, where faculty were in favor of this form of evaluation replacing the
+casual judgments of lone administrators. Faculty were largely dissatisfied with
+the alternatives, and eventually most accepted the premise of student
+evaluations. Professors today, however, look a lot different than professors in
+the 1920s or even the 1970s. 
+
+The data for this project come from end of semester student evaluations for a
+large sample of professors from The University of Texas at Austin. The original
+data set published in *Beauty in the Classroom* (Hamermesh & Parker, 2005) are
+available through the **openintro** R package. 
+
+I am interested in these data because I have read numerous papers on how 
+teaching evaluations to be biased against women and people of color. Many of
+these papers, similar to the *Beauty in the Classroom* article, propose that 
+student evaluations often reflect biases in favor of non-teaching related
+characteristics, such as the physical appearance of the instructor. These data
+allow for me to explor the relationship between professor's attractiveness and
+their teaching evaluations. 
+
+For this project, I will focus on two variables: the average attractiveness of 
+the professor and the professor's average course evaluation score. The study had
+six students rate the attractiveness of each professor based on their picture 
+from 1 (lowest) to 10 (highest). The average of these six scores is the variable
+used for this project. 
+
+## Data Visualization
+<!-- In this section you create three visualizations of your data -->
+
+### Histogram of Average Teaching Evalution Scores
+
+```{r histogram-1}
+evals %>% 
+  ggplot(mapping = aes(x = score)
+         ) +
+  geom_histogram(binwidth = 0.37) + 
+  labs(x = "Average Course Evaluation Score (from all student responses)", 
+       y = "Number of Professors")
+
+```
+<!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
+
+
+
+### Histogram of Average Attractiveness Scores
+
+```{r histogram-2}
+evals %>% 
+  ggplot(mapping = aes(x = bty_avg)
+         ) +
+  geom_histogram(binwidth = 0.7) + 
+  labs(x = "Average Attractiveness (Scored by 6 Students)", 
+       y = "Number of Professors")
+
+```
+<!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
+
+
+
+### Scatterplot of Avearge Beauty Score and Average Course Evaluation Score
+
+```{r scatterplot}
+evals %>% 
+  ggplot(mapping = aes(x = bty_avg, 
+                       y = score)
+         ) +
+  geom_jitter() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Average Attractiveness (Scored by 6 Students)", 
+       y = "Average Course Evaluation Score (from all student responses)")
+
+```
+
+<!-- Here is where you describe what you see in the scatterplot. Your description must include the following components: direction, shape, strength, outliers -->
+
+
+## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+### Model Conditions
+
+__Linearity:__
+
+__Independence:__
+
+__Normality:__
+
+__Equal Variance:__
+
+
+### Coefficient Estimates
+
+```{r lm}
+## Code to fit a linear regression
+eval_lm <- lm(score ~ bty_avg, data = evals)
+
+## Code to get coefficient table from linear regression
+get_regression_table(eval_lm, conf.level = 0.90) %>% 
+  kable()
+```
+
+### Inference for the Slope
+
+<!-- Here is where you describe the decision for the hypothesis test for whether the slope is 0.  -->
+
+
+
+<!-- Here is where you describe the confidence interval for the true slope. -->
+
+
