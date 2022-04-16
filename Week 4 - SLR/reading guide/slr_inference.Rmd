@@ -7,72 +7,305 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## 24.1 -- Sandwich Store
 
-#### Notes
+Why are they using $\beta_0$ and $\beta_1$ in the regression equation instead of 
+$b_0$ and $b_1$? 
 
-To create a **simulated null distribution** of sample slopes or sample correlations, 
+</br>
+</br>
+
+### 24.1.2
+
+Will the regression equation for each sample of 20 retail stores be the **same**
+as the population regression equation? If not, how different will they be?
+
+</br>
+</br>
+
+__Variability of the regression line:__
+
+</br>
+</br>
+
+How would you describe the plot in Figure 24.6? What is this distribution
+called?
+
+</br>
+</br>
+
+---
+
+## 24.2 -- Randomization test for the slope
+
+What are the "typical" null and alternative hypotheses for testing the slope of
+a regression line?
+
+</br>
+</br>
+
+If the observed slope is positive, is it possible to obtain a permuted slope
+that is negative? Why or why not?
+
+</br>
+</br>
+
+In Figure 24.10, what is being plotted? e.g., if this was a dot plot, what would
+each dot represent?
+
+</br>
+</br>
+
+Where is the distribution in Figure 24.10 centered? Why do you believe it is
+centered there?
+
+</br>
+</br>
+
+To create a **simulated null distribution** of sample slopes or sample
+correlations, 
 
 1. How many cards will you need and how will the cards be labeled?
-\rgs
+
+</br>
+</br>
 
 2. What do you do with the cards after labeling them?
-\rgs
 
-3. After shuffling, what value will be plotted on the simulated null distribution?
-\rgs
+</br>
+</br>
+
+3. After shuffling, what value will be plotted on the simulated null
+distribution?
+
+</br>
+</br>
+
+---
+
+## 24.3 -- Confidence interval for the slope
+
+What is the goal of a confidence interval?
+
+</br>
+</br>
+
+When making a confidence interval, do we assume the null hypothesis is true?
+
+</br>
+</br>
 
 To create a **bootstrap distribution** of sample slopes or sample correlations, 
 
 1. How many cards will you need and how will the cards be labeled?
-\rgs
+
+</br>
+</br>
 
 2. What do you do with the cards after labeling them?
-\rgs
+
+</br>
+</br>
 
 3. After shuffling, what value will be plotted on the bootstrap distribution?
-\rgs
+
+</br>
+</br>
 
 
-Conditions to use the CLT for testing slope (or correlation):
+Is this similar or different from how you obtained a bootstrap resample for one
+mean?
 
-\rgi Linearity: 
-\rgs
+</br>
+</br>
 
-\rgi \rgi Checked by: 
-\rgs
+Where is the bootstrap distribution in Figure 24.14 centered? Why is it centered
+there?
 
-\rgi Independent observations: 
-\rgs
+</br>
+</br>
 
-\rgi \rgi Checked by: 
-\rgs
+How would you interpret the 95% confidence interval for the slope?
 
-\rgi Nearly normal residuals: 
-\rgs
+</br>
+</br>
 
-\rgi \rgi Checked by: 
-\rgs
+---
 
-\rgi Constant or equal variance: 
-\rgs
+## 24.4 -- Mathematical model for testing the slope
 
-\rgi \rgi Checked by: 
-\rgs
+__$T=$__
 
-In a theory-based test of slope or correlation, how are the degrees of freedom determined?
-\rgs	
+</br>
+</br>
+
+In a theory-based test of slope or correlation, how are the degrees of freedom
+determined?
+
+</br>
+</br>
+
+How would you obtain a p-value for a T-statistic?
+
+</br>
+</br>
 
 Explain why testing for slope is equivalent to testing for correlation.
-\rgs
+
+</br>
+</br>
+
+__Formula for t-based confidence interval:__
+
+</br>
+</br>
 
 Where in the `R` output can $SE(b_1)$ be found?
-\rgs
 
-#### Formulas {-}
+</br>
+</br>
 
-$T=$
-\rgs
+---
 
-Confidence interval: 
-\rgs
+## 24.6 -- Checking model conditions
+
+__Linearity:__
+
+</br>
+</br>
+
+- Checked by: 
+
+</br>
+</br>
+
+__Independent observations:__
+
+</br>
+</br>
+
+- Checked by: 
+
+</br>
+</br>
+
+__Nearly normal residuals:__
+
+</br>
+</br>
+
+- Checked by: 
+
+</br>
+</br>
+
+__Constant or equal variance:__
+
+</br>
+</br>
+
+- Checked by: 
+
+</br>
+</br>
+
+---
+
+### Reminders from Previous Chapters
+
+__General steps of a hypothesis test:__
+
+1. Frame the research question in terms of hypotheses.
+
+2. Collect and summarize data using a test statistic.
+	
+3. Assume the null hypothesis is true, and simulate or mathematically model a
+null distribution for the test statistic.
+
+4. Compare the observed test statistic to the null distribution to calculate a
+p-value.
+
+5. Make a conclusion based on the p-value and write the conclusion in context.
+
+__Parameter:__ a value summarizing a variable(s) for a population.
+
+__Statistic:__ a value summarizing a variable(s) for a sample.
+
+__Sampling distribution:__ plot of statistics from 1000s of samples of the same
+size
+taken from the same population.
+
+__Standard deviation of a statistic:__ the variability of statistics from 1000s
+of samples; how far, on average, each statistic is from the true value of the
+parameter.
+
+__Standard error of a statistic:__ estimated standard deviation of a statistic.
+
+__Null hypothesis ($H_0$):__ the skeptical perspective; no difference; no
+change; no effect; random chance; what the researcher hopes to demonstrate is
+**wrong**.
+
+__Alternative hypothesis ($H_A$):__ the new perspective; a
+difference/increase/decrease; an effect; not random chance; what the researcher
+hopes to demonstrate is **correct**.
+
+__Null value:__ the value of the parameter when we assume the null hypothesis is
+true (labeled as $parameter_0$).
+
+__Null distribution:__  the simulated or modeled distribution of statistics
+(sampling distribution) we would expect to occur if the null hypothesis is true.
+
+__P-value:__ probability of seeing the observed sample data, or something more
+extreme, assuming the null hypothesis is true.
+
+$\implies$ Lower the p-value the stronger the evidence AGAINST the null
+hypothesis and FOR the alternative hypothesis.
+
+__Decision:__ a determination of whether to reject or fail to reject a null
+hypothesis based on a p-value and a pre-set level of significance.
+
+* If p-value $\leq \alpha$, then reject $H_0$.
+
+* If p-value $> \alpha$, then fail to reject $H_0$.
+
+__Significance level ($\alpha$):__ a threshold used to determine if a p-value
+provides enough evidence to reject the null hypothesis or not.
+
+- Common levels of $\alpha$ include 0.01, 0.05, and 0.10.
+
+__Statistically significant:__ results are considered "statistically
+significant" if the p-value is below the significance level.
+
+__Confidence interval:__ a process to determine how large an effect is; a range
+of plausible values for the parameter.
+
+__Margin of error:__ the value that is added to and subtracted from the sample
+statistic to create a confidence interval; half the width of a confidence
+interval.
+
+__Bootstrapping:__ the process of drawing with replacement $n$ times from the
+original sample.
+
+__Bootstrapped resample:__ a random sample of size $n$ from the original sample,
+selected with replacement.
+
+__Bootstrapped statistic:__ the statistic recorded from the bootstrapped 
+resample.
+
+__Confidence level:__ how confident we are that the confidence interval will
+capture the parameter.
+
+__Bootstrap $X$% confidence interval:__ ($(\frac{(1-X)}{2})^{th}$ percentile,
+$(X+(\frac{(1-X)}{2})^{th}$ percentile) of a bootstrap distribution
+
+__$t$-distribution:__ A bell-shaped symmetric distribution, centered at 0, wider
+than the standard normal distribution.
+
+* The variability in a $t$-distribution depends on the sample size (used to
+calculate degrees of freedom --- df for short).
+* The $t$-distribution gets closer to the standard normal distribution as df increases.
+
+__Degrees of freedom (df):__ describes the variability of the $t$-distribution.
+
+__T-score:__ the name for a standardized statistic which is compared to a $t$-distribution.
 
