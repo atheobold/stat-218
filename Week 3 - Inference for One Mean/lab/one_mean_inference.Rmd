@@ -145,7 +145,7 @@ Run the code below and see what you get!
 t_test(x = GSS, 
        response = hours, 
        conf_int = TRUE, 
-       con_level = 0.95)
+       conf_level = 0.95)
 ```
 
 9. Adjust my code to obtain a 90% confidence interval.
@@ -179,7 +179,7 @@ The code looks like this:
 t_test(x = GSS, 
        response = hours, 
        conf_int = FALSE, 
-       con_level = 0.90, 
+       conf_level = 0.90, 
        alternative = "two-sided", 
        mu = 40)
 ```
