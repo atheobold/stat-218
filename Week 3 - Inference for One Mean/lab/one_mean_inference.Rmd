@@ -1,5 +1,5 @@
 ---
-title: 'Lab 3Inference for a Single Mean'
+title: 'Lab 3: Inference for a Single Mean'
 author: "Your name here!"
 output: html_document
 ---
