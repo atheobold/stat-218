@@ -53,6 +53,7 @@ the dive?
 ```{r data, include = FALSE}
 diving <- read_csv(here::here("Week 4 - SLR", 
                               "activity",
+                              "day 1",
                               "Diving_Penguins.csv")
                    )
 ```
@@ -216,8 +217,8 @@ datasets above.
 
 \vspace{0.5cm}
 
-5. Returning back to the penguins, say you had another observation at (25, 2.5),
-as in a penguin with a heart rate of 25 beats per minute who dove for 2.5
+5. Returning back to the penguins, say you had another observation at (100, 15),
+as in a penguin with a heart rate of 100 beats per minute who dove for 15
 minutes. How do you think this would change the correlation coefficient?
 
 \newpage
@@ -234,7 +235,7 @@ variables when the sample data points tend to follow a straight line. A natural
 question is then: what line do the points tend to follow? 
 
 7. Based on the scatterplot, would you say that a straight line could summarize
-the relationship between height and foot length reasonably well? 
+the relationship between dive duration and heart rate reasonably well? 
 
 \vspace{1cm}
 
@@ -367,8 +368,8 @@ Interpret the slope in context:
 
 The slope of the regression line predicting dive duration based on heart rate is
 \underline{\hspace{3cm}}, meaning that for every \underline{\hspace{3cm}} beat
-per minute increase in heart rate, the predicted dive duration increases by
-\underline{\hspace{1cm}} minutes.
+per minute increase in heart rate, the predicted dive duration (increases / 
+decreases) by \underline{\hspace{1cm}} minutes.
 
 \vspace{1cm}
 
