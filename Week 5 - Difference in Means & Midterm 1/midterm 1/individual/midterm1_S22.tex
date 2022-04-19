@@ -1,222 +1,113 @@
-\documentclass[12pt, oneside]{article}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Midterm 1},
+  pdfauthor={Dr.~Theobold},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
-\usepackage{amsmath,color}
-\usepackage[nohead, margin=0.5in]{geometry}
-\usepackage{enumerate}
-%\usepackage[makeroom]{cancel}
-%\geometry{left=0.5in,right=0.5in,top=0.3in,bottom=0.5in} 
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
-\pagestyle{empty}
-%Next are definitions of "\one" etc. 
-\newcommand{\noi}{\noindent}
-\newcommand{\thickfrac}[2]{\genfrac{}{}{2pt}{}{#1}{#2}}
-\newcommand{\ra}{\Longrightarrow}
-%This is an easy way of assigning points to your questions and to 
-%your table all at once. 
-%\newcommand{\one}{ points}
-%\newcommand{\numqs}{}
-%\newcommand{\numpts}{}
-\newcommand{\be}{\begin{enumerate}}
-\newcommand{\ee}{\end{enumerate}}
-
-% THINGS TO CHANGE!!
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\examnum}{2}																	%
-\newcommand{\examdate}{April 26, 2022}											%
-\newcommand{\sections}{8:10am \quad 9:10am}			%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\classin}{STAT 218}
-%\newcommand{\calcitem}{NO graphing calculator. Scientific calculators only.}
-%\newcommand{\calcitem}{NO calculator.} 
-\newcommand{\calcitem}{No Cell Phone. Texas Instrument Calculator (TI-83, TI-84, etc.)}
+\title{Midterm 1}
+\author{Dr.~Theobold}
+\date{April 26, 2020}
 
 \begin{document}
+\maketitle
+
 \begin{center}
-\hrulefill\\
-{\bf \textsf{\raisebox{-0.10cm}{\classin} \hspace{\fill} 
-\raisebox{-0.10cm}{EXAM \examnum - \examdate} \hspace{\fill}
-\raisebox{-0.10cm}{Dr. Theobold}}}\\
-\hrulefill\\
+\large{Name:} \underline{\hspace{3in}}
+\vspace{0.25cm}
 
-\bigskip
-{\large\rule{0cm}{1.2cm}\textsf{Name: \underline{\hspace{3in}}{\rule{0cm}{0.8cm}} 
-\hspace{\fill}
-Section: \sections}}\\
+\large{Section:} \hspace{0.25cm} 8:10am \hspace{2cm} 9:10am 
+
 \end{center}
+
 \vspace{0.8cm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noi
-{\bf Read and Sign the Following Statement:} \\
-I understand that give or receiving help on this exam is a violation of academic
-regulations and is punishable by a grade of {\bf F} in this course. This
-includes looking at other students' exams and/or allowing other students,
-actively or passively, to see answers on my exam. This also includes revealing,
-actively or passively, any information about the exam to any member of 
-Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
-cell phones is strictly prohibited.
-{\bf I pledge not to do any of these things.} \\
 
-\hspace{\fill} 
-{\bf Signed:} \underline{\hspace{4in}}{\rule{0cm}{0.8cm}}\\
+\noindent {\bf Read and Sign the Following Statement:} \textbackslash{}
+I understand that give or receiving help on this exam is a violation of
+academic regulations and is punishable by a grade of \{\bf F\} in this
+course. This includes looking at other students' exams and/or allowing
+other students, actively or passively, to see answers on my exam. This
+also includes revealing, actively or passively, any information about
+the exam to any member of Professor Theobold's STAT 218 class who has
+not yet taken the exam. The use of cell phones is strictly prohibited.
+\{\bf I pledge not to do any of these things.\} \textbackslash{}
 
-\noi
-{\bf \textsf{Instructions.}}
+\vspace{0.25cm}
 
-\be
+\{\bf Signed:\} \underline{\hspace{4in}}\{
+
+\rule{0cm}{0.8cm}
+
+\}\textbackslash{}
+
+\noindent {\bf \textsf{Instructions.}}
+
+\begin{itemize}
 \item Read and sign the honesty pledge at the top of this page. Your exam will
-not be graded unless the honesty pledge is signed!!
+not be graded unless the honesty pledge is signed!
 \item Attempt all questions and write legibly.
 \item Show ALL the steps of your work clearly.
 \item You have 50 minutes to complete this exam, so budget your time wisely.    
-\ee
-\pagebreak
-%\vspace{.5in}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\noi {\bf Q1.} It has been well documented that women tend to prefer warmer
-temperatures compared to men (this phenomenon has been widely referred to as
-“the battle of the thermostat” in popular culture). However, researchers are
-interested in exploring whether there is a relationship between gender and
-cognitive performance as it relates to temperature. The 542 participants of this
-study were university students in Berlin, Germany, recruited using ORSEE (the
-Online Recruiting System for Economic Experiments), and randomly selected from
-the ORSEE subject pool. Gender was self-reported. Among the tests performed,
-participants were given a five minute, 50-question math task, where each
-question consisted of adding two 5-digit numbers together without the use of a 
-calculator.  Participants were divided into 24 groups ranging from 23-25
-participants in each and room temperatures (ranging from 16.19°C and 32.57°C)
-were randomly assigned to each group. The researchers would like to know if
-there is an association between room temperature and performance on the math
-assessment. \\
-
-\noi
-{\bf (a)} [3 pts] Identify the type of study design.  Explain your choice in the
-context of the problem.
-
-\vspace{0.25cm}
-
-\begin{center}
-Circle one:	\hspace{1cm} Randomized Experiment	\hspace{2cm}	Observational Study
-\end{center}
-
-\vspace{0.25cm}
-
-Explanation:
-
-\vspace{1in}
-
-
-The linear model output for the relationship between room temperature and performance on the math assessment from R is below.
-\begin{center}
-\texttt{
-\noi           Estimate     Std. Error   t value     Pr(>|t|) \\
-(Intercept)   10.26375470   1.07995837   9.5038429   6.561708e-20 \\
-temp           0.01982745   0.04398715   0.4507556   6.523467e-01
-}
-\end{center}
-
-\vspace{0.25cm}
-
-{\bf (b)} [3 points] Use the linear model output above to write the least
-squares line in the context of the problem.
-
-\vspace{1in}
-
-{\bf (c)}	[3 pts] Interpret the value of slope in context of the problem.
-Select one.
-
-\begin{itemize}
-\item The predicted room temperature will increase by 10.264°C for every 1
-additional math problem answered correctly.
-\item The predicted number of correct math problems will increase by 10.264
-problems for every increase in room temperature by 0.020°C. 
-\item For every increase in room temperature of 1°C the predicted number of 
-correct math problems will increase by 0.020 problems.
-\item For every 1 additional math problem answered correctly, the predicted
-temperature will increase by 0.020°C.
 \end{itemize}
 
-\noi {\bf (d)} [3 pts] Using the least squares line in part b, predict the number of
-correct math problems for a participant in a room with a temperature of 19.10 
-degrees Celcius. Be sure to include units on your answer.  If you did not find
-an answer to part b, use $\hat{y} = 12.5 + 0.032x$.
-
-\vspace{0.25cm}
-
-Work:  
-
-\vspace{0.5cm}
-
-Answer: \underline{\hspace{2in}}
-
-Units: \underline{\hspace{2in}}
-
-\vspace{0.5cm}
-
-\noi {\bf (e)} [2 pts] Calculate the residual for a participant in a room with a
-temperature of  19.10 degrees Celcius and who had 15 correct math problems. Be
-sure to include units on your answer.
-
-\vspace{0.25cm}
-
-Work:  
-
-\vspace{0.5cm}
-
-Answer: \underline{\hspace{2in}}
-
-Units: \underline{\hspace{2in}}
-
-\vspace{0.5cm}
-
-\noi {\bf (f)} [3 pts] The value of the coefficient of determination was
-calculated to be 0.04\%.  Interpret this value in the context of the problem.
-
-\vspace{1in}
-
-\noi {\bf (g)} [3 pts] Using the fact that the coefficient of determination was
-calculated to be 0.04\%, calculate the value of the correlation coefficient. 
-What is the appropriate notation for this value? 
-
-\vspace{0.25cm}
-
-Work:  
-
-\vspace{0.5cm}
-
-Answer: \underline{\hspace{2in}}
-
-Notation: \underline{\hspace{2in}}
-
-\vspace{0.5cm}
-
-\noi{\bf Q3.} A student conducted a research study in which the research question was whether financial incentives can improve performance on video games. The subjects in his study were a random sample of 80 university students. In the study, students were randomly assigned to one of two groups. The first group, with 40 students, was offered \$5 for a score above 100 and the other group, with 40 students, was simply told to ``do your best." Each of the 80 students played the video game and their score was recorded.\\
-
-\noi
-{\bf a)} Based on the data from the study, the research student computed a 95\% confidence interval: (-12.56, -3.92) points. The order used was ``Do Your Best - \$5 Incentive." Here is the student's interpretation of the confidence interval:\\
-\begin{center}
-\emph{I am 95\% confident that the proportion of video game scores for students who would be told to ``do your best" is between 3.92 to 12.56 times higher than the proportion of video game scores for students who would receive the \$5 incentive.}
-\end{center}
-
-\noi
-Identify the {\bf three} mistakes committed and fix it.  Be brief but clear in your description.\\
-
-\vspace{.15in}
-\noi
-Mistake 1: \underline{\hspace{6in}} \\
-
-Fix: \underline{\hspace{4in}}\\
-\\
-\noi
-Mistake 2: \underline{\hspace{6in}} \\
-
-Fix: \underline{\hspace{4in}}\\
-\\
-\noi
-Mistake 3: \underline{\hspace{6in}} \\
-
-Fix: \underline{\hspace{4in}}\\
-\\
+\pagebreak
 
 \end{document}
