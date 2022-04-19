@@ -398,10 +398,10 @@ class. More details will be provided during class.
 There will be one midterm exam (worth 15% of the course grade). The midterm
 exam will be taken in class during your normal in-class time. Each exam has a
 group (Wednesday) and individual (Friday) component.  A practice exam will be
-released in Canvas two weeks prior to the exam, with solutions to the practice
-exam released in Canvas one week prior to the exam. Further details, resources,
-and instructions for each exam will be posted the week prior to the exam in
-Canvas.
+released in Canvas one week prior to the exam, with solutions to the practice
+exam released in Canvas the Friday prior to the exam. Further details,
+resources, and instructions for each exam will be posted the week prior to the
+exam in Canvas.
 
 #### _Group portion_:
 
@@ -426,10 +426,8 @@ Individual midterm exam 2 will be: **Tuesday, May 17th**
 * Individual portions of the midterms will be worth 80% of your midterm exam
 grade.
 * Potential individual midterm exam questions will be released one week prior to
-the exam. All exam questions will be selected from this set.
-* On the exam day, you will be given a randomly chosen subset of the previously
-released potential exam questions for your exam.
-* Individual midterm exams are closed book, closed notes. 
+the exam. 
+* Individual midterm exams are open notes. 
 * A formula sheet will be provided to use during the exam (also released with
 the potential midterm exam questions).
 * You will be allowed a calculator on the individual midterm exams. 
