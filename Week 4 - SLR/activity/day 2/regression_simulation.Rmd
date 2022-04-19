@@ -289,7 +289,7 @@ you think you would get if you tested the correlation instead?
 ## Connection to Confidence Intervals
 
 14. If you were to make a 95% confidence interval for the true slope 
-($\beta_1`$), would the interval contain 0? Why or why not?
+($\beta_1$), would the interval contain 0? Why or why not?
 
 \vspace{1in}
 
