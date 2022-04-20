@@ -6,210 +6,236 @@ output:
 ---
 
 ```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+
 library(tidyverse)
 library(mosaic)
 library(infer)
-
-set.seed(1234)
-
-my_theme <- theme(axis.text = element_text(size = 16), 
-                  axis.title = element_text(size = 18)
-                  )
-
+library(moderndive)
 ```
 
-
-### Terminology review
-
-In this week's in-class activity, we will use theory-based methods for hypothesis tests and confidence intervals for a linear regression slope. Some terms covered in this activity are:
-
-* Slope 
-
-* Regression line
-
-To review these concepts, see Chapters 3 and 7 in the textbook.
-
+__Remember the questions you should answer in Canvas are boldfaced!__
 
 ### Golf driving distance
 
-In golf the goal is to complete a hole with as few strokes as possible.  A long driving distance to start a hole can help minimize the strokes necessary to complete the hole, as long as that drive stays on the fairway.  Data was collecting on 354 PGA and LGPA players in 2008 [@pga].  For each player, the average driving distance (yards), fairway accuracy (percentage), and sex was measured.  Use these data to assess, "Does a professional golfer give up accuracy when they hit the ball farther?"
+In golf the goal is to complete a hole with as few strokes as possible.  A long
+driving distance to start a hole can help minimize the strokes necessary to 
+complete the hole, as long as that drive stays on the fairway.  Data were
+collecting on 354 PGA and LGPA players in 2008.  For each player, the average
+driving distance (yards), fairway accuracy (percentage), and sex was measured.
+Use these data to assess, "Does a professional golfer give up accuracy when they
+hit the ball farther?"
 
-```{r, echo = TRUE, collapse=FALSE}
-# Read in data set
-golf <- read.csv("https://math.montana.edu/courses/s216/data/golf.csv")
+```{r data}
+golf <- read_csv(here::here("data", 
+                            "golf.csv")
+                 )
+
+golf <- read_csv(here::here("Week 4 - SLR", 
+                            "lab", 
+                            "data", 
+                            "golf.csv")
+                 )
 ```
 
-#### Plot review. {-}
+## Ask a research question
 
-Use the provided `R` script file to create a scatterplot to examine the relationship between the driving distance and percent accuracy by filling in the variable names (`Driving_Distance` and `Percent_Accuracy`) for `xx` and `yy` in line 10.  Highlight and run lines 1--16. 
+__1. Write out the null and alternative hypotheses in words.__
+
+
+## Creating a Scatterplot
+
+Use the skeleton R code below, fill in the remaining pieces to create a
+scatterplot to examine the relationship between the driving distance and percent
+accuracy. You should use `Driving_Distance` and `Percent_Accuracy` for `x` and
+`y`, respectively. 
  
-```{r, echo=TRUE, eval=FALSE}
-golf %>% # Pipe data set into...
-ggplot(aes(x = xx, y = yy))+  # Specify variables
-  geom_point() +  # Add scatterplot of points
-  labs(x = "Driving Distance",  # Label x-axis
-       y = "Percent Accuracy",  # Label y-axis
-       title = "Scatterplot of Driving Distance by Percent Accuracy") + 
-               # Be sure to tile your plots
-  geom_smooth(method = "lm", se = FALSE)  # Add regression line
+```{r scatterplot}
+ggplot(data = golf, 
+       mapping = aes(x = ____, y = ____)
+       ) +  
+  geom_point() +  
+  labs(x = "____",  
+       y = "____") 
 ```
 
-1. Sketch the plot created below. Based on your plot, does it appear that there is a relationship between driving distance and percent accuracy? Note: `Driving Distance` should be on the $x$-axis.
+__2. Does it appear that there is a relationship between driving distance and percent accuracy?__
+Note: `Driving Distance` should be on the $x$-axis.
 
-\vspace{2in}
 
-#### Conditions for the least squares line {-}
+### Adding a regression line
+
+You can add a regression line on top of the scatterplot by adding an additional
+layer to your plot. Specifically, `geom_smooth()` adds a smoothed line on 
+top of a plot. There are many different types of lines we could use, but we 
+want a straight line. So, we need to tell `geom_smooth()` to use the `"lm"`
+method to get a straight line!
+
+__3. Add one more line of code to your scatterplot (at the end) to plot a linear regression line to the plot!__
+
+## Conditions for the least squares line 
 
 When performing inference on a least squares line, the follow conditions are generally required:
 
-* *Independent observations* (for both simulation-based and theory-based methods): individual data points must be independent.
-    - Check this assumption by investigating the sampling method and determining if the observational units are related in any way.
-    
-* *Linearity* (for both simulation-based and theory-based methods): the data should follow a linear trend.
-    - Check this assumption by examining the scatterplot of the two variables, and a scatterplot of the residuals (on the $y$-axis) versus the fitted values (on the $x$-axis). The pattern in the residual plot should display a horizontal line.
+* *Independent observations* (for both simulation-based and theory-based
+methods): individual data points must be independent.
 
-* *Constant variability* (for theory-based methods only): the variability of points around the least squares line remains roughly constant
-    - Check this assumption by examining a scatterplot of the residuals (on the $y$-axis) versus the fitted values (on the $x$-axis). The variability in the residuals around zero should be approximately the same for all fitted values.
+  - Check this assumption by investigating the sampling method and determining 
+  if the observational units are related in any way.
+  
+__4. Do you believe this condition is violated? Why or why not?__
 
-* *Nearly normal residuals* (for theory-based methods only: residuals must be nearly normal.
-    - Check this assumption by examining a histogram of the residuals, which should appear approximately normal^[A better plot for checking the normality assumption is called a *normal quantile-quantile plot* (or QQ-plot). However, this type of plot will be covered in a future course].
 
-\newpage 
 
-The scatterplot generated in question 1 and the residual plots shown below will be used to assess these conditions for approximating the data with the $t$-distribution.
+* *Linearity* (for both simulation-based and theory-based methods): the data
+should follow a linear trend.
 
-```{r}
-lm.golf <- lm(Percent_Accuracy~Driving_Distance, data = golf) # Fit linear regression model
-par(mfrow=c(1,2)) # Set graphics parameters to plot 2 plots in 1 row
-plot(lm.golf, which=1) # Residual vs fitted values
-hist(lm.golf$resid, xlab="Residuals", ylab="Frequency",
-     main = "Histogram of Residuals") # Histogram of residuals
+  - Check this assumption by examining the scatterplot of the two variables, the
+  relationship on the scatterplot should appear linear.
+  
+__5. Do you believe this condition is violated? Why or why not?__
+
+
+
+* *Constant variability* (for theory-based methods only): the variability of
+points around the least squares line remains roughly constant
+
+  - Check this assumption by examining the scatterplot of the two variables, the
+  variability in the points around the regression line should be approximately 
+  the same for all of the values of $x$. When I say the "variability in the 
+  points," I mean you should be looking at the **vertical** spread of the
+  points.
+
+* *Nearly normal residuals* (for theory-based methods only): residuals must be
+nearly normal.
+
+  - Check this assumption by examining a histogram of the residuals **or** a
+  histogram of the response variable ($y$). The distribution of either of these
+  values should appear approximately normal. 
+  
+
+### Using theory-based methods 
+
+To use a $t$-distribution as an approximation for the true sampling
+distribution, we need to verify that the last two conditions __are not__ 
+violated. If these conditions are violated, then we will need to use a 
+simulation-based method (e.g. permutation or bootstrapping) instead. 
+
+__6. Based on the scatterplot, do you believe the condition of equal / constant variability is violated? Why or why not?__
+
+
+
+To check the condition of normality, we can use either the distribution of 
+responses or the distribution or residuals. To obtain the residuals we have to 
+first fit the linear regression! 
+
+To find the equation of the regression line, we use the `lm()` function. This
+function takes two arguments (1) the variables we are using for our line and (2)
+the dataset the variables live in. We have to specify the variables using 
+`y ~ x` notation. 
+
+Using the skeleton code below, fill in the explanatory and response variables
+for our regression. 
+
+```{r regression-line}
+golf_lm <- lm(____ ~ ____, data = golf)
 ```
-2. Are the conditions met to use the $t$-distribution to approximate the sampling distribution of the standardized statistic? Justify your answer.
 
-\vspace{1.5in}
+Alright, now that we've found the equation of the regression line, we can find
+the values of the residuals. 
+
+__7. How would you find the residual for a golfer in these data?__
 
 
-#### Ask a research question {-}
 
-3. Write out the null hypothesis in words.
+To obtain the residuals, we use the `get_regression_points()` function. 
 
-\vspace{1in}
-
-4. Using the research question, write the alternative hypothesis in notation to test the slope.
-
-\newpage
-
-#### Summarize and visualize the data {-}
-
-Using the provided `R` script file, enter the response variable name, `Percent_Accuracy`, into the `lm()` (linear model) function for `response` and the explanatory variable name, `Driving_Distance`, for `explanatory` in line 26 to get the linear model output.  Highlight and run lines 26--27.
-
-```{r, echo=TRUE, eval =FALSE}
-lm.golf <- lm(response~explanatory, data=golf) # lm(response~explanatory)
-round(summary(lm.golf)$coefficients, 5)
+```{r residuals}
+get_regression_points(golf_lm) %>% 
+  ggplot(mapping = aes(x = residual)) +
+  geom_histogram(binwidth = 2.5)
 ```
 
-5.  Using the output from the evaluated `R` code above, write the equation of the regression line in the context of the problem using appropriate statistical notation.
+Let's compare this to the distribution of the Percent Accuracy! 
 
-\vspace{1in}
+__8. Create a histogram of the Percent Accuracy variable.__
 
-6.  Interpret the estimated slope in context of the problem.
 
-\vspace{1in}
+__9. Do you believe the condition of normality is violated? Why or why not?__  
 
-#### Use statistical inferential methods to draw inferences from the data {-}
 
-##### Hypothesis test {-}
+
+__10. Do you believe it is "safe" to use the $t$-distribution to approximate the sampling distribution? Justify your answer.__
+
+
+
+## Obtaining the regression line, p-value, and confidence interval
+
+To obtain information about the regression line, we will use the 
+`get_regression_table()` function. The function takes one input, the name of 
+the linear regression. Remember, we stored our linear regression in an object
+named, `golf_lm`, so that is what we will input here!
+
+```{r regression-equation}
+get_regression_table(___)
+```
+
+11. Using the output from the code above, write the equation of the regression
+line in the context of the problem. 
+
+__12. Interpret the estimated slope in context of the problem.__
+
+## Use statistical inferential methods to draw inferences from the data
+
+### Hypothesis test
+
 To find the value of the standardized statistic to test the slope we will use, 
 
 $$
 T = \frac{\mbox{slope estimate}}{SE} = \frac{b_1}{SE(b_1)}.
 $$
  
-We will use the linear model `R` output above to get the estimate for slope and the standard error of the slope.
+We will use the output from our regression table to obtain the estimate for
+slope and the standard error of the slope.
 
-7.  What are the values of $b_1$ and $SE(b_1)$?  Where in the linear model `R` output can you find these values?
-\vspace{0.5in}
+13.  What are the values of $b_1$ and $SE(b_1)$?  
 
-8.  Calculate the standardized statistic for slope.  Identify where this calculated value is in the linear model `R` output.
 
-\newpage
+14.  Calculate the t-statistic for slope. Where is this value located on the 
+regression table? 
 
-9.  Interpret the standardized statistic in context of the problem.
 
-\vspace{0.8in}
+15.  The p-value reported in the regression table is the two-sided p-value for testing if the slope is different from 0. Report the p-value for this test. 
 
-10.  The p-value in linear model `R` output is the two-sided p-value for the test of significance for slope.  Report the p-value to answer the research question.  
 
-\vspace{0.5in}
+16. Based on the p-value, how much evidence is there against the null
+hypothesis?
 
-11. Based on the p-value, how much evidence is there against the null hypothesis?
 
-\vspace{0.5in}
+### Confidence interval
 
-##### Confidence interval {-}
-Recall that a confidence interval is calculated by adding and subtracting the margin of error to the point estimate.  
-$$\mbox{point estimate}\pm t^*SE(\mbox{estimate}).$$
+Recall that a confidence interval is calculated by adding and subtracting the
+margin of error to the point estimate.  
+
+$$\mbox{point estimate}\pm t^*_{df} \times SE(\mbox{estimate}).$$
 When the point estimate is a regression slope, this formula becomes 
-$$b_1 \pm t^* SE(b_1).$$
+$$b_1 \pm t^*_{df} \times SE(b_1).$$
  
-The $t^*$ multiplier comes from a $t$-distribution with $n-2$ degrees of freedom.  Recall for a 95\% confidence interval, we use the 97.5\% percentile (95\% of the distribution is in the middle, leaving 2.5\% in each tail).  The sample size for this study is 354 so we will use the degrees of freedom 352 ($n-2$).
+The $t^*$ multiplier comes from a $t$-distribution with $n-2$ degrees of
+freedom.  Recall for a 95% confidence interval, we use the 97.5% percentile
+(95% of the distribution is in the middle, leaving 2.5% in each tail).
 
-```{r, echo=TRUE, collapse=FALSE}
-qt(0.975, 352) # 95% t* multiplier 
-```
-
-12. Calculate the 95\% confidence interval for the true slope.
-\vspace{0.8in}
-
-13. Interpret the 95\% confidence interval in context of the problem.
-
-\vspace{.8in}
-
-#### Communicate the results and answer the research question {-}
-
-14. Write a conclusion to answer the research question in context of the problem.
-
-\vspace{.8in}
-
-### Multivariate plots {-}
-
-Another variable that may affect the percent accuracy is the sex of the golfer. We will look at how this variable may change the relationship between driving distance and percent accuracy. Highlight and run lines 33--39 to produce the multivariate plot. 
-
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-golf %>%
-  ggplot(aes(x = Driving_Distance, y = Percent_Accuracy, color=Gender))+  # Specify variables
-  geom_point(aes(shape = Gender), size = 3) +  # Add scatterplot of points
-  labs(x = "Driving Distance (m)",  # Label x-axis
-       y = "Percent Accuracy",  # Label y-axis
-       color = "Sex", shape = "Gender",
-       # Be sure to title your plots
-       title = "Scatterplot of Golf Driving Distance and Percent Accuracy by Sex") + 
-  geom_smooth(method = "lm", se = FALSE)  # Add regression line
-```
-
-15. Does the association between driving distance and percent accuracy change dependent on sex of the golfer?  Explain your answer.
-\vspace{1in}
-
-16.  Explain the impact sex has on the two variables.
-\newpage
-
-### Take-home messages
+17. The sample size for this study is 354. How many degrees of freedom will we use?
 
 
-1. To check the validity conditions for using theory-based methods we must use the residual diagnostic plots to check for normality of residuals and constant variability, and the scatterplot to check for linearity.  
+Fortunately, the regression table also outputs a 95% confidence interval. This
+interval was calculated using a t-distribution with the number of degrees of 
+freedom you just calculated. 
 
-2. To interpret a confidence interval for the slope, think about how to interpret the sample slope and use that information in the confidence interval interpretation for slope.  
-
-3. Use the explanatory variable row in the linear model `R` output to obtain the slope estimate (`estimate` column) and standard error of the slope (`Std. Error` column) to calculate the standardized slope, or T-score.  The calculated T-score should match the `t value` column in the explanatory variable row. The standardized slope tells the number of standard errors the observed slope is above or below 0.
-
-4. The explanatory variable row in the linear model `R` output provides a **two-sided** p-value under the `Pr(>|t|)` column.
-
-5. The standardized slope is compared to a $t$-distribution with $n-2$ degrees of freedom in order to obtain a p-value.  The $t$-distribution with $n-2$ degrees of freedom is also used to find the appropriate multiplier for a given confidence level.
+18. Report the 95% confidence interval for the true slope.
 
 
-### Additional notes
+19. Interpret the 95% confidence interval in context of the problem.
 
-Use this space to summarize your thoughts and take additional notes on this week's activity and material covered.
-
-\newpage
