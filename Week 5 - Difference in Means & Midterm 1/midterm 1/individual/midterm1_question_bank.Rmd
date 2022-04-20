@@ -16,10 +16,12 @@ knitr::opts_chunk$set(echo = FALSE,
 
 library(tidyverse)
 library(openintro)
+library(mosaic)
 library(moderndive)
 library(pander)
 library(infer)
 library(lterdatasampler)
+library(palmerpenguins)
 ```
 
 Your exam questions will be randomly selected from this bank of
@@ -69,12 +71,12 @@ number of males born in London exceeded the number of females.
 \noindent
 \textbf{(a)} [2 pts] Describe the sampling method used by Dr. Arbuthnot.
 
-\vspace{0.5in}
+\vspace{0.75in}
 
 \noindent 
 \textbf{(b)} [2 pts] Describe how this sampling method could be biased.
 
-\vspace{0.5in}
+\vspace{0.75in}
 
 \noindent 
 \textbf{(c)} [3 pts] A preview of the dataset is provided below. Use this
@@ -90,7 +92,7 @@ arbuthnot
 \vspace{1cm}
 
 \item List the variables. Indicate whether each variable is categorical or
-quantitative. If the variable is quantitative, give the units. \\
+quantitative. \\
 
 \vspace{1cm}
 
@@ -105,8 +107,7 @@ columns)
 
 \textbf{(d)} [3 pts] A scatterplot displaying the number of girls born over time
 is displayed below. Describe the relationship you see in the scatterplot. Be
-sure to address the form, direction, strength, and outliers present in the 
-scatterplot.
+sure to address the form, direction, strength, and outliers present.
 
 ```{r arbuthnot-scatter}
 ggplot(data = arbuthnot, 
@@ -118,7 +119,7 @@ ggplot(data = arbuthnot,
 
 \vspace{2cm}
 
-\textbf{(d)} [3 pts] Would it be appropriate to model the relationship between
+\textbf{(e)} [2 pts] Would it be appropriate to model the relationship between
 the number of girls born and the year with a linear regression? Justify your
 belief! 
 
@@ -137,11 +138,12 @@ fastfood items.
 \vspace{2cm}
 
 \noindent
-\textbf{(b)} [3 pts] I am interested in studying the relationship between the
-total calories of a food item and the amount of saturated fat that item
+\textbf{(b)} [3 pts] I am interested in studying the linear relationship between
+the total calories of a food item and the amount of saturated fat that item
 contains.
 
-__Write the null hypothesis for my question of interest.__
+__Write the null hypothesis for my question of interest, using both words and
+notation.__
 
 \vspace{2cm}
 
@@ -158,8 +160,8 @@ one.
 \textbf{(d)} [5 pts] On the following page is the plot of the simulated null
 distribution from `R`. Fill in the blanks below with one answer in each set of
 parentheses to correctly explain how one sample on the null distribution would
-be created.  Blanks preceded by (#) should be filled in with a number. All other
-blanks should be filled in with the context of the study.
+be created.  Blanks preceded by (#) should be filled in with a number, all
+other blanks should be filled in with the context of the study.
 
 \begin{center}
 On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
@@ -175,8 +177,7 @@ Generate a new sample of 512 ordered pairs by \underline{\hspace{3in}}.
 
 \vspace{0.5cm}
 
-Calculate and plot the (slope/correlation) \underline{\hspace{4cm}} from each 
-simulated sample.
+Calculate and plot the \underline{\hspace{4cm}} from each simulated sample.
 
 \end{center}
 
@@ -228,8 +229,7 @@ the p-value.
 \vspace{0.5cm}
 
 \noindent
-\textbf{(h)} [3 pts] Based on your estimated p-value, what would you conclude 
-for this hypothesis test? (circle one)
+\textbf{(h)} [3 pts] Which of the following is a correct interpretation of the p-value obtained? (Circle one)
 
 \begin{itemize}
 \item In less than 1 out of 1000 simulated samples, we would observe a sample
@@ -242,22 +242,23 @@ extreme with a probability of less than 1 out of 1000.
 
 \item The probability of seeing a sample slope between the total calories and
 the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
-
 \item  The probability that there is no linear relationship between the total
 calories and the saturated fat of a fast food item, is less than 0.1%.
 \end{itemize}
 
+\textbf{(i)} [2 points] Given the p-value for the hypothesis test, would the
+95% confidence interval for $\beta_1$ contain 0?
+
 \newpage
 
-\textbf{Q3} The Atlantic marsh fiddler crab, Minuca pugnax (formerly Uca
-pugnax), lives in salt marshes throughout the eastern coast of the United 
+\textbf{Q3} The Atlantic marsh Fiddler Crab, *Minuca pugnax*, lives in salt marshes throughout the eastern coast of the United 
 States. Historically, M. pugnax were distributed from northern Florida to Cape
 Cod, Massachusetts, but like other species have expanded their range northward
 due to ocean warming.
 
 The Plum Island Ecosystem Long Term Ecological Research site collected data on
-fiddler crabs from 13 marshes on the Atlantic coast of the United States in
-summer 2016. The marshes spanned from northeast Florida to northeast
+Fiddler Crabs from 13 marshes on the Atlantic coast of the United States in the
+summer of 2016. The marshes spanned from northeast Florida to northeast
 Massachusetts. Researchers were able to collect between 25 and 37 adult male
 fiddler crabs at each marsh. 
 
@@ -277,7 +278,7 @@ pie_crab %>%
 \vspace{1cm}
 
 \item List the variables. Indicate whether each variable is categorical or
-quantitative. If the variable is quantitative, give the units. \\
+quantitative. \\
 
 \vspace{2cm}
 
@@ -299,10 +300,10 @@ pie_crab %>%
        y = "Number of Crabs")
 ```
 
-\vspace{1in}
+\vspace{0.25cm}
 
 \textbf{(c)} [2 pts] When using a $t$-distribution to find a 95% confidence 
-interval, how many degrees of freedom should be used?
+interval for $\mu$, how many degrees of freedom should be used?
 
 \vspace{1cm}
 
@@ -314,8 +315,8 @@ crab_ci <- t_test(pie_crab,
   select(estimate, lower_ci, upper_ci)
 ```
 
-\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of a
-Fiddler Crab was found to be (`r round(crab_ci$lower_ci, 2)`, 
+\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of
+Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`, 
 `r round(crab_ci$upper_ci, 2)`). Below is the researchers' interpretation of
 this confidence interval: 
 
@@ -346,17 +347,17 @@ Fix: \underline{\hspace{6in}}
 
 \newpage
 
-\textbf{(f)} [2 points] Can the researchers use their interval to make
-inferences about __all__ fiddler Crabs in the United States? Justify your 
+\textbf{(e)} [2 points] Can the researchers use their interval to make
+inferences about __all__ Fiddler Crabs in the United States? Justify your 
 answer!
 
 \vspace{1in}
 
-\noindent \textbf{Q4} Researchers are interested in the fish that reside in the
-Caspian Sea. They have plans to collect many fish and take multiple measurements
-on each. Match each statistical description on the right with each piece of
-information given. Put the letter of the statistical description in the blanks
-on the left.
+\noindent \textbf{Q4} [4 points] Researchers are interested in the fish that
+reside in the Caspian Sea. They have plans to collect many fish and take
+multiple measurements on each. Match each statistical description on the right
+with each piece of information given. Put the letter of the statistical
+description in the blanks on the left.
 
 \begin{center}
 	\begin{tabular}{p{8cm}p{6cm}}
@@ -380,104 +381,217 @@ on the left.
 
 \vspace{0.5cm}
 
-\noindent \textbf{Q5} [4 points] Indicate whether each statement about a bootstrap sample 
-is true or false.
+\noindent \textbf{Q5} [4 points] Indicate whether each statement about a 
+bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
 
 \begin{itemize}
-\item The resample and original sample MUST be the same size. \\
+\item[(a)] The bootstrap resample and original sample \textbf{must} be the same size.
+\hspace{0.1cm} \underline{\hspace{2cm}} \\
 
-\item The resample and original sample BOTH are taken from the population. \\
+\item[(b)] The bootstrap resample and original sample are \textbf{both} taken
+from the population. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
-\item The resample can ONLY use values that were in the original sample. \\
+\item[(c)] The bootstrap resample can \textbf{only} use values that were in the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
-\item The resample uses ALL values that were in the original sample. \\
+\item[(d)] The bootstrap resample uses \textbf{all} of the values that were in
+the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 \end{itemize}
 
 \newpage
 
-\noindent \textbf{Q6} The purpose of creating a bootstrap distribution is to:
+\noindent \textbf{Q6} [3 points] The purpose of creating a null distribution is
+to: (Select all that apply)
 
-\begin{enumerate}
-\item Estimate the mean of the unknown sampling distribution.
-\item Estimate the spread of the unknown sampling distribution.
-\item Both A and B.
-\item None of the above.
-\end{enumerate}
+\begin{itemize}
+\item[(a)] Discover what statistics might have occurred if the null hypothesis
+was true.
+\item[(b)] Approximate the sampling distribution under $H_0$. 
+\item[(c)] To determine if the null hypothesis is true. 
+\item[(d)] To determine if the observed statistic is unlikely if the null was
+true. 
+\end{itemize}
 
 \vspace{0.25cm}
 
-\noindent \textbf{Q7} [2 points] A newspaper article claims that the average age
-for people who receive food stamps in a community is 40 years. A local
-researcher believes that the average age is less than that. The researcher takes
-a random sample of 100 people in the community who receive food stamps, and
-finds their average age to be 39.2 years, which is statistically significantly
-lower than the age of 40 stated in the article (p-value < .05). Indicate for
-each of the following interpretations whether they are valid or invalid.
+\noindent \textbf{Q7} [2 points] An article in the San Luis Tribune claims that
+the average age for people who receive food stamps in SLO is 40 years. A Cal
+Poly student believes the average age is less than that. The student obtains a random sample of 100 people in SLO who receive food stamps, and finds their
+average age to be 39.2 years. Performing a hypothesis test, the student finds 
+their sample mean to be statistically significantly lower than the age of 40 stated in the article (p-value < 0.05). Indicate fore each of the following
+interpretations whether they are valid or invalid.
 
 \noindent \textbf{(a)} The statistically significant result indicates that the 
 majority of people who receive food stamps is younger than 40.
-\begin{enumerate}
-\item[(a)] Valid
-\item[(b)] Invalid
-\end{enumerate}
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
 
 \vspace{0.25cm}
 
 \noindent \textbf{(b)} An error must have been made. This difference in means
 (39.2 vs. 40 years) is too small to be statistically significant.
-\begin{enumerate}
-\item[(a)] Valid
-\item[(b)] Invalid
-\end{enumerate}
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
 
-\newpage
+\vspace{0.25cm}
 
-\noindent \textbf{Q6} Normal human body temperature is said to be 98.6 degrees
-Fahrenheit.  A researcher studying body temperatures took a random sample of 50 
-people and recorded the body temperatures for each.  The average body
-temperature of the 50 people was 98.26.  Using these data, estimate the true
-average body temperature of people. 
+\noindent \textbf{Q8} Kinesiology professor Suzanne Phelan has been studying
+effective tools to help women return to a healthy weight after pregnancy. Dr.
+Phelan designed a study with 488 new moms. Each of the new mothers was
+assigned to either standard care postpartum, or to an intervention group that
+included being part of online social support group moderated by a dietitian and
+lifestyle coach. Over the course of the study many measurements were taken
+including the weights of moms at the time their baby was born and again 6 months
+postpartum. 
 
-\textbf{(a)} Define the parameter of interest, using proper notation. 
+\noindent \textbf{(a)} [2 points] Using information above to briefly support
+your answer, was this an experiment or an observational study?  
 
 \vspace{1in}
 
-\textbf{(b)} What type of inference should be done to answer the research
-question? (circle one)
+\noindent \textbf{(b)} [2 points] Dr. Phelan could have asked the new moms to
+choose whether they wanted to part of the online social group or not rather than
+assign the moms to the standard care and intervention groups. Why would this
+have been an inferior strategy for conducting this study? Briefly explain. 
+
+\vspace{1in}
+
+\noindent \textbf{Q9} [2 points] When you change from a 90% to a 95% confidence
+interval,which part(s) of the confidence interval change? (Select all that 
+apply)
+
+\begin{itemize}
+\item[(a)] Statistic (midpoint)
+\item[(b)] Multiplier
+\item[(c)] Standard error
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{Q10} When using a $t$-distribution to obtain a confidence
+interval, how does the multiplier change from the 95% to the 90% confidence
+interval? (Circle the correct answer)
+
+\begin{itemize}
+\item[(a)] Multiplier is larger
+\item[(b)] Multiplier is smaller
+\item[(c)] Multiplier stays the same
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{Q11} Based on the plots below, which is the better measure of
+center for this variable? (Circle one.)
+
+\begin{itemize}
+\item[(a)] The median, as the shape of the distribution is strongly skewed.
+\item[(b)] The mean, as the shape of the distribution is symmetric.
+\item[(c)] The mean, as the shape of the distribution is strongly skewed.
+\item[(d)] The median, as the shape of the distribution is symmetric.
+\end{itemize}
+
+```{r, fig.width = 8}
+hist <- penguins %>% 
+  ggplot(mapping = aes(x = body_mass_g)
+         ) +
+  geom_histogram(color = "white", binwidth = 150) + 
+  labs(x = "Body Mass (grams)")
+
+boxplot <- penguins %>% 
+  ggplot(mapping = aes(x = body_mass_g)
+         ) +
+  geom_boxplot() + 
+  labs(x = "Body Mass (grams)") + 
+  theme(axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank())
+
+gridExtra::grid.arrange(hist, boxplot, nrow = 1)
+```
+
+\newpage
+
+```{r bison-filter}
+yearling_male_bison <- knz_bison %>% 
+  mutate(age = rec_year - animal_yob) %>% 
+  group_by(animal_code) %>% 
+  filter(age == 1, 
+         animal_sex == "M", 
+         rec_year == 2020)
+
+```
+
+\noindent \textbf{Q12} The Konza Prairie Long-Term Ecological Research has
+collected data on bison on the Konza prairie since 1994, making it the longest
+continuous record of wild ungulate weight gain anywhere in the world.
+Researchers conduct a round-up once a year at the end of the grazing season
+wherein each bison is weighed, calves are vaccinated and receive unique IDs, and
+excess individuals are culled.
+
+For this investigation, we are interested in assessing if, despite the effect 
+of climate change on their habitat, the weight of yearling, male bison is what is described as "healthy" --- a weight of approximately 750 pounds. 
+
+Below are summary statistics for the 48 of the yearling, male bison captured
+in 2020. 
+
+```{r bison-stats}
+favstats(~ animal_weight, data = yearling_male_bison) %>% 
+  pander()
+```
+
+
+\textbf{(a)} [3 points] Define the parameter of interest, using proper notation.
+
+\vspace{0.75in}
+
+\textbf{(b)} [2 points] What type of inference should be done to answer the
+research question? (Circle one)
 
 \begin{itemize}
 \item Confidence Interval
 \item Hypothesis Test
-\item No inference is needed. The true average body temperature is 98.6.
-\item No inference is needed.  The true average body temperature is 98.26.
+\item No inference is needed. The true average weight of a yearling male bison
+is 629.5 pounds.
+\item No inference is needed.  The true average weight of a yearling male bison
+is 750 pounds.
 \end{itemize}
 
-\textbf{(c)} The bootstrap distribution with 1001 bootstrap resamples is
-below. What does one dot on the plot represent in the context of this problem?
+\vspace{0.25cm}
 
+\textbf{(c)} [2 points] If we decided to use inferential methods to assess if the
+true mean weight of yearling bison on the Konza Prairie was healthy, we must verify two conditions. What are these two conditions? 
 
-\textbf{(d)} Explain how you could use cards to create __one__ bootstrap
-resample.
+\vspace{0.25cm}
 
-\textbf{(e)} The percentile method is used in the picture to give a confidence
-interval of (98.081, 98.512).  What level of confidence is used for this
-interval?
+Condition 1:
 
-\textbf{(f)} How many bootstrap resamples would be cut-off in the left-tail of
-the distribution to create a 95% confidence interval? (circle one)
+\vspace{1in}
 
-\begin{itemize}
-\item 50
-\item 25
-\item 5
-\item 10
-\end{itemize}
+Condition 2: 
 
-\textbf{(g)} Use the plot and t* = 1.677 to create a 90% confidence interval
-using the t*SE method.  Show your work.
+\newpage
 
-\textbf{(h)} Interpret your 90% confidence interval from e.
+\textbf{(d)} [2 points] Using the plot below and the description of the data
+collection procedure, justify if you believe whether each condition is 
+violated or not. 
 
-\textbf{(i)} Based off your interval in (h), can we be 90% sure that the true
-average body temperature is lower than 98.6 degrees Fahrenheit?  Explain.
+\vspace{0.25cm}
 
+Condition 1: 
+
+\vspace{1in}
+
+Condition 2: 
+
+\vspace{1in}
+
+```{r bison-hist}
+yearling_male_bison %>% 
+  ggplot(mapping = aes(x = animal_weight)
+         ) +
+  geom_histogram(binwidth = 50, color = "white") +
+  labs(x = "Bison Weight (lbs)", 
+       y = "Number of Bison")
+```
