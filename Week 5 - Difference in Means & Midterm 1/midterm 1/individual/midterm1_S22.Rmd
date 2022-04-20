@@ -1,7 +1,7 @@
 ---
-title: "Midterm 1"
+title: "STAT 218 -- Midterm 1"
 date: "April 26, 2020"
-author: "Dr. Theobold"
+author: "Dr. Allison Theobold"
 output: pdf_document
 ---
 
@@ -9,25 +9,33 @@ output: pdf_document
 \large{Name:} \underline{\hspace{3in}}
 \vspace{0.25cm}
 
-\large{Section:} \hspace{0.25cm} 8:10am \hspace{2cm} 9:10am 
+\large{Section (circle one):} \hspace{1cm} 8:10am \hspace{2cm} 9:10am 
 
 \end{center}
 
 \vspace{0.8cm}
 
-\noindent {\bf Read and Sign the Following Statement:} \\
+\noindent {\bf Read and Sign the Following Statement:}
+
 I understand that give or receiving help on this exam is a violation of academic
-regulations and is punishable by a grade of {\bf F} in this course. This
+regulations and is punishable by a grade of __F__ in this course. This
 includes looking at other students' exams and/or allowing other students,
 actively or passively, to see answers on my exam. This also includes revealing,
 actively or passively, any information about the exam to any member of 
 Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
 cell phones is strictly prohibited.
-{\bf I pledge not to do any of these things.} \\
 
-\vspace{0.25cm}
+\begin{center}
 
-{\bf Signed:} \underline{\hspace{4in}}{\rule{0cm}{0.8cm}}\\
+\textbf{I pledge not to do any of these things.}
+
+\vspace{0.5cm}
+
+\textbf{Signed:} \underline{\hspace{4in}}
+
+\end{center}
+
+\vspace{1cm}
 
 \noindent {\bf \textsf{Instructions.}}
 
