@@ -1,174 +1,483 @@
 ---
 title: "Midterm 1 Question Bank"
 author: "Stat 218"
-output: pdf_document
+output: 
+  pdf_document:
+    extra_dependencies: ["multicol", "setspace"]
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
                       warning = FALSE, 
-                      fig.align = "center")
+                      fig.align = "center", 
+                      fig.width = 4, 
+                      fig.height = 4)
+
+library(tidyverse)
+library(openintro)
+library(moderndive)
+library(pander)
+library(infer)
+library(lterdatasampler)
 ```
 
-\large{Your exam questions will be randomly selected from this bank of
+Your exam questions will be randomly selected from this bank of
 questions. There \textbf{will not} be a solution key posted, so it is your 
 responsibility to discuss your ideas with your group members and / or with 
-Dr. Theobold during office hours.}
+Dr. Theobold during office hours.
 
 \vspace{0.5cm}
 
+## Provided Formulas
 
-\noi {\bf Q1.} It has been well documented that women tend to prefer warmer
-temperatures compared to men (this phenomenon has been widely referred to as
-“the battle of the thermostat” in popular culture). However, researchers are
-interested in exploring whether there is a relationship between gender and
-cognitive performance as it relates to temperature. The 542 participants of this
-study were university students in Berlin, Germany, recruited using ORSEE (the
-Online Recruiting System for Economic Experiments), and randomly selected from
-the ORSEE subject pool. Gender was self-reported. Among the tests performed,
-participants were given a five minute, 50-question math task, where each
-question consisted of adding two 5-digit numbers together without the use of a 
-calculator.  Participants were divided into 24 groups ranging from 23-25
-participants in each and room temperatures (ranging from 16.19°C and 32.57°C)
-were randomly assigned to each group. The researchers would like to know if
-there is an association between room temperature and performance on the math
-assessment. \\
-
-\noi
-{\bf (a)} [3 pts] Identify the type of study design.  Explain your choice in the
-context of the problem.
+$$R^2 = r^2 = \frac{s_{y}^2 - s_{residuals}^2}{s_y^2}$$ 
 
 \vspace{0.25cm}
 
-\begin{center}
-Circle one:	\hspace{1cm} Randomized Experiment	\hspace{2cm}	Observational Study
-\end{center}
+$$IQR = Q3 - Q1$$
 
 \vspace{0.25cm}
 
-Explanation:
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
 
-\vspace{1in}
+\vspace{0.25cm}
 
+$$\hat{y} = b_0 + b_1 \times x$$
 
-The linear model output for the relationship between room temperature and performance on the math assessment from R is below.
+\vspace{0.2cm}
 
-```{r}
-# Code to for temperature analysis
+$$Residual = y - \hat{y}$$ 
 
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+
+\newpage
+
+\noindent {\textbf Q1} Dr. John Arbuthnot, an 18th century physician, writer, 
+and mathematician is famous for performing the first hypothesis test of
+significance. Dr. Arbuthnot was interested in the ratio of newborn boys to
+newborn girls, so he gathered the baptism records for children born in London
+for every year from 1629 to 1710. Artbuthnot found that in every year, the
+number of males born in London exceeded the number of females.
+
+\noindent
+\textbf{(a)} [2 pts] Describe the sampling method used by Dr. Arbuthnot.
+
+\vspace{0.5in}
+
+\noindent 
+\textbf{(b)} [2 pts] Describe how this sampling method could be biased.
+
+\vspace{0.5in}
+
+\noindent 
+\textbf{(c)} [3 pts] A preview of the dataset is provided below. Use this
+preview to address the following questions. 
+
+```{r data-preview}
+arbuthnot
 ```
 
-\begin{center}
-\texttt{
-\noi           Estimate     Std. Error   t value     Pr(>|t|) \\
-(Intercept)   10.26375470   1.07995837   9.5038429   6.561708e-20 \\
-temp           0.01982745   0.04398715   0.4507556   6.523467e-01
-}
-\end{center}
-
-\vspace{0.25cm}
-
-{\bf (b)} [3 points] Use the linear model output above to write the least
-squares line in the context of the problem.
-
-\vspace{1in}
-
-{\bf (c)}	[3 pts] Interpret the value of slope in context of the problem.
-Select one.
-
 \begin{itemize}
-\item The predicted room temperature will increase by 10.264°C for every 1
-additional math problem answered correctly.
-\item The predicted number of correct math problems will increase by 10.264
-problems for every increase in room temperature by 0.020°C. 
-\item For every increase in room temperature of 1°C the predicted number of 
-correct math problems will increase by 0.020 problems.
-\item For every 1 additional math problem answered correctly, the predicted
-temperature will increase by 0.020°C.
+\item Identify the cases in the data set. \\
+
+\vspace{1cm}
+
+\item List the variables. Indicate whether each variable is categorical or
+quantitative. If the variable is quantitative, give the units. \\
+
+\vspace{1cm}
+
+\item What would the dimensions of the data set be? (number of rows by number of
+columns)
+
 \end{itemize}
 
-\noi {\bf (d)} [3 pts] Using the least squares line in part b, predict the
-number of correct math problems for a participant in a room with a temperature
-of 19.10 degrees Celsius. Be sure to include units on your answer.  If you did
-not find an answer to part b, use $\hat{y} = 12.5 + 0.032x$.
+\vspace{2cm}
+
+\newpage
+
+\textbf{(d)} [3 pts] A scatterplot displaying the number of girls born over time
+is displayed below. Describe the relationship you see in the scatterplot. Be
+sure to address the form, direction, strength, and outliers present in the 
+scatterplot.
+
+```{r arbuthnot-scatter}
+ggplot(data = arbuthnot, 
+       aes(x = year, y = girls)) + 
+  geom_point() + 
+  labs(x = "Year", 
+       y = "Number of Girls")
+```
+
+\vspace{2cm}
+
+\textbf{(d)} [3 pts] Would it be appropriate to model the relationship between
+the number of girls born and the year with a linear regression? Justify your
+belief! 
+
+\newpage
+
+\noindent {\textbf Q2} I collected data on 512 different fast food items from
+Mcdonalds, Chick-Fil-A, Sonic, Arby's, Burger King, Dairy Queen, Subway, and
+Taco Bell. For each restaurant, I sampled 64 items from their menu and recorded
+the nutritional content of each item (e.g., calories, saturated fat, calcium, 
+protein, etc.). 
+
+\noindent
+\textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
+fastfood items. 
+
+\vspace{2cm}
+
+\noindent
+\textbf{(b)} [3 pts] I am interested in studying the relationship between the
+total calories of a food item and the amount of saturated fat that item
+contains.
+
+__Write the null hypothesis for my question of interest.__
+
+\vspace{2cm}
+
+\noindent
+\textbf{(c)} [2 pts] Is the alternative hypothesis one- or two-sided? Select
+one.
+
+\begin{itemize} 
+\item One-sided \\
+\item Two-sided
+\end{itemize}
+
+\noindent
+\textbf{(d)} [5 pts] On the following page is the plot of the simulated null
+distribution from `R`. Fill in the blanks below with one answer in each set of
+parentheses to correctly explain how one sample on the null distribution would
+be created.  Blanks preceded by (#) should be filled in with a number. All other
+blanks should be filled in with the context of the study.
+
+\begin{center}
+On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
+cards.
+
+\vspace{0.5cm}
+
+Assume the null hypothesis is true and \underline{\hspace{3in}}.
+
+\vspace{0.5cm}
+
+Generate a new sample of 512 ordered pairs by \underline{\hspace{3in}}.
+
+\vspace{0.5cm}
+
+Calculate and plot the (slope/correlation) \underline{\hspace{4cm}} from each 
+simulated sample.
+
+\end{center}
+
+```{r null-dist-fastfood}
+
+obs_slope <- fastfood %>% 
+  specify(response = sat_fat, 
+          explanatory = calories) %>% 
+  calculate(stat = "slope") %>% 
+  pull()
+  
+null_dist <- fastfood %>% 
+  specify(response = sat_fat, 
+          explanatory = calories) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 1000, 
+           type = "permute") %>% 
+  calculate(stat = "slope")
+
+visualise(null_dist) +
+  labs(x = "Simulated Slope Statistic", 
+       y = "Frequency (out of 1000 reps)", 
+       title = "") +
+  xlim(c(-0.015, 0.015))
+```
+
+\noindent
+\textbf{(e)} [2 pts] Using the regression output below, draw a vertical line
+where the observed statistic falls on the null distribution. 
+
+```{r}
+fastfood_lm <- lm(sat_fat ~ calories, data = fastfood)
+
+get_regression_table(fastfood_lm) %>% 
+  pander()
+```
 
 \vspace{0.25cm}
 
-Work:  
-
-\vspace{0.5cm}
-
-Answer: \underline{\hspace{2in}}
-
-Units: \underline{\hspace{2in}}
-
-\vspace{0.5cm}
-
-\noi {\bf (e)} [2 pts] Calculate the residual for a participant in a room with a
-temperature of  19.10 degrees Celsius and who had 15 correct math problems. Be
-sure to include units on your answer.
+\noindent
+\textbf{(f)} [2 pts] Shade the location of the plot you would use to calculate
+the p-value. 
 
 \vspace{0.25cm}
 
-Work:  
+\noindent
+\textbf{(g)} [1 pts] Estimate the p-value associated with this hypothesis test. 
 
 \vspace{0.5cm}
 
-Answer: \underline{\hspace{2in}}
+\noindent
+\textbf{(h)} [3 pts] Based on your estimated p-value, what would you conclude 
+for this hypothesis test? (circle one)
 
-Units: \underline{\hspace{2in}}
+\begin{itemize}
+\item In less than 1 out of 1000 simulated samples, we would observe a sample
+slope of 0.017 or more extreme, if there is no linear relationship between 
+the total calories and the saturated fat of a fast food item. 
+
+\item If there is a linear relationship between the total calories and the
+saturated fat of a fast food, we would observe a sample slope of 0.017 or more
+extreme with a probability of less than 1 out of 1000.
+
+\item The probability of seeing a sample slope between the total calories and
+the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
+
+\item  The probability that there is no linear relationship between the total
+calories and the saturated fat of a fast food item, is less than 0.1%.
+\end{itemize}
+
+\newpage
+
+\textbf{Q3} The Atlantic marsh fiddler crab, Minuca pugnax (formerly Uca
+pugnax), lives in salt marshes throughout the eastern coast of the United 
+States. Historically, M. pugnax were distributed from northern Florida to Cape
+Cod, Massachusetts, but like other species have expanded their range northward
+due to ocean warming.
+
+The Plum Island Ecosystem Long Term Ecological Research site collected data on
+fiddler crabs from 13 marshes on the Atlantic coast of the United States in
+summer 2016. The marshes spanned from northeast Florida to northeast
+Massachusetts. Researchers were able to collect between 25 and 37 adult male
+fiddler crabs at each marsh. 
+
+\noindent 
+\textbf{(a)} [3 pts] A preview of the dataset is provided below. Use this
+preview to address the following questions. 
+
+```{r crab-preview}
+pie_crab %>% 
+  select(-name, -air_temp_sd, -water_temp_sd) %>% 
+  glimpse()
+```
+
+\begin{itemize}
+\item Identify the cases in the data set. \\
+
+\vspace{1cm}
+
+\item List the variables. Indicate whether each variable is categorical or
+quantitative. If the variable is quantitative, give the units. \\
+
+\vspace{2cm}
+
+\item What would the dimensions of the data set be? (number of rows by number of
+columns)
+\end{itemize}
 
 \vspace{0.5cm}
 
-\noi {\bf (f)} [3 pts] The value of the coefficient of determination was
-calculated to be 0.04\%.  Interpret this value in the context of the problem.
+\textbf{(b)} [3 pts] A histogram displaying the size of the sample of fiddler
+crabs is displayed below. Describe the shape of the distribution. Be sure to 
+address the center, spread, shape, and outliers. 
+
+```{r}
+pie_crab %>% 
+  ggplot(aes(x = size)) +
+  geom_histogram(binwidth = 1.5, color = "white") +
+  labs(x = "Carapace Width of Fiddler Crab (millimeters)", 
+       y = "Number of Crabs")
+```
 
 \vspace{1in}
 
-\noi {\bf (g)} [3 pts] Using the fact that the coefficient of determination was
-calculated to be 0.04\%, calculate the value of the correlation coefficient. 
-What is the appropriate notation for this value? 
+\textbf{(c)} [2 pts] When using a $t$-distribution to find a 95% confidence 
+interval, how many degrees of freedom should be used?
+
+\vspace{1cm}
+
+```{r}
+crab_ci <- t_test(pie_crab, 
+       response = size,
+       conf_int = TRUE, 
+       conf_level = 0.95) %>% 
+  select(estimate, lower_ci, upper_ci)
+```
+
+\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of a
+Fiddler Crab was found to be (`r round(crab_ci$lower_ci, 2)`, 
+`r round(crab_ci$upper_ci, 2)`). Below is the researchers' interpretation of
+this confidence interval: 
+
+\begin{center}
+\emph{There is a 95\% chance that that every sample of Fiddler Crabs will have
+a mean carapace width between 14.31 and 15.01 millimeters.}
+\end{center}
+
+\noindent
+Identify __two__ mistakes committed and fix them. Be brief but clear in your
+description.
+
+\vspace{.15in}
+
+Mistake 1: \underline{\hspace{6in}}
+
+\vspace{0.5cm}
+
+Fix: \underline{\hspace{6in}}
+
+\vspace{0.5cm}
+
+Mistake 2: \underline{\hspace{6in}}
+
+\vspace{0.5cm}
+
+Fix: \underline{\hspace{6in}}
+
+\newpage
+
+\textbf{(f)} [2 points] Can the researchers use their interval to make
+inferences about __all__ fiddler Crabs in the United States? Justify your 
+answer!
+
+\vspace{1in}
+
+\noindent \textbf{Q4} Researchers are interested in the fish that reside in the
+Caspian Sea. They have plans to collect many fish and take multiple measurements
+on each. Match each statistical description on the right with each piece of
+information given. Put the letter of the statistical description in the blanks
+on the left.
+
+\begin{center}
+	\begin{tabular}{p{8cm}p{6cm}}
+		\underline{\hspace{.4in}} circumference of the fish &	(a) quantitative variable \\
+		&   \\
+		\underline{\hspace{.4in}} species of the fish																																															&	(b) categorical variable \\
+		&   \\
+		\underline{\hspace{.4in}} average length of all fish in \\ the area of consideration																													&		(c) parameter: $\mu$	\\
+		&   \\
+		\underline{\hspace{.5in}} mean internal temperature \\ of the fish collected in the sample																										&	(d) statistic: $\bar{x}$	\\
+		&   \\
+		\underline{\hspace{.4in}} one of the fish in the area of \\ consideration																																		&	(e) observational unit	\\
+		&   \\
+		\underline{\hspace{.4in}} method of only studying the fish \\ caught in the net \@ 3pm on Wednesday of the research time frame								&	(f) cluster sampling method	\\
+		&   \\
+		\underline{\hspace{.4in}} method of selecting 5\% of each \\ species, known to be in the area of consideration, for the sample								&	(g) stratified sampling method	\\
+		&   \\
+		\underline{\hspace{.3in}} method of dividing up the whole \\ location with netting and sampling 10 random netted areas												& (h) convenience sampling method
+	\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Q5} [4 points] Indicate whether each statement about a bootstrap sample 
+is true or false.
+
+\begin{itemize}
+\item The resample and original sample MUST be the same size. \\
+
+\item The resample and original sample BOTH are taken from the population. \\
+
+\item The resample can ONLY use values that were in the original sample. \\
+
+\item The resample uses ALL values that were in the original sample. \\
+\end{itemize}
+
+\newpage
+
+\noindent \textbf{Q6} The purpose of creating a bootstrap distribution is to:
+
+\begin{enumerate}
+\item Estimate the mean of the unknown sampling distribution.
+\item Estimate the spread of the unknown sampling distribution.
+\item Both A and B.
+\item None of the above.
+\end{enumerate}
 
 \vspace{0.25cm}
 
-Work:  
+\noindent \textbf{Q7} [2 points] A newspaper article claims that the average age
+for people who receive food stamps in a community is 40 years. A local
+researcher believes that the average age is less than that. The researcher takes
+a random sample of 100 people in the community who receive food stamps, and
+finds their average age to be 39.2 years, which is statistically significantly
+lower than the age of 40 stated in the article (p-value < .05). Indicate for
+each of the following interpretations whether they are valid or invalid.
 
-\vspace{0.5cm}
+\noindent \textbf{(a)} The statistically significant result indicates that the 
+majority of people who receive food stamps is younger than 40.
+\begin{enumerate}
+\item[(a)] Valid
+\item[(b)] Invalid
+\end{enumerate}
 
-Answer: \underline{\hspace{2in}}
+\vspace{0.25cm}
 
-Notation: \underline{\hspace{2in}}
+\noindent \textbf{(b)} An error must have been made. This difference in means
+(39.2 vs. 40 years) is too small to be statistically significant.
+\begin{enumerate}
+\item[(a)] Valid
+\item[(b)] Invalid
+\end{enumerate}
 
-\vspace{0.5cm}
+\newpage
 
-\noi{\bf Q3.} A student conducted a research study in which the research
-question was whether financial incentives can improve performance on video
-games. The subjects in his study were a random sample of 80 university students. In the study, students were randomly assigned to one of two groups. The first group, with 40 students, was offered \$5 for a score above 100 and the other group, with 40 students, was simply told to ``do your best." Each of the 80 students played the video game and their score was recorded.\\
+\noindent \textbf{Q6} Normal human body temperature is said to be 98.6 degrees
+Fahrenheit.  A researcher studying body temperatures took a random sample of 50 
+people and recorded the body temperatures for each.  The average body
+temperature of the 50 people was 98.26.  Using these data, estimate the true
+average body temperature of people. 
 
-\noi
-{\bf a)} Based on the data from the study, the research student computed a 95\% confidence interval: (-12.56, -3.92) points. The order used was ``Do Your Best - \$5 Incentive." Here is the student's interpretation of the confidence interval:\\
-\begin{center}
-\emph{I am 95\% confident that the proportion of video game scores for students who would be told to ``do your best" is between 3.92 to 12.56 times higher than the proportion of video game scores for students who would receive the \$5 incentive.}
-\end{center}
+\textbf{(a)} Define the parameter of interest, using proper notation. 
 
-\noi
-Identify the {\bf three} mistakes committed and fix it.  Be brief but clear in your description.\\
+\vspace{1in}
 
-\vspace{.15in}
-\noi
-Mistake 1: \underline{\hspace{6in}} \\
+\textbf{(b)} What type of inference should be done to answer the research
+question? (circle one)
 
-Fix: \underline{\hspace{4in}}\\
-\\
-\noi
-Mistake 2: \underline{\hspace{6in}} \\
+\begin{itemize}
+\item Confidence Interval
+\item Hypothesis Test
+\item No inference is needed. The true average body temperature is 98.6.
+\item No inference is needed.  The true average body temperature is 98.26.
+\end{itemize}
 
-Fix: \underline{\hspace{4in}}\\
-\\
-\noi
-Mistake 3: \underline{\hspace{6in}} \\
+\textbf{(c)} The bootstrap distribution with 1001 bootstrap resamples is
+below. What does one dot on the plot represent in the context of this problem?
 
-Fix: \underline{\hspace{4in}}\\
-\\
+
+\textbf{(d)} Explain how you could use cards to create __one__ bootstrap
+resample.
+
+\textbf{(e)} The percentile method is used in the picture to give a confidence
+interval of (98.081, 98.512).  What level of confidence is used for this
+interval?
+
+\textbf{(f)} How many bootstrap resamples would be cut-off in the left-tail of
+the distribution to create a 95% confidence interval? (circle one)
+
+\begin{itemize}
+\item 50
+\item 25
+\item 5
+\item 10
+\end{itemize}
+
+\textbf{(g)} Use the plot and t* = 1.677 to create a 90% confidence interval
+using the t*SE method.  Show your work.
+
+\textbf{(h)} Interpret your 90% confidence interval from e.
+
+\textbf{(i)} Based off your interval in (h), can we be 90% sure that the true
+average body temperature is lower than 98.6 degrees Fahrenheit?  Explain.
 
