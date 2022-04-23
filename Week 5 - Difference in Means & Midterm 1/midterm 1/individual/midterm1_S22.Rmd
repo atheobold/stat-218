@@ -5,6 +5,24 @@ author: "Dr. Allison Theobold"
 output: pdf_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      fig.width = 4, 
+                      fig.height = 4)
+
+library(tidyverse)
+library(openintro)
+library(mosaic)
+library(moderndive)
+library(pander)
+library(infer)
+library(lterdatasampler)
+library(palmerpenguins)
+```
+
 \begin{center}
 \large{Name:} \underline{\hspace{3in}}
 \vspace{0.25cm}
@@ -19,7 +37,7 @@ output: pdf_document
 
 I understand that give or receiving help on this exam is a violation of academic
 regulations and is punishable by a grade of __F__ in this course. This
-includes looking at other students' exams and/or allowing other students,
+includes looking at other students' exams and / or allowing other students,
 actively or passively, to see answers on my exam. This also includes revealing,
 actively or passively, any information about the exam to any member of 
 Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
@@ -49,4 +67,340 @@ not be graded unless the honesty pledge is signed!
 
 \pagebreak
 
+## Provided Formulas
+
+$$R^2 = r^2 = \frac{s_{y}^2 - s_{residuals}^2}{s_y^2}$$ 
+
+\vspace{0.25cm}
+
+$$IQR = Q3 - Q1$$
+
+\vspace{0.25cm}
+
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
+
+\vspace{0.25cm}
+
+$$\hat{y} = b_0 + b_1 \times x$$
+
+\vspace{0.2cm}
+
+$$Residual = y - \hat{y}$$ 
+
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+
+\newpage
+
+\noindent \textbf{Q7} [2 points] An article in the San Luis Tribune claims that
+the average age for people who receive food stamps in SLO is 40 years. A Cal
+Poly student believes the average age is less than that. The student obtains a
+random sample of 100 people in SLO who receive food stamps, and finds their
+average age to be 39.2 years. Performing a hypothesis test, the student finds 
+their sample mean to be statistically significantly lower than the age of 40
+stated in the article (p-value < 0.05). Indicate whether each of the following
+interpretations are valid or invalid.
+
+\noindent \textbf{(a)} The statistically significant result indicates that the 
+majority of people who receive food stamps are younger than 40. (Circle one.)
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)} An error must have been made. This difference in means
+(39.2 vs. 40 years) is too small to be statistically significant. (Circle one.)
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{Q9} [2 points] When you change from a 90% to a 95% confidence
+interval, which part(s) of the confidence interval change? (Select all that 
+apply)
+
+\begin{itemize}
+\item[(a)] Statistic (midpoint)
+\item[(b)] Multiplier
+\item[(c)] Standard error
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{Q5} [4 points] Indicate whether each statement about a 
+bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
+
+\begin{itemize}
+\item[(a)] The bootstrap resample and original sample \textbf{must} be the same size.
+\hspace{0.1cm} \underline{\hspace{2cm}} \\
+
+\item[(b)] The bootstrap resample and original sample are \textbf{both} taken
+from the population. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+
+\item[(c)] The bootstrap resample can \textbf{only} use values that were in the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+
+\item[(d)] The bootstrap resample uses \textbf{all} of the values that were in
+the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+\end{itemize}
+
+\vspace{0.25cm}
+
+\textbf{Q3} The Atlantic marsh Fiddler Crab, *Minuca pugnax*, lives in salt
+marshes throughout the eastern coast of the United 
+States. Historically, M. pugnax were distributed from northern Florida to Cape
+Cod, Massachusetts, but like other species have expanded their range northward
+due to ocean warming.
+
+The Plum Island Ecosystem Long Term Ecological Research site collected data on
+Fiddler Crabs from 13 marshes on the Atlantic coast of the United States in the
+summer of 2016. The marshes spanned from northeast Florida to northeast
+Massachusetts. Researchers were able to collect between 25 and 37 adult male
+Fiddler Crabs at each marsh. 
+
+\newpage
+
+\noindent 
+\textbf{(a)} [3 pts] A preview of the dataset is provided below. Use this
+preview to address the following questions. 
+
+```{r crab-preview}
+pie_crab %>% 
+  select(-date, -air_temp_sd, -water_temp_sd) %>% 
+  glimpse()
+```
+
+\begin{itemize}
+\item Identify the cases in the data set. \\
+
+\vspace{1cm}
+
+\item List the variables. Indicate whether each variable is categorical or
+quantitative. \\
+
+\vspace{2cm}
+
+\item What would the dimensions of the data set be? (number of rows by number of
+columns)
+\end{itemize}
+
+\vspace{0.75cm}
+
+\textbf{(b)} [3 pts] A histogram displaying the size of the sample of Fiddler
+Crabs is displayed below. Describe the shape of the distribution. Be sure to 
+address the center, spread, shape, and outliers. 
+
+```{r, fig.align = 'right'}
+pie_crab %>% 
+  ggplot(aes(x = size)) +
+  geom_histogram(binwidth = 1.5, color = "white") +
+  labs(x = "Carapace Width (millimeters)", 
+       y = "Number of Crabs")
+```
+
+\vspace{0.25cm}
+
+\textbf{(c)} [2 pts] When using a $t$-distribution to find a 95% confidence 
+interval for $\mu$, how many degrees of freedom should be used?
+
+\vspace{1cm}
+
+```{r}
+crab_ci <- t_test(pie_crab, 
+       response = size,
+       conf_int = TRUE, 
+       conf_level = 0.95) %>% 
+  select(estimate, lower_ci, upper_ci)
+```
+
+\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of
+Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`, 
+`r round(crab_ci$upper_ci, 2)`). Below is the researchers' interpretation of
+this confidence interval: 
+
+\begin{center}
+\emph{There is a 95\% chance that that every sample of Fiddler Crabs will have
+a mean carapace width between 14.31 and 15.01 millimeters.}
+\end{center}
+
+\noindent
+Identify __two__ mistakes committed and fix them. Be brief but clear in your
+description.
+
+\vspace{1cm}
+
+Mistake 1: \underline{\hspace{6in}}
+
+\vspace{1cm}
+
+Fix: \underline{\hspace{6in}}
+
+\vspace{1cm}
+
+Mistake 2: \underline{\hspace{6in}}
+
+\vspace{1cm}
+
+Fix: \underline{\hspace{6in}}
+
+\vspace{0.25in}
+
+\textbf{(e)} [2 points] Can the researchers use their interval to make
+inferences about __all__ Fiddler Crabs in the United States? Justify your 
+answer!
+
+\vspace{1in}
+
+\noindent {\textbf Q2} I collected data on 512 different fast food items from
+McDonald's, Chick-Fil-A, Sonic, Arby's, Burger King, Dairy Queen, Subway, and
+Taco Bell. For each restaurant, I sampled 64 items from their menu and recorded
+the nutritional content of each item (e.g., calories, saturated fat, calcium, 
+protein, etc.). 
+
+\vspace{1cm}
+
+\noindent
+\textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
+fastfood items. 
+
+\newpage
+
+\noindent
+\textbf{(b)} [3 pts] I am interested in studying the linear relationship between
+the total calories of a food item and the amount of saturated fat that item
+contains.
+
+\textbf{Write the null hypothesis for my question of interest, using both 
+\underline{words} and \underline{notation}.}
+
+\vspace{1in}
+
+\noindent
+\textbf{(c)} [2 pts] Is the alternative hypothesis one-sided or two-sided?
+(Circle one.)
+
+\begin{itemize} 
+\item One-sided \\
+\item Two-sided
+\end{itemize}
+
+\noindent
+\textbf{(d)} [5 pts] Below is the plot of the simulated null
+distribution from `R`. Fill in the blanks below to correctly explain how one
+sample on the null distribution was created.  Blanks preceded by (#) should
+be filled in with a number, all other blanks should be filled in with either the
+context of the study or the procedure that would need to be carried out to 
+obtain one simulated sample.
+
+\begin{center}
+On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
+cards.
+
+\vspace{0.5cm}
+
+Assume the null hypothesis is true and \underline{\hspace{3in}}.
+
+\vspace{0.5cm}
+
+Generate a new sample of 512 ordered pairs by \underline{\hspace{3in}}.
+
+\vspace{0.5cm}
+
+Calculate and plot the \underline{\hspace{4cm}} from each simulated sample.
+
+\end{center}
+
+```{r null-dist-fastfood}
+
+obs_slope <- fastfood %>% 
+  specify(response = sat_fat, 
+          explanatory = calories) %>% 
+  calculate(stat = "slope") %>% 
+  pull()
+  
+null_dist <- fastfood %>% 
+  specify(response = sat_fat, 
+          explanatory = calories) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 1000, 
+           type = "permute") %>% 
+  calculate(stat = "slope")
+
+visualise(null_dist) +
+  labs(x = "Simulated Slope Statistic", 
+       y = "Frequency (out of 1000 reps)", 
+       title = "") +
+  xlim(c(-0.015, 0.015))
+```
+
+\noindent
+\textbf{(e)} [2 pts] Using the regression output below, draw a vertical line
+where the observed statistic falls on the null distribution. 
+
+```{r}
+fastfood_lm <- lm(sat_fat ~ calories, data = fastfood)
+
+get_regression_table(fastfood_lm) %>% 
+  select(term, estimate, std_error) %>% 
+  pander()
+```
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(f)} [2 pts] Shade the location of the plot you would use to calculate
+the p-value. 
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(g)} [1 pts] Estimate the p-value associated with this hypothesis test. 
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{(h)} [3 pts] Which of the following is a correct interpretation of the p-value obtained? (Circle one)
+
+\begin{itemize}
+\item In less than 1 out of 1000 simulated samples, we would observe a sample
+slope of 0.017 or more extreme, if there is no linear relationship between 
+the total calories and the saturated fat of a fast food item. 
+
+\item If there is a linear relationship between the total calories and the
+saturated fat of a fast food, we would observe a sample slope of 0.017 or more
+extreme with a probability of less than 1 out of 1000.
+
+\item The probability of seeing a sample slope between the total calories and
+the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
+\item  The probability that there is no linear relationship between the total
+calories and the saturated fat of a fast food item, is less than 0.1%.
+\end{itemize}
+
+\textbf{(i)} [2 points] Given the p-value for the hypothesis test, would the
+95% confidence interval for $\beta_1$ contain 0? Be sure to justify your 
+choice!
+
+\vspace{1in}
+
+\begin{center}
+
+\textbf{END OF EXAM}
+
+\end{center}
+
+---
+
+\vspace{2in}
+
+__Points Earned:__ \underline{\hspace{2in}}
+
+__Total Points: 46__
 
