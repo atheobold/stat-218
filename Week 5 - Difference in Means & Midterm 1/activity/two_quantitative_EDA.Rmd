@@ -1,0 +1,88 @@
+## Activity 3B:  IMDb Movie Reviews --- Displaying Quantitative Variables
+
+### Movies released in 2016
+
+A data set was collected on movies released in 2016 [@imdb].  Here is a list of some of the variables collected on the observational units, movies released in 2016.  
+
+| **Variable** 	| **Description** |
+|----	|-------------	|
+| `budget_mil` | Amount of money (in US $ millions) budgeted for the production of the movie |
+| `revenue_mil` | Amount of money (in US $ millions) the movie made after release|
+| `duration` | Length of the movie (in minutes)|
+| `content_rating` | Rating of the movie (`G`, `PG`, `PG-13`, `R`, `Not Rated`)|
+| `imdb_score` | IMDb user rating score from 1 to 10 |
+| `genres` | Categories the movie falls into (e.g., Action, Drama, etc.) |
+| `facebook_likes` | Number of likes a movie receives on Facebook |
+
+Is there an association between content rating and budget for movies in 2016?  To use the `favstats()` function in the mosaic package with two variables, we will enter the variables as a formula, response~explanatory.  This function will give the summary statistics for budget for each content rating.  Highlight and run lines 37--39 in the provided `R` script file and check that the summary statistics match those provided in the coursepack.
+
+```{r, echo=TRUE, collapse=FALSE}
+movies %>% # Data set piped into...
+  filter(content_rating != "Not Rated") %>% # Remove Not Rated movies
+  summarise(favstats(budget_mil~content_rating)) # Find the summary measures for each content rating
+```
+
+11.  Which content rating has the largest IQR?
+
+\vspace{0.8in}
+
+12.  Report the mean budget amount for the PG rating.  Use appropriate notation.
+
+\vspace{0.3in}
+
+13.  Report the mean budget amount for the R rating.  Use appropriate notation.
+
+\vspace{0.3in}
+
+14. Calculate the difference in mean budget amount for movies in 2016 with a PG rating minus those with a R rating.  Use appropriate notation with informative subscripts.
+
+\vspace{0.8in}
+
+\newpage
+
+#### Displaying a single categorical and single quantitative variable {-}
+
+The boxplot of movie budgets (in millions) by content rating is plotted using
+the code below.  Enter the variable `budget_mil` for `response` and the variable
+`content_rating` for explanatory at line 44, highlight and run code lines
+42--48. This plot compares the budget for different levels of content rating.
+
+```{r, out.width="60%", echo=TRUE, eval=FALSE}
+movies %>%  # Data set piped into...
+  filter(content_rating != "Not Rated") %>% # Remove Not Rated movies
+  ggplot(aes(y = response, x = explanatory))+  # Identify variables
+  geom_boxplot()+  # Tell it to make a box plot
+  labs(title = "Side by side box plot of budget by content rating",  # Title
+       x = "Content Rating",    # x-axis label
+       y = "Budget (in Millions)")  # y-axis label
+```
+
+15. Sketch the box plots created using the `R` code.
+
+\vspace{1.5in}
+
+
+16. Answer the following questions about the box plots created.
+
+   a. Which content rating has the highest center?
+\vspace{0.2in}
+
+   b. Which content rating has the largest spread?
+\vspace{0.2in}
+
+   c. Which content rating has the most skewed distribution?
+\vspace{0.2in}
+
+   d. Fifty percent of movies in 2016 with a PG-13 content rating fall below
+   what value?  What is the name of this value?
+\vspace{0.4in}
+
+   e.  What is the value for the third quartile (Q3) for the PG-13 rating?
+   Interpret this value in context.
+\vspace{.8in}
+
+
+17. Which variable is the explanatory variable? Response variable?
+
+\vspace{0.4in}
+
