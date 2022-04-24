@@ -1,4 +1,24 @@
-## Activity 3B:  IMDb Movie Reviews --- Displaying Quantitative Variables
+---
+title: 'Week 5 Day 1 Activity: Revisiting IMDb Movie Reviews --- Comparing Two Groups'
+output: pdf_document
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(mosaic)
+
+movies <- read_csv(here::here("Week 5 - Difference in Means & Midterm 1",
+                              "activity", 
+                              "day 1",
+                              "Movies2016.csv")
+                   )
+```
+
+This week our focus is comparing the means of two groups. With linear regression
+we were able to compare the predicted mean response across different values of 
+a continuous explanatory variable. This week, however, we are moving from a 
+*continuous* explanatory variable to a **categorical** explanatory variable! 
+
 
 ### Movies released in 2016
 
