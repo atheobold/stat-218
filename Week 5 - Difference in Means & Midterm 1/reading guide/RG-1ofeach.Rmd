@@ -1,0 +1,317 @@
+# Inference for a Quantitative Response with Independent Samples
+
+## Week 12 Reading Guide: Inference for a Difference in Two Means
+
+### Section 6.3 (Inference for a difference in two means) {-}
+
+**Videos**  
+
+* 6.3
+
+\setstretch{1.25}
+#### Reminders from previous sections {-}
+
+$n_1$= sample size of group 1
+
+$n_2$ = sample size of group 2
+
+$\overline{x}$ = sample mean
+
+$s$ = sample standard deviation
+
+$\mu$ = population mean
+
+$\sigma$ = population standard deviation
+
+General steps of a hypothesis test:
+
+1. Frame the research question in terms of hypotheses.
+
+2. Collect and summarize data using a test statistic.
+	
+3. Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.
+
+4. Compare the observed test statistic to the null distribution to calculate a p-value.
+
+5. Make a conclusion based on the p-value and write the conclusion in context.
+
+Parameter: a value summarizing a variable(s) for a population.
+
+Statistic: a value summarizing a variable(s) for a sample.
+
+Sampling distribution: plot of statistics from 1000s of samples of the same size taken from the same population.
+
+Standard deviation of a statistic: the variability of statistics from 1000s of samples; how far, on average, each statistic is from the true value of the parameter.
+
+Standard error of a statistic: estimated standard deviation of a statistic.
+
+Hypothesis test: a process to determine how strong the evidence of an effect is. Also called a ‘significance test’.
+
+Simulation-based method: Simulate lots of samples of size $n$ under assumption of the null hypothesis, then find the proportion of the simulations that are at least as extreme as the observed sample statistic.
+
+Theory-based method: Develop a mathematical model for the sampling distribution of the statistic under the null hypothesis and use the model to calculate the probability of the observed sample statistic (or one more extreme) occurring.
+
+Null hypothesis ($H_0$): the skeptical perspective; no difference; no change; no effect; random chance; what the researcher hopes to prove is **wrong**.
+
+Alternative hypothesis ($H_A$): the new perspective; a difference/increase/decrease; an effect; not random chance; what the researcher hopes to prove is **correct**.
+
+Null value: the value of the parameter when we assume the null hypothesis is true (labeled as $parameter_0$).
+
+Null distribution:  the simulated or modeled distribution of statistics (sampling distribution) we would expect to occur if the null hypothesis is true.
+
+P-value: probability of seeing the observed sample data, or something more extreme, assuming the null hypothesis is true.
+
+$\implies$ Lower the p-value the stronger the evidence AGAINST the null hypothesis and FOR the alternative hypothesis.
+
+Decision: a determination of whether to reject or fail to reject a null hypothesis based on a p-value and a pre-set level of significance.
+
+* If p-value $\leq \alpha$, then reject $H_0$.
+
+* If p-value $> \alpha$, then fail to reject $H_0$.
+
+Significance level ($\alpha$): a threshold used to determine if a p-value provides enough evidence to reject the null hypothesis or not.
+
+\rgi Common levels of $\alpha$ include 0.01, 0.05, and 0.10.
+
+Statistically significant: results are considered statistically significant if the p-value is below the significance level.
+
+Confidence interval: a process to determine how large an effect is; a range of plausible values for the parameter. Also called 'estimation'.
+
+Margin of error: the value that is added to and subtracted from the sample statistic to create a confidence interval; half the width of a confidence interval.
+
+Bootstrapping: the process of drawing with replacement $n$ times from the original sample.
+
+Bootstrapped resample: a random sample of size $n$ from the original sample, selected with replacement.
+
+Bootstrapped statistic: the statistic recorded from the bootstrapped resample.
+
+Confidence level: how confident we are that the confidence interval will capture the parameter.
+
+Bootstrap $X$% confidence interval: ($(\frac{(1-X)}{2})^{th}$ percentile, $(X+(\frac{(1-X)}{2})^{th}$ percentile) of a bootstrap distribution.
+
+Central Limit Theorem: For large sample sizes, the sampling distribution of a sample mean (or proportion) will be approximately normal (bell-shaped and symmetric).
+
+$t$-distribution: A bell-shaped symmetric distribution, centered at 0, wider than the standard normal distribution.
+
+* The variability in a $t$-distribution depends on the sample size (used to calculate degrees of freedom --- df for short).
+* The $t$-distribution gets closer to the standard normal distribution as df increases.
+
+Degrees of freedom (df): describes the variability of the $t$-distribution.
+
+T-score: the name for a standardized statistic which is compared to a $t$-distribution.
+
+
+#### Notes {-}
+
+To create a **simulated null distribution** of differences in sample means, 
+
+1. How many cards will you need and how will the cards be labeled?
+\rgs
+
+2. What do you do with the cards after labeling them?
+\rgs
+
+3. After shuffling, what value will be plotted on the simulated null distribution?
+\rgs
+
+To create a **bootstrap distribution** of differences in sample means, 
+
+1. How many cards will you need and how will the cards be labeled?
+\rgs
+
+2. What do you do with the cards after labeling them?
+\rgs
+
+3. After shuffling, what value will be plotted on the bootstrap distribution?
+\rgs
+
+
+Conditions to use the CLT for a difference in two means:
+
+\rgi Independence: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+\rgi Normality: 
+\rgs
+
+\rgi \rgi Checked by: 
+\rgs
+
+In a two-sample $t$-test, how are the degrees of freedom determined?
+\rgs		
+
+True or false: A large p-value indicates that the null hypothesis is true.
+\rgs
+
+#### Formulas {-}
+
+$SE(\overline{x_1} - \overline{x_2})=$
+\rgs
+
+$T=$
+\rgs
+
+Confidence interval for a difference in means: 
+\rgs
+
+#### Notation {-}
+
+$\mu_1$ represents 
+\rgs
+
+$\mu_2$ represents 
+\rgs
+
+$\sigma_1$ represents 
+\rgs
+
+$\sigma_2$ represents 
+\rgs
+
+$\overline{x_1}$ represents 
+\rgs
+
+$\overline{x_2}$ represents 
+\rgs
+
+$s_1$ represents 
+\rgs
+
+$s_2$ represents 
+\rgs
+
+#### Example: Test scores {-}
+
+1.	What are the observational units?
+\rgs
+
+2.	What are the sample statistics presented in this example?  What notation would be used to represent each value?
+\rgs
+
+3.	What is the parameter representing in the context of this problem?  What notation would be used to represent this parameter?
+\rgs
+\rgs
+
+4.	What is the research question?
+\rgs
+
+5.	Write the null and alternative hypothesis in appropriate notation.
+\rgs
+
+6.	How could we use cards to simulate **one** sample *which assumes the null hypothesis is true*?  How many cards?  What is written on the cards?  What would we do with the cards?  What would you record once you have a simulated sample?
+\rgs
+\rgs
+\rgs
+
+7.	After 1000 shuffles are generated, where is the resulting simulated distribution centered?  Why does that make sense?
+\rgs
+\rgs
+
+8.	How was the p-value for this test found? The proportion of simulated null samples at ____ or ___________.
+\rgs
+
+9.	Interpret the p-value in the context of the problem.
+\rgs
+\rgs
+
+10.	From these data, can we conclude the exams are equally difficult?
+\rgs
+
+11.	What type of error may have occurred at the 5% significance level?  Interpret that error in context.
+\rgs
+\rgs
+
+#### Example: ESC and heart attacks {-}
+
+1.	What is the research question?
+\rgs
+
+2.	What are the observational units?
+\rgs
+
+3.	What variables are recorded?  Give the type (categorical or quantitative) and role (explanatory or response) of each.
+\rgs
+\rgs
+
+4.	What are the sample statistics presented in this example?  What notation would be used to represent each value?
+\rgs
+
+5.	What is the parameter representing in the context of this problem?  What notation would be used to represent this parameter?
+\rgs
+\rgs
+
+6.	How could we use cards to simulate **one** bootstrap resample *which does not assume the null hypothesis is true*?  How many cards?  What is written on the cards?  What would we do with the cards?  What would you record once you have a simulated sample?
+\rgs
+\rgs
+\rgs
+
+7.	After 1000 resamples are generated, where is the resulting bootstrap distribution centered?  Why does that make sense?
+\rgs
+\rgs
+
+8.	Does the 90\% confidence interval provide evidence of a difference across the two treatments?
+\rgs
+\rgs
+
+#### Example: NC births {-}
+
+1. What is the research question?
+\rgs
+
+2. What are the observational units?
+\rgs
+
+3. What variables will be analyzed?  Give the type and role of each.
+\rgs
+\rgs
+
+4. Can the results of this study be generalized to a larger population?
+\rgs
+
+5. Are causal conclusions appropriate for these data?
+\rgs
+
+6. Write the null and the alternative hypotheses in words.
+\rgs
+\rgs
+
+7. Write the null and the alternative hypotheses in notation.
+\rgs
+
+8. What are the sample statistics presented in this example?  What notation would be used to represent each value?
+\rgs
+
+9. Are the independence and normality conditions satisfied?
+\rgs
+\rgs
+
+10. Calculate the standard error of the difference in sample means.
+\rgs
+\rgs
+
+11. Calculate the T-score (the standardized statistic for the sample mean).
+\rgs
+\rgs
+
+12. What distribution should the T-score be compared to in order to calculate a p-value?
+\rgs
+
+13. What was the p-value of the test?
+\rgs
+
+14. What conclusion should the researcher make?
+\rgs
+\rgs
+
+15. Calculate a 95\% confidence interval for the parameter of interest using `qt(0.975, df = 49) = 1.677` as the $t^\star$ value.
+\rgs
+\rgs
+
+16. Interpret your interval in the context of the problem.
+\rgs
+\rgs
+
+\newpage
