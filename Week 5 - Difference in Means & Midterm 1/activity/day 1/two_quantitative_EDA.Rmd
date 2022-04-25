@@ -1,12 +1,15 @@
 ---
 title: 'Week 5 Day 1 Activity: Revisiting IMDb Movie Reviews --- Comparing Two Groups'
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(message = FALSE, 
+                      fig.align = 'center', 
+                      out.width = "70%")
 
 library(tidyverse)
 library(mosaic)
@@ -61,6 +64,8 @@ compare these two groups:
 
 1. Use summary statistics
 2. Use visualizations
+
+\newpage
 
 ## Summary Statistics
 
@@ -132,7 +137,7 @@ the plot?
 
 \pagebreak
 
-### Faceted Histograms
+## Faceted Histograms
 
 When we want to add a categorical variable (like `content_rating`) to a
 histogram, we create separate plots for each level of the categorical variable.
@@ -175,11 +180,11 @@ ggplot(data = movies_pg,
 \vspace{0.8in}
 
 13. How do these distributions compare to what you expected in your sketches
-(in #9)?
+(in #7)?
 
 \vspace{0.8in}
 
-### Side-by-Side Boxplots
+## Side-by-Side Boxplots
 
 Another way we can incorporate a categorical into our plots is to plot our 
 boxplots for each group side-by-side. As opposed to faceting, these boxplots
@@ -206,7 +211,9 @@ gridExtra::grid.arrange(horizontal, vertical, nrow = 1)
 Now. we need to plot **two** boxplots side-by-side. Similar to before, we can
 stack the plots horizontally or vertically. 
 
-#### Horizontal Stacking
+\pagebreak
+
+### Horizontal Stacking
 
 ```{r horizontal-box}
 ggplot(data = movies_pg, 
@@ -219,21 +226,21 @@ ggplot(data = movies_pg,
 14. Why are the boxplots stacked side-by-side horizontally? What part of the 
 `R` code does this?
 
-\vspace{0.8in}
+\pagebreak
 
-#### Vertical Stacking
+### Vertical Stacking
 
 ```{r vertical-box}
 ggplot(data = movies_pg, 
        mapping = aes(x = budget_mil, y = content_rating)) +
   geom_boxplot() +
-  labs(x = "Content Rating of Movie", 
-       y = "Movie Budget (in millions)")
+  labs(y = "Content Rating of Movie", 
+       x = "Movie Budget (in millions)")
 ```
 
-14. How was the previous code changed to stack the boxplots side-by-side
+15. How was the previous code changed to stack the boxplots side-by-side
 vertically? 
 
 \vspace{0.8in}
  
-15. Which orientation do you prefer?
+16. Which orientation do you prefer?
