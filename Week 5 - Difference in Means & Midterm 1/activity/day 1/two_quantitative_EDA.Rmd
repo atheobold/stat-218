@@ -1,9 +1,13 @@
 ---
 title: 'Week 5 Day 1 Activity: Revisiting IMDb Movie Reviews --- Comparing Two Groups'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE)
+
 library(tidyverse)
 library(mosaic)
 
@@ -19,13 +23,14 @@ we were able to compare the predicted mean response across different values of
 a continuous explanatory variable. This week, however, we are moving from a 
 *continuous* explanatory variable to a **categorical** explanatory variable! 
 
-
 ### Movies released in 2016
 
-A data set was collected on movies released in 2016 [@imdb].  Here is a list of some of the variables collected on the observational units, movies released in 2016.  
+Recall the dataset we used a couple of weeks ago, visualizing the distribution
+of IMDB movie ratings. The dataset included eight variables, listed below.  
 
 | **Variable** 	| **Description** |
 |----	|-------------	|
+| `movie_title` | Title of movie |
 | `budget_mil` | Amount of money (in US $ millions) budgeted for the production of the movie |
 | `revenue_mil` | Amount of money (in US $ millions) the movie made after release|
 | `duration` | Length of the movie (in minutes)|
@@ -34,75 +39,201 @@ A data set was collected on movies released in 2016 [@imdb].  Here is a list of 
 | `genres` | Categories the movie falls into (e.g., Action, Drama, etc.) |
 | `facebook_likes` | Number of likes a movie receives on Facebook |
 
-Is there an association between content rating and budget for movies in 2016?  To use the `favstats()` function in the mosaic package with two variables, we will enter the variables as a formula, response~explanatory.  This function will give the summary statistics for budget for each content rating.  Highlight and run lines 37--39 in the provided `R` script file and check that the summary statistics match those provided in the coursepack.
 
-```{r, echo=TRUE, collapse=FALSE}
-movies %>% # Data set piped into...
-  filter(content_rating != "Not Rated") %>% # Remove Not Rated movies
-  summarise(favstats(budget_mil~content_rating)) # Find the summary measures for each content rating
+## Comparing Two Groups
+
+Let's compare the budget for movies rated PG and movies rated R. 
+Technically, the dataset has four different content ratings: Not Rated, PG,
+PG-13, and R. To make the comparison of PG and R movies easier, I went ahead
+and made a smaller dataset containing only these two ratings.
+
+In case you are interested, this is the code I used!
+
+```{r}
+movies_pg <- filter(movies, 
+                    content_rating %in% c("PG", "R")
+                    )
 ```
 
-11.  Which content rating has the largest IQR?
+
+Similar to summarizing the mean of all of the movies, we have two options to
+compare these two groups: 
+
+1. Use summary statistics
+2. Use visualizations
+
+## Summary Statistics
+
+Let's start with summary statistics. Our familiar friend `favstats()` can help 
+us compare summary statistics across different groups. Before when we used 
+`favstats()` we only had one variable, but now we have two! 
+
+Now, we will use two variables as a "formula", which looks like 
+`response ~ explanatory`. So, the budget of the film is the response and the 
+content rating is the explanatory variable. So, our code looks like: 
+
+```{r stat-comparison, eval = FALSE}
+favstats(budget_mil ~ content_rating, 
+         data = movies_pg)
+```
+
+Use the output from the `favstats()` function to answer the following questions:
+
+```{r, echo = FALSE}
+favstats(budget_mil ~ content_rating,
+         data = movies_pg)
+```
 
 \vspace{0.8in}
 
-12.  Report the mean budget amount for the PG rating.  Use appropriate notation.
+1. Report the mean budget amount for the PG rating.  Use appropriate notation.
 
 \vspace{0.3in}
 
-13.  Report the mean budget amount for the R rating.  Use appropriate notation.
+2. Report the mean budget amount for the R rating.  Use appropriate notation.
 
 \vspace{0.3in}
 
-14. Calculate the difference in mean budget amount for movies in 2016 with a PG rating minus those with a R rating.  Use appropriate notation with informative subscripts.
+3. Calculate the difference in mean budget amount for movies in 2016 with a PG
+rating minus those with a R rating.  Use appropriate notation with informative
+subscripts.
 
 \vspace{0.8in}
 
-\newpage
+4. Which content rating has the largest standard deviation? 
 
-#### Displaying a single categorical and single quantitative variable {-}
+\vspace{0.8in}
 
-The boxplot of movie budgets (in millions) by content rating is plotted using
-the code below.  Enter the variable `budget_mil` for `response` and the variable
-`content_rating` for explanatory at line 44, highlight and run code lines
-42--48. This plot compares the budget for different levels of content rating.
+5. Which content rating has the largest sample size? What effect does sample 
+size have on each group's standard deviation?
 
-```{r, out.width="60%", echo=TRUE, eval=FALSE}
-movies %>%  # Data set piped into...
-  filter(content_rating != "Not Rated") %>% # Remove Not Rated movies
-  ggplot(aes(y = response, x = explanatory))+  # Identify variables
-  geom_boxplot()+  # Tell it to make a box plot
-  labs(title = "Side by side box plot of budget by content rating",  # Title
-       x = "Content Rating",    # x-axis label
-       y = "Budget (in Millions)")  # y-axis label
+\vspace{0.8in}
+
+6.  Which content rating has the largest IQR?
+
+\vspace{0.8in}
+
+7. Based on the summary statistics, roughly sketch what you believe the
+distribution of budgets for each content rating would look like. 
+
+\vspace{2in}
+
+## Visualizing Differences
+
+Let's refresh ourselves on the different ways to plot a numerical variable. 
+
+8. What are the three types of plots used to plot a single quantitative
+variable?
+
+\vspace{0.8in}
+
+9. For each type of plot, how would you include a categorical variable in 
+the plot? 
+
+\pagebreak
+
+### Faceted Histograms
+
+When we want to add a categorical variable (like `content_rating`) to a
+histogram, we create separate plots for each level of the categorical variable.
+These separate plots are called **facets**. We are comparing the budgets for
+PG and R movies, so we will have two facets, one per content rating. 
+
+The code to make a faceted histogram looks like the following:
+
+```{r facet-preview, eval = FALSE}
+ggplot(data = movies_pg, 
+       mapping = aes(x = budget_mil)) + 
+  geom_histogram(binwidth = 100) + 
+  labs(x = "Movie Budget (in millions)") +
+  facet_wrap(~ content_rating)
 ```
 
-15. Sketch the box plots created using the `R` code.
+Notice the last line is the only new part! That line creates a faceted plot 
+(using `facet_wrap()`) and says to facet "by" (`~`) the `content_rating`. 
 
-\vspace{1.5in}
+Let's look at what this plot ends up looking like:
 
+```{r facet-hist, echo = FALSE}
+ggplot(data = movies_pg, 
+       mapping = aes(x = budget_mil)) + 
+  geom_histogram(binwidth = 100) + 
+  labs(x = "Movie Budget (in millions)") +
+  facet_wrap(~ content_rating) 
+```
 
-16. Answer the following questions about the box plots created.
+10. How would you describe the shape of the distribution of PG movie budgets? 
 
-   a. Which content rating has the highest center?
-\vspace{0.2in}
+\vspace{1in}
 
-   b. Which content rating has the largest spread?
-\vspace{0.2in}
+11. How would you describe the shape of the distribution of R movie budgets? 
 
-   c. Which content rating has the most skewed distribution?
-\vspace{0.2in}
+\vspace{0.8in}
 
-   d. Fifty percent of movies in 2016 with a PG-13 content rating fall below
-   what value?  What is the name of this value?
-\vspace{0.4in}
+12. Visually, does it appear that there are outliers in either of these groups?
 
-   e.  What is the value for the third quartile (Q3) for the PG-13 rating?
-   Interpret this value in context.
-\vspace{.8in}
+\vspace{0.8in}
 
+13. How do these distributions compare to what you expected in your sketches
+(in #9)?
 
-17. Which variable is the explanatory variable? Response variable?
+\vspace{0.8in}
 
-\vspace{0.4in}
+### Side-by-Side Boxplots
 
+Another way we can incorporate a categorical into our plots is to plot our 
+boxplots for each group side-by-side. As opposed to faceting, these boxplots
+will be on the **same** plot. We only need to add one extra piece to our 
+previous code: a categorical variable. 
+
+Before, we either plotted our **one** numerical variable horizontally (using 
+`x`) or vertically (using `y`). 
+
+```{r one-box, echo = FALSE}
+horizontal <- ggplot(data = movies, 
+             mapping = aes(x = imdb_score)) + 
+  geom_boxplot() + 
+  labs(x = "IMDB Score")
+
+vertical <- ggplot(data = movies, 
+                   mapping = aes(y = imdb_score)) + 
+  geom_boxplot() + 
+  labs(y = "IMDB Score")
+
+gridExtra::grid.arrange(horizontal, vertical, nrow = 1)
+```
+
+Now. we need to plot **two** boxplots side-by-side. Similar to before, we can
+stack the plots horizontally or vertically. 
+
+#### Horizontal Stacking
+
+```{r horizontal-box}
+ggplot(data = movies_pg, 
+       mapping = aes(y = budget_mil, x = content_rating)) +
+  geom_boxplot() +
+  labs(x = "Content Rating of Movie", 
+       y = "Movie Budget (in millions)")
+```
+
+14. Why are the boxplots stacked side-by-side horizontally? What part of the 
+`R` code does this?
+
+\vspace{0.8in}
+
+#### Vertical Stacking
+
+```{r vertical-box}
+ggplot(data = movies_pg, 
+       mapping = aes(x = budget_mil, y = content_rating)) +
+  geom_boxplot() +
+  labs(x = "Content Rating of Movie", 
+       y = "Movie Budget (in millions)")
+```
+
+14. How was the previous code changed to stack the boxplots side-by-side
+vertically? 
+
+\vspace{0.8in}
+ 
+15. Which orientation do you prefer?
