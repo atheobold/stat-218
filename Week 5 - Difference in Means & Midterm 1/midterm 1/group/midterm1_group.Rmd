@@ -4,7 +4,7 @@ output: html_document
 ---
 
 ```{r setup, include = FALSE}
-# This is code to make your report format look nice! 
+# This is code to make your final report look nice! 
 # Please don't modify these options! 
 knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
@@ -49,16 +49,16 @@ predict a person's education (`highest_year_of_school_completed`).
 
 ## Summarizing the Variables
 
-__1. Using the `favstats()` function, find summary statistics for the highest year of school each person in this sample completed.__
+__1. Using the favstats() function, find summary statistics for the highest year of school each person in this sample completed.__
 
 ```{r education-summary}
-favstats(____, data = GSS)
+favstats(~ ____, data = GSS)
 ```
 
-__2. Using the `favstats()` function, find summary statistics for the highest year of school each person's spouse completed.__
+__2. Using the favstats() function, find summary statistics for the highest year of school each person's spouse completed.__
 
 ```{r spouse-summary}
-favstats(____, data = GSS)
+favstats(~ ____, data = GSS)
 ```
 
 
@@ -97,4 +97,20 @@ Alright, the relationship between `highest_year_of_school_completed` and
 `highest_year_school_completed_spouse` appears reasonably linear, so let's
 model this relationship with a line. 
 
+__7. Use the lm() function to fit a linear regression between `highest_year_of_school_completed` (response) and `highest_year_of_school_completed` (explanatory).__
+
+```{r lm-fit}
+
+```
+
+__8. Use the get_regression_table() function to obtain the table of coefficient estimates.__
+
+```{r coefficient-table}
+
+```
+
+__9. Using the coefficient table, write out the estimated regression line. Be sure to use the context of the data, not generic x and y statements!__
+
+
+__10. Interpret the slope coefficient in the context of these data.__
 
