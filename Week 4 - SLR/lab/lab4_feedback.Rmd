@@ -3,6 +3,12 @@ title: "Lab 4 Feedback"
 output: html_document
 ---
 
+Answers to everything: 5 points
+
+Don't have answers to 1-2 questions: 4.5 
+
+Don't have answers to 3-4 questions: 4
+
 ---
 
 ### Question 4 -- Independence
@@ -113,7 +119,18 @@ freedom, not n-1.
 
 ### Question 19 - Confidence Interval Interpretation
 
-__If they talk about
+__If they talk about "chance":__
 
-A confidence interval is for **THE** population slope, not 95% of the population slopes. THERE IS ONLY ONE POPULATION SLOPE.
+We DO NOT say "chance" in our interpretations, as that implies that there is a
+95% probability that the parameter is in the interval.
+
+__If they don't state the "true slope""__
+
+Your interpretation needs to connect with what population parameter you hope is
+contained in your interval.
+
+__If they say something strange about population slopes (plural):__
+
+A confidence interval is for **THE** population slope, not 95% of the population
+slopes. THERE IS ONLY ONE POPULATION SLOPE.
 
