@@ -1,0 +1,52 @@
+---
+title: "Week 6 Day 2: Comparing Many Means"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Comparing Many Groups
+
+
+#### Displaying a single categorical and single quantitative variable {-}
+
+The boxplot of movie budgets (in millions) by content rating is plotted using
+the code below.  Enter the variable `budget_mil` for `response` and the variable
+`content_rating` for explanatory at line 44, highlight and run code lines
+42--48. This plot compares the budget for different levels of content rating.
+
+```{r anova-viz, echo = FALSE}
+movies %>%  
+  filter(content_rating != "Not Rated") %>% 
+  ggplot(aes(y = budget_mil, x = content_rating)) + 
+  geom_boxplot() + 
+  labs(x = "Content Rating", 
+       y = "Budget (in Millions)"
+       )
+```
+
+16. Answer the following questions about the box plots created.
+
+   a. Which content rating has the highest center?
+
+\vspace{0.2in}
+
+   b. Which content rating has the largest spread?
+
+\vspace{0.2in}
+
+   c. Which content rating has the most skewed distribution?
+
+\vspace{0.2in}
+
+   d. Fifty percent of movies in 2016 with a PG-13 content rating fall below
+   what value?  What is the name of this value?
+
+\vspace{0.4in}
+
+   e.  What is the value for the third quartile (Q3) for the PG-13 rating?
+   Interpret this value in context.
+
+\vspace{.8in}
