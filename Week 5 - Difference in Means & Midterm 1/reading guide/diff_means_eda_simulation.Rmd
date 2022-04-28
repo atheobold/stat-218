@@ -1,0 +1,99 @@
+---
+title: "Week 5 Reading Guide: Visualizing, Summarizing & Testing for a Difference in Two Means"
+output: html_document
+---
+
+## Section 4.6: Comparing numerical data across groups
+
+__Side-by-side boxplot:__
+
+</br>
+</br>
+
+__Ridge plot:__
+
+</br>
+</br>
+
+__Faceting:__
+
+</br>
+</br>
+
+
+---
+
+## Section 20.1: Randomization test for the difference in means
+
+### Example: Test scores
+
+1. What are the observational units?
+
+</br>
+
+2. What are the sample statistics presented in this example?  What notation
+would be used to represent each value?
+
+</br>
+
+3. What is the parameter representing in the context of this problem?  What
+notation would be used to represent this parameter?
+
+</br>
+</br>
+
+4. What is the research question?
+
+</br>
+
+5. Write the null and alternative hypothesis in appropriate notation.
+
+</br>
+
+6. How could we use cards to simulate **one** sample
+*which assumes the null hypothesis is true*?  How many cards?  What is written
+on the cards?  What would we do with the cards?  What value would you record
+once you have a simulated sample?
+
+</br>
+</br>
+</br>
+
+7. After 1000 shuffles are generated, where is the resulting simulated
+distribution centered?  Why does that make sense?
+
+</br>
+</br>
+
+8. How was the p-value for this test found? 
+
+</br>
+</br>
+
+9.	Interpret the p-value in the context of the problem.
+
+</br>
+</br>
+
+10.	From these data, can we conclude the exams are equally difficult?
+
+</br>
+
+---
+
+To create a **simulated null distribution** of differences in sample means, 
+
+1. How many cards will you need and how will the cards be labeled?
+
+</br>
+</br>
+
+2. What do you do with the cards after labeling them?
+
+</br>
+</br>
+
+3. After shuffling, what value will be plotted on the simulated null distribution?
+
+</br>
+</br>
