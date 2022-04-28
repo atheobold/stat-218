@@ -1,270 +1,413 @@
 ---
-title: "Week 5 Reading Guide: Visualizing, Summarizing & Tessting for a Difference in Two Means"
+title: "Week 5 Reading Guide: Confidence Intervals for a Difference in Two Means & Paired Data"
 output: html_document
 ---
 
+## Section 20.2: Bootstrap confidence interval for difference in means
 
+### Example: ESC and heart attacks
 
-To create a **bootstrap distribution** of differences in sample means, 
+1. What is the research question?
 
-1. How many cards will you need and how will the cards be labeled?
-\rgs
+</br>
+</br>
 
-2. What do you do with the cards after labeling them?
-\rgs
+2. What are the observational units?
 
-3. After shuffling, what value will be plotted on the bootstrap distribution?
-\rgs
+</br>
+</br>
 
+3. What variables are recorded?  Give the type (categorical or quantitative) and
+role (explanatory or response) of each.
+
+</br>
+</br>
+
+4. What are the sample statistics presented in this example?  What notation
+would be used to represent each value?
+
+</br>
+
+5. What is the parameter representing in the context of this problem?  What
+notation would be used to represent this parameter?
+
+</br>
+</br>
+
+6. How could we use cards to simulate **one** bootstrap resample 
+*which does not assume the null hypothesis is true*?  How many cards?  What is
+written on the cards?  What would we do with the cards?  What would you record
+once you have a simulated sample?
+
+</br>
+</br>
+</br>
+
+7. After 1000 resamples are generated, where is the resulting bootstrap
+distribution centered?  Why does that make sense?
+
+</br>
+</br>
+
+8. Does the 90% confidence interval provide evidence of a difference across the
+two treatments?
+
+</br>
+</br>
+
+---
+
+## Section 20.3: Mathematical model for testing the difference in means
 
 Conditions to use the CLT for a difference in two means:
 
-\rgi Independence: 
-\rgs
+- Independence: 
 
-\rgi \rgi Checked by: 
-\rgs
+</br> 
+</br>
 
-\rgi Normality: 
-\rgs
+  * Checked by: 
 
-\rgi \rgi Checked by: 
-\rgs
+</br>
+</br>
+
+- Normality: 
+
+</br>
+</br>
+
+  * Checked by: 
+
+</br>
+</br>
 
 In a two-sample $t$-test, how are the degrees of freedom determined?
-\rgs		
+
+</br>
+</br>		
 
 True or false: A large p-value indicates that the null hypothesis is true.
-\rgs
 
-#### Formulas {-}
+</br>
+</br>
+
+#### Formulas
 
 $SE(\overline{x_1} - \overline{x_2})=$
-\rgs
+
+</br>
 
 $T=$
-\rgs
+
+</br>
 
 Confidence interval for a difference in means: 
-\rgs
 
-#### Notation {-}
+</br>
+</br>
 
-$\mu_1$ represents 
-\rgs
+#### Notation
 
-$\mu_2$ represents 
-\rgs
+$\mu_1$ represents: 
 
-$\sigma_1$ represents 
-\rgs
+</br>
 
-$\sigma_2$ represents 
-\rgs
+$\mu_2$ represents: 
 
-$\overline{x_1}$ represents 
-\rgs
+</br>
 
-$\overline{x_2}$ represents 
-\rgs
+$\sigma_1$ represents: 
 
-$s_1$ represents 
-\rgs
+</br>
 
-$s_2$ represents 
-\rgs
+$\sigma_2$ represents: 
 
-#### Example: ESC and heart attacks {-}
+</br>
 
-1.	What is the research question?
-\rgs
+$\overline{x_1}$ represents:
 
-2.	What are the observational units?
-\rgs
+</br>
 
-3.	What variables are recorded?  Give the type (categorical or quantitative) and role (explanatory or response) of each.
-\rgs
-\rgs
+$\overline{x_2}$ represents:
 
-4.	What are the sample statistics presented in this example?  What notation would be used to represent each value?
-\rgs
+</br>
 
-5.	What is the parameter representing in the context of this problem?  What notation would be used to represent this parameter?
-\rgs
-\rgs
+$s_1$ represents:
 
-6.	How could we use cards to simulate **one** bootstrap resample *which does not assume the null hypothesis is true*?  How many cards?  What is written on the cards?  What would we do with the cards?  What would you record once you have a simulated sample?
-\rgs
-\rgs
-\rgs
+</br>
 
-7.	After 1000 resamples are generated, where is the resulting bootstrap distribution centered?  Why does that make sense?
-\rgs
-\rgs
+$s_2$ represents:
 
-8.	Does the 90\% confidence interval provide evidence of a difference across the two treatments?
-\rgs
-\rgs
+</br>
 
-#### Example: NC births {-}
+---
+
+### Example: NC births
 
 1. What is the research question?
-\rgs
+
+</br>
 
 2. What are the observational units?
-\rgs
+
+</br>
 
 3. What variables will be analyzed?  Give the type and role of each.
-\rgs
-\rgs
+
+</br>
+</br>
 
 4. Can the results of this study be generalized to a larger population?
-\rgs
+
+</br>
+</br>
 
 5. Are causal conclusions appropriate for these data?
-\rgs
+
+</br>
+</br>
 
 6. Write the null and the alternative hypotheses in words.
-\rgs
-\rgs
+
+</br>
+</br>
 
 7. Write the null and the alternative hypotheses in notation.
-\rgs
 
-8. What are the sample statistics presented in this example?  What notation would be used to represent each value?
-\rgs
+</br>
+</br>
 
-9. Are the independence and normality conditions satisfied?
-\rgs
-\rgs
+8. What are the sample statistics presented in this example?  What notation
+would be used to represent each value?
+
+</br>
+</br>
+
+9. Are the independence and normality conditions violated?
+
+</br>
+</br>
 
 10. Calculate the standard error of the difference in sample means.
-\rgs
-\rgs
 
-11. Calculate the T-score (the standardized statistic for the sample mean).
-\rgs
-\rgs
+</br>
+</br>
 
-12. What distribution should the T-score be compared to in order to calculate a p-value?
-\rgs
+11. Calculate the T-score / $t$-statistic (the standardized statistic for the
+sample mean).
+
+</br>
+</br>
+
+12. What $t$-distribution should the T-score be compared to in order to
+calculate a p-value? How many degrees of freedom should be used?
+
+</br>
+</br>
 
 13. What was the p-value of the test?
-\rgs
+
+</br>
+</br>
 
 14. What conclusion should the researcher make?
-\rgs
-\rgs
 
-15. Calculate a 95\% confidence interval for the parameter of interest using `qt(0.975, df = 49) = 1.677` as the $t^\star$ value.
-\rgs
-\rgs
+</br>
+</br>
+
+15. Calculate a 95\% confidence interval for the parameter of interest using
+`qt(0.975, df = 49) = 1.677` as the $t^*$ value.
+
+</br>
+</br>
 
 16. Interpret your interval in the context of the problem.
-\rgs
-\rgs
 
-#### Reminders from previous sections {-}
+</br>
+</br>
 
-$n_1$= sample size of group 1
+---
 
-$n_2$ = sample size of group 2
+## Chapter 21: Inference for comparing paired means
 
-$\overline{x}$ = sample mean
+What is a **paired** observation?
 
-$s$ = sample standard deviation
+</br>
+</br>
 
-$\mu$ = population mean
+## Section 21.1: Randomization test for the mean paired difference
 
-$\sigma$ = population standard deviation
+### Example: Car tires
 
+1. What is the research question?
 
-__General steps of a hypothesis test:__
+</br>
 
-1. Frame the research question in terms of hypotheses.
+2. What are the observational units?
 
-2. Collect and summarize data using a test statistic.
-	
-3. Assume the null hypothesis is true, and simulate or mathematically model a
-null distribution for the test statistic.
+</br>
 
-4. Compare the observed test statistic to the null distribution to calculate a
-p-value.
+3. What variables will be analyzed? 
 
-5. Make a conclusion based on the p-value and write the conclusion in context.
+</br>
+</br>
 
-__Parameter:__ a value summarizing a variable(s) for a population.
+4. Why should we take the differences between the two treads rather than
+analyzing them as two separate groups? *Hint:* What condition is required to 
+analyze the data as two separate groups?
 
-__Statistic:__ a value summarizing a variable(s) for a sample.
+</br>
+</br>
 
-__Sampling distribution:__ plot of statistics from 1000s of samples of the same
-size taken from the same population.
+5. Write the null and the alternative hypotheses in words.
 
-__Standard deviation of a statistic:__ the variability of statistics from 1000s
-of samples; how far, on average, each statistic is from the true value of the
-parameter.
+</br>
+</br>
 
-__Standard error of a statistic:__ estimated standard deviation of a statistic.
+6. Write the null and the alternative hypotheses in notation.
 
-__Hypothesis test:__ a process to determine how strong the evidence of an effect
-is.
+</br>
+</br>
 
-__Simulation-based method:__ Simulate lots of statistics from samples of size
-$n$ generated assuming the null hypothesis is true, then find the proportion of
-simulated statistics that are as or more extreme as the observed sample
-statistic.
+7. For a difference in two means, we shuffled around the values of the
+explanatory variable and paired them with a new response value. How is this 
+process different with paired data? How are the values shuffled?
 
-__Theory-based method:__ Develop a mathematical model for the sampling
-distribution of the statistic under the null hypothesis and use the model to
-calculate the probability of the observed sample statistic (or one more extreme)
-occurring. In this course, we will either use the $t$-distribution or $\chi^2$
-distribution for approximations of the sampling distribution. 
+</br>
+</br>
 
-__Null hypothesis ($H_0$):__ the skeptical perspective; no difference; no change; no effect; random chance; what the researcher hopes to prove is **wrong**.
+8. What is the observed mean of the differences in tread wear? Where is this 
+located on the null distribution? What does this lead you to conclude for the 
+hypothesis test?
 
-Alternative hypothesis ($H_A$): the new perspective; a difference/increase/decrease; an effect; not random chance; what the researcher hopes to prove is **correct**.
+</br>
+</br>
 
-Null value: the value of the parameter when we assume the null hypothesis is true (labeled as $parameter_0$).
+---
 
-Null distribution:  the simulated or modeled distribution of statistics (sampling distribution) we would expect to occur if the null hypothesis is true.
+## Section 21.2: Bootstrap confidence interval for the mean paired difference
 
-P-value: probability of seeing the observed sample data, or something more extreme, assuming the null hypothesis is true.
+### Example: UCLA vs. Amazon textbooks
 
-$\implies$ Lower the p-value the stronger the evidence AGAINST the null hypothesis and FOR the alternative hypothesis.
+ 1. What is the research question?
 
-Decision: a determination of whether to reject or fail to reject a null hypothesis based on a p-value and a pre-set level of significance.
+</br>
 
-* If p-value $\leq \alpha$, then reject $H_0$.
+2. What are the observational units?
 
-* If p-value $> \alpha$, then fail to reject $H_0$.
+</br>
 
-Significance level ($\alpha$): a threshold used to determine if a p-value provides enough evidence to reject the null hypothesis or not.
+3. What variables will be analyzed? 
 
-\rgi Common levels of $\alpha$ include 0.01, 0.05, and 0.10.
+</br>
+</br>
 
-Statistically significant: results are considered statistically significant if the p-value is below the significance level.
+4. Why should these data be analyzed as **paired** observations instead of two 
+separate groups?
 
-Confidence interval: a process to determine how large an effect is; a range of plausible values for the parameter. Also called 'estimation'.
+</br>
+</br>
 
-Margin of error: the value that is added to and subtracted from the sample statistic to create a confidence interval; half the width of a confidence interval.
+5. For a confidence interval we don't assume the null hypothesis is true. So, 
+then how are the cards / values sampled to create a new dataset? 
 
-Bootstrapping: the process of drawing with replacement $n$ times from the original sample.
+</br>
+</br>
 
-Bootstrapped resample: a random sample of size $n$ from the original sample, selected with replacement.
+6. Where will the distribution of bootstrap statistics be centered? Why?
 
-Bootstrapped statistic: the statistic recorded from the bootstrapped resample.
+</br>
+</br>
 
-Confidence level: how confident we are that the confidence interval will capture the parameter.
+7. What are the two methods you can use to calculate a confidence interval? 
 
-Bootstrap $X$% confidence interval: ($(\frac{(1-X)}{2})^{th}$ percentile, $(X+(\frac{(1-X)}{2})^{th}$ percentile) of a bootstrap distribution.
+</br>
+</br>
 
-Central Limit Theorem: For large sample sizes, the sampling distribution of a sample mean (or proportion) will be approximately normal (bell-shaped and symmetric).
+8. What confidence interval was obtained?
 
-$t$-distribution: A bell-shaped symmetric distribution, centered at 0, wider than the standard normal distribution.
+</br>
 
-* The variability in a $t$-distribution depends on the sample size (used to calculate degrees of freedom --- df for short).
-* The $t$-distribution gets closer to the standard normal distribution as df increases.
+9. How would you interpret this confidence interval? Careful! You need to 
+indicate what order of subtraction was used! 
 
-Degrees of freedom (df): describes the variability of the $t$-distribution.
+</br>
+</br>
 
-T-score: the name for a standardized statistic which is compared to a $t$-distribution.
+10. Based on the confidence interval, would you reject or fail to reject the 
+null hypothesis that $\mu_{diff} = 0$?
+
+</br>
+</br>
+
+---
+
+## Section 21.3: Mathematical model for the mean paired difference
+
+### Example: UCLA vs. Amazon textbooks
+
+1. What is the observed mean of the differences in textbook prices between
+Amazon and the UCLA Bookstore?
+
+</br>
+
+2. How many textbooks were included in the sample?
+
+</br>
+
+3. Write the null and the alternative hypotheses in words.
+
+</br>
+</br>
+
+4. Write the null and the alternative hypotheses in notation.
+
+</br>
+</br>
+
+5. To use a $t$-distribution to obtain our p-value or confidence interval, we 
+are required to check two conditions: independence of observations and
+normality of the population distribution. Do you believe these conditions
+are violated?
+
+</br>
+</br>
+
+6. What is the formula for the standardized $t$-statistic?
+
+$$
+T = 
+$$
+
+7. What $t$-distribution should be used for these data?
+
+</br>
+
+8. What tails should be used to calculate the p-value? 
+
+</br>
+
+9. What p-value was obtained for the hypothesis test? 
+
+</br>
+
+10. Based on the p-value, what would you conclude for the hypothesis test?
+
+</br>
+</br>
+
+11. Did you reach the same conclusion you suspected you would in #10 of the 
+last section? Why do you think that is?
+
+</br>
+</br>
+
+12. What confidence interval was obtained when using the $t$-distribution?
+
+</br>
+
+13. Is this similar or different from the confidence interval that was obtained
+using a bootstrap distribution?
+
+</br>
+</br>
