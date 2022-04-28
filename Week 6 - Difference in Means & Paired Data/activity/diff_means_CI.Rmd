@@ -22,22 +22,21 @@ library(mosaic)
 
 * Use a confidence interval to determine the conclusion of a hypothesis test.
 
-### Terminology review
-
-In today's activity, we will use simulation-based methods to analyze the association between one categorical explanatory variable and one quantitative response variable, where the groups formed by the categorical variable are independent. Some terms covered in this activity are:
-
-* Independent groups
-
-* Difference in means
-
 ---
 
 ## Review from last week
 
 
+
 ---
 
-##### Confidence interval {-}
+## Confidence interval
+
+
+
+---
+
+## Creating a bootstrap distribution in `R`
 
 We will use the `two_mean_bootstrap_CI()` function in `R` (in the `catstats` package) to simulate the bootstrap distribution of differences in sample means and calculate a confidence interval. 
 
@@ -57,7 +56,8 @@ two_mean_bootstrap_CI(RESPONSE ~ EXPLANATORY, data = DATASET,  # Variables and d
 \vspace{1in}
 
 
-21.  Would the results from a theory-based test match the results we saw with the simulation?  Explain why or why not.
+21.  Would the results from a theory-based test match the results we saw with
+the simulation?  Explain why or why not.
 
 \vspace{1in}
 
