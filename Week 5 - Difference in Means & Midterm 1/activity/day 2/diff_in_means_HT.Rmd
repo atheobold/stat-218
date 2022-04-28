@@ -1,6 +1,8 @@
 ---
-title: "Week 5 Day 4: Weather Patterns and Record Snowfall"
-output: html_document
+title: 'Week 5 Day 4: Weather Patterns and Record Snowfall'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
@@ -24,19 +26,22 @@ hypotheses in words and using appropriate statistical symbols.
 * Describe and perform a simulation-based hypothesis test for a difference in
 means.
 
-* Interpret and evaluate a p-value for a simulation-based hypothesis test for a difference in means.
+* Interpret and evaluate a p-value for a simulation-based hypothesis test for a
+difference in means.
 
 ---
+
+<!-- TODO: Figure out how to put accents on n's -->
 
 ### Weather patterns and record snowfall
 
 In the winter of 2018--2019, Bozeman, Montana had a record snowfall which
 resulted in the collapse of two flat-roofed buildings on the MSU campus.  A
 writer for the *Washington Post* predicted the heavy snowfall for 2018--2019 due
-to the El Ni\latexcode{\~{n}}o weather pattern that occurred in that season. A
+to the El Nino weather pattern that occurred in that season. A
 meteorologist in Montana wanted to see if the weather pattern really was
 associated with total snowfall. She obtained historical data from 44 years on
-the weather pattern (El Ni\latexcode{\~{n}}o or La Ni\latexcode{\~{n}}a) and
+the weather pattern (El Nino or La Nina and
 snowfall (in inches) at the Billings Weather Station.  
 
 Here's a preview of what the data look like:
@@ -67,7 +72,7 @@ statistics for each weather group.
 ggplot(data = snow, 
        mapping = aes(x = Snowfall)) +
   geom_histogram(binwidth = 13) + 
-  labs(x = "Weather pattern") +
+  labs(x = "Snowfall (total inches)") +
   facet_wrap(~WeatherPattern)
 ```
 
@@ -75,28 +80,31 @@ ggplot(data = snow,
 favstats(Snowfall ~ WeatherPattern, data = snow)
 ```
 
-2. The two variables assessed in this study are the type of weather pattern and snowfall. Identify the role for each variable (explanatory or response).
+\newpage
 
-\vspace{.1in}
+2. The two variables assessed in this study are the type of weather pattern and
+snowfall. Identify the role for each variable (explanatory or response).
+
+\vspace{0.5in}
 
 __Explanatory:__
 
-\vspace{.1in}
+\vspace{0.5in}
 
 __Response:__
 
-\vspace{.1in}
+\vspace{1in}
 
-3. Which group (El Ni\latexcode{\~{n}}o or La Ni\latexcode{\~{n}}a) has the
+3. Which group (El Nino or La Nina) has the
 highest center in the distributions of snowfall? Explain which measure of center
 you are using! 
 
-\vspace{.4in}
+\vspace{1in}
 
 4.  Using the faceted histograms, which group has the largest spread in
 snowfall?  How did you make that choice?
 
-\vspace{.4in}
+\vspace{1in}
 
 5.  Is this an experiment or an observational study? Justify your answer.
 
@@ -112,8 +120,8 @@ reasoning.
 __Step 1: Ask a research question__
 
 7. Write out the **parameter** of interest in context of the study.  Use proper
-notation and be sure to define your subscripts.  Use El Ni\latexcode{\~{n}}o
-minus La Ni\latexcode{\~{n}}a as the order of subtraction.
+notation and be sure to define your subscripts.  Use El Nino minus La Nina
+as the order of subtraction.
 
 \vspace{1in}
 
@@ -123,15 +131,18 @@ minus La Ni\latexcode{\~{n}}a as the order of subtraction.
 
 9. Write the alternative hypothesis in notation. 
 
-\vspace{0.5in}
+\vspace{1in}
 
-10. Calculate the observed statistic of interest (difference in means).  Use El Ni\latexcode{\~{n}}o minus La Ni\latexcode{\~{n}}a as the order of subtraction.
-What is the appropriate notation for this statistic?
+10. Calculate the observed statistic of interest (difference in means). Use El
+Nino minus La Nina as the order of subtraction. What is the appropriate notation
+for this statistic?
 
+\newpage
 
 __Step 2: Conduct a Hypothesis test__
 
-Remember that the null distribution is created based on the assumption the null hypothesis is true.  In this study, the null hypothesis states that **there is
+Remember that the null distribution is created based on the assumption the null
+hypothesis is true.  In this study, the null hypothesis states that **there is
 no association / relationship between the two variables**.  This means that the
 snowfall values observed in the data set would have been the same regardless of
 the weather pattern that year.
@@ -167,9 +178,7 @@ calculated from the sample?  Explain why this makes sense.
 16. Once we create a null distribution of 1000 simulations, at what value do
 you expect the distribution to be centered?  Explain your reasoning.
 
-\vspace{0.8in}
-
----
+\newpage
 
 ## Carrying out the simulation in `R`
 
@@ -184,11 +193,11 @@ Week 4 Day 2 activity (Inferences for Diving Penguins) for some help!
 ```{r fill-in-infer, eval = FALSE}
 snow %>% 
   
-  specify(response = ______, explanatory = ______) %>% 
+  specify(response = _______________, explanatory = _______________) %>% 
   
-  hypothesise(null = __________) %>% 
+  hypothesise(null = _______________) %>% 
   
-  generate(reps = ______, type = __________) %>% 
+  generate(reps = _______________, type = _______________) %>% 
   
   calculate(stat = "diff in means", 
             order = c("El_Nino", "La_Nina")
