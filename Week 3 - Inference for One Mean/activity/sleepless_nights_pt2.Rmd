@@ -111,7 +111,8 @@ deviation of the sampling distribution (standard error).__
 
 Did you notice that $\frac{\sigma}{\sqrt{n}}$ did not equal $s$? This is
 because the variability between **individuals’** number of hours slept is 
-**VERY** different from the variability between the **average** number of hours slept across samples of people.
+**VERY** different from the variability between the **average** number of hours
+slept across samples of people.
 
 > **Key Idea:**
 > **There will be less sample-to-sample variability than in person-to-person** 

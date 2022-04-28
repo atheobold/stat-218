@@ -1,10 +1,12 @@
 ---
-title: "Week 6 Day 1: Confidence Interval for Snowfall between Weather Patterns"
-output: html_document
+title: 'Week 6 Day 1: Confidence Interval for Snowfall between Weather Patterns'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
+knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
                       warning = FALSE, 
                       fig.align = "center", 
@@ -12,7 +14,18 @@ knitr::opts_chunk$set(echo = TRUE,
 
 library(tidyverse)
 library(mosaic)
+library(infer)
 ```
+
+```{r data, include = FALSE}
+snow <- read_csv(here::here("Week 5 - Difference in Means & Midterm 1", 
+                            "activity", 
+                            "day 2", 
+                            "data", 
+                            "SnowfallByWeatherPattern.csv")
+                 )
+```
+
 
 ### Learning outcomes
 
@@ -26,37 +39,302 @@ library(mosaic)
 
 ## Review from last week
 
+Last week we used cards to simulate what differences in average snowfall we
+might have seen if the null hypothesis was true. However, today we're not 
+interested in deciding if we believe the means of these two groups are 
+similar or different. 
 
+Today, we are interested in estimating what range of values the **true**
+difference in means might take on. 
+
+1. Based on the p-value you obtained from Thursday's activity, do you believe 
+0 is a plausible value for $\mu_{\text{El Nino}} - \mu_{\text{La Nina}}$? 
 
 ---
 
 ## Confidence interval
 
+A **confidence interval** represents a range of plausible values for a 
+population parameter. In this case, our population parameter is 
+$\mu_{\text{El Nino}} - \mu_{\text{La Nina}}$, or the true difference in mean
+snowfall between El Nino and La Nina years. 
 
+These best way to estimate what range of values a parameter might have is to
+go out and collect more samples. However, that is often not feasible. So, 
+instead we mimic this process by *resampling with replacement* from our original
+sample. This process is called **bootstrapping**. 
 
----
+\newpage
+
+## Bootstrapping snowfall & weather patterns
+
+When bootstrapping with two groups, we're assuming that the sample within each
+group is *representative* of other possible values in the population. Here, 
+we are assuming that the years included in our sample are representative of the
+snowfall for other El Nino / La Nina years. 
+
+Because we **are not** assuming the null is true (that there is no difference 
+in the means of these two groups), we **do not** combine the groups together. 
+Rather, we keep the groups separate and sample from each group separately. 
+
+\vspace{0.25in}
+
+2. Let's walk through how we would carry out this process:
+
+\vspace{0.25in}
+
+__Step 1:__
+
+\vspace{1in}
+
+__Step 2:__
+
+\vspace{1in}
+
+__Step 3:__
+
+\vspace{1in}
+
+__Step 4:__
+
+\vspace{1in}
+
+3. What statistic do we have after step 4?
+
+\vspace{0.5in}
+
+4.  Once we create a bootstrap distribution of 1000 simulations, at what value
+do you expect the distribution to be centered? Explain your reasoning.
+
+\newpage
 
 ## Creating a bootstrap distribution in `R`
 
-We will use the `two_mean_bootstrap_CI()` function in `R` (in the `catstats` package) to simulate the bootstrap distribution of differences in sample means and calculate a confidence interval. 
+We will use the **infer** package (again) to make our bootstrap distribution.
+The process we used for this situation will look very similar to before, since
+all we are changing is the statistic we calculate! 
 
-19. Using bootstrapping find a 95\% confidence interval. Using the provided `R` script file, enter the variable names and data set name as in the `two_mean_test()` function, outcome name for the first in subtraction, number of repetitions, and the confidence level as a decimal.  Highlight and run lines 32--35. Report the 95\% confidence interval in interval notation.
+5. Fill in the blanks for the code below. 
 
-```{r, echo = TRUE, eval = FALSE}
-two_mean_bootstrap_CI(RESPONSE ~ EXPLANATORY, data = DATASET,  # Variables and data
-                      first_in_subtraction = "xx", # First value in order of subtraction
-                      number_repetitions = 1000,  # Number of simulations
-                      confidence_level = xx)
+```{r fill-in-infer, eval = FALSE, echo = TRUE}
+snow %>% 
+  
+  specify(response = _______________, explanatory = _______________) %>% 
+  
+  generate(reps = _______________, type = _______________) %>% 
+  
+  calculate(stat = "diff in means", 
+            order = c("El_Nino", "La_Nina")
+            )
+
 ```
 
-\vspace{0.3in}
+\vspace{0.5in}
 
-20. Interpret the interval you calculated in question 19. 
+
+6. What is the difference between this code and the code to generate a null 
+distribution (what we did on Thursday)?
+
+\vspace{0.25in}
+
+## Obtaining a confidence interval
+
+A bootstrap distribution from 1000 reps is plotted below. 
+
+\vspace{0.2cm}
+
+```{r bootstrap, echo = FALSE}
+bootstrap_dist <- snow %>% 
+  specify(response = Snowfall, explanatory = WeatherPattern) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "diff in means", 
+            order = c("El_Nino", "La_Nina")
+            ) 
+
+bootstrap_dist %>% 
+  visualize() +
+  labs(x = "Difference in Means (El Nino - La Nina)", 
+       title = "Bootstrap Distribution from 1000 Simulations")
+```
+
+6. What are the two methods we could use this distribution to obtain a
+confidence interval?
+
+\newpage
+
+## Percentile method
+
+I've provided a table of different percentiles to help you create your
+confidence interval. 
+
+```{r percentile-CI, echo = FALSE}
+bootstrap_dist %>% 
+  summarize("0.5%" = quantile(stat, 0.05), 
+            "1%" = quantile(stat, 0.01),
+            "2.5%" = quantile(stat, 0.025),
+            "5%" = quantile(stat, 0.05),
+            "90%" = quantile(stat, 0.90),
+            "95%" = quantile(stat, 0.95),
+            "97.5%" = quantile(stat, 0.975),
+            "99.5%" = quantile(stat, 0.95)
+            ) %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Quantile", 
+               values_to = "Value") %>% 
+  knitr::kable()
+```
+
+
+7. Suppose we are interested in constructing a 95% confidence interval. Using 
+the table above, report the end points of this confidence interval.
+
+\vspace{0.5in}
+
+8. Interpret the confidence interval in the context of this investigation.
+
+\vspace{1in}
+
+## SE method
+
+A percentile confidence interval uses **only** the bootstrap distribution. The
+SE method on the other hand uses information from both the bootstrap
+distribution a the $t$-distribution. 
+
+Because this method uses a $t$-distribution it should only be used if the
+bootstrap distribution is bell-shaped and symmetric. 
+
+9. Do you believe this condition is violated? 
+
+\vspace{0.5in}
+
+Alright, let's see how this confidence interval works. Our formula looks like
+this:
+
+$$\bar{x}_{\text{El Nino}} - \bar{x}_{\text{La Nina}} \pm t^*_{df} \times SE_{boot}$$
+
+There are three pieces to the interval:
+
+- the observed statistic ($\bar{x}_{\text{El Nino}} - \bar{x}_{\text{La Nina}}$)
+- the $t$-distribution multiplier
+- the standard error from the bootstrap distribution
+
+10. What is the observed statistic for this investigation?
+
+\vspace{0.5in}
+
+11. Using the table below, what is the standard error for the bootstrap
+distribution? 
+
+\vspace{0.5in}
+
+```{r bootstrap-stats}
+favstats(~stat, data = bootstrap_dist)
+```
+
+\vspace{0.25in}
+
+12. Using the table below, circle the correct multiplier we should use to make
+our interval.__
+
+| `R` code             | Value                  |
+|:---------------------|:----------------------:|
+| `qt(0.90, df = 20)`  | `r `qt(0.90, df = 20)` |
+| `qt(0.90, df = 22)`  | `r qt(0.90, df = 22)`  |
+| `qt(0.90, df = 43)`  | `r qt(0.90, df = 43)`  |
+| `qt(0.95, df = 20)`  | `r qt(0.95, df = 20)`  |
+| `qt(0.95, df = 22)`  | `r qt(0.95, df = 22)`  |
+| `qt(0.95, df = 43)`  | `r qt(0.95, df = 43)`  |
+| `qt(0.975, df = 20)` | `r qt(0.975, df = 20)` |
+| `qt(0.975, df = 22)` | `r qt(0.975, df = 22)` |
+| `qt(0.975, df = 43)` | `r qt(0.975, df = 43)` |
+| `qt(0.995, df = 20)` | `r qt(0.995, df = 20)` |
+| `qt(0.995, df = 22)` | `r qt(0.995, df = 22)` |
+| `qt(0.995, df = 43)` | `r qt(0.995, df = 43)` |
+
+__7. Using your answers to questions 5 and 6, create a 95% confidence interval
+for the mean hours slept for all STAT 218 students.__
+
+\vspace{2cm}
+
+__8. What do we hope is contained in this interval?__
+
+\vspace{2cm}
+
+__9. Do we know if the interval contains this value?__
+
+\vspace{2cm}
+
+\newpage 
+
+## Using the $t$-distribution to create a confidence interval
+
+Previously, we found our confidence interval by finding different percentiles on
+our bootstrap distribution. For example, we used the 2.5th and
+97.5th percentile to obtain a 95% confidence interval. 
+
+When we are using a $t$-distribution to obtain our confidence interval, the 
+process has similar ideas, but a slightly different approach. Since the 
+$t$-distribution is centered at 0 and symmetric, the number associated with the
+2.5th percentile and the 97.5th percentile **is the same**. Well, one is 
+positive and one is negative, but they have the same numbers. So, we only need 
+to find **one** number to make our confidence interval!
+
+```{r, eval = FALSE, out.width = "50%", fig.align = "center"}
+sleep_hours %>%
+  specify(response = hours) %>% 
+  hypothesize(null = "point", mu = 8) %>% 
+  assume(distribution = "t") %>% 
+  visualize() +
+  labs(x = "t-statistic", 
+       y = "Density", 
+       title = "") +
+  geom_vline(xintercept = -2.009575, 
+             color = "red", 
+             lwd = 1.5) +
+  geom_vline(xintercept = 2.009575, 
+             color = "red", 
+             lwd = 1.5) + 
+  annotate(geom = "text", 
+           x = c(-2.2, 2.2),
+           y = 0.35, 
+           label = "t*", 
+           size = 6) +
+    theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank())
+```
+
+The number we are finding is called the **multiplier**. The multiplier for a 
+confidence interval depends on two things, (1) the degrees of freedom and (2)
+the side of confidence interval you want. In our case we know we should use a
+$t$-distribution with 49 degrees of freedom. 
+
+__6. We are interested in making a 95% confidence interval. Using the table
+below, circle the correct multiplier we should use to make our interval.__
+
+| `R` code             | Value     |
+|:---------------------|:---------:|
+| `qt(0.90, df = 49)`  | 1.299069  |
+| `qt(0.95, df = 49)`  | 1.676551  |
+| `qt(0.975, df = 49)` | 2.009575  |
+| `qt(0.995, df = 49)` | 2.679952  |
+
+
+Now that we have the multiplier, we can put all of the pieces together! The
+"formula" for a $t$-based confidence interval is:
+
+$$\text{point estimate} \pm t^*_{df} \times SE$$
+
+
+
+
+
+Interpret the interval you calculated in question 19. 
 
 \vspace{1in}
 
 
-21.  Would the results from a theory-based test match the results we saw with
+21. Would the results from a theory-based test match the results we saw with
 the simulation?  Explain why or why not.
 
 \vspace{1in}
