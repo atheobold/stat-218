@@ -1,0 +1,74 @@
+---
+title: "Week 6 Day 1: Confidence Interval for Snowfall between Weather Patterns"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      out.width = "60%")
+
+library(tidyverse)
+library(mosaic)
+```
+
+### Learning outcomes
+
+* Use bootstrapping to find a confidence interval for a difference in means.
+
+* Interpret a confidence interval for a difference in means.
+
+* Use a confidence interval to determine the conclusion of a hypothesis test.
+
+### Terminology review
+
+In today's activity, we will use simulation-based methods to analyze the association between one categorical explanatory variable and one quantitative response variable, where the groups formed by the categorical variable are independent. Some terms covered in this activity are:
+
+* Independent groups
+
+* Difference in means
+
+---
+
+## Review from last week
+
+
+---
+
+##### Confidence interval {-}
+
+We will use the `two_mean_bootstrap_CI()` function in `R` (in the `catstats` package) to simulate the bootstrap distribution of differences in sample means and calculate a confidence interval. 
+
+19. Using bootstrapping find a 95\% confidence interval. Using the provided `R` script file, enter the variable names and data set name as in the `two_mean_test()` function, outcome name for the first in subtraction, number of repetitions, and the confidence level as a decimal.  Highlight and run lines 32--35. Report the 95\% confidence interval in interval notation.
+
+```{r, echo = TRUE, eval = FALSE}
+two_mean_bootstrap_CI(RESPONSE ~ EXPLANATORY, data = DATASET,  # Variables and data
+                      first_in_subtraction = "xx", # First value in order of subtraction
+                      number_repetitions = 1000,  # Number of simulations
+                      confidence_level = xx)
+```
+
+\vspace{0.3in}
+
+20. Interpret the interval you calculated in question 19. 
+
+\vspace{1in}
+
+
+21.  Would the results from a theory-based test match the results we saw with the simulation?  Explain why or why not.
+
+\vspace{1in}
+
+\newpage
+
+### Take-home messages
+
+1. To create one simulated sample on the bootstrap distribution for a difference
+in sample means, label $n_1 + n_2$ cards with the original response values.
+Keep groups separate and randomly draw with replacement $n_1$  times from group
+1 and $n_2$ times from group 2.  Calculate and plot the resampled difference in
+means.  
+
+<!-- Something about theoretical methods! -->
