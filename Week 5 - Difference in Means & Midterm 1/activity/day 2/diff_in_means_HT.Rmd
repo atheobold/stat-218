@@ -313,7 +313,6 @@ sample means, you carry out the following steps:
 - label cards with the values from the observed sample
 - tear the $x$ and $y$ values apart
 - shuffle the cards and make new pairs of $x$ and $y$ values
-- make two new groups of sizes $n_1$ and $n_2$
 - calculate and plot the difference in means 
 
 2. If it is not unreasonable to assume that the observations from each group 
