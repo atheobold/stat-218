@@ -157,7 +157,7 @@ bootstrap_dist %>%
        title = "Bootstrap Distribution from 1000 Simulations")
 ```
 
-6. What are the two methods we could use this distribution to obtain a
+7. What are the two methods we could use this distribution to obtain a
 confidence interval?
 
 \newpage
@@ -185,12 +185,12 @@ bootstrap_dist %>%
 ```
 
 
-7. Suppose we are interested in constructing a 95% confidence interval. Using 
+8. Suppose we are interested in constructing a 95% confidence interval. Using 
 the table above, report the end points of this confidence interval.
 
 \vspace{0.5in}
 
-8. Interpret the confidence interval in the context of this investigation.
+9. Interpret the confidence interval in the context of this investigation.
 
 \vspace{1in}
 
@@ -203,7 +203,7 @@ distribution a the $t$-distribution.
 Because this method uses a $t$-distribution it should only be used if the
 bootstrap distribution is bell-shaped and symmetric. 
 
-9. Do you believe this condition is violated? 
+10. Do you believe this condition is violated? 
 
 \vspace{0.5in}
 
@@ -218,12 +218,14 @@ There are three pieces to the interval:
 - the $t$-distribution multiplier
 - the standard error from the bootstrap distribution
 
-10. What is the observed statistic for this investigation?
+\vspace{0.1in}
+
+11. What is the observed statistic for this investigation?
 
 \vspace{0.5in}
 
-11. Using the table below, what is the standard error for the bootstrap
-distribution? 
+12. Using the table below, what is the standard deviation for the bootstrap
+distribution (the estimated standard error)? 
 
 \vspace{0.5in}
 
@@ -233,8 +235,8 @@ favstats(~stat, data = bootstrap_dist)
 
 \vspace{0.25in}
 
-12. Using the table below, circle the correct multiplier we should use to make
-our interval.__
+13. Using the table below, circle the correct multiplier we should use to make
+our interval.
 
 | `R` code             | Value                  |
 |:---------------------|:----------------------:|
@@ -251,95 +253,66 @@ our interval.__
 | `qt(0.995, df = 22)` | `r qt(0.995, df = 22)` |
 | `qt(0.995, df = 43)` | `r qt(0.995, df = 43)` |
 
-__7. Using your answers to questions 5 and 6, create a 95% confidence interval
-for the mean hours slept for all STAT 218 students.__
+\vspace{0.25in}
+
+14. Using your answers to questions 11, 12, and 13, create a 95% confidence
+interval for the difference in mean snowfall between El Nino and La Nina years.
 
 \vspace{2cm}
 
-__8. What do we hope is contained in this interval?__
+15. What value do we hope is contained in this interval?
 
-\vspace{2cm}
+\vspace{1in}
 
-__9. Do we know if the interval contains this value?__
+16. Do we know if our interval contains this value?
 
-\vspace{2cm}
-
-\newpage 
+\vspace{1in}
 
 ## Using the $t$-distribution to create a confidence interval
 
-Previously, we found our confidence interval by finding different percentiles on
-our bootstrap distribution. For example, we used the 2.5th and
-97.5th percentile to obtain a 95% confidence interval. 
+So far we've found a confidence interval using the percentile and SE methods. 
+Both of these used some aspect of the bootstrap distribution. One final option
+is to use the $t$-distribution to create our confidence interval. 
 
-When we are using a $t$-distribution to obtain our confidence interval, the 
-process has similar ideas, but a slightly different approach. Since the 
-$t$-distribution is centered at 0 and symmetric, the number associated with the
-2.5th percentile and the 97.5th percentile **is the same**. Well, one is 
-positive and one is negative, but they have the same numbers. So, we only need 
-to find **one** number to make our confidence interval!
-
-```{r, eval = FALSE, out.width = "50%", fig.align = "center"}
-sleep_hours %>%
-  specify(response = hours) %>% 
-  hypothesize(null = "point", mu = 8) %>% 
-  assume(distribution = "t") %>% 
-  visualize() +
-  labs(x = "t-statistic", 
-       y = "Density", 
-       title = "") +
-  geom_vline(xintercept = -2.009575, 
-             color = "red", 
-             lwd = 1.5) +
-  geom_vline(xintercept = 2.009575, 
-             color = "red", 
-             lwd = 1.5) + 
-  annotate(geom = "text", 
-           x = c(-2.2, 2.2),
-           y = 0.35, 
-           label = "t*", 
-           size = 6) +
-    theme(axis.title.x = element_blank(), 
-        axis.text.x = element_blank(), 
-        axis.ticks.x = element_blank())
-```
-
-The number we are finding is called the **multiplier**. The multiplier for a 
-confidence interval depends on two things, (1) the degrees of freedom and (2)
-the side of confidence interval you want. In our case we know we should use a
-$t$-distribution with 49 degrees of freedom. 
-
-__6. We are interested in making a 95% confidence interval. Using the table
-below, circle the correct multiplier we should use to make our interval.__
-
-| `R` code             | Value     |
-|:---------------------|:---------:|
-| `qt(0.90, df = 49)`  | 1.299069  |
-| `qt(0.95, df = 49)`  | 1.676551  |
-| `qt(0.975, df = 49)` | 2.009575  |
-| `qt(0.995, df = 49)` | 2.679952  |
-
-
-Now that we have the multiplier, we can put all of the pieces together! The
-"formula" for a $t$-based confidence interval is:
-
-$$\text{point estimate} \pm t^*_{df} \times SE$$
-
-
-
-
-
-Interpret the interval you calculated in question 19. 
+17. What distribution does a bootstrap distribution approximate?
 
 \vspace{1in}
 
+18. If we wanted to use a $t$-distribution to approximate this distribution, 
+what conditions do we need to check?
 
-21. Would the results from a theory-based test match the results we saw with
-the simulation?  Explain why or why not.
+\vspace{2in}
+
+When we use theory-based methods to obtain our confidence interval, we use
+formulas to approximate the true standard error of the sampling distribution. 
+So, where we used the standard deviation of the bootstrap distribution, now
+we will use a mathematical formula. 
+
+The formula for calculating the standard error of 
+$\bar{x}_{\text{El Nino}} - \bar{x}_{\text{La Nina}}$ is:
+
+$$
+SE = \sqrt{\frac{s_{\text{El Nino}}^2}{n_{\text{El Nino}}}{} + \frac{s_{\text{La Nina}}^2}{n_{\text{La Nina}}}}
+$$
+\vspace{0.1in}
+
+19. Using the formula above, calculate the estimated standard error of the 
+sampling distribution. 
+
+\vspace{0.5in}
+
+
+Now that we have the standard error, we can put all of the pieces of the 
+confidence interval together! The "formula" for a $t$-based confidence interval
+is:
+
+$$\overline{x}_{\text{El Nino}} - \overline{x}_{\text{La Nina}}\pm t^*_{df} \times SE$$
+
+
+20. Using the multiplier you found in #13, calculate a 95% confidence interval
+for $\mu_{\text{El Nino}} - \mu_{\text{La Nina}}$. 
 
 \vspace{1in}
-
-\newpage
 
 ### Take-home messages
 
@@ -349,4 +322,31 @@ Keep groups separate and randomly draw with replacement $n_1$  times from group
 1 and $n_2$ times from group 2.  Calculate and plot the resampled difference in
 means.  
 
-<!-- Something about theoretical methods! -->
+2. When using a bootstrap distribution to obtain a confidence interval, there 
+are two methods you can use: the percentile method and the SE method. 
+
+3. The SE method for creating confidence intervals requires the bootstrap 
+distribution be bell-shaped and symmetric. 
+
+4. The percentile method makes no assumptions about the shape of the 
+bootstrap distribution. 
+
+5. You can choose between simulation-based methods (e.g., bootstrapping) and 
+theory-based methods (e.g., $t$-distribution) to create a confidence interval. 
+
+6. Simulation-based conditions only require that the observations are
+independent. 
+
+7. Theory-based methods require that the observations are independent **and**
+that the distribution of each group is nearly normal. 
+
+8. If the conditions for theory-based methods **are not** violated, then both 
+methods (theory & simulation) will yield similar results. 
+
+9. If the conditions for theory-based methods **are** violated, then the 
+methods **will not** yield similar results. 
+
+10. If the conditions for theory-based methods **are** violated, using a 
+$t$-distribution to find a p-value will **underestimate** the true p-value. 
+A $t$-distribution will also result in a confidence interval that is 
+**too narrow**! 
