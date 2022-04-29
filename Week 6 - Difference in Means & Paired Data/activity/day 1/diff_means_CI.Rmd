@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE, 
                       warning = FALSE, 
                       fig.align = "center", 
-                      out.width = "60%")
+                      out.width = "80%")
 
 library(tidyverse)
 library(mosaic)
@@ -50,6 +50,7 @@ difference in means might take on.
 1. Based on the p-value you obtained from Thursday's activity, do you believe 
 0 is a plausible value for $\mu_{\text{El Nino}} - \mu_{\text{La Nina}}$? 
 
+\vspace{0.5in}
 ---
 
 ## Confidence interval
@@ -129,19 +130,16 @@ snow %>%
 
 ```
 
-\vspace{0.5in}
-
+\vspace{0.1in}
 
 6. What is the difference between this code and the code to generate a null 
 distribution (what we did on Thursday)?
 
-\vspace{0.25in}
+\vspace{0.1in}
 
 ## Obtaining a confidence interval
 
 A bootstrap distribution from 1000 reps is plotted below. 
-
-\vspace{0.2cm}
 
 ```{r bootstrap, echo = FALSE}
 bootstrap_dist <- snow %>% 
@@ -154,10 +152,10 @@ bootstrap_dist <- snow %>%
 bootstrap_dist %>% 
   visualize() +
   labs(x = "Difference in Means (El Nino - La Nina)", 
-       title = "Bootstrap Distribution from 1000 Simulations")
+       title = "")
 ```
 
-7. What are the two methods we could use this distribution to obtain a
+7. What are the two ways we could use this distribution to obtain a
 confidence interval?
 
 \newpage
@@ -198,14 +196,14 @@ the table above, report the end points of this confidence interval.
 
 A percentile confidence interval uses **only** the bootstrap distribution. The
 SE method on the other hand uses information from both the bootstrap
-distribution a the $t$-distribution. 
+distribution and the $t$-distribution. 
 
-Because this method uses a $t$-distribution it should only be used if the
-bootstrap distribution is bell-shaped and symmetric. 
+Because this method uses a $t$-distribution it should only be used **if the
+bootstrap distribution is bell-shaped and symmetric**. 
 
 10. Do you believe this condition is violated? 
 
-\vspace{0.5in}
+\newpage
 
 Alright, let's see how this confidence interval works. Our formula looks like
 this:
@@ -215,32 +213,32 @@ $$\bar{x}_{\text{El Nino}} - \bar{x}_{\text{La Nina}} \pm t^*_{df} \times SE_{bo
 There are three pieces to the interval:
 
 - the observed statistic ($\bar{x}_{\text{El Nino}} - \bar{x}_{\text{La Nina}}$)
-- the $t$-distribution multiplier
-- the standard error from the bootstrap distribution
+- the $t$-distribution multiplier ($t^*_{df}$)
+- the standard error from the bootstrap distribution ($SE_{boot}$)
 
 \vspace{0.1in}
 
 11. What is the observed statistic for this investigation?
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 12. Using the table below, what is the standard deviation for the bootstrap
 distribution (the estimated standard error)? 
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 ```{r bootstrap-stats}
 favstats(~stat, data = bootstrap_dist)
 ```
 
-\vspace{0.25in}
+\vspace{0.1in}
 
 13. Using the table below, circle the correct multiplier we should use to make
 our interval.
 
 | `R` code             | Value                  |
 |:---------------------|:----------------------:|
-| `qt(0.90, df = 20)`  | `r `qt(0.90, df = 20)` |
+| `qt(0.90, df = 20)`  | `r qt(0.90, df = 20)` |
 | `qt(0.90, df = 22)`  | `r qt(0.90, df = 22)`  |
 | `qt(0.90, df = 43)`  | `r qt(0.90, df = 43)`  |
 | `qt(0.95, df = 20)`  | `r qt(0.95, df = 20)`  |
@@ -258,15 +256,15 @@ our interval.
 14. Using your answers to questions 11, 12, and 13, create a 95% confidence
 interval for the difference in mean snowfall between El Nino and La Nina years.
 
-\vspace{2cm}
+\newpage
 
 15. What value do we hope is contained in this interval?
 
-\vspace{1in}
+\vspace{0.25in}
 
 16. Do we know if our interval contains this value?
 
-\vspace{1in}
+\vspace{0.25in}
 
 ## Using the $t$-distribution to create a confidence interval
 
@@ -276,12 +274,12 @@ is to use the $t$-distribution to create our confidence interval.
 
 17. What distribution does a bootstrap distribution approximate?
 
-\vspace{1in}
+\vspace{0.5in}
 
 18. If we wanted to use a $t$-distribution to approximate this distribution, 
 what conditions do we need to check?
 
-\vspace{2in}
+\vspace{0.5in}
 
 When we use theory-based methods to obtain our confidence interval, we use
 formulas to approximate the true standard error of the sampling distribution. 
@@ -312,7 +310,7 @@ $$\overline{x}_{\text{El Nino}} - \overline{x}_{\text{La Nina}}\pm t^*_{df} \tim
 20. Using the multiplier you found in #13, calculate a 95% confidence interval
 for $\mu_{\text{El Nino}} - \mu_{\text{La Nina}}$. 
 
-\vspace{1in}
+\newpage
 
 ### Take-home messages
 
