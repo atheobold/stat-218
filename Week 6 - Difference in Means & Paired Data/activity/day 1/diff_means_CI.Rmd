@@ -294,8 +294,15 @@ SE = \sqrt{\frac{s_{\text{El Nino}}^2}{n_{\text{El Nino}}}{} + \frac{s_{\text{La
 $$
 \vspace{0.1in}
 
-19. Using the formula above, calculate the estimated standard error of the 
-sampling distribution. 
+```{r favstats}
+favstats(Snowfall ~ WeatherPattern, data = snow)
+```
+
+\vspace{0.1in}
+
+19. Using the formula and the summary statistics above, calculate the estimated 
+standard error of the sampling distribution. 
+*Hint:* $s$ is the standard deviation! 
 
 \vspace{0.5in}
 
