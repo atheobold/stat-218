@@ -87,7 +87,7 @@ Explain.
 
 \vspace{0.5in}
 
-4. Why is this treated as a paired study design and not two independent samples?
+3. Why is this treated as a paired study design and not two independent samples?
 
 \vspace{0.5in}
 
@@ -190,24 +190,24 @@ null_dist %>%
        x = "Simulated Mean Difference")
 ```
 
-12. Explain why the null distribution is centered at zero. 
+11. Explain why the null distribution is centered at zero. 
 
 \newpage
 
-13. Find the observed mean difference on the distribution. 
+12. Find the observed mean difference on the distribution. 
 
 \vspace{0.1in}
 
-14. Shade the area of the distribution you will use to calculate the p-value. 
+13. Shade the area of the distribution you will use to calculate the p-value. 
 
 \vspace{0.1in}
 
-15. Estimate the p-value for testing if there was improved air quality in US
+14. Estimate the p-value for testing if there was improved air quality in US
 cities in April 2020. 
 
 \vspace{0.25in}
 
-16. How much evidence does this provide for improved air quality in US cities?
+15. How much evidence does this provide for improved air quality in US cities?
 
 \vspace{0.5in}
 
@@ -297,7 +297,8 @@ in the population (and sample) of **differences**, and not in the original data.
 and then take the mean (mean difference), and we calculate the two means and
 then take the difference (difference in means), the value will be the same.
 However, the *sampling variability* of the two statistics will differ, as we
-will see in the next activity].  This terminology will be *very* important in interpretations.
+will see in the next activity].  This terminology will be *very* important in
+interpretations.
 
 4. To create one simulated sample on the null distribution for the mean
 difference, we focus on each observation **not** on the groups of observations. 
