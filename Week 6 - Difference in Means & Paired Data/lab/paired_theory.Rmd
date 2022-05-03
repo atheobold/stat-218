@@ -9,112 +9,92 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.align = "center")
 ```
 
-### Learning outcomes
-
-* Given a research question involving paired differences, construct the null and alternative hypotheses
-  in words and using appropriate statistical symbols.
-  
-* Describe and perform a theory-based hypothesis test for a paired mean difference.
-
-* Interpret and evaluate a p-value for a theory-based hypothesis test for a paired mean difference.
-
-* Use theory-based methods to find a confidence interval for a paired mean difference.
-
-* Interpret a confidence interval for a paired mean difference.
-
-* Use a confidence interval to determine the conclusion of a hypothesis test.
-
-### Terminology review
-
-In today's activity, we will analyze paired quantitative data using theory-based methods. Some terms covered in this activity are:
-
-* Paired data
-
-* Mean difference
-
-* Independent observational units
-
-* Normality
-
-* $t$-distribution
-
-* Degrees of freedom
-
-* T-score
-
-To review these concepts, see Sections 6.1 and 6.2 in the textbook.
-
 ### Color Interference
 
-The abstract of the article "Studies of interference in serial verbal reactions" in the _Journal of Experimental Psychology_ [@stroop1935] reads:
+The abstract of the article "Studies of interference in serial verbal reactions"
+in the _Journal of Experimental Psychology_ reads:
 
-> In this study pairs of conflicting stimuli, both being inherent aspects of the same symbols, were presented simultaneously (a name of one color printed in the ink of another color---a word stimulus and a color stimulus).
-> The difference in time for reading the words printed in colors and the same words printed in black is the measure of interference of color stimuli upon reading words. ...
-> The interference of conflicting color stimuli upon the time for reading 100 words (each word naming a color unlike the ink-color of its print) caused an increase of 2.3 seconds or 5.6% over the normal time for reading the same words printed in black.
+> In this study pairs of conflicting stimuli, both being inherent aspects of the
+same symbols, were presented simultaneously (a name of one color printed in the
+ink of another color---a word stimulus and a color stimulus).
+> The difference in time for reading the words printed in colors and the same
+words printed in black is the measure of interference of color stimuli upon
+reading words. ...
+> The interference of conflicting color stimuli upon the time for reading 100
+words (each word naming a color unlike the ink-color of its print) caused an
+increase of 2.3 seconds or 5.6% over the normal time for reading the same words
+printed in black.
 
-The article reports on the results of a study in which seventy college undergraduates were given forms with 100 names of colors written in black ink, and the same 100 names of colors written in another color (i.e., the word purple written in green ink).  The total time (in seconds) for reading the 100 words printed in black, and the total time (in seconds) for reading the 100 words printed in different colors were recorded for each subject. The order in which the forms (black or color) were given was randomized to the subjects. Does printing the name of colors in a different color increase the time it takes to read the words?
+The article reports on the results of a study in which seventy college
+undergraduates were given forms with 100 names of colors written in black ink,
+and the same 100 names of colors written in another color (i.e., the word purple
+written in green ink).  The total time (in seconds) for reading the 100 words
+printed in black, and the total time (in seconds) for reading the 100 words
+printed in different colors were recorded for each subject. The order in which
+the forms (black or color) were given was randomized to the subjects. 
 
-#### Identify the scenario {-}
+We seek to address the following research question: 
+
+__Does printing the name of colors in a different color increase the time it takes to read the words?__
+
+## Identify the scenario
 
 1. Should these observations be considered paired or independent?  Explain your answer.
-\vspace{0.5in}
 
-2.  Based on your answer to question 1, is the appropriate summary measure to be used to analyze these data the difference in mean times or the mean difference in times?
-\vspace{0.25in}
 
-#### Ask a research question {-}
+2. Based on your answer to question 1, is the appropriate summary measure to be
+used to analyze these data the difference in mean times or the mean difference
+in times?
 
-3. Write out the null hypothesis in words, in the context of this study.  
+## Forming Hypotheses
 
-\vspace{0.8in}
+__3. Write out the null hypothesis in words, in the context of this study.__
 
-4. Write out the alternative hypothesis in proper notation for this study.
 
-\vspace{0.5in}
+__4. Write out the alternative hypothesis in proper notation for this study.__
 
-In general, the sampling distribution for a sample mean, $\bar{x}$, based on a sample of size $n$ from a population with a true mean $\mu$ and true standard deviation $\sigma$ can be modeled using a Normal distribution when certain conditions are met.
 
-Conditions for the sampling distribution of $\bar{x}$ to follow an approximate Normal distribution:
 
-* **Independence**: The sample’s observations are independent.  For paired data, that means each pairwise difference should be independent.
+In general, the sampling distribution for a sample mean, $\bar{x}$, based on a
+sample of size $n$ from a population with a true mean $\mu$ and true standard
+deviation $\sigma$ can be modeled using a Normal distribution when certain
+conditions are met.
 
-* **Normality**: The data should be approximately normal or the sample size should be large.
+Conditions for the sampling distribution of $\bar{x}$ to follow an approximate
+Normal distribution:
 
-    - $n < 30$: If the sample size $n$ is less than 30 and the distribution of the data is approximately normal with no clear outliers in the data, then we typically assume the data come from a nearly normal distribution to satisfy the condition.
+* **Independence**: The sample’s observations are independent.  For paired data,
+that means each *difference* should be independent.
 
-    - $n \geq 30$: If the sample size $n$ is at least 30 and there are no particularly extreme outliers in the data, then we typically assume the sampling distribution of $\bar{x}$ is nearly normal, even if the underlying distribution of individual observations is not.
+* **Normality**: The data should be approximately normal or the sample size
+should be "sufficiently large."
+
+    - $n < 30$: If the sample size $n$ is less than 30 and the distribution of
+    the data is approximately normal with no clear outliers in the data, then we
+    typically assume the data come from a population with a nearly normal
+    distribution to satisfy the condition.
+
+    - $n \geq 30$: If the sample size $n$ is at least 30 and there are **no**
+    particularly *extreme* outliers in the data, then we typically assume the
+    sampling distribution of $\bar{x}$ is nearly normal, even if the underlying
+    distribution of individual observations is not.
     
-    - $n \geq 100$: If the sample size $n$ is at least 100 (regardless of the presence of skew or outliers), we typically assume the sampling distribution of $\bar{x}$ is nearly normal, even if the underlying distribution of individual observations is not.
+    - $n \geq 60$: If the sample size $n$ is at least 60 (regardless of the
+    presence of skew or outliers), we typically assume the sampling distribution
+    of $\bar{x}$ is nearly normal, even if the underlying distribution of
+    individual observations is not.
  
-```{r tdist, echo = F, fig.cap = "Comparison of the standard Normal vs t-distribution with various degrees of freedom"}
-# Display the Student's t distributions with various
-# degrees of freedom and compare to the normal distribution
+Like we have seen throughout this class, we will not know the values of the
+parameters and must use the sample data to estimate them. In the case of one
+mean, both the population mean ($\mu$) and the population standard deviation
+($\sigma$) are unknown. The additional uncertainty associated with having to
+estimate $\sigma$ requires that we use a theoretical distribution that is just
+a bit wider than the Normal distribution. Enter the **$t$-distribution**!
 
-x <- seq(-4, 4, length=100)
-hx <- dnorm(x)
-
-degf <- c(1, 3, 8)
-colors <- c("red", "blue", "chartreuse4", "black")
-type <- c(3, 4, 2, 1)
-labels <- c("df=1", "df=3", "df=8", "normal")
-
-plot(x, hx, type="l", lty=1, lwd=3, xlab="x value",
-  ylab="Density", main="Comparison of t Distributions")
-
-for (i in 1:4){
-  lines(x, dt(x,degf[i]), lwd=3, col=colors[i], lty = type[i])
-}
-
-legend("topright", inset=.05, title="Distributions",
-  labels, lwd=2, lty=type, col=colors)
-```
-    
- 
-Like we saw in Chapter 5, we will not know the values of the parameters and must use the sample data to estimate them.  Unlike with proportions, in which we only needed to estimate the population proportion, $\pi$, quantitative sample data must be used to estimate both a population mean $\mu$ and a population standard deviation $\sigma$. This additional uncertainty will require us to use a theoretical distribution that is just a bit wider than the Normal distribution. Enter the **$t$-distribution**!
-
-
-As you can seen from Figure \@ref(fig:tdist), the $t$-distributions (dashed and dotted lines) are centered at 0 just like a standard Normal distribution (solid line), but are slightly wider.  The variability of a $t$-distribution depends on its degrees of freedom, which is calculated from the sample size of a study.  (For a single sample of $n$ observations or paired differences, the degrees of freedom is equal to $n-1$.) Recall from previous classes that larger sample sizes tend to result in narrower sampling distributions.  We see that here as well.  The larger the sample size, the larger the degrees of freedom, the narrower the $t$-distribution.  (In fact, a $t$-distribution with infinite degrees of freedom actually IS the standard Normal distribution!)
-
+For a single sample of $n$ observations or paired differences, the degrees of
+freedom is equal to $n-1$. The larger the sample size, the larger the degrees of freedom, the narrower the $t$-distribution. (In fact, a $t$-distribution with 
+over 100 degrees of freedom is not delectably different from a Normal
+distribution!)
 
 #### Summarize and visualize the data {-}
 
@@ -147,7 +127,7 @@ color_diff %>%
 
 #### Check theoretical conditions {-}
 
-5.  How do you know the independence condition is met for these data?
+5.  How do you know the independence condition is not violated for these data?
 \vspace{0.8in}
 
 6. Is the normality condition met to use the theory-based methods for analysis?  Explain your answer.
