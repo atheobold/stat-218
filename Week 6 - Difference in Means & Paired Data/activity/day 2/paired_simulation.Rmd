@@ -6,7 +6,15 @@ output: html_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       warning = FALSE, 
-                      fig.align = "center")
+                      fig.align = "center", 
+                       out.width="60%")
+
+library(tidyverse)
+library(mosaic)
+library(infer)
+library(pander)
+library(kableExtra)
+library(forcats)
 ```
 
 
@@ -29,64 +37,55 @@ paired mean difference.
 
 \vspace{0.2cm}
 
-### COVID-19 and air pollution
+### COVID-19 and Air Pollution
 
 In June 2020, the social distancing efforts and stay-at-home directives to help
-combat the spread of COVID-19 appeared to help 'flatten the curve' across the
+combat the spread of COVID-19 appeared to help "flatten the curve" across the
 United States, albeit at a high cost to many individuals and businesses. The
 impact of these measures, though, goes far beyond the infection and death rates
 from the disease. You may have seen images comparing air quality in large
 international cities like Rome, Milan, Wuhan, and New Delhi such as the one
-pictured in Figure \@ref(fig:covid), which seem to indicate, perhaps
-unsurprisingly, that fewer people driving and factories being shut down have
-reduced air pollutants. 
+pictured in the figures below, which seem to indicate, perhaps unsurprisingly,
+that fewer people driving and factories being shut down have reduced air
+pollutants. 
 
-Have high population-density US cities seen the same improved air quality conditions? To study this question, data were gathered from the US Environmental Protection Agency (EPA) AirData website which records the ozone (O3) and fine particulate matter (PM2.5) values for cities across the US [@usepa2020]. These measures are used to calculate an air quality index (AQI) score for each city each day of the year. Thirty-three of the most densely populated US cities were selected and the AQI score recorded for April 20, 2020 as well as the five-year median AQI score for April 20th (2015--2019). Note that higher AQI scores indicate worse air quality. A box plot of the differences in AQI scores for the 33 cities and a table of summary statistics are shown on the next page.
+Have high population-density US cities seen the same improved air quality
+conditions? To study this question, data were gathered from the US Environmental
+Protection Agency (EPA) AirData website which records the ozone (O3) and fine
+particulate matter (PM2.5) values for cities across the US. These measures are
+used to calculate an air quality index (AQI) score for each city each day of the
+year. Thirty-three of the most densely populated US cities were selected and the
+AQI score recorded for April 20, 2020 as well as the five-year median AQI score
+for April 20th (2015--2019). Note that higher AQI scores indicate worse air
+quality. 
 
-
-```{r covid, fig.cap="The India Gate in New Delhi, India.", out.width="60%"}
-include_graphics("air_pollution_greyscale.png")
+```{r covid, fig.cap = "The India Gate in New Delhi, India.", out.width = "60%"}
+knitr::include_graphics("air_pollution_greyscale.png")
 ```
 
-\vspace{.05in}
+\newpage
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 air <- read_csv(here::here("Week 6 - Difference in Means & Paired Data", 
                            "activity", 
                            "day 2", 
                            "data", 
-                           "AirPollutionCOVID.csv"))
+                           "AirPollutionCOVID.csv")
+                ) %>% 
+  select(City:Difference)
 ```
-
-```{r, out.width="60%"}
-Air %>% # Pipe data set into...
-  ggplot(aes(y = Difference)) + # Variables to be used
-    geom_boxplot() + # Make a boxplot
-    labs(title = "Boxplot of the Differences in AQI Scores",  # Title plot
-         y = "Difference in air quality score") +
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
-  coord_flip()
-```
-
-\vspace{.2in}
-
-
-Table: Summary statistics for current AQI scores, median AQI scores from 2015--2019, and the differences in AQI scores.
-
-|               |         Mean         | Standard deviation | Sample size |
-|:-------------:|:--------------------:|--------------------|-------------|
-| Current       | $\bar{x}_1$ = 47.394 | $s_1$ = 14.107     | $n_1$ = 33  |
-| 5 Year Median | $\bar{x}_2$ = 51.545 | $s_2$ = 17.447     | $n_2$ = 33  |
-| Differences   | $\bar{x}_d$ = $-4.152$ | $s_d$ = 17.096     | $n_d$ = 33  |
 
 \newpage
-#### Vocabulary review.  {-}
 
-1.  Identify the variables in this study.  What role (explanatory or response) do each have?
+## Vocabulary Review
+
+1.  Identify the variables in this study.  What role (explanatory or response)
+do each have?
 
 \vspace{.5in}
 
-2. Are the differences in AQI scores independent for each case (US city)?  Explain.
+2. Are the differences in AQI scores independent for each case (US city)? 
+Explain.
 
 \vspace{0.5in}
 
@@ -94,9 +93,10 @@ Table: Summary statistics for current AQI scores, median AQI scores from 2015--2
 
 \vspace{0.5in}
 
-#### Ask a research question {-}
+## Ask a Research Question
 
-4. What are the two competing possibilities to run a hypothesis test for this study?
+4. What are the two competing possibilities for explaining the differences in 
+AQI scores? 
 
 \vspace{0.8in}
 
@@ -112,7 +112,51 @@ Table: Summary statistics for current AQI scores, median AQI scores from 2015--2
 
 \vspace{0.3in}
 
-#### Summarize and visualize the data  {-}
+## Summarize and Visualize the Data
+
+A histogram of the differences in AQI scores for the 33 cities and a table of
+summary statistics are shown below. 
+
+```{r histogram}
+ggplot(data = air, 
+       mapping = aes(x = Difference)) +
+  geom_histogram(binwidth = 17) +
+  labs(x = "Difference in air quality score (Current - 5 Year Median)") 
+```
+
+Summary statistics for current AQI scores, median AQI scores from 2015--2019, and the differences in AQI scores.
+
+```{r}
+air %>%
+  pivot_longer(cols = Current:Difference, 
+               names_to = "time_period", 
+               values_to = "AQI") %>% 
+  mutate(time_period = fct_relevel(time_period, 
+                                   "Current", 
+                                   "5yearMedian", 
+                                   "Difference"
+                                   )
+         ) %>% 
+  group_by(time_period) %>% 
+  summarize(mean = mean(AQI), 
+            sd = sd(AQI)
+  ) %>% 
+  kable(col.names = c("", "Mean", "Standard Deviation")
+        ) %>% 
+  kable_styling()
+
+```
+
+\vspace{0.25in}
+
+
+|               |         Mean         | Standard deviation | Sample size |
+|:-------------:|:--------------------:|--------------------|-------------|
+| Current       | $\bar{x}_1$ = 47.394 | $s_1$ = 14.107     | $n_1$ = 33  |
+| 5 Year Median | $\bar{x}_2$ = 51.545 | $s_2$ = 17.447     | $n_2$ = 33  |
+| Differences   | $\bar{x}_d$ = $-4.152$ | $s_d$ = 17.096     | $n_d$ = 33  |
+
+\vspace{0.25in}
 
 8. Report the summary statistic of interest (mean difference) for the data.  
 
@@ -122,108 +166,161 @@ Table: Summary statistics for current AQI scores, median AQI scores from 2015--2
 
 \vspace{0.3in}
 
+## Use Statistical Methods to Draw Inferences from the Data 
 
-#### Use statistical inferential methods to draw inferences from the data {-}
+### Hypothesis Test 
 
-##### Hypothesis test {-}
-To simulate the null distribution of paired sample mean differences we will use a bootstrapping method.  Recall that the null distribution must be created under the assumption that the null hypothesis is true.  Therefore, before bootstrapping, we will need to *shift* each data point by the difference $\mu_0 - \bar{x}_d$.  This will ensure that the mean of the shifted data is $\mu_0$ (rather than the mean of the original data, $\bar{x}_d$), and that the simulated null distribution will be centered at the null value.  
+To simulate the null distribution of paired sample mean differences we need 
+to randomly assign the AQI score for each city to be either the current value or
+the five year median. 
 
-10. Calculate the difference $\mu_0 - \bar{x}_d$.  Will we need to shift the data up or down?
+Take for example Albuquerque, New Mexico. In June 2020 the current AQI score was
+23 and the five year median was 30. If we assume the null is true, that the mean
+of the differences is 0, then there is no relationship between Albuquerque's 
+AQI score and the time period. That means, Albuquerque would have been just as 
+likely to see an AQI score of 30 in June of 2020. 
 
-\vspace{.7in}
+10. How can we use a coin to decide which values for each city are randomly
+assigned to the "Current" (June 2020) time period? 
 
-We will use the `paired_test()` function in `R` (in the `catstats` package) to simulate the shifted bootstrap (null) distribution of sample mean differences and compute a p-value. Use the provided `R` script file and enter the calculated value from question 10 for `xx` to simulate the null distribution and enter the summary statistic from question 8 for `yy` to find the p-value.  Highlight and run lines 1--21.
-
-```{r, echo=TRUE, eval=FALSE, warning = FALSE}
-    paired_test(data = Air$Difference,   # Vector of differences 
-                                         # or data set with column for each group
-            shift = xx,   # Shift needed for bootstrap hypothesis test
-            as_extreme_as = yy,  # Observed statistic
-            direction = "less",  # Direction of alternative
-            number_repetitions = 1000,  # Number of simulated samples for null distribution
-            which_first = 1)  # Not needed when using calculated differences
-```
-    
 \newpage
 
-11. Sketch the null distribution created using the `R` output here.
+A simulated null distribution is shown below. 
 
-\vspace{1.9in}
+```{r null-dist, warning = FALSE}
+null_dist <- air %>% 
+  specify(response = Difference) %>% 
+  hypothesise(null = "point", mu = 0) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "mean")
+
+null_dist %>% 
+  visualise() + 
+  labs(title = "", 
+       x = "Simulated Mean Difference")
+```
+
+
+\vspace{0.5in}
 
 12. Explain why the null distribution is centered at zero. 
 
 \vspace{.5in}
 
+13. Find the observed difference on the distribution. 
 
-13. What proportion of samples are at or less than the observed sample mean difference in AQI scores for current scores minus 5 year median scores? What is the statistical term for this proportion?
-\vspace{.3in}
+\vspace{0.25in}
 
-14. Interpret the p-value in the context of the problem.
-\vspace{.8in}
+14. Shade the area of the distribution you will use to calculate the p-value. 
 
-15. How much evidence does this provide for improved air quality in US cities?
-\vspace{.3in}
+\vspace{0.25in}
 
-16. If evidence was found for improved air quality in US cities, could we conclude that the stay-at-home directives *caused* the improvement in air quality? Explain.
-\vspace{.5in}
+15. Estimate the p-value for testing if there was improved air quality in US
+cities in June 2020. 
 
-##### Confidence interval {-}
-We will use the `paired_bootstrap_CI()` function in `R` (in the `catstats` package) to simulate the bootstrap distribution of sample mean differences and calculate a confidence interval. 
+\vspace{0.25in}
 
-17. Write out the parameter of interest in context of the study.
+16. How much evidence does this provide for improved air quality in US cities?
+\vspace{0.3in}
+
+16. If evidence was found for improved air quality in US cities, could we
+conclude that the stay-at-home directives *caused* the improvement in air
+quality? Explain.
 
 \newpage
 
+## Confidence Interval
 
-18. Using the provided `R` script file, fill in the missing value at `xx` to find a 99\% bootstrap confidence interval; highlight and run lines 24--27.  Report the confidence interval in interval notation.
+The goal of a confidence interval is to estimate a plausible range of values for
+the population parameter. 
 
-```{r, echo=TRUE, eval=FALSE, warning = FALSE}
-paired_bootstrap_CI(data = Air$Difference, # Enter vector of differences
-                    number_repetitions = 1000, # Number of bootstrap samples for CI
-                    confidence_level = xx,  # Confidence level in decimal form
-                    which_first = 1)  # Not needed when entering vector of differences
+17. What is the parameter in this study?
+
+\vspace{0.5in}
+
+To create a bootstrap distribution, we **do not** assume the null hypothesis is
+true. Instead, we assume that the difference in AQI scores for these 33 US
+cities are representative of the differences in AQI scores for other US cities.
+So, we will randomly sample, with replacement, from our original sample to
+obtain a bootstrap sample. 
+
+I've created a bootstrap distribution below, using 1000 reps. 
+
+
+```{r boot-dist}
+boot_dist <- air %>% 
+  specify(response = Difference) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "mean")
+
+boot_dist %>% 
+  visualise() + 
+  labs(title = "", 
+       x = "Bootstrap Mean Difference")
 ```
 
-\vspace{.5in}
+18. Where is the bootstrap distribution be centered? Why is it centered there?
+
+\vspace{0.25in}
+
+19. Use the table below to find a 99% confidence interval for $\mu_{diff}$. 
+
+\vspace{0.5in}
+
+```{r percentile-ci}
+boot_dist %>% 
+  summarize("0.5%" = quantile(stat, 0.05), 
+            "1%" = quantile(stat, 0.01),
+            "2.5%" = quantile(stat, 0.025),
+            "5%" = quantile(stat, 0.05),
+            "90%" = quantile(stat, 0.90),
+            "95%" = quantile(stat, 0.95),
+            "97.5%" = quantile(stat, 0.975),
+            "99.5%" = quantile(stat, 0.95)
+            ) %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Quantile", 
+               values_to = "Value") %>% 
+  kable() %>% 
+  kable_styling()
+```
 
 
-#### Communicate the results and answer the research question {-}
+## Communicate the Results and Address the Research Question
 
-19. Interpret the 99\% confidence interval in the context of the problem.
+20. Interpret the 99% confidence interval in the context of the problem.
 
 \vspace{1in}
 
 
-20. Do the results of your confidence interval and hypothesis test agree?  What does each tell you about the null hypothesis?
+21. Do the results of your confidence interval and hypothesis test agree? What
+does each tell you about the null hypothesis?
 
-\vspace{.7in}
+\vspace{1in}
 
 
-### Take-home messages
+## Take-home messages
 
-1.	The differences in a paired data set are treated like a single quantitative variable when performing a statistical analysis.  Paired data (or paired
+1.	The differences in a paired data set are treated like a single quantitative
+variable when performing a statistical analysis.  Paired data (or paired
 samples) occur when pairs of measurements are collected. We are only interested
-in the population (and sample) of differences, and not in the original data. 
+in the population (and sample) of **differences**, and not in the original data. 
 
-2.  When using bootstrapping to create a null distribution centered at the null
-value for both paired data and a single quantitative variable, we first need to
-shift the data by the difference $\mu_0 - \bar{x}_d$, and then sample with
-replacement from the shifted data. 
-
-3. When analyzing paired data, the summary statistic is the 'mean difference'
-**NOT** the 'difference in means'^[Technically, if we calculate the differences
+3. When analyzing paired data, the summary statistic is the "mean difference"
+**not** the "difference in means"^[Technically, if we calculate the differences
 and then take the mean (mean difference), and we calculate the two means and
 then take the difference (difference in means), the value will be the same.
 However, the *sampling variability* of the two statistics will differ, as we
 will see in the next activity].  This terminology will be *very* important in interpretations.
 
-4. To create one simulated sample on the null distribution for a sample mean or
-mean difference, shift the original data by adding $(\mu_0 - \bar{x})$ or 
-$(0 - \bar{x}_d)$. Sample with replacement from the shifted data $n$ times. 
-Calculate and plot the sample mean or the sample mean difference.
+4. To create one simulated sample on the null distribution for the mean
+difference, we focus on each observation **not** on the groups of observations. 
+For each observation, we flip a coin to decide which response value goes first
+and which goes second. We do this for **every** observation. Once we've randomly
+assigned which observation comes first, we find the difference in the values for
+each observation. Finally, we calculate and plot the simulated mean difference.
 
 5. To create one simulated sample on the bootstrap distribution for a sample
-mean or mean difference, label $n$ cards with the original response values.
+mean or mean difference, label $n$ cards with the original differences.
 Randomly draw with replacement $n$ times.  Calculate and plot the resampled mean
-or the resampled mean difference.
-
+difference.
