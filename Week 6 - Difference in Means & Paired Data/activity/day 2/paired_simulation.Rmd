@@ -58,7 +58,7 @@ air <- read_csv(here::here("Week 6 - Difference in Means & Paired Data",
                            "AirPollutionCOVID.csv"))
 ```
 
-```{r, out.width="60%"}
+```{r, out.width="60%", eval = FALSE}
 Air %>% # Pipe data set into...
   ggplot(aes(y = Difference)) + # Variables to be used
     geom_boxplot() + # Make a boxplot
@@ -210,17 +210,19 @@ value for both paired data and a single quantitative variable, we first need to
 shift the data by the difference $\mu_0 - \bar{x}_d$, and then sample with
 replacement from the shifted data. 
 
-3. When analyzing paired data, the summary statistic is the 'mean difference'
-**NOT** the 'difference in means'^[Technically, if we calculate the differences
+3. When analyzing paired data, the summary statistic is the "mean difference"
+**not** the "difference in means"^[Technically, if we calculate the differences
 and then take the mean (mean difference), and we calculate the two means and
 then take the difference (difference in means), the value will be the same.
 However, the *sampling variability* of the two statistics will differ, as we
 will see in the next activity].  This terminology will be *very* important in interpretations.
 
-4. To create one simulated sample on the null distribution for a sample mean or
-mean difference, shift the original data by adding $(\mu_0 - \bar{x})$ or 
-$(0 - \bar{x}_d)$. Sample with replacement from the shifted data $n$ times. 
-Calculate and plot the sample mean or the sample mean difference.
+4. To create one simulated sample on the null distribution for the mean difference, we focus on each observation **not** on the groups of observations. 
+For each observation, we flip a coin to decide which response value goes with 
+the first group and which goes with the second. We do this for **every** 
+observation. Once we've randomly assigned which observation comes first, we
+find the difference in the values for each observation. Finally, we calculate 
+and plot the simulated mean difference.
 
 5. To create one simulated sample on the bootstrap distribution for a sample
 mean or mean difference, label $n$ cards with the original response values.
