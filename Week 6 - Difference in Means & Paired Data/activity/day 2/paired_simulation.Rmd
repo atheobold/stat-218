@@ -1,6 +1,8 @@
 ---
-title: "Week 6 Day 2: Paired Data, COVID-19 and Air Pollution"
-output: html_document
+title: 'Week 6 Day 2: Paired Data, COVID-19 and Air Pollution'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
@@ -18,7 +20,7 @@ library(forcats)
 ```
 
 
-### Learning outcomes
+# Learning outcomes
 
 * Given a research question involving paired differences, construct the null and
 alternative hypotheses in words and using appropriate statistical symbols.
@@ -35,9 +37,13 @@ paired mean difference.
 
 * Use a confidence interval to determine the conclusion of a hypothesis test.
 
-\vspace{0.2cm}
+```{r covid, fig.cap = "The India Gate in New Delhi, India.", out.width = "60%", out.height = "70%"}
+knitr::include_graphics("air_pollution_greyscale.png")
+```
 
-### COVID-19 and Air Pollution
+\newpage
+
+# COVID-19 and Air Pollution
 
 In June 2020, the social distancing efforts and stay-at-home directives to help
 combat the spread of COVID-19 appeared to help "flatten the curve" across the
@@ -45,9 +51,9 @@ United States, albeit at a high cost to many individuals and businesses. The
 impact of these measures, though, goes far beyond the infection and death rates
 from the disease. You may have seen images comparing air quality in large
 international cities like Rome, Milan, Wuhan, and New Delhi such as the one
-pictured in the figures below, which seem to indicate, perhaps unsurprisingly,
-that fewer people driving and factories being shut down have reduced air
-pollutants. 
+pictured in the figures on the previous page, which seem to indicate, perhaps
+unsurprisingly, that fewer people driving and factories being shut down have
+reduced air pollutants. 
 
 Have high population-density US cities seen the same improved air quality
 conditions? To study this question, data were gathered from the US Environmental
@@ -56,14 +62,8 @@ particulate matter (PM2.5) values for cities across the US. These measures are
 used to calculate an air quality index (AQI) score for each city each day of the
 year. Thirty-three of the most densely populated US cities were selected and the
 AQI score recorded for April 20, 2020 as well as the five-year median AQI score
-for April 20th (2015--2019). Note that higher AQI scores indicate worse air
+for April 20th (2015--2019). Note that **higher** AQI scores indicate worse air
 quality. 
-
-```{r covid, fig.cap = "The India Gate in New Delhi, India.", out.width = "60%"}
-knitr::include_graphics("air_pollution_greyscale.png")
-```
-
-\newpage
 
 ```{r, include = FALSE}
 air <- read_csv(here::here("Week 6 - Difference in Means & Paired Data", 
@@ -75,21 +75,19 @@ air <- read_csv(here::here("Week 6 - Difference in Means & Paired Data",
   select(City:Difference)
 ```
 
-\newpage
-
 ## Vocabulary Review
 
 1.  Identify the variables in this study.  What role (explanatory or response)
 do each have?
 
-\vspace{.5in}
+\vspace{0.5in}
 
-2. Are the differences in AQI scores independent for each case (US city)? 
+2. Are the **differences** in AQI scores independent for each case (US city)? 
 Explain.
 
 \vspace{0.5in}
 
-3. Why is this treated as a paired study design and not two independent samples?
+4. Why is this treated as a paired study design and not two independent samples?
 
 \vspace{0.5in}
 
@@ -100,17 +98,17 @@ AQI scores?
 
 \vspace{0.8in}
 
-5. Write the null hypothesis in words.
+5. Write the null hypothesis in **words**.
 
 \vspace{0.8in}
 
-6. What is the research question?
+6. What is the research question this study seeks to address?
 
 \vspace{0.8in}
 
-7. Write the alternative hypothesis in notation.
+7. Write the alternative hypothesis in **notation**.
 
-\vspace{0.3in}
+\vspace{0.8in}
 
 ## Summarize and Visualize the Data
 
@@ -121,10 +119,11 @@ summary statistics are shown below.
 ggplot(data = air, 
        mapping = aes(x = Difference)) +
   geom_histogram(binwidth = 17) +
-  labs(x = "Difference in air quality score (Current - 5 Year Median)") 
+  labs(x = "Difference in air quality score (April 2020 - 5 Year Median)") 
 ```
 
-Summary statistics for current AQI scores, median AQI scores from 2015--2019, and the differences in AQI scores.
+Summary statistics for the June 2020 (Current) AQI scores, median AQI scores
+from 2015--2019, and the differences in AQI scores.
 
 ```{r}
 air %>%
@@ -141,22 +140,13 @@ air %>%
   summarize(mean = mean(AQI), 
             sd = sd(AQI)
   ) %>% 
-  kable(col.names = c("", "Mean", "Standard Deviation")
-        ) %>% 
-  kable_styling()
-
+  rename(Mean = mean, 
+         `Standard Deviation` = sd, 
+         Variable = time_period) %>% 
+  pander()
 ```
 
-\vspace{0.25in}
-
-
-|               |         Mean         | Standard deviation | Sample size |
-|:-------------:|:--------------------:|--------------------|-------------|
-| Current       | $\bar{x}_1$ = 47.394 | $s_1$ = 14.107     | $n_1$ = 33  |
-| 5 Year Median | $\bar{x}_2$ = 51.545 | $s_2$ = 17.447     | $n_2$ = 33  |
-| Differences   | $\bar{x}_d$ = $-4.152$ | $s_d$ = 17.096     | $n_d$ = 33  |
-
-\vspace{0.25in}
+\newpage
 
 8. Report the summary statistic of interest (mean difference) for the data.  
 
@@ -174,16 +164,16 @@ To simulate the null distribution of paired sample mean differences we need
 to randomly assign the AQI score for each city to be either the current value or
 the five year median. 
 
-Take for example Albuquerque, New Mexico. In June 2020 the current AQI score was
+Take for example Albuquerque, New Mexico. In April 2020 the current AQI score was
 23 and the five year median was 30. If we assume the null is true, that the mean
 of the differences is 0, then there is no relationship between Albuquerque's 
 AQI score and the time period. That means, Albuquerque would have been just as 
-likely to see an AQI score of 30 in June of 2020. 
+likely to see an AQI score of 30 in April of 2020. 
 
 10. How can we use a coin to decide which values for each city are randomly
-assigned to the "Current" (June 2020) time period? 
+assigned to the "Current" (April 2020) time period? 
 
-\newpage
+\vspace{1in}
 
 A simulated null distribution is shown below. 
 
@@ -200,43 +190,41 @@ null_dist %>%
        x = "Simulated Mean Difference")
 ```
 
-
-\vspace{0.5in}
-
 12. Explain why the null distribution is centered at zero. 
 
-\vspace{.5in}
+\newpage
 
-13. Find the observed difference on the distribution. 
+13. Find the observed mean difference on the distribution. 
 
-\vspace{0.25in}
+\vspace{0.1in}
 
 14. Shade the area of the distribution you will use to calculate the p-value. 
 
-\vspace{0.25in}
+\vspace{0.1in}
 
 15. Estimate the p-value for testing if there was improved air quality in US
-cities in June 2020. 
+cities in April 2020. 
 
 \vspace{0.25in}
 
 16. How much evidence does this provide for improved air quality in US cities?
-\vspace{0.3in}
+
+\vspace{0.5in}
 
 16. If evidence was found for improved air quality in US cities, could we
-conclude that the stay-at-home directives *caused* the improvement in air
+conclude that the stay-at-home directives ***caused*** the improvement in air
 quality? Explain.
 
-\newpage
+\vspace{1in}
 
 ## Confidence Interval
 
 The goal of a confidence interval is to estimate a plausible range of values for
 the population parameter. 
 
-17. What is the parameter in this study?
+17. What is the population parameter in this study?
 
-\vspace{0.5in}
+\newpage
 
 To create a bootstrap distribution, we **do not** assume the null hypothesis is
 true. Instead, we assume that the difference in AQI scores for these 33 US
@@ -245,7 +233,6 @@ So, we will randomly sample, with replacement, from our original sample to
 obtain a bootstrap sample. 
 
 I've created a bootstrap distribution below, using 1000 reps. 
-
 
 ```{r boot-dist}
 boot_dist <- air %>% 
@@ -261,9 +248,9 @@ boot_dist %>%
 
 18. Where is the bootstrap distribution be centered? Why is it centered there?
 
-\vspace{0.25in}
+\vspace{0.5in}
 
-19. Use the table below to find a 99% confidence interval for $\mu_{diff}$. 
+19. Use the table below to find a 99% confidence interval for $\mu_{\text{diff}}$. 
 
 \vspace{0.5in}
 
@@ -281,8 +268,7 @@ boot_dist %>%
   pivot_longer(cols = everything(), 
                names_to = "Quantile", 
                values_to = "Value") %>% 
-  kable() %>% 
-  kable_styling()
+  pander()
 ```
 
 
@@ -321,6 +307,6 @@ assigned which observation comes first, we find the difference in the values for
 each observation. Finally, we calculate and plot the simulated mean difference.
 
 5. To create one simulated sample on the bootstrap distribution for a sample
-mean or mean difference, label $n$ cards with the original differences.
+mean or mean difference, label $n$ cards with the original values / differences.
 Randomly draw with replacement $n$ times.  Calculate and plot the resampled mean
-difference.
+or mean difference.
