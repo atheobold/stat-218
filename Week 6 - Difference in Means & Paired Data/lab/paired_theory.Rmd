@@ -82,7 +82,7 @@ color <- read.csv(here::here("Week 6 - Difference in Means & Paired Data",
 
 Let's first visualize the distribution of each of the letter color options. 
 
-5. Create histograms of the following: 
+5. Create two histograms of the following: 
 
 - the distribution of reading times for words printed in black 
 - the distribution of reading times for words printed in a different color
@@ -105,7 +105,7 @@ If you look at the data, you will notice there are three columns: `Subj`,
 between the different color read time (`DiffCol`) and the black read time
 (`Black`). Let's make a new column with the differences!
 
-```{r data-cleaning}
+```{r add-differences-to-data}
 color <- mutate(color,
                 Difference = DiffCol - Black
                 )
@@ -131,6 +131,9 @@ reading time.
 ```{r difference-stats}
 
 ```
+
+__6. What is the observed mean difference in reading times?__
+
 
 
 ## Check Theoretical Conditions
