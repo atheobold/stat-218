@@ -1,0 +1,106 @@
+---
+title: "Your Title Goes Here! Make it fun!"
+author: "Your Name Here!"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# This is code to make your report format look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+# The code to load in the necessary packages goes here!
+# You will need: tidyverse and mosaic and infer
+
+
+```
+
+```{r data}
+# This is where you will load in your data! 
+# I suggest copying and pasting code from a prior lab. 
+# You will need to change: 
+# 1. the name of the dataset (you get to choose the name)
+# 2. directions for how to get to the data
+
+
+```
+
+## Data Description
+<!-- In this section you are to describe your dataset! -->
+
+<!-- This section has three tasks:
+1. Describe the context of your dataset in your own words!
+2. Describe the two variables you are interested in. One should be the
+explanatory variable and one should be the response.
+3. Tell me why you picked these variables - what relationship are you investigating?
+-->
+
+
+
+## Data Visualization
+<!-- In this section you create three visualizations of your data -->
+
+### Barplot of <INSERT NAME OF RESPONSE VARIABLE>
+
+```{r histogram-1}
+## Code to make your first barplot goes here! 
+## Don't forget to choose nice axis title!
+
+
+```
+<!-- Here is where you describe what you see in the barplot.-->
+
+
+
+### Barplot of <INSERT NAME OF EXPLANATORY VARIABLE>
+
+```{r histogram-2}
+## Code to make your second barplot goes here! 
+## Don't forget to choose nice axis title!
+
+
+```
+<!-- Here is where you describe what you see in the barplot.-->
+
+
+
+### <STACKED OR SIDE-BY-SIDE> Barplot of <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+```{r scatterplot}
+## Code to make your side-by-side or stacked barplot goes here! 
+## You get to choose which orientation you would like to use!
+## Don't forget to choose nice axis labels!
+
+
+```
+
+<!-- Here is where you describe what you see in the two variable barplot.-->
+
+## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+### Model Conditions
+<!-- Here is where you describe the four conditions (LINE) for linear regression.  -->
+<!-- State what the condition is and if you believe it is / is not violated IN THE CONTEXT OF YOUR DATA! -->
+
+
+### Coefficient Estimates
+
+```{r lm}
+## Code to fit a linear regression
+
+## Code to get coefficient table from linear regression
+
+```
+
+### Inference for the Slope
+
+<!-- Here is where you describe the decision for the hypothesis test for whether the slope is 0.  -->
+
+
+
+<!-- Here is where you describe the confidence interval for the true slope. -->
+
+
