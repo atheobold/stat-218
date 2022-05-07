@@ -1,0 +1,173 @@
+---
+title: "Final Exam Question Bank"
+author: "Stat 218"
+output:
+  html_document:
+    df_print: paged
+  pdf_document:
+    extra_dependencies:
+    - multicol
+    - setspace
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      fig.width = 4, 
+                      fig.height = 4)
+
+library(tidyverse)
+library(openintro)
+library(mosaic)
+library(moderndive)
+library(pander)
+library(infer)
+#library(lterdatasampler)
+library(palmerpenguins)
+```
+
+Your exam questions will be randomly selected from this bank of
+questions. There \textbf{will not} be a solution key posted. It is your 
+responsibility to discuss your ideas with your group members and / or with 
+Dr. Theobold during office hours prior to the exam.
+
+\vspace{0.5cm}
+
+## Golden Ticket
+
+| Scenario | One Categorical Response | Two Categorical Variables | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
+|----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
+| Type of plot | Bar plot | Side-by-Side Bar plot, Stacked Bar plot, Mosaic plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+| Summary measure | Proportion | Difference in Proportions | Mean | Slope or Correlation | Difference in Means |
+| Parameter notation | $\pi$ | $\pi_1 - \pi_2$ | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+| Statistic notation | $\widehat{p}$ | $\widehat{p}_1 - \widehat{p}_2$ | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+
+\vspace{0.5cm}
+
+## Provided Formulas
+
+$$IQR = Q3 - Q1$$
+
+\vspace{0.25cm}
+
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
+
+\vspace{0.25cm}
+
+$$\hat{y} = b_0 + b_1 \times x$$
+
+\vspace{0.2cm}
+
+$$Residual = y - \hat{y}$$ 
+
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+\vspace{0.25cm}
+
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+
+\vspace{0.25cm}
+
+$$\widehat{p}_{pool} = \frac{\text{total number of "successes"}}{\text{total number of cases}} = \frac{\hat{p}_1 * n_1 + \hat{p}_2 * n_2}{n_1 + n_2}$$ 
+
+\newpage 
+
+\noindent
+\textbf{Q1}[]
+Wild mushrooms, such as chanterelles or morels, are delicious, but eating wild
+mushrooms carries the risk of accidental poisoning. Even a single bite of the
+wrong mushroom can be enough to cause fatal poisoning. An amateur mushroom
+hunter is interested in finding an easy rule to differentiate poisonous and
+edible mushrooms. They think that the mushroom’s gills (the part which holds and
+releases spores) might be related to a mushroom’s edibility. They used a data
+set of 8124 mushrooms and their descriptions. For each mushroom, the data set
+includes whether it is edible or poisonous and the spacing of the gills (Broad
+or Narrow). 
+
+**Please Note**: According to The Audubon Society Field Guide to North American
+Mushrooms, there is no simple rule for determining the edibility of a mushroom;
+no rule like "leaflets three, leave them be" for Poisonous Oak and Ivy.
+
+|       | Broad Gill Size | Narrow Gill Size | Total |
+|-------|-----------------|------------------|-------|
+| Edible | 3920 | 288 | 4208 |
+| Poisonous | 1692 | 2224 | 3916 |
+| Total | 5612 | 2512 | 8124 |
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(a)}[4 pts] Fill in each blank with one of the options in parentheses to
+best describe the variables collected. 
+
+\vspace{0.2cm}
+
+Whether the mushroom is edible or poisonous is the (explanatory / response) \underline{\hspace{3in}} and it is
+(categorical / quantitative) \underline{\hspace{3in}}. 
+
+\vspace{0.2cm}
+
+Gill size (Broad or Narrow) is the (explanatory / response) 
+\underline{\hspace{3in}} and it is (categorical / quantitative)
+\underline{\hspace{3in}}. 
+
+\vspace{0.2cm} 
+
+\noindent
+\textbf{(b)}[3 points] Calculate the proportion of mushrooms with a broad gill
+size that are poisonous. *Give appropriate notation with informative subscripts
+if necessary.* 
+
+\vspace{0.2cm}
+
+**Work:**
+
+\vspace{1cm}
+
+**Answer:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+**Notation:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(c)}[3 points] Calculate the proportion of mushrooms with a narrow gill
+size that are poisonous. *Give appropriate notation with informative subscripts
+if necessary.* 
+
+\vspace{0.2cm}
+
+**Work:**
+
+\vspace{1cm}
+
+**Answer:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+**Notation:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(d)}[3 points] Using your answers to (b) and (c), fill in the blanks
+below to label the bar chart showing the relationship between gill size (broad
+or narrow) and whether the mushroom is edible. 
+
+```{r mushroom-barplot}
+
+## Make a barplot
+## Add blanks where the legend is so students fill in!
+
+```
+
+

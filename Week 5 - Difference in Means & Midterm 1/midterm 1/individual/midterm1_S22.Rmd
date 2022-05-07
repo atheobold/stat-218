@@ -60,8 +60,16 @@ cell phones is strictly prohibited.
 \begin{itemize}
 \item Read and sign the honesty pledge at the top of this page. Your exam will
 not be graded unless the honesty pledge is signed!
-\item Attempt all questions and write legibly.
-\item Show ALL the steps of your work clearly.
+\item You may use a calculator. You \textbf{may not} use your phone or any
+device that connects to the internet as a calculator. \\
+\item Show all work as clearly as possible. Point totals are shown in brackets 
+next to each part. Formulas without values entered do not count as work. \\
+\item All answers should be reported in decimal form, rounded to three decimal
+places. \\
+\item For multiple choice and multi-select problems, completely fill in the
+provided circle (multiple choice) or square (multi-select) for your desired
+answer choice(s). If you change an answer, be sure to completely erase your
+initial selection.
 \item You have 50 minutes to complete this exam, so budget your time wisely.    
 \end{itemize}
 

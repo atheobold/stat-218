@@ -1,0 +1,117 @@
+---
+title: "STAT 218 -- Midterm 2"
+date: "May 17, 2020"
+author: "Dr. Allison Theobold"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      fig.width = 4, 
+                      fig.height = 4)
+
+library(tidyverse)
+library(openintro)
+library(mosaic)
+library(moderndive)
+library(pander)
+library(infer)
+library(lterdatasampler)
+library(palmerpenguins)
+```
+
+\begin{center}
+\large{Name:} \underline{\hspace{3in}}
+\vspace{0.25cm}
+
+\large{Section (circle one):} \hspace{1cm} 8:10am \hspace{2cm} 9:10am 
+
+\end{center}
+
+\vspace{0.8cm}
+
+\noindent {\bf Read and Sign the Following Statement:}
+
+I understand that give or receiving help on this exam is a violation of academic
+regulations and is punishable by a grade of __F__ in this course. This
+includes looking at other students' exams and / or allowing other students,
+actively or passively, to see answers on my exam. This also includes revealing,
+actively or passively, any information about the exam to any member of 
+Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
+cell phones is strictly prohibited.
+
+\begin{center}
+
+\textbf{I pledge not to do any of these things.}
+
+\vspace{0.5cm}
+
+\textbf{Signed:} \underline{\hspace{4in}}
+
+\end{center}
+
+\vspace{1cm}
+
+\noindent {\bf \textsf{Instructions.}}
+
+\begin{itemize}
+\item Read and sign the honesty pledge at the top of this page. Your exam will
+not be graded unless the honesty pledge is signed!
+\item You may use a calculator. You \textbf{may not} use your phone or any
+device that connects to the internet as a calculator. \\
+\item Show all work as clearly as possible. Point totals are shown in brackets 
+next to each part. Formulas without values entered do not count as work. \\
+\item All answers should be reported in decimal form, rounded to three decimal
+places. \\
+\item For multiple choice and multi-select problems, completely fill in the
+provided circle (multiple choice) or square (multi-select) for your desired
+answer choice(s). If you change an answer, be sure to completely erase your
+initial selection.
+\item You have 50 minutes to complete this exam, so budget your time wisely.    
+\end{itemize}
+
+\pagebreak
+
+## Golden Ticket
+
+
+| Scenario | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
+|----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
+| Type of plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+| Summary measure | Mean | Slope or Correlation | Difference in Means |
+| Parameter notation | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+| Statistic notation | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+
+\vspace{0.5cm}
+
+## Provided Formulas
+
+$$IQR = Q3 - Q1$$
+
+\vspace{0.25cm}
+
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
+
+\vspace{0.25cm}
+
+$$\hat{y} = b_0 + b_1 \times x$$
+
+\vspace{0.2cm}
+
+$$Residual = y - \hat{y}$$ 
+
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+\vspace{0.25cm}
+
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+
+\newpage 

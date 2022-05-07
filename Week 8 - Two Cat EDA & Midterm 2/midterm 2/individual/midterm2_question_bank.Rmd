@@ -1,0 +1,179 @@
+---
+title: "Midterm 2 Question Bank"
+author: "Stat 218"
+output:
+  html_document:
+    df_print: paged
+  pdf_document:
+    extra_dependencies:
+    - multicol
+    - setspace
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      fig.width = 4, 
+                      fig.height = 4)
+
+library(tidyverse)
+library(openintro)
+library(mosaic)
+library(moderndive)
+library(pander)
+library(infer)
+#library(lterdatasampler)
+library(palmerpenguins)
+```
+
+Your exam questions will be randomly selected from this bank of
+questions. There \textbf{will not} be a solution key posted. It is your 
+responsibility to discuss your ideas with your group members and / or with 
+Dr. Theobold during office hours prior to the exam.
+
+\vspace{0.5cm}
+
+## Golden Ticket
+
+
+| Scenario | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
+|----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
+| Type of plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+| Summary measure | Mean | Slope or Correlation | Difference in Means |
+| Parameter notation | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+| Statistic notation | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+
+\vspace{0.5cm}
+
+## Provided Formulas
+
+$$IQR = Q3 - Q1$$
+
+\vspace{0.25cm}
+
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
+
+\vspace{0.25cm}
+
+$$\hat{y} = b_0 + b_1 \times x$$
+
+\vspace{0.2cm}
+
+$$Residual = y - \hat{y}$$ 
+
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+\vspace{0.25cm}
+
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+
+\newpage 
+
+\textbf{Q1}[ points] 
+
+Researchers in Southern England collected data on grassland butterflies. They
+were interested in whether movement patterns varied across species and between
+male and female butterflies. Researchers observed 164 butterflies over the
+three-year length of this study, of which 28 were female and 136 were male. 
+These 164 butterflies are considered to be representative of all grassland
+butterflies. The butterfly movements were observed by measuring how far they
+flew (in meters) from one landing site to the next, called step distance. This
+was done by placing a flag at each landing site and measuring the distance
+between the flags using a mapping software.
+
+The researchers were interested in investigating if there was a difference
+between how far male and female butterflies travel, on average, between landing
+sites. 
+
+\noindent
+\textbf{(a)}[4 pts] Fill in each blank with one of the options in parentheses to
+best describe the variables collected. 
+
+\vspace{0.2cm}
+
+Step distance is the (explanatory/response) \underline{\hspace{3in}} and it is
+(categorical/quantitative) \underline{\hspace{3in}}. 
+
+\vspace{0.2cm} 
+
+Sex is the (explanatory/response) \underline{\hspace{3in}} and it is
+(categorical/quantitative) \underline{\hspace{3in}}.
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(b)}[3 pts] Which type of plot is most appropriate to display the
+relationship between step distance and sex of the butterfly? Select one. 
+
+\begin{itemize}
+\item Segmented Bar plot \\
+\item Scatterplot \\
+\item Side-by-side Boxplot \\
+\item Histogram 
+\end{itemize}
+
+\noindent
+\textbf{(c)} [3 pts] Assuming a statistical difference in step distance is
+found between the males and females in the sample, what is the scope of
+inference for this study? Select one. 
+
+\begin{itemize}
+\item Sex causes a difference in average step distance for all grassland
+butterflies. \\
+\item Sex is associated with a difference in average step distance for grassland
+butterflies similar to those sampled. \\
+\item Sex causes a difference in average step distance for grassland butterflies
+similar to those sampled. \\
+\item Sex is associated with a difference in average step distance for all
+grassland butterflies. 
+\end{itemize}
+
+\newpage 
+
+\noindent
+\textbf{Q2}[] 
+Is insomnia related to education level? Researchers at the University of 
+Memphis, in Tennessee investigated this question in the Journal of Abnormal
+Psychology (February, 2005). Eight hundred (800) adults living in Tennessee were
+selected to participate in the study, using a random-digit telephone dialing
+procedure. Responses were collected from a total of 575 adults. Two variables
+measured were level of education and insomnia status (normal sleeper or chronic
+insomniac). The researchers discovered that the lower the level of education,
+the more likely the person was to have chronic insomnia.
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(a)}[2 points] What are the observational units in this study?
+
+\vspace{1cm} 
+
+\noindent
+\textbf{(b)}[3 points] Fill in the blanks with one of the options provided in
+parentheses to identify and explain the study design.
+
+This is a(n) (observational study / randomized experiment)
+\underline{\hspace{3in}} because (level of education / insomnia status) \underline{\hspace{3in}} (was / was not) \underline{\hspace{3in}} randomly
+(assigned / sampled) \underline{\hspace{3in}. 
+
+\vspace{1cm}
+
+\noindent
+\textbf{(c)}[3 points] Which types of sampling bias may be present in this
+study? Select **all** that are present, or if there is no bias present, select
+"No bias." 
+
+\begin{itemize}
+\item Selection bias \\
+\item Response bias \\
+\item Non-response bias \\
+\item No bias
+\end{itemize}
+
