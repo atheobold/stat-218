@@ -1,0 +1,173 @@
+---
+title: "Week 7 Reading Guide Part 2: Exploring Categorical Data"
+output: html_document
+---
+
+## Chapter 4: Exploring Categorical Data
+
+</br>
+
+### Section 4.1: Contingency tables and bar plots
+
+</br>
+
+__Contingency table:__
+
+</br>
+</br>
+
+__Row total:__
+
+</br>
+
+__Column total:__
+
+</br>
+</br>
+
+__Frequency table:__
+
+</br>
+</br>
+
+__Bar plot:__
+
+</br>
+</br>
+
+__How is a bar plot similar to a histogram?__
+
+</br>
+</br>
+
+__How is a bar plot different from a histogram?__
+
+</br>
+</br>
+
+## Section 4.2: Visualizing two categorical variables
+
+__What are the three ways to add a second categorical variable to a bar plot?__
+
+</br>
+</br>
+
+__Which plot would be best if you wanted to compare the proportions between two 
+groups?__
+
+</br>
+</br>
+
+__Which plot would be best if you wanted to compare the sample size of each 
+group?__
+
+</br>
+</br>
+
+__Which plot would be best if one categorical variable is the response and the
+other is the explanatory variable?__
+
+</br>
+</br>
+
+__How is a mosaic plot different from a bar plot?__
+
+</br>
+</br>
+
+
+## Setion 4.3: Row and column proportions
+
+__Row proportions:__
+
+</br>
+</br>
+
+__Column proportions:__
+
+</br>
+</br>
+
+__Table 4.3 is called a "relative frequency table." How is this table different 
+from the contingency table (Table 4.1)?__
+
+</br>
+</br>
+
+__Conditional proportion:__
+
+</br>
+</br>
+
+## Section 4.4: Pie charts
+
+__In what scenario is a pie chart a "good" visualization to use?__
+
+</br>
+</br>
+
+__In what scenario is a pie chart a bad visualization to use?__
+
+</br>
+</br>
+
+## Section 4.5: Waffle Charts
+
+__How is a waffle chart different from a mosaic plot?__
+
+</br>
+</br>
+
+__In what scenario is a waffle chart a "good" visualization to use?__
+
+</br>
+</br>
+
+## Questions to Consider 
+
+In a contingency table, which variable (explanatory or response) generally will
+make the columns of the table?  Which variable will make the rows of the table?
+
+</br>
+</br>
+
+In a segmented bar plot, the bars represent the levels of which variable?  The
+segments represent the levels of which variable?
+
+</br>
+</br>
+
+What type of plot(s) are appropriate to display a single categorical variable?
+
+</br>
+</br>
+
+What type of plot(s) are appropriate to display two categorical variables?
+
+</br>
+</br>
+
+What is the difference between a standardized segmented bar plot and a mosaic
+plot?
+
+</br>
+</br>
+
+True or false: Pie charts are generally highly recommended ways to graphically
+display categorical data.
+
+</br>
+
+True or false: Two categorical variables are associated if the conditional 
+proportions of a particular outcome (typically of the response variable) differ
+across levels of the other variable (typically the explanatory variable).
+
+</br>
+
+
+True or false: When a segmented bar plot has segments that sum to 1 (or 100%),
+the segment heights correspond to the proportions conditioned on the
+**segment**.
+
+</br>
+</br>
