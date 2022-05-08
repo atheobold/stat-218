@@ -1,0 +1,144 @@
+---
+title: "Week 7 Day 2: Hypothesis Testing, Errors, & Multiple Comparisons"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Hypothesis Testing in ANOVA
+
+ANOVA assess the differences in the group means relative to the variability in
+the observations within each group.
+
+Ideally, we'd like to see:
+
+- large differences in the means of the groups
+- small amounts of variability within each group
+
+
+class: middle, center
+
+.larger[Hypotheses]
+
+For an ANOVA, we are interested in testing for a difference in multiple groups. 
+
+<center> 
+
+$H_0$: all of the group means are the same 
+
+$H_A$: at least one group mean differs
+
+---
+
+class: middle 
+
+.larger[**Conditions of an ANOVA**]
+
+- Independence 
+  * Within groups 
+  * Between groups
+  
+- Normality of the responses
+  * The distribution of each group is approximately normal
+
+- Equal variability of the groups 
+  * The spread of the distributions are similar across groups
+  
+---
+
+.larger[**F-distribution**] 
+
+- If the conditions of normality and equal variance are not violated, we can use 
+the $F$-distribution to approximate the shape of the true sampling distribution. 
+
+--
+
+- An $F$-distribution is a variant of the $t$-distribution, and is also defined by degrees of freedom. 
+  * This distribution is defined by __two__ different degrees of freedom:  
+    1. from the numerator (MSG) : $k - 1$
+    2. from the denominator (MSE) : $n - k$ 
+
+---
+
+.large[**Visualizing the Observed Statistic**]
+
+<center> 
+.midi[
+$F$-distribution with 2 and 91 degrees of freedom
+]
+
+```{r, echo = FALSE, fig.width = 8, fig.height = 6, fig.align='center'}
+values <- rf(100000, df1 = 2, df2 = 91) %>% 
+  tibble()
+
+values %>% 
+ggplot(aes(x = .)) + 
+  geom_density() + 
+  xlim(c(0, 5)) + 
+  geom_vline(xintercept = 0.546, color = "red", linetype = "dashed") +
+  labs(x = "F-statistic", 
+       y = "Density")
+
+```
+
+---
+
+class: center 
+
+.larger[**Calculating the p-value**]
+
+Using an F-distribution, the p-value is output from the `aov()` function:
+
+
+```{r}
+aov(score ~ rank, data = evals_small) %>% 
+  tidy()
+```
+
+
+---
+
+class: center
+
+.larger[**Simulation-based Methods**]
+
+If the condition of normality is violated, then a simulation-based method would produce a more accurate p-value. 
+
+--
+
+We can use the familiar tools from the infer package, with only one change: the statistic that is calculated! 
+
+```{r, eval = FALSE}
+null_dist <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+```
+
+---
+
+class: center 
+
+.larger[Visualizing the p-value]
+
+
+```{r, eval = FALSE}
+null_dist %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+```{r, fig.width = 8, fig.height = 5, echo = FALSE}
+
+p_val <- get_p_value(null_dist, obs_stat = obs_F, direction = "greater") %>% 
+  pull()
+  
+null_dist %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_F, direction = "greater") + 
+  annotate(x = 2.5, y = 500, geom = "text", label = p_val, size = 6)
+```

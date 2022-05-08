@@ -1,0 +1,280 @@
+---
+title: "Week 7 Day 1: Introduction to ANalysis Of Variance"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, 
+                      fig.align = 'center', 
+                      out.width = "70%")
+
+library(tidyverse)
+library(mosaic)
+library(broom)
+library(infer)
+
+movies <- read_csv(here::here("Week 7 - ANOVA & One Proportion",
+                              "activity", 
+                              "day 1",
+                              "data",
+                              "Movies2016.csv")
+                   )
+
+movies_no_NR <- movies %>% 
+  filter(content_rating != "Not Rated")
+```
+
+## Movies from 2016
+
+Recall the dataset we've explored throughout the quarter -- to visualize the 
+distribution of IMDB movie ratings and to compare the budgets of PG and R rated 
+movies.
+
+| **Variable** 	| **Description** |
+|----	|-------------	|
+| `movie_title` | Title of movie |
+| `budget_mil` | Amount of money (in US $ millions) budgeted for the production of the movie |
+| `revenue_mil` | Amount of money (in US $ millions) the movie made after release|
+| `duration` | Length of the movie (in minutes)|
+| `content_rating` | Rating of the movie (`G`, `PG`, `PG-13`, `R`, `Not Rated`)|
+| `imdb_score` | IMDb user rating score from 1 to 10 |
+| `genres` | Categories the movie falls into (e.g., Action, Drama, etc.) |
+| `facebook_likes` | Number of likes a movie receives on Facebook |
+
+
+## Comparing Many Groups
+
+If you recall, the last comparison we did with these data compared the budgets
+between movies rated PG and movies rated R. We removed the other movie ratings 
+from the dataset to make this comparison. 
+
+Today, we are going to include **all** of the movie ratings and compare the 
+budgets across all four using ANOVA. 
+
+
+## Visualizing a Single Categorical and a Single Quantitative Variable
+
+We can use the **same** visualization techniques for a categorical variable 
+that has more than two groups. The only aspect that will change is what the 
+plots look like. 
+
+1. What are two ways to visualize one numerical variable and one categorical 
+variable?
+
+\pagebreak
+
+## Faceted Histograms
+
+
+
+## Side-by-Side Boxplots
+
+The boxplot of movie budgets (in millions) by content rating is plotted using
+the code below.  Enter the variable `budget_mil` for `response` and the variable
+`content_rating` for explanatory at line 44, highlight and run code lines
+42--48. This plot compares the budget for different levels of content rating.
+
+```{r anova-viz, echo = FALSE}
+p1 <- ggplot(data = movies, 
+             mapping = aes(y = budget_mil, x = content_rating)) + 
+  geom_boxplot() + 
+  labs(x = "Content Rating", 
+       y = "Budget (in Millions)"
+       )
+
+p2 <- ggplot(data = movies, 
+             mapping = aes(x = budget_mil, y = content_rating)) + 
+  geom_boxplot() + 
+  labs(y = "Content Rating", 
+       x = "Budget (in Millions)"
+       )
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+1. Answer the following questions about the box plots created.
+
+   a. Which content rating has the highest center?
+
+\vspace{0.2in}
+
+   b. Which content rating has the largest spread?
+
+\vspace{0.2in}
+
+   c. Which content rating has the most skewed distribution?
+
+\vspace{.8in}
+
+## Data Cleaning
+
+As we saw in the boxplots, the `"Not Rated"` movies had budgets of about 0. 
+Inspecting the data a bit further, I discovered that there were only two movies
+with a content rating of `"Not Rated"`, one with a budget of 0 (Cabin Fever) and
+one with a budget of 0.770629 (The Wailing). 
+
+Because there is so little data for this group, I don't believe we can make a 
+reasonable estimate of the mean budget for **all** Not Rated movies. Thus, I 
+decided to remove these movies from our investigation. 
+
+If you are interested, here is the code I used to do this!
+
+```{r}
+movies_no_NR <- filter(movies, 
+                       content_rating != "Not Rated")
+```
+
+
+## Summary Statistics
+
+Let's obtain a more complete picture of how different these groups are with 
+summary statistics. Our familiar friend `favstats()` can help us compare summary statistics across different groups. 
+
+Like before, the budget of the film is the response and the content rating is
+the explanatory variable. So, our code looks like: 
+
+```{r stat-comparison, eval = FALSE}
+favstats(budget_mil ~ content_rating, 
+         data = movies_no_NR)
+```
+
+Use the output from the `favstats()` function to answer the following questions:
+
+```{r, echo = FALSE}
+favstats(budget_mil ~ content_rating,
+         data = movies_no_NR)
+```
+
+\vspace{0.8in}
+
+1. Report the mean budget amount for each rating.  Use appropriate notation.
+
+\vspace{0.8in}
+
+2. Which content ratings have the largest difference in their mean budget?
+
+\vspace{0.8in}
+
+3. Which content rating has the largest standard deviation? 
+
+\vspace{0.25in}
+
+4. Which content rating has the smallest standard deviation?
+
+\vspace{0.25in}
+
+5. How many times larger is your answer in #3 than your answer in #4?
+
+\vspace{0.8in}
+
+6. Which content rating has the largest sample size? What is the formula for 
+the standard deviation of a mean? What effect does sample size have on the 
+standard deviation? 
+
+\vspace{1in}
+
+## Introducing a New Statistic
+
+In an ANOVA, there are more than two groups that we wish to compare how
+different the means are from each other. We could make every comparison of two
+means (PG - R, PG - PG13, R = PG13), but how would we use these numbers to 
+summarize how different **all** of the groups are from each other?
+
+Enter the F-statistic! An F-statistic summarizes two quantities:
+
+- How different the means of the groups are from each other
+- How different the observations in each group are from the mean of their group
+
+To me, an F-statistic makes more sense if I visualize what these pieces mean. 
+In the plot below, I've added three pieces, 
+
+- Individual points within each group (these are the movies)
+- A red line across the entire plot
+- A blue line across each group
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 6, fig.align= 'center'}
+
+overall_mean <- movies_no_NR %>% 
+  summarize(mean(budget_mil)) %>% 
+  pull()
+
+group_means <- movies_no_NR %>% 
+  group_by(content_rating) %>% 
+  summarize(mean(budget_mil)) %>% 
+  pull()
+
+movies_no_NR %>% 
+  ggplot(mapping = aes(x = content_rating, 
+                       y = budget_mil, 
+                       fill = content_rating)
+         ) + 
+  geom_boxplot(alpha = 0.2) + 
+  geom_jitter(width = 0.1, alpha = 0.75) +
+  geom_hline(yintercept = overall_mean, 
+             color = "red", 
+             linetype = "dashed", 
+             lwd = 1.5) +
+  geom_segment(x = 0.5, xend = 1.5, y = group_means[1], yend = group_means[1], 
+               color = "blue", lwd = 1.5, linetype = "dotted") +
+  geom_segment(x = 1.5, xend = 2.5, y = group_means[2], yend = group_means[2], 
+               color = "blue", lwd = 1.5, linetype = "dotted") +
+  geom_segment(x = 2.5, xend = 3.5, y = group_means[3], yend = group_means[3], 
+               color = "blue", lwd = 1.5, linetype = "dotted") +
+  theme(legend.position = "none", 
+        axis.title = element_text(size = 16), 
+        axis.text.x = element_text(size = 14)
+        ) +
+  labs(y = "Movie Budget (in Millions)", 
+       x = "Content Rating of Movie")
+```
+
+7. What does the read line across the entire plot represent?
+
+\vspace{0.5in}
+
+8. What do the blue lines across each group represent?
+
+\vspace{0.5}
+
+The two components of an F-statistic are called the mean squares between groups
+(MSG) and the mean squares of the errors (MSE). Let's break down what each of 
+these mean. 
+
+The MSG compares each group's mean to the overall mean. As its name indicates, 
+these differences are then **squared** and added together. 
+
+9. Draw vertical lines on the plot above, indicating what values are being
+compared when calculating the MSG. 
+
+\vspace{0.25in}
+
+The MSE is similar to a "residual," it measures how far an observation is from
+the mean of that group. As its name indicates, these differences are **squared**
+and then added together. 
+
+10. Draw vertical lines on the plot above, indicating what values are being
+compared with calculating the MSE. 
+
+\vspace{0.25in}
+
+The F-statistic is the ratio of these quantities:
+
+$$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$$
+
+11. Based on these quantities, will an F-statistic ever be negative?
+
+\vspace{0.5in}
+
+## Calculating an F-statistic in `R`
+
+Calculating these quantities by hand would be terrible! Instead, we will use
+`R` to output these values. 
+
+```{r aov-code, eval = FALSE}
+aov(budget_mil ~ content_rating, data = movies_no_NR)
+```
+
+```{r aov-output}
+aov(budget_mil ~ content_rating, data = movies_no_NR) %>% 
+  tidy()
+```
