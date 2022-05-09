@@ -77,6 +77,7 @@ prefer. :)
 p1 <- ggplot(data = movies, 
              mapping = aes(y = budget_mil, x = content_rating)) + 
   geom_boxplot() + 
+  theme_bw() +
   labs(x = "Content Rating", 
        y = "Budget (in Millions)"
        )
@@ -84,6 +85,7 @@ p1 <- ggplot(data = movies,
 p2 <- ggplot(data = movies, 
              mapping = aes(x = budget_mil, y = content_rating)) + 
   geom_boxplot() + 
+  theme_bw() +
   labs(y = "Content Rating", 
        x = "Budget (in Millions)"
        )
@@ -166,7 +168,7 @@ favstats(budget_mil ~ content_rating,
 
 \vspace{0.25in}
 
-8. How many times larger is your answer in #4 than your answer in #5?
+8. How many times larger is your answer in #6 than your answer in #7?
 
 \vspace{0.8in}
 
@@ -223,6 +225,7 @@ movies_no_NR %>%
                color = "blue", lwd = 1.5, linetype = "dotted") +
   geom_segment(x = 2.5, xend = 3.5, y = group_means[3], yend = group_means[3], 
                color = "blue", lwd = 1.5, linetype = "dotted") +
+  theme_bw() +
   theme(legend.position = "none", 
         axis.title = element_text(size = 16), 
         axis.text.x = element_text(size = 14)
@@ -249,7 +252,7 @@ The __SSG__ compares each group's mean to the overall mean. As its name
 indicates, these differences are then **squared** and added together. 
 
 12. Draw vertical lines on the plot above, indicating which values are being
-compared when calculating the MSG. 
+compared when calculating the SSG. 
 
 \vspace{0.25in}
 
@@ -258,7 +261,7 @@ from the mean of that group. As its name indicates, these differences are
 **squared** and then added together. 
 
 13. Draw vertical lines on the plot above, indicating which values are being
-compared with calculating the MSE. 
+compared with calculating the SSE. 
 
 \vspace{0.25in}
 
@@ -285,7 +288,7 @@ have?
 Now, putting all of these pieces together, we can obtain the magical 
 F-statistic using the following formula:
 
-$$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$$
+$$\frac{\frac{SSG}{k-1}}{\frac{SSE}{n-k}} = \frac{MSG}{MSE}$$
 
 16. Can an F-statistic be negative?
 
