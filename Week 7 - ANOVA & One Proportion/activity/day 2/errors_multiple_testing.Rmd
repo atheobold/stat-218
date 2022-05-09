@@ -1,10 +1,20 @@
 ---
-title: "Week 7 Day 2: Hypothesis Testing, Errors, & Multiple Comparisons"
-output: html_document
+title: 'Week 7 Day 2: Hypothesis Testing, Decision Errors, & Multiple Comparisons'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(mosaic)
+library(broom)
+library(pander)
 ```
 
 ## General Social Survey -- Past Analysis 
@@ -15,7 +25,9 @@ GSS <- read_csv(here::here("Week 7 - ANOVA & One Proportion",
                            "day 2", 
                            "data", 
                            "GSS_clean.csv")
-)
+) %>% 
+  filter(!is.na(marital_status)
+         )
 ```
 
 We've worked with data from the General Social Survey (GSS) for a few different
@@ -23,18 +35,17 @@ analyses in this class. Specifically, we used these data to test if there was
 evidence that the true mean number of hours worked in a week for working 
 Americans was different than 40. 
 
-Today, we are going to look at a differnt version of this question. We will 
+Today, we are going to look at a different version of this question. We will 
 investigate if there is evidence that the average number of hours worked per
 week differs for at least one marital status groups. 
-
 
 ## Inference for Many Means (ANOVA)
 
 We've seen how to do inference for a single mean and for a difference of means.
 Now, we'll study how to do inference on **many** means. To do this, we'll use a
-procedure called ANOVA for **AN**alysis **O**f **VA**riance. With an ANOVA, 
-we're comparing the variability *within* groups to the variability *between*
-groups. 
+procedure called ANOVA (**AN**alysis **O**f **VA**riance). With an ANOVA, 
+we're comparing the variability *within* groups (MSE) to the variability
+*between* groups (MSG). 
 
 If we believe that the mean of at least one group is different from the others, 
 ideally in a visualization we'd like to see:
@@ -54,13 +65,19 @@ In an ANOVA, we only do hypothesis testing (no confidence intervals until after
 ANOVA), and the hypotheses are always the same:
 
 $$
-H_0: \mu_1 = \mu_2 = \dots = \mu_k \\
+H_0: \mu_1 = \mu_2 = \dots = \mu_k
+$$
+
+$$
 H_A: \text{At least one of the means is different}
 $$
+\vspace{0.25cm}
 
 Let's consider the variables `marital_status` and
 `number_of_hours_worked_last_week`. To know how many groups there are in the
 `marital_status` variable, we can use our friend `favstats()`!
+
+\vspace{0.25cm}
 
 ```{r favstats}
 favstats(number_of_hours_worked_last_week ~ marital_status, 
@@ -69,12 +86,13 @@ favstats(number_of_hours_worked_last_week ~ marital_status,
 
 \vspace{0.25cm}
 
-1. How many groups do we have here? 
+1. How many groups do we have in our ANOVA? 
 
 \vspace{0.25in}
 
 2. Rewrite the null an alternative hypotheses above to reflect the number of 
 groups in our analysis. 
+*It would be nice to know what groups the means correspond with!*
 
 \newpage
 
@@ -83,75 +101,239 @@ groups in our analysis.
 By plotting the data **before** we do a hypothesis test, we get a better 
 understanding of *why* we got a low / medium / high p-value! 
 
-Here are side-by-side boxplots, visualizing the distribution of hours worked
+Here are faceted histograms visualizing the distribution of hours worked
 last week across the different marital statuses. 
 
-```{r gss-boxplots}
+```{r gss-boxplots, out.width = "80%"}
 ggplot(data = GSS, 
-       mapping = aes(x = number_of_hours_worked_last_week, 
-                     y = marital_status)) +
-  geom_boxplot() 
+       mapping = aes(x = number_of_hours_worked_last_week)
+       ) +
+  geom_histogram(binwidth = 10) + 
+  facet_wrap(~ marital_status, scales = "free") + 
+  labs(x = "Number of Hours Worked Last Week (by Respondent)", 
+       y = "Marital Status of Respondent") 
 ```
 
+\vspace{0.25cm}
+
+3. How different are the centers of these groups from each other? 
+
+\vspace{0.5in}
+
+4. How different are the spreads of these groups from each other?
+
+\vspace{0.5in}
+
+5. Do any of the marital groups stand out as **really** different from the
+others?
 
 \newpage 
 
-To do ANOVA in R, we can use the built-in R function `aov()`, which will use an F distribution as the distributional approximation for the null distribution. In order to use this distributional approximation, two conditions must be met:
+## Conditions of an ANOVA
 
-- the data must be normally distributed, or all the $n_i$s must be greater than 30
-- the variances of each group should be approximately equal. In practice, we check this by determining if $sd_{max}/sd_{min}<2$. 
+Like every statistical analysis we've done in this class, with an ANOVA you have
+two different types of methods, (1) a simulation-based method or (2) a 
+mathematical theory-based method. The book describes both options, but today we
+are going to focus on **theory-based** methods. 
 
-How can we check those conditions?
+In an ANOVA there are two conditions that we need to evaluation regardless of 
+which method we use:
 
-```{r}
+- independence of observations within **and** between groups
+- equal variance across every group
 
+6. Evaluate if you believe the independence condition is or is not violated. 
+Keep in mind that there are **two** components to this condition you need to 
+discuss! 
+
+\vspace{1in}
+
+7. Evaluate if you believe the equal variance condition is or is not violated. 
+Make specific reference to the visualizations and the summary statistics 
+presented on the fist page!
+
+\vspace{1in}
+
+__Additional Condition for Theory-Based Methods:__
+
+As we have seen before, with a theory-based method we have one additional 
+condition:
+
+- nearly normal distributions across every group
+
+\vspace{0.25cm}
+
+8. Which plots should we use to assess this condition, the side-by-side boxplots
+or the faceted histograms? Why?
+
+\vspace{0.5in}
+
+9. Evaluate if you believe the normality condition is or is not violated. Make
+specific reference to the visualization you stated in #8!
+
+\newpage
+
+## Carrying Out an ANOVA in `R`
+
+Now that we've checked the conditions of an ANOVA, we are ready to perform the
+analysis! Yesterday, you saw the `aov()` function, which is the tool we use in
+`R` to perform an ANOVA. 
+
+10. Fill in the necessary components of the code below. 
+
+```{r aov-code, eval = FALSE}
+aov(_______________________________ ~ __________________________,
+    data = GSS)
 ```
 
-Now that we've ensured our conditions are met, we can use the `aov()` command. Much like the `lm()` command, it works best if you save the result from `aov()` into a named R object. 
+Alright, if we ran the code you just input, we'd get the following table:
 
-Try running the following code. What happens in your Environment?
+\vspace{0.25cm}
 
-```{r}
-a1 <- aov(number_of_hours_worked_last_week ~ marital_status, data = GSS)
+```{r aov-output, echo = FALSE}
+aov(number_of_hours_worked_last_week ~ marital_status, data = GSS) %>% 
+  tidy() %>% 
+  pander()
 ```
 
-Now, let's run `summary()` on that object,
+\vspace{0.25cm}
 
-```{r}
-summary(a1)
+11. What is the mean squares of `marital_status`?
+
+\vspace{0.25in}
+
+12. What is the mean squares of the errors? 
+
+\vspace{0.25in}
+
+13. How was the `statistic` of 2.752 found? What is the name of that statistic?
+
+\vspace{0.5in}
+
+14. What is the p-value associated with that statistic?
+
+\vspace{0.25in}
+
+15. Based on the p-value, at an $\alpha = 0.05$ significance level, what 
+decision would you reach regarding your hypotheses?
+
+\vspace{0.25in}
+
+16. Based on your decision in #15, what would you conclude regarding the 
+mean hours worked across these marital status groups?
+
+\vspace{0.5in}
+
+\newpage 
+
+Let's revisit the boxplots that we first saw. It's entirely possible that in 
+#5 you said that you didn't believe there were "substantial" difference across 
+these groups. 
+
+```{r boxplots-again, echo = FALSE, out.width = "70%"}
+ggplot(data = GSS, 
+       mapping = aes(x = number_of_hours_worked_last_week)
+       ) +
+  geom_histogram(binwidth = 10) + 
+  facet_wrap(~ marital_status, scales = "free") + 
+  labs(x = "Number of Hours Worked Last Week (by Respondent)", 
+       y = "Marital Status of Respondent")
 ```
 
-What are the degrees of freedom for the groups? The degrees of freedom for the error? The total degrees of freedom?
+17. So, why do you believe we obtained a p-value that suggests at least one of 
+the marital status groups has a different mean number of hours worked?
 
-What is the test statistic? What is the p-value?
+\vspace{1in}
 
-What is our generic conclusion at the $\alpha=0.05$ level?
+## Hypothesis Testing Errors
+
+In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might 
+choose incorrectly. There are four possible scenarios in a hypothesis test:
+
+|                      | $H_0$ is True  | $H_0$ is False  |
+|----------------------|----------------|-----------------|
+| Reject $H_0$         | Type I Error   | Good Decision!  |
+| Fail to Reject $H_0$ | Good Decision! | Type II Error   |
+
+18. Based on the decision you reached in #15, what type of error could you have
+made?
+
+\vspace{0.25in}
+
+19. With an $\alpha = 0.05$, what percent of the time would we expect to make a
+Type I error?
+
+\vspace{0.25in}
+
+20. How does $\alpha$ relate to the probability of making a Type II error?
+
+\vspace{0.5in}
 
 ## Inference after ANOVA
 
-Because we found a significant p-value and concluded that at least one of the means is different, we can do inference after ANOVA. This is similar to inference on a single mean or a difference of means, but we use the square root of the MSE to estimate $\sigma$ instead of using the sample standard deviation. For example, for a confidence interval for the difference of two means, the standard error would be
+Because we found a "significant" p-value and concluded that at least one of the
+means is different. However, an ANOVA **does not** tell us which group(s) 
+is(are) driving the differences. 
+
+What we could do is compare all possible combinations of two means. With five 
+groups, that would result in 10 different hypothesis tests for a difference in
+means (e.g., $\mu_{\text{Divorced}} - \mu_{\text{Married}}$, 
+$\mu_{\text{Divorced}} - \mu_{\text{Widowed}}$, 
+$\mu_{\text{Married}} - \mu_{\text{Never married}}$, etc.). 
+
+However, for each hypothesis test we do at an $\alpha$ of 0.05, we risk making a
+Type I error 5% of the time. In fact, we can make a mathematical equation for 
+the probability of making a Type I Error, based on the number of tests we 
+perform. 
+
+\vspace{0.25cm}
 
 $$
-\sqrt{MSE\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}
+\text{Probability of Making a Type I Error} = 1 - (0.95)^{\text{\# of tests}}
 $$
-Let's consider the difference between the number of hours worked per week by divorced people and married people. How would we estimate the standard error? 
 
-```{r}
-sqrt(208.6 * (1 / 403 + 1 / 998))
+21. If we do 10 hypothesis tests, what is the probability of us making a Type 
+I Error?
+
+\vspace{0.5in}
+
+## Remedy to Type I Error Inflation
+
+```{r bonferroni, echo = FALSE, out.width = "40%", fig.cap = "Carlo Emilio Bonferroni (1892 - 1960)"}
+knitr::include_graphics("images/Bonferroni.jpg")
 ```
 
-To do inference after ANOVA, we use a t-distribution with the degrees of freedom for the error. What is that in this example? 
+One solution to the problem of multiple comparisons is called the Bonferroni correction. Essentially, you take your $\alpha$ threshold and divide it by the 
+number of tests you are going to perform. This is referred to as $\alpha^*$. 
 
-The easiest way to do pairwise tests in R is to do them all at once. You may recall from lecture that doing many tests at once can lead to a problem of multiple comparisons. 
+You then use this $\alpha^*$ value as the new threshold value for **every** 
+pairwise comparison. If a comparison's p-value is less than $\alpha^*$, then 
+you reject $H_0$. If a comparison's p-value is greater than $\alpha^*$, then 
+you fail to reject $H_0$
 
-One solution to the problem of multiple comparisons is called the Bonferroni correction, which is where you essentially divide your $\alpha$ cutoff number by the number of tests you are going to run. But, there are other, more sophisticated methods. One of these is called Tukey's Honest Significant Difference, which we will use here. 
+22. If our original $\alpha$ was 0.05, what value should we use for $\alpha^*$?
 
-Let's create an 80\% confidence interval for the difference between the number of hours worked by divorced and married people. 
+\vspace{0.5in}
 
-```{r}
-TukeyHSD(a1, conf.level = 0.8)
+## Post-Hoc Comparisons
+
+Below is a table of all 10 of the hypothesis tests we could do when comparing
+the means of two groups. 
+
+23. Using the $\alpha^*$ you found in #22, circle the hypothesis tests whose 
+p-values are less than $\alpha^*$. 
+
+```{r post-hoc, echo = FALSE}
+pairwise.t.test(GSS$number_of_hours_worked_last_week, 
+                GSS$marital_status, 
+                p.adjust.method = "none") %>% 
+  tidy() %>%
+  rename(`Group 1` = group1, 
+         `Group 2` = group2, 
+         `p-value` = p.value) %>% 
+  pander()
 ```
 
-How can we interpret the interval? 
 
-Now, let's consider the hypothesis tests. Which ones showed significance? 
+
+
