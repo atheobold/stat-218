@@ -1,6 +1,8 @@
 ---
-title: "Week 7 Day 1: Introduction to ANalysis Of Variance"
-output: html_document
+title: 'Week 7 Day 1: Introduction to ANalysis Of Variance'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
@@ -64,10 +66,6 @@ variable?
 
 \pagebreak
 
-## Faceted Histograms
-
-
-
 ## Side-by-Side Boxplots
 
 The boxplot of movie budgets (in millions) by content rating is plotted using
@@ -93,19 +91,19 @@ p2 <- ggplot(data = movies,
 gridExtra::grid.arrange(p1, p2, nrow = 1)
 ```
 
-1. Answer the following questions about the boxplots above.
+Answer the following questions about the boxplots above.
 
-   a. Which content rating has the highest center?
-
-\vspace{0.2in}
-
-   b. Which content rating has the largest spread?
+1. Which content rating has the highest center?
 
 \vspace{0.2in}
 
-   c. Which content rating has the most skewed distribution?
+2. Which content rating has the largest spread?
 
-\vspace{.8in}
+\vspace{0.2in}
+
+3. Which content rating has the most skewed distribution?
+
+\vspace{.2in}
 
 ## Data Cleaning
 
@@ -118,6 +116,8 @@ with a content rating of `"Not Rated"`, both with budgets of $0
 Because there is so little data for this group, I don't believe we can make a 
 reasonable estimate of the mean budget for **all** Not Rated movies. Thus, I 
 decided to remove these movies from our investigation. 
+
+\newpage 
 
 If you are interested, here is the code I used to do this!
 
@@ -148,33 +148,33 @@ favstats(budget_mil ~ content_rating,
   knitr::kable()
 ```
 
-\vspace{0.8in}
+\vspace{0.2in}
 
-2. Report the mean budget amount for each rating.  Use appropriate notation.
-
-\vspace{0.8in}
-
-3. Which content ratings have the largest difference in their mean budget?
+4. Report the mean budget amount for each rating.  Use appropriate notation.
 
 \vspace{0.8in}
 
-4. Which content rating has the largest standard deviation? 
+5. Which content ratings have the largest difference in their mean budget?
+
+\vspace{0.8in}
+
+6. Which content rating has the largest standard deviation? 
 
 \vspace{0.25in}
 
-5. Which content rating has the smallest standard deviation?
+7. Which content rating has the smallest standard deviation?
 
 \vspace{0.25in}
 
-6. How many times larger is your answer in #4 than your answer in #5?
+8. How many times larger is your answer in #4 than your answer in #5?
 
 \vspace{0.8in}
 
-7. Which content rating has the largest sample size? What is the formula for 
+9. Which content rating has the largest sample size? What is the formula for 
 the standard deviation of a mean? What effect does sample size have on the 
 standard deviation? 
 
-\vspace{1in}
+\vspace{0.5in}
 
 ## Introducing a New Statistic
 
@@ -231,15 +231,15 @@ movies_no_NR %>%
        x = "Content Rating of Movie")
 ```
 
-8. What does the read line across the entire plot represent?
+10. What does the red line across the entire plot represent?
 
 \vspace{0.5in}
 
-9. What do the blue lines across each group represent?
+11. What do the blue lines across each group represent?
 
-\vspace{0.5}
+\newpage
 
-### Components of an F-statistic
+## Components of an F-statistic
 
 The two components of an F-statistic are called the *sum of squares between
 groups* (SSG) and the *sum of squares of the errors* (SSE). Let's break down
@@ -248,7 +248,7 @@ what each of these mean.
 The __SSG__ compares each group's mean to the overall mean. As its name
 indicates, these differences are then **squared** and added together. 
 
-9. Draw vertical lines on the plot above, indicating which values are being
+12. Draw vertical lines on the plot above, indicating which values are being
 compared when calculating the MSG. 
 
 \vspace{0.25in}
@@ -257,7 +257,7 @@ The __SSE__ is similar to a "residual," it measures how far an observation is
 from the mean of that group. As its name indicates, these differences are
 **squared** and then added together. 
 
-10. Draw vertical lines on the plot above, indicating which values are being
+13. Draw vertical lines on the plot above, indicating which values are being
 compared with calculating the MSE. 
 
 \vspace{0.25in}
@@ -270,14 +270,14 @@ the number of statistics that need to be calculated.
 For the SSG, we have $k$ groups and we need to calculate the overall mean. So, 
 our resulting degrees of freedom are $k - 1$. 
 
-11. How many degrees of freedom does the `content_rating` variable have?
+14. How many degrees of freedom does the `content_rating` variable have?
 
 \vspace{0.5in}
 
 For the SSE, we have $n$ observations and we need to calculate $k$ group means.
 So, our resulting degrees of freedom are $n - k$. 
 
-12. How many degrees of freedom does the SSE for our content rating analysis
+15. How many degrees of freedom does the SSE for our content rating analysis
 have?
 
 \vspace{0.5in}
@@ -287,7 +287,7 @@ F-statistic using the following formula:
 
 $$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$$
 
-13. Can an F-statistic be negative?
+16. Can an F-statistic be negative?
 
 \vspace{0.5in}
 
@@ -318,39 +318,39 @@ aov(budget_mil ~ content_rating, data = movies_no_NR) %>%
 
 \vspace{0.25in}
 
-14. What is the sum of squares for `content_rating`?
+17. What is the sum of squares for `content_rating`?
 
 \vspace{0.25in}
 
-15. What is the sum of squares for the errors?
+18. What is the sum of squares for the errors?
 
 \vspace{0.25in}
 
-16. How was the mean squares for `content_rating` found?
+19. How was the mean squares for `content_rating` found?
 
 \vspace{0.25in}
 
-17. How was the mean squares for the errors found?
+20. How was the mean squares for the errors found?
 
 \vspace{0.25in}
 
-18. What is the resulting F-statistic?
+21. What is the resulting F-statistic?
 
 \vspace{0.25in}
 
-19. Why is there an NA in the `statistic` column for the `Residuals`?
+22. Why is there an NA in the `statistic` column for the `Residuals`?
 
 \vspace{0.5in}
 
 
 ## Inference for an ANOVA
 
-20. Based on the p-value associated with the F-statistic you found in #18, do 
+23. Based on the p-value associated with the F-statistic you found in #18, do 
 you think this is a small F-statistic or a large F-statistic?
 
 \vspace{0.5in}
 
-21. Do you believe this statistic is likely to occur if the null hypothesis 
+24. Do you believe this statistic is likely to occur if the null hypothesis 
 is true?
 
 \vspace{1in}
