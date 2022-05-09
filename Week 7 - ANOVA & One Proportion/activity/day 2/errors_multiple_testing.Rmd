@@ -7,25 +7,40 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## General Social Survey 
+## General Social Survey -- Past Analysis 
 
-```{r data-load}
-GSS <- read_csv("data/GSS_clean.csv")
+```{r data-load, include = FALSE}
+GSS <- read_csv(here::here("Week 7 - ANOVA & One Proportion", 
+                           "activity", 
+                           "day 2", 
+                           "data", 
+                           "GSS_clean.csv")
+)
 ```
+
+We've worked with data from the General Social Survey (GSS) for a few different
+analyses in this class. Specifically, we used these data to test if there was 
+evidence that the true mean number of hours worked in a week for working 
+Americans was different than 40. 
+
+Today, we are going to look at a differnt version of this question. We will 
+investigate if there is evidence that the average number of hours worked per
+week differs for at least one marital status groups. 
 
 
 ## Inference for Many Means (ANOVA)
 
-We've seen how to do inference for a single mean, and for a difference of means.
+We've seen how to do inference for a single mean and for a difference of means.
 Now, we'll study how to do inference on **many** means. To do this, we'll use a
 procedure called ANOVA for **AN**alysis **O**f **VA**riance. With an ANOVA, 
 we're comparing the variability *within* groups to the variability *between*
 groups. 
 
-Ideally, we'd like to see:
+If we believe that the mean of at least one group is different from the others, 
+ideally in a visualization we'd like to see:
 
-- large differences in the means of the groups
-- small amounts of variability within each group
+- large differences in the means **between** the groups
+- small amounts of variability **within** each group
 
 \vspace{0.25in}
 
@@ -35,33 +50,52 @@ Ideally, we'd like to see:
 
 ## Hypotheses in an ANOVA
 
-When we're doing ANOVA, we just do hypothesis testing (no confidence intervals until after ANOVA), and the hypotheses are always the same:
+In an ANOVA, we only do hypothesis testing (no confidence intervals until after
+ANOVA), and the hypotheses are always the same:
 
 $$
 H_0: \mu_1 = \mu_2 = \dots = \mu_k \\
 H_A: \text{At least one of the means is different}
 $$
 
-Let's consider the variables `marital_status` and `number_of_hours_worked_last_week`. Can you make a set of side-by-side boxplots to show the relationship between those two variables?
+Let's consider the variables `marital_status` and
+`number_of_hours_worked_last_week`. To know how many groups there are in the
+`marital_status` variable, we can use our friend `favstats()`!
 
-```{r}
-
+```{r favstats}
+favstats(number_of_hours_worked_last_week ~ marital_status, 
+         data = GSS)
 ```
 
-How many groups do we have here? 
+\vspace{0.25cm}
 
-Okay, so our hypotheses are technically 
+1. How many groups do we have here? 
 
-$$
-H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 \\
-H_A: \text{At least one of the means is different}
-$$
-or, if we wanted to get specific,
+\vspace{0.25in}
 
-$$
-H_0: \mu_{\text{divorced}} = \mu_{\text{married}} = \mu_{\text{never married}} = \mu_{\text{separated}} = \mu_{\text{widowed}} \\
-H_A: \text{At least one of the means is different}
-$$
+2. Rewrite the null an alternative hypotheses above to reflect the number of 
+groups in our analysis. 
+
+\newpage
+
+## Visualizing an ANOVA
+
+By plotting the data **before** we do a hypothesis test, we get a better 
+understanding of *why* we got a low / medium / high p-value! 
+
+Here are side-by-side boxplots, visualizing the distribution of hours worked
+last week across the different marital statuses. 
+
+```{r gss-boxplots}
+ggplot(data = GSS, 
+       mapping = aes(x = number_of_hours_worked_last_week, 
+                     y = marital_status)) +
+  geom_boxplot() 
+```
+
+
+\newpage 
+
 To do ANOVA in R, we can use the built-in R function `aov()`, which will use an F distribution as the distributional approximation for the null distribution. In order to use this distributional approximation, two conditions must be met:
 
 - the data must be normally distributed, or all the $n_i$s must be greater than 30
