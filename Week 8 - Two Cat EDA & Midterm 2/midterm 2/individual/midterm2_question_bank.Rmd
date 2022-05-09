@@ -2,12 +2,12 @@
 title: "Midterm 2 Question Bank"
 author: "Stat 218"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     extra_dependencies:
     - multicol
     - setspace
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -24,7 +24,7 @@ library(mosaic)
 library(moderndive)
 library(pander)
 library(infer)
-#library(lterdatasampler)
+library(lterdatasampler)
 library(palmerpenguins)
 ```
 
@@ -76,7 +76,7 @@ $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
 \newpage 
 
-\textbf{Q1}[ points] 
+\textbf{Q1}[10 points] 
 
 Researchers in Southern England collected data on grassland butterflies. They
 were interested in whether movement patterns varied across species and between
@@ -138,7 +138,7 @@ grassland butterflies.
 \newpage 
 
 \noindent
-\textbf{Q2}[] 
+\textbf{Q2}[8 points] 
 Is insomnia related to education level? Researchers at the University of 
 Memphis, in Tennessee investigated this question in the Journal of Abnormal
 Psychology (February, 2005). Eight hundred (800) adults living in Tennessee were
@@ -176,4 +176,74 @@ study? Select **all** that are present, or if there is no bias present, select
 \item Non-response bias \\
 \item No bias
 \end{itemize}
+
+\newpage
+
+\noindent
+\textbf{Q3}[] 
+In 2004, the state of North Carolina released to the public a large dataset
+containing information on births recorded in this state. This data set has been 
+of interest to medical researchers who are studying the relation between habits
+and practices of expectant mothers and the birth of their children. This 
+analysis will focus on a random sample of 1,000 observations from the published
+dataset. 
+
+Our analysis will focus on the relationship between a baby's birth
+weight and the mother's smoking status. 
+
+```{r}
+births14 
+```
+
+\noindent
+\textbf{(a)}[2 points] Using the preview of the dataset above, what is the observational 
+unit of this study?
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(b)}[2 points] Is this an observational study or an experiment? Circle one. 
+
+\begin{center}
+\textbf{Observational Study} \hspace{1in} \textbf{Experiment}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(c)}[3 points] Researchers are interested in the difference in the mean baby birth
+weight between mothers who smoke and mothers who do not smoke. Using the table
+below, report the observed statistic for this comparison. Indicate in your 
+answer what notation should be used for this statistic. 
+
+\vspace{0.25cm}
+
+\textbf{Answer:}
+
+\vspace{0.5in}
+
+\textbf{Notation:}
+
+\vspace{0.25cm}
+
+```{r favstats-smoking}
+favstats(weight ~ habit, data = births14)
+```
+
+\newpage 
+
+```{r}
+births14 %>% 
+  ggplot(mapping = aes(x = weight)) + 
+  geom_histogram(binwidth = 1.5) + 
+  facet_wrap(~habit, scales = "free") + 
+  theme_bw() +
+  labs(x = "Weight of Baby (lbs)", 
+       y = "Number of Babies")
+```
+
+\noindent
+\textbf{(d)} 
+
+
 
