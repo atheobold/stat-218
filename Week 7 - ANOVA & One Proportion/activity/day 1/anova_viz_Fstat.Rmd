@@ -12,6 +12,7 @@ library(tidyverse)
 library(mosaic)
 library(broom)
 library(infer)
+library(stringr)
 
 movies <- read_csv(here::here("Week 7 - ANOVA & One Proportion",
                               "activity", 
@@ -70,9 +71,9 @@ variable?
 ## Side-by-Side Boxplots
 
 The boxplot of movie budgets (in millions) by content rating is plotted using
-the code below.  Enter the variable `budget_mil` for `response` and the variable
-`content_rating` for explanatory at line 44, highlight and run code lines
-42--48. This plot compares the budget for different levels of content rating.
+the code below. The boxplots are presented in both orientations, horizontal 
+stacking and vertical stacking, so you can pick whichever orientation you 
+prefer. :) 
 
 ```{r anova-viz, echo = FALSE}
 p1 <- ggplot(data = movies, 
@@ -92,7 +93,7 @@ p2 <- ggplot(data = movies,
 gridExtra::grid.arrange(p1, p2, nrow = 1)
 ```
 
-1. Answer the following questions about the box plots created.
+1. Answer the following questions about the boxplots above.
 
    a. Which content rating has the highest center?
 
@@ -110,8 +111,9 @@ gridExtra::grid.arrange(p1, p2, nrow = 1)
 
 As we saw in the boxplots, the `"Not Rated"` movies had budgets of about 0. 
 Inspecting the data a bit further, I discovered that there were only two movies
-with a content rating of `"Not Rated"`, one with a budget of 0 (Cabin Fever) and
-one with a budget of 0.770629 (The Wailing). 
+with a content rating of `"Not Rated"`, both with budgets of $0 
+(`r filter(movies, budget_mil == 0, content_rating == "Not Rated")$movie_title[1] %>% str_trim()` and 
+`r filter(movies, budget_mil == 0, content_rating == "Not Rated")$movie_title[2] %>% str_trim()`). 
 
 Because there is so little data for this group, I don't believe we can make a 
 reasonable estimate of the mean budget for **all** Not Rated movies. Thus, I 
@@ -142,32 +144,33 @@ Use the output from the `favstats()` function to answer the following questions:
 
 ```{r, echo = FALSE}
 favstats(budget_mil ~ content_rating,
-         data = movies_no_NR)
+         data = movies_no_NR) %>% 
+  knitr::kable()
 ```
 
 \vspace{0.8in}
 
-1. Report the mean budget amount for each rating.  Use appropriate notation.
+2. Report the mean budget amount for each rating.  Use appropriate notation.
 
 \vspace{0.8in}
 
-2. Which content ratings have the largest difference in their mean budget?
+3. Which content ratings have the largest difference in their mean budget?
 
 \vspace{0.8in}
 
-3. Which content rating has the largest standard deviation? 
+4. Which content rating has the largest standard deviation? 
 
 \vspace{0.25in}
 
-4. Which content rating has the smallest standard deviation?
+5. Which content rating has the smallest standard deviation?
 
 \vspace{0.25in}
 
-5. How many times larger is your answer in #3 than your answer in #4?
+6. How many times larger is your answer in #4 than your answer in #5?
 
 \vspace{0.8in}
 
-6. Which content rating has the largest sample size? What is the formula for 
+7. Which content rating has the largest sample size? What is the formula for 
 the standard deviation of a mean? What effect does sample size have on the 
 standard deviation? 
 
@@ -192,7 +195,7 @@ In the plot below, I've added three pieces,
 - A red line across the entire plot
 - A blue line across each group
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 6, fig.align= 'center'}
+```{r anova-ss-viz, echo = FALSE, fig.align= 'center'}
 
 overall_mean <- movies_no_NR %>% 
   summarize(mean(budget_mil)) %>% 
@@ -208,7 +211,7 @@ movies_no_NR %>%
                        y = budget_mil, 
                        fill = content_rating)
          ) + 
-  geom_boxplot(alpha = 0.2) + 
+  geom_boxplot(alpha = 0.1) + 
   geom_jitter(width = 0.1, alpha = 0.75) +
   geom_hline(yintercept = overall_mean, 
              color = "red", 
@@ -228,40 +231,63 @@ movies_no_NR %>%
        x = "Content Rating of Movie")
 ```
 
-7. What does the read line across the entire plot represent?
+8. What does the read line across the entire plot represent?
 
 \vspace{0.5in}
 
-8. What do the blue lines across each group represent?
+9. What do the blue lines across each group represent?
 
 \vspace{0.5}
 
-The two components of an F-statistic are called the mean squares between groups
-(MSG) and the mean squares of the errors (MSE). Let's break down what each of 
-these mean. 
+### Components of an F-statistic
 
-The MSG compares each group's mean to the overall mean. As its name indicates, 
-these differences are then **squared** and added together. 
+The two components of an F-statistic are called the *sum of squares between
+groups* (SSG) and the *sum of squares of the errors* (SSE). Let's break down
+what each of these mean. 
 
-9. Draw vertical lines on the plot above, indicating what values are being
+The __SSG__ compares each group's mean to the overall mean. As its name
+indicates, these differences are then **squared** and added together. 
+
+9. Draw vertical lines on the plot above, indicating which values are being
 compared when calculating the MSG. 
 
 \vspace{0.25in}
 
-The MSE is similar to a "residual," it measures how far an observation is from
-the mean of that group. As its name indicates, these differences are **squared**
-and then added together. 
+The __SSE__ is similar to a "residual," it measures how far an observation is
+from the mean of that group. As its name indicates, these differences are
+**squared** and then added together. 
 
-10. Draw vertical lines on the plot above, indicating what values are being
+10. Draw vertical lines on the plot above, indicating which values are being
 compared with calculating the MSE. 
 
 \vspace{0.25in}
 
-The F-statistic is the ratio of these quantities:
+There is one final part to an F-statistic. We take each of these quantities 
+(SSG, SSE) and divide them by their respective degrees of freedom. The degrees
+of freedom are calculated based on (1) the number of items available and (2) 
+the number of statistics that need to be calculated. 
+
+For the SSG, we have $k$ groups and we need to calculate the overall mean. So, 
+our resulting degrees of freedom are $k - 1$. 
+
+11. How many degrees of freedom does the `content_rating` variable have?
+
+\vspace{0.5in}
+
+For the SSE, we have $n$ observations and we need to calculate $k$ group means.
+So, our resulting degrees of freedom are $n - k$. 
+
+12. How many degrees of freedom does the SSE for our content rating analysis
+have?
+
+\vspace{0.5in}
+
+Now, putting all of these pieces together, we can obtain the magical 
+F-statistic using the following formula:
 
 $$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$$
 
-11. Based on these quantities, will an F-statistic ever be negative?
+13. Can an F-statistic be negative?
 
 \vspace{0.5in}
 
@@ -270,11 +296,63 @@ $$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$$
 Calculating these quantities by hand would be terrible! Instead, we will use
 `R` to output these values. 
 
+The `aov()` function in `R` stands for **a**nalysis **o**f **v**ariance. Why 
+they didn't call it `anova()` is beyond me!
+
+The `aov()` function takes two inputs, the first is a "formula" similar to what
+you've seen in the `favstats()` function. The response variable comes first,
+then the explanatory variable. The second input is the dataset that should be 
+used. 
+
+Let's give the code and the output a look! 
+
 ```{r aov-code, eval = FALSE}
 aov(budget_mil ~ content_rating, data = movies_no_NR)
 ```
 
-```{r aov-output}
+```{r aov-output, echo = FALSE}
 aov(budget_mil ~ content_rating, data = movies_no_NR) %>% 
-  tidy()
+  tidy() %>% 
+  knitr::kable()
 ```
+
+\vspace{0.25in}
+
+14. What is the sum of squares for `content_rating`?
+
+\vspace{0.25in}
+
+15. What is the sum of squares for the errors?
+
+\vspace{0.25in}
+
+16. How was the mean squares for `content_rating` found?
+
+\vspace{0.25in}
+
+17. How was the mean squares for the errors found?
+
+\vspace{0.25in}
+
+18. What is the resulting F-statistic?
+
+\vspace{0.25in}
+
+19. Why is there an NA in the `statistic` column for the `Residuals`?
+
+\vspace{0.5in}
+
+
+## Inference for an ANOVA
+
+20. Based on the p-value associated with the F-statistic you found in #18, do 
+you think this is a small F-statistic or a large F-statistic?
+
+\vspace{0.5in}
+
+21. Do you believe this statistic is likely to occur if the null hypothesis 
+is true?
+
+\vspace{1in}
+
+
