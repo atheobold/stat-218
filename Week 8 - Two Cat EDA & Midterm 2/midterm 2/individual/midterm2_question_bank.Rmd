@@ -347,38 +347,90 @@ the other in February?
 \vspace{1in}
 
 \noindent
-\textbf{(b)}[]
+\textbf{(b)}[2 points] Dr. Hagobian is interested in testing whether BPA causes a shift
+in glucose levels. Which analysis would be more appropriate? Circle one. 
 
-<!-- Question about hypotheses -->
-<!-- Need to be two-sided -->
-
-
-\noindent
-\textbf{(c)}[]
-
-<!-- Simple question about conditions -->
+\textbf{Difference in Two Independent Means} \hspace{1in} \textbf{Mean of the Differences}
 
 
 \noindent
-\textbf{(d)}[] Regarding the condition of normality condition, which data should
-you be concerned about? Circle one. 
+\textbf{(c)}[2 points] Based on your answer to (b), write out the null and 
+alternative hypotheses for Dr. Hagobian's test. 
+
+\vspace{0.25cm}
+
+\textbf{$H_0$:}
+
+\vspace{0.25in}
+
+\textbf{$H_A$:}
+
+\vspace{0.25in}
+
+
+\noindent
+\textbf{(d)}[] To perform the analyses you selected in (b), what conditions does
+Dr. Hagobian need to check before obtaining a p-value? Select all that apply. 
 
 \begin{itemize}
-\item the glucose data from the Placebo and the BPA trials \\
-\item the within subject glucose differences \\
-\item neither \\
-\item both
+\item Independence of the differences \\
+\item Independence of observations within each group \\
+\item Independence of observations between the groups \\
+\item Independence of the variables \\
+\item Equal variance between the groups \\
+\item Linear relationship between the variables \\
+\item Normality of the Differences \\
+\item Normality of the observations within each group \\
 \end{itemize}
 
+\vspace{0.25cm}
+
 \noindent
-\textbf{(e)}[]
+\textbf{(e)}[] Using `R`, Dr. Hagobian obtained the following table. 
+
+```{r}
+dr_hagobian <- tibble(Difference = 
+                        rnorm(n = 11, mean = -0.095, sd = 1.153)
+                      )
+dr_hagobian %>% 
+  t_test(response = Difference, 
+         alternative = "two-sided", 
+         mu = 0, 
+         conf_level = 0.90
+         ) %>% 
+  select(-t_df, -alternative) %>% 
+  pander()
+
+```
+
+\vspace{0.25cm}
+
+Which of the following would be the best overall conclusion in the context of 
+Dr. Hagobian's study? Your selection should reflect the hypotheses you wrote in
+part (c)!
+
+\begin{itemize}
+\item With such a large p-value, we have significant evidence to reject the
+null hypothesis that the difference in the glucose levels after eating a BPA
+and Placebo cracker are the same. We can therefore conclude that eating a BPA
+cracker shifted the glucose levels.  
+
+\item
+\end{itemize}
+
 
 <!-- Question about p-value calculation.  -->
 
 \noindent
-\textbf{(f)}[]
+\textbf{(f)}[] Based on the decision you reached in (e), what type of error 
+could you have made? Circle one. 
 
-<!-- Question about decision error.  -->
+\begin{itemize}
+\item Type I error \\
+\item Type II error \\
+\item No error was made \\
+\end{itemize}
+
 
 \noindent
 \textbf{(g)}[] If instead Dr. Hagobian had 100 subjects (50 in each group), 
