@@ -1,0 +1,188 @@
+---
+title: "Visualizing Categorical Variables"
+output: html_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(message = FALSE, 
+                      fig.align = "center", 
+                      echo = TRUE)
+
+## Load in the packages necessary for our analysis: tidyverse
+
+
+```
+
+## Nightlight use and myopia 
+
+In a study reported in *Nature* (Quinn, 1999), a survey of 479 children found
+that those who had slept with a nightlight or in a fully lit room before the age
+of two had a higher incidence of nearsightedness (myopia) later in childhood.
+
+In this study, there were two variables studied:
+
+- `Light`: level of light in room at night (no light, nightlight, full light)
+- `Sight`: level of myopia developed later in childhood (high myopia, myopia,
+no myopia).  
+
+__1. Which variable is the explanatory variable? Which is the response variable?__
+
+
+Let's load the data in! 
+
+```{r data, include = FALSE}
+myopia <- read_csv(here::here("Week 7 - ANOVA & One Proportion", 
+                              "lab", 
+                              "data", 
+                              "ChildrenLightSight.csv")
+                   ) 
+```
+
+__2. Click on the dataset to open it up in the data previewer. What is the observational unit for this study?__
+
+
+
+## Visualizing One Categorical Variable
+
+### Frequency Bar Plots 
+
+If we wanted to know how many children in our data set were in each level of
+myopia, we would create a frequency bar plot of the variable `Sight`. Creating
+a bar plot is similar to what we've done before. 
+
+__Step 1:__ Set-up the data and the variable(s) of interest
+
+__Step 2:__ Define what geometric object should be plotted on the plot
+
+__Step 3:__ Declare nice x- and y-axis labels
+
+Let's carry out these steps in the code chunk below! 
+
+```{r sight-freq-barplot}
+ggplot(data = myopia, 
+       mapping = aes(x = ____)
+       ) + 
+  geom_bar() + 
+  labs(x = "____", 
+       y = "____")
+```
+
+__3. Which sight group has the largest number of observations?__
+
+4. Using the bar plot, estimate how many children have some level of myopia.
+
+
+Using the skills you just acquired, make a bar plot visualizing how many
+children in our data set slept with a nightlight (`Light`). 
+
+```{r light-freq-barplot}
+
+```
+
+__5. Which nightlight group has the largest number of observations?__
+
+
+### Relative Frequency Bar Plots
+
+We could also choose to display the data as a proportion in a
+**relative frequency** bar plot. To find the relative frequency, we divide the
+count in each level by the total sample size. The resulting values are sample
+proportions. 
+
+To get *proportions* instead of *counts* we need to override the default 
+statistic `geom_bar()` wants to use. To do this, we tell it we want proportions
+on the y-axis. We do this using the following code:
+
+```
+geom_bar(aes(y = ..prop.., group = 1))
+```
+
+Notice, there are two periods (..) before **and** after prop. These periods are
+necessary to define a new statistic that should be used for the y-axis. 
+
+6. Use this new code to modify the code you had previously. Copy-and-paste your
+code from #4 below and change the y-axis to plot proportions instead of counts. 
+
+```{r light-prop-barplot}
+# Copy-and-paste your code from #4
+# Add the aes() input to geom_bar() so your plot has proportions instead of counts!
+
+
+```
+
+
+7. Try removing the `group = 1` input from `geom_bar()`. What happens? What do
+your bars look like?
+
+
+
+## Summary statistics for categorical variables
+
+The other part of Exploratory Data Analysis (EDA) is making summary statistics.
+For a categorical variable, this means making frequency tables and relative
+frequency tables. Let's explore how to do that. 
+
+For this piece you are going to learn more about a tool you've seen
+previously -- "the pipe." This is a special operator written as `%>%`. The pipe
+is used as a connecting piece to keep your data flowing through a pipeline. 
+
+We will use the pipe to string together three R functions:
+
+- `summarize()`, which creates summary statistics of specified variables
+- `group_by()`, which creates groups of observations based on a categorical 
+variable
+- `mutate()`, which modifies our dataset by adding new variables or changing
+existing variables
+
+If I use `group_by()` in my analysis, it is nearly always paired with 
+`summarize()` -- they are function friends!
+
+Let's start with a short data pipeline.
+
+```{r summarize}
+myopia %>%
+  summarize(n = n())
+```
+
+__8. What does the variable n tell us?__
+
+
+We can add another piece to the pipeline to make it a bit more interesting.
+Let's add a `group_by()` step to make groups based on the `Sight` varible. 
+
+```{r group-by-summarize}
+myopia %>%
+  group_by(___) %>% 
+  summarize(n = n())
+```
+
+__9. How many observations are in the Myopia and High Myopia groups?__
+
+
+Finally, we might want to add one more piece to the pipeline to create a 
+`proportion` variable of the relative frequencies of each level of `Sight`.
+
+```{r group-by-summarize-mutate}
+myopia %>%
+  group_by(___) %>% 
+  summarize(n = n()) %>% 
+  mutate(proportion = ___ / sum(n))
+```
+
+__10. What proportion of children have high myopia?__
+
+
+## On Your Own
+
+Now, take the code you just filled in and address the following question about
+the `Light` variable!
+
+What proportion of children slept with full light? 
+
+
+```{r light-proportions}
+# Put your code here to find the proportion of children that slept with different nightlights
+
+
+```
+
