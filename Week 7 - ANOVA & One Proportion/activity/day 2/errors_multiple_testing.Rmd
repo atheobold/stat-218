@@ -150,7 +150,7 @@ discuss!
 
 7. Evaluate if you believe the equal variance condition is or is not violated. 
 Make specific reference to the visualizations and the summary statistics 
-presented on the fist page!
+presented on the second page!
 
 \vspace{1in}
 
@@ -163,8 +163,8 @@ condition:
 
 \vspace{0.25cm}
 
-8. Which plots should we use to assess this condition, the side-by-side boxplots
-or the faceted histograms? Why?
+8. Why should we use faceted histograms to assess this condition rather than 
+side-by-side boxplots? 
 
 \vspace{0.5in}
 
@@ -226,18 +226,13 @@ mean hours worked across these marital status groups?
 
 \newpage 
 
-Let's revisit the boxplots that we first saw. It's entirely possible that in 
+Let's revisit the statistics we first saw. It's entirely possible that in 
 #5 you said that you didn't believe there were "substantial" difference across 
 these groups. 
 
-```{r boxplots-again, echo = FALSE, out.width = "70%"}
-ggplot(data = GSS, 
-       mapping = aes(x = number_of_hours_worked_last_week)
-       ) +
-  geom_histogram(binwidth = 10) + 
-  facet_wrap(~ marital_status, scales = "free") + 
-  labs(x = "Number of Hours Worked Last Week (by Respondent)", 
-       y = "Marital Status of Respondent")
+```{r favstats-again, echo = FALSE}
+favstats(number_of_hours_worked_last_week ~ marital_status, 
+         data = GSS)
 ```
 
 17. So, why do you believe we obtained a p-value that suggests at least one of 
@@ -247,7 +242,8 @@ the marital status groups has a different mean number of hours worked?
 
 ## Hypothesis Testing Errors
 
-In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might 
+In a hypothesis test, there are two competing hypotheses: the null and the
+alternative. We make a statement about which one might be true, but we might 
 choose incorrectly. There are four possible scenarios in a hypothesis test:
 
 |                      | $H_0$ is True  | $H_0$ is False  |
