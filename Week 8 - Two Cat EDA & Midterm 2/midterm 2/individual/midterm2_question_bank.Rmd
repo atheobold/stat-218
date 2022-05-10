@@ -78,7 +78,7 @@ grassland butterflies. They
 were interested in whether movement patterns varied across species and between
 male and female butterflies. Researchers observed 164 butterflies over the
 three-year length of this study, of which 28 were female and 136 were male. 
-These 164 butterflies are considered to be representative of all grassland
+These 164 butterflies were considered to be representative of all grassland
 butterflies. The butterfly movements were observed by measuring how far they
 flew (in meters) from one landing site to the next, called step distance. This
 was done by placing a flag at each landing site and measuring the distance
@@ -105,8 +105,8 @@ Sex is the (explanatory/response) \underline{\hspace{3in}} and it is
 \vspace{0.25cm}
 
 \noindent
-\textbf{(b)}[3 pts] Which types of plot is most appropriate to display the
-relationship between step distance and sex of the butterfly? Select all that 
+\textbf{(b)}[3 pts] Which visualizations would be most appropriate to display
+the relationship between step distance and sex of the butterfly? Select all that 
 apply. 
 
 \begin{itemize}
@@ -118,16 +118,16 @@ apply.
 
 \noindent
 \textbf{(c)} [3 pts] Assuming a statistical difference in step distance is
-found between the males and females in the sample, what is the scope of
-inference for this study? Select one. 
+found between the male and female butterflies in the sample, what is the scope
+of inference for this study? Select one. 
 
 \begin{itemize}
 \item[(i)] Sex causes a difference in average step distance for all grassland
 butterflies. \\
-\item[(ii)] Sex is associated with a difference in average step distance for grassland
+\item[(ii)] Sex is associated with a difference in average step distance for
+grassland butterflies similar to those sampled. \\
+\item[(iii)] Sex causes a difference in average step distance for grassland
 butterflies similar to those sampled. \\
-\item[(iii)] Sex causes a difference in average step distance for grassland butterflies
-similar to those sampled. \\
 \item[(iv)] Sex is associated with a difference in average step distance for all
 grassland butterflies. 
 \end{itemize}
@@ -137,20 +137,20 @@ grassland butterflies.
 \noindent
 \textbf{Q2}[8 points] 
 Is insomnia related to education level? Researchers at the University of 
-Memphis, in Tennessee investigated this question in the Journal of Abnormal
-Psychology (February, 2005). Eight hundred (800) adults living in Tennessee were
-selected to participate in the study, using a random-digit telephone dialing
-procedure. Responses were collected from a total of 575 adults. Two variables
-measured were level of education and insomnia status (normal sleeper or chronic
-insomniac). The researchers discovered that the lower the level of education,
-the more likely the person was to have chronic insomnia.
+Memphis, in Tennessee investigated this question in the *Journal of Abnormal
+Psychology* (February, 2005). Eight hundred (800) adults living in Tennessee
+were selected to participate in the study, using a random-digit telephone
+dialing procedure. Responses were collected from a total of 575 adults. Two
+variables measured were level of education and insomnia status (normal sleeper
+or chronic insomniac). The researchers discovered that the lower the level of
+education, the more likely the person was to have chronic insomnia.
 
 \vspace{0.2cm}
 
 \noindent
 \textbf{(a)}[2 points] What are the observational units in this study?
 
-\vspace{1cm} 
+\vspace{1in} 
 
 \noindent
 \textbf{(b)}[3 points] Fill in the blanks with one of the options provided in
@@ -158,15 +158,15 @@ parentheses to identify and explain the study design.
 
 This is a(n) (observational study / randomized experiment)
 \underline{\hspace{3in}} because (level of education / insomnia status) 
-\underline{\hspace{3in}} (was / was not) \underline{\hspace{3in}} randomly
-(assigned / sampled) \underline{\hspace{3in}. 
+\underline{\hspace{3in}} (was / was not) \underline{\hspace{1in}} randomly
+(assigned / sampled) \underline{\hspace{2in}}. 
 
 \vspace{1cm}
 
 \noindent
 \textbf{(c)}[3 points] Which types of sampling bias may be present in this
 study? Select **all** that are present, or if there is no bias present, select
-"No bias." 
+No bias.
 
 \begin{itemize}
 \item[(i)] Selection bias \\
@@ -189,10 +189,11 @@ dataset.
 \vspace{0.25cm}
 
 \noindent
-\textbf{(a)}[3 points] Researchers are interested in the difference in the mean
-baby birth weight between mothers who smoke and mothers who do not smoke. Using
-the table below, report the observed statistic for this comparison. Indicate in
-your answer what notation should be used for this statistic. 
+\textbf{(a)}[3 points] Hospital administration at Duke University Hospital are
+interested in the difference in the mean baby birth weight between mothers who
+smoke and mothers who do not smoke. Using the table below, report the observed
+statistic for this comparison. Indicate in your answer what notation should be
+used for this statistic. 
 
 \vspace{0.25cm}
 
@@ -224,13 +225,14 @@ births14 %>%
 \newpage
 
 \noindent
-\textbf{(b)}[4 points] Hospital administration at Duke University Hospital are
+\textbf{(b)}[4 points] These hospital administrators are
 interested in estimating the true difference in mean birth weight between
 mothers who smoke and mothers who do not smoke. The administrators learned in
 their Statistics class how obtain a confidence interval for a difference in
 means using a $t$-distribution. Using the plots above and your knowledge of how
-the data were collected evaluate whether it would be appropriate to use a
-$t$-distribution to obtain a confidence interval for true difference in means.
+the data were collected evaluate whether it would be appropriate for the
+administrators to use a $t$-distribution to obtain a confidence interval for the
+true difference in means.
 
 \vspace{1.5in}
 
@@ -288,8 +290,8 @@ bootstrap_dist %>%
 
 \noindent
 \textbf{(e)}[3 points] The table below presents percentiles for the bootstrap 
-distribution above. Circle the two values which will construct a 99% confidence
-interval. 
+distribution shown above. Circle the two values which will construct a 99%
+confidence interval. 
 
 \vspace{0.25cm}
 
@@ -342,9 +344,7 @@ Dr. Hahobian recruited 11 subjects, each of whom ate two types of cookies on two
 separate visits, one visit in December and the second in February. On one visit
 they ate the BPA-laced cookie and, on a different day, a placebo cookie (with no
 BPA). Thirty minutes after eating the cookie on each occasion, they were given a
-glucose tolerance test to measure their glucose metabolism as well as other
-blood tests to measure levels of estrogen, pro-insulin, and c-peptide in the
-blood. 
+glucose tolerance test to measure their glucose metabolism. 
 
 A summary of the glucose test results (mmol/L) after eating each type of cookie
 as well as the difference in glucose results for each subject is shown below.
@@ -365,7 +365,7 @@ their first visit, he flipped a coin. If it was heads, they received BPA on that
 visit (and Placebo on their second visit). If it was tails they received the 
 Placebo cookie first. Why did he add this extra coin flipping step instead of
 the simpler approach of just giving everyone one type of cookie in December and
-the other in February?
+the other type in February?
 
 \vspace{1in}
 
@@ -402,8 +402,8 @@ Dr. Hagobian need to check before obtaining a p-value? Circle all that apply.
 \begin{multicols}{2}
 \begin{itemize}
 \item[(i)] Independence of the differences \\
-\item[(ii)] Independence of observations within each group \\
-\item[(iii)] Independence of observations between the groups \\
+\item[(ii)] Independence of the observations within each group \\
+\item[(iii)] Independence of the observations between the groups \\
 \item[(iv)] Independence of the variables \\
 \item[(v)] Equal variance between the groups \\
 \item[(vi)] Linear relationship between the variables \\
@@ -443,28 +443,28 @@ part (c)!
 null hypothesis. We conclude the true mean of the differences in glucose 
 between eating a BPA cracker and a Placebo cracker is not 0. 
 
-\item[(ii)] With such a large p-value, we have insufficient evidence to reject the
-null hypothesis. We conclude the true mean of the differences in glucose 
+\item[(ii)] With such a large p-value, we have insufficient evidence to reject
+the null hypothesis. We conclude the true mean of the differences in glucose 
 between eating a BPA cracker and a Placebo cracker is 0. 
 
-\item[(iii)] With such a large p-value, we have insufficient evidence to reject the
-null hypothesis. We do not have evidence to suggest the mean of the differences
-in glucose between eating a BPA cracker and a Placebo cracker is different 
-from 0. 
+\item[(iii)] With such a large p-value, we have insufficient evidence to reject
+the null hypothesis. We do not have evidence to suggest the mean of the
+differences in glucose between eating a BPA cracker and a Placebo cracker is
+different from 0. 
 
-\item[(vi)] With such a large p-value, we have significant evidence to reject the
-null hypothesis. We conclude the true mean glucose after eating a BPA cracker 
-is different from the true mean glucose after eating a Placebo cracker.
+\item[(vi)] With such a large p-value, we have significant evidence to reject
+the null hypothesis. We conclude the true mean glucose after eating a BPA
+cracker is different from the true mean glucose after eating a Placebo cracker.
 
-\item[(v)] With such a large p-value, we have insufficient evidence to reject the
-null hypothesis. We conclude there is no difference in the true mean glucose
+\item[(v)] With such a large p-value, we have insufficient evidence to reject
+the null hypothesis. We conclude there is no difference in the true mean glucose
 after eating a BPA cracker and the true mean glucose after eating a Placebo
 cracker.
 
-\item[(vi)] With such a large p-value, we have insufficient evidence to reject the
-null hypothesis. We do not have evidence to suggest the true mean glucose after
-eating a BPA cracker is different from the true mean glucose after eating a
-Placebo cracker.
+\item[(vi)] With such a large p-value, we have insufficient evidence to reject 
+the null hypothesis. We do not have evidence to suggest the true mean glucose
+after eating a BPA cracker is different from the true mean glucose after eating
+a Placebo cracker.
 \end{itemize}
 
 \vspace{0.25in}
@@ -498,21 +498,21 @@ following statements about these findings is true? Circle one.
 
 \begin{itemize}
 \item[(i)] The results of the hypothesis test and the confidence interval tend to 
-agree with each other at the 5% significance level. Four percent of the time we
+agree with each other at the 5\% significance level. Four percent of the time we
 would obtain a statistic like the one we saw somewhere in the interval of 
 -1.129 mmol/L to 0.0437 mmol/L. 
 
 \item[(ii)] The results of the hypothesis test and the confidence interval are
-conflicting at the 5% significance level. With a p-value of 0.0425 we have 
+conflicting at the 5\% significance level. With a p-value of 0.0425 we have 
 evidence to reject the null hypothesis, which would mean that our confidence 
 interval would not contain 0.
 
 \item[(iii)] The results of the hypothesis test and the confidence interval are 
-conflicting at the 5% significance level. There's a 95% chance that a statistic
+conflicting at the 5\% significance level. There's a 95% chance that a statistic
 of 0.0425 would be in the interval (-1.129, 0.0437). 
 
 \item[(vi)] The results of the hypothesis test and the confidence interval seem to 
-agree with one another at the 5% significance level. With a p-value of 0.0425
+agree with one another at the 5\% significance level. With a p-value of 0.0425
 we do not have evidence to reject the null hypothesis, thus indicating that 0
 should be in our interval. 
 
@@ -557,10 +557,13 @@ lettuce %>%
          ) %>% 
     group_by(trt_group) %>% 
   summarize(mean = mean(growth), 
-            sd = sd(growth)) %>% 
+            sd = sd(growth), 
+            n = n()
+            ) %>% 
   rename(`Treatment Group` = trt_group, 
          `Mean Growth` = mean, 
-         `Standard Deviation of Growth` = sd) %>% 
+         `Standard Deviation of Growth` = sd, 
+         `Sample Size` = n) %>% 
   pander()
 ```
 
