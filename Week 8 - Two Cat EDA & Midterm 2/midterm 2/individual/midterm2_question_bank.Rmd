@@ -180,7 +180,7 @@ study? Select **all** that are present, or if there is no bias present, select
 \newpage
 
 \noindent
-\textbf{Q3}[] 
+\textbf{Q3}[23 points] 
 In 2004, the state of North Carolina released to the public a large dataset
 containing information on births recorded in this state. This data set has been 
 of interest to medical researchers who are studying the relation between habits
@@ -188,33 +188,11 @@ and practices of expectant mothers and the birth of their children. This
 analysis will focus on a random sample of 1,000 observations from the published
 dataset. 
 
-Our analysis will focus on the relationship between a baby's birth
-weight and the mother's smoking status. 
-
-```{r}
-births14 
-```
-
 \noindent
-\textbf{(a)}[2 points] Using the preview of the dataset above, what is the observational 
-unit of this study?
-
-\vspace{0.5in}
-
-\noindent
-\textbf{(b)}[2 points] Is this an observational study or an experiment? Circle one. 
-
-\begin{center}
-\textbf{Observational Study} \hspace{1in} \textbf{Experiment}
-\end{center}
-
-\vspace{0.25cm}
-
-\noindent
-\textbf{(c)}[3 points] Researchers are interested in the difference in the mean baby birth
-weight between mothers who smoke and mothers who do not smoke. Using the table
-below, report the observed statistic for this comparison. Indicate in your 
-answer what notation should be used for this statistic. 
+\textbf{(a)}[3 points] Researchers are interested in the difference in the mean
+baby birth weight between mothers who smoke and mothers who do not smoke. Using
+the table below, report the observed statistic for this comparison. Indicate in
+your answer what notation should be used for this statistic. 
 
 \vspace{0.25cm}
 
@@ -233,7 +211,8 @@ favstats(weight ~ habit, data = births14)
 \newpage 
 
 ```{r}
-births14 %>% 
+births14 %>%
+  filter(!is.na(habit)) %>% 
   ggplot(mapping = aes(x = weight)) + 
   geom_histogram(binwidth = 1.5) + 
   facet_wrap(~habit, scales = "free") + 
@@ -243,7 +222,168 @@ births14 %>%
 ```
 
 \noindent
-\textbf{(d)} 
+\textbf{(b)}[4 points] Hospital administration at Duke University Hospital are
+interested in estimating the true difference in mean birth weight between
+mothers who smoke and mothers who do not smoke. The administrators learned in
+their Statistics class how obtain a confidence interval for a difference in
+means using a $t$-distribution. Using the plots above and your knowledge of how
+the data were collected evaluate whether it would be appropriate to use a
+$t$-distribution to obtain a confidence interval. 
+
+\vspace{1.5in}
+
+\noindent
+\textbf{(c)}[5 points] The administrators contacted the Department of Statistics
+at Duke and requested a consultation. The Statistician they spoke with suggested
+they use bootstrapping instead of a $t$-distribution to obtain a confidence
+interval. Fill in the blanks below to explain to the adminstrators how one
+bootstrap (re)sample is found. 
+
+\begin{center}
+On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
+cards.
+
+\vspace{0.5cm}
+
+Generate a new sample by: \underline{\hspace{3in}}.
+
+\vspace{0.5cm}
+
+Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
+
+\end{center}
+
+\noindent
+\textbf{(d)}[3 points] The Statistician carried out a simulation with 1000 
+bootstrap resamples using the order (`nonsmoker` - `smoker`) and obtained the
+bootstrap distribution below. 
+
+Where is the bootstrap distribution centered? Why is the distribution centered 
+at that value?
+
+\vspace{1in}
+
+```{r bootstrap-births}
+bootstrap_dist <- births14 %>% 
+  specify(response = weight, explanatory = habit) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "diff in means", 
+            order = c("nonsmoker", "smoker")
+            )
+
+bootstrap_dist %>% 
+  visualise() + 
+  labs(x = "Bootstrap Difference in Means (Nonsmoker - Smoker)", 
+       title = "", 
+       y = "Frequency")
+```
+
+
+\noindent
+\textbf{(e)}[3 points] Use the table below to find the 99% confidence interval
+using the percentile method. 
+
+```{r percentile-CI-table}
+bootstrap_dist %>% 
+  summarize("0.5%" = quantile(stat, 0.05), 
+            "1%" = quantile(stat, 0.01),
+            "2.5%" = quantile(stat, 0.025),
+            "5%" = quantile(stat, 0.05),
+            "90%" = quantile(stat, 0.90),
+            "95%" = quantile(stat, 0.95),
+            "97.5%" = quantile(stat, 0.975),
+            "99.5%" = quantile(stat, 0.95)
+            ) %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Quantile", 
+               values_to = "Value") %>% 
+  pander()
+```
+
+\textbf{99\% Interval:}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(f)}[5 points] Interpret the 99% confidence interval found in part (f). 
+
+\vspace{1in}
+
+\noindent
+\textbf{Q4}[] As you may be aware, many individuals are concerned about the
+presence of BPA in plastics, especially plastics that make contact with food and
+drinks. Currently, these is an incomplete understandinf of how exposure to BPA
+affects our ingestion. Last year Dr. Hagobian in the Kinesiology and Public
+Health carried out a study to investigate the role of Bisphenol A (BPA) in 
+metabolism and endocrine disruption. 
+
+Dr. Hahobian recruited 11 subjects, each of whom ate two types of cookies on two
+separate visits, one visit in December and the second in February. On one visit
+they ate the BPA-laced cookie and, on a different day, a placebo cookie (with no
+BPA). Thirty minutes after eating the cookie on each occasion, they were given a glucose tolerance test to measure their glucose metabolism as well as other
+blood tests to measure levels of estrogen, pro-insulin, and c-peptide in the
+blood. 
+
+A summary of the glucose test results (mmol/L) after eating each type of cookie
+as well as the difference in glucose results for each subject is shown below.
+
+| Cookie                    | Mean   | Standard Deviation | n  |
+|---------------------------|:------:|:-----------------:|:---:|
+| Placebo                   |	5.259  | 0.762              | 11 |
+| BPA	                      | 5.355	 | 1.462              |	11 |
+| Difference: Placebo - BPA | -0.095 | 1.153              | 11 |
+
+
+\noindent
+\textbf{(a)}[4 points] For simplicity, Dr. Hagobian could have given all
+subjects the BPA cookie on their first visit in December, and the Placebo cookie
+on the second visit in February, but he didn’t. Instead, when a subject came for
+their first visit, he flipped a coin. If it was heads, they received BPA on that
+visit (and Placebo on their second visit). If it was tails they received the 
+Placebo cookie first. Why did he add this extra coin flipping step instead of
+the simpler approach of just giving everyone one type of cookie in December and
+the other in February?
+
+\vspace{1in}
+
+\noindent
+\textbf{(b)}[]
+
+<!-- Question about hypotheses -->
+<!-- Need to be two-sided -->
+
+
+\noindent
+\textbf{(c)}[]
+
+<!-- Simple question about conditions -->
+
+
+\noindent
+\textbf{(d)}[] Regarding the condition of normality condition, which data should
+you be concerned about? Circle one. 
+
+\begin{itemize}
+\item the glucose data from the Placebo and the BPA trials \\
+\item the within subject glucose differences \\
+\item neither \\
+\item both
+\end{itemize}
+
+\noindent
+\textbf{(e)}[]
+
+<!-- Question about p-value calculation.  -->
+
+\noindent
+\textbf{(f)}[]
+
+<!-- Question about decision error.  -->
+
+\noindent
+\textbf{(g)}[] If instead Dr. Hagobian had 100 subjects (50 in each group), 
+would the chance of the error described in part (f) *increase*, *decrease*, or
+*stay the same*. 
 
 
 
