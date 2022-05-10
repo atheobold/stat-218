@@ -3,9 +3,7 @@ title: "Midterm 2 Question Bank"
 author: "Stat 218"
 output:
   pdf_document:
-    extra_dependencies:
-    - multicol
-    - setspace
+    extra_dependencies: ["multicol", "setspace"]
   html_document:
     df_print: paged
 ---
@@ -14,18 +12,21 @@ output:
 knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
                       warning = FALSE, 
-                      fig.align = "center", 
-                      fig.width = 4, 
-                      fig.height = 4)
+                      fig.align = "center")
+
+set.seed(1234)
 
 library(tidyverse)
 library(openintro)
 library(mosaic)
-library(moderndive)
 library(pander)
 library(infer)
-library(lterdatasampler)
-library(palmerpenguins)
+library(forcats)
+library(broom)
+```
+
+```{r tinytex-messages, include = FALSE}
+options(tinytex.verbose = TRUE)
 ```
 
 Your exam questions will be randomly selected from this bank of
@@ -109,14 +110,15 @@ Sex is the (explanatory/response) \underline{\hspace{3in}} and it is
 \vspace{0.25cm}
 
 \noindent
-\textbf{(b)}[3 pts] Which type of plot is most appropriate to display the
-relationship between step distance and sex of the butterfly? Select one. 
+\textbf{(b)}[3 pts] Which types of plot is most appropriate to display the
+relationship between step distance and sex of the butterfly? Select all that 
+apply. 
 
 \begin{itemize}
 \item Segmented Bar plot \\
 \item Scatterplot \\
 \item Side-by-side Boxplot \\
-\item Histogram 
+\item Faceted histograms 
 \end{itemize}
 
 \noindent
@@ -180,13 +182,15 @@ study? Select **all** that are present, or if there is no bias present, select
 \newpage
 
 \noindent
-\textbf{Q3}[23 points] 
+\textbf{Q3}[24 points] 
 In 2004, the state of North Carolina released to the public a large dataset
 containing information on births recorded in this state. This data set has been 
 of interest to medical researchers who are studying the relation between habits
 and practices of expectant mothers and the birth of their children. This 
 analysis will focus on a random sample of 1,000 observations from the published
 dataset. 
+
+\vspace{0.25cm}
 
 \noindent
 \textbf{(a)}[3 points] Researchers are interested in the difference in the mean
@@ -202,15 +206,15 @@ your answer what notation should be used for this statistic.
 
 \textbf{Notation:}
 
-\vspace{0.25cm}
+\vspace{0.25in}
 
 ```{r favstats-smoking}
 favstats(weight ~ habit, data = births14)
 ```
 
-\newpage 
+\vspace{0.5in}
 
-```{r}
+```{r, out.width = "80%"}
 births14 %>%
   filter(!is.na(habit)) %>% 
   ggplot(mapping = aes(x = weight)) + 
@@ -221,6 +225,8 @@ births14 %>%
        y = "Number of Babies")
 ```
 
+\newpage
+
 \noindent
 \textbf{(b)}[4 points] Hospital administration at Duke University Hospital are
 interested in estimating the true difference in mean birth weight between
@@ -228,7 +234,7 @@ mothers who smoke and mothers who do not smoke. The administrators learned in
 their Statistics class how obtain a confidence interval for a difference in
 means using a $t$-distribution. Using the plots above and your knowledge of how
 the data were collected evaluate whether it would be appropriate to use a
-$t$-distribution to obtain a confidence interval. 
+$t$-distribution to obtain a confidence interval for true difference in means.
 
 \vspace{1.5in}
 
@@ -236,22 +242,27 @@ $t$-distribution to obtain a confidence interval.
 \textbf{(c)}[5 points] The administrators contacted the Department of Statistics
 at Duke and requested a consultation. The Statistician they spoke with suggested
 they use bootstrapping instead of a $t$-distribution to obtain a confidence
-interval. Fill in the blanks below to explain to the adminstrators how one
+interval. Fill in the blanks below to explain to the administrators how one
 bootstrap (re)sample is found. 
 
 \begin{center}
-On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
+\noindent
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{2in}} on the 
 cards.
-
-\vspace{0.5cm}
-
-Generate a new sample by: \underline{\hspace{3in}}.
-
-\vspace{0.5cm}
-
-Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
-
 \end{center}
+
+\vspace{0.25in}
+
+Generate a new sample by: 
+
+\vspace{0.5in}
+
+\begin{center}
+\noindent
+Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
+\end{center}
+
+\vspace{0.25in}
 
 \noindent
 \textbf{(d)}[3 points] The Statistician carried out a simulation with 1000 
@@ -261,9 +272,7 @@ bootstrap distribution below.
 Where is the bootstrap distribution centered? Why is the distribution centered 
 at that value?
 
-\vspace{1in}
-
-```{r bootstrap-births}
+```{r bootstrap-births, out.width = "60%", fig.align = 'left'}
 bootstrap_dist <- births14 %>% 
   specify(response = weight, explanatory = habit) %>% 
   generate(reps = 1000, type = "bootstrap") %>% 
@@ -278,10 +287,14 @@ bootstrap_dist %>%
        y = "Frequency")
 ```
 
+\newpage
 
 \noindent
-\textbf{(e)}[3 points] Use the table below to find the 99% confidence interval
-using the percentile method. 
+\textbf{(e)}[3 points] The table below presents percentiles for the bootstrap 
+distribution above. Circle the two values which will construct a 99% confidence
+interval. 
+
+\vspace{0.25cm}
 
 ```{r percentile-CI-table}
 bootstrap_dist %>% 
@@ -300,27 +313,39 @@ bootstrap_dist %>%
   pander()
 ```
 
-\textbf{99\% Interval:}
-
 \vspace{0.25cm}
 
 \noindent
-\textbf{(f)}[5 points] Interpret the 99% confidence interval found in part (f). 
+\textbf{(f)}[4 points] Interpret the 99% confidence interval found in part (f)
+\textbf{in the context of this study}. 
 
 \vspace{1in}
 
 \noindent
-\textbf{Q4}[] As you may be aware, many individuals are concerned about the
-presence of BPA in plastics, especially plastics that make contact with food and
-drinks. Currently, these is an incomplete understandinf of how exposure to BPA
-affects our ingestion. Last year Dr. Hagobian in the Kinesiology and Public
+\textbf{(g)}[2 points] Based on your confidence interval in (f), which of the
+following is the most likely p-value for a two-sided hypothesis test? Circle 
+one. 
+
+\begin{center}
+(i) 0.20 \hspace{0.25in} (ii) 0.10 \hspace{0.25in} (iii) 0.05 \hspace{0.25in} 
+(iv) 0.01 \hspace{0.25in} (v) 0.005
+\end{center}
+
+\vspace{0.25in}
+
+\noindent
+\textbf{Q4}[21 points] As you may be aware, many individuals are concerned about
+the presence of BPA in plastics, especially plastics that make contact with food
+and drinks. Currently, these is an incomplete understanding of how exposure to
+BPA affects our ingestion. Last year Dr. Hagobian in the Kinesiology and Public
 Health carried out a study to investigate the role of Bisphenol A (BPA) in 
 metabolism and endocrine disruption. 
 
 Dr. Hahobian recruited 11 subjects, each of whom ate two types of cookies on two
 separate visits, one visit in December and the second in February. On one visit
 they ate the BPA-laced cookie and, on a different day, a placebo cookie (with no
-BPA). Thirty minutes after eating the cookie on each occasion, they were given a glucose tolerance test to measure their glucose metabolism as well as other
+BPA). Thirty minutes after eating the cookie on each occasion, they were given a
+glucose tolerance test to measure their glucose metabolism as well as other
 blood tests to measure levels of estrogen, pro-insulin, and c-peptide in the
 blood. 
 
@@ -333,6 +358,7 @@ as well as the difference in glucose results for each subject is shown below.
 | BPA	                      | 5.355	 | 1.462              |	11 |
 | Difference: Placebo - BPA | -0.095 | 1.153              | 11 |
 
+\newpage
 
 \noindent
 \textbf{(a)}[4 points] For simplicity, Dr. Hagobian could have given all
@@ -350,12 +376,17 @@ the other in February?
 \textbf{(b)}[2 points] Dr. Hagobian is interested in testing whether BPA causes a shift
 in glucose levels. Which analysis would be more appropriate? Circle one. 
 
-\textbf{Difference in Two Independent Means} \hspace{1in} \textbf{Mean of the Differences}
+\begin{center}
+\textbf{Difference in Two Independent Means} \hspace{1in} 
+\textbf{Mean of the Paired Differences}
+\end{center}
 
+\vspace{0.25in}
 
 \noindent
-\textbf{(c)}[2 points] Based on your answer to (b), write out the null and 
-alternative hypotheses for Dr. Hagobian's test. 
+\textbf{(c)}[3 points] Based on your answer to (b), write out the null and 
+alternative hypotheses for Dr. Hagobian's test using **notation**. *Be sure to 
+indicate the order of subtraction being used!*
 
 \vspace{0.25cm}
 
@@ -367,11 +398,11 @@ alternative hypotheses for Dr. Hagobian's test.
 
 \vspace{0.25in}
 
-
 \noindent
-\textbf{(d)}[] To perform the analyses you selected in (b), what conditions does
-Dr. Hagobian need to check before obtaining a p-value? Select all that apply. 
+\textbf{(d)}[3 points] To perform the analyses you selected in (b), what conditions does
+Dr. Hagobian need to check before obtaining a p-value? Circle all that apply. 
 
+\begin{multicols}{2}
 \begin{itemize}
 \item Independence of the differences \\
 \item Independence of observations within each group \\
@@ -379,16 +410,17 @@ Dr. Hagobian need to check before obtaining a p-value? Select all that apply.
 \item Independence of the variables \\
 \item Equal variance between the groups \\
 \item Linear relationship between the variables \\
-\item Normality of the Differences \\
+\item Normality of the differences \\
 \item Normality of the observations within each group \\
 \end{itemize}
+\end{multicols}
 
-\vspace{0.25cm}
+\newpage
 
 \noindent
-\textbf{(e)}[] Using `R`, Dr. Hagobian obtained the following table. 
+\textbf{(e)}[3 points] Using `R`, Dr. Hagobian obtained the following table. 
 
-```{r}
+```{r dr-hagobian-results}
 dr_hagobian <- tibble(Difference = 
                         rnorm(n = 11, mean = -0.095, sd = 1.153)
                       )
@@ -411,31 +443,263 @@ part (c)!
 
 \begin{itemize}
 \item With such a large p-value, we have significant evidence to reject the
-null hypothesis that the difference in the glucose levels after eating a BPA
-and Placebo cracker are the same. We can therefore conclude that eating a BPA
-cracker shifted the glucose levels.  
+null hypothesis. We conclude the true mean of the differences in glucose 
+between eating a BPA cracker and a Placebo cracker is not 0. 
 
-\item
+\item With such a large p-value, we have insufficient evidence to reject the
+null hypothesis. We conclude the true mean of the differences in glucose 
+between eating a BPA cracker and a Placebo cracker is 0. 
+
+\item With such a large p-value, we have insufficient evidence to reject the
+null hypothesis. We do not have evidence to suggest the mean of the differences
+in glucose between eating a BPA cracker and a Placebo cracker is different 
+from 0. 
+
+\item With such a large p-value, we have significant evidence to reject the
+null hypothesis. We conclude the true mean glucose after eating a BPA cracker 
+is different from the true mean glucose after eating a Placebo cracker.
+
+\item With such a large p-value, we have insufficient evidence to reject the
+null hypothesis. We conclude there is no difference in the true mean glucose
+after eating a BPA cracker and the true mean glucose after eating a Placebo
+cracker.
+
+\item With such a large p-value, we have insufficient evidence to reject the
+null hypothesis. We do not have evidence to suggest the true mean glucose after
+eating a BPA cracker is different from the true mean glucose after eating a
+Placebo cracker.
 \end{itemize}
 
-
-<!-- Question about p-value calculation.  -->
+\vspace{0.25in}
 
 \noindent
-\textbf{(f)}[] Based on the decision you reached in (e), what type of error 
-could you have made? Circle one. 
+\textbf{(f)}[2 points] Based on the decision you reached in (e), what type of
+error could you have made? Circle one. 
+
+\begin{center}
+\textbf{Type I Error} \hspace{1in} \textbf{Type II Error} \hspace{1in}
+\textbf{No error was made} 
+\end{center}
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(g)}[2 points] If instead Dr. Hagobian had 100 subjects (50 in each
+group), the chance of the error described in part (f) would 
+
+\begin{center}
+\textbf{increase} \hspace{1in} \textbf{decrease} \hspace{1in}
+\textbf{stay the same}
+\end{center}
+
+\newpage
+
+\noindent
+\textbf{(h)}[2 points] In a different study, Dr. Hagobian obtained a p-value of
+0.0425 and a 95% confidence interval of (-1.129, 0.0437). Which of the 
+following statements about these findings is true? Circle one.  
 
 \begin{itemize}
-\item Type I error \\
-\item Type II error \\
-\item No error was made \\
+\item The results of the hypothesis test and the confidence interval tend to 
+agree with each other at the 5% significance level. Four percent of the time we
+would obtain a statistic like the one we saw somewhere in the interval of 
+-1.129 mmol/L to 0.0437 mmol/L. 
+
+\item The results of the hypothesis test and the confidence interval are
+conflicting at the 5% significance level. With a p-value of 0.0425 we have 
+evidence to reject the null hypothesis, which would mean that our confidence 
+interval would not contain 0.
+
+\item The results of the hypothesis test and the confidence interval are 
+conflicting at the 5% significance level. There's a 95% chance that a statistic
+of 0.0425 would be in the interval (-1.129, 0.0437). 
+
+\item The results of the hypothesis test and the confidence interval seem to 
+agree with one another at the 5% significance level. With a p-value of 0.0425
+we do not have evidence to reject the null hypothesis, thus indicating that 0
+should be in our interval. 
+
 \end{itemize}
+
+\noindent
+\textbf{Q5}[24 points] The *Journal of Food and Agriculture* contained an
+article titled "Influence of hydroponic ad soil cultivation on quality and shelf
+life of ready-to-eat lamb's lettuce." In this article, researchers studied the
+effects of different hydroponic growing methods on the nitrate content of
+lettuce. In their study, the researchers randomly assigned 34 lettuce seedlings
+to one of three growing conditions: soil, hydroponic A, or hydroponic B. At the
+end of the growing period (60 days), nitrate measurements of the lettuce were
+taken (mg / kg). 
+
+```{r lettuce-sim-data}
+lettuce <- tibble(
+  trt_group = c(
+    rep("soil", 9),
+    rep("hydro_A", 12),
+    rep("hydro_B", 13)
+  ), 
+  growth = c(
+    rnorm(n = 9, mean = 3806, sd = 124), 
+    rnorm(n = 12, mean = 4695, sd = 107), 
+    rnorm(n = 13, mean = 3878, sd = 103)
+    )
+)
+```
+
+Results from the study are presented in the table below. 
+
+```{r lettuce-table}
+lettuce %>% 
+  mutate(trt_group = fct_recode(trt_group, 
+                                 "Hydroponic A" = "hydro_A", 
+                                 "Hydroponic B" = "hydro_B", 
+                                 Soil = "soil"
+                                 ), 
+         trt_group = fct_relevel(trt_group, 
+                                 "Soil")
+         ) %>% 
+    group_by(trt_group) %>% 
+  summarize(mean = mean(growth), 
+            sd = sd(growth)) %>% 
+  rename(`Treatment Group` = trt_group, 
+         `Mean Growth` = mean, 
+         `Standard Deviation of Growth` = sd) %>% 
+  pander()
+```
 
 
 \noindent
-\textbf{(g)}[] If instead Dr. Hagobian had 100 subjects (50 in each group), 
-would the chance of the error described in part (f) *increase*, *decrease*, or
-*stay the same*. 
+\textbf{(a)}[2 points] One of the researcher's main questions was to determine
+whether the growing method affects nitrate concentration in lettuce. Considering
+how this study was executed, can they address this question? *Briefly justify
+your answer.*
 
+\vspace{1in}
 
+Below is an incomplete ANOVA table, summarizing the data. You may use this 
+information for the subsequent problems. 
+
+```{r}
+aov(growth ~ trt_group, data = lettuce) %>% 
+  tidy() %>% 
+  mutate(term = fct_recode(term, 
+                           "Growing Method" = "trt_group"
+                           ), 
+         df = c("___", 31), 
+         statistic = c("___", NA)
+         ) %>% 
+  pander()
+  
+```
+
+\newpage
+
+\noindent
+\textbf{(b)}[3 points] In the context of the research and in plain English, 
+what are the null and alternative hypotheses investigated in the ANOVA table 
+above?
+
+\vspace{0.25cm}
+\noindent \textbf{$H_0$:}
+
+\vspace{0.35in}
+
+\noindent \textbf{$H_A$:}
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(c)}[2 points] Rewrite the null hypothesis above to use notation for the
+parameters that are being tested. 
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(d)}[2 points] The alternative hypothesis investigated in the ANOVA 
+table above is $H_A$: $\mu_{\text{soil}} \neq \mu_{\text{soil}} \neq 
+\mu_{\text{soil}}$. Circle one. 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(e)}[1 point] What are the degrees of freedom associated with 
+`Growing Method`? 
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(f)}[2 points] What is the value of the F-statistic?  
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(g)}[2 points] The value of the F-statistic would be larger if the 
+nitrate standard deviations were smaller for each group. Circle one. 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(h)}[2 points] The value of the F-statistic would be larger if the 
+nitrate means were more different across the groups. Circle one. 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+\noindent
+\textbf{(i)}[1 point] Which distribution was used to obtain the p-value
+presented in the table? Circle one. 
+
+\begin{center}
+\textbf{Simulated / Permuted Null Distribution} \hspace{1in}
+\textbf{F-distribution}
+\end{center}
+
+\newpage
+
+\noindent
+\textbf{(j)}[4 points] Citing values from the ANOVA table to support your 
+answer, what conclusions could be drawn regarding the hypotheses stated in (b)
+and (c)? 
+
+\vspace{1in}
+
+\noindent
+\textbf{(k)}[3 points] The table below presents all comparisons of soil 
+treatment. What value of $\alpha$ should the researchers use to determine
+which of these tests produced "significant" results?
+
+\vspace{0.5in}
+
+```{r}
+pairwise.t.test(lettuce$growth, lettuce$trt_group, 
+                p.adjust.method = "none") %>% 
+  tidy() %>% 
+  mutate(group1 = fct_recode(group1, 
+                             "Hydroponic B" = "hydro_B", 
+                             "Soil" = "soil"
+                             ), 
+         group2 = fct_recode(group2, 
+                             "Hydroponic A" = "hydro_A", 
+                             "Hydroponic B" = "hydro_B"), 
+         p.value = if_else(p.value < 5e-10, 
+                           " < 0.000001", 
+                           as.character(
+                             round(p.value, 4)
+                             )
+                           )
+         ) %>% 
+  rename(`Group 1` = group1, 
+         `Group 2` = group2) %>% 
+  pander()
+```
 
