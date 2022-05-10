@@ -25,10 +25,6 @@ library(forcats)
 library(broom)
 ```
 
-```{r tinytex-messages, include = FALSE}
-options(tinytex.verbose = TRUE)
-```
-
 Your exam questions will be randomly selected from this bank of
 questions. There \textbf{will not} be a solution key posted. It is your 
 responsibility to discuss your ideas with your group members and / or with 
@@ -77,9 +73,8 @@ $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
 \newpage 
 
-\textbf{Q1}[10 points] 
-
-Researchers in Southern England collected data on grassland butterflies. They
+\textbf{Q1}[10 points] Researchers in Southern England collected data on
+grassland butterflies. They
 were interested in whether movement patterns varied across species and between
 male and female butterflies. Researchers observed 164 butterflies over the
 three-year length of this study, of which 28 were female and 136 were male. 
@@ -115,10 +110,10 @@ relationship between step distance and sex of the butterfly? Select all that
 apply. 
 
 \begin{itemize}
-\item Segmented Bar plot \\
-\item Scatterplot \\
-\item Side-by-side Boxplot \\
-\item Faceted histograms 
+\item[(i)] Segmented Bar plot \\
+\item[(ii)] Scatterplot \\
+\item[(iii)] Side-by-side Boxplot \\
+\item[(iv)] Faceted histograms 
 \end{itemize}
 
 \noindent
@@ -127,13 +122,13 @@ found between the males and females in the sample, what is the scope of
 inference for this study? Select one. 
 
 \begin{itemize}
-\item Sex causes a difference in average step distance for all grassland
+\item[(i)] Sex causes a difference in average step distance for all grassland
 butterflies. \\
-\item Sex is associated with a difference in average step distance for grassland
+\item[(ii)] Sex is associated with a difference in average step distance for grassland
 butterflies similar to those sampled. \\
-\item Sex causes a difference in average step distance for grassland butterflies
+\item[(iii)] Sex causes a difference in average step distance for grassland butterflies
 similar to those sampled. \\
-\item Sex is associated with a difference in average step distance for all
+\item[(iv)] Sex is associated with a difference in average step distance for all
 grassland butterflies. 
 \end{itemize}
 
@@ -162,7 +157,8 @@ the more likely the person was to have chronic insomnia.
 parentheses to identify and explain the study design.
 
 This is a(n) (observational study / randomized experiment)
-\underline{\hspace{3in}} because (level of education / insomnia status) \underline{\hspace{3in}} (was / was not) \underline{\hspace{3in}} randomly
+\underline{\hspace{3in}} because (level of education / insomnia status) 
+\underline{\hspace{3in}} (was / was not) \underline{\hspace{3in}} randomly
 (assigned / sampled) \underline{\hspace{3in}. 
 
 \vspace{1cm}
@@ -173,10 +169,10 @@ study? Select **all** that are present, or if there is no bias present, select
 "No bias." 
 
 \begin{itemize}
-\item Selection bias \\
-\item Response bias \\
-\item Non-response bias \\
-\item No bias
+\item[(i)] Selection bias \\
+\item[(ii)] Response bias \\
+\item[(iii)] Non-response bias \\
+\item[(iv)] No bias
 \end{itemize}
 
 \newpage
@@ -284,7 +280,8 @@ bootstrap_dist %>%
   visualise() + 
   labs(x = "Bootstrap Difference in Means (Nonsmoker - Smoker)", 
        title = "", 
-       y = "Frequency")
+       y = "Frequency") + 
+  theme_bw()
 ```
 
 \newpage
@@ -404,14 +401,14 @@ Dr. Hagobian need to check before obtaining a p-value? Circle all that apply.
 
 \begin{multicols}{2}
 \begin{itemize}
-\item Independence of the differences \\
-\item Independence of observations within each group \\
-\item Independence of observations between the groups \\
-\item Independence of the variables \\
-\item Equal variance between the groups \\
-\item Linear relationship between the variables \\
-\item Normality of the differences \\
-\item Normality of the observations within each group \\
+\item[(i)] Independence of the differences \\
+\item[(ii)] Independence of observations within each group \\
+\item[(iii)] Independence of observations between the groups \\
+\item[(iv)] Independence of the variables \\
+\item[(v)] Equal variance between the groups \\
+\item[(vi)] Linear relationship between the variables \\
+\item[(vii)] Normality of the differences \\
+\item[(viii)] Normality of the observations within each group \\
 \end{itemize}
 \end{multicols}
 
@@ -442,29 +439,29 @@ Dr. Hagobian's study? Your selection should reflect the hypotheses you wrote in
 part (c)!
 
 \begin{itemize}
-\item With such a large p-value, we have significant evidence to reject the
+\item[(i)] With such a large p-value, we have significant evidence to reject the
 null hypothesis. We conclude the true mean of the differences in glucose 
 between eating a BPA cracker and a Placebo cracker is not 0. 
 
-\item With such a large p-value, we have insufficient evidence to reject the
+\item[(ii)] With such a large p-value, we have insufficient evidence to reject the
 null hypothesis. We conclude the true mean of the differences in glucose 
 between eating a BPA cracker and a Placebo cracker is 0. 
 
-\item With such a large p-value, we have insufficient evidence to reject the
+\item[(iii)] With such a large p-value, we have insufficient evidence to reject the
 null hypothesis. We do not have evidence to suggest the mean of the differences
 in glucose between eating a BPA cracker and a Placebo cracker is different 
 from 0. 
 
-\item With such a large p-value, we have significant evidence to reject the
+\item[(vi)] With such a large p-value, we have significant evidence to reject the
 null hypothesis. We conclude the true mean glucose after eating a BPA cracker 
 is different from the true mean glucose after eating a Placebo cracker.
 
-\item With such a large p-value, we have insufficient evidence to reject the
+\item[(v)] With such a large p-value, we have insufficient evidence to reject the
 null hypothesis. We conclude there is no difference in the true mean glucose
 after eating a BPA cracker and the true mean glucose after eating a Placebo
 cracker.
 
-\item With such a large p-value, we have insufficient evidence to reject the
+\item[(vi)] With such a large p-value, we have insufficient evidence to reject the
 null hypothesis. We do not have evidence to suggest the true mean glucose after
 eating a BPA cracker is different from the true mean glucose after eating a
 Placebo cracker.
@@ -500,21 +497,21 @@ group), the chance of the error described in part (f) would
 following statements about these findings is true? Circle one.  
 
 \begin{itemize}
-\item The results of the hypothesis test and the confidence interval tend to 
+\item[(i)] The results of the hypothesis test and the confidence interval tend to 
 agree with each other at the 5% significance level. Four percent of the time we
 would obtain a statistic like the one we saw somewhere in the interval of 
 -1.129 mmol/L to 0.0437 mmol/L. 
 
-\item The results of the hypothesis test and the confidence interval are
+\item[(ii)] The results of the hypothesis test and the confidence interval are
 conflicting at the 5% significance level. With a p-value of 0.0425 we have 
 evidence to reject the null hypothesis, which would mean that our confidence 
 interval would not contain 0.
 
-\item The results of the hypothesis test and the confidence interval are 
+\item[(iii)] The results of the hypothesis test and the confidence interval are 
 conflicting at the 5% significance level. There's a 95% chance that a statistic
 of 0.0425 would be in the interval (-1.129, 0.0437). 
 
-\item The results of the hypothesis test and the confidence interval seem to 
+\item[(vi)] The results of the hypothesis test and the confidence interval seem to 
 agree with one another at the 5% significance level. With a p-value of 0.0425
 we do not have evidence to reject the null hypothesis, thus indicating that 0
 should be in our interval. 
@@ -612,12 +609,12 @@ above?
 \textbf{(c)}[2 points] Rewrite the null hypothesis above to use notation for the
 parameters that are being tested. 
 
-\vspace{0.25in}
+\vspace{1in}
 
 \noindent
 \textbf{(d)}[2 points] The alternative hypothesis investigated in the ANOVA 
-table above is $H_A$: $\mu_{\text{soil}} \neq \mu_{\text{soil}} \neq 
-\mu_{\text{soil}}$. Circle one. 
+table above is $H_A$: $\mu_{\text{Soil}} \neq \mu_{\text{Hydroponic A}} \neq 
+\mu_{\text{Hydroponic B}}$. Circle one. 
 
 \begin{center}
 \textbf{True} \hspace{2in} \textbf{False}
