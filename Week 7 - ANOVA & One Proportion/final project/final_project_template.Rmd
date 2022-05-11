@@ -41,45 +41,54 @@ explanatory variable and one should be the response.
 
 
 
-## Data Visualization
+## Data Visualization & Summarization
 <!-- In this section you create three visualizations of your data -->
 
-### Bar Plot of <INSERT NAME OF RESPONSE VARIABLE>
+### Investigating <INSERT NAME OF RESPONSE VARIABLE>
 
-```{r histogram-1}
+```{r bar-plot-1}
 ## Code to make your first barplot goes here! 
 ## Don't forget to choose nice axis title!
 
 
+## Code to find the sample sizes of each group goes here!
+
+
 ```
-<!-- Here is where you describe what you see in the barplot.-->
+<!-- Here is where you describe what you see in the barplot and the summary 
+table. -->
 
 
 
-### Bar Plot of <INSERT NAME OF EXPLANATORY VARIABLE>
+### Investigating <INSERT NAME OF EXPLANATORY VARIABLE>
 
-```{r histogram-2}
-## Code to make your second barplot goes here! 
+```{r bar-plot-1}
+## Code to make your first barplot goes here! 
 ## Don't forget to choose nice axis title!
 
 
-```
-<!-- Here is where you describe what you see in the barplot.-->
-
-
-
-### <STACKED OR SIDE-BY-SIDE> Barplot of <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
-
-```{r scatterplot}
-## Code to make your side-by-side or stacked barplot goes here! 
-## You get to choose which orientation you would like to use!
-## Don't forget to choose nice axis labels!
+## Code to find the sample sizes of each group goes here!
 
 
 ```
+<!-- Here is where you describe what you see in the barplot and the summary 
+table. -->
 
-<!-- Here is where you describe what you see in the two variable barplot.-->
 
+
+### Investigating the Relationship between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+```{r bar-plot-1}
+## Code to make your first barplot goes here! 
+## Don't forget to choose nice axis title!
+
+
+## Code to find the sample sizes of each group goes here!
+
+
+```
+<!-- Here is where you describe what you see in the barplot and the summary 
+table. -->
 ## Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
 
 ### Model Conditions

@@ -1,0 +1,185 @@
+---
+title: "Are Tenured Professors Mostly Men?"
+subtitle: "Example Final Project Writeup"
+author: "by Dr. Theobold"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# This is code to make your report format look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(mosaic)
+library(knitr)
+
+```
+
+```{r data}
+library(openintro)
+
+evals_ind <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1, replace = FALSE)
+```
+
+![Google search results for "professor"](professors.png)
+
+## Data Description
+
+The data for this project come from end of semester student evaluations for a
+large sample of professors from The University of Texas at Austin. The original
+data set published in *Beauty in the Classroom* (Hamermesh & Parker, 2005) are
+available through the **openintro** `R` package. 
+
+For the Midterm Project, my analysis focused on the relationship between 
+professor's attractiveness and course evalution scores, two numerical variables.
+For this analysis, however, I will be focusing on categorical variables: 
+professor's self-identified sex (M / F) and a professor's teaching rank 
+(teaching / tenure track / tenured). Specifically, I am interested in
+investigating if there are larger proportions of male-identifying faculty in 
+tenure track and tenured positions, whereas there are larger proportions of 
+women in teaching positions. 
+
+
+## Data Visualization & Summarization
+<!-- In this section you create three visualizations of your data -->
+
+### Investigating Professor's Self-Identified Sex
+
+```{r bar-plot-1}
+evals_ind %>% 
+  ggplot(mapping = aes(x = gender)
+         ) +
+  geom_bar() + 
+  labs(x = "Professor's Self-Identified Sex", 
+       y = "Number of Professors")
+
+evals_ind %>% 
+  group_by(gender) %>% 
+  count()
+```
+
+In the bar plot of professor's sex, we see that there are more male identifying
+professors than female identifying professors. Based on the summary table, we 
+see there are 14 more male faculty than female faculty. 
+
+### Investigating Professor's Teaching Rank
+
+```{r bar-plot-1}
+evals_ind %>% 
+  ggplot(mapping = aes(x = rank)
+         ) +
+  geom_bar() + 
+  labs(x = "Professor's Teaching Rank", 
+       y = "Number of Professors")
+
+evals_ind %>% 
+  group_by(rank) %>% 
+  count()
+```
+
+In the bar plot of professor's teaching rank, we see the majority of faculty 
+are tenured, nearly double the number of tenure track faculty at UT Austin. The
+smallest group is teaching faculty, with only 15 professors.
+
+### Investigating the Relationship between Professor's Self-Identified Sex and Teaching Rank
+
+```{r bar-plot-1}
+evals_ind %>% 
+  ggplot(mapping = aes(x = rank, fill = gender)
+         ) +
+  geom_bar(position = "fill") + 
+  labs(x = "Professor's Teaching Rank", 
+       y = "Number of Professors", 
+       fill = "Professor's Gender")
+
+evals_ind %>% 
+  group_by(gender, rank) %>% 
+  count()
+```
+
+
+
+## Independence of 
+
+### Model Conditions
+
+There are four conditions required to be verified before we perform inference
+on the linear relationship between these two variables. These conditions are:
+linearity of the relationship, independence of observations, nearly normal
+residuals, and constant variability. 
+
+__Linearity:__ As seen in the scatterplot above, the relationship between 
+average course evaluation score and average beauty score is weakly linear. 
+Although the relationship is not very strong, it does not appear that there is
+evidence of a non-linear (e.g., quadratic, logarithmic) relationship.
+
+__Independence:__ These data were from a convenience sample of professors at 
+the University of Texas at Austin. The researchers obtained the course
+evaluation scores for every professor in the sample, for every course they 
+taught. Thus, for some professors there were multiple observations. 
+
+Having multiple observations for each professor violates the independence
+condition. Thus, for each professor I randomly selected **one** of their
+courses. After removing these repeated observations, I no longer believe the
+independence condition is violated. There is no reason to believe that knowing 
+the evaluation score of one professor should give me perfect information about 
+another professor's evaluation score. 
+
+__Normality of Residuals:__ The condition of normality can be checked using 
+either the distribution of the responses (average evaluation scores) or the 
+distribution of residuals from the regression model. Based on the histogram 
+above, it does not appear that the condition of nearly normal responses is 
+violated. While the distribution has a slight left skew, the sample size is 94
+professors, well over the threshold of 60 for substantially skewed
+distributions.
+
+__Equal Variance:__ The variability of the evaluation scores appears similar 
+across the regression line. While there is a larger spread in the evaluation 
+scores for professors with beauty ratings between 4 and 5, the size of these
+differences is not large. Instead, across all beauty ratings, it appears that 
+course evaluation scores vary from about 3 to about 5. 
+
+Since I have not seen any major violations of these conditions, I believe using 
+t-based methods will not incorrectly estimate a p-value or confidence interval. 
+
+### Coefficient Estimates
+
+```{r coefficients}
+
+eval_lm <- lm(score ~ bty_avg, data = evals_ind)
+
+## Code to get coefficient table from linear regression
+get_regression_table(eval_lm, conf.level = 0.90) %>% 
+  kable()
+```
+
+From the output above, we can see that the estimated intercept for the
+regression line is 3.594 and the estimated slope is 0.084. The y-intercept of 
+3.594 represents the predicted mean evaluation score for a professor who 
+received an average beauty score of zero. The lowest average beauty score
+observed in these data was two, so I believe this would be considered
+extrapolation. 
+
+The regression line suggests that for every increase of one in average beauty 
+score, we expect the mean course evaluation score to increase by about 0.084.
+Course evaluation scores are on a scale of 0 to 5, so an increase of 0.084 is
+quite small. 
+
+### Inference for the Slope
+
+<!-- Here is where you describe the decision for the hypothesis test for whether the slope is 0.  -->
+
+Although the size of the slope coefficient is small (0.086), at a 0.05 
+significance level I conclude that the relationship between average beauty 
+score and average evaluation score is "significantly" different from
+0 (t-stat = 2.356, p-value = 0.021). 
+
+The 95% confidence interval is (0.025, 0.147), which implies that I am 95%
+confident that for an increase of one in average beauty score I should expect an
+increase between 0.025 and 0.147 in the average course evaluation score. 
