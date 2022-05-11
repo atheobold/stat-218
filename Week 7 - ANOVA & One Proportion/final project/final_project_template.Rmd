@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.align = "center")
 
 # The code to load in the necessary packages goes here!
-# You will need: tidyverse and mosaic and infer
+# You will need: tidyverse and infer
 
 
 ```
@@ -37,13 +37,14 @@ knitr::opts_chunk$set(echo = FALSE,
 explanatory variable and one should be the response.
 3. Tell me why you picked these variables - what relationship are you investigating?
 -->
+ 
 
 
 
 ## Data Visualization
 <!-- In this section you create three visualizations of your data -->
 
-### Barplot of <INSERT NAME OF RESPONSE VARIABLE>
+### Bar Plot of <INSERT NAME OF RESPONSE VARIABLE>
 
 ```{r histogram-1}
 ## Code to make your first barplot goes here! 
@@ -55,7 +56,7 @@ explanatory variable and one should be the response.
 
 
 
-### Barplot of <INSERT NAME OF EXPLANATORY VARIABLE>
+### Bar Plot of <INSERT NAME OF EXPLANATORY VARIABLE>
 
 ```{r histogram-2}
 ## Code to make your second barplot goes here! 
@@ -79,10 +80,10 @@ explanatory variable and one should be the response.
 
 <!-- Here is where you describe what you see in the two variable barplot.-->
 
-## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+## Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
 
 ### Model Conditions
-<!-- Here is where you describe the four conditions (LINE) for linear regression.  -->
+<!-- Here is where you describe the for your test of independence. -->
 <!-- State what the condition is and if you believe it is / is not violated IN THE CONTEXT OF YOUR DATA! -->
 
 
