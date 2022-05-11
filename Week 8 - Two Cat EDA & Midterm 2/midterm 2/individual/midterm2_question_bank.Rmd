@@ -125,9 +125,9 @@ of inference for this study? Select one.
 \item[(i)] Sex causes a difference in average step distance for all grassland
 butterflies. \\
 \item[(ii)] Sex is associated with a difference in average step distance for
-grassland butterflies similar to those sampled. \\
-\item[(iii)] Sex causes a difference in average step distance for grassland
-butterflies similar to those sampled. \\
+the sample of grassland butterflies. \\
+\item[(iii)] Sex causes a difference in average step distance for the sample
+of grassland butterflies. \\
 \item[(iv)] Sex is associated with a difference in average step distance for all
 grassland butterflies. 
 \end{itemize}
@@ -165,8 +165,8 @@ This is a(n) (observational study / randomized experiment)
 
 \noindent
 \textbf{(c)}[3 points] Which types of sampling bias may be present in this
-study? Select **all** that are present, or if there is no bias present, select
-No bias.
+study? Select **all** that might be present, or if there is likely to be no
+bias present, select No bias.
 
 \begin{itemize}
 \item[(i)] Selection bias \\
@@ -297,14 +297,15 @@ confidence interval.
 
 ```{r percentile-CI-table}
 bootstrap_dist %>% 
-  summarize("0.5%" = quantile(stat, 0.05), 
+  summarize("0.5%" = quantile(stat, 0.005), 
             "1%" = quantile(stat, 0.01),
             "2.5%" = quantile(stat, 0.025),
             "5%" = quantile(stat, 0.05),
             "90%" = quantile(stat, 0.90),
             "95%" = quantile(stat, 0.95),
             "97.5%" = quantile(stat, 0.975),
-            "99.5%" = quantile(stat, 0.95)
+            "99%" = quantile(stat, 0.99),
+            "99.5%" = quantile(stat, 0.995)
             ) %>% 
   pivot_longer(cols = everything(), 
                names_to = "Quantile", 
@@ -481,8 +482,8 @@ error could you have made? Circle one.
 \vspace{0.25in}
 
 \noindent
-\textbf{(g)}[2 points] If instead Dr. Hagobian had 100 subjects (50 in each
-group), the chance of the error described in part (f) would 
+\textbf{(g)}[2 points] If instead Dr. Hagobian had 100 subjects, the chance of 
+the error described in part (f) would 
 
 \begin{center}
 \textbf{increase} \hspace{1in} \textbf{decrease} \hspace{1in}
@@ -676,7 +677,8 @@ and (c)?
 \noindent
 \textbf{(k)}[3 points] The table below presents all comparisons of soil 
 treatment. What value of $\alpha$ should the researchers use to determine
-which of these tests produced "significant" results?
+which of these tests produced "significant" results, so that the overall Type I
+error rate for these tests is less than 5\%?
 
 \vspace{0.5in}
 
