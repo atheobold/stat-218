@@ -1,8 +1,10 @@
 ---
 title: "Are Tenured Professors Mostly Men?"
-subtitle: "Example Final Project Writeup"
 author: "by Dr. Theobold"
-output: html_document
+subtitle: Example Final Project Writeup
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include = FALSE}
@@ -14,9 +16,8 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.align = "center")
 
 library(tidyverse)
-library(mosaic)
-library(knitr)
-
+library(infer)
+library(janitor)
 ```
 
 ```{r data}
@@ -24,10 +25,12 @@ library(openintro)
 
 evals_ind <- evals %>% 
   group_by(prof_id) %>% 
-  sample_n(size = 1, replace = FALSE)
+  sample_n(size = 1, replace = FALSE) %>% 
+  rename(sex = gender) %>% 
+  ungroup()
 ```
 
-![Google search results for "professor"](professors.png)
+![Google search results for "professor"](professor.png)
 
 ## Data Description
 
@@ -37,13 +40,16 @@ data set published in *Beauty in the Classroom* (Hamermesh & Parker, 2005) are
 available through the **openintro** `R` package. 
 
 For the Midterm Project, my analysis focused on the relationship between 
-professor's attractiveness and course evalution scores, two numerical variables.
-For this analysis, however, I will be focusing on categorical variables: 
-professor's self-identified sex (M / F) and a professor's teaching rank 
-(teaching / tenure track / tenured). Specifically, I am interested in
+professor's attractiveness and course evaluation scores, two numerical variables.
+For this analysis, however, I will be focusing on two categorical variables:
+
+- professor's self-identified sex (M / F)
+- professor's teaching rank (teaching / tenure track / tenured)
+
+Specifically, I am interested in
 investigating if there are larger proportions of male-identifying faculty in 
-tenure track and tenured positions, whereas there are larger proportions of 
-women in teaching positions. 
+tenured positions, whereas there are larger proportions of women in teaching
+positions. 
 
 
 ## Data Visualization & Summarization
@@ -53,15 +59,16 @@ women in teaching positions.
 
 ```{r bar-plot-1}
 evals_ind %>% 
-  ggplot(mapping = aes(x = gender)
+  ggplot(mapping = aes(x = sex)
          ) +
   geom_bar() + 
   labs(x = "Professor's Self-Identified Sex", 
        y = "Number of Professors")
 
 evals_ind %>% 
-  group_by(gender) %>% 
-  count()
+  group_by(sex) %>% 
+  count() %>% 
+  knitr::kable()
 ```
 
 In the bar plot of professor's sex, we see that there are more male identifying
@@ -70,7 +77,7 @@ see there are 14 more male faculty than female faculty.
 
 ### Investigating Professor's Teaching Rank
 
-```{r bar-plot-1}
+```{r bar-plot-2}
 evals_ind %>% 
   ggplot(mapping = aes(x = rank)
          ) +
@@ -80,106 +87,93 @@ evals_ind %>%
 
 evals_ind %>% 
   group_by(rank) %>% 
-  count()
+  count() %>% 
+  knitr::kable()
 ```
 
 In the bar plot of professor's teaching rank, we see the majority of faculty 
-are tenured, nearly double the number of tenure track faculty at UT Austin. The
+are tenured, over double the number of tenure track faculty at UT Austin. The
 smallest group is teaching faculty, with only 15 professors.
 
 ### Investigating the Relationship between Professor's Self-Identified Sex and Teaching Rank
 
-```{r bar-plot-1}
+```{r bar-plot-3}
 evals_ind %>% 
-  ggplot(mapping = aes(x = rank, fill = gender)
+  ggplot(mapping = aes(x = rank, fill = sex)
          ) +
   geom_bar(position = "fill") + 
   labs(x = "Professor's Teaching Rank", 
        y = "Number of Professors", 
        fill = "Professor's Gender")
 
-evals_ind %>% 
-  group_by(gender, rank) %>% 
-  count()
 ```
 
+Based on the filled bar plot above, we can see that male professors make up a 
+larger percentage of the tenured faculty than for all other teaching ranks. 
+Contrary to what I expected, teaching and tenure track have about the same
+proportion of female faculty. 
 
 
-## Independence of 
+## Independence of Professor's Sex and Teaching Rank
+
+For our chi-squared analysis, we are interested in knowing if a professor's sex
+is independent of their teaching rank. If there was no relationship between 
+sex and teaching rank, we would expect to see approximately equal proportions of
+male identifying faculty across the teaching ranks. 
+
 
 ### Model Conditions
 
-There are four conditions required to be verified before we perform inference
-on the linear relationship between these two variables. These conditions are:
-linearity of the relationship, independence of observations, nearly normal
-residuals, and constant variability. 
+To conduct a chi-squared analysis, there are two conditions required to be
+checked, (1) independence of observations and (2) expected cell counts of at
+least five for every level of sex and teaching rank. 
 
-__Linearity:__ As seen in the scatterplot above, the relationship between 
-average course evaluation score and average beauty score is weakly linear. 
-Although the relationship is not very strong, it does not appear that there is
-evidence of a non-linear (e.g., quadratic, logarithmic) relationship.
+As these professors were a convenience sample of professors at UT Austin, not a
+random sample, we need to think carefully about independence. There are no
+repeated observations of professors in the dataset and knowing the sex and rank
+of one faculty member doesn't give you perfect information about another faculty
+member. Thus, I do not believe the independence of observations condition is 
+violated. 
 
-__Independence:__ These data were from a convenience sample of professors at 
-the University of Texas at Austin. The researchers obtained the course
-evaluation scores for every professor in the sample, for every course they 
-taught. Thus, for some professors there were multiple observations. 
+The table of observed counts is shown below. The smallest observed counts are 
+for female and male teaching faculty. To perform a parametric chi-squared 
+analysis, we are required to have five expected counts in each cell of the
+table. Based on the table, we can see that the cell which should have the lowest
+expected count is female, teaching faculty. The expected count for this cell is
+$\frac{40 \times 15}{94} = 6.382$, which is larger than 5. 
 
-Having multiple observations for each professor violates the independence
-condition. Thus, for each professor I randomly selected **one** of their
-courses. After removing these repeated observations, I no longer believe the
-independence condition is violated. There is no reason to believe that knowing 
-the evaluation score of one professor should give me perfect information about 
-another professor's evaluation score. 
+```{r expected-counts}
 
-__Normality of Residuals:__ The condition of normality can be checked using 
-either the distribution of the responses (average evaluation scores) or the 
-distribution of residuals from the regression model. Based on the histogram 
-above, it does not appear that the condition of nearly normal responses is 
-violated. While the distribution has a slight left skew, the sample size is 94
-professors, well over the threshold of 60 for substantially skewed
-distributions.
+evals_ind %>% 
+  group_by(sex, rank) %>% 
+  count() %>% 
+  pivot_wider(names_from = sex, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  knitr::kable()
 
-__Equal Variance:__ The variability of the evaluation scores appears similar 
-across the regression line. While there is a larger spread in the evaluation 
-scores for professors with beauty ratings between 4 and 5, the size of these
-differences is not large. Instead, across all beauty ratings, it appears that 
-course evaluation scores vary from about 3 to about 5. 
-
-Since I have not seen any major violations of these conditions, I believe using 
-t-based methods will not incorrectly estimate a p-value or confidence interval. 
-
-### Coefficient Estimates
-
-```{r coefficients}
-
-eval_lm <- lm(score ~ bty_avg, data = evals_ind)
-
-## Code to get coefficient table from linear regression
-get_regression_table(eval_lm, conf.level = 0.90) %>% 
-  kable()
 ```
 
-From the output above, we can see that the estimated intercept for the
-regression line is 3.594 and the estimated slope is 0.084. The y-intercept of 
-3.594 represents the predicted mean evaluation score for a professor who 
-received an average beauty score of zero. The lowest average beauty score
-observed in these data was two, so I believe this would be considered
-extrapolation. 
 
-The regression line suggests that for every increase of one in average beauty 
-score, we expect the mean course evaluation score to increase by about 0.084.
-Course evaluation scores are on a scale of 0 to 5, so an increase of 0.084 is
-quite small. 
+Since I have not seen any major violations of these conditions, I believe using 
+a parametric chi-squared distribution will not incorrectly estimate the p-value
+for the test of independence. 
 
-### Inference for the Slope
 
-<!-- Here is where you describe the decision for the hypothesis test for whether the slope is 0.  -->
+### Chi-Squared Analysis 
 
-Although the size of the slope coefficient is small (0.086), at a 0.05 
-significance level I conclude that the relationship between average beauty 
-score and average evaluation score is "significantly" different from
-0 (t-stat = 2.356, p-value = 0.021). 
+The results of the chi-squared analysis are presented below. 
 
-The 95% confidence interval is (0.025, 0.147), which implies that I am 95%
-confident that for an increase of one in average beauty score I should expect an
-increase between 0.025 and 0.147 in the average course evaluation score. 
+```{r chi-sq-results}
+chisq_test(evals_ind, 
+           response = rank, 
+           explanatory = sex
+           ) %>% 
+  knitr::kable()
+```
+
+With a p-value of 0.109 (chi-squared statistic = 4.4 on 2 degrees of freedom),
+we have weak evidence against the null. At an $\alpha$ of 0.1 we fail to reject
+the null hypothesis of independence. Hence, these data do not suggest that a
+professor's sex and their teaching rank are dependent.
+
