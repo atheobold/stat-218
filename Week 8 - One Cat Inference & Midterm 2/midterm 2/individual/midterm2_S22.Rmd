@@ -254,15 +254,7 @@ table above?
 \textbf{(c)}[2 points] Rewrite the null hypothesis above to use notation for the
 \emph{parameters} that are being tested. 
 
-\vspace{0.25cm}
-\noindent \textbf{$H_0$:}
-
-\vspace{0.35in}
-
-\noindent \textbf{$H_A$:}
-
-\vspace{0.5in}
-
+\vspace{1in}
 
 \noindent
 \textbf{(d)}[2 points] The alternative hypothesis investigated in the ANOVA 
