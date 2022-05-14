@@ -16,11 +16,9 @@ knitr::opts_chunk$set(echo = FALSE,
 library(tidyverse)
 library(openintro)
 library(mosaic)
-library(moderndive)
 library(pander)
 library(infer)
-library(lterdatasampler)
-library(palmerpenguins)
+library(broom)
 ```
 
 \begin{center}
@@ -81,8 +79,11 @@ initial selection.
 | Scenario | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
 |----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
 | Type of plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+|           |           |           |
 | Summary measure | Mean | Slope or Correlation | Difference in Means |
+|           |           |           |
 | Parameter notation | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+|           |           |           |
 | Statistic notation | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
 
 \vspace{0.5cm}
@@ -109,9 +110,408 @@ __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df
 
 \vspace{0.25cm}
 
-$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+$$SE(\bar{x}) = \frac{s}{\sqrt{n}}$$
 \vspace{0.25cm}
 
-$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+$$SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1}{n_1} + \frac{s_2}{n_2}}$$
 
 \newpage 
+
+\textbf{Q2}[8 points] 
+Is insomnia related to education level? Researchers at the University of 
+Memphis, in Tennessee investigated this question in the *Journal of Abnormal
+Psychology* (February, 2005). Eight hundred (800) adults living in Tennessee
+were selected to participate in the study, using a random-digit telephone
+dialing procedure. Responses were collected from a total of 575 adults. Two
+variables measured were level of education and insomnia status (normal sleeper
+or chronic insomniac). The researchers discovered that the lower the level of
+education, the more likely the person was to have chronic insomnia.
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(a)}[2 points] What are the observational units in this study?
+
+\vspace{1in} 
+
+\noindent
+\textbf{(b)}[3 points] Fill in the blanks with one of the options provided in
+parentheses to identify and explain the study design.
+
+This is a(n) (observational study / randomized experiment)
+\underline{\hspace{3in}} because (level of education / insomnia status) 
+\underline{\hspace{3in}} (was / was not) \underline{\hspace{1in}} randomly
+(assigned / sampled) \underline{\hspace{2in}}. 
+
+\vspace{1cm}
+
+\noindent
+\textbf{(c)}[3 points] Which types of sampling bias may be present in this
+study? Select **all** that might be present, or if there is likely to be no
+bias present, select No bias.
+
+\begin{itemize}
+\item[(i)] Selection bias \\
+\item[(ii)] Response bias \\
+\item[(iii)] Non-response bias \\
+\item[(iv)] No bias
+\end{itemize}
+
+\vspace{0.25in}
+
+\textbf{Q5}[24 points] The *Journal of Food and Agriculture* contained an
+article titled "Influence of hydroponic and soil cultivation on quality and
+shelf life of ready-to-eat lamb's lettuce." In this article, researchers studied
+the effects of different hydroponic growing methods on the nitrate content of
+lettuce. In their study, the researchers randomly assigned 34 lettuce seedlings
+to one of three growing conditions: soil, hydroponic A, or hydroponic B. At the
+end of the growing period (60 days), nitrate measurements of the lettuce were
+taken (mg / kg). 
+
+```{r lettuce-sim-data}
+lettuce <- tibble(
+  trt_group = c(
+    rep("soil", 9),
+    rep("hydro_A", 12),
+    rep("hydro_B", 13)
+  ), 
+  growth = c(
+    rnorm(n = 9, mean = 3806, sd = 124), 
+    rnorm(n = 12, mean = 4695, sd = 107), 
+    rnorm(n = 13, mean = 3878, sd = 103)
+    )
+)
+```
+
+Results from the study are presented in the table below. 
+
+```{r lettuce-table}
+lettuce %>% 
+  mutate(trt_group = fct_recode(trt_group, 
+                                 "Hydroponic A" = "hydro_A", 
+                                 "Hydroponic B" = "hydro_B", 
+                                 Soil = "soil"
+                                 ), 
+         trt_group = fct_relevel(trt_group, 
+                                 "Soil")
+         ) %>% 
+    group_by(trt_group) %>% 
+  summarize(mean = mean(growth), 
+            sd = sd(growth), 
+            n = n()
+            ) %>% 
+  rename(`Treatment Group` = trt_group, 
+         `Mean Growth` = mean, 
+         `Standard Deviation of Growth` = sd, 
+         `Sample Size` = n) %>% 
+  pander()
+```
+
+
+\newpage
+
+\noindent
+\textbf{(a)}[2 points] One of the researcher's main questions was to determine
+whether the growing method affects nitrate concentration in lettuce. Considering
+how this study was executed, can they address this question? *Briefly justify
+your answer.*
+
+\vspace{1in}
+
+Below is an incomplete ANOVA table, summarizing the data. You may use this 
+information for the subsequent problems. 
+
+```{r}
+aov(growth ~ trt_group, data = lettuce) %>% 
+  tidy() %>% 
+  mutate(term = fct_recode(term, 
+                           "Growing Method" = "trt_group"
+                           ), 
+         df = c("___", 31), 
+         statistic = c("___", NA)
+         ) %>% 
+  pander()
+  
+```
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(b)}[3 points] In the context of the research question and in plain 
+English, what are the null and alternative hypotheses being tested in the ANOVA
+table above?
+
+\vspace{0.25cm}
+\noindent \textbf{$H_0$:}
+
+\vspace{0.35in}
+
+\noindent \textbf{$H_A$:}
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(c)}[2 points] Rewrite the null hypothesis above to use notation for the
+\emph{parameters} that are being tested. 
+
+\vspace{0.25cm}
+\noindent \textbf{$H_0$:}
+
+\vspace{0.35in}
+
+\noindent \textbf{$H_A$:}
+
+\vspace{0.5in}
+
+
+\noindent
+\textbf{(d)}[2 points] The alternative hypothesis investigated in the ANOVA 
+table above is:
+
+$$H_A: \mu_{\text{Soil}} \neq \mu_{\text{Hydroponic A}} \neq 
+\mu_{\text{Hydroponic B}}$$ 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(e)}[1 point] What are the degrees of freedom associated with 
+`Growing Method`? 
+
+\newpage
+
+\noindent
+\textbf{(f)}[2 points] What is the value of the F-statistic?  
+
+\vspace{0.5in}
+
+\noindent
+\textbf{(g)}[2 points] The value of the F-statistic would be larger if the 
+nitrate standard deviations were smaller for each group. Circle one. 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(h)}[2 points] The value of the F-statistic would be larger if the 
+nitrate means were more different across the groups. Circle one. 
+
+\begin{center}
+\textbf{True} \hspace{2in} \textbf{False}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(i)}[1 point] Which distribution was used to obtain the p-value
+presented in the table? Circle one. 
+
+\begin{center}
+\textbf{Simulated / Permuted Null Distribution} \hspace{1in}
+\textbf{F-distribution}
+\end{center}
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(j)}[4 points] Citing values from the ANOVA table to support your 
+answer, what conclusions could be drawn regarding the hypotheses stated in (b)? 
+
+\vspace{1in}
+
+\noindent
+\textbf{(k)}[3 points] The table below presents all comparisons of the different
+soil treatments. What value of $\alpha$ should the researchers use to determine
+which, if any, of these tests produced "significant" results, so that the
+overall Type I error rate for these tests is less than 5\%?
+
+\vspace{0.5in}
+
+```{r}
+pairwise.t.test(lettuce$growth, lettuce$trt_group, 
+                p.adjust.method = "none") %>% 
+  tidy() %>% 
+  mutate(group1 = fct_recode(group1, 
+                             "Hydroponic B" = "hydro_B", 
+                             "Soil" = "soil"
+                             ), 
+         group2 = fct_recode(group2, 
+                             "Hydroponic A" = "hydro_A", 
+                             "Hydroponic B" = "hydro_B"), 
+         p.value = if_else(p.value < 5e-10, 
+                           " < 0.000001", 
+                           as.character(
+                             round(p.value, 4)
+                             )
+                           )
+         ) %>% 
+  rename(`Group 1` = group1, 
+         `Group 2` = group2) %>% 
+  pander()
+```
+
+\textbf{Extra Credit}[3 points] Based on the comparisons above, sketch what you
+would expect the side-by-side boxplots to look like. Be sure to label your
+x-axis and y-axis!
+
+
+\newpage
+
+\textbf{Q3}[24 points] 
+In 2004, the state of North Carolina released to the public a large dataset
+containing information on births recorded in this state. This data set has been 
+of interest to medical researchers who are studying the relation between habits
+and practices of expectant mothers and the birth of their children. This 
+analysis will focus on a random sample of 1,000 observations from the published
+dataset. 
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(a)}[3 points] Hospital administration at Duke University Hospital are
+interested in the difference in the mean baby birth weight between mothers who
+do not smoke and mothers do smoke. Using the table below, report the observed
+statistic for this comparison. Indicate in your answer what notation should be
+used for this statistic. 
+
+\vspace{0.25cm}
+
+\textbf{Answer:}
+
+\vspace{0.5in}
+
+\textbf{Notation:}
+
+\vspace{0.25in}
+
+```{r favstats-smoking}
+favstats(weight ~ habit, data = births14) %>% 
+  pander()
+```
+
+\vspace{0.5in}
+
+```{r, out.width = "80%"}
+births14 %>%
+  filter(!is.na(habit)) %>% 
+  ggplot(mapping = aes(x = weight)) + 
+  geom_histogram(binwidth = 1.5) + 
+  facet_wrap(~habit, scales = "free") + 
+  theme_bw() +
+  labs(x = "Weight of Baby (lbs)", 
+       y = "Number of Babies")
+```
+
+\newpage
+
+\noindent
+\textbf{(b)}[4 points] These hospital administrators are interested in
+\emph{estimating} the true difference in mean birth weight between
+mothers who smoke and mothers who do not smoke. The administrators learned in
+their Statistics class how obtain a confidence interval for a difference in
+means using a $t$-distribution. Using the plots above evaluate whether it would
+be appropriate for the administrators to use a $t$-distribution to obtain a
+confidence interval for the true difference in means.
+
+\vspace{1.5in}
+
+\noindent
+\textbf{(c)}[5 points] The administrators contacted the Department of Statistics
+at Duke and requested a consultation. The Statistician they spoke with suggested
+they use bootstrapping instead of a $t$-distribution to obtain a confidence
+interval. Fill in the blanks below to explain to the administrators how one
+bootstrap (re)sample is found. 
+
+\begin{center}
+\noindent
+On \underline{\hspace{1in}} total cards, write \underline{\hspace{2in}} on the 
+cards.
+\end{center}
+
+\vspace{0.25in}
+
+Generate a new sample by: 
+
+\vspace{0.5in}
+
+\begin{center}
+\noindent
+Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
+\end{center}
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(d)}[3 points] The Statistician carried out the above process to find
+1000 bootstrap resamples using the order (`nonsmoker` - `smoker`) and obtained
+the bootstrap distribution below. 
+
+Where is the bootstrap distribution centered? Why is the distribution centered 
+at that value?
+
+```{r bootstrap-births, out.width = "40%", fig.align = 'left'}
+bootstrap_dist <- births14 %>% 
+  specify(response = weight, explanatory = habit) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "diff in means", 
+            order = c("nonsmoker", "smoker")
+            )
+
+bootstrap_dist %>% 
+  visualise() + 
+  labs(x = "Bootstrap Difference in Means (Nonsmoker - Smoker)", 
+       title = "", 
+       y = "Frequency") + 
+  theme_bw()
+```
+
+\newpage
+
+\noindent
+\textbf{(e)}[3 points] The table below presents percentiles for the bootstrap 
+distribution shown above. Circle the two values which will construct a 
+\textbf{99\%} confidence interval. 
+
+\vspace{0.25cm}
+
+```{r percentile-CI-table}
+bootstrap_dist %>% 
+  summarize("0.5%" = quantile(stat, 0.005), 
+            "1%" = quantile(stat, 0.01),
+            "2.5%" = quantile(stat, 0.025),
+            "5%" = quantile(stat, 0.05),
+            "90%" = quantile(stat, 0.90),
+            "95%" = quantile(stat, 0.95),
+            "97.5%" = quantile(stat, 0.975),
+            "99%" = quantile(stat, 0.99),
+            "99.5%" = quantile(stat, 0.995)
+            ) %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Quantile", 
+               values_to = "Value") %>% 
+  pander()
+```
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(f)}[4 points] Interpret the 99% confidence interval found in part (e)
+\textbf{in the context of this study}. 
+
+\vspace{1in}
+
+\noindent
+\textbf{(g)}[2 points] Based on your confidence interval in (e), which of the
+following is the most likely p-value for a two-sided hypothesis test? Circle 
+one. 
+
+\begin{center}
+(i) 0.20 \hspace{0.25in} (ii) 0.10 \hspace{0.25in} (iii) 0.05 \hspace{0.25in} 
+(iv) 0.01 \hspace{0.25in} (v) 0.005
+\end{center}
