@@ -3,9 +3,9 @@ title: 'Week 8 Day 1: Revisiting the Martian Alphabet'
 author: 'Your Name: ___________________________'
 date: "May 16, 2022"
 output:
-  pdf_document: default
-  word_document: default
   html_document: default
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r, include = FALSE}
@@ -244,13 +244,22 @@ hypotheses from #2 and #3?
 For the Chi-Squared goodness-of-fit test we've been discussing, it can be
 mathematically shown that the distribution of $X^2$ statistics is approximately
 a $\chi^2$ distribution with $k - 1$ degrees of freedom. Similar to an ANOVA, 
-$k$ represents the number of groups in our response.
+$k$ represents the number of groups in our response variable.
 
 Degrees of freedom represent the amount of "free" information in a given
-situation. In our situation, we have two groups, so $k - 1$ would be 1. This
-should make sense since we know the probabilities must sum to 1 or 100%. If
-I know what the probability of a correct guess is, I also know the probability
-of a correct guess. So, only one probability is "free" or unconstrained. 
+situation. In our situation, we have two groups, so $k - 1$ would be 1. Since 
+we have two proportions and we know they must sum to 1, only one proportion is 
+"free" or unconstrained. Once I know the proportion of the time someone would 
+guess incorrectly, I also know the proportion of time they would guess
+correctly!
+
+### The $\chi^2$ Distribution
+
+A $\chi^2$ distribution behaves similar to an F-distribution with two respects, 
+(1) it only has positive values and (2) the shape of the distribution is 
+controlled by degrees of freedom. Below are three different $\chi^2$ 
+distributions, which look quite different. They have very different shapes
+because they different degrees of freedom! 
 
 \vspace{0.25in}
 
@@ -295,24 +304,143 @@ legend("topright",
 )
 ```
 
+### Conditions for Using a $\chi^2$ Distribution
+
+In order for the $\chi^2$ distribution to be a good approximation of the true
+sampling distribution, we need to verify two conditions:
+
+- The observations are independent
+- We have a "large enough" sample size 
+  * This is checked by verifying there are at least 5 expected counts in each
+  cell
+
+If the condition about expected cell counts is violated, we are forced to use
+a simulation-based method (like we just did).
+
+12. Are the conditions for using a $\chi^2$ distribution to approximate the 
+sampling distribution violated?
+
+\vspace{0.5in}
+
+### Using a $\chi^2$ Distribution to Find the p-value
+
+If we decided in #12 that it is not unreasonable for us to use the $\chi^2$
+distribution, then we can use `R` to find our p-value. 
+
+We will use the `pchisq()` function, which has three inputs:
+
+- the observed $X^2$ statistic
+- how many degrees of freedom should be used for the $\chi^2$ distribution
+- if the lower tail (left tail) should be used when calculating the p-value
+
+13. Using the values you calculated before and your intuition, fill in the 
+code below:
 
 ```{r chi-sq-p-value, echo = TRUE, eval = FALSE}
-pchisq(_____, df = 1, lower.tail = FALSE)
+pchisq(_____, df = _____, lower.tail = ______)
 ```
 
-```{r p-value}
-## Section 07
-#pchisq(3.57, df = 1, lower.tail = FALSE)
+\vspace{0.25in}
 
-## Section 09
-#pchisq(7.36, df = 1, lower.tail = FALSE)
-```
+Running the code you just wrote in `R` gave me a p-value of
+`r pchisq(3.57, df = 1, lower.tail = FALSE)`. 
 
+14. Based on this p-value what conclusion would you reach regarding the null
+hypothesis?
 
+<!-- pchisq(7.36, df = 1, lower.tail = FALSE) -->
 
+\vspace{0.5in}
 
+15. Did you reach similar conclusions using simulation-based methods? Why do 
+you believe that is the case?
+
+\vspace{1in}
 
 \newpage
 
 ## Deer Habitat & Fire 
 
+In the previous example, we had two options in our response variable: a correct
+choice or an incorrect choice. The wonder of the goodness-of-fit test is that
+it can be scaled up many possible response options! 
+
+Take, for example, the relationship between deer habitat and fires. It is
+interesting to investigate if deer behave differently (by grazing in certain
+areas) after a fire. Six months after a fire burned 730 acres of deer habitat, researchers in the Forest Service surveyed a 3,000-acre parcel of land
+surrounding the burn. 
+
+They divided the area into four sections:
+
+1. The region nearest to the heat of the burn
+2. The inside edge of the burn
+3. The outside edge of the burn 
+4. The area outside of the burned area
+
+![](fire_schematic.png)
+
+\vspace{0.25cm}
+
+The researcher are interested to know if the deer show a preference for certain
+areas of the parcel. Under the null hypothesis, the deer would show no 
+preference for any specific area and are randomly distributed across the 3,000
+acres. 
+
+Under the null hypothesis, if deer were randomly distributed over the 3,000 
+acres, we would expect the frequencies of deer to be proportional to the size of 
+the region. 
+
+16. Fill in the table below with the proportions for the inner burn area and
+the outer edge.
+
+| Region         | Acres | Proportion of Total Area |
+|----------------|-------|--------------------------|
+| Inner Burn     | 520   |                          |
+| Inner Edge     | 210   | 0.070                    |
+| Outer Edge     | 240   |                          |
+| Outer Unburned | 2,030 | 0.677                    |
+
+\vspace{0.25in}
+
+These proportions are the null hypothesis! 
+
+17. What would be the alternative hypothesis?
+*Hint:* Think about an ANOVA, what was the alternative hypothesis when the null
+hypothesis said that all of the means were equal?
+
+\vspace{0.5in}
+
+Researchers observed a total of 75 deer in the 3,000 acre parcel. The table 
+below shows how many deer were observed in each of the four areas. 
+
+18. Using the proportions calculated above, determine the number of expected 
+deer for each region. 
+
+
+| Region         | Observed Counts | Expected Counts |
+|----------------|-----------------|-----------------|
+| Inner Burn     | 2               |                 |
+|                |                 |                 |
+| Inner Edge     | 12              |                 |
+|                |                 |                 |
+| Outer Edge     | 18              |                 |
+|                |                 |                 |
+| Outer Unburned | 43              |                 |
+
+
+\vspace{0.25in}
+
+19. Now, calculate the $X^2$ statistic for these data. 
+
+\vspace{1in}
+
+20. Which distribution should be used to find the p-value for this test 
+statistic? 
+
+\vspace{0.25in}
+
+21. Suppose the p-value for the $X^2$ statistic you calculated in #19 was 
+less than 0.0001. What conclusion could the researchers conclude about the 
+distribution of deer on the parcel?
+
+\vspace{1in}
