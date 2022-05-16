@@ -3,9 +3,9 @@ title: 'Week 8 Day 1: Revisiting the Martian Alphabet'
 author: 'Your Name: ___________________________'
 date: "May 16, 2022"
 output:
-  html_document: default
-  word_document: default
   pdf_document: default
+  word_document: default
+  html_document: default
 ---
 
 ```{r, include = FALSE}
@@ -158,6 +158,8 @@ On Day 2 of class we simulated a distribution of **proportions** that could have
 happened under the null hypothesis. Today, we are turning our attention to how
 simulating what **$X^2$** statistics we could have gotten if the null hypothesis
 was true.
+
+\vspace{0.25in}
 
 To carry out **one** simulation we need to do the following steps:
 
@@ -343,7 +345,7 @@ pchisq(_____, df = _____, lower.tail = ______)
 \vspace{0.25in}
 
 Running the code you just wrote in `R` gave me a p-value of
-`r pchisq(3.57, df = 1, lower.tail = FALSE)`. 
+`r pchisq(7.36, df = 1, lower.tail = FALSE)`. 
 
 14. Based on this p-value what conclusion would you reach regarding the null
 hypothesis?
