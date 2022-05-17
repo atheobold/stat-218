@@ -1,0 +1,147 @@
+---
+title: 'Midterm 2: Inference for numerical data'
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# This is code to make your final report look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(mosaic)
+library(infer)
+```
+
+## The data
+
+Every two years, the Centers for Disease Control and Prevention conduct the
+Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from
+high schoolers (9th through 12th grade), to analyze health patterns. You will
+work with a selected group of variables from a random sample of observations
+during one of the years the YRBSS was conducted.
+
+Run the code below to load the `yrbss` data set into your workspace.
+
+```{r load-data}
+YRBSS <- read_csv(here::here("data", 
+                           "yrbss.csv"
+                           )
+                )
+```
+
+## Exploring the Data
+
+```{r data-preview}
+## Code to preview dataset goes here!
+
+```
+
+__1. Write the code to preview the dataset.__
+
+__2. Using the data preview, identify the cases in this data set.__
+
+
+__3. How many cases are included in this sample?__
+
+
+## Exploratory Data Analysis
+
+We will first start by analyzing the weight of the participants in kilograms. 
+This is recorded in the variable `weight`.
+
+### Visualizing the Distribution of Weight 
+
+__3. Create a histogram visualizing the distribution of weights for this sample.__
+*Extra Credit:* Select a binwidth that makes the histogram look as continuous as
+possible!
+
+```{r weight-histogram}
+ggplot(data = YRBSS, 
+       mapping = aes(x = ____))
+```
+
+### Summarizing Weights
+
+__4. Using the favstats() function, find summary statistics for the weight for this sample.__
+
+```{r weight-favstats}
+favstats(____, data = YRBSS)
+```
+
+__5.  How many observations are we missing weights from?__
+
+
+### Comparing Weights Across Levels of Exercise
+
+Next, we will consider the possible relationship between a high schooler's
+weight and their physical activity. To do this we will first create a new variable called `physical_3plus`, which will be coded as either "yes" if the student is physically active for *at least* 3 days a week, and "no" if not.
+
+Run the code below to create this variable in the dataset!
+
+```{r create new var}
+YRBSS <- YRBSS %>% 
+  mutate(physical_3plus = if_else(physically_active_7d > 2, "yes", "no")
+         )
+```
+
+### Visualizing Distributions of Weight between Activity Groups
+
+Now, we can use the `physical_3plus` variable to visualize the distribution of
+weights between the two activity groups. 
+
+__6. Complete the code below to created faceted histograms of the distribution of weights between the two physically active groups.__
+*Extra Credit:* Select a binwidth that makes the histograms look as continuous
+as possible!
+
+```{r faceted-histograms-weight}
+ggplot(data = YRBSS, 
+       mapping = aes(x = ____)) + 
+  ____ + 
+  facet_wrap(~ ____)
+```
+
+__7. Describe the relationship between the amount of exercise a high schooler gets and their weight. Is this the relationship you expected to see?__
+
+
+### Summarizing the Differences in Mean Weight
+
+__8. Use the favstats() function to find summary statistics for the weight for each group of the `physical_3plus` variable.__
+
+```{r weight-favstats-groups}
+favstats(____ ~ ____, data = YRBSS)
+```
+
+__9. What is the observed difference in mean weight between the "yes" and "no" groups?__
+
+
+
+## Statistical Inference
+
+__10.  Write the hypotheses for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+
+*H0:* 
+
+*HA:* 
+
+__11. Evaluate if you believe any of the *three* conditions required for using the t-distribution to obtain our p-value are violated.__
+
+
+
+
+__12. Complete the code below to find the p-value for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+
+```{r t-test}
+t_test(YRBSS, 
+       response = ____, 
+       explanatory = ____, 
+       order = c("yes", "no"), 
+       alternative = ____)
+```
+
+__13. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #10?__
+
+
