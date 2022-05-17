@@ -36,7 +36,7 @@ YRBSS <- read_csv(here::here("data",
 ## Exploring the Data
 
 ```{r data-preview}
-## Code to preview dataset goes here!
+## Code to preview the dataset goes here!
 
 ```
 
@@ -55,7 +55,7 @@ This is recorded in the variable `weight`.
 
 ### Visualizing the Distribution of Weight 
 
-__3. Create a histogram visualizing the distribution of weights for this sample.__
+__4. Create a histogram visualizing the distribution of weights for this sample.__
 *Extra Credit:* Select a binwidth that makes the histogram look as continuous as
 possible!
 
@@ -66,13 +66,13 @@ ggplot(data = YRBSS,
 
 ### Summarizing Weights
 
-__4. Using the favstats() function, find summary statistics for the weight for this sample.__
+__5. Using the favstats() function, find summary statistics for the weight for this sample.__
 
 ```{r weight-favstats}
 favstats(____, data = YRBSS)
 ```
 
-__5.  How many observations are we missing weights from?__
+__6.  How many observations are we missing weights from?__
 
 
 ### Comparing Weights Across Levels of Exercise
@@ -93,7 +93,7 @@ YRBSS <- YRBSS %>%
 Now, we can use the `physical_3plus` variable to visualize the distribution of
 weights between the two activity groups. 
 
-__6. Complete the code below to created faceted histograms of the distribution of weights between the two physically active groups.__
+__7. Complete the code below to created faceted histograms of the distribution of weights between the two physically active groups.__
 *Extra Credit:* Select a binwidth that makes the histograms look as continuous
 as possible!
 
@@ -104,35 +104,35 @@ ggplot(data = YRBSS,
   facet_wrap(~ ____)
 ```
 
-__7. Describe the relationship between the amount of exercise a high schooler gets and their weight. Is this the relationship you expected to see?__
+__8. Describe the relationship between the amount of exercise a high schooler gets and their weight. Is this the relationship you expected to see?__
 
 
 ### Summarizing the Differences in Mean Weight
 
-__8. Use the favstats() function to find summary statistics for the weight for each group of the `physical_3plus` variable.__
+__9. Use the favstats() function to find summary statistics for the weight for each group of the `physical_3plus` variable.__
 
 ```{r weight-favstats-groups}
 favstats(____ ~ ____, data = YRBSS)
 ```
 
-__9. What is the observed difference in mean weight between the "yes" and "no" groups?__
+__10. What is the observed difference in mean weight between the "yes" and "no" groups?__
 
 
 
 ## Statistical Inference
 
-__10.  Write the hypotheses for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+__11.  Write the hypotheses for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
 
 *H0:* 
 
 *HA:* 
 
-__11. Evaluate if you believe any of the *three* conditions required for using the t-distribution to obtain our p-value are violated.__
+__12. Evaluate if you believe any of the *three* conditions required for using the t-distribution to obtain our p-value are violated.__
 
 
 
 
-__12. Complete the code below to find the p-value for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+__13. Complete the code below to find the p-value for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
 
 ```{r t-test}
 t_test(YRBSS, 
@@ -142,6 +142,6 @@ t_test(YRBSS,
        alternative = ____)
 ```
 
-__13. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #10?__
+__14. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #10?__
 
 
