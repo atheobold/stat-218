@@ -60,8 +60,9 @@ __4. Create a histogram visualizing the distribution of weights for this sample.
 possible!
 
 ```{r weight-histogram}
-ggplot(data = YRBSS, 
-       mapping = aes(x = ____))
+## Code to make a histogram of the weights goes here!
+
+
 ```
 
 ### Summarizing Weights
@@ -69,7 +70,9 @@ ggplot(data = YRBSS,
 __5. Using the favstats() function, find summary statistics for the weight for this sample.__
 
 ```{r weight-favstats}
-favstats(____, data = YRBSS)
+## Code to find summary statistics of the weights goes here!
+
+
 ```
 
 __6.  How many observations are we missing weights from?__
@@ -121,7 +124,7 @@ __10. What is the observed difference in mean weight between the "yes" and "no" 
 
 ## Statistical Inference
 
-__11.  Write the hypotheses for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+__11.  Write the hypotheses for testing if the average weights for high schoolers who exercise at least three days a week different from those who don't.__
 
 *H0:* 
 
@@ -132,7 +135,7 @@ __12. Evaluate if you believe any of the *three* conditions required for using t
 
 
 
-__13. Complete the code below to find the p-value for testing if the average weights for high schoolers who exercise at least three times are different from those who don't.__
+__13. Complete the code below to find the p-value for testing if the average weights for high schoolers who exercise at least three days a week are different from those who don't.__
 
 ```{r t-test}
 t_test(YRBSS, 
@@ -142,6 +145,6 @@ t_test(YRBSS,
        alternative = ____)
 ```
 
-__14. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #10?__
+__14. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #11?__
 
 
