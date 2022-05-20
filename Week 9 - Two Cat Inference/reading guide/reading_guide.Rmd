@@ -1,162 +1,132 @@
-# Probability and Relative Risk
+---
+title: "Chapter 18: Inference for Two-Way Tables"
+output: html_document
+---
 
-## Week 14 Reading Guide: Special Topics
+## 18.2: Randomization test of independence
 
-### Section 2.2 (Probability with tables) {-}
+__What does the null hypothesis assume about the probability of the seller
+disclosing the problem?__
 
-\setstretch{1}
+</br>
 
-**Videos**
+__Under the null hypothesis does this probability differ based on the question 
+that the buyer asked?__
 
-* 2.2
+</br>
+</br>
 
-\setstretch{1.25}
+__What did the researchers define a "success" in the iPod study?__
 
-#### Vocabulary {-}
+</br>
 
-Random process:
-\rgs
+### 18.1.1 -- Expected Counts
 
-Probability:
-\rgs
+__Based on Table 18.1, how was the proportion of $61 / 219$ found? What does 
+this proportion represent?__ 
 
-Hypothetical two-way table:
-\rgs
+</br>
+</br>
 
-Unconditional probability:
-\rgs
+__If there had been 85 people in the "Negative assumption" group, what would 
+be the expected counts for "Disclose problem" and "Hide problem"?__
 
-\rgi Notation:
-\rgs
+</br>
+</br>
 
-Conditional probability:
-\rgs
+__What is the general formula for calculating the expected count of a specific
+cell in a two-way table?__
 
-\rgi Notation:
-\rgs
+</br>
+</br>
 
-Event:
-\rgs
+### 18.1.2 -- The chi-squared statistic
 
-\rgi Notation:
-\rgs
+__What is the formula for calculating *one* cell's contribution to the
+chi-squared statistic?__
 
-Complement:
-\rgs
+</br>
+</br>
 
-\rgi Notation:
-\rgs
+### 18.1.3 -- Variability of Statistic
 
-Sensitivity:
-\rgs
+If the null hypothesis was true, we are assuming that the seller would disclose
+the problem with the iPod the same proportion of the time, regardless of the 
+question that the buyer asked. 
 
-Specificity:
-\rgs
+The book doesn't cover this explicitly, but I'd like for you to think about 
+how you could use cards to simulate what $X^2$ statistics could have happened if
+the null was true. 
 
-Prevalence:
-\rgs
+__Step 1:__ Write the outcome (disclose / hide) and the question (general /
+positive assumption / negative assumption) on a card. 
 
-#### Notes {-}
+__How many cards will there be total?__
 
-Method for creating a hypothetical two-way table:
+</br>
+</br>
 
-1.	Start with
-\rgs
+__Step 2:__ Assume the null hypothesis is true and....
 
-2.	Fill in the column or row totals using
-\rgs
+__What will be done with the cards?__
 
-3.	Fill in the interior cells using
-\rgs
+</br>
+</br>
 
-4.	Add/Subtract to fill in the row/column totals not filled in at step 2.
+__Step 3:__ Generate a new sample that could have happened if the null was true
+by....
 
-\rgi \rgi To find unconditional probabilities from the table,
-\rgs
+__How will a new sample be made with the cards?__
 
-\rgi \rgi To find conditional probabilities from the table,
-\rgs
+</br>
+</br>
 
-#### Example: Baby Jeff {-}
+__Step 4:__ Calculate the simulated....
 
-1.	Let $D$ be the event a child has CPK.  What does $D^C$ represent?
-\rgs
+__What statistic will be calculated from the new sample?__
 
-2.	Let $T$ be the event a child tests positive for CPK.  What does $T^C$ represent?
-\rgs
+</br>
+</br>
 
-3.	Write each of the following values in proper probability notation:
-    a. $1/10000 = 0.0001 = P( \hspace{1in} )$
-    b. $100\% = 1.0 = P(  \hspace{1in}  )$
-    c. $99.98\% = 0.9998 = P(  \hspace{1in}  )$
+### 18.1.4 -- Observed Statistic vs. Null Statistics
 
-4.	Write out the steps for creating the hypothetical two-way table in section 2.2.4 of your textbook, then copy the table below.
+__For an observed statistic like what is seen in Figure 18.1, what would be 
+the approximate p-value?__
 
-\rgi First,
-\rgs
+</br>
 
-\rgi Next,
-\rgs
+__What does the p-value you stated above *mean* in the context of the observed
+statistic and the null distribution?__
 
-\rgi After that,
-\rgs
+</br>
+</br>
 
-\rgi Finally,
-\rgs
+---
 
-\rgi Hypothetical two-way table:
+## 18.2 -- Mathematical Model for Test of Independence
 
-\begin{center}
-\begin{tabular}{|l|p{1.3in}|p{1.3in}|p{1.3in}|}
-\hline
-&	Test Positive	& Test Negative	& Total \\ \hline
-Has CPK		& & & \\
-	& & & \\
-	& & & \\ \hline
-Does not have CPK		& & & \\
-	& & & \\
-	& & & \\ \hline
-Total & & & 100,000 \\ \hline
-\end{tabular}
-\end{center}
-\rgs
+Based on Figure 18.2, complete the following sentence: 
 
-5.	What is the probability that a child who had a positive test result actually does have CPK?  What probability notation should be used for this value?
-\rgs
+__As the degrees of freedom for a Chi-Squared distribution get larger, the 
+shape of the distribution gets less...__
 
+### 18.2.2 -- Variablity of the Chi-Squared Statistic
 
-6.	Explain how the probability in #5 was calculated.
+__What two conditions are required to be checked to use the Chi-Squared
+distribution to obtain a p-value?__
 
-\newpage
+</br>
+</br>
 
-### Section 5.5 revisited (Simulation-based inference for a relative risk)  {-}
+__Which of these conditions is required *regardless* of the method you use to
+find the p-value (simulation-based or theory-based)?__
 
-#### Vocabulary {-}
+</br>
+</br>
 
-Relative risk: 
-\rgs
+__True or false: The formula for finding the $X^2$ statistic is the same for 
+both simulation-based (randomization) and theory-based (mathematical) methods.__
 
 
-#### Notes {-}
 
-Interpreting relative risk ($RR = \frac{\hat{p_1}}{\hat{p_2}}$)
 
-\rgi The proportion of success in group 1 is ______ times the proportion of success in group 2.
-
-\rgi The proportion of success in group 1 is ______ % higher/lower than in group 2.
-
-Write the null hypothesis in notation for a test of relative risk.
-\rgs
-
-#### Formulas {-}
-
-Relative risk = 
-\rgs
-
-#### Example: CPR and blood thinner {-}
-
-1. What is the sample relative risk?  Interpret the value in the context of the study.
-\rgs
-\rgs
-
-\newpage
