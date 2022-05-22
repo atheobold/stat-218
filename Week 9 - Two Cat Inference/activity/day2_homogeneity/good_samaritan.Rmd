@@ -215,18 +215,14 @@ two_proportion_test(formula = Behavior~Condition, # response ~ explanatory
 
 \vspace{1in}
 
+16.  Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
 
-### Take-home messages
+* Summary statistic and interpretation
 
-1.	When comparing two groups, we are looking at the difference between two parameters.  In the null hypothesis, we assume the two parameters are equal, or that there is no difference between the two proportions.  
+* P-value and interpretation
 
-2.  We use the same guidelines for the strength of evidence as we did in Activity 6.  
+* Conclusion (written to answer the research question)
 
-3. To create one simulated sample on the null distribution for a difference in sample proportions, label $n_1 + n_2$ cards with the response variable outcomes from the original data. Mix cards together and shuffle into two new groups of sizes $n_1$ and $n_2$, representing the explanatory variable groups. Calculate and plot the difference in proportion of successes.
+* Scope of inference
 
 
-### Additional notes
-
-Use this space to summarize your thoughts and take additional notes on today's activity and material covered.
-
-\newpage
