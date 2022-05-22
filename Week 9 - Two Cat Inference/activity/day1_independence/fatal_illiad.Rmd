@@ -3,7 +3,6 @@ title: "Chi-Square Test of Independence: Fatal Injuries in the Iliad"
 output: html_document
 ---
 
-
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
                       message = FALSE)
@@ -401,8 +400,7 @@ We will use the `pchisq()` function, which has three inputs:
 - how many degrees of freedom should be used for the $\chi^2$ distribution
 - if the lower tail (left tail) should be used when calculating the p-value
 
-18. Using the values you calculated before and your intuition, fill in the 
-code below:
+18. Using the values you calculated before, fill in the code below:
 
 ```{r chi-sq-p-value, echo = TRUE, eval = FALSE}
 pchisq(_________, df = _____, lower.tail = FALSE)
@@ -449,13 +447,16 @@ __Step 3:__ Create a new dataset that could have happened if $H_0$ was true by:
 \vspace{1in}
 
 __Step 4:__ Create a table of the simulated counts for the shuffled cards. Keep 
-in mind the **column** totals for the location of the injury will stay the 
-**same** (there were only 34 people with limb injuries). However, the **row**
-totals will **change** (we won't always have 61 fatalities for body injuries). 
+in mind the column totals and the row totals will stay the **same** (there were
+only 34 people with limb injuries, and only 155 people who died). However, the
+**cell values** will **change** (we won't always have 61 fatalities for body
+injuries). 
 
 \vspace{0.25cm}
 
-__Step 5:__ Calculate the $X^2$ statistic for the simulation
+__Step 5:__ Calculate the $X^2$ statistic for the simulation. Because the row
+and column totals stay the same, the table of expected counts will be the same
+for **every** simulation!
 
 \vspace{0.25in}
 
