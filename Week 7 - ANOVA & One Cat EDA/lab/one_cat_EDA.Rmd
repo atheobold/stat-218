@@ -153,7 +153,7 @@ Let's add a `group_by()` step to make groups based on the `Sight` varible.
 ```{r group-by-summarize}
 myopia %>%
   group_by(___) %>% 
-  summarize(n = n())
+  count()
 ```
 
 __9. How many observations are in the Myopia and High Myopia groups?__
@@ -165,7 +165,7 @@ Finally, we might want to add one more piece to the pipeline to create a
 ```{r group-by-summarize-mutate}
 myopia %>%
   group_by(___) %>% 
-  summarize(n = n()) %>% 
+  count() %>% 
   mutate(proportion = ___ / sum(n))
 ```
 
