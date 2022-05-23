@@ -1,11 +1,15 @@
 ---
-title: "Chi-Square Test of Independence: Fatal Injuries in the Iliad"
-output: html_document
+title: 'Chi-Square Test of Independence: Fatal Injuries in the Iliad'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE)
+                      message = FALSE, 
+                      out.width = "70%", 
+                      fig.align = "center")
 
 library(tidyverse)
 library(janitor)
@@ -65,35 +69,34 @@ iliad <- read_csv(
 
 1. What is the explanatory variable?
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 2. What is the response variable?
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 3. What is the scope of inference for this study?
 
 \newpage
 
-### Visualizing the Data
+## Visualizing the Data
 
 To visualize the relationship between **two** categorical variables, we need
-to add some color into our previous bar plots.  
+to add some color into our previous bar plots. Let's step through this process.
 
-Let's step through this process. Last week, we started with a one variable 
-bar plot that looked like this:
+Last week, we started with a one variable bar plot that looked like this:
 
 ```{r 1var-barplot}
 ggplot(data = iliad, 
        mapping = aes(x = `Injury Site`)) + 
   geom_bar() + 
-  labs(x = "Location of Injury from Iliad")
+  labs(x = "Location of Injury from Iliad", 
+       y = "Number of Recorded Individuals")
 ```
 
 The problem is, these bars don't show whether each injury included in the bar
 was fatal or nonfatal. To do this, we need to fill the bars with color, using 
 the `fill` aesthetic.
-
 
 In the code below, I've added a line that says `fill = Lethal`. This `fill`s
 each bar with two colors, one for "Fatal" injuries and one for "Nonfatal"
@@ -104,13 +107,13 @@ ggplot(data = iliad,
        mapping = aes(x = `Injury Site`, 
                      fill = Lethal)) + 
   geom_bar() + 
-  labs(x = "Location of Injury from Iliad")
+  labs(x = "Location of Injury from Iliad", 
+       y = "Number of Recorded Individuals")
 ```
 
-4. How would you describe the orientation of this bar plot?   
-*Hint:* The three choices are filled, stacked, and dodged
+4. How would you describe the orientation of this bar plot? *Hint:* The three choices are filled, stacked, and dodged
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 If we want a different layout for our bar plot than what `geom_bar()` does by 
 default, we will need to be more specific! This is where the `position` option
@@ -121,7 +124,7 @@ be `position`ed:
 - `"dodge"`
 - `"fill"` 
 
-Let's change the code to use a `dodge`d position instead of a `stack`ed
+Let's change the code to use a `dodge` position instead of a `stack`
 position.
 
 ```{r dodged-barplot}
@@ -129,7 +132,8 @@ ggplot(data = iliad,
        mapping = aes(x = `Injury Site`, 
                      fill = Lethal)) + 
   geom_bar(position = "dodge") + 
-  labs(x = "Location of Injury from Iliad")
+  labs(x = "Location of Injury from Iliad", 
+       y = "Number of Recorded Individuals")
 ```
 
 5. Based on the plot does there appear to be an association between the
@@ -138,7 +142,7 @@ variables? Explain your answer.
 \vspace{1in}
 
 
-### Summarizing the Data
+## Summarizing the Data
 
 Bar plots are an excellent tool for giving us a bigger picture of the 
 relationship between two variables. However, sometimes we would like to see 
@@ -155,9 +159,13 @@ myopia %>%
 ```
 
 This gave us a table of how many observations (children) in the dataset slept 
-with no light, a nightlight, or full light. We could do something similar here:
+with no light, a nightlight, or full light. 
 
-```
+\newpage
+
+We could do something similar here:
+
+```{r 1var-table-code, eval = FALSE}
 iliad %>% 
   group_by(`Injury Site`) %>% 
   summarize(n = n()) 
@@ -167,7 +175,7 @@ iliad %>%
 iliad %>% 
   group_by(`Injury Site`) %>% 
   summarize(n = n()) %>% 
-  knitr::kable()
+  pander::pander()
 ```
 
 But wait! This doesn't show how many of the 67 body injuries were fatal! 
@@ -183,17 +191,16 @@ iliad %>%
 
 ```
 
-
 \newpage
 
 Nice work! You are correct, we need to `group_by()` **two** variables and then
 `summarize` them. When we run the code you wrote this is what we get:
 
-```{r 2var-table, echo = FALSE}
+```{r 2var-table, echo = FALSE, message = FALSE}
 iliad %>% 
   group_by(`Injury Site`, Lethal) %>% 
-  summarize(n = n()) %>% 
-  knitr::kable()
+  summarize(n = n(), .groups = "drop") %>% 
+  pander::pander()
 ```
 
 7. Which injury location has the smallest number of observations?
@@ -206,13 +213,13 @@ iliad %>%
 
 
 Unfortunately, these calculations are a bit difficult given the current layout 
-of the table. What we need to do is move one of the variables (`Injury Site` or
-`Lethal`) to the columns. We can do this using a fancy tool called
+of the table. What we need to do is spread one of the variables (`Injury Site`
+or `Lethal`) across multiple columns. We can do this using a fancy tool called
 `pivot_wider()`!
 
 I've added two lines of code to the previous table: 
 
-```
+```{r pivot-table-example, eval = FALSE}
 iliad %>% 
   group_by(`Injury Site`, Lethal) %>% 
   summarize(n = n()) %>% 
@@ -226,21 +233,24 @@ Let me talk you through what each of these lines does.
 
 \vspace{0.25cm}
 
-```
+```{r pivot-code, eval = FALSE}
 pivot_wider(names_from = `Injury Site`, 
             values_from = n) %>% 
 ```
 takes the names from the `Injury Site` column and makes four new columns based 
 on the names from this column (`Body`, `Head/neck`, `Limb`, and `Unknown`). It 
-fills each of those columns with the values found in the `n` column. 
+fills each of those columns with the values found in the `n` column in the 
+previous table. 
 
 \vspace{0.25cm}
 
-```
+```{r totals-code, eval = FALSE}
 adorn_totals(where = c("row", "col"))
 ```
 takes the new table and adds a "Total" row at the bottom of the table and a
 "Total" column on the far right side. 
+
+\newpage 
 
 The resulting table looks like this:
 
@@ -253,11 +263,7 @@ iliad %>%
   knitr::kable()
 ```
 
-Nice, right???
-
-\vspace{0.25cm}
-
-Use this new table to address the following questions.
+Nice, right??? Use this new table to address the following questions.
 
 9. What proportion of body injuries were fatal?
 
@@ -279,7 +285,7 @@ we would have expected to see if the null hypothesis was true.
 
 12. Using the research question, write the alternative hypothesis in words.
 
-\vspace{1in}
+\newpage 
 
 ### Expected Counts Under $H_0$ 
 
@@ -309,9 +315,10 @@ have expected to see if $H_0$ was true.
 remainder of the table below!
 
 
-| Lethal   | Body                         | Head/neck                   | Limb | Unknown |
-|----------|------------------------------|-----------------------------|------|---------|
-| Fatal    | $\frac{155*67}{184} = 56.44$ |                             |      |         | </br>
+| Lethal   | Body     | Head/neck    | Limb      | Unknown |
+|----------|----------|--------------|-----------|---------|
+| Fatal    | $\frac{155*67}{184} = 56.44$ |                             |      |         |
+|           |                             |                             |       |         |
 | Nonfatal |                              | $\frac{29*45}{184} = 7.09$  | $\frac{28*34}{184} = 5.36$ |
 
 
@@ -429,9 +436,11 @@ using cards. Keep in mind, we are assuming the null hypothesis is true, which
 suggests there is no relationship between the location of someone's injury and
 whether they lived or died. 
 
-\vspace{0.25in}
+\newpage
 
 To carry out **one** simulation we need to do the following steps:
+
+\vspace{0.25cm}
 
 __Step 1:__ Write the response (died / didn't die) and the location of the 
 injury (body / head / limb / unknown) on ______ cards. 
@@ -446,17 +455,18 @@ __Step 3:__ Create a new dataset that could have happened if $H_0$ was true by:
 
 \vspace{1in}
 
-__Step 4:__ Create a table of the simulated counts for the shuffled cards. Keep 
-in mind the column totals and the row totals will stay the **same** (there were
-only 34 people with limb injuries, and only 155 people who died). However, the
-**cell values** will **change** (we won't always have 61 fatalities for body
-injuries). 
+__Step 4:__ Create a table of the simulated counts for the shuffled cards. 
+
+Keep in mind the **column totals** and the **row totals** will stay the **same**
+(there were only 34 people with limb injuries, and only 155 people who died). However, the **cell values** will **change** (we won't always have 61 fatalities
+for body injuries). 
 
 \vspace{0.25cm}
 
-__Step 5:__ Calculate the $X^2$ statistic for the simulation. Because the row
-and column totals stay the same, the table of expected counts will be the same
-for **every** simulation!
+__Step 5:__ Calculate the $X^2$ statistic for the simulation. 
+
+Because the row and column totals stay the same, the table of expected counts
+will be the same for **every** simulation!
 
 \vspace{0.25in}
 
