@@ -1,11 +1,15 @@
 ---
-title: "Chi-Square Test of Homogeneity: The Good Samaritan"
-output: html_document
+title: 'Chi-Square Test of Homogeneity: The Good Samaritan'
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE)
+                      message = FALSE, 
+                      out.width = "70%", 
+                      fig.align = "center")
 
 library(tidyverse)
 library(janitor)
@@ -62,6 +66,8 @@ good_sam <- read_csv(here::here("Week 9 - Two Cat Inference",
                   )
 ```
 
+\newpage
+
 A preview of the dataset is shown below:
 
 ```{r data-preview}
@@ -81,25 +87,27 @@ categories?
 
 \vspace{0.25in}
 
-3. Fill in the blanks with one answer from each set of parentheses: This is an  
-________________ (experiment / observational study) because ______________ (hurry
-or no hurry / help or no help) _______ (was / was not)  randomly ____________ (assigned / selected).
+3. Fill in the blanks with one answer from each set of parentheses:
 
-\vspace{0.25in}
+This is an ________________ (experiment / observational study) because
+______________ (hurry or no hurry / help or no help) _______ (was / was not)  randomly ____________ (assigned / selected).
+
+\newpage
 
 4.  Put an X in the box that represents the appropriate scope of inference for
 this study.
 
-|       | Random / Representative Sample | No Random / Representative Sample |
-|-------|--------------------------------|---------------------------------------|
+|               | Random / Representative Sample | No Random / Representative Sample |
+|---------------|--------------------------------|---------------------------------------|
 | No Random Assignment of Explanatory Variable |     |         |
+|                                              |     |         |
 | Random Assignment of Explanatory Variable    |     |         |
 
-\newpage
+\vspace{0.25in}
 
 ## Chi-Square Test of Homogeneity vs. Independence
 
-Yesterday, we explored a Chi-Square test of independence. We compared what we 
+Yesterday, we explored a Chi-Square Test of Independence. We compared what we 
 saw in the data to what we expected if the null hypothesis was true---that
 there was no association / relationship between the two variables. 
 
@@ -125,13 +133,16 @@ proportion as $\pi$. In general, we will be comparing the proportion of
 observational units that are labeled as a "success" in the response variable.
 Here, a "success" would be a person choosing to "Help" the homeless person. 
 
+\newpage
+
 5. Fill in the details regarding the two parameters of interest for this study. 
 
-$\pi$ --- The true proportion of people who are in a hurry who ___________
+$\pi_{\underline{\hspace{1in}}}$ --- The true proportion of people who are in a
+hurry who \underline{\hspace{1in}}
 
 \vspace{0.5in}
 
-$\pi$ ---
+$\pi_{\underline{\hspace{1in}}}$ ---
 
 \vspace{0.5in}
 
@@ -210,19 +221,9 @@ being in a hurry and helping someone?
 
 ## Carrying out a Chi-Square Test of Homogeneity
 
-## Chi-Squared Test of Independence 
-
 Similar to what we did last week with one categorical variable, we will be 
 performing a Chi-Squared test to compare what we saw in the data to what
 we would have expected to see if the null hypothesis was true.
-
-11. Write the null hypothesis for this study in words.
-
-\vspace{1in}
-
-12. Using the research question, write the alternative hypothesis in words.
-
-\vspace{1in}
 
 ### Expected Counts Under $H_0$ 
 
@@ -244,12 +245,13 @@ $$
 Once we have each of these, we can create a table of what frequencies we would
 have expected to see if $H_0$ was true. 
 
-13. Fill out the table of expected values below. 
+11. Fill out the table of expected values below. 
 
 
 | Behavior | Hurry | No Hurry |
 |----------|-------|----------|
-| Help     |       |          | </br>
+| Help     |       |          |
+|          |       |          |
 | No Help  |       |          |
 
 
@@ -263,16 +265,16 @@ $$
 \frac{(\text{observed} - \text{expected})^2}{\text{expected}}
 $$
 
-14. Using the formula above, calculate how far "off" each of the cells in our
+12. Using the formula above, calculate how far "off" each of the cells in our
 observed table is from what was expected under the null hypothesis. 
 
-\vspace{1in}
+\vspace{0.5in}
 
 
-15. Adding all of these differences together to obtain our observed $X^2$
+13. Adding all of these differences together to obtain our observed $X^2$
 statistic. 
 
-$X^2 =$
+|       $X^2 =$
 
 \vspace{0.5in}
 
@@ -291,7 +293,7 @@ Like we saw yesterday, there are two ways we can obtain this
 Let's see which option is a better choice. 
 
 
-16. Based on your table of expected counts, which method should you use for 
+14. Based on your table of expected counts, which method should you use for 
 approximating the sampling distribution? Why?
 
 \newpage
@@ -299,11 +301,11 @@ approximating the sampling distribution? Why?
 ## Theory-based Null Distribution
 
 If you chose a $\chi^2$ distribution this is where you should be! Similar to 
-what we did yesterday, we will use a $chi^2$ distribution with 
+what we did yesterday, we will use a $\chi^2$ distribution with 
 $(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and
 $c$ is the number of columns in the table.
 
-17. How many degrees of freedom would be use for our $\chi^2$ distribution?
+15. How many degrees of freedom would be use for our $\chi^2$ distribution?
 
 \vspace{0.5in}
 
@@ -311,7 +313,7 @@ $c$ is the number of columns in the table.
 
 To find a p-value for a given $X^2$ statistic, we use the `pchisq()` function. 
 
-18. Using the values you calculated before, fill in the code below:
+16. Using the values you calculated before, fill in the code below:
 
 ```{r chi-sq-p-value, echo = TRUE, eval = FALSE}
 pchisq(_________, df = _____, lower.tail = FALSE)
@@ -322,12 +324,14 @@ pchisq(_________, df = _____, lower.tail = FALSE)
 Running the code you just wrote in `R` gave me a p-value of approximately
 `r round(pchisq(7.29, df = 1, lower.tail = FALSE), 6)`. 
 
-19. Based on this p-value what conclusion would you reach regarding the null
+17. Based on this p-value what conclusion would you reach regarding the null
 hypothesis?
 *Hint:* Go back and see what you wrote for your null and alternative
 hypotheses in #11 and #12!
 
-20.  Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
+\vspace{1in}
+
+18.  Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
 
 * Summary statistic and interpretation
 
@@ -356,8 +360,7 @@ not.
 
 To carry out **one** simulation we need to do the following steps:
 
-__Step 1:__ Write the response (_______/_______) and the explanatory variable 
-(____________ / ____________) on ______ cards. 
+__Step 1:__ Write the response (______________) and the explanatory variable (_________________) on ______ cards. 
 
 \vspace{0.25cm}
 
@@ -369,17 +372,20 @@ __Step 3:__ Create a new dataset that could have happened if $H_0$ was true by:
 
 \vspace{1in}
 
-__Step 4:__ Create a table of the simulated counts for the shuffled cards. Keep 
-in mind the column and row totals will stay the **same** (there were only 20 
-people in a hurry and only 13 people who helped the stranger). However, the
+__Step 4:__ Create a table of the simulated counts for the shuffled cards. 
+
+Keep in mind the column and row totals will stay the **same** (there were only
+20 people in a hurry and only 13 people who helped the stranger). However, the
 **cell values** will **change** (we won't always have 2 people who helped and 
 were in a hurry). 
 
 \vspace{0.25cm}
 
-__Step 5:__ Calculate the $X^2$ statistic for the simulation. Because the row
-and column totals stay the same, the table of expected counts will be the same
-for **every** simulation!
+__Step 5:__ Calculate the $X^2$ statistic for the simulation. 
+
+Because the row and column totals stay the same, the table of expected counts
+will be the same for **every** simulation!
+
 \vspace{0.25in}
 
 __Step 6:__ Plot the simulated $X^2$ statistic on the distribution
@@ -402,7 +408,7 @@ good_sam %>%
   adorn_totals(where = c("row", "col"))
 ```
 
-17. Calculate the $X^2$ statistic for this simulation. 
+15. Calculate the $X^2$ statistic for this simulation. 
 
 \vspace{1in}
 
@@ -422,26 +428,22 @@ good_sam %>%
             y = "Number of Simulations (out of 1000 reps)")
 ```
 
-18. Draw a line where the observed $X^2$ statistic falls on this distribution.
+16. Draw a line where the observed $X^2$ statistic falls on this distribution.
 
 \vspace{0.25in}
 
-19. Estimate the p-value for testing if the proportion of students who helped
+17. Estimate the p-value for testing if the proportion of students who helped
 is the same between the two groups (hurry / no hurry). 
 
 \vspace{0.25in}
 
-20. Based on your p-value, what would you conclude for your null and alternative
+18. Based on your p-value, what would you conclude for your null and alternative
 hypotheses? (Look back at what you said for #11 and #12)!
 
 \vspace{1in}
 
-21. Did you reach similar conclusions using theory-based methods? Why do you
-believe that is the case?
-
-\vspace{1in}
-
-22.  Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
+19.  Write a paragraph summarizing the results of the study as if writing a
+press release.  Be sure to describe:
 
 * Summary statistic and interpretation
 
