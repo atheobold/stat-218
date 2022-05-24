@@ -14,27 +14,28 @@ knitr::opts_chunk$set(warning = FALSE,
 library(tidyverse)
 library(janitor)
 library(infer)
+
+set.seed(1234)
 ```
 
 ### Learning outcomes
 
-* Understand the differences between Chi-Square tests of independence and 
-Chi-Square tests of homogeneity
+* Understand the differences between a Chi-Square Test of Independence and 
+a Chi-Square Test of Homogeneity
 
-* Construct the null and alternative hypotheses for a Chi-Square test of 
-homogeneity in words and using appropriate statistical symbols.
+* Construct the null and alternative hypotheses for a Chi-Square Test of 
+Homogeneity in words and using appropriate statistical symbols.
   
-* Describe and perform a simulation-based Chi-Square test of homogeneity.
+* Describe and perform a simulation-based Chi-Square Test of Homogeneity.
   - Identify the steps required to simulate what could have happened if $H_0$
   was true
   - Describe how these steps could be carried out with cards
 
 * Describe the conditions required to use a $\chi^2$ distribution to obtain a
-p-value for a Chi-Square test of homogeneity
+p-value for a Chi-Square Test of Homogeneity
 
 * Interpret and evaluate the p-value obtained in the context of a Chi-Square
-test of homogeneity
-
+Test of Homogeneity
 
 ### The Good Samaritan
 
@@ -55,7 +56,7 @@ student for help. The researchers recorded whether the student helped the actor
 or not. 
 
 The researchers were interested in investigating whether these data provide
-evidence of a difference in how often someone will help help people in need. 
+evidence of a difference in how often someone will help people in need. 
 
 ```{r data, include = FALSE}
 good_sam <- read_csv(here::here("Week 9 - Two Cat Inference", 
@@ -70,8 +71,10 @@ good_sam <- read_csv(here::here("Week 9 - Two Cat Inference",
 
 A preview of the dataset is shown below:
 
-```{r data-preview}
-good_sam
+```{r data-preview, echo = FALSE}
+good_sam %>% 
+  slice_sample(n = 10) %>% 
+  pander::pander()
 ```
 
 
@@ -90,7 +93,8 @@ categories?
 3. Fill in the blanks with one answer from each set of parentheses:
 
 This is an ________________ (experiment / observational study) because
-______________ (hurry or no hurry / help or no help) _______ (was / was not)  randomly ____________ (assigned / selected).
+______________ (hurry or no hurry / help or no help) _______ (was / was not) 
+randomly ____________ (assigned / selected).
 
 \newpage
 
@@ -116,14 +120,13 @@ are able to perform a test that is more specific than a test of independence.
 We are able to test if the proportion of successes are **homogeneous** across
 the levels of our categorical variable. 
 
-The Chi-Square test of homogeneity is more specific because our hypotheses are
+A Chi-Square Test of Homogeneity is more specific because our hypotheses are
 about **proportions**, rather than general relationships between two variables. 
 
 ### Setting Up the Research Question
 
 The research question as stated by the researchers is: Do these data provide
-evidence that those in a hurry will be less likely to help people in need in
-this situation?
+evidence of a difference in how often someone will help people in need?
 
 In order to set up our hypotheses, we need to express this research question in
 terms of parameters. 
@@ -204,17 +207,17 @@ good_sam %>%
 ```
 
 
-8. Using the two-way table, calculate the proportion of students who were told 
+9. Using the two-way table, calculate the proportion of students who were told 
 they were in a hurry who helped the actor.
 
 \vspace{0.3in}
 
-9. Using the two-way table, calculate the proportion of students who were told
+10. Using the two-way table, calculate the proportion of students who were told
 they could take their time (no hurry) who helped the actor.
 
 \vspace{0.3in}
 
-10. Based on these proportions, do you believe there is a relationship between
+11. Based on these proportions, do you believe there is a relationship between
 being in a hurry and helping someone? 
 
 \vspace{0.4in}
@@ -245,7 +248,7 @@ $$
 Once we have each of these, we can create a table of what frequencies we would
 have expected to see if $H_0$ was true. 
 
-11. Fill out the table of expected values below. 
+12. Fill out the table of expected values below. 
 
 
 | Behavior | Hurry | No Hurry |
@@ -265,13 +268,13 @@ $$
 \frac{(\text{observed} - \text{expected})^2}{\text{expected}}
 $$
 
-12. Using the formula above, calculate how far "off" each of the cells in our
+13. Using the formula above, calculate how far "off" each of the cells in our
 observed table is from what was expected under the null hypothesis. 
 
 \vspace{0.5in}
 
 
-13. Adding all of these differences together to obtain our observed $X^2$
+14. Adding all of these differences together to obtain our observed $X^2$
 statistic. 
 
 |       $X^2 =$
@@ -293,7 +296,7 @@ Like we saw yesterday, there are two ways we can obtain this
 Let's see which option is a better choice. 
 
 
-14. Based on your table of expected counts, which method should you use for 
+15. Based on your table of expected counts, which method should you use for 
 approximating the sampling distribution? Why?
 
 \newpage
@@ -305,7 +308,7 @@ what we did yesterday, we will use a $\chi^2$ distribution with
 $(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and
 $c$ is the number of columns in the table.
 
-15. How many degrees of freedom would be use for our $\chi^2$ distribution?
+16. How many degrees of freedom would be use for our $\chi^2$ distribution?
 
 \vspace{0.5in}
 
@@ -313,7 +316,7 @@ $c$ is the number of columns in the table.
 
 To find a p-value for a given $X^2$ statistic, we use the `pchisq()` function. 
 
-16. Using the values you calculated before, fill in the code below:
+17. Using the values you calculated before, fill in the code below:
 
 ```{r chi-sq-p-value, echo = TRUE, eval = FALSE}
 pchisq(_________, df = _____, lower.tail = FALSE)
@@ -324,14 +327,14 @@ pchisq(_________, df = _____, lower.tail = FALSE)
 Running the code you just wrote in `R` gave me a p-value of approximately
 `r round(pchisq(7.29, df = 1, lower.tail = FALSE), 6)`. 
 
-17. Based on this p-value what conclusion would you reach regarding the null
+18. Based on this p-value what conclusion would you reach regarding the null
 hypothesis?
 *Hint:* Go back and see what you wrote for your null and alternative
 hypotheses in #11 and #12!
 
 \vspace{1in}
 
-18.  Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
+19. Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
 
 * Summary statistic and interpretation
 
@@ -340,7 +343,6 @@ hypotheses in #11 and #12!
 * Conclusion (written to answer the research question)
 
 * Scope of inference
-
 
 \newpage
 
@@ -408,7 +410,7 @@ good_sam %>%
   adorn_totals(where = c("row", "col"))
 ```
 
-15. Calculate the $X^2$ statistic for this simulation. 
+16. Calculate the $X^2$ statistic for this simulation. 
 
 \vspace{1in}
 
@@ -428,21 +430,21 @@ good_sam %>%
             y = "Number of Simulations (out of 1000 reps)")
 ```
 
-16. Draw a line where the observed $X^2$ statistic falls on this distribution.
+17. Draw a line where the observed $X^2$ statistic falls on this distribution.
 
 \vspace{0.25in}
 
-17. Estimate the p-value for testing if the proportion of students who helped
+18. Estimate the p-value for testing if the proportion of students who helped
 is the same between the two groups (hurry / no hurry). 
 
 \vspace{0.25in}
 
-18. Based on your p-value, what would you conclude for your null and alternative
+19. Based on your p-value, what would you conclude for your null and alternative
 hypotheses? (Look back at what you said for #11 and #12)!
 
 \vspace{1in}
 
-19.  Write a paragraph summarizing the results of the study as if writing a
+20. Write a paragraph summarizing the results of the study as if writing a
 press release.  Be sure to describe:
 
 * Summary statistic and interpretation
@@ -453,4 +455,6 @@ press release.  Be sure to describe:
 
 * Scope of inference
 
+**Note:** Please only do either this question or question #19 for the previous 
+section. They are the same question!
 
