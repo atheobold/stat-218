@@ -170,4 +170,9 @@ or narrow) and whether the mushroom is edible.
 
 ```
 
+\newpage
+
+`r praise()` Congratulations on completing STAT 218! 
+
+Have a great summer!
 
