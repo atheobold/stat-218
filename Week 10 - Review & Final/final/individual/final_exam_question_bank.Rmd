@@ -48,6 +48,7 @@ Dr. Theobold during office hours prior to the exam.
 \vspace{0.5cm}
 
 
+
 ## Provided Formulas
 
 $$IQR = Q3 - Q1$$
@@ -77,6 +78,8 @@ $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
 \newpage 
 
+
+---
 
 ## Final Exam Question Bank
 
@@ -222,19 +225,102 @@ causes a mushroom to be poisonous.
 associated with whether a mushroom is poisonous.
 \end{itemize}
 
-\newpage
-
-`r praise()` Congratulations on completing STAT 218! 
-
-Have a great summer!
-
-
 
 
 ### Mendelay Genetics
 
+
+
+### Seasonal Colds
+
+\noindent \textbf{Q3} [22 points]
+A local doctor suspects that there is a seasonal trend in the occurrence of the
+common cold. She estimates that 40% of the cases each year occur in the winter,
+40% in the spring, 10% in the summer and 10% in the fall. A random sample of
+1000 patient cases was collected, and the number of cold cases for each season
+was recorded. 
+
+A summary table is included below:
+
+```{r colds-data}
+colds <- tibble(Season = 
+                  c(
+                    rep("Winter", 374), 
+                    rep("Spring", 292), 
+                    rep("Summer", 169), 
+                    rep("Fall", 165)
+                  )
+                )
+```
+
+```{r colds-table}
+colds %>% 
+  count(Season) %>% 
+  rename(`Number of Patients` = n) %>% 
+  pander()
+```
+
+\noindent \textbf{(a)} [4 points] If the doctor's suspicion was correct, what
+proportions would you expect for each cell? Insert the corresponding values in
+each cell. 
+
+\vspace{0.25cm}
+
+| Fall                | Spring             | Summer             | Winter             | 
+|---------------------|--------------------|--------------------|--------------------|
+| $p_{\text{fall}$ =  | $p_{\text{spring}$ = | $p_{\text{summer}$ = | $p_{\text{winter}$ =  |
+|                     |                    |                    |                    |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)} [3 points] If the table above represents what is assumed
+to be true under $H_0,$ state the alternative hypothesis using either words or
+notation. 
+
+\vspace{1in}
+
+\noindent \textbf{(c)} [4 points] Compute the table of expected counts.  
+
+| Fall                | Spring             | Summer             | Winter             | 
+|---------------------|--------------------|--------------------|--------------------|
+|                     |                    |                    |                    |
+|                     |                    |                    |                    |
+
+\vspace{1in}
+
+\noindent \textbf{(d)} [2 points] What is the summer cold cell's contribution to
+the $X^2$ statistic? 
+
+\vspace{1in}
+
+\noindent \textbf{(e)} [2 points] Evaluate whether the conditions required to
+use the $\chi^2$ distribution to obtain a p-value are violated. 
+
+\vspace{1in}
+
+\noindent \textbf{(f)} [3 points] An $X^2$ statistic of 124 was obtained for
+these data. Fill in the `R` code below to find the p-value for this statistic.
+*Hint:* The `lower.tail` input takes one of two options `TRUE` or `FALSE`. 
+
+```{r code-fill-in-chisq, eval = FALSE, echo= TRUE}
+pchisq(_____________, 
+       df = ______________, 
+       lower.tail = ___________)
+```
+
+\vspace{0.25cm}
+
+\noindent \textbf{(g)} [4 points] Using the code you input above, a p-value less
+than 0.000000123 was obtained. Based on this p-value what would you conclude
+about the Doctor's hypothesis regarding the distribution of colds throughout the
+year? 
+
+\vspace{1in}
+
+
 ### Professor Attractiveness
 
+\noindent \textbf{Q4} [21 points]
 Data were scraped from _ratemyprofessors.com_, a website which allows college
 and university students to assign ratings to professors and campuses of
 American, Canadian, and United Kingdom institutions. In order for the rating to
@@ -248,7 +334,7 @@ perceived to be.
 A table of observed counts in shown below.  
 
 ```{r, professor-table, echo = FALSE}
-professorss <- tibble(attractiveness = 
+professors <- tibble(attractiveness = 
                        c(rep("Attractive", 172), 
                          rep("Unattractive", 314)
                          ), 
@@ -273,17 +359,11 @@ professors %>%
 ```
 
 \noindent \textbf{(a)}[3 points] What type of test should be performed with
-these data to answer the research question?  
+these data to address the research question?  
 
 \vspace{1in}
 
-\noindent \textbf{(b)} [3 points] When analyzing the data, the administrators 
-chose to use a $\chi^2$ distribution to obtain their p-value. Was this an
-appropriate choice? Why or why not? 
-
-\vspace{1in}
-
-\noindent \textbf{(c)} [4 points] Write out the null and alternative hypotheses
+\noindent \textbf{(b)} [4 points] Write out the null and alternative hypotheses
 for the test you stated in __(a)__. 
 
 \noindent $H_0:$ 
@@ -293,6 +373,12 @@ for the test you stated in __(a)__.
 \noindent $H_A:$ 
 
 \vspace{0.5in}
+
+\noindent \textbf{(c)} [3 points] When analyzing the data, the administrators 
+chose to use a $\chi^2$ distribution to obtain their p-value. Was this an
+appropriate choice? Why or why not? 
+
+\vspace{1in}
 
 \noindent \textbf{(d)} [2 points] What distribution should be used to find the
 p-value for the hypothesis test above?
@@ -306,11 +392,23 @@ __in the context of the problem.__
 
 \vspace{1in}
 
+\noindent \textbf{(f)} [2 points] Compute the relative risk of being labeled
+"Hard" for "attractive" professors compared to "unattractive" professors.
+
+\vspace{1in}
+
+\noindent \textbf{(g)} [3 points] Interpret the relative risk you obtained in 
+__(f)__ in the context of these data. Be sure to indicate how the comparison was
+made!
+
+\vspace{1in}
+
+
 
 ### Guilty Decisions
 
 \noindent
-\textbf{Q3}[11 points] 
+\textbf{Q5}[11 points] 
 The effect of guilt on how a decision maker focuses on a problem was
 investigated in the *Journal of Behavioral Decision Making* (January 2007). A
 total of 155 volunteer students participated in the study, where each was
@@ -376,7 +474,21 @@ students choose to repair the car? Select all that apply.
 \end{itemize}
 
 
-## Distribution of Fish on Blackfoot River
+
+### Distribution of Fish on Blackfoot River
+
+\noindent \textbf{Q6} [19 points]
+We have data on fish caught in the Blackfoot River near Helena, Montana by
+Montana Fish, Wildlife, & Parks personnel over a number of years. They used electrofishing equipment to attract the fish to the boat, then dipped them out
+of the water with nets, measured length in cm and weight in grams. They are
+often working in cold conditions in late autumn or early spring, so some
+measurement error is expected. 
+
+These data are not from a random sample. The goal is to catch all fish within a
+section of the Blackfoot River every few years to assess the health of the
+population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
+prevalence of the different species of fish has stayed relative stable over 
+the years.  
 
 ```{r fish-data}
 
@@ -391,23 +503,12 @@ fish <- read_csv(here::here(
   mutate(species = case_when(species == "Brown" ~ "Brown Trout", 
                              species == "Bull" ~ "Bull Trout", 
                              species == "RBT" ~ "Rainbow Trout", 
-                             species == "WCT" ~ "Whitefish"), 
-         year = as.factor(year)
-         )
+                             species == "WCT" ~ "Whitefish")
+         ) %>% 
+  filter(year > 1998) %>% 
+  mutate(year = as.factor(year))
 
 ```
-
-We have data on fish caught in the Blackfoot River near Helena, Montana by
-Montana Fish, Wildlife, & Parks personnel over a number of years. They used electrofishing equipment to attract the fish to the boat, then dipped them out
-of the water with nets, measured length in cm and weight in grams. They are
-often working in cold conditions in late autumn or early spring, so some
-measurement error is expected. 
-
-These data are not from a random sample. The goal is to catch all fish within a
-section of the Blackfoot River every few years to assess the health of the
-population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
-prevalence of the different species of fish has stayed relative stable over 
-time.  
 
 ```{r fish-preview}
 fish %>% 
@@ -426,11 +527,11 @@ this variable?
 
 \vspace{1in}
 
-\noindent \textbf{(c)}
+\noindent \textbf{(c)} [3 points] Based on the bar plot below, describe the
+relationship between the sampling year and the species of captured fish. Make
+direct reference to characteristics of the plot! 
 
-\noindent \textbf{(d)}
-
-```{r fish-table}
+```{r fish-table, include = FALSE}
 fish %>% 
   group_by(year, species) %>% 
   count() %>% 
@@ -451,8 +552,70 @@ fish %>%
   theme(legend.position = "top")
 ```
 
+\vspace{1in}
 
-\noindent 
+\noindent \textbf{(d)} [5 points] The Statistician at Montana Fish, Wildlife, &
+Parks prefers using simulation-based methods rather than theory-based methods.
+They used computer simulation to obtain the null distribution below. 
+
+Fill in the steps necessary to obtain out **one** simulation on the null 
+distribution. 
+
+\vspace{0.25cm}
+
+\begin{center}
+\noindent
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{2in}} on the 
+cards.
+\end{center}
+
+\vspace{0.25in}
+
+Generate a new sample that could have happened if the null hypothesis was true
+by: 
+
+\vspace{0.5in}
+
+\begin{center}
+\noindent
+Calculate and plot the \underline{\hspace{4cm}} from each permutation / 
+computer simulation. 
+\end{center}
+
+\vspace{0.25in}
+
+```{r fish-null-dist, cache = TRUE}
+null_dist <- fish %>% 
+  specify(response = species, 
+          explanatory = year) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "Chisq")
+
+null_dist %>% 
+  visualise(type = "simulation") + 
+  labs(x = "Simulated X-Sq Statistic", 
+       title = " ")
+
+```
+
+\vspace{0.25cm}
+
+\noindent \textbf{(e)} [2 points] The observed $X^2$ statistic was 
+`r chisq_test(fish, response = species, explanatory = year)$statistic`. Use this
+statistic to draw a line and shade the direction that should be used when 
+calculating the p-value. 
+
+\noindent \textbf{(f)} [1 point] Approximate the p-value for this hypothesis
+test. 
+
+\vspace{0.25cm}
+
+\noindent \textbf{(g)} [3 points] Using the conditions of the simulation-based
+method used, evaluate if you believe the p-value you obtained in __(f)__ is
+accurate. 
+
+\vspace{1in}
 
 
 ## General Concepts
@@ -481,3 +644,10 @@ a p-value; you can adjust based on the p-value you observe.
 not large enough.
 \item[(d)] p-values are the probability that the null hypothesis is false.
 \end{itemize}
+
+
+\newpage
+
+`r praise()` Congratulations on completing STAT 218! 
+
+Have a great summer!
