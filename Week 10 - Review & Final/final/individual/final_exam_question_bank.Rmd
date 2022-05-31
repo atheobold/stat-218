@@ -8,6 +8,7 @@ output:
     extra_dependencies:
     - multicol
     - setspace
+    - tcolorbox
 ---
 
 ```{r setup, include=FALSE}
@@ -229,7 +230,109 @@ associated with whether a mushroom is poisonous.
 
 ### Mendelay Genetics
 
+\noindent \textbf{Q2} [ points]
 
+Mendelian inheritance refers to certain patterns of how traits are passed from parents to offspring. These general patterns were established by the Austrian
+monk Gregor Mendel, who performed thousands of experiments with pea plants in
+the 19th century. Mendel’s discoveries of how traits (such as color and shape)
+are passed down from one generation to the next introduced the concept of
+dominant and recessive modes of inheritance.
+
+Mendelian inheritance refers to the inheritance of traits controlled by a single gene with two alleles, one of which may be completely dominant to the other.
+You can use a Punnett square to easily determine the expected ratios of 
+possible genotypes in the offspring of two parents. 
+
+In the table below, we see an example of eye color inheritance. In this case, 
+both parents are heterozygotes (Aa) for the gene. Half of the gametes produced
+by each parent will have the A allele, and half will have the a allele, shown
+on the side and the top of the Punnett square. Filling in the cells of the
+Punnett square gives the possible genotypes of their children. It also shows the
+most likely ratios of the genotypes, which in this case is 25% AA, 50% Aa, and 
+25% aa.
+
+![](figures/punnetts.png)
+
+\noindent \textbf{(a)} [2 points] When Mendel crossed his pea plants, he learned
+that tall (T) was dominant to short (t). Suppose in your Biology course you
+carried out an experiment to test if the plot offspring would follow Mendelian
+inheritance. 
+
+\noindent Fill in the table defining what the expected tallness inheritance
+for your plants should be. 
+
+|                   |         T         |       t       |
+|-------------------|-------------------|---------------|
+|       T           |                   |               |
+|                   |                   |               |
+|       t           |                   |               |
+
+
+\noindent \textbf{(b)} If the Mendelian inheritance is true, what
+proportions would you expect for each of the following genotypes? Insert the corresponding values in each cell. 
+
+\vspace{0.25cm}
+
+| TT                | Tt                 | tt               |
+|-------------------|--------------------|------------------|
+| $p_{\text{TT}$ =  | $p_{\text{Tt}$ =   | $p_{\text{tt}$ = |
+|                   |                    |                  |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(c)} Actually, our table could be a bit simpler. Both the TT
+and Tt genotypes will present as "tall" plants, whereas tt genotypes will
+present as "short" plants.*
+
+\noindent Compress your previous table into a new table with only two levels
+of tallness. 
+
+| Tall                | Short                 |
+|---------------------|-----------------------|
+| $p_{\text{Tall}$ =  | $p_{\text{Short}$ =   |
+|                     |                       |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)} [3 points] If the table above represents what is assumed
+to be true about tallness inheritance under $H_0,$ state the alternative
+hypothesis using either words or notation. 
+
+\vspace{1in}
+
+\noindent \textbf{(c)} After you cross your plants, you measure the
+characteristics of the 400 offspring. You note that there are 305 tall pea
+plants and 95 short pea plants. 
+
+\noindent Create a table summarizing these observations. 
+
+\vspace{1in}
+
+\noindent \textbf{(d)} Calculate how far "off" was your observed number of tall
+plants from what you expected if $H_0$ was true. Use these values to report the 
+$X^2$ statistic for your experiment. 
+
+| Tall                | Short                 |
+|---------------------|-----------------------|
+|                     |                       |
+|                     |                       |
+|                     |                       |
+|                     |                       |
+
+\vspace{0.75in}
+
+__$X^2$ statistic__:
+
+\vspace{0.25cm}
+
+\noindent \textbf{(e)} The p-value associated with your $X^2$ statistic is 
+`r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology textbook suggests 
+you interpret this value as:
+
+> The large p-value proves that Mendelian inheritance is true.
+
+\noindent What issue(s) to you have with this interpretation?
+
+\vspace{1in}
 
 ### Seasonal Colds
 
@@ -644,6 +747,29 @@ a p-value; you can adjust based on the p-value you observe.
 not large enough.
 \item[(d)] p-values are the probability that the null hypothesis is false.
 \end{itemize}
+
+\textbf{For each of the following, select the single most appropriate analysis for the situation described. You may use an analysis for more than one situation.} (2 pts each)
+
+\begin{tcolorbox}
+CTI - Chi Square Test of Independence \hspace{0.25in} OWA - One Way ANOVA \\
+SLR - Simple Linear Regression \hspace{0.25in} MLR - Multiple Linear Regression  \\
+TWA - Two Way ANOVA \hspace{0.25in} CTH -  Chi Square Test of Homogeneity \\
+\end{tcolorbox}
+
+
+\item \underline{\hspace{1in}} Researchers are interested in investigating how the number of visitors to Yellowstone National Park in a year impacts the local economy in Bozeman. To do this they count the number of yearly visitors to Yellowstone and measure the dollars spent by tourists in Bozeman for the year.
+
+ 
+\item  \underline{\hspace{1in}} A study of honeybees looked at whether the proportions of different honeybee species varies by state.  Ten states were used in the study, and 100 honeybees were randomly sampled in each state, and 7 different species were seen in the data set. 
+
+\item \underline{\hspace{1in}} An attorney in Boston observes that some judges seem to select juries that contain few women. She collects data on 20 randomly selected juries from each of 10 judges, and the number of women on each jury for each judge. 
+
+\item \underline{\hspace{1in}} Researchers are interested in whether the linear relationship between mean daytime temperature and number of tomatoes produced differs among three tomato varieties.
+
+\item \underline{\hspace{1in}} Researchers are interested in what gets users more Tinder messages. They collect data on Tinder users' gender (Male, Female, A-gender), race (Black, Caucasian, Asian, Latino), and the number of messages they get in one day for a random sample of 1000 Tinder users.  \\
+
+\end{enumerate}
+
 
 
 \newpage
