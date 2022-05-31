@@ -1,0 +1,105 @@
+\noi
+{\bf a)} Frodo Baggins is trying to determine if he should take the quest that Gandalf the Grey has tasked him with. He knows the distance from the Shire to Mordor is a long and treacherous path, but he's eager to learn what is the average amount of footsteps it takes a traveler to go this distance in order to make his decision. He recognizes that travelers vary by heights drastically which would impact the number of steps taken. What is the best {\bf method} to answer his research question? Circle one.\\
+
+\begin{minipage}{2.5in}
+\be[(i)] 
+\item Confidence interval for $\pi$
+\item Hypothesis test for $\pi$ \\ (1-proportion z-test)
+\item $\chi^2$ Goodness-of-Fit test
+\item Hypothesis test for $\pi_1 - \pi_2$ \\ (2-proportion z-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.7in}
+\be[(i)]
+\setcounter{enumi}{4}
+\item Confidence interval for $\pi_1 - \pi_2$
+\item $\chi^2$ Test for Independence
+\item Confidence interval for $\mu$
+\item Hypothesis test for $\mu$ \\ (1-sample t-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.3in}
+\be[(i)]
+\setcounter{enumi}{8}
+\item Hypothesis test for $\mu_1-\mu_2$ \\ (2-sample t-test)
+\item Wilcoxon-Mann-Whitney Test
+\item Paired t-test
+\item Sign Test
+\ee
+\end{minipage}
+\vspace{.2in}
+
+\noi
+{\bf b)} Merry Brandybuck and Pippin Took are often found smoking tobacco. Samwise Gamgee believes that Merry monopolizes the tobacco more than Pippin and so he collects daily amounts of barrels of tobacco consumed by Merry and Pip to see who's lifetime average is higher. Over the course of a year, he finds that Merry smokes a daily average of 5.2 barrels and Pippin smokes a daily average of 4.8 barrels. In this scenario, what is the {\bf parameter}? Circle one.
+
+\be[(i)]
+\item The average of 5.2 barrels Merry smokes minus the average of 4.8 barrels Pippin smokes
+\item One barrel
+\item The long-run proportion of barrels Merry smokes minus the long-run proportion of barrels Pippin smokes
+\item 365 days in the year
+\item The long-run average number of barrels Merry smokes minus the long-run average Pippin smokes
+\item The number of barrels Merry smokes minus the number of barrels Pippin smokes
+\ee
+\vspace{.2in}
+
+\noi
+{\bf c) EXTRA CREDIT} Gimli (a dwarf) is truly amazed at how Legolas (an elf) has drunk him under the table as he thought dwarves were the best race at consuming ale. He would like to test the theory of whether archery accuracy for elves is impaired by ale consumption. What is the best {\bf method} to answer his research question? Circle one.\\
+
+\begin{minipage}{2.5in}
+\be[(i)] 
+\item Confidence interval for $\pi$
+\item Hypothesis test for $\pi$ \\ (1-proportion z-test)
+\item $\chi^2$ Goodness-of-Fit test
+\item Hypothesis test for $\pi_1 - \pi_2$ \\ (2-proportion z-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.7in}
+\be[(i)]
+\setcounter{enumi}{4}
+\item Confidence interval for $\pi_1 - \pi_2$
+\item $\chi^2$ Test for Independence
+\item Confidence interval for $\mu$
+\item Hypothesis test for $\mu$ \\ (1-sample t-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.3in}
+\be[(i)]
+\setcounter{enumi}{8}
+\item Hypothesis test for $\mu_1-\mu_2$ \\ (2-sample t-test)
+\item Wilcoxon-Mann-Whitney Test
+\item Paired t-test
+\item Sign Test
+\ee
+\end{minipage}
+\vspace{.2in}
+
+\noi
+{\bf d)} Gandalf has come across all types of races in his time on Middle-earth. He has a feeling that the proportion of dwarf women who are taller than their spouse is significantly smaller than the proportion of hobbit women who are taller than their spouse. What is the best method to answer his research question? Circle one.\\
+
+\begin{minipage}{2.5in}
+\be[(i)] 
+\item Confidence interval for $\pi$
+\item Hypothesis test for $\pi$ \\ (1-proportion z-test)
+\item $\chi^2$ Goodness-of-Fit test
+\item Hypothesis test for $\pi_1 - \pi_2$ \\ (2-proportion z-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.7in}
+\be[(i)]
+\setcounter{enumi}{4}
+\item Confidence interval for $\pi_1 - \pi_2$
+\item $\chi^2$ Test for Independence
+\item Confidence interval for $\mu$
+\item Hypothesis test for $\mu$ \\ (1-sample t-test)
+\ee
+\end{minipage}
+\begin{minipage}{2.3in}
+\be[(i)]
+\setcounter{enumi}{8}
+\item Hypothesis test for $\mu_1-\mu_2$ \\ (2-sample t-test)
+\item Wilcoxon-Mann-Whitney Test
+\item Paired t-test
+\item Sign Test
+\ee
+\end{minipage}
+\vspace{.2in}
