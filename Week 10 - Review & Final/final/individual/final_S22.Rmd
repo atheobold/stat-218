@@ -1,6 +1,6 @@
 ---
-title: "STAT 218 -- Midterm 1"
-date: "April 26, 2020"
+title: "STAT 218 -- Final Exam"
+date: "June , 2020"
 author: "Dr. Allison Theobold"
 output: pdf_document
 ---
@@ -19,6 +19,7 @@ library(mosaic)
 library(moderndive)
 library(pander)
 library(infer)
+library(janitor)
 library(lterdatasampler)
 library(palmerpenguins)
 ```
@@ -113,8 +114,26 @@ $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
 
 $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
+$$ 
+X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
+$$
+
 \newpage 
 
+## Midterm 1 Bank 
+
+<!-- Questions 1-12 -->
+<!-- Picked for midterm 1: 7, 9, 5, 3, 2 -->
+
+## Midterm 2 Bank
+<!-- Questions 1-5 -->
+<!-- Picked for midterm 2: 2, 5, 3 -->
+
+
+## Final Exam Bank
+<!-- Questions 1-9 -->
+
+\newpage
 
 `r praise()` Congratulations on completing STAT 218! 
 
