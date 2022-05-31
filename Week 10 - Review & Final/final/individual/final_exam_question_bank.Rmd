@@ -2,13 +2,13 @@
 title: "Final Exam Question Bank"
 author: "Stat 218"
 output:
-  html_document:
-    df_print: paged
   pdf_document:
     extra_dependencies:
     - multicol
     - setspace
     - tcolorbox
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -16,8 +16,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE, 
                       warning = FALSE, 
                       fig.align = "center", 
-                      fig.width = 4, 
-                      fig.height = 4)
+                      out.width = "70%")
 
 library(tidyverse)
 library(openintro)
@@ -58,7 +57,7 @@ $$IQR = Q3 - Q1$$
 
 __1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
 
-\vspace{0.25cm}
+\vspace{0.2cm}
 
 $$\hat{y} = b_0 + b_1 \times x$$
 
@@ -66,21 +65,19 @@ $$\hat{y} = b_0 + b_1 \times x$$
 
 $$Residual = y - \hat{y}$$ 
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
 
-\vspace{0.25cm}
+\vspace{0.2cm}
 
 $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
-\vspace{0.25cm}
+\vspace{0.2cm}
 
 $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
 \newpage 
 
-
----
 
 ## Final Exam Question Bank
 
@@ -134,14 +131,14 @@ best describe the variables collected.
 
 \vspace{0.2cm}
 
-Whether the mushroom is edible or poisonous is the (explanatory / response) \underline{\hspace{3in}} and it is
-(categorical / quantitative) \underline{\hspace{3in}}. 
+Whether the mushroom is edible or poisonous is the (explanatory / response) \underline{\hspace{1.5in}} and it is
+(categorical / quantitative) \underline{\hspace{1.5in}}. 
 
 \vspace{0.2cm}
 
 Gill size (Broad or Narrow) is the (explanatory / response) 
-\underline{\hspace{3in}} and it is (categorical / quantitative)
-\underline{\hspace{3in}}. 
+\underline{\hspace{1.5in}} and it is (categorical / quantitative)
+\underline{\hspace{1.5in}}. 
 
 \vspace{0.2cm} 
 
@@ -181,7 +178,7 @@ if necessary.*
 
 **Notation:** \underline{\hspace{3in}}
 
-\vspace{0.2cm}
+\newpage
 
 \noindent
 \textbf{(d)}[2 points] Using your answers to (b) and (c), fill in the correct
@@ -208,8 +205,6 @@ mushrooms gill size and whether it is edible or not.
 
 \vspace{1in}
 
-<!-- Add question about shuffling under H0 -->
-
 \noindent
 \textbf{(e)}[2 points] Suppose the Chi-Squared test resulted in a "significant"
 p-value. Which of the following would be the correct scope of inference for this
@@ -226,9 +221,9 @@ causes a mushroom to be poisonous.
 associated with whether a mushroom is poisonous.
 \end{itemize}
 
+\newpage
 
-
-### Mendelay Genetics
+### Mendelian Genetics
 
 \noindent \textbf{Q2} [ points]
 
@@ -252,6 +247,8 @@ most likely ratios of the genotypes, which in this case is 25% AA, 50% Aa, and
 
 ![](figures/punnetts.png)
 
+\newpage
+
 \noindent \textbf{(a)} [2 points] When Mendel crossed his pea plants, he learned
 that tall (T) was dominant to short (t). Suppose in your Biology course you
 carried out an experiment to test if the plot offspring would follow Mendelian
@@ -260,9 +257,9 @@ inheritance.
 \noindent Fill in the table defining what the expected tallness inheritance
 for your plants should be. 
 
-|                   |         T         |       t       |
-|-------------------|-------------------|---------------|
-|       T           |                   |               |
+|                   |         T                 |               t       |
+|-------------------|---------------------------|-----------------------|
+|       T           |                           |               |
 |                   |                   |               |
 |       t           |                   |               |
 
@@ -272,24 +269,24 @@ proportions would you expect for each of the following genotypes? Insert the cor
 
 \vspace{0.25cm}
 
-| TT                | Tt                 | tt               |
-|-------------------|--------------------|------------------|
-| $p_{\text{TT}$ =  | $p_{\text{Tt}$ =   | $p_{\text{tt}$ = |
-|                   |                    |                  |
+| TT                          | Tt                         | tt               |
+|-----------------------------|----------------------------|------------------|
+| $p_{\text{TT}}$ =           | $p_{\text{Tt}}$ =          | $p_{\text{tt}}$ = |
+|                             |                            |                  |
 
 \vspace{0.25cm}
 
 \noindent \textbf{(c)} Actually, our table could be a bit simpler. Both the TT
 and Tt genotypes will present as "tall" plants, whereas tt genotypes will
-present as "short" plants.*
+present as "short" plants.
 
 \noindent Compress your previous table into a new table with only two levels
 of tallness. 
 
-| Tall                | Short                 |
-|---------------------|-----------------------|
-| $p_{\text{Tall}$ =  | $p_{\text{Short}$ =   |
-|                     |                       |
+| Tall                                 | Short                              |
+|--------------------------------------|------------------------------------|
+| $p_{\text{Tall}}$ =                  | $p_{\text{Short}}$ =               |
+|                                      |                                    |
 
 \vspace{0.25cm}
 
@@ -305,30 +302,29 @@ plants and 95 short pea plants.
 
 \noindent Create a table summarizing these observations. 
 
-\vspace{1in}
+\newpage
 
 \noindent \textbf{(d)} Calculate how far "off" was your observed number of tall
 plants from what you expected if $H_0$ was true. Use these values to report the 
 $X^2$ statistic for your experiment. 
 
-| Tall                | Short                 |
-|---------------------|-----------------------|
-|                     |                       |
-|                     |                       |
-|                     |                       |
-|                     |                       |
+__Tall__:
 
-\vspace{0.75in}
+\vspace{0.5in}
+
+__Short:__
+
+\vspace{0.5in}
 
 __$X^2$ statistic__:
 
-\vspace{0.25cm}
+\vspace{0.25in}
 
 \noindent \textbf{(e)} The p-value associated with your $X^2$ statistic is 
 `r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology textbook suggests 
 you interpret this value as:
 
-> The large p-value proves that Mendelian inheritance is true.
+> *The large p-value proves that Mendelian inheritance is true.*
 
 \noindent What issue(s) to you have with this interpretation?
 
@@ -371,7 +367,7 @@ each cell.
 
 | Fall                | Spring             | Summer             | Winter             | 
 |---------------------|--------------------|--------------------|--------------------|
-| $p_{\text{fall}$ =  | $p_{\text{spring}$ = | $p_{\text{summer}$ = | $p_{\text{winter}$ =  |
+| $p_{\text{fall}}$ =  | $p_{\text{spring}}$ = | $p_{\text{summer}}$ = | $p_{\text{winter}}$ =  |
 |                     |                    |                    |                    |
 
 \vspace{0.25cm}
@@ -406,12 +402,10 @@ these data. Fill in the `R` code below to find the p-value for this statistic.
 *Hint:* The `lower.tail` input takes one of two options `TRUE` or `FALSE`. 
 
 ```{r code-fill-in-chisq, eval = FALSE, echo= TRUE}
-pchisq(_____________, 
-       df = ______________, 
-       lower.tail = ___________)
+pchisq(_____________, df = ______________, lower.tail = ___________)
 ```
 
-\vspace{0.25cm}
+\newpage
 
 \noindent \textbf{(g)} [4 points] Using the code you input above, a p-value less
 than 0.000000123 was obtained. Based on this p-value what would you conclude
@@ -475,7 +469,7 @@ for the test you stated in __(a)__.
 
 \noindent $H_A:$ 
 
-\vspace{0.5in}
+\newpage
 
 \noindent \textbf{(c)} [3 points] When analyzing the data, the administrators 
 chose to use a $\chi^2$ distribution to obtain their p-value. Was this an
@@ -486,7 +480,7 @@ appropriate choice? Why or why not?
 \noindent \textbf{(d)} [2 points] What distribution should be used to find the
 p-value for the hypothesis test above?
 
-\vspace{0.25in}
+\vspace{0.5in}
 
 \noindent \textbf{(e)} [4 points] A p-value less than 0.000000142 ($X^2$
 statistic = 50) was found using the distribution stated in __(d)__. Based on 
@@ -496,7 +490,8 @@ __in the context of the problem.__
 \vspace{1in}
 
 \noindent \textbf{(f)} [2 points] Compute the relative risk of being labeled
-"Hard" for "attractive" professors compared to "unattractive" professors.
+"Hard" for "attractive" female professors compared to "unattractive" female 
+professors.
 
 \vspace{1in}
 
@@ -506,7 +501,7 @@ made!
 
 \vspace{1in}
 
-
+\newpage
 
 ### Guilty Decisions
 
@@ -520,6 +515,8 @@ through a reading / writing task. Immediately after the task, the students were
 presented with a decision problem (e.g., whether or not to spend money on
 repairing a very old car). The researchers found that a higher proportion of
 students in the guilty-state group chose not to repair the car than those in the neutral-state and anger-state groups.
+
+\vspace{0.25in}
 
 \noindent
 \textbf{(a)}[3 pts] What is the study design? Explain your reasoning. Select
@@ -565,9 +562,9 @@ across emotional state group.
 
 \vspace{0.25cm}
 
-\noindent \textbf{(d)} [2 pts] Which type of plot would be the most appropriate
-to display the relationship between each level of emotional state and whether
-students choose to repair the car? Select all that apply.
+\noindent \textbf{(d)} [2 pts] Which type of plot would be the **most**
+appropriate to display the relationship between each level of emotional state
+and whether students choose to repair the car? Select all that apply.
 
 \begin{itemize}
 \item[(i)] Scatterplot
@@ -575,7 +572,6 @@ students choose to repair the car? Select all that apply.
 \item[(iii)] Pie chart
 \item[(iv)] Side-by-side boxplot
 \end{itemize}
-
 
 
 ### Distribution of Fish on Blackfoot River
@@ -630,6 +626,8 @@ this variable?
 
 \vspace{1in}
 
+\newpage
+
 \noindent \textbf{(c)} [3 points] Based on the bar plot below, describe the
 relationship between the sampling year and the species of captured fish. Make
 direct reference to characteristics of the plot! 
@@ -644,14 +642,15 @@ fish %>%
   pander()
 ```
 
-```{r fish-plot}
+```{r fish-plot, fig.align = "left"}
 fish %>% 
   ggplot(
     mapping = aes(y = year, fill = species)
        ) +
   geom_bar(position = "fill") +
-  labs(y = "Species of Fish on Blackfoot River", 
-       x = "Proportion of Caught Fish") +
+  labs(y = "Year of Sample", 
+       x = "Proportion of Caught Fish", 
+       fill = " ") +
   theme(legend.position = "top")
 ```
 
@@ -677,7 +676,7 @@ cards.
 Generate a new sample that could have happened if the null hypothesis was true
 by: 
 
-\vspace{0.5in}
+\vspace{1in}
 
 \begin{center}
 \noindent
@@ -709,10 +708,12 @@ null_dist %>%
 statistic to draw a line and shade the direction that should be used when 
 calculating the p-value. 
 
+\vspace{0.25in}
+
 \noindent \textbf{(f)} [1 point] Approximate the p-value for this hypothesis
 test. 
 
-\vspace{0.25cm}
+\vspace{0.25in}
 
 \noindent \textbf{(g)} [3 points] Using the conditions of the simulation-based
 method used, evaluate if you believe the p-value you obtained in __(f)__ is
@@ -723,8 +724,8 @@ accurate.
 
 ## General Concepts
 
-\noindent \textbf{}[2 points] Suppose you reject the null hypothesis at the 0.05
-level of significance. A colleague had planned to use a 0.01 level of
+\noindent \textbf{Q7}[2 points] Suppose you reject the null hypothesis at the
+0.05 level of significance. A colleague had planned to use a 0.01 level of
 significance instead. Will your colleague also reject the null hypothesis?
 
 \begin{itemize}
@@ -736,7 +737,9 @@ significance instead. Will your colleague also reject the null hypothesis?
 
 \vspace{0.25cm}
 
-\noindent \textbf{}[2 points] In hypothesis testing,
+\newpage
+
+\noindent \textbf{Q8}[2 points] In hypothesis testing,
 
 \begin{itemize}
 \item[(a)] a type II error occurs when you fail to reject a false null
@@ -748,32 +751,74 @@ not large enough.
 \item[(d)] p-values are the probability that the null hypothesis is false.
 \end{itemize}
 
-\textbf{For each of the following, select the single most appropriate analysis for the situation described. You may use an analysis for more than one situation.} (2 pts each)
+\noindent \textbf{Q9} \textbf{For each of the following, select the single most appropriate analysis for the situation described. You may use an analysis for
+more than one situation.} (2 pts each)
 
+\begin{center}
 \begin{tcolorbox}
-CTI - Chi Square Test of Independence \hspace{0.25in} OWA - One Way ANOVA \\
-SLR - Simple Linear Regression \hspace{0.25in} MLR - Multiple Linear Regression  \\
-TWA - Two Way ANOVA \hspace{0.25in} CTH -  Chi Square Test of Homogeneity \\
+Chi-Square Test of Independence \hspace{0.5in} One-Way ANOVA \\
+Simple Linear Regression \hspace{0.99in} Chi-Square Test of Homogeneity \\
+Chi-Squared Goodness-of-Fit test \hspace{0.5in}  Paired t-test \\
+Confidence interval for $\mu$ \hspace{1.01in} Hypothesis test for $\mu$ \\ 
+Hypothesis test for $\mu_1-\mu_2$
 \end{tcolorbox}
+\end{center}
 
+\begin{enumerate}
+\item Researchers are interested in investigating how
+the number of visitors to Yellowstone National Park in a year impacts the local
+economy in Livingston. To do this they count the number of yearly visitors to
+Yellowstone and measure the dollars spent by tourists in Livingston for the
+year.
 
-\item \underline{\hspace{1in}} Researchers are interested in investigating how the number of visitors to Yellowstone National Park in a year impacts the local economy in Bozeman. To do this they count the number of yearly visitors to Yellowstone and measure the dollars spent by tourists in Bozeman for the year.
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
 
- 
-\item  \underline{\hspace{1in}} A study of honeybees looked at whether the proportions of different honeybee species varies by state.  Ten states were used in the study, and 100 honeybees were randomly sampled in each state, and 7 different species were seen in the data set. 
+\item A study of honeybees looked at whether the
+proportions of different honeybee species varies by state. Ten states were used 
+in the study, and 100 honeybees were randomly sampled in each state, and 7
+different species were seen in the data set. 
 
-\item \underline{\hspace{1in}} An attorney in Boston observes that some judges seem to select juries that contain few women. She collects data on 20 randomly selected juries from each of 10 judges, and the number of women on each jury for each judge. 
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
 
-\item \underline{\hspace{1in}} Researchers are interested in whether the linear relationship between mean daytime temperature and number of tomatoes produced differs among three tomato varieties.
+\item An attorney in Boston observes that some judges
+seem to select juries that contain few women. She collects data on 20 randomly
+selected juries from each of 10 judges, and the number of women on each jury for
+each judge. 
 
-\item \underline{\hspace{1in}} Researchers are interested in what gets users more Tinder messages. They collect data on Tinder users' gender (Male, Female, A-gender), race (Black, Caucasian, Asian, Latino), and the number of messages they get in one day for a random sample of 1000 Tinder users.  \\
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item Researchers are interested in determining if the 
+yield of a tomato plant differs among three tomato varieties.
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item You are interested in deciding if you should rent
+a new apartment off campus. As this will be your first time living off campus,
+you are anxious to  know the average amount of time it should take you to walk
+to campus. You, a logical person, know that someone's height drastically affects
+how long it takes them to walk places. What is the best {\bf method} to answer
+his research question? Circle one.
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item Matchmaking data scientists are always
+investigating what characteristics of a person can produce better matches. 
+Data scientists at Tinder are interested in looking into the relationship 
+between someone's sexual orientation and whether they would date someone 
+who is taller than them.  
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
 
 \end{enumerate}
-
-
-
-\newpage
-
-`r praise()` Congratulations on completing STAT 218! 
-
-Have a great summer!
