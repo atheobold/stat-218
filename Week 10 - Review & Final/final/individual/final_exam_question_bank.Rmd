@@ -29,25 +29,33 @@ library(praise)
 set.seed(1234)
 ```
 
-Your exam questions will be randomly selected from this bank of
-questions. There \textbf{will not} be a solution key posted. It is your 
-responsibility to discuss your ideas with your group members and / or with 
-Dr. Theobold during office hours prior to the exam.
+For your final exam __60%__ of questions will be randomly selected from 
+__this__ question bank. The remainder of the exam will be __20%__ selected
+from the __Midterm 1__ question bank and __20%__ selected from the 
+__Midterm 2__ question bank.
+
+There \textbf{will not} be a solution key posted. It is your responsibility
+to discuss your ideas with your group members and / or with Dr. Theobold
+during office hours prior to the exam.
 
 \vspace{0.5cm}
 
 ## Golden Ticket
 
 | Scenario | One Categorical Response | Two Categorical Variables | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
-|----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
-| Type of plot | Bar plot | Side-by-Side Bar plot, Stacked Bar plot, Mosaic plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+|------------|:---------------------------:|:--------------------------:|:---------------------------------------:|:--------------------------:|:---------------------:|
+| Type of plot | Bar plot | Dodged Bar plot, Stacked Bar plot, Filled Bar plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+|           |           |           |           |           |           |
 | Summary measure | Proportion | Difference in Proportions | Mean | Slope or Correlation | Difference in Means |
+|           |           |           |           |           |           |
 | Parameter notation | $\pi$ | $\pi_1 - \pi_2$ | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+|           |           |           |           |           |           |
 | Statistic notation | $\widehat{p}$ | $\widehat{p}_1 - \widehat{p}_2$ | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+|           |           |           |           |           |           |
+| Statistical Method(s) | $\chi^2$ Goodness of fit Test | $\chi^2$ Test of Independence, $\chi^2$ Test of Homogeneity, Permutation Test | $t$-test for One Mean, $t$-test for Paired Differences, Bootstrap Confidence Interval for One Mean | $t$-test for $\beta_1$, Permutation Test for $\beta_1$, Bootstrap Confidence Interval for $\beta_1$ | $t$-test for $\mu_1 - \mu_2$, Permutation Test for $\mu_1 - \mu_2$, Bootstrap Confidence Interval for $\mu_1 - \mu_2$ |
+|           |           |           |           |           |           |
 
-\vspace{0.5cm}
-
-
+\newpage
 
 ## Provided Formulas
 
@@ -57,33 +65,33 @@ $$IQR = Q3 - Q1$$
 
 __1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
 $$\hat{y} = b_0 + b_1 \times x$$
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
 $$Residual = y - \hat{y}$$ 
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
 __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
 $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
-\vspace{0.2cm}
+
+\vspace{0.25cm}
 
 $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
 $$ 
 X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
 $$
 
 \newpage 
-
 
 ## Final Exam Question Bank
 
