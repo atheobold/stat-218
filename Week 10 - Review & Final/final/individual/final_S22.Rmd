@@ -126,7 +126,7 @@ $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
 \vspace{0.25cm}
 
 $$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
-
+\vspace{0.5cm}
 $$ 
 X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
 $$
