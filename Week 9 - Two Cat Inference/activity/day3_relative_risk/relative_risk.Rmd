@@ -269,11 +269,11 @@ titanic_small %>%
   pander::pander()
 ```
 
-25. Calculate the conditional proportion of 1st class passengers that died.
+25. Calculate the proportion of 1st class passengers that died.
 
 \newpage
 
-26. Calculate the conditional proportion of 3rd class passengers that died.
+26. Calculate the proportion of 3rd class passengers that died.
 
 \vspace{0.5in}
 
