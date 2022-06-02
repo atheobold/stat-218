@@ -591,17 +591,14 @@ and whether students choose to repair the car? Select all that apply.
 ### Distribution of Fish on Blackfoot River
 
 \noindent \textbf{Q6} [19 points]
-We have data on fish caught in the Blackfoot River near Helena, Montana by
-Montana Fish, Wildlife, & Parks personnel over a number of years. They used electrofishing equipment to attract the fish to the boat, then dipped them out
-of the water with nets, measured length in cm and weight in grams. They are
-often working in cold conditions in late autumn or early spring, so some
-measurement error is expected. 
-
-These data are not from a random sample. The goal is to catch all fish within a
-section of the Blackfoot River every few years to assess the health of the
-population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
-prevalence of the different species of fish has stayed relative stable over 
-the years.  
+Montana Fish, Wildlife, & Parks personnel have collected data on fish caught on
+the Blackfoot River (outside Helena, Montana) for the last 25 years. To capture
+the fish, fisheries biologists use electrofishing equipment to attract the fish
+to the boat, then dip them out of the water with nets. Each fish's length (in 
+cm) and weight (in grams) is then measured. Once the measurements are taken, 
+the fish is tossed back into the river. Biologists are often working in cold
+conditions in late autumn or early spring, so some measurement error and missing
+data are expected. 
 
 ```{r fish-data}
 
@@ -623,10 +620,16 @@ fish <- read_csv(here::here(
 
 ```
 
+These data are not from a random sample. The goal is to catch all fish within a
+section of the Blackfoot River every few years to assess the health of the
+population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
+prevalence of the different species of fish has stayed relative stable over 
+the years. The dataset consists of `r nrow(fish)` observations, recorded over 
+`r distinct(fish, year) %>% nrow()` years. 
+
 ```{r fish-preview}
 fish %>% 
-  select(length, weight, year, section, species) %>% 
-  sample_n(10)
+  select(length, weight, year, section, species) 
 ```
 
 \noindent \textbf{(a)} [2 points] Based on the output above, what is the
