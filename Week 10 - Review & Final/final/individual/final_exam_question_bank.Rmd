@@ -83,7 +83,7 @@ $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
 
 \vspace{0.25cm}
 
-$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
 
 \vspace{0.25cm}
 
@@ -247,8 +247,9 @@ the 19th century. Mendel’s discoveries of how traits (such as color and shape)
 are passed down from one generation to the next introduced the concept of
 dominant and recessive modes of inheritance.
 
-Mendelian inheritance refers to the inheritance of traits controlled by a single gene with two alleles, one of which may be completely dominant to the other.
-You can use a Punnett square to easily determine the expected ratios of 
+Mendelian inheritance refers to the inheritance of traits controlled by a single
+gene with two alleles, one of which may be completely dominant to the other.
+You can use a Punnett square to determine the expected ratios of 
 possible genotypes in the offspring of two parents. 
 
 In the table below, we see an example of eye color inheritance. In this case, 
@@ -675,8 +676,8 @@ fish %>%
 
 \noindent \textbf{(d)} [5 points] The statistician at Montana Fish, Wildlife, &
 Parks prefers using simulation-based methods rather than theory-based methods.
-They used computer simulation to obtain the null distribution shown on the 
-next page. 
+They used computer simulation to obtain the null distribution of the $X^2$ 
+statistic shown on the next page. 
 
 Fill in the steps necessary to obtain out **one** statistic on the null 
 distribution. 

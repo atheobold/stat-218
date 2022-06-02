@@ -125,7 +125,7 @@ __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df
 $$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
 \vspace{0.25cm}
 
-$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
 
 $$ 
 X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
@@ -176,7 +176,7 @@ to: (Select all that apply)
 \begin{itemize}
 \item[(a)] Discover what statistics might have occurred if the null hypothesis
 was true.
-\item[(b)] Approximate the sampling distribution under $H_0$. 
+\item[(b)] Approximate the sampling distribution of a test statistic under $H_0$. 
 \item[(c)] To determine if the null hypothesis is true. 
 \item[(d)] To determine if the observed statistic is unlikely if the null was
 true. 
@@ -225,9 +225,9 @@ fastfood items.
 \vspace{1in}
 
 \noindent
-\textbf{(b)} [3 pts] I am interested in studying the linear relationship between
-the total calories of a food item and the amount of saturated fat that item
-contains.
+\textbf{(b)} [3 pts] I am interested in determining the linear relationship
+between the total calories of a food item and the amount of saturated fat that
+item contains.
 
 \textbf{Write the null hypothesis for my question of interest, using both words 
 \underline{and} notation.}
@@ -245,9 +245,9 @@ one.
 
 \noindent
 \textbf{(d)} [5 pts] Below is a simulated null distribution from `R`. Fill in
-the blanks below with one answer in each set of parentheses to correctly explain
-how one sample on the null distribution was be created.  Blanks preceded by (#) should be filled in with a number, all other blanks should be filled in with the
-context of the study.
+the blanks below to correctly explain how one sample on the null distribution
+was be created.  Blanks preceded by (#) should be filled in with a number, all
+other blanks should be filled in with the context of the study.
 
 \begin{center}
 On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
@@ -416,8 +416,8 @@ grassland butterflies.
 the presence of BPA in plastics, especially plastics that make contact with food
 and drinks. Currently, these is an incomplete understanding of how exposure to
 BPA affects our ingestion. Last year Dr. Hagobian in the Kinesiology and Public
-Health carried out a study to investigate the role of Bisphenol A (BPA) in 
-metabolism and endocrine disruption. 
+Health Department carried out a study to investigate the role of Bisphenol A
+(BPA) in metabolism and endocrine disruption. 
 
 Dr. Hahobian recruited 11 subjects, each of whom ate two types of cookies on two
 separate visits, one visit in December and the second in February. On one visit
@@ -476,8 +476,8 @@ indicate the order of subtraction being used!*
 
 \noindent
 \textbf{(d)}[3 points] To perform the analyses you selected in (b), what
-conditions does Dr. Hagobian need to check before obtaining a p-value? Circle
-all that apply. 
+conditions does Dr. Hagobian need to check before using theory-based methods to
+obtain a p-value? Circle all that apply. 
 
 \begin{multicols}{2}
 \begin{itemize}
@@ -555,7 +555,7 @@ error could you have made? Circle one.
 
 \begin{center}
 \textbf{Type I Error} \hspace{1in} \textbf{Type II Error} \hspace{1in}
-\textbf{No error was made} 
+\textbf{No error could have been made} 
 \end{center}
 
 \vspace{0.25in}
@@ -617,7 +617,7 @@ dominant and recessive modes of inheritance.
 
 Mendelian inheritance refers to the inheritance of traits controlled by a single
 gene with two alleles, one of which may be completely dominant to the other.
-You can use a Punnett square to easily determine the expected ratios of 
+You can use a Punnett square to determine the expected ratios of 
 possible genotypes in the offspring of two parents. 
 
 In the Punnett square below, we see an example of eye color inheritance. In this
@@ -738,9 +738,7 @@ the Blackfoot River (outside Helena, Montana) for the last 25 years. To capture
 the fish, fisheries biologists use electrofishing equipment to attract the fish
 to the boat, then dip them out of the water with nets. Each fish's length (in 
 cm) and weight (in grams) is then measured. Once the measurements are taken, 
-the fish is tossed back into the river. Biologists are often working in cold
-conditions in late autumn or early spring, so some measurement error and missing
-data are expected. 
+the fish is tossed back into the river. 
 
 ```{r fish-data}
 
@@ -762,11 +760,7 @@ fish <- read_csv(here::here(
 
 ```
 
-These data are not from a random sample. The goal is to catch all fish within a
-section of the Blackfoot River every few years to assess the health of the
-population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
-prevalence of the different species of fish has stayed relative stable over 
-the years. The dataset consists of `r nrow(fish)` observations, recorded over 
+The dataset consists of `r nrow(fish)` observations, recorded over 
 `r distinct(fish, year) %>% nrow()` years. 
 
 \newpage
@@ -825,7 +819,8 @@ fish %>%
 
 \noindent \textbf{(d)} [5 points] The statistician at Montana Fish, Wildlife, &
 Parks prefers using simulation-based methods rather than theory-based methods.
-They used computer simulation to obtain the null distribution shown below. 
+They used computer simulation to obtain the null distribution of the $X^2$
+statistic shown below. 
 
 Fill in the steps necessary to obtain out **one** statistic on the null 
 distribution. 
