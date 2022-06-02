@@ -454,13 +454,12 @@ Group final exam will be **Wednesday, June 1st (during normal class time)**.
 
 #### _Individual portion_:
 
-Individual final exam will be: **Saturday, June 4, from 10:10am – 1:00pm in 180-0112.** 
+Individual final exam will be: **Saturday, June 4, from 10:10am – 1:00pm in 180-0107.** 
 
 * The individual portion of the final exam will be worth 80% of your exam grade.
-* No potential final exam questions will be released.
+* Potential final exam questions will be released on Monday, May 30.
 * The individual final exam is closed book. 
-* You will be allowed to create a one page note sheet for the exam.  You will
-also be provided a one page formula sheet during the exam.
+* You will be provided a one page formula sheet during the exam.
 * You will be allowed a calculator on the individual final exam. 
 * You will **not** be required to use Rstudio on the individual final exams.
 
