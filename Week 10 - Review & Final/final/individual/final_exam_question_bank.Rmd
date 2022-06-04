@@ -214,13 +214,13 @@ ggplot(data = mushrooms,
 \vspace{0.25in}
 
 \noindent
-\textbf{(d)}[3 points] Based on the plot, describe the relationship between a 
+\textbf{(e)}[3 points] Based on the plot, describe the relationship between a 
 mushrooms gill size and whether it is edible or not. 
 
 \vspace{1in}
 
 \noindent
-\textbf{(e)}[2 points] Suppose the Chi-Squared test resulted in a "significant"
+\textbf{(f)}[2 points] Suppose the Chi-Squared test resulted in a "significant"
 p-value. Which of the following would be the correct scope of inference for this
 study?
 
@@ -239,7 +239,7 @@ associated with whether a mushroom is poisonous.
 
 ### Mendelian Genetics
 
-\noindent \textbf{Q2} [ points]
+\noindent \textbf{Q2} [18 points]
 
 Mendelian inheritance refers to certain patterns of how traits are passed from parents to offspring. These general patterns were established by the Austrian
 monk Gregor Mendel, who performed thousands of experiments with pea plants in
@@ -305,13 +305,13 @@ of tallness.
 
 \vspace{0.25cm}
 
-\noindent \textbf{(b)} [3 points] If the table above represents what is assumed
+\noindent \textbf{(d)} [3 points] If the table above represents what is assumed
 to be true about tallness inheritance under $H_0,$ state the alternative
 hypothesis using either words or notation. 
 
 \vspace{1in}
 
-\noindent \textbf{(c)} [1 point] After you cross your plants, you measure the
+\noindent \textbf{(e)} [1 point] After you cross your plants, you measure the
 characteristics of the 400 offspring. You note that there are 305 tall pea
 plants and 95 short pea plants. 
 
@@ -319,7 +319,7 @@ plants and 95 short pea plants.
 
 \newpage
 
-\noindent \textbf{(d)} [4 points] Calculate how far "off" was your observed
+\noindent \textbf{(f)} [4 points] Calculate how far "off" was your observed
 number of tall and short plants were from what you expected if $H_0$ was true.
 Use these values to report the $X^2$ statistic for your experiment. 
 
@@ -335,7 +335,7 @@ __$X^2$ statistic__:
 
 \vspace{0.25in}
 
-\noindent \textbf{(e)} [3 points] The p-value associated with your $X^2$
+\noindent \textbf{(g)} [3 points] The p-value associated with your $X^2$
 statistic is `r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology
 textbook suggests you interpret this value as:
 
