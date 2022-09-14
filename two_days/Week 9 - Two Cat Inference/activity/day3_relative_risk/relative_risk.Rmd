@@ -1,0 +1,297 @@
+---
+title: "Comparing Proportions Using Relative Risk"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      messsage = FALSE, 
+                      warning = FALSE, 
+                      out.width = "70%", 
+                      fig.align = "center")
+
+library(tidyverse)
+library(janitor)
+library(infer)
+```
+
+
+We've previously learned that in a Chi-Squared Homogeneity Test the null
+hypothesis suggests the proportions between two (or more) groups are the same. 
+Rather than comparing their difference, an alternative method for comparing
+proportions focuses on their **ratio**. 
+
+When an outcome / response variable is dichotomous (has two options), the ratio
+of the probabilities is called the **relative risk**. 
+
+
+## Getting Warmed-up -- Thinking About Percentages
+
+1. Can a person’s weekly wage increase by more than 100%? If so, what would this
+entail?  Explain.
+
+\vspace{0.5in}
+
+2. Can a person’s weekly wage decrease by more than 100%? If so, what would this
+entail?  Explain.
+
+\vspace{0.5in}
+
+## Example 1 -- Malaria Vaccine
+
+An article that appeared in the journal Lancet in May of 2021 (Datoo, et al.) 
+described a study that investigated a potential vaccine that might protect
+children against malaria. Researchers recruited children between the ages of 5 
+and 17 months in Burkina Faso, a country in western Africa, as participants. The children were randomly assigned into one of three groups: one group received a
+large dose of the potential vaccine, another group received a small dose, and a
+third group received a placebo.  Researchers observed the children for the next
+18 months, keeping track of whether or not the child developed malaria.
+Researchers hoped, of course, that children who received a vaccine would be less
+likely to develop malaria than children who received a placebo.  Results are
+shown in the following table of counts:
+
+|                         |   High Dose |   Low Dose |   Placebo  |   Total |
+|:-----------------------:|-------------|------------|------------|---------|
+| Developed Malaria       | 38          | 43         | 105        | 186     |
+| Did Not Develop Malaria | 108         | 103        | 42         | 253     |
+| Total                   | 146         | 146        | 147        | 439     |
+
+\vspace{0.25cm}
+
+3. Identify the observational units, explanatory variable, and
+response variable.  Classify each variable as categorical or numerical.
+
+\vspace{0.5in}
+
+4. Is this an observational study or a randomized experiment?  Explain how you
+can tell.
+
+\vspace{0.5in}
+
+5. For each of the three groups, calculate the proportion of children who
+developed malaria.  (Show how you calculate these, and report your answers with
+**three** decimal places of accuracy.)
+
+\vspace{0.5in}
+
+6. Convert the proportions you calculated in #3 to percentages.
+
+\vspace{0.25in}
+
+7. Use these percentages in a sentence to explain what they represent in the 
+context of this study. 
+
+\vspace{1in}
+
+__Key Question:__ Does this mean that children who received the placebo were 
+71.4% - 26.0% = 45.4% more likely to develop malaria than children who received
+the high dose?
+
+\vspace{0.5in}
+
+8. How should we interpret the difference of 45.4%?
+
+\vspace{0.5in}
+
+9. How would we calculate the *percentage difference* in the proportion who 
+developed malaria, comparing the placebo to the high dose group?
+
+\newpage
+
+## A Small Detour
+
+Let's suppose (hypothetically) President Armstrong's IQ is 80 and Dr. Theobold's
+is 140. 
+
+10. By what percentage difference is Dr. Theobold's IQ score larger than
+President Armstrong's? 
+
+\vspace{0.5in}
+
+11. How would you write a general formula for the percentage difference?
+
+\vspace{0.5in}
+
+12. Express the value you calculated in #10 in a sentence. 
+
+\vspace{0.5in}
+
+## Back At It -- Malaria Vaccine
+
+13. Calculate the percentage difference in the proportion of children who 
+developed malaria, comparing the low dose group to the high dose group. 
+
+\vspace{0.5in}
+
+14. Write a sentence to interpret this value in context. 
+
+\vspace{0.5in}
+
+15. Calculate the percentage difference in the proportion of children who 
+developed malaria, comparing the placebo to the high dose group. 
+
+\vspace{0.5in}
+
+16. Write a sentence to interpret this value in context. 
+
+\newpage
+
+17. Calculate the *ratio* of the proportions who develop malaria between the 
+low dose and high dose groups. 
+
+\vspace{0.5in}
+
+18. Write a sentence to interpret this value in context
+
+\vspace{1in}
+
+### Relative Risk
+
+The number you calculated in 15 should look similar to what you saw in #11. 
+You found that children who received the low dose of the malaria vaccine were 
+**13.2%** more likely to develop malaria than those who received the high dose. 
+Then, you found that children who received the low dose were **1.132** times
+more likely to develop malaria than those who didn't. 
+
+There is a formula for how these quantities are related:
+
+$$
+\text{percentage difference} = (\text{ratio of proportions} - 1) \times 100\%
+$$
+
+$$
+\text{percentage difference} = (\text{relative risk} - 1) \times 100\%
+$$
+\vspace{0.25in}
+
+Suppose you know the risk of getting malaria for children who 
+received the placebo is 2.744 times more likely for children who received
+the placebo compared to children who received the high dose. 
+
+19. Calculate the percentage difference in the likelihood of developing malaria
+between these two groups. 
+
+\newpage
+
+## Another Detour
+
+Recall, Dr. Theobold's IQ score is (hypothetically) 75% greater than President
+Armstrong's IQ score. 
+
+20. Does that mean President Armstrong's IQ is 75% lower than Dr. Theobold's?
+Why or why not?
+
+\vspace{0.5in}
+
+21. Complete the sentence:
+
+\begin{center}
+President Armstrong's IQ is \underline{\hspace{1in}} \% lower than Dr. 
+Theobold's.
+\end{center}
+
+\vspace{0.5in}
+
+## Changing the Baseline Malaria Group
+
+22. Complete the sentence:
+
+\begin{center}
+The percentage who developed malaria among those who received the high dose is 
+\underline{\hspace{1in}} \% smaller than the percentage who developed malaria
+who received the placebo.
+\end{center}
+
+\vspace{1in}
+
+23. Write a different sentence that uses this value in context. 
+
+\newpage
+
+# Titanic Survivors
+
+A complete data set exists listing all those aboard HMS Titanic and includes
+related facts about each person including age, how much they paid for their
+ticket, which boat they survived in (if they survived), and their job if they
+were crew members. Stories, biographies and pictures can be found on the site: [www.encyclopedia-titanica.org/](www.encyclopedia-titanica.org/). Did all
+passengers aboard the Titanic have the same chance of survival?  Was the risk of
+death higher among 3rd class passengers compared to 1st class passengers?
+
+
+```{r data, include = FALSE}
+titanic <- read_csv(here::here("Week 9 - Two Cat Inference", 
+                               "activity", 
+                               "day3_relative_risk", 
+                               "data", 
+                               "titanic.csv"
+                               )
+                    )
+
+titanic_small <- titanic %>% 
+  filter(Class_Dept  %in% c("1st Class Passenger", "3rd Class Passenger")) %>% 
+  mutate(Class_Dept = if_else(Class_Dept == "1st Class Passenger", 
+                              "1st Class", 
+                              "3rd Class")
+         )
+```
+
+## Data Exploration
+
+Below is a filled bar plot, visualizing the relationship 
+
+```{r filled-barplot}
+titanic_small %>% 
+  ggplot(mapping = aes(x = Class_Dept, 
+                       fill = Survived)) +
+  geom_bar(position = "fill") +
+  labs(x = "Class of Titanic Passenger", 
+       fill = "Survival of Passenger")
+
+```
+
+24. Based on the plot, does it appear that there is a relationship between a 
+passenger's probability of survival and their class?
+
+\vspace{0.5in}
+
+Next, we'll look at a table of the observed counts for the deaths of 1st class
+passengers and 3rd class passengers. 
+
+```{r observed-counts}
+titanic_small %>%
+  group_by(Class_Dept) %>%
+  count(Survived) %>% 
+  pivot_wider(names_from = Class_Dept, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  pander::pander()
+```
+
+25. Calculate the proportion of 1st class passengers that died.
+
+\newpage
+
+26. Calculate the proportion of 3rd class passengers that died.
+
+\vspace{0.5in}
+
+27. Calculate the percentage difference in the proportion of passengers who died, 
+comparing the 3rd class passengers to the 1st class passengers. 
+
+\vspace{0.8in}
+
+28. Write a sentence to interpret this value in context. 
+
+\vspace{0.8in}
+
+29. Calculate the relative risk of dying, comparing the 3rd class passengers to
+the 1st class passengers. 
+
+\vspace{0.8in}
+
+30. Write a sentence to interpret this value in context. 
+
+\vspace{0.8in}
+

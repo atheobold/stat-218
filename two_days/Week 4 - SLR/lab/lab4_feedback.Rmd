@@ -1,0 +1,136 @@
+---
+title: "Lab 4 Feedback"
+output: html_document
+---
+
+Answers to everything: 5 points
+
+Don't have answers to 1-2 questions: 4.5 
+
+Don't have answers to 3-4 questions: 4
+
+---
+
+### Question 4 -- Independence
+
+__If the response says the sample size is large:__
+
+A large sample size does not ensure that our observations are independent! We
+could have a sample of 100 golfers, but have repeated observations on each of
+them -- that would be a violation of the independence condition.
+
+__If the response says that the golfers could be related because they play 
+together or have the same coach:__
+
+An independence violation would mean that people playing golf together makes it
+so that knowing the accuracy of one player gives you nearly **perfect**
+information about another player. I don't think this would be the case. People
+playing together might have similar abilities, but I don't think I could
+perfectly predict one golfer's accuracy from their friend's.
+
+---
+
+### Question 6 -- Equal Variability
+
+__If the response doesn't justify how they decided the condition was / was not
+violated:__
+
+When assessing equal variability I need for you to tell me **what** you looked
+at when you evaluated the condition.
+
+__If the response says that the condition is violated because the larger values
+have less variability:__
+
+Here, it looks like the accuracy values range from roughly 50 to 80 for most of the driving distances. There is slightly less variation in driving distances
+over 270, but not by much (70% accuracy instead of 80%).
+
+There are only four observations above 310, which is naturally going to have
+less variation due to the sample size.
+
+__If the response says the spread of the points are equally distributed or are 
+there is the same amount above and below the line:__
+
+For equal variance, we are looking at the **vertical** spread of the points
+across the values of x. Here, it looks like the accuracy values range from
+roughly 50 to 80 for most of the driving distances. There is slightly less variation in driving distances over 280, but not by much (70% accuracy instead 
+of 80%). 
+
+---
+
+### Question 7 -- Finding a residual
+
+You are correct, we use the get_regression_points() function to get **all** of 
+the residuals, but how would you calculate one by hand?
+
+---
+
+### Question 10 -- Using $t$-distribution
+
+Yes! Specifically, because the N and E conditions are not violated, the t-distribution is a reasonable tool for approximating the sampling distribution
+under the null. 
+
+---
+
+### Question 12 -- Slope Interpretation
+
+__If the response doesn't increase driving distance by 1 yard:__
+
+Careful! We increase x by **1 unit** when we interpret the slope. So, here we 
+are increasing the driving distance by 1 yard. 
+
+__If the response says the decrease in accuracy is 14.2%:__
+
+Careful! The coefficient of -0.142 is already a percentage, so you do not need
+to convert it to one!
+
+---
+
+### Question 13 -- Slope Coefficient & Standard Error
+
+b_1 is the slope estimate: -0.142
+SE(b_1) is the standard error of the slope: 0.012
+
+---
+
+### Question 16
+
+__If the statement rejects but doesn't state an $\alpha$ value:__
+
+Careful! When you decide to reject the null, you need to state what significance
+threshold (e.g., 0.05) you used.
+
+__If the statement rejects the null but doesn't conclude that the alternative is
+more reasonable (in context):__
+
+Careful! When you reject the null, you need to also state what you would
+conclude. Do you believe there is / is not a linear relationship between these
+variables?
+
+---
+
+### Question 17 -- Degrees of Freedom
+
+__If they state the degrees of freedom are 353:__
+
+Careful! With linear regression we use a t-distribution with **n-2** degrees of
+freedom, not n-1. 
+
+---
+
+### Question 19 - Confidence Interval Interpretation
+
+__If they talk about "chance":__
+
+We DO NOT say "chance" in our interpretations, as that implies that there is a
+95% probability that the parameter is in the interval.
+
+__If they don't state the "true slope""__
+
+Your interpretation needs to connect with what population parameter you hope is
+contained in your interval.
+
+__If they say something strange about population slopes (plural):__
+
+A confidence interval is for **THE** population slope, not 95% of the population
+slopes. THERE IS ONLY ONE POPULATION SLOPE.
+

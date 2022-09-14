@@ -1,0 +1,94 @@
+---
+title: "Lab 6 Feedback"
+output: html_document
+---
+
+## Question 9 
+
+__If they have an alternative of less or two-sided:__
+
+Careful! In the hypotheses in #4 we said that the mean of the differences in 
+read times should be greater than 0, assuming that it take people longer to read
+the color names when they are printed in mismatched colors than in black text. 
+
+## Question 10
+
+__If they say 0.08% chance of the null:__
+
+A p-value is the probability of obtaining a mean difference of 2.46 or something
+larger, if there was no difference in the read times between the two formats
+(a mean difference of 0). 
+
+__If they don't interpret the p-value:__
+
+The question here is not about whether you would reject or fail to reject the
+null hypothesis. Rather, you are being asked to **interpret** what the p-value
+of 0.00812 means! Hint: it's the probability of _____ assuming ____...
+
+## Question 12
+
+__If they interpret the CI with infinity:__
+
+Your interpretation is correct, but it is a bit simpler to say that we are 95% 
+confident the true mean of the differences in read times is **at least** as 
+large as 0.744 seconds. 
+
+__If they forget the units!__
+
+Careful! We need to be sure to include the units associated with our confidence
+interval -- is 0.744 in seconds? Minutes? Hours?
+
+__If they use the wrong units:__
+
+Careful! The units for the differences is seconds not minutes!
+
+__If they say "the difference in means":__
+
+Caution! We are analyzing the difference in read times and taking the mean of
+those differences. This is referred to as the mean of the differences **not** the
+difference in means!
+
+
+## Question 13
+
+__If they talk about the p-value being in the interval:__
+
+A p-value is the probability of obtaining a mean difference of 2.46 or something
+larger, if there was no difference in the read times between the two formats
+(a mean difference of 0). The confidence interval is the range of values that we
+are 95% confident captures the mean difference. The confidence interval will
+agree with our hypothesis test, if the null value (0) is not contained in the 
+interval! 
+
+__If they say they don't agree:__
+
+If the p-value is less than 0.05, we would reject the null hypothesis. If our 
+95% confidence interval does not include 0, then we would also reject the null
+hypothesis. The only way these methods would not agree is if you had a p-value
+less than 0.05 and your confidence interval contained 0! 
+
+## Question 14
+
+__If they say yes but not because of randomization:__
+
+This statement agrees with what our analysis found, but the key aspect of their
+interpretation is the use of the word **CAUSE**. Can the researchers say if 
+printing the color names in mismatched colors CAUSED and increase in the time 
+it took to read them? Hint: Look at the description for how they decided what 
+order people read the two lists in. 
+
+__If they say no because there isn't randomization:__
+
+Look back at the description for how they decided what order people read the two
+lists in. In the case of paired data, we don't have a control group. Instead, 
+each person is assigned both "treatments" -- here they read both lists. 
+
+__If they say no because it's observational:__
+
+Careful! Experiments have random assignment rather than us just observing the 
+time it takes people to read two different lists of words. The researchers in 
+this study randomly assigned which list a person read first versus second. 
+
+
+
+

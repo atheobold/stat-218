@@ -1,0 +1,126 @@
+case,state,county,Case_per_100K,PercentImmunized,vaccination_rate,cases
+1,OK,Logan,0,24.72,low,below
+2,OH,Darke,1.94,31.34,low,below
+3,KY,Madison,7.709,38.96,low,above
+4,NM,Santa Fe,9.533,61.51,high,above
+5,FL,Calhoun,6.963,22.6,low,above
+6,CT,Hartford,1.568,58.94,high,below
+7,OK,Dewey,0,19.7,low,below
+8,TN,Marion,28.033,31.83,low,above
+9,AK,Petersburg,0,61.94,high,below
+10,KS,Gove,0,37.92,low,below
+11,CO,Crowley,0,11.19,low,below
+12,NE,Kimball,0,27.22,low,below
+13,KS,Graham,0,59.02,high,below
+14,WA,Grays Harbor,7.734,40.73,high,above
+15,AZ,Coconiabove,2.24,56.73,high,below
+16,MD,Prince George's,2.311,45.59,high,below
+17,NH,Grafton,2.228,64.12,high,below
+18,HI,Kauai,2.787,60.2,high,below
+19,OR,Harney,41.209,34.31,low,above
+20,VA,aboverthumberland,0,52.28,high,below
+21,OH,Wood,1.537,49.81,high,below
+22,IN,Delaware,3.478,37.54,low,below
+23,UT,Morgan,8.026,27.7,low,above
+24,MT,Sheridan,0,38.08,low,below
+25,IA,Grundy,1.941,48.72,high,below
+26,SD,Lake,0,34.72,low,below
+27,DE,New Castle,3.343,58.7,high,below
+28,VA,Russell,3.684,36.93,low,below
+29,HI,Maui,8.435,52.2,high,above
+30,OH,Kabovex,1.627,34.1,low,below
+31,IL,Gallatin,19.771,32.13,low,above
+32,CA,San Joaquin,4.982,40.73,high,above
+33,CA,Nevada,4.03,45.88,high,below
+34,MI,Hillsdale,2.185,30.59,low,below
+35,AR,Polk,4.977,21.72,low,above
+36,MS,Winston,0,31.45,low,below
+37,IL,Fulton,2.85,43.42,high,below
+38,NM,Dona Ana,4.165,53,high,below
+39,KY,Todd,8.12,26.59,low,above
+40,MD,Wicomico,1.91,41.43,high,below
+41,CA,Lassen,12.979,21.16,low,above
+42,IL,Piatt,6.097,41.9,high,above
+43,PA,Clarion,18.954,33.25,low,above
+44,WA,Whatcom,6.32,56.77,high,above
+45,WA,Stevens,8.561,25.61,low,above
+46,KS,Reabove,3.186,36.72,low,below
+47,IL,Madison,2.644,42.18,high,below
+48,CT,Tolland,1.31,54.7,high,below
+49,AR,Faulkner,6.471,33.66,low,above
+50,NE,Platte,0,33.44,low,below
+51,KY,Breckenridge,4.956,31.89,low,above
+52,IN,Orange,5.116,43.44,high,above
+53,MI,Isabella,2.829,36.09,low,below
+54,OR,Baker,6.133,59.85,high,above
+55,FL,Lake,6.65,53.1,high,above
+56,MA,Suffolk,1.939,58.05,high,below
+57,NH,Hillsborough,2.705,50.88,high,below
+58,WA,Okaabovegan,16.473,47.85,high,above
+59,AZ,Pinal,11.386,40.61,high,above
+60,IN,Floyd,5.173,46.08,high,above
+61,MI,Sanilac,2.422,34.59,low,below
+62,NY,Seneca,0,41.77,high,below
+63,TN,Hardeman,7.861,29.41,low,above
+64,FL,Hendry,7.365,32.17,low,above
+65,CO,Ouray,0,42.67,high,below
+66,WI,Richland,5.728,43.58,high,above
+67,IN,Lawrence,8.782,38.2,low,above
+68,NY,Erie,1.523,54.63,high,below
+69,VT,Grand Isle,0,66.73,high,below
+70,LA,Jefferson Parish,6.209,45.58,high,above
+71,OK,Pawnee,0,34.12,low,below
+72,AK,aboverth Slope,0,28.41,low,below
+73,NY,Monroe,2.632,56.88,high,below
+74,WV,Greenbrier,2.845,30.9,low,below
+75,KS,Cherokee,24.778,29.68,low,above
+76,SD,Meade,3.608,36.84,low,below
+77,UT,Garfield,0,33.39,low,below
+78,CT,New London,1.122,60.97,high,below
+79,MO,Howard,9.942,29.58,low,above
+80,SC,Beaufort,2.149,48.72,high,below
+81,WV,Grant,8.609,11.95,low,above
+82,NV,Lyon,5.517,31.22,low,above
+83,CT,New Haven,1.516,59.25,high,below
+84,WA,San Juan,0,73.41,high,below
+85,WI,Grant,1.933,37.5,low,below
+86,IA,Audubon,17.95,47.19,high,above
+87,TX,Hopkins,5.482,27.1,low,above
+88,RI,Providence,3.775,53.19,high,below
+89,KY,Estill,7.03,35.09,low,above
+90,WY,Albany,10.419,42.61,high,above
+91,RI,Kent,1.831,61.97,high,below
+92,OH,Morgan,0,32.2,low,below
+93,VA,Accomack,0,43.23,high,below
+94,WV,Monroe,14.924,23.72,low,above
+95,MT,Yellowstone,6.918,34.58,low,above
+96,TN,Stewart,7.448,29.48,low,above
+97,OK,Woods,11.058,28.36,low,above
+98,MN,Marshall,10.67,39.34,low,above
+99,NM,Mora,0,49.66,high,below
+100,OR,Washington,3.902,61.67,high,below
+101,ND,Divide,0,31.49,low,below
+102,TX,Jefferson,1.573,30.67,low,below
+103,NM,McKinley,1.38,59.84,high,below
+104,AK,Kenai Peninsula,1.71,36.61,low,below
+105,MS,Harrison,7.824,29.24,low,above
+106,KY,Kenton,3.018,48.96,high,below
+107,GA,Early,9.697,33.78,low,above
+108,MD,Anne Arundel,1.225,54.94,high,below
+109,PA,Crawford,4.669,37.12,low,above
+110,SD,Mellette,0,24.48,low,below
+111,MS,Yalobusha,8.086,42.7,high,above
+112,VA,Middlesex,0,50.64,high,below
+113,MO,Cedar,14.242,23.49,low,above
+114,WI,Door,3.64,58.83,high,below
+115,MN,McLeod,5.582,45.95,high,above
+116,GA,Coffee,2.324,24.21,low,below
+117,TX,Zavala,0,35.27,low,below
+118,PA,Westmoreland,2.836,44.07,high,below
+119,IN,Huntington,5.501,40.4,high,above
+120,WY,Lincoln,0,28.48,low,below
+121,FL,Orange,9.557,49.81,high,above
+122,SD,Ziebach,0,18.02,low,below
+123,MN,Dakota,2.61,56.63,high,below
+124,PA,Tioga,4.885,31.39,low,above
+125,FL,Miami-Dade,11.113,57.05,high,above

@@ -1,0 +1,130 @@
+---
+title: "Your Title Goes Here! Make it fun!"
+author: "Your Name Here!"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# This is code to make your report format look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(infer)
+library(janitor)
+```
+
+```{r data}
+# This is where you will load in your data! 
+# I suggest copying and pasting code from a prior lab. 
+# You will need to change: 
+# 1. the name of the dataset (you get to choose the name)
+# 2. directions for how to get to the data
+
+
+```
+
+
+## Data Description
+<!-- In this section you are to describe your dataset! -->
+
+<!-- This section has three tasks:
+1. Describe the context of your dataset in your own words!
+2. Tell me why you picked this dataset
+3. Describe the two variables you are interested in. One should be the
+explanatory variable and one should be the response.
+-->
+
+
+## Data Visualization & Summarization
+<!-- In this section you create three visualizations of your data -->
+
+### Investigating <NAME OF EXPLANATORY VARIABLE>
+
+```{r bar-plot-1}
+## Code for bar plot:
+
+
+## Code for summary table:
+
+
+```
+<!-- Description of what you see in the bar plot and in the summary table! -->
+
+
+
+### Investigating <NAME OF RESPONSE VARIABLE>
+
+```{r bar-plot-2}
+## Code for bar plot:
+
+
+## Code for summary table:
+
+
+```
+<!-- Description of what you see in the bar plot and in the summary table! -->
+
+
+
+### Investigating the Relationship between <NAME OF RESPONSE VARIABLE> and 
+<NAME OF EXPLANATORY VARIABLE>
+
+```{r bar-plot-3}
+## Code for bar plot:
+## No summary table necessary, since you will be making one to check the model conditions! :) 
+
+
+
+```
+<!-- Description of what you see in the bar plot and in the summary table! -->
+
+
+
+## Independence of <NAME OF RESPONSE VARIABLE> and <NAME OF EXPLANATORY VARIABLE>
+<!-- Description of what is being tested in your analysis! -->
+
+
+### Model Conditions
+<!-- Here is where you describe the two conditions for a theory-based chi-squared analysis. -->
+
+<!-- Discuss the independence of observation condition: -->
+
+
+
+<!-- Discuss the expected cell count condition: -->
+
+
+
+```{r expected-counts}
+## This is code that will generate the table of observed counts for you!
+## You need to fill in the name of your dataset & your variables!
+
+<NAME OF DATASET> %>% 
+  group_by(<VARIABLE1>, <VARIABLE2>) %>% 
+  count() %>% 
+  pivot_wider(names_from = <VARIABLE1>, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col"))
+
+```
+
+<!-- State whether using a theory-based method is appropriate, given your conditions. -->
+
+
+
+### Chi-Squared Analysis 
+
+```{r chi-sq-results}
+## Insert code to carry out a chi-squared analysis of your variables
+## If you did not have expected counts of at least 5, you need to have a simulation-based method here!!!
+
+
+
+```
+
+<!-- Discuss the results of your analysis. What do you conclude about the relationship between your variables? -->
+

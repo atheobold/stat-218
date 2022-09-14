@@ -1,0 +1,43 @@
+---
+title: "Week 3 Reading Guide Part 2: Confidence Intervals"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 12.3: Confidence Intervals 
+
+__Confidence interval:__
+
+</br>
+</br>
+
+__Bootstrap sample:__
+
+</br>
+</br>
+
+__Sampling with replacement:__
+
+</br>
+</br>
+
+---
+
+## Wrap-up Review
+
+__Confidence interval:__ a process to determine how large an effect is; a range of plausible values for the population parameter.
+
+__Margin of error:__ the value that is added to and subtracted from the sample statistic to create a confidence interval; half the width of a confidence interval.
+
+__Bootstrapping:__ the process of drawing with replacement $n$ times from the original sample.
+
+__Bootstrapped resample:__ a random sample of size $n$ from the original sample, selected with replacement.
+
+__Bootstrapped statistic:__ the statistic recorded from the bootstrapped resample.
+
+__Confidence level:__ how confident we are that the confidence interval will capture the population parameter.
+
+__Bootstrap $X$% confidence interval:__ ($(\frac{(1-X)}{2})^{th}$ percentile, $(X+(\frac{(1-X)}{2})^{th}$ percentile) of a bootstrap distribution.

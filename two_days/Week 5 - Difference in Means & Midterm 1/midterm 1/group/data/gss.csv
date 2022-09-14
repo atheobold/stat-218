@@ -1,0 +1,501 @@
+year,age,sex,college,partyid,hompop,hours,income,class,finrela,weight
+2014,36,male,degree,ind,3,50,$25000 or more,middle class,below average,0.896003385656687
+1994,34,female,no degree,rep,4,31,$20000 - 24999,working class,below average,1.0825
+1998,24,male,degree,ind,1,40,$25000 or more,working class,below average,0.5501
+1996,42,male,no degree,ind,4,40,$25000 or more,working class,above average,1.0864
+1994,31,male,degree,rep,2,40,$25000 or more,middle class,above average,1.0825
+1996,32,female,no degree,rep,4,53,$25000 or more,middle class,average,1.0864
+1990,48,female,no degree,dem,2,32,$25000 or more,working class,below average,1.0627
+2016,36,female,degree,ind,1,20,$25000 or more,middle class,above average,0.478496755745219
+2000,30,female,degree,rep,5,40,$25000 or more,middle class,average,1.0985
+1998,33,female,no degree,dem,2,40,$15000 - 19999,working class,far below average,0.5501
+2000,21,female,no degree,dem,4,23,$25000 or more,working class,average,1.6478
+1990,30,male,no degree,ind,3,52,$25000 or more,middle class,average,1.0627
+1985,38,female,no degree,dem,4,38,$8000 to 9999,lower class,far below average,1.0363
+2018,49,female,no degree,ind,4,72,$25000 or more,working class,below average,0.94299710965324
+1994,25,female,degree,ind,2,48,$15000 - 19999,working class,below average,1.0825
+2000,56,male,no degree,rep,2,40,$25000 or more,middle class,above average,1.0985
+1982,45,female,no degree,ind,3,40,$20000 - 24999,working class,average,1.0319
+1989,38,female,no degree,rep,2,28,$25000 or more,working class,average,1.0215
+1998,57,female,degree,dem,1,30,$25000 or more,middle class,above average,0.5501
+1987,65,female,no degree,dem,2,40,$25000 or more,working class,average,1.0104
+1983,32,male,degree,rep,5,40,$25000 or more,middle class,average,1.0116
+2014,56,female,degree,rep,4,20,$25000 or more,middle class,above average,1.34400507848503
+1980,28,female,no degree,ind,3,40,$10000 - 14999,working class,average,1.0225
+1978,29,female,no degree,ind,4,3,$10000 - 14999,middle class,average,1.0127
+1976,29,male,no degree,dem,4,55,$25000 or more,working class,above average,0.9709
+2004,57,male,degree,ind,2,60,$25000 or more,working class,above average,0.9184
+2004,60,female,no degree,dem,1,40,$25000 or more,middle class,average,0.9184
+1991,44,male,no degree,dem,6,71,$15000 - 19999,working class,average,1.5932
+1974,28,male,degree,ind,4,50,$25000 or more,middle class,above average,0.932
+2012,65,female,no degree,rep,2,32,$25000 or more,middle class,average,1.74797524200031
+1985,53,male,no degree,rep,2,40,$25000 or more,working class,above average,1.0363
+1996,51,female,degree,rep,2,50,$25000 or more,working class,average,1.0864
+1994,62,male,no degree,dem,1,50,$25000 or more,working class,average,0.5412
+1998,34,female,no degree,dem,5,72,$20000 - 24999,working class,below average,1.1001
+1983,20,male,no degree,ind,4,42,$20000 - 24999,working class,average,1.5175
+2006,38,female,degree,rep,2,40,$25000 or more,middle class,above average,1.9096
+1974,38,male,no degree,dem,5,40,$20000 - 24999,working class,below average,0.932
+1991,39,female,no degree,dem,2,40,$20000 - 24999,working class,below average,0.5311
+2000,30,male,degree,dem,2,42,$25000 or more,middle class,average,1.0985
+1977,44,male,no degree,dem,5,56,$25000 or more,middle class,above average,0.9881
+1996,59,female,no degree,rep,2,30,$15000 - 19999,working class,below average,1.0864
+2010,52,female,no degree,ind,2,20,$25000 or more,working class,above average,0.92625536837987
+1974,47,female,degree,ind,7,15,$25000 or more,working class,above average,1.3979
+1993,26,male,no degree,ind,1,40,$15000 - 19999,working class,average,0.5285
+1993,23,male,no degree,ind,3,56,$20000 - 24999,working class,average,1.0571
+2014,75,male,no degree,ind,2,40,$25000 or more,middle class,above average,0.896003385656687
+1975,34,female,no degree,dem,5,72,$5000 to 5999,working class,below average,0.932
+2002,46,male,degree,ind,1,40,$25000 or more,working class,below average,0.5578
+2012,73,female,no degree,dem,3,30,$25000 or more,middle class,average,1.23569438985203
+1977,33,female,no degree,ind,3,40,$10000 - 14999,working class,average,0.4941
+2008,61,male,degree,ind,2,44,$25000 or more,middle class,above average,0.875489502739106
+2000,25,male,no degree,ind,1,40,$25000 or more,middle class,above average,0.5493
+2010,53,male,no degree,rep,1,36,$6000 to 6999,middle class,below average,0.842050334890791
+2014,64,male,degree,dem,2,40,$25000 or more,middle class,average,0.896003385656687
+1976,45,male,no degree,rep,4,89,$10000 - 14999,working class,average,0.9709
+2010,33,male,degree,ind,1,50,$25000 or more,middle class,average,0.463127684189935
+1975,25,female,degree,ind,1,40,$8000 to 9999,working class,average,0.466
+1998,66,male,no degree,dem,1,40,$15000 - 19999,working class,below average,0.5501
+2012,27,female,degree,ind,2,50,$25000 or more,working class,below average,0.823796259901357
+2000,27,male,degree,dem,2,40,$25000 or more,middle class,average,1.0985
+1986,34,male,no degree,dem,1,65,$25000 or more,working class,average,0.5036
+2000,23,female,no degree,dem,2,45,$25000 or more,working class,average,1.0985
+1977,44,female,degree,dem,3,40,$20000 - 24999,middle class,above average,1
+1983,31,male,degree,rep,1,42,$10000 - 14999,middle class,below average,0.5058
+1984,33,female,no degree,ind,2,40,$10000 - 14999,lower class,far below average,0.5165
+1989,23,female,no degree,dem,8,40,$25000 or more,working class,average,2.5536
+2008,35,female,no degree,rep,3,36,$25000 or more,working class,average,0.875489502739106
+2000,24,male,no degree,ind,2,50,$25000 or more,middle class,DK,1.0985
+1991,24,female,no degree,ind,3,40,$10000 - 14999,working class,average,1.5932
+1982,56,female,no degree,dem,2,30,$25000 or more,middle class,average,1.0319
+1984,37,female,no degree,dem,3,20,$25000 or more,middle class,average,1.0331
+1984,40,male,degree,rep,2,35,$20000 - 24999,working class,below average,1.0331
+1998,35,female,degree,ind,2,40,$20000 - 24999,middle class,average,0.5501
+1983,24,male,no degree,ind,1,50,$10000 - 14999,lower class,above average,0.5058
+1983,58,male,no degree,rep,2,50,$25000 or more,middle class,far above average,1.0116
+2018,34,female,no degree,dem,1,37,$10000 - 14999,upper class,far below average,0.47149855482662
+2000,25,male,no degree,ind,3,35,$25000 or more,middle class,above average,1.6478
+1987,23,female,no degree,ind,4,16,$25000 or more,lower class,average,2.0207
+2000,68,male,no degree,dem,2,60,$25000 or more,middle class,average,1.0985
+2006,51,male,degree,ind,2,40,$25000 or more,working class,above average,1.9096
+2016,61,female,degree,ind,2,55,$25000 or more,working class,average,0.956993511490439
+1977,57,male,no degree,dem,2,56,$25000 or more,working class,average,0.9881
+1976,32,male,no degree,ind,4,72,$10000 - 14999,middle class,average,0.9709
+1982,37,female,no degree,ind,5,40,$25000 or more,middle class,above average,1.5478
+1994,38,male,no degree,ind,5,52,$25000 or more,middle class,average,1.0825
+1978,23,female,no degree,ind,2,40,$10000 - 14999,working class,average,1.0127
+2018,53,female,no degree,ind,3,6,$15000 - 19999,working class,far below average,1.41449566447986
+1975,29,male,no degree,ind,4,78,$8000 to 9999,working class,below average,0.932
+1977,57,male,degree,dem,2,13,$4000 to 4999,middle class,below average,0.9881
+2000,48,male,no degree,ind,2,44,$25000 or more,working class,average,1.0985
+1982,25,female,no degree,ind,4,20,$10000 - 14999,working class,average,1.0319
+1988,70,female,no degree,ind,1,8,$25000 or more,middle class,below average,0.5313
+1983,36,male,no degree,dem,3,40,$20000 - 24999,working class,average,1.0116
+1974,30,male,no degree,dem,2,40,$5000 to 5999,working class,average,0.932
+1977,30,female,no degree,ind,1,60,$20000 - 24999,upper class,above average,0.4941
+2012,34,male,degree,ind,2,40,$20000 - 24999,middle class,below average,0.823796259901357
+2008,20,female,no degree,dem,1,15,$1000 to 2999,lower class,far below average,0.437744751369553
+1978,42,male,no degree,dem,6,60,$20000 - 24999,working class,average,1.519
+1982,43,male,degree,dem,3,40,$25000 or more,working class,below average,1.5478
+2006,49,female,no degree,ind,2,14,$20000 - 24999,working class,below average,0.4488
+1978,33,male,degree,dem,3,40,$15000 - 19999,upper class,average,1.0127
+2010,53,female,degree,dem,2,20,$25000 or more,upper class,far below average,0.92625536837987
+1977,61,male,no degree,dem,2,40,$7000 to 7999,working class,below average,0.9881
+2012,42,male,degree,rep,3,50,$25000 or more,middle class,average,0.823796259901357
+1994,75,male,degree,ind,2,24,$25000 or more,middle class,above average,1.0825
+2016,25,male,no degree,rep,6,48,$25000 or more,working class,average,2.3924837787261
+1996,27,female,no degree,ind,2,40,$10000 - 14999,lower class,far below average,0.5432
+1974,27,male,no degree,dem,11,48,$20000 - 24999,middle class,far below average,3.7279
+2000,36,female,no degree,dem,4,48,$25000 or more,working class,average,1.0985
+2016,22,male,no degree,other,2,50,$25000 or more,middle class,above average,1.56436336297524
+1989,23,male,no degree,dem,4,40,$25000 or more,middle class,average,1.5322
+2012,65,male,no degree,dem,2,40,$25000 or more,working class,average,0.823796259901357
+2012,39,female,no degree,ind,4,48,$15000 - 19999,working class,far below average,0.411898129950678
+2002,47,male,degree,rep,3,44,$25000 or more,middle class,average,1.1156
+1994,54,female,no degree,rep,3,10,$25000 or more,middle class,average,1.6237
+2018,54,male,no degree,dem,2,40,$25000 or more,middle class,average,0.94299710965324
+2018,55,male,degree,dem,2,35,$25000 or more,middle class,above average,0.94299710965324
+1984,42,female,degree,dem,3,40,$20000 - 24999,middle class,average,0.5165
+1982,34,female,no degree,dem,2,12,$15000 - 19999,working class,below average,1.0319
+1982,51,male,no degree,rep,1,40,$20000 - 24999,middle class,above average,0.5159
+1989,37,male,degree,dem,2,40,$25000 or more,working class,average,1.0215
+2012,65,female,no degree,dem,1,60,$25000 or more,upper class,average,0.873987621000153
+1989,29,female,degree,dem,4,30,$25000 or more,working class,average,1.0215
+2002,46,male,no degree,ind,3,35,$20000 - 24999,lower class,below average,1.1156
+1986,47,male,no degree,dem,2,56,$20000 - 24999,working class,average,1.0072
+2004,47,male,degree,ind,2,45,$25000 or more,middle class,above average,0.9184
+1996,38,female,no degree,ind,5,46,$25000 or more,working class,above average,1.0864
+1989,38,male,degree,dem,1,45,$25000 or more,upper class,far above average,0.5107
+1980,49,female,degree,dem,4,40,$10000 - 14999,middle class,below average,1.0225
+1998,40,female,degree,ind,3,40,$25000 or more,middle class,average,1.1001
+2010,50,female,degree,dem,2,89,$20000 - 24999,working class,below average,0.92625536837987
+1994,50,female,no degree,ind,2,40,$25000 or more,working class,average,1.0825
+2008,47,male,no degree,ind,3,59,$25000 or more,middle class,average,2.13534025058319
+2014,46,male,no degree,dem,2,43,$25000 or more,working class,average,0.690295366453534
+2016,25,female,degree,ind,1,40,$25000 or more,working class,below average,0.478496755745219
+2012,51,male,no degree,dem,5,44,$10000 - 14999,working class,below average,0.823796259901357
+2006,42,male,degree,ind,3,20,$25000 or more,middle class,average,1.9096
+2010,45,female,degree,ind,4,20,$25000 or more,working class,below average,0.92625536837987
+1986,35,male,degree,dem,4,45,$7000 to 7999,working class,below average,1.5108
+1993,66,female,degree,rep,3,12,$25000 or more,middle class,average,1.5856
+2002,33,female,degree,rep,4,40,$25000 or more,working class,average,1.1156
+1991,38,female,degree,ind,5,37,$25000 or more,middle class,average,1.0621
+1986,51,male,no degree,rep,1,40,$4000 to 4999,lower class,below average,0.5036
+2016,23,female,no degree,ind,4,15,$20000 - 24999,working class,below average,1.56436336297524
+1996,54,male,no degree,ind,4,30,$15000 - 19999,working class,below average,1.6295
+2002,30,male,no degree,rep,1,38,$10000 - 14999,working class,average,0.5578
+2010,29,female,degree,dem,3,41,$25000 or more,middle class,average,0.92625536837987
+1977,51,male,no degree,ind,5,50,$15000 - 19999,working class,average,0.9881
+1994,72,male,no degree,rep,2,30,$25000 or more,middle class,average,1.0825
+2000,48,female,no degree,dem,2,40,$25000 or more,working class,DK,1.0985
+1977,46,male,degree,dem,1,40,$15000 - 19999,middle class,average,0.4941
+2006,33,female,degree,dem,3,40,$25000 or more,middle class,above average,0.4297
+1998,35,male,no degree,ind,6,45,$25000 or more,middle class,average,1.1001
+2010,33,female,no degree,ind,4,40,$25000 or more,working class,average,0.92625536837987
+2018,42,male,no degree,ind,4,53,$25000 or more,middle class,average,0.94299710965324
+2008,56,male,no degree,rep,2,32,$25000 or more,middle class,average,0.875489502739106
+1974,58,male,no degree,dem,2,40,$10000 - 14999,working class,average,0.932
+2002,50,female,no degree,ind,3,56,$25000 or more,middle class,average,1.1156
+1974,43,male,no degree,ind,4,40,$10000 - 14999,middle class,average,1.8639
+1977,25,male,no degree,ind,2,40,$10000 - 14999,middle class,average,0.9881
+1984,29,male,no degree,rep,1,40,$25000 or more,working class,average,0.5165
+2006,43,male,degree,rep,4,40,$25000 or more,middle class,above average,0.8593
+1991,33,female,degree,rep,1,40,$25000 or more,middle class,far above average,0.5311
+1996,23,female,degree,ind,4,10,$25000 or more,working class,average,2.1727
+1974,25,female,degree,rep,3,45,$7000 to 7999,middle class,average,0.932
+2010,62,female,no degree,dem,4,34,$10000 - 14999,upper class,below average,0.463127684189935
+2000,44,female,degree,ind,4,45,$20000 - 24999,working class,average,1.0985
+1996,31,female,degree,rep,3,65,$25000 or more,middle class,average,1.6295
+1996,49,female,degree,rep,1,48,$25000 or more,middle class,average,0.5432
+1987,39,female,degree,rep,2,40,$25000 or more,upper class,above average,1.0104
+2014,43,female,no degree,dem,2,27,$10000 - 14999,lower class,above average,0.896003385656687
+1998,44,female,degree,dem,1,40,$20000 - 24999,working class,average,0.5501
+1994,42,female,degree,rep,4,50,$25000 or more,middle class,average,1.0825
+2014,60,female,degree,dem,2,40,$25000 or more,upper class,above average,1.38059073290707
+1976,37,female,no degree,ind,2,40,$20000 - 24999,middle class,average,0.9709
+1987,51,male,no degree,dem,3,50,$25000 or more,working class,average,1.5155
+2000,39,male,degree,ind,2,50,$25000 or more,upper class,far above average,1.0985
+1978,60,female,degree,dem,2,15,$25000 or more,upper class,above average,1.0127
+1977,27,male,no degree,rep,1,40,$10000 - 14999,working class,average,0.4941
+1980,34,female,degree,rep,5,20,$20000 - 24999,middle class,average,1.0225
+2000,34,male,degree,ind,1,43,$25000 or more,working class,average,0.5493
+1991,20,male,no degree,ind,5,20,$25000 or more,working class,average,1.5932
+2012,63,male,degree,dem,1,38,$10000 - 14999,working class,average,0.411898129950678
+1990,22,male,no degree,rep,4,40,$15000 - 19999,working class,below average,1.0627
+1977,42,female,degree,rep,5,40,$25000 or more,middle class,above average,0.9881
+1996,49,male,degree,rep,6,40,$25000 or more,middle class,average,3.2591
+1976,60,male,no degree,ind,3,40,$15000 - 19999,middle class,average,1.4563
+1975,24,male,no degree,ind,3,56,$5000 to 5999,working class,below average,0.932
+1976,53,female,no degree,dem,4,43,$25000 or more,working class,average,1.4563
+2004,39,male,no degree,dem,5,53,$25000 or more,working class,average,0.9184
+1996,48,female,no degree,dem,1,32,$25000 or more,middle class,average,0.5432
+2008,23,female,no degree,dem,1,25,$20000 - 24999,working class,above average,0.437744751369553
+2008,59,female,no degree,rep,2,40,$25000 or more,middle class,average,0.875489502739106
+1994,49,female,no degree,ind,4,40,$25000 or more,middle class,below average,1.6237
+1993,37,female,no degree,ind,2,40,$20000 - 24999,working class,below average,1.0571
+2000,56,female,degree,ind,2,40,$25000 or more,middle class,average,1.0985
+1996,49,male,no degree,dem,4,45,$25000 or more,working class,below average,1.0864
+2010,42,male,no degree,dem,1,32,$20000 - 24999,lower class,below average,0.463127684189935
+1983,34,male,no degree,ind,4,32,$25000 or more,working class,below average,1.0116
+1990,60,male,degree,ind,2,38,$25000 or more,middle class,above average,1.0627
+2000,28,male,no degree,dem,5,60,$25000 or more,working class,above average,1.0985
+2006,41,female,degree,rep,5,27,$20000 - 24999,lower class,below average,0.4297
+1990,43,male,degree,other,4,43,$25000 or more,middle class,average,1.0627
+1996,47,female,degree,dem,2,89,$25000 or more,middle class,above average,1.0864
+1993,25,female,no degree,rep,9,48,$25000 or more,working class,average,3.1712
+2018,57,female,no degree,ind,1,40,$25000 or more,working class,below average,0.47149855482662
+2004,28,female,degree,dem,3,40,$25000 or more,middle class,average,0.9184
+1998,35,female,no degree,ind,2,20,$8000 to 9999,middle class,average,0.5501
+1994,18,male,no degree,rep,4,20,$25000 or more,middle class,average,1.6237
+1977,22,female,no degree,ind,4,30,$5000 to 5999,working class,average,1.9763
+2004,53,male,no degree,ind,1,60,$25000 or more,working class,below average,0.4592
+1989,56,male,no degree,dem,1,56,$20000 - 24999,middle class,average,0.5107
+1993,39,male,no degree,dem,5,40,$25000 or more,middle class,average,1.0571
+1998,27,female,no degree,rep,3,40,$15000 - 19999,working class,average,0.5501
+2000,41,male,no degree,rep,1,45,$25000 or more,working class,average,0.5493
+1974,24,male,no degree,dem,2,72,$1000 to 2999,working class,below average,0.932
+2010,49,male,degree,ind,1,40,$25000 or more,middle class,average,0.463127684189935
+1980,51,female,no degree,dem,4,51,$8000 to 9999,working class,average,1.0225
+1980,48,female,no degree,dem,2,40,$6000 to 6999,working class,DK,0.5112
+2014,29,male,degree,dem,2,60,$25000 or more,working class,below average,0.896003385656687
+1991,38,male,no degree,ind,5,24,$25000 or more,working class,above average,1.0621
+2016,50,male,no degree,ind,2,40,$25000 or more,working class,average,0.956993511490439
+1996,47,female,degree,dem,2,40,$25000 or more,middle class,far above average,1.0864
+2014,37,male,degree,ind,2,80,$25000 or more,middle class,average,0.896003385656687
+1998,58,female,no degree,ind,4,24,$10000 - 14999,working class,far above average,1.1001
+2008,21,male,no degree,ind,4,40,$15000 - 19999,working class,DK,1.75097900547821
+1996,54,female,no degree,ind,1,30,$4000 to 4999,working class,below average,0.5432
+1991,23,male,no degree,rep,1,52,$15000 - 19999,working class,average,0.5311
+1973,57,male,no degree,rep,2,50,$10000 - 14999,middle class,average,0.9145
+1983,58,female,no degree,dem,2,22,$3000 to 3999,middle class,average,1.0116
+1985,52,female,degree,dem,1,40,$25000 or more,middle class,below average,0.5181
+1976,23,female,no degree,ind,2,35,$10000 - 14999,middle class,average,0.9709
+2008,47,female,no degree,dem,3,37,$15000 - 19999,working class,far below average,1.31323425410866
+1984,28,female,degree,rep,1,50,$25000 or more,middle class,below average,0.5165
+2010,45,female,no degree,rep,3,47,$25000 or more,middle class,average,0.92625536837987
+1996,28,female,no degree,rep,3,30,$25000 or more,working class,below average,1.0864
+1976,28,female,no degree,dem,3,40,$20000 - 24999,middle class,average,0.9709
+2016,72,female,no degree,ind,1,25,$25000 or more,working class,average,0.478496755745219
+2004,28,female,degree,ind,9,35,$25000 or more,working class,average,1.4425
+1985,22,male,no degree,rep,2,27,$3000 to 3999,working class,far below average,1.0363
+1994,44,female,degree,dem,2,40,$25000 or more,middle class,average,1.0825
+1998,60,male,degree,dem,2,30,$10000 - 14999,middle class,below average,1.1001
+2010,41,female,degree,ind,3,36,lt $1000,working class,below average,0.92625536837987
+1990,44,female,no degree,dem,1,40,$20000 - 24999,middle class,below average,0.5313
+1993,54,male,no degree,dem,5,48,$25000 or more,working class,average,2.1142
+1976,42,male,no degree,ind,1,40,$15000 - 19999,working class,above average,0.4854
+2014,46,male,degree,dem,2,40,$25000 or more,middle class,average,0.896003385656687
+2006,39,female,no degree,ind,3,30,$10000 - 14999,working class,below average,0.4297
+1974,25,female,no degree,ind,2,40,$8000 to 9999,working class,average,0.932
+1986,48,female,degree,ind,3,63,$20000 - 24999,working class,average,1.5108
+2000,27,female,degree,ind,2,40,$25000 or more,middle class,below average,1.0985
+2016,68,male,no degree,ind,1,30,$20000 - 24999,working class,average,0.782181681487619
+1998,37,female,no degree,dem,2,40,$25000 or more,middle class,average,0.5501
+2006,82,male,no degree,ind,2,89,$25000 or more,middle class,above average,1.9096
+2006,26,female,degree,ind,3,55,$25000 or more,working class,average,1.289
+1994,19,male,no degree,ind,2,6,$25000 or more,middle class,average,1.0825
+1983,27,male,no degree,ind,4,40,$20000 - 24999,working class,average,1.0116
+1986,49,male,degree,ind,3,50,$25000 or more,upper class,above average,1.0072
+1991,38,female,no degree,dem,5,64,$10000 - 14999,working class,below average,1.5932
+1990,37,female,degree,ind,1,10,$6000 to 6999,lower class,far below average,0.5313
+1996,36,male,no degree,rep,4,45,$25000 or more,working class,average,1.0864
+2016,20,male,no degree,rep,6,40,$25000 or more,working class,average,2.3924837787261
+1991,43,male,no degree,rep,1,40,$25000 or more,middle class,average,0.5311
+1984,60,male,no degree,rep,2,40,$20000 - 24999,middle class,above average,1.0331
+2000,22,male,no degree,ind,2,15,$4000 to 4999,middle class,average,1.0985
+1990,43,male,degree,dem,4,45,$25000 or more,upper class,far below average,1.0627
+2006,37,female,degree,dem,4,75,$25000 or more,middle class,above average,0.8977
+1994,49,female,degree,ind,2,38,$25000 or more,middle class,average,1.0825
+1980,26,male,no degree,ind,3,75,$20000 - 24999,working class,average,1.0225
+1994,25,male,no degree,dem,1,8,$10000 - 14999,middle class,above average,0.5412
+1976,36,female,degree,dem,3,40,$10000 - 14999,working class,average,0.9709
+1987,38,female,degree,ind,6,12,$25000 or more,working class,below average,1.0104
+2004,34,male,no degree,rep,4,55,$25000 or more,middle class,above average,0.9184
+1991,44,female,no degree,dem,2,10,$1000 to 2999,middle class,far below average,0.5311
+1978,26,male,no degree,dem,2,40,$4000 to 4999,working class,below average,1.0127
+2012,25,male,degree,ind,6,55,$25000 or more,middle class,average,5.24392572600092
+1988,22,male,no degree,dem,4,40,$25000 or more,middle class,below average,1.0627
+1991,32,female,degree,dem,1,40,$25000 or more,upper class,above average,0.5311
+1976,29,female,no degree,ind,2,43,$15000 - 19999,working class,average,0.9709
+1987,38,female,no degree,ind,4,35,$25000 or more,working class,average,1.5155
+2006,71,female,degree,rep,1,18,$25000 or more,middle class,below average,0.4297
+1991,35,male,degree,dem,4,48,$15000 - 19999,working class,average,1.0621
+2010,57,male,degree,rep,3,60,$25000 or more,middle class,above average,0.92625536837987
+2010,51,female,degree,rep,4,60,$25000 or more,middle class,far above average,1.3893830525698
+1991,39,female,no degree,dem,4,40,$25000 or more,middle class,above average,1.0621
+1996,33,male,no degree,ind,4,45,$25000 or more,working class,average,1.0864
+2004,35,male,no degree,rep,2,40,$25000 or more,working class,below average,0.9184
+1996,55,female,no degree,dem,2,44,$25000 or more,working class,average,0.5432
+2002,47,female,degree,rep,3,40,$25000 or more,middle class,above average,1.1156
+1986,21,male,no degree,rep,3,40,$25000 or more,middle class,above average,1.5108
+1988,40,male,no degree,dem,5,50,$25000 or more,working class,below average,1.594
+1990,36,female,no degree,ind,4,56,$25000 or more,middle class,above average,1.0627
+2018,66,male,degree,ind,4,50,$25000 or more,middle class,above average,1.41449566447986
+2000,28,female,no degree,rep,1,55,$15000 - 19999,working class,below average,0.5493
+1978,51,male,no degree,ind,1,20,$20000 - 24999,middle class,above average,0.5063
+1996,50,female,degree,ind,4,40,$25000 or more,working class,average,1.6295
+2010,60,male,degree,ind,2,45,$25000 or more,working class,average,0.92625536837987
+2014,22,male,no degree,ind,4,35,$25000 or more,working class,below average,1.79200677131337
+2014,52,male,no degree,ind,2,40,$25000 or more,middle class,above average,0.896003385656687
+1977,53,male,no degree,rep,3,40,$10000 - 14999,middle class,average,0.9881
+1998,45,male,degree,rep,1,50,$25000 or more,middle class,average,0.5501
+1986,21,female,no degree,ind,2,40,$10000 - 14999,middle class,average,1.0072
+1996,22,female,no degree,ind,2,48,$25000 or more,working class,average,1.0864
+1988,30,female,no degree,dem,3,50,$10000 - 14999,working class,average,1.0627
+1996,29,female,no degree,ind,2,65,$25000 or more,working class,below average,1.0864
+1996,21,male,no degree,dem,1,46,$25000 or more,working class,below average,0.5432
+2010,42,male,degree,rep,2,40,$25000 or more,working class,average,0.92625536837987
+2014,33,female,no degree,ind,4,16,$25000 or more,working class,below average,1.34400507848503
+2002,31,female,no degree,dem,2,35,$25000 or more,working class,average,1.1156
+1996,54,male,degree,rep,3,40,$25000 or more,middle class,above average,1.6295
+1978,27,male,degree,ind,4,75,$20000 - 24999,middle class,average,1.0127
+2004,51,male,degree,rep,2,50,$25000 or more,middle class,average,0.9617
+2018,27,male,degree,ind,2,40,$25000 or more,working class,average,0.94299710965324
+1990,43,female,no degree,ind,4,22,$25000 or more,working class,below average,2.1254
+1991,27,female,degree,rep,1,50,$25000 or more,middle class,average,0.5311
+1974,23,male,no degree,rep,3,40,$10000 - 14999,working class,average,0.932
+2006,29,male,degree,ind,2,40,$25000 or more,middle class,average,0.8593
+2004,48,male,no degree,rep,4,89,$25000 or more,middle class,above average,0.9184
+2014,44,male,degree,rep,1,40,$25000 or more,middle class,above average,0.690295366453534
+1994,27,male,degree,other,2,43,$25000 or more,middle class,average,1.0825
+2010,30,male,no degree,rep,3,45,$25000 or more,working class,below average,1.68410066978158
+1982,31,female,no degree,dem,4,40,$20000 - 24999,working class,average,1.0319
+1991,38,male,no degree,ind,5,40,$25000 or more,working class,average,1.0621
+1991,38,male,no degree,ind,6,48,$1000 to 2999,working class,below average,2.1243
+2000,48,male,degree,ind,1,40,$25000 or more,upper class,far above average,0.5493
+1996,49,female,degree,dem,3,60,$25000 or more,working class,average,1.0864
+2010,23,female,no degree,rep,2,45,$25000 or more,working class,below average,1.68410066978158
+2006,50,female,no degree,ind,3,40,$25000 or more,working class,average,1.289
+1978,28,female,no degree,dem,5,40,$5000 to 5999,working class,below average,1.0127
+1990,28,female,degree,dem,2,5,$25000 or more,middle class,average,1.0627
+2016,28,female,no degree,ind,2,60,$25000 or more,working class,average,0.956993511490439
+1994,40,male,degree,rep,5,70,$25000 or more,middle class,below average,1.0825
+1984,27,male,no degree,rep,3,50,$15000 - 19999,middle class,average,1.0331
+1986,41,female,no degree,dem,6,40,$6000 to 6999,working class,below average,1.0072
+2008,23,male,degree,dem,1,60,$15000 - 19999,working class,below average,0.437744751369553
+2008,47,female,degree,ind,1,37,$25000 or more,middle class,above average,0.437744751369553
+2006,25,male,no degree,ind,3,5,$15000 - 19999,working class,far below average,2.8644
+1976,62,male,no degree,rep,3,40,$10000 - 14999,middle class,average,1.4563
+1991,34,male,no degree,dem,1,24,$20000 - 24999,middle class,average,0.5311
+1996,59,female,no degree,dem,2,40,$25000 or more,working class,DK,1.0864
+1977,58,male,no degree,dem,3,80,$25000 or more,middle class,above average,0.9881
+2002,37,male,degree,ind,2,60,$25000 or more,middle class,above average,1.1156
+1994,59,female,no degree,dem,2,36,$25000 or more,middle class,average,1.0825
+1996,28,male,no degree,rep,2,50,$20000 - 24999,working class,above average,1.0864
+2014,22,female,no degree,dem,1,25,$25000 or more,working class,below average,0.448001692828344
+1980,27,male,degree,dem,2,40,$25000 or more,working class,above average,1.0225
+1988,44,male,no degree,dem,4,30,$15000 - 19999,working class,average,1.0627
+1990,41,female,no degree,ind,2,38,$25000 or more,middle class,below average,1.0627
+1989,44,female,degree,dem,5,50,$25000 or more,middle class,above average,1.0215
+2018,37,male,degree,ind,4,40,$25000 or more,working class,above average,0.94299710965324
+2010,32,female,no degree,ind,3,57,$15000 - 19999,working class,below average,0.463127684189935
+2008,28,male,no degree,dem,3,40,$25000 or more,working class,average,1.31323425410866
+1973,69,female,no degree,ind,1,40,$6000 to 6999,middle class,average,0.4572
+1974,22,male,no degree,other,2,50,$10000 - 14999,working class,average,0.932
+2014,37,male,degree,dem,4,36,$20000 - 24999,working class,below average,1.79200677131337
+1998,45,female,no degree,ind,4,80,$25000 or more,middle class,above average,1.6502
+1998,49,female,degree,rep,4,55,$25000 or more,middle class,above average,1.1001
+1978,58,male,no degree,dem,1,40,$10000 - 14999,working class,above average,0.5063
+2002,28,female,degree,dem,2,64,$25000 or more,upper class,above average,1.1156
+1976,43,male,no degree,dem,4,45,$20000 - 24999,working class,average,0.9709
+2004,30,male,degree,ind,1,40,$25000 or more,working class,average,0.9184
+1982,37,male,no degree,ind,1,40,$25000 or more,middle class,above average,0.5159
+2000,26,female,degree,ind,2,25,$8000 to 9999,working class,below average,1.0985
+2002,51,male,degree,rep,4,89,$25000 or more,working class,average,1.1156
+2002,27,male,no degree,dem,1,40,$25000 or more,working class,below average,0.5578
+1987,40,female,no degree,dem,4,40,$6000 to 6999,working class,below average,1.0104
+2000,31,male,no degree,dem,10,40,$25000 or more,working class,average,2.7463
+2006,22,male,no degree,ind,2,15,$15000 - 19999,working class,average,0.8593
+2006,23,female,degree,ind,2,23,$25000 or more,working class,average,0.8593
+1977,22,female,no degree,ind,2,48,$25000 or more,middle class,above average,0.9881
+1998,32,male,no degree,rep,3,55,$25000 or more,middle class,average,1.1001
+1996,32,female,no degree,ind,1,27,$10000 - 14999,working class,below average,0.5432
+1998,34,male,degree,rep,3,52,$25000 or more,middle class,above average,1.1001
+2000,49,male,degree,dem,1,40,$25000 or more,middle class,average,0.5493
+1996,48,male,degree,rep,4,40,$25000 or more,working class,above average,1.0864
+1986,31,male,no degree,dem,4,41,$10000 - 14999,middle class,below average,1.0072
+1993,59,female,degree,ind,2,40,$25000 or more,middle class,average,1.0571
+2016,35,female,no degree,ind,1,38,$20000 - 24999,working class,below average,0.478496755745219
+1985,34,female,no degree,dem,4,44,$7000 to 7999,working class,far below average,0.5181
+1980,41,male,degree,dem,5,50,$25000 or more,upper class,far above average,1
+1990,22,female,no degree,dem,5,40,$20000 - 24999,middle class,average,2.1254
+1978,33,male,no degree,ind,4,56,$25000 or more,middle class,average,1.0127
+1977,23,female,no degree,ind,2,40,$10000 - 14999,working class,below average,0.9881
+1998,29,female,no degree,dem,1,40,$10000 - 14999,lower class,far below average,0.5501
+1986,29,female,no degree,rep,1,42,$25000 or more,middle class,above average,0.5036
+2014,34,male,degree,ind,6,40,$25000 or more,working class,below average,2.68801015697006
+1978,56,male,no degree,other,2,70,$15000 - 19999,working class,average,1.0127
+2018,22,male,no degree,ind,3,48,$25000 or more,working class,below average,0.94299710965324
+1998,60,female,no degree,ind,2,30,$8000 to 9999,working class,below average,1.1001
+2014,27,female,degree,ind,2,50,$25000 or more,middle class,above average,3.45147683226767
+2002,25,male,degree,ind,3,16,$25000 or more,middle class,above average,1.6734
+2006,28,female,degree,ind,2,42,$15000 - 19999,working class,below average,0.4297
+1980,39,male,no degree,ind,4,40,$20000 - 24999,middle class,average,1.0225
+2008,23,male,no degree,ind,1,50,$25000 or more,working class,average,0.437744751369553
+1998,30,male,degree,dem,3,60,$20000 - 24999,working class,below average,1.1001
+1982,25,female,degree,rep,3,35,$10000 - 14999,middle class,average,1.5478
+1988,26,female,no degree,dem,4,40,$20000 - 24999,working class,average,1.594
+1977,32,male,no degree,rep,1,40,$10000 - 14999,working class,below average,0.4941
+2018,51,female,no degree,ind,1,40,$20000 - 24999,working class,above average,0.47149855482662
+1986,30,male,no degree,ind,4,40,$15000 - 19999,working class,below average,1.0072
+1985,51,male,no degree,dem,3,19,$20000 - 24999,working class,below average,1.5544
+1974,64,male,no degree,dem,3,40,$7000 to 7999,working class,below average,0.932
+1994,41,male,degree,rep,2,40,$25000 or more,middle class,average,1.0825
+2000,34,female,no degree,ind,4,40,$25000 or more,middle class,above average,1.0985
+1985,49,male,no degree,rep,4,40,$25000 or more,working class,average,1.5544
+2000,28,female,no degree,rep,4,30,$1000 to 2999,working class,average,1.0985
+2006,45,male,no degree,ind,4,70,$20000 - 24999,working class,far below average,1.7953
+2008,33,male,degree,other,6,30,$25000 or more,middle class,below average,0.875489502739106
+2006,26,female,no degree,ind,3,40,$4000 to 4999,working class,average,0.9548
+1974,31,female,no degree,ind,2,20,$5000 to 5999,middle class,below average,0.466
+1996,32,male,no degree,other,1,70,$20000 - 24999,lower class,average,0.5432
+1988,45,female,degree,rep,4,50,$25000 or more,middle class,above average,1.0627
+1998,42,male,no degree,rep,4,56,$25000 or more,working class,far below average,2.2002
+1989,48,female,no degree,ind,4,40,$25000 or more,working class,average,2.0429
+1983,37,male,degree,dem,2,39,$25000 or more,middle class,above average,1.0116
+1985,33,female,no degree,rep,5,6,$25000 or more,middle class,below average,1.0363
+1982,61,male,no degree,dem,2,25,$15000 - 19999,middle class,average,1.0319
+1982,30,female,degree,dem,1,30,$15000 - 19999,working class,average,0.5159
+1984,59,female,no degree,ind,2,40,$8000 to 9999,working class,average,0.5165
+1986,71,male,no degree,rep,2,30,$15000 - 19999,working class,average,1.0072
+2012,26,female,no degree,ind,10,20,$25000 or more,working class,below average,2.47138877970407
+2002,42,female,degree,rep,4,60,$25000 or more,middle class,above average,1.1156
+2014,25,female,no degree,ind,1,45,$20000 - 24999,working class,average,0.690295366453534
+1998,29,male,no degree,ind,4,48,$25000 or more,working class,above average,1.1001
+2014,50,male,degree,ind,2,60,$25000 or more,middle class,above average,0.448001692828344
+1994,25,male,no degree,ind,5,40,$15000 - 19999,working class,below average,1.0825
+1977,42,male,degree,rep,6,55,$25000 or more,upper class,far below average,0.9881
+1988,42,female,no degree,ind,8,38,$25000 or more,middle class,above average,2.1254
+1983,27,male,no degree,dem,5,57,$25000 or more,working class,average,2.0233
+1987,23,male,no degree,rep,2,35,$10000 - 14999,middle class,below average,1.0104
+2014,40,female,no degree,ind,4,27,$25000 or more,working class,average,0.896003385656687
+2014,33,female,no degree,rep,2,50,$25000 or more,working class,average,0.896003385656687
+1984,37,female,no degree,dem,4,15,$25000 or more,working class,average,1.0331
+1996,23,female,no degree,rep,3,40,$25000 or more,working class,above average,1.0864
+1982,30,male,degree,dem,3,45,$25000 or more,middle class,above average,1.0319
+1989,62,female,no degree,dem,1,40,$10000 - 14999,working class,below average,0.5107
+1985,51,female,no degree,dem,4,28,$25000 or more,middle class,above average,1.0363
+1996,33,female,no degree,rep,3,60,$25000 or more,working class,average,1.0864
+1990,58,male,degree,rep,2,40,$25000 or more,middle class,above average,1.0627
+1986,28,male,degree,dem,1,50,$15000 - 19999,working class,average,0.5036
+1998,45,male,no degree,ind,4,4,$25000 or more,middle class,average,1.1001
+2004,32,female,degree,dem,5,40,$25000 or more,middle class,average,1.3776
+2004,19,male,no degree,rep,3,44,$5000 to 5999,middle class,average,0.9184
+1982,54,male,no degree,rep,3,40,$25000 or more,middle class,above average,1.5478
+2010,51,male,degree,ind,1,35,$25000 or more,middle class,above average,0.463127684189935
+1976,27,male,no degree,dem,8,50,$6000 to 6999,middle class,far below average,1.4563
+2000,31,male,no degree,rep,1,43,$25000 or more,working class,average,0.5493
+2016,61,male,no degree,ind,1,70,$25000 or more,working class,average,0.478496755745219
+1976,21,female,no degree,ind,2,40,$7000 to 7999,middle class,below average,0.9709
+1982,43,male,degree,dem,4,40,$25000 or more,working class,average,1.0319
+2014,57,female,no degree,dem,2,20,$25000 or more,middle class,average,0.896003385656687
+2008,87,male,no degree,ind,1,40,$25000 or more,working class,average,0.437744751369553
+2014,65,female,no degree,dem,3,40,$25000 or more,middle class,far below average,1.34400507848503
+1984,26,male,no degree,ind,2,20,$25000 or more,working class,above average,1.0331
+1993,39,female,no degree,ind,6,37,$20000 - 24999,working class,average,1.0571
+2002,34,male,degree,dem,1,88,$25000 or more,middle class,above average,0.5578
+1994,30,female,no degree,dem,3,44,$25000 or more,working class,average,1.0825
+1993,23,female,degree,rep,2,30,$10000 - 14999,middle class,above average,1.0571
+1987,55,male,no degree,ind,2,40,$10000 - 14999,working class,below average,1.0104
+1994,62,male,degree,rep,1,24,$25000 or more,middle class,average,0.5412
+2004,37,female,no degree,dem,4,30,$7000 to 7999,working class,average,0.9617
+1996,37,male,no degree,dem,4,80,$25000 or more,working class,average,1.0864
+2018,54,female,degree,dem,2,40,$8000 to 9999,working class,average,0.47149855482662
+1994,52,female,no degree,rep,2,40,$25000 or more,middle class,average,1.0825
+1998,41,male,degree,rep,4,60,$25000 or more,upper class,above average,1.1001
+1993,49,female,no degree,dem,5,80,$25000 or more,working class,average,0.5285
+1998,32,male,degree,dem,4,40,$25000 or more,working class,average,1.1001
+1991,40,female,no degree,dem,2,15,$15000 - 19999,working class,below average,1.0621
+2000,52,male,no degree,ind,2,43,$25000 or more,middle class,above average,1.0985
+2014,40,male,degree,rep,4,50,$25000 or more,middle class,above average,0.896003385656687
+2014,42,female,degree,dem,3,40,$25000 or more,working class,below average,0.690295366453534
+1980,59,male,no degree,rep,1,40,$20000 - 24999,middle class,above average,0.5112
+2018,34,male,no degree,ind,4,53,$25000 or more,lower class,above average,0.94299710965324
+2016,58,female,no degree,rep,3,22,$25000 or more,middle class,average,2.34654504446286
+2018,50,female,no degree,dem,5,30,$25000 or more,working class,below average,0.94299710965324
+1991,52,male,no degree,dem,2,40,$25000 or more,working class,average,1.0621
+1986,27,female,no degree,dem,3,12,$25000 or more,lower class,far below average,1.5108
+2008,36,male,no degree,other,4,86,$25000 or more,working class,average,0.875489502739106
+1985,39,male,degree,rep,3,45,$25000 or more,upper class,far above average,1.0363
+2006,38,male,degree,rep,1,25,$10000 - 14999,lower class,below average,0.4488
+1985,61,male,no degree,rep,2,30,$25000 or more,middle class,above average,1.0363
+2014,29,male,degree,rep,1,55,$25000 or more,middle class,above average,0.690295366453534
+2000,37,male,no degree,dem,3,50,$25000 or more,working class,average,1.0985
+2000,32,female,no degree,dem,2,40,$15000 - 19999,lower class,below average,1.0985
+1982,19,male,no degree,dem,7,20,$15000 - 19999,lower class,average,3.0957
+1982,29,female,no degree,ind,5,25,$3000 to 3999,lower class,far below average,1.5478
+1996,48,male,no degree,ind,3,40,$25000 or more,working class,average,1.6295
+1998,51,male,no degree,dem,1,40,$15000 - 19999,working class,below average,0.5501
+1987,60,female,degree,dem,2,25,$25000 or more,middle class,above average,1.0104
+1987,28,male,no degree,rep,3,40,$15000 - 19999,working class,average,1.0104
+1977,48,male,no degree,rep,3,40,$25000 or more,middle class,above average,1.4822
+1986,43,female,no degree,rep,2,30,$25000 or more,middle class,above average,1.0072
+1988,55,female,no degree,ind,1,40,$25000 or more,middle class,average,0.5313
+1990,61,male,no degree,rep,2,40,$25000 or more,middle class,above average,1.0627
+2018,52,male,no degree,dem,3,40,$25000 or more,working class,below average,0.94299710965324
+1989,18,male,no degree,rep,2,21,$20000 - 24999,middle class,below average,1.0215
+1982,57,male,no degree,dem,3,75,$20000 - 24999,working class,average,1.5478
+1980,57,female,no degree,dem,2,40,$20000 - 24999,working class,below average,1.0225
+2018,55,male,no degree,ind,3,40,$25000 or more,middle class,average,0.94299710965324
+1991,57,female,no degree,dem,3,40,$25000 or more,working class,average,1.5932

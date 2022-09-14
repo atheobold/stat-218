@@ -1,0 +1,257 @@
+---
+title: "Lab 6: Color Interference"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(mosaic)
+library(infer)
+```
+
+**Questions associated with the Lab 6 Canvas quiz are noted in boldface.**
+
+### Color Interference
+
+The abstract of the article "Studies of interference in serial verbal reactions"
+in the _Journal of Experimental Psychology_ reads:
+
+> In this study pairs of conflicting stimuli, both being inherent aspects of the
+same symbols, were presented simultaneously (a name of one color printed in the
+ink of another color---a word stimulus and a color stimulus).
+> The difference in time for reading the words printed in colors and the same
+words printed in black is the measure of interference of color stimuli upon
+reading words.
+> The interference of conflicting color stimuli upon the time for reading 100
+words (each word naming a color unlike the ink-color of its print) caused an
+increase of 2.3 seconds or 5.6% over the normal time for reading the same words
+printed in black.
+
+The article reports on the results of a study in which seventy college
+undergraduates were given forms with 100 names of colors written in black ink,
+and the same 100 names of colors written in another color (i.e., the word purple
+written in green ink).  The total time (in seconds) for reading the 100 words
+printed in black, and the total time (in seconds) for reading the 100 words
+printed in different colors were recorded for each subject. The order in which
+the forms (black or color) were given was randomized to the subjects. 
+
+We seek to address the following research question: 
+
+__Does printing the name of colors in a different color increase the time it takes to read the words?__
+
+## Identify the scenario
+
+__1. Should these observations be considered paired or independent? Explain your answer.__
+
+
+__2. Based on your answer to question 1, is the appropriate summary measure to be used to analyze these data the difference in mean times or the mean difference in times?__
+
+
+
+## Forming Hypotheses
+
+__3. Write out the null hypothesis in words, in the context of this study.__
+
+
+
+__4. Write out the alternative hypothesis in proper notation for this study.__
+
+
+
+
+## Summarize and Visualize the Data
+
+Since the original data from the study are not available, I simulated data to
+match the means and standard deviations reported in the article. We will use
+these simulated data in the analysis below.
+
+```{r data}
+color <- read.csv(here::here("Week 6 - Difference in Means & Paired Data", 
+                             "lab", 
+                             "data", 
+                             "interference.csv")
+                  )
+```
+
+
+### Comparison of Letter Color Times
+
+Let's first visualize the distribution of each of the letter color options. 
+
+5. Create two histograms of the following: 
+
+- the distribution of reading times for words printed in black 
+- the distribution of reading times for words printed in a different color
+
+
+```{r letter-comparison}
+## Code for histogram 1: Reading times printed in black
+
+
+## Code for histogram 2: Reading times printed in a different color
+
+
+```
+
+
+### Visualizing the Differences in Times
+
+If you look at the data, you will notice there are three columns: `Subj`, 
+`DiffCol`, and `Black`. There is not, however a column with the differences 
+between the different color read time (`DiffCol`) and the black read time
+(`Black`). Let's make a new column with the differences!
+
+```{r add-differences-to-data}
+color <- mutate(color,
+                Difference = DiffCol - Black
+                )
+```
+
+Now, let's visualize the distribution of the differences in the reading times. 
+
+```{r difference-histogram}
+ggplot(data = color, 
+       mapping = aes(x = Difference)) + 
+  geom_histogram(binwidth = 5) +
+  labs(x = "Differences in Reading Time (Different Color - Black)")
+```
+
+
+### Summarizing the Differences in Times
+
+Our final step is to calculate summary statistics for the differences in 
+reading times. Using the `Difference` column created above, write the code to
+obtain summary statistics (using the favstats() function) of the differences in
+reading time. 
+
+```{r difference-stats}
+
+```
+
+__6. What is the observed mean difference in reading times?__
+
+
+
+## Check Theoretical Conditions
+
+Yesterday, we explored using simulation-based methods to obtain a p-value 
+(permutation) and a confidence interval (bootstrapping). Today, we are going to 
+focus on how we could have obtained these using *theoretical* methods instead. 
+
+### The Central Limit Theorem -- A Refresher
+
+In general, the sampling distribution for a sample mean, $\bar{x}$, based on a
+sample of size $n$ from a population with a true mean $\mu$ and true standard
+deviation $\sigma$ can be modeled using a Normal distribution when certain
+conditions are not violated.
+
+Conditions for the sampling distribution of $\bar{x}$ to follow an approximate
+Normal distribution:
+
+* **Independence**: The sample’s observations are independent.  For paired data,
+that means each *difference* should be independent.
+
+* **Normality**: The data should be approximately normal or the sample size
+should be "sufficiently large."
+
+    - $n < 30$: If the sample size $n$ is less than 30 and the distribution of
+    the data is approximately normal with no clear outliers in the data, then we
+    typically assume the data come from a population with a nearly normal
+    distribution to satisfy the condition.
+
+    - $n \geq 30$: If the sample size $n$ is at least 30 and there are **no**
+    particularly *extreme* outliers in the data, then we typically assume the
+    sampling distribution of $\bar{x}$ is nearly normal, even if the underlying
+    distribution of individual observations is not.
+    
+    - $n \geq 60$: If the sample size $n$ is at least 60 (regardless of the
+    presence of skew or outliers), we typically assume the sampling distribution
+    of $\bar{x}$ is nearly normal, even if the underlying distribution of
+    individual observations is not.
+    
+ 
+5. How do you know the independence condition is not violated for these data?
+
+
+__6. Is the normality condition violated? Would it be inappropriate to use theory-based methods for analysis?  Explain your answer.__
+
+
+
+## Use Statistical Methods to Draw Inferences from the Data
+
+### Mathematical Formulas 
+
+To find the standardized statistic for the paired differences we will use the following formula:
+
+$$T = \frac{\bar{x}_d - \mu_d}{SE(\bar{x}_d)},$$
+where the standard error of the sample mean difference is:
+
+$$SE(\bar{x}_d)=\frac{s_d}{\sqrt{n}}.$$
+
+__7.  Calculate the standard error of the sample mean difference.__
+(Feel free to use the code block below as a calculator)
+
+
+
+```{r SE-calc}
+
+```
+
+
+8. Approximately how many standard errors is the observed mean difference from the null mean difference?
+
+
+
+### Using `R` to Obtain a p-value and Confidence Interval
+
+We can use the handy t_test() function from the **infer** package to obtain 
+our p-value for testing if the mean difference is different from 0. Luckily, we
+can also use this same function to obtain a confidence interval for the mean
+difference! 
+
+I've started the code for you, but there are two places you need to fill in 
+values. 
+
+- For the blank after *mu*, you need to insert the # we assume the mean
+difference equals **in the null hypothesis**. 
+
+- For the blank after *alternative*, you need to insert what direction R should 
+use when calculating the p-value. Your three choices are: "greater", "less", or
+"two-sided". 
+
+9. Fill in the code with these necessary pieces! 
+
+```{r t-test}
+t_test(color, response = Difference, 
+       mu = ____, 
+       alternative = "____", 
+       conf.int = TRUE, 
+       conf.level = 0.99
+      )
+```
+
+10. What does the p-value you obtained mean, in the context of the study? 
+*Hint*: it is the probability of what...assuming what?
+
+
+11. Report the 95% confidence interval for the mean difference. 
+
+
+
+12.  Interpret the confidence interval in context of the study.
+
+
+
+13.  Do the results of the CI agree with the p-value?  Explain your answer.
+
+
+
+14.  The abstract states, that the conflicting color stimuli "caused an increase
+of 2.3 seconds or 5.6% over the normal time for reading the same words printed
+in black." Is this statement valid? Explain.
+
+

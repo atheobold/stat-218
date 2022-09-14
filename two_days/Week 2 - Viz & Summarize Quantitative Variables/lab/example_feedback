@@ -1,0 +1,11 @@
+
+# Feedback Guide for Lab 2
+
+Yes! The median is a robust measure of center, since it doesn't move much if
+outliers are included in the data. The mean, however, is pulled in the direction
+of the outliers. 
+
+You are on the right track! The IQR depends on percentiles, the 25% and 75%, 
+which are similar to the median. These percentiles don't move much if outliers
+are included in the data. The standard deviation, however, depends on the mean
+as its measure of center, so it is definitely not robust!
