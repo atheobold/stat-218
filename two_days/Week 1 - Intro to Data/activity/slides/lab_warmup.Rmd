@@ -1,6 +1,6 @@
 ---
-title: "Stat 218 Day 1: </br>Intro to Data"
-date: "March 28, 2022"
+title: "Stat 218 Day 2: </br>Intro to Data"
+date: "September 22, 2022"
 author: "Dr. Allison Theobold"
 output:
   xaringan::moon_reader:
@@ -17,7 +17,6 @@ output:
           </div>
         </div>
 ---
-
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 # R options
@@ -99,11 +98,3 @@ class: center, middle
 class: center, middle
 
 ![](images/tidydata_4.jpg)
-
----
-
-class: center, middle, inverse
-
-.larger[Today's Activity]
-
-![](images/bouba-kiki.png)

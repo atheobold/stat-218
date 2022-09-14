@@ -1,6 +1,6 @@
 ---
-title: "Stat 218 Day 2: </br>The Beginning of Statistical Inference"
-date: "March 29, 2022"
+title: "Stat 218 Day 1: </br>The Beginning of Statistical Inference"
+date: "September 20, 2022"
 author: "Dr. Allison Theobold"
 output:
   xaringan::moon_reader:
@@ -66,6 +66,14 @@ style_duo_accent(
   link_color = "#696969" #grey
 )
 ```
+
+class: center, middle, inverse
+
+.larger[Today's Activity]
+
+![](images/bouba-kiki.png)
+
+---
 
 class: center, middle, inverse
 
