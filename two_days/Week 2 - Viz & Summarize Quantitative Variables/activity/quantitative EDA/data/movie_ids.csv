@@ -1,0 +1,402 @@
+Rank,Movie,Release Date,Distributor,Genre,2020 Gross,Tickets Sold,id,titleType,originalTitle,isAdult,startYear,endYear,runtimeMinutes,genres
+1,Bad Boys For Life,2020-01-17T00:00:00Z,Sony Pictures,Action,204417855,22292023,NA,NA,NA,NA,NA,NA,NA,NA
+2,1917,2019-12-25T00:00:00Z,Universal,Thriller/Suspense,157901466,17219352,tt0065362,short,1917,0,1970,\N,34,"Short,War"
+3,Sonic The Hedgehog,2020-02-14T00:00:00Z,Paramount Pictures,Adventure,146066470,15928731,tt11799124,tvEpisode,Sonic The Hedgehog,0,2020,\N,\N,Comedy
+4,Jumanji: The Next Level,2019-12-13T00:00:00Z,Sony Pictures,Adventure,124736710,13602694,tt11443076,tvEpisode,Jumanji: The Next Level,0,2019,\N,27,"Comedy,Talk-Show"
+5,Star Wars: The Rise of Skyw…,2019-12-20T00:00:00Z,Walt Disney,Adventure,124496308,13576478,NA,NA,NA,NA,NA,NA,NA,NA
+6,Birds of Prey (And the Fant…,2020-02-07T00:00:00Z,Warner Bros.,Action,84158461,9177585,NA,NA,NA,NA,NA,NA,NA,NA
+7,Dolittle,2020-01-17T00:00:00Z,Universal,Adventure,77047065,8402079,tt11625976,tvEpisode,Dolittle,0,2020,\N,\N,Comedy
+8,The Invisible Man,2020-02-28T00:00:00Z,Universal,Horror,64914050,7078958,tt0024184,movie,The Invisible Man,0,1933,\N,71,"Horror,Sci-Fi"
+9,The Call of the Wild,2020-02-21T00:00:00Z,20th Century Studios,Adventure,62342368,6798513,tt0000654,short,The Call of the Wild,0,1908,\N,16,"Action,Short"
+10,Onward,2020-03-06T00:00:00Z,Walt Disney,Adventure,61555145,6712665,tt11749214,short,Onward,0,2020,\N,12,Short
+11,Tenet,2020-09-03T00:00:00Z,Warner Bros.,Action,58044165,6329788,tt6723592,movie,Tenet,0,2020,\N,150,"Action,Sci-Fi"
+12,Halloween,1978-10-17T00:00:00Z,Compass Internati…,Horror,47274000,5155288,tt0077651,movie,Halloween,0,1978,\N,91,"Horror,Thriller"
+13,Little Women,2019-12-25T00:00:00Z,Sony Pictures,Drama,37593127,4099577,tt0009309,movie,Little Women,0,1918,\N,60,"Drama,Family,Romance"
+14,The Gentlemen,2020-01-24T00:00:00Z,STX Entertainment,Action,36471796,3977295,tt0059265,movie,Die Herren,0,1965,\N,110,"Comedy,Drama"
+15,Just Mercy,2020-01-10T00:00:00Z,Warner Bros.,Drama,35733621,3896796,tt11469086,tvEpisode,Just Mercy,0,2019,\N,\N,Talk-Show
+16,Knives Out,2019-11-27T00:00:00Z,Lionsgate,Drama,35244610,3843468,tt11321474,tvEpisode,Knives Out,0,2019,\N,\N,Talk-Show
+17,The Croods: A New Age,2020-11-25T00:00:00Z,Universal,Adventure,32334280,3526093,tt2850386,movie,The Croods: A New Age,0,2020,\N,\N,"Adventure,Animation,Comedy"
+18,Parasite,2019-10-11T00:00:00Z,Neon,Black Comedy,29518856,3219068,tt0084472,movie,Parasite,0,1982,\N,85,"Horror,Sci-Fi"
+19,Frozen II,2019-11-22T00:00:00Z,Walt Disney,Adventure,26934045,2937191,tt11154288,tvEpisode,Frozen II,0,2019,\N,\N,Talk-Show
+20,Fantasy Island,2020-02-14T00:00:00Z,Sony Pictures,Horror,26441782,2883509,tt0077008,tvSeries,Fantasy Island,0,1977,1984,60,"Adventure,Comedy,Drama"
+21,The New Mutants,2020-08-28T00:00:00Z,20th Century Studios,Horror,23855569,2601479,tt12967636,tvEpisode,The New Mutants,0,2020,\N,\N,Talk-Show
+22,Wonder Woman 1984,2020-12-25T00:00:00Z,Warner Bros.,Action,23009311,2509194,tt7126948,movie,Wonder Woman 1984,0,2020,\N,\N,"Action,Adventure,Fantasy"
+23,Like a Boss,2020-01-10T00:00:00Z,Paramount Pictures,Comedy,22169514,2417613,tt10502136,short,Like a Boss,0,2019,\N,\N,"Comedy,Short"
+24,Unhinged,2020-08-21T00:00:00Z,Solstice Studios,Thriller/Suspense,20831465,2271697,tt0180274,movie,Unhinged,0,1982,\N,79,Horror
+25,The Photograph,2020-02-14T00:00:00Z,Universal,Drama,20578185,2244076,tt0163915,tvShort,Zdjecie,0,1995,\N,32,"Documentary,Short"
+26,Spies in Disguise,2019-12-25T00:00:00Z,20th Century Fox,Adventure,19714592,2149900,tt11419988,tvEpisode,Spies in Disguise,0,2019,\N,\N,Talk-Show
+27,The War with Grandpa,2020-10-09T00:00:00Z,101 Studios,Comedy,18861607,2056881,tt4532038,movie,War with Grandpa,0,2020,\N,94,"Comedy,Drama,Family"
+28,Underwater,2020-01-10T00:00:00Z,20th Century Fox,Thriller/Suspense,17291078,1885613,tt0649372,tvEpisode,Underwater,0,1971,\N,60,"Action,Adventure,Crime"
+29,The Turning,2020-01-24T00:00:00Z,Universal,Horror,15472775,1687325,tt0105660,movie,The Turning,0,1992,\N,91,Drama
+30,Gretel & Hansel,2020-01-31T00:00:00Z,United Artists,Horror,15347654,1673680,tt11707482,tvEpisode,Gretel & Hansel,0,2020,\N,23,"Comedy,Talk-Show"
+31,Honest Thief,2020-10-16T00:00:00Z,Open Road,Thriller/Suspense,14163574,1544555,tt1838556,movie,Honest Thief,0,2020,\N,92,"Action,Crime,Drama"
+32,The Way Back,2020-03-06T00:00:00Z,Warner Bros.,Drama,13590514,1482062,tt0006247,movie,The Way Back,0,1915,\N,\N,Crime
+33,My Hero Academia: Heroes: R…,2020-02-26T00:00:00Z,FUNimation,Adventure,13553826,1478061,NA,NA,NA,NA,NA,NA,NA,NA
+34,Uncut Gems,2019-12-25T00:00:00Z,A24,Thriller/Suspense,13467396,1468636,tt11533856,tvEpisode,Uncut Gems,0,2020,\N,26,"Comedy,Talk-Show"
+35,Brahms: The Boy II,2020-02-21T00:00:00Z,STX Entertainment,Horror,12611536,1375303,tt11854868,tvEpisode,Brahms: The Boy II,0,2020,\N,\N,Talk-Show
+36,Jojo Rabbit,2019-10-18T00:00:00Z,Fox Searchlight,Black Comedy,11791356,1285862,tt11368626,tvEpisode,Jojo Rabbit,0,2019,\N,23,"Comedy,Talk-Show"
+37,Impractical Jokers: The Movie,2020-02-21T00:00:00Z,truTV,Comedy,10466091,1141340,tt9208444,movie,Impractical Jokers: The Movie,0,2020,\N,92,Comedy
+38,I Still Believe,2020-03-13T00:00:00Z,Lionsgate,Drama,10410004,1135223,tt2336313,short,I Still Believe,0,2012,\N,6,"Crime,Horror,Short"
+39,Emma.,2020-02-21T00:00:00Z,Focus Features,Drama,10055355,1096549,tt9214832,movie,Emma.,0,2020,\N,124,"Comedy,Drama"
+40,Bloodshot,2020-03-13T00:00:00Z,Sony Pictures,Action,10021787,1092888,tt11945294,tvEpisode,Bloodshot,0,2020,\N,\N,Talk-Show
+41,The Grudge,2020-01-03T00:00:00Z,Sony Pictures,Horror,9812035,1070014,tt0005431,short,The Grudge,0,1915,\N,20,"Short,Western"
+42,Come Play,2020-10-30T00:00:00Z,Focus Features,Horror,9505540,1036591,tt10691612,short,Come Play,0,2018,\N,\N,"Drama,Horror,Short"
+43,Let Him Go,2020-11-06T00:00:00Z,Focus Features,Thriller/Suspense,9347940,1019404,tt1622506,tvEpisode,Let Him Go,0,2009,\N,\N,Horror
+44,Freaky,2020-11-13T00:00:00Z,Universal,Horror,8702060,948970,tt0319424,short,Freaky,0,2002,\N,27,Short
+45,Downhill,2020-02-14T00:00:00Z,Searchlight Pictures,Drama,8287061,903714,tt0223165,short,Downhill,0,1973,\N,36,"Drama,Short"
+46,Weathering With You,2020-01-15T00:00:00Z,GKIDS,Drama,7798703,850458,NA,NA,NA,NA,NA,NA,NA,NA
+47,Ford v. Ferrari,2019-11-15T00:00:00Z,20th Century Fox,Drama,7648018,834025,NA,NA,NA,NA,NA,NA,NA,NA
+48,Cats,2019-12-20T00:00:00Z,Universal,Musical,7196675,784806,tt0173714,movie,Cats,0,1998,\N,120,Musical
+49,Bombshell,2019-12-13T00:00:00Z,Lionsgate,Drama,7172836,782206,tt0023825,movie,Bombshell,0,1933,\N,96,"Comedy,Drama,Romance"
+50,It's a Wonderful Life,1946-12-20T00:00:00Z,NA,Drama,6644000,724536,tt0038650,movie,It's a Wonderful Life,0,1946,\N,130,"Drama,Family,Fantasy"
+51,The Hunt,2020-03-13T00:00:00Z,Universal,Thriller/Suspense,5812500,633860,tt0005526,short,The Hunt,0,1915,\N,\N,"Comedy,Short"
+52,The Rhythm Section,2020-01-31T00:00:00Z,Paramount Pictures,Thriller/Suspense,5437971,593017,tt11712748,tvEpisode,The Rhythm Section,0,2020,\N,20,"Comedy,Talk-Show"
+53,Monster Hunter,2020-12-18T00:00:00Z,Sony Pictures,Action,5018403,547263,tt12240392,movie,Monster Hunter,0,2019,\N,\N,Action
+54,The SpongeBob Movie: Sponge…,2020-08-14T00:00:00Z,Paramount Pictures,Adventure,4810790,524622,NA,NA,NA,NA,NA,NA,NA,NA
+55,Hocus Pocus,1993-07-16T00:00:00Z,Walt Disney,Comedy,4777471,520989,tt0107120,movie,Hocus Pocus,0,1993,\N,96,"Comedy,Family,Fantasy"
+56,National Lampoon’s Christma…,1989-12-01T00:00:00Z,Warner Bros.,Comedy,4593728,500951,NA,NA,NA,NA,NA,NA,NA,NA
+57,Richard Jewell,2019-12-13T00:00:00Z,Warner Bros.,Drama,4523325,493274,tt11177098,tvEpisode,Richard Jewell,0,2019,\N,\N,\N
+58,The Broken Hearts Gallery,2020-09-11T00:00:00Z,Sony Pictures,Romantic Comedy,4066487,443455,tt2140571,movie,The Broken Hearts Gallery,0,2020,\N,108,"Comedy,Romance"
+59,Infidel,2020-09-18T00:00:00Z,Cloudburst Entert…,Thriller/Suspense,4051990,441874,tt1006894,short,Infidel,0,2002,\N,9,"Drama,Short"
+60,A Christmas Story,1983-11-18T00:00:00Z,MGM,Comedy,3896391,424906,tt0085334,movie,A Christmas Story,0,1983,\N,94,"Comedy,Family"
+61,Portrait of a Lady on Fire,2019-12-06T00:00:00Z,Neon,Drama,3759854,410016,tt11622318,tvEpisode,Portrait of a Lady on Fire,0,2019,\N,\N,"Comedy,Talk-Show"
+62,News of the World,2020-12-25T00:00:00Z,Universal,Western,3717170,405362,tt6878306,movie,News of the World,0,2020,\N,\N,"Drama,Western"
+63,Bill & Ted Face the Music,2020-08-28T00:00:00Z,United Artists,Comedy,3439660,375099,tt1086064,movie,Bill & Ted Face the Music,0,2020,\N,88,"Adventure,Comedy,Music"
+64,2020 Oscar Shorts,2020-01-29T00:00:00Z,ShortsHD,Multiple Genres,3304748,360386,NA,NA,NA,NA,NA,NA,NA,NA
+65,Fatale,2020-12-18T00:00:00Z,Lionsgate,Thriller/Suspense,3089694,336935,tt0411384,video,Fatale,1,2003,\N,127,"Adult,Drama,Romance"
+66,Queen & Slim,2019-11-27T00:00:00Z,Universal,Drama,3089365,336899,tt11343160,tvEpisode,Queen & Slim,0,2019,\N,\N,Talk-Show
+67,The Empty Man,2020-10-23T00:00:00Z,20th Century Studios,Horror,2995698,326684,tt1717703,movie,The Empty Man,0,2010,\N,57,Drama
+68,My Boyfriend’s Meds,2020-02-21T00:00:00Z,Lionsgate,Romantic Comedy,2971116,324003,NA,NA,NA,NA,NA,NA,NA,NA
+69,The Last Full Measure,2020-01-24T00:00:00Z,Roadside Attractions,Drama,2949212,321615,tt0415927,short,The Last Full Measure,0,2004,\N,18,"Drama,Short"
+70,A Beautiful Day in the Neig…,2019-11-22T00:00:00Z,Sony Pictures,Drama,2894475,315646,NA,NA,NA,NA,NA,NA,NA,NA
+71,Words on Bathroom Walls,2020-08-21T00:00:00Z,Roadside Attractions,Drama,2542518,277264,tt8045906,movie,Words on Bathroom Walls,0,2020,\N,111,Drama
+72,After We Collided,2020-09-11T00:00:00Z,NA,Drama,2386483,260248,tt10362466,movie,After We Collided,0,2020,\N,105,"Drama,Romance"
+73,The Nightmare Before Christmas,1993-10-13T00:00:00Z,Walt Disney,Musical,2286000,249291,tt0107688,movie,The Nightmare Before Christmas,0,1993,\N,76,"Animation,Family,Fantasy"
+74,The Lodge,2020-02-07T00:00:00Z,Neon,Horror,2138907,233250,tt0264272,tvSeries,The Lodge,0,1993,\N,\N,Drama
+75,Half Brothers,2020-12-04T00:00:00Z,Focus Features,Comedy,2016150,219863,tt10032396,tvSeries,Half Brothers,0,\N,\N,\N,"Comedy,Drama"
+76,The Personal History of Dav…,2020-08-28T00:00:00Z,Searchlight Pictures,Drama,1876298,204612,NA,NA,NA,NA,NA,NA,NA,NA
+77,The Wretched,2020-05-01T00:00:00Z,IFC Midnight,Horror,1815440,197976,tt12393356,tvEpisode,The Wretched,0,2020,\N,\N,Horror
+78,Joker,2019-10-04T00:00:00Z,Warner Bros.,Thriller/Suspense,1678800,183075,tt0102166,movie,Joker,0,1991,\N,108,Comedy
+79,The Rental,2020-07-24T00:00:00Z,IFC Films,Thriller/Suspense,1637548,178576,tt10003008,movie,The Rental,0,2020,\N,88,"Horror,Thriller"
+80,Star Wars Ep. V: The Empire…,1981-07-31T00:00:00Z,20th Century Fox,Adventure,1580209,172323,NA,NA,NA,NA,NA,NA,NA,NA
+81,Once Upon a Time…in Hollywo…,2019-07-26T00:00:00Z,Sony Pictures,Thriller/Suspense,1406198,153347,NA,NA,NA,NA,NA,NA,NA,NA
+82,2 Hearts,2020-10-16T00:00:00Z,Freestyle Releasing,Drama,1349284,147141,tt5616176,movie,2 Hearts,0,2020,\N,\N,"Drama,Romance"
+83,Jay and Silent Bob Reboot,2019-10-15T00:00:00Z,Fathom Events,Comedy,1330666,145110,tt12930652,tvEpisode,Jay and Silent Bob Reboot,0,2020,\N,\N,"Comedy,Talk-Show"
+84,Train to Busan Presents: Pe…,2020-08-21T00:00:00Z,Well Go USA,Horror,1224525,133535,NA,NA,NA,NA,NA,NA,NA,NA
+85,Promising Young Woman,2020-12-25T00:00:00Z,Focus Features,Black Comedy,1208180,131753,tt9620292,movie,Promising Young Woman,0,2020,\N,113,"Comedy,Crime,Drama"
+86,Met Opera — Agrippina,2020-02-29T00:00:00Z,Fathom Events,Concert/Perfor…,1150000,125408,NA,NA,NA,NA,NA,NA,NA,NA
+87,True to the Game 2: Gena’s …,2020-11-06T00:00:00Z,Faith Media Distr…,Thriller/Suspense,1117808,121898,NA,NA,NA,NA,NA,NA,NA,NA
+88,The Assistant,2020-01-31T00:00:00Z,Bleecker Street,Drama,1100310,119990,tt0118648,movie,The Assistant,0,1997,\N,116,"Crime,Drama,Romance"
+89,IP Man: The Finale,2019-12-25T00:00:00Z,Well Go USA,Action,1089355,118795,NA,NA,NA,NA,NA,NA,NA,NA
+90,Love and Monsters,2020-10-16T00:00:00Z,Paramount Pictures,Adventure,1070714,116762,tt12573796,tvEpisode,Love and Monsters,0,2016,\N,\N,Drama
+91,Relic,2020-07-03T00:00:00Z,IFC Midnight,Thriller/Suspense,1047083,114185,tt0702998,tvEpisode,Relic,0,2003,\N,44,"Adventure,Drama,Romance"
+92,The Tax Collector,2020-08-07T00:00:00Z,RLJ Entertainment,Action,1044212,113872,tt0529665,tvEpisode,The Tax Collector,0,1961,\N,60,Western
+93,Die Hard,1988-07-15T00:00:00Z,20th Century Fox,Action,1036063,112983,tt0095016,movie,Die Hard,0,1988,\N,132,"Action,Thriller"
+94,Becky,2020-06-05T00:00:00Z,Quiver,Thriller/Suspense,1002852,109362,tt0017666,movie,Becky,0,1927,\N,70,"Comedy,Romance"
+95,Break the Silence The Movie,2020-09-24T00:00:00Z,Trafalgar Releasing,Documentary,1000000,109051,NA,NA,NA,NA,NA,NA,NA,NA
+96,Elf,2003-11-07T00:00:00Z,New Line,Comedy,905000,98691,tt0319343,movie,Elf,0,2003,\N,97,"Comedy,Family,Fantasy"
+97,All My Life,2020-12-04T00:00:00Z,Universal,Drama,899585,98100,tt0205731,short,All My Life,0,1966,\N,3,"Music,Short"
+98,The Song of Names,2019-12-25T00:00:00Z,Sony Pictures Cla…,Drama,891579,97227,tt1657517,movie,The Song of Names,0,2019,\N,113,"Drama,Music,Mystery"
+99,Toy Story,1995-11-22T00:00:00Z,Walt Disney,Adventure,870305,94907,tt0114709,movie,Toy Story,0,1995,\N,81,"Adventure,Animation,Comedy"
+100,Met Opera: Wozzeck,2020-01-11T00:00:00Z,Fathom Events,Concert/Perfor…,863000,94111,tt12522096,movie,Met Opera: Wozzeck,0,2020,\N,\N,\N
+101,Cut Throat City,2020-07-31T00:00:00Z,Well Go USA,Drama,855894,93336,tt12723874,tvEpisode,Cut Throat City,0,2020,\N,\N,Talk-Show
+102,Sarileru Neekevvaru,2020-01-10T00:00:00Z,Great India Films,Action,821000,89531,tt10773090,movie,Sarileru Neekevvaru,0,2020,\N,169,"Action,Comedy,Drama"
+103,Vanguard,2020-11-20T00:00:00Z,Gravitas Ventures,Action,793525,86534,tt0556206,tvEpisode,Vanguard,0,2005,\N,42,"Drama,Fantasy,Mystery"
+104,Pinocchio,2020-12-25T00:00:00Z,Roadside Attractions,Adventure,782555,85338,tt0032910,movie,Pinocchio,0,1940,\N,88,"Animation,Comedy,Family"
+105,Color Out of Space,2020-01-24T00:00:00Z,RLJ Entertainment,Horror,765561,83485,tt11718538,tvEpisode,Color Out of Space,0,2020,\N,20,"Comedy,Talk-Show"
+106,Shortcut,2020-09-25T00:00:00Z,Gravitas Ventures,Horror,758223,82685,tt10101154,short,Shortcut,0,2020,\N,\N,"Sci-Fi,Short"
+107,Possessor,2020-10-02T00:00:00Z,Neon,Thriller/Suspense,752885,82103,tt0828733,tvEpisode,Possessor,0,2000,\N,47,Fantasy
+108,Coco,2017-11-22T00:00:00Z,Walt Disney,Musical,734000,80043,tt0353313,short,Coco,0,2000,\N,2,"Animation,Comedy,Short"
+109,"Monsters, Inc.",2001-11-02T00:00:00Z,Walt Disney,Adventure,726000,79171,tt0198781,movie,"Monsters, Inc.",0,2001,\N,92,"Adventure,Animation,Comedy"
+110,Baaghi 3,2020-03-06T00:00:00Z,FIP,Action,721439,78673,tt11924182,tvEpisode,Baaghi 3,0,2020,\N,20,"Comedy,Talk-Show"
+111,The Santa Clause,1994-11-11T00:00:00Z,Walt Disney,Adventure,706000,76990,tt0111070,movie,The Santa Clause,0,1994,\N,97,"Comedy,Drama,Family"
+112,The Last Vermeer,2020-11-20T00:00:00Z,Sony Pictures Cla…,Drama,685380,74741,tt8337320,movie,The Last Vermeer,0,2019,\N,117,Drama
+113,The Addams Family,2019-10-11T00:00:00Z,United Artists,Adventure,678926,74037,tt0057729,tvSeries,The Addams Family,0,1964,1966,30,"Comedy,Family,Horror"
+114,The Last Shift,2020-09-25T00:00:00Z,Sony Pictures,Comedy,643658,70191,tt0478871,tvMovie,The Last Shift,0,2005,\N,48,Documentary
+115,Synchronic,2020-10-23T00:00:00Z,Well Go USA,Thriller/Suspense,636673,69429,tt9016974,movie,Synchronic,0,2019,\N,96,"Drama,Horror,Sci-Fi"
+116,Maleficent: Mistress of Evil,2019-10-18T00:00:00Z,Walt Disney,Adventure,634868,69233,tt11101466,tvEpisode,Maleficent: Mistress of Evil,0,2019,\N,\N,Talk-Show
+117,Chhapaak,2020-01-10T00:00:00Z,FIP,Drama,604334,65903,tt9614460,movie,Chhapaak,0,2020,\N,120,"Biography,Drama"
+118,Pain & Glory,2019-10-04T00:00:00Z,Sony Pictures Cla…,Drama,599619,65389,NA,NA,NA,NA,NA,NA,NA,NA
+119,Panga,2020-01-24T00:00:00Z,FIP,Drama,582720,63546,tt11045962,video,Panga,0,2018,\N,\N,"Music,Short"
+120,Black Christmas,2019-12-13T00:00:00Z,Universal,Horror,562060,61293,tt0071222,movie,Black Christmas,0,1974,\N,98,"Horror,Mystery,Thriller"
+121,Guardians of the Galaxy,2014-08-01T00:00:00Z,Walt Disney,Action,542000,59105,tt10622824,tvEpisode,Guardians of the Galaxy,0,2014,\N,\N,Documentary
+122,Alone,2020-09-18T00:00:00Z,Magnolia Pictures,Thriller/Suspense,538358,58708,tt0022215,movie,Odna,0,1931,\N,90,Drama
+123,Followed,2020-06-19T00:00:00Z,Global View Enter…,Horror,538179,58689,tt0907622,short,Beikvotea,0,2006,\N,8,"Drama,Short"
+124,The Polar Express,2004-11-10T00:00:00Z,Warner Bros.,Adventure,536000,58451,tt0338348,movie,The Polar Express,0,2004,\N,100,"Adventure,Animation,Comedy"
+125,Harriet,2019-11-01T00:00:00Z,Focus Features,Drama,534455,58282,tt0594137,tvEpisode,Harriet,0,1961,\N,30,Western
+126,Kajillionaire,2020-09-25T00:00:00Z,Focus Features,Drama,531430,57953,tt8143990,movie,Kajillionaire,0,2020,\N,106,"Crime,Drama"
+127,The Call,2020-10-02T00:00:00Z,Atlas Distribution,Horror,516520,56327,tt0001144,short,The Call,0,1910,\N,11,"Drama,Short"
+128,The Big Ugly,2020-07-24T00:00:00Z,Vertical Entertai…,Action,514107,56064,tt9441638,movie,The Big Ugly,0,2020,\N,106,Drama
+129,Dark Waters,2019-11-22T00:00:00Z,Focus Features,Drama,502205,54766,tt0036745,movie,Dark Waters,0,1944,\N,90,"Drama,Film-Noir,Mystery"
+130,The Forgotten Carols,2020-11-20T00:00:00Z,Purdie Distribution,Musical,501629,54703,NA,NA,NA,NA,NA,NA,NA,NA
+131,Spell,2020-10-30T00:00:00Z,Paramount Pictures,Horror,500104,54536,tt0703012,tvEpisode,Spell,0,2004,\N,42,"Adventure,Drama,Romance"
+132,Ava,2020-09-25T00:00:00Z,Vertical Entertai…,Action,497747,54279,tt10574128,short,Ava,0,2018,\N,5,"Drama,Short"
+133,CatVideoFest,2020-02-21T00:00:00Z,Oscilloscope Pict…,Documentary,478775,52211,tt10160722,movie,CatVideoFest 2019,0,2019,\N,70,Reality-TV
+134,A Hidden Life,2019-12-13T00:00:00Z,Fox Searchlight,Drama,456268,49756,tt0890779,tvEpisode,A Hidden Life,0,2006,\N,60,Documentary
+135,Once Were Brothers: Robbie …,2020-02-21T00:00:00Z,Magnolia Pictures,Documentary,449561,49025,NA,NA,NA,NA,NA,NA,NA,NA
+136,Seberg,2019-12-13T00:00:00Z,Amazon Studios,Thriller/Suspense,448009,48855,tt12348856,tvEpisode,Seberg,0,2020,\N,\N,Talk-Show
+137,Infamous,2020-06-12T00:00:00Z,Vertical Entertai…,Action,429148,46799,tt0385424,tvSeries,Infamous,0,2003,\N,60,Crime
+138,Tulsa,2020-08-21T00:00:00Z,Self Distributed,Drama,413522,45095,tt0041994,movie,Tulsa,0,1949,\N,90,"Action,Drama,Romance"
+139,Buddy Games,2020-11-20T00:00:00Z,Paramount Pictures,Comedy,405904,44264,tt7070818,movie,Buddy Games,0,2019,\N,90,Comedy
+140,Yellow Rose,2020-10-08T00:00:00Z,Sony Pictures,Drama,367849,40114,tt0048817,movie,Yellow Rose,0,1955,\N,\N,\N
+141,The Kid Detective,2020-10-16T00:00:00Z,Sony Pictures,Black Comedy,364138,39709,tt8980602,movie,The Kid Detective,0,\N,\N,\N,"Comedy,Drama"
+142,Greed,2020-02-28T00:00:00Z,Sony Pictures Cla…,Comedy,355308,38746,tt0015881,movie,Greed,0,1924,\N,140,"Drama,Thriller,Western"
+143,Thank You For Everything,2019-12-25T00:00:00Z,Entertainment One,Comedy,352149,38402,NA,NA,NA,NA,NA,NA,NA,NA
+144,Ride Your Wave,2020-02-19T00:00:00Z,GKIDS,Comedy,332432,36252,tt11034368,tvEpisode,Ride Your Wave,0,2019,\N,\N,"Comedy,Talk-Show"
+145,Les Misérables,2020-01-10T00:00:00Z,Amazon Studios,Drama,330181,36006,tt0000969,short,Les Misérables,0,1909,\N,\N,"Drama,History,Short"
+146,Ordinary Love,2020-02-14T00:00:00Z,Bleecker Street,Drama,323688,35298,tt0269267,short,Geliebter Alltag,0,2005,\N,13,Short
+147,How the Grinch Stole Christmas,2000-11-17T00:00:00Z,Universal,Adventure,304000,33151,tt0170016,movie,How the Grinch Stole Christmas,0,2000,\N,104,"Comedy,Family,Fantasy"
+148,Save Yourselves!,2020-10-02T00:00:00Z,Bleecker Street,Comedy,301162,32842,tt7873348,movie,Save Yourselves!,0,2020,\N,93,"Comedy,Sci-Fi"
+149,The Informer,2020-11-06T00:00:00Z,Aviron Pictures,Thriller/Suspense,300460,32765,tt0002277,short,The Informer,0,1912,\N,18,"Drama,Short"
+150,Midway,2019-11-08T00:00:00Z,Lionsgate,Action,299520,32663,tt0074899,movie,Midway,0,1976,\N,132,"Action,Drama,History"
+151,The Traitor,2020-01-31T00:00:00Z,Sony Pictures Cla…,Drama,296027,32282,tt0004724,short,The Traitor,0,1914,\N,\N,Short
+152,Judy,2019-09-27T00:00:00Z,Roadside Attractions,Drama,292206,31865,tt0222078,movie,Judy,0,1970,\N,75,"Crime,Drama"
+153,Clemency,2019-12-27T00:00:00Z,Neon,Drama,288343,31444,tt0577001,tvEpisode,Clemency,0,2001,\N,60,"Crime,Drama,Romance"
+154,Created Equal: Clarence Tho…,2020-01-31T00:00:00Z,Manifold Productions,Documentary,282149,30768,NA,NA,NA,NA,NA,NA,NA,NA
+155,Missão: Vingança,2020-11-13T00:00:00Z,Saban Films,Black Comedy,278378,30357,NA,NA,NA,NA,NA,NA,NA,NA
+156,21 Bridges,2019-11-22T00:00:00Z,STX Entertainment,Thriller/Suspense,274740,29960,tt8688634,movie,21 Bridges,0,2019,\N,99,"Action,Crime,Drama"
+157,"Mafia, Inc.",2020-02-14T00:00:00Z,Films Seville,Drama,264552,28849,NA,NA,NA,NA,NA,NA,NA,NA
+158,Tokyo Godfathers,2004-01-16T00:00:00Z,IDP Distribution,Adventure,237581,25908,tt0388473,movie,Tôkyô goddofâzâzu,0,2003,\N,93,"Adventure,Animation,Comedy"
+159,The Climb,2020-11-13T00:00:00Z,Sony Pictures Cla…,Drama,234429,25564,tt0090851,movie,The Climb,0,1986,\N,90,Adventure
+160,The Secrets We Keep,2020-09-16T00:00:00Z,Bleecker Street,Thriller/Suspense,231119,25203,tt10487500,tvEpisode,The Secrets We Keep,0,2019,\N,\N,\N
+161,Frozen,2013-11-27T00:00:00Z,Walt Disney,Musical,215000,23446,tt0125279,movie,Jidu hanleng,0,1996,\N,99,Drama
+162,Legend of Deification,2020-10-01T00:00:00Z,Well Go USA,Adventure,214670,23410,tt11177804,movie,Jiang Ziya,0,2020,\N,110,"Animation,Family,Fantasy"
+163,Dr. Seuss’ The Grinch,2018-11-09T00:00:00Z,Universal,Adventure,214000,23336,NA,NA,NA,NA,NA,NA,NA,NA
+164,Wild Mountain Thyme,2020-12-11T00:00:00Z,Bleecker Street,Drama,213441,23276,tt6842770,movie,Wild Mountain Thyme,0,2021,\N,\N,"Drama,Romance"
+165,Beanpole,2020-01-29T00:00:00Z,Kino Lorber,Drama,196258,21402,tt0272476,tvMovie,Beanpole,0,1990,\N,30,Comedy
+166,The Doors: Break on Thru — …,2020-02-12T00:00:00Z,Trafalgar Releasing,Documentary,186920,20383,NA,NA,NA,NA,NA,NA,NA,NA
+167,The Outpost,2020-07-03T00:00:00Z,Screen Media Films,Action,186634,20352,tt0148571,short,The Outpost,0,1942,\N,7,"Animation,Short"
+168,The Wolf of Snow Hollow,2020-10-09T00:00:00Z,Orion Classics,Horror,185026,20177,NA,NA,NA,NA,NA,NA,NA,NA
+169,Come Away,2020-11-13T00:00:00Z,Relativity,Drama,184477,20117,tt5714470,movie,Come Away,0,2020,\N,94,"Adventure,Drama,Fantasy"
+170,63 Up,2019-11-27T00:00:00Z,BritBox,Documentary,183940,20058,tt8929142,tvSeries,63 Up,0,2019,\N,145,Documentary
+171,The Good Liar,2019-11-15T00:00:00Z,Warner Bros.,Thriller/Suspense,182779,19932,tt11301472,tvEpisode,The Good Liar,0,2019,\N,18,"Comedy,Talk-Show"
+172,And Then We Danced,2020-02-07T00:00:00Z,Music Box Films,Drama,177262,19330,tt8963708,movie,And Then We Danced,0,2019,\N,113,"Drama,Romance"
+173,No Escape,2020-09-18T00:00:00Z,Vertical Entertai…,Horror,167962,18316,tt0025568,movie,No Escape,0,1934,\N,71,Drama
+174,Extra Ordinary,2020-03-06T00:00:00Z,Cranked Up Films,Horror,164346,17922,tt0574049,tvEpisode,Extra Ordinary,0,2003,\N,45,Drama
+175,Cunningham,2019-12-13T00:00:00Z,Magnolia Pictures,Documentary,163020,17777,tt8574836,movie,Cunningham,0,2019,\N,93,"Biography,Documentary,Music"
+176,Ammonite,2020-11-13T00:00:00Z,Neon,Drama,160930,17549,tt7983894,movie,Ammonite,0,2020,\N,120,"Drama,Romance"
+177,A Call to Spy,2020-10-02T00:00:00Z,IFC Films,Drama,159014,17340,tt7698468,movie,A Call to Spy,0,2019,\N,123,"Biography,Drama,Thriller"
+178,The Dark and The Wicked,2020-11-06T00:00:00Z,RLJ Entertainment,Horror,152261,16604,NA,NA,NA,NA,NA,NA,NA,NA
+179,The Burnt Orange Heresy,2020-03-06T00:00:00Z,Sony Pictures Cla…,Thriller/Suspense,144201,15725,tt8342680,movie,The Burnt Orange Heresy,0,2019,\N,99,"Action,Drama,Thriller"
+180,Always & Forever,2020-11-20T00:00:00Z,RLJ Entertainment,Thriller/Suspense,144161,15720,tt2087677,short,Always & Forever,0,2007,\N,7,"Animation,Short"
+181,Wendy,2020-02-28T00:00:00Z,Searchlight Pictures,Drama,143518,15650,tt0288314,movie,Wendy,0,1967,\N,86,\N
+182,Incitement,2020-01-31T00:00:00Z,Greenwich,Thriller/Suspense,140306,15300,tt0753267,tvEpisode,Incitement,0,1975,\N,\N,"Crime,Drama"
+183,Archive,2020-07-10T00:00:00Z,Vertical Entertai…,NA,139593,15222,tt0270838,short,Archive,0,1998,\N,5,"Animation,Sci-Fi,Short"
+184,Burden,2020-02-28T00:00:00Z,101 Studios,Drama,139270,15187,tt0629192,tvEpisode,Burden,0,1998,\N,46,"Crime,Drama,Mystery"
+185,Lupin III: The First,2020-10-18T00:00:00Z,GKIDS,Adventure,139066,15165,tt10621032,movie,Lupin III: The First,0,2019,\N,93,"Action,Adventure,Animation"
+186,The Nest,2020-09-18T00:00:00Z,IFC Films,Drama,137852,15032,tt0018198,movie,The Nest,0,1927,\N,80,Drama
+187,Beneath Us,2020-03-06T00:00:00Z,NME,Horror,137260,14968,tt11202734,short,Beneath Us,0,2019,\N,7,"Horror,Short"
+188,Ashfall,2019-12-20T00:00:00Z,CJ Entertainment,Action,136379,14872,tt0251593,movie,Ashfall,0,1991,\N,\N,\N
+189,The Times of Bill Cunningham,2020-02-14T00:00:00Z,Greenwich,Documentary,134288,14644,tt7283212,movie,The Times of Bill Cunningham,0,2018,\N,74,Documentary
+190,Fantastic Fungi,2019-09-20T00:00:00Z,Area 23a,Documentary,129130,14081,tt8258074,movie,Fantastic Fungi,0,2019,\N,81,Documentary
+191,Alita: Battle Angel,2019-02-14T00:00:00Z,20th Century Fox,Action,128000,13958,tt0437086,movie,Alita: Battle Angel,0,2019,\N,122,"Action,Adventure,Sci-Fi"
+192,Saint Frances,2020-02-28T00:00:00Z,Oscilloscope Pict…,Multiple Genres,127275,13879,tt9016016,movie,Saint Frances,0,2019,\N,106,"Comedy,Drama"
+193,Corpus Christi,2020-02-14T00:00:00Z,Film Movement,Drama,127240,13875,tt0380098,tvSeries,Corpus Christi,0,1997,\N,52,"Documentary,History"
+194,The Man Standing Next,2020-01-24T00:00:00Z,Capelight Pictures,Thriller/Suspense,113527,12380,tt11358398,movie,Namsanui bujangdeul,0,2020,\N,114,"Drama,History,Thriller"
+195,Murder in the Woods,2020-08-14T00:00:00Z,Rezinate Entertai…,Horror,109299,11919,tt2551006,short,Murder in the Woods,0,2009,\N,\N,"Horror,Short"
+196,The Muppet Christmas Carol,1992-12-11T00:00:00Z,Walt Disney,Comedy,105400,11494,tt0104940,movie,The Muppet Christmas Carol,0,1992,\N,85,"Comedy,Drama,Family"
+197,Hope Gap,2020-03-06T00:00:00Z,Roadside Attractions,Drama,104732,11421,tt7587876,movie,Hope Gap,0,2019,\N,100,"Drama,Romance"
+198,Honeyland,2019-07-26T00:00:00Z,Neon,Documentary,102719,11201,tt0026486,short,Honeyland,0,1935,\N,10,"Animation,Family,Fantasy"
+199,Citizen K,2019-11-22T00:00:00Z,Greenwich,Documentary,101762,11097,tt10703826,movie,Citizen K,0,2019,\N,126,Documentary
+200,Archenemy,2020-12-11T00:00:00Z,RLJ Entertainment,Action,101360,11053,tt11274100,movie,Archenemy,0,2021,\N,\N,"Action,Adventure"
+201,Made in Italy,2020-08-07T00:00:00Z,IFC Films,Drama,101339,11051,tt0061934,movie,Made in Italy,0,1965,\N,100,Comedy
+202,First Cow,2020-03-06T00:00:00Z,A24,Drama,101068,11021,tt9231040,movie,First Cow,0,2019,\N,122,Drama
+203,The Silencing,2020-08-14T00:00:00Z,Saban Films,Thriller/Suspense,100746,10986,tt0271787,short,The Silencing,0,2000,\N,14,Short
+204,The Woman Who Loves Giraffes,2019-10-04T00:00:00Z,Zeitgeist,Documentary,99508,10851,tt8901942,movie,The Woman Who Loves Giraffes,0,2018,\N,123,Documentary
+205,Come to Daddy,2020-02-07T00:00:00Z,Saban Films,Black Comedy,96713,10546,tt1617064,video,Come to Daddy,0,2009,\N,29,"Documentary,Romance,Short"
+206,Tesla,2020-08-21T00:00:00Z,IFC Films,Drama,93147,10157,tt0228931,tvMovie,Tesla,0,1993,\N,107,Drama
+207,Invisible Life,2019-12-20T00:00:00Z,Amazon Studios,Drama,92752,10114,tt12246434,tvSeries,Invisible Life,0,\N,\N,\N,Drama
+208,Zombieland: Double Tap,2019-10-18T00:00:00Z,Sony Pictures,Comedy,90559,9875,tt11082738,tvEpisode,Zombieland: Double Tap,0,2019,\N,\N,Talk-Show
+209,First Lady,2020-02-14T00:00:00Z,ArtAffects,Romantic Comedy,89885,9802,tt0028874,movie,First Lady,0,1937,\N,83,Comedy
+210,On the Basis of Sex,2018-12-25T00:00:00Z,Focus Features,Drama,82150,8958,tt4669788,movie,On the Basis of Sex,0,2018,\N,120,"Biography,Drama"
+211,StarDog and TurboCat,2020-06-19T00:00:00Z,Vivafilm,Adventure,80496,8778,tt7531096,movie,StarDog and TurboCat,0,2019,\N,90,"Animation,Comedy,Family"
+212,Percy,2020-10-09T00:00:00Z,Mongrel Media,Drama,76511,8343,tt0016211,movie,Percy,0,1925,\N,60,Comedy
+213,Alien,1979-05-25T00:00:00Z,20th Century Fox,Horror,75000,8178,tt0078748,movie,Alien,0,1979,\N,117,"Horror,Sci-Fi"
+214,Pray: The Story of Patrick …,2020-10-09T00:00:00Z,ArtAffects,Documentary,72347,7889,NA,NA,NA,NA,NA,NA,NA,NA
+215,How to Build a Girl,2020-05-08T00:00:00Z,IFC Films,Comedy,70632,7702,tt4193072,movie,How to Build a Girl,0,2019,\N,102,Comedy
+216,Come and See,2001-02-02T00:00:00Z,NA,Drama,62774,6845,tt0091251,movie,Idi i smotri,0,1985,\N,142,"Drama,War"
+217,We Summon the Darkness,2020-05-22T00:00:00Z,Saban Films,Horror,60794,6629,tt8058874,movie,We Summon the Darkness,0,2019,\N,91,"Horror,Music,Thriller"
+218,My Brothers’ Crossing,2020-09-03T00:00:00Z,Atlas Distribution,Drama,59390,6476,NA,NA,NA,NA,NA,NA,NA,NA
+219,Summerland,2020-07-31T00:00:00Z,IFC Films,Drama,58434,6372,tt0400037,tvSeries,Summerland,0,2004,2005,60,Drama
+220,Bacurau,2020-03-06T00:00:00Z,Kino Lorber,Action,58115,6337,tt2762506,movie,Bacurau,0,2019,\N,131,"Adventure,Horror,Mystery"
+221,The Godfather: Part III,1990-12-25T00:00:00Z,Paramount Pictures,Drama,58097,6335,tt0099674,movie,The Godfather: Part III,0,1990,\N,162,"Crime,Drama"
+222,The Lighthouse,2019-10-18T00:00:00Z,A24,Horror,57784,6301,tt0167255,movie,The Lighthouse,0,1997,\N,\N,\N
+223,The Dissident,2020-12-25T00:00:00Z,Briarcliff Entert…,Documentary,57000,6215,tt0738556,tvEpisode,The Dissident,0,1984,\N,60,"Action,Adventure,Sci-Fi"
+224,The Whistlers,2020-02-28T00:00:00Z,Magnolia Pictures,Comedy,55608,6064,tt12657002,tvEpisode,The Whistlers,0,2015,\N,\N,Horror
+225,A Simple Wedding,2020-02-14T00:00:00Z,Blue Fox Entertai…,Romantic Comedy,54415,5934,tt6328242,movie,A Simple Wedding,0,2018,\N,88,"Comedy,Romance"
+226,Varda by Agnes,2019-11-22T00:00:00Z,Janus Films,Documentary,53134,5794,NA,NA,NA,NA,NA,NA,NA,NA
+227,No Safe Spaces,2019-12-06T00:00:00Z,Atlas Distribution,Documentary,51303,5594,tt11432378,tvEpisode,No Safe Spaces,0,2019,\N,41,"Comedy,Talk-Show"
+228,Miss Fisher & The Crypt Of …,2020-03-13T00:00:00Z,Acorn TV,Adventure,51032,5565,NA,NA,NA,NA,NA,NA,NA,NA
+229,Henchmen,2020-10-02T00:00:00Z,Entertainment One,Adventure,49676,5417,tt1235429,short,Henchmen,0,2007,\N,12,Short
+230,The Way I See it,2020-09-18T00:00:00Z,Focus Features,Documentary,49030,5346,NA,NA,NA,NA,NA,NA,NA,NA
+231,VHYes,2020-01-12T00:00:00Z,Oscilloscope Pict…,Comedy,47037,5129,tt10287376,movie,VHYes,0,2019,\N,72,Comedy
+232,Enter the Fat Dragon,2020-02-14T00:00:00Z,Well Go USA,Action,46855,5109,tt0077538,movie,Fei Lung gwoh gong,0,1978,\N,92,"Action,Comedy"
+233,Play the Flute,2019-01-28T00:00:00Z,Five & Two Pictures,Drama,46812,5104,tt6356220,movie,Play the Flute,0,2019,\N,103,Drama
+234,Playing with Fire,2019-11-08T00:00:00Z,Paramount Pictures,Comedy,44957,4902,tt0007190,movie,Playing with Fire,0,1916,\N,\N,Drama
+235,Shadow in the Cloud,NA,NA,Action,39117,4265,tt9691136,movie,Shadow in the Cloud,0,2020,\N,83,"Action,Horror"
+236,Doctor Sleep,2019-11-08T00:00:00Z,Warner Bros.,Horror,38615,4211,tt11241490,tvEpisode,Doctor Sleep,0,2019,\N,\N,Talk-Show
+237,Three Christs,2020-01-10T00:00:00Z,IFC Films,Drama,37788,4120,tt5706370,movie,Three Christs,0,2017,\N,109,Drama
+238,Other Music,2020-04-17T00:00:00Z,Oscilloscope Pict…,Documentary,37191,4055,tt2933798,short,Other Music,0,2006,\N,4,"Comedy,Short"
+239,Solo Brathuke So Better,2020-12-25T00:00:00Z,Zee Studios,Drama,35000,3816,tt11433696,movie,Solo Brathuke So Better,0,\N,\N,122,Drama
+240,Juvenile Delinquents,2020-08-07T00:00:00Z,Atlas Distribution,Drama,34292,3739,tt6570382,movie,Shao nian fan,0,1985,\N,98,Drama
+241,Best of Catvideofest,2020-04-03T00:00:00Z,Oscilloscope Pict…,Documentary,34287,3739,NA,NA,NA,NA,NA,NA,NA,NA
+242,RBG,2018-05-04T00:00:00Z,Magnolia Pictures,Documentary,34000,3707,tt12445760,tvEpisode,RBG,0,2018,\N,\N,Talk-Show
+243,True History Of The Kelly Gang,2020-04-24T00:00:00Z,IFC Films,Drama,33816,3687,NA,NA,NA,NA,NA,NA,NA,NA
+244,Swallow,2020-03-06T00:00:00Z,IFC Films,Thriller/Suspense,33419,3644,tt0152719,video,Swallow,1,1994,\N,70,Adult
+245,Waves,2019-11-15T00:00:00Z,A24,Musical,32518,3546,tt0199388,short,Bølgene,0,1999,\N,11,Short
+246,Honey Boy,2019-11-08T00:00:00Z,Amazon Studios,Drama,32516,3545,tt11408942,tvEpisode,Honey Boy,0,2019,\N,19,"Comedy,Talk-Show"
+247,Embattled,2020-11-20T00:00:00Z,IFC Films,Drama,32259,3517,tt6539992,movie,Embattled,0,2020,\N,\N,"Action,Drama,Sport"
+248,Nick Mason’s Saucerful of S…,2020-03-10T00:00:00Z,Trafalgar Releasing,Concert/Perfor…,31739,3461,NA,NA,NA,NA,NA,NA,NA,NA
+249,Max Winslow and the House o…,2020-05-29T00:00:00Z,3DLive,Thriller/Suspense,31252,3408,NA,NA,NA,NA,NA,NA,NA,NA
+250,After Parkland,2020-02-12T00:00:00Z,Kino Lorber,Documentary,30444,3319,tt9099136,movie,After Parkland,0,2019,\N,92,Documentary
+251,Rent-A-Pal,2020-09-11T00:00:00Z,IFC Midnight,Horror,29615,3229,tt12274228,movie,Rent-A-Pal,0,2020,\N,108,Thriller
+252,Olympic Dreams,2020-02-14T00:00:00Z,IFC Films,Romantic Comedy,29450,3211,tt12427154,tvEpisode,Olympic Dreams,0,2020,\N,\N,Talk-Show
+253,Tread,2020-02-21T00:00:00Z,Gravitas Ventures,Documentary,29136,3177,tt0209430,video,Tread,0,1994,\N,\N,"Documentary,Sport"
+254,Buffaloed,2020-02-14T00:00:00Z,Magnolia Pictures,Comedy,29118,3175,tt8647310,movie,Buffaloed,0,2019,\N,95,"Comedy,Drama"
+255,The White Sheik,1956-04-25T00:00:00Z,Janus Films,Comedy,28841,3145,tt0044000,movie,Lo sceicco bianco,0,1952,\N,86,"Comedy,Drama"
+256,Spree,2020-08-14T00:00:00Z,RLJ Entertainment,Black Comedy,28771,3137,tt0062299,movie,Spree,0,1967,\N,84,Documentary
+257,Sorry We Missed You,2020-03-06T00:00:00Z,Zeitgeist,Drama,28273,3083,tt8359816,movie,Sorry We Missed You,0,2019,\N,101,Drama
+258,Cane River,2020-02-07T00:00:00Z,Oscilloscope Pict…,Drama,27317,2978,tt0318346,movie,Cane River,0,1982,\N,104,"Drama,Romance"
+259,José,2020-01-31T00:00:00Z,Outsider,Drama,26563,2896,tt0015962,movie,José,0,1926,\N,\N,Drama
+260,Zombi Child,2020-01-24T00:00:00Z,Film Movement,Adventure,25878,2822,tt9056192,movie,Zombi Child,0,2019,\N,103,"Drama,Fantasy,Horror"
+261,The Booksellers,2020-03-06T00:00:00Z,Greenwich,Documentary,25694,2801,tt9355194,movie,The Booksellers,0,2019,\N,99,Documentary
+262,Unsubscribe,2020-06-10T00:00:00Z,Self Distributed,NA,25488,2779,tt11454650,tvSeries,Unsubscribe,0,2020,2020,44,Comedy
+263,Disappearance at Clifton Hill,2020-02-28T00:00:00Z,IFC Midnight,Thriller/Suspense,25084,2735,tt5919756,movie,Clifton Hill,0,2019,\N,100,"Drama,Mystery,Thriller"
+264,Heart of Africa,2020-03-13T00:00:00Z,Purdie Distribution,Drama,24139,2632,tt0320865,tvMiniSeries,Heart of Africa,0,1996,\N,\N,\N
+265,Premature,2020-02-21T00:00:00Z,IFC Films,Drama,23071,2515,tt0865931,short,Premature,0,2006,\N,10,"Comedy,Short"
+266,Promare,2019-09-17T00:00:00Z,GKIDS,Adventure,23053,2513,tt9116358,movie,Promare: Puromea,0,2019,\N,111,"Action,Adventure,Animation"
+267,"Phoenix, Oregon",2019-04-26T00:00:00Z,Joma Films,Comedy,22755,2481,tt8586088,movie,"Phoenix, Oregon",0,2019,\N,108,Comedy
+268,The Innocent (1979) (Re-Rel…,2020-02-14T00:00:00Z,Film Movement,Drama,22549,2458,NA,NA,NA,NA,NA,NA,NA,NA
+269,Midnight Family,2019-12-06T00:00:00Z,1091 Media,Documentary,22327,2434,tt6010976,movie,Midnight Family,0,2019,\N,81,"Action,Crime,Documentary"
+270,Tar,2020-10-02T00:00:00Z,Howling Wolf Prod…,Horror,22307,2432,tt0116490,movie,Tar,0,1996,\N,90,Drama
+271,I Propose We Never See Each…,2020-08-28T00:00:00Z,NA,Romantic Comedy,21757,2372,NA,NA,NA,NA,NA,NA,NA,NA
+272,Pandora and the Flying Dutc…,2020-02-07T00:00:00Z,Cohen Media Group,Drama,21536,2348,NA,NA,NA,NA,NA,NA,NA,NA
+273,Hunter Hunter,2020-12-18T00:00:00Z,IFC Films,Horror,21296,2322,tt2226162,movie,Hunter Hunter,0,\N,\N,\N,"Horror,Thriller"
+274,Young Ahmed,2020-02-21T00:00:00Z,Kino Lorber,Drama,21291,2321,tt8359822,movie,Le jeune Ahmed,0,2019,\N,85,Drama
+275,The Cordillera of Dreams,2020-02-12T00:00:00Z,Icarus Films,Documentary,20943,2283,tt9567718,movie,La cordillère des songes,0,2019,\N,84,Documentary
+276,Lore,2020-01-17T00:00:00Z,Indican Pictures,Thriller/Suspense,20006,2181,tt12908938,tvSeries,Lore,0,2015,\N,\N,"Documentary,History,Horror"
+277,Quarantine Cat Film Fest,2020-06-19T00:00:00Z,Row House Cinema,Documentary,20000,2181,tt12348920,movie,Quarantine Cat Film Fest,0,2020,\N,84,Documentary
+278,Synonyms,2019-10-25T00:00:00Z,Kino Lorber,Drama,19521,2128,tt7016254,movie,Synonymes,0,2019,\N,123,"Comedy,Drama"
+279,Mandy,2018-09-14T00:00:00Z,RLJ Entertainment,Thriller/Suspense,19169,2090,tt0816750,tvEpisode,Mandy,0,2006,\N,\N,Reality-TV
+280,Recorder: The Marion Stokes…,2019-11-15T00:00:00Z,Zeitgeist,Documentary,19109,2083,NA,NA,NA,NA,NA,NA,NA,NA
+281,Foster Boy,2020-09-18T00:00:00Z,Gravitas Ventures,Drama,19046,2076,tt0581490,tvEpisode,Foster Boy,0,1963,\N,\N,Family
+282,Sputnik,2020-08-14T00:00:00Z,IFC Midnight,Horror,18853,2055,tt0052232,movie,"À pied, à cheval et en spoutnik!",0,1958,\N,110,Comedy
+283,The Jesus Rolls,2020-02-28T00:00:00Z,Screen Media Films,Comedy,18169,1981,tt11150046,tvEpisode,The Jesus Rolls,0,2019,\N,\N,Talk-Show
+284,Sh*thouse,2020-10-16T00:00:00Z,IFC Films,Comedy,18148,1979,NA,NA,NA,NA,NA,NA,NA,NA
+285,Downtown 81,2001-07-13T00:00:00Z,NA,Drama,17605,1919,tt0208993,movie,Downtown 81,0,2000,\N,72,"Comedy,Drama,Musical"
+286,The Cave,2019-10-18T00:00:00Z,National Geograph…,Documentary,17529,1911,tt0239020,movie,De grot,0,2001,\N,90,"Crime,Mystery,Romance"
+287,Balloon,2019-09-06T00:00:00Z,Distrib Films,Thriller/Suspense,17430,1900,tt0125668,short,Balloon,0,1991,\N,6,"Animation,Comedy,Horror"
+288,"Never, Rarely, Sometimes, A…",2020-03-13T00:00:00Z,Focus Features,Drama,16565,1806,NA,NA,NA,NA,NA,NA,NA,NA
+289,Centigrade,2020-08-28T00:00:00Z,IFC Films,Thriller/Suspense,16263,1773,tt1099942,short,Centigrade,0,2007,\N,17,"Short,Thriller"
+290,Made in Hong Kong,2020-03-06T00:00:00Z,Metrograph Pictures,Comedy,16255,1772,tt0123328,movie,Heung Gong jai jo,0,1997,\N,109,"Comedy,Crime,Drama"
+291,Branagh Theatre Live: The W…,2019-12-04T00:00:00Z,Trafalgar Releasing,Drama,15789,1721,NA,NA,NA,NA,NA,NA,NA,NA
+292,Strike,2020-03-27T00:00:00Z,Indican Pictures,Adventure,15758,1718,tt0015361,movie,Stachka,0,1925,\N,82,Drama
+293,Counter Column,2020-10-16T00:00:00Z,Not That Kind of …,Drama,15527,1693,tt8764942,movie,Counter Column,0,\N,\N,106,Drama
+294,Zappa,2020-11-27T00:00:00Z,Magnolia Pictures,Documentary,15502,1690,tt0088445,movie,Zappa,0,1983,\N,103,"Comedy,Drama,Romance"
+295,Vitalina Varela,2020-02-21T00:00:00Z,Grasshopper Film,Drama,14941,1629,tt8241872,movie,Vitalina Varela,0,2019,\N,124,Drama
+296,"I Was at Home, But…",2020-02-14T00:00:00Z,Cinema Guild,Drama,14078,1535,NA,NA,NA,NA,NA,NA,NA,NA
+297,Pahokee,2020-04-24T00:00:00Z,Monument Releasing,Documentary,13250,1444,tt7170704,movie,Pahokee,0,2019,\N,110,Documentary
+298,The Wild Goose Lake,2020-03-06T00:00:00Z,Film Movement,Thriller/Suspense,12573,1371,tt9647768,movie,Nan fang che zhan de ju hui,0,2019,\N,113,"Crime,Drama"
+299,Killer Raccoons 2: Dark Chr…,2020-07-31T00:00:00Z,Indican Pictures,Comedy,12382,1350,NA,NA,NA,NA,NA,NA,NA,NA
+300,Those Who Remained,2020-02-14T00:00:00Z,Menemsha Entertai…,Drama,11862,1293,tt9081558,movie,Akik maradtak,0,2019,\N,83,Drama
+301,Redoubt,2019-10-30T00:00:00Z,Grasshopper Film,Thriller/Suspense,11599,1264,tt11197874,movie,Redoubt,0,2019,\N,134,Drama
+302,Twiceborn,2020-10-16T00:00:00Z,Freestyle Releasing,Drama,11527,1257,NA,NA,NA,NA,NA,NA,NA,NA
+303,Les Misérables - The Staged…,2019-12-06T00:00:00Z,Trafalgar Releasing,Concert/Perfor…,11394,1242,NA,NA,NA,NA,NA,NA,NA,NA
+304,Powerbomb,2020-03-06T00:00:00Z,Indican Pictures,Thriller/Suspense,11319,1234,tt6782632,movie,Powerbomb,0,2020,\N,79,Thriller
+305,Lost in America,2020-02-28T00:00:00Z,Indican Pictures,Documentary,11301,1232,tt0089504,movie,Lost in America,0,1985,\N,91,Comedy
+306,Charlie’s Angels,2019-11-15T00:00:00Z,Sony Pictures,Action,11125,1213,NA,NA,NA,NA,NA,NA,NA,NA
+307,You go to my Head,2020-02-14T00:00:00Z,First Run Features,Drama,10683,1164,NA,NA,NA,NA,NA,NA,NA,NA
+308,Circles: The Restorative Ju…,2020-05-15T00:00:00Z,Indican Pictures,Documentary,10260,1118,NA,NA,NA,NA,NA,NA,NA,NA
+309,Coded Bias,2020-11-11T00:00:00Z,7th Empire Media,Documentary,10236,1116,tt11394170,movie,Coded Bias,0,2020,\N,90,Documentary
+310,The Last Tree,2020-06-26T00:00:00Z,ArtMattan Films,Drama,10128,1104,tt5900822,short,The Last Tree,0,2014,\N,3,"Animation,Short"
+311,Guest Artist,2020-07-10T00:00:00Z,Indican Pictures,Drama,10017,1092,tt1701033,tvEpisode,Guest Artist,0,1959,\N,30,Comedy
+312,Foosballers,2020-02-11T00:00:00Z,Kicking and Scree…,Documentary,9966,1086,tt10146728,movie,Foosballers,0,2019,\N,96,"Comedy,Documentary,Sport"
+313,The Truth,2020-07-03T00:00:00Z,IFC Films,Drama,9619,1048,tt0095124,movie,Fa nei qing,0,1988,\N,116,"Drama,Thriller"
+314,Just One More Kiss,2020-02-21T00:00:00Z,Indican Pictures,Drama,9130,995,tt9035872,movie,Just One More Kiss,0,2019,\N,100,"Drama,Romance"
+315,Stardust,2020-11-25T00:00:00Z,IFC Films,Drama,9087,990,tt0030221,movie,Stardust,0,1938,\N,75,"Comedy,Musical,Romance"
+316,Kindred,2020-11-06T00:00:00Z,IFC Midnight,Thriller/Suspense,8921,972,tt10991278,short,Kindred,0,2019,\N,20,"Short,Thriller"
+317,The Trip to Greece,2020-05-22T00:00:00Z,IFC Films,Comedy,8340,909,tt10482504,movie,The Trip to Greece,0,2020,\N,103,"Comedy,Drama"
+318,Inside the Rain,2020-03-13T00:00:00Z,Sky Island,Romantic Comedy,8140,887,tt11029976,movie,Inside the Rain,0,2019,\N,90,"Comedy,Drama,Romance"
+319,The Wave,2020-01-17T00:00:00Z,Epic Pictures Group,Thriller/Suspense,8101,883,tt0083316,tvShort,The Wave,0,1981,\N,44,"Biography,Drama,Family"
+320,Kind Hearts and Coronets,2019-11-22T00:00:00Z,Rialto Pictures,Black Comedy,8055,878,tt0041546,movie,Kind Hearts and Coronets,0,1949,\N,106,"Comedy,Crime"
+321,The Artist’s Wife,2020-09-25T00:00:00Z,Strand,Drama,7818,852,NA,NA,NA,NA,NA,NA,NA,NA
+322,Advocate,2020-01-03T00:00:00Z,Film Movement,Documentary,7790,849,tt12439768,tvEpisode,Advocate,0,2020,\N,\N,\N
+323,Linda Ronstadt: The Sound o…,2019-09-06T00:00:00Z,Greenwich,Documentary,7763,846,NA,NA,NA,NA,NA,NA,NA,NA
+324,The Bra,2020-10-16T00:00:00Z,Indican Pictures,Comedy,7742,844,tt1067722,tvEpisode,The Bra,0,\N,\N,\N,\N
+325,I Am Greta,2020-10-16T00:00:00Z,NA,Documentary,7574,825,tt10394738,movie,I Am Greta,0,2020,\N,97,Documentary
+326,Lie Exposed,2020-03-06T00:00:00Z,Mongrel Media,Drama,7467,814,tt8262686,movie,Lie Exposed,0,2019,\N,93,Drama
+327,Resistance,2020-04-17T00:00:00Z,IFC Films,Drama,7464,813,tt0081413,movie,Resistance,0,1976,\N,\N,\N
+328,The Kingmaker,2019-11-08T00:00:00Z,Greenwich,Documentary,7334,799,tt0492995,video,The Kingmaker,0,2003,\N,\N,Drama
+329,What We Found,2020-07-31T00:00:00Z,Freestyle Releasing,Thriller/Suspense,6975,760,tt3790666,short,What We Found,0,2014,\N,14,"Adventure,Mystery,Sci-Fi"
+330,I Am Lisa,2020-10-09T00:00:00Z,Mutiny Pictures,Horror,6949,757,tt8952968,movie,I Am Lisa,0,2020,\N,92,"Horror,Thriller"
+331,12 Hour Shift,2020-10-02T00:00:00Z,Magnolia Pictures,Thriller/Suspense,6820,743,tt10309552,movie,12 Hour Shift,0,2020,\N,86,"Comedy,Horror,Thriller"
+332,Human Capital,2020-07-17T00:00:00Z,Vertical Entertai…,Drama,6596,719,tt1142213,tvEpisode,Human Capital,0,2001,\N,\N,Talk-Show
+333,Afterward,2020-01-10T00:00:00Z,Abramorama Films,Documentary,6477,706,tt0297710,tvEpisode,Afterward,0,1983,\N,60,"Drama,Horror"
+334,In the Life of Music,2020-08-14T00:00:00Z,Indican Pictures,Drama,6181,674,tt5496628,movie,In the Life of Music,0,2018,\N,92,"Drama,Family,History"
+335,Blood Widow,2020-01-17T00:00:00Z,Indican Pictures,Thriller/Suspense,6047,659,tt2909124,movie,Blood Widow,0,2014,\N,84,Horror
+336,The Other Lamb,2020-04-03T00:00:00Z,IFC Films,Drama,6024,656,tt7737734,movie,The Other Lamb,0,2019,\N,96,"Drama,Horror"
+337,Find Your Voice,2020-09-11T00:00:00Z,Indican Pictures,Comedy,6019,656,tt10623148,tvEpisode,Find Your Voice,0,2019,\N,\N,Drama
+338,Herself,NA,NA,Drama,6000,654,tt0167191,short,Herself,0,1918,\N,\N,"Romance,Short"
+339,By the Grace of God,2019-10-18T00:00:00Z,Music Box Films,Drama,5980,652,tt1458903,short,By the Grace of God,0,2009,\N,37,"Comedy,Drama,Short"
+340,Sex and the Future,2020-06-05T00:00:00Z,Indican Pictures,Comedy,5727,624,tt7541838,movie,Sex and the Future,0,2020,\N,90,Comedy
+341,Human Nature,2020-03-13T00:00:00Z,Greenwich,Documentary,5487,598,tt0219822,movie,Human Nature,0,2001,\N,96,"Comedy,Drama"
+342,Made in Bangladesh,2020-08-28T00:00:00Z,ArtMattan Films,Drama,5322,580,tt11888296,tvEpisode,Made in Bangladesh,0,2020,\N,\N,Documentary
+343,Bang Bang,2020-10-23T00:00:00Z,Indican Pictures,Drama,5042,549,tt0201450,movie,Bang Bang,0,1971,\N,85,Comedy
+344,Alice,2020-05-15T00:00:00Z,Monument Releasing,Comedy,5000,545,tt0058893,tvEpisode,Alice,0,1965,\N,72,Drama
+345,Ottolenghi and the Cakes of…,2020-09-25T00:00:00Z,IFC Films,Documentary,4962,541,NA,NA,NA,NA,NA,NA,NA,NA
+346,Last Call,2020-09-18T00:00:00Z,NA,Drama,4894,533,tt0099982,movie,Last Call,0,1991,\N,90,"Drama,Thriller"
+347,Farewell Amor,2020-12-11T00:00:00Z,IFC Films,Drama,4689,511,tt11380884,movie,Farewell Amor,0,2020,\N,95,Drama
+348,The Disappearance of my Mother,2019-12-06T00:00:00Z,Kino Lorber,Documentary,4658,507,NA,NA,NA,NA,NA,NA,NA,NA
+349,No Ordinary Love,2020-10-24T00:00:00Z,Self Distributed,Thriller/Suspense,4656,507,tt0139499,movie,No Ordinary Love,0,1994,\N,104,"Comedy,Romance"
+350,Babyteeth,2020-06-19T00:00:00Z,IFC Films,Drama,4507,491,tt1490552,video,Babyteeth,0,2008,\N,27,"Comedy,Drama,Horror"
+351,Monero Means Money: Cryptoc…,2020-04-10T00:00:00Z,"rCryptoCurrency, LLC",Documentary,4470,487,NA,NA,NA,NA,NA,NA,NA,NA
+352,Tremors,2019-11-29T00:00:00Z,Film Movement,Drama,4349,474,tt0100814,movie,Tremors,0,1990,\N,96,"Comedy,Horror"
+353,Give Me Liberty,2019-08-23T00:00:00Z,Music Box Films,Comedy,4134,450,tt0027678,short,Give Me Liberty,0,1936,\N,22,"Biography,Drama,History"
+354,Dear Santa,2020-12-04T00:00:00Z,IFC Films,Documentary,4109,448,tt0129360,movie,Dear Santa,0,1998,\N,90,"Comedy,Family,Fantasy"
+355,Straight Up,2020-02-28T00:00:00Z,Strand,Romantic Comedy,4075,444,tt0142874,tvMovie,Straight Up,0,1997,\N,\N,\N
+356,Countdown,2019-10-25T00:00:00Z,STX Entertainment,Horror,3953,431,tt0062827,movie,Countdown,0,1967,\N,101,"Sci-Fi,Thriller"
+357,Stuffed,2019-10-16T00:00:00Z,Music Box Films,Documentary,3849,419,tt0386806,movie,Stuffed,0,2003,\N,50,Documentary
+358,King’s Gambit,2020-03-06T00:00:00Z,Indican Pictures,Thriller/Suspense,3816,416,NA,NA,NA,NA,NA,NA,NA,NA
+359,The Roads Not Taken,2020-04-10T00:00:00Z,Bleecker Street,Drama,3518,383,tt12427248,tvEpisode,The Roads Not Taken,0,2020,\N,\N,Talk-Show
+360,IP Man: Kung Fu Master,2020-12-11T00:00:00Z,Magnet Pictures,Action,3439,375,NA,NA,NA,NA,NA,NA,NA,NA
+361,Mr. Klein,1977-11-06T00:00:00Z,Quartet Films,Drama,3310,360,tt0074916,movie,Mr. Klein,0,1976,\N,123,"Crime,Drama,Mystery"
+362,Chinese Portrait,2019-12-13T00:00:00Z,Cinema Guild,Documentary,2894,315,tt9434778,movie,Chinese Portrait,0,2018,\N,79,Documentary
+363,I’ll Take Your Dead,2019-07-05T00:00:00Z,Breakthrough Ente…,Horror,2831,308,NA,NA,NA,NA,NA,NA,NA,NA
+364,A Rainy Day in New York,2020-10-09T00:00:00Z,Amazon Studios,Romantic Comedy,2744,299,tt12484812,tvEpisode,A Rainy Day in New York,0,2020,\N,\N,\N
+365,Crock of Gold: A Few Rounds…,2020-12-04T00:00:00Z,Magnolia Pictures,Documentary,2455,267,NA,NA,NA,NA,NA,NA,NA,NA
+366,Light From Light,2019-11-01T00:00:00Z,Grasshopper Film,Drama,2448,266,NA,NA,NA,NA,NA,NA,NA,NA
+367,Horror Nights,2020-04-24T00:00:00Z,Southern Sykos Pr…,Horror,2415,263,tt11525468,movie,Horror Nights,0,2020,\N,89,Horror
+368,Goldie,2020-02-21T00:00:00Z,Film Movement,Drama,2302,251,tt0021920,movie,Goldie,0,1931,\N,68,Comedy
+369,"Amigo Skate, Cuba",2020-11-20T00:00:00Z,Indican Pictures,Documentary,2232,243,tt7704726,movie,"Amigo Skate, Cuba",0,2018,\N,72,Documentary
+370,The Shade Shepherd,2020-10-16T00:00:00Z,Indican Pictures,Thriller/Suspense,2116,230,tt4887002,movie,The Shade Shepherd,0,2019,\N,100,"Adventure,Drama,Thriller"
+371,The Transcendents,2020-06-26T00:00:00Z,Indican Pictures,Thriller/Suspense,2041,222,tt5980638,movie,The Transcendents,0,2018,\N,96,"Music,Mystery,Thriller"
+372,A Mermaid in Paris,2020-10-16T00:00:00Z,Sony Pictures,Romantic Comedy,1988,216,NA,NA,NA,NA,NA,NA,NA,NA
+373,The Bay of Silence,2020-08-14T00:00:00Z,Vertical Entertai…,Thriller/Suspense,1941,211,tt5617312,movie,The Bay of Silence,0,2020,\N,93,Thriller
+374,Edie,2019-09-06T00:00:00Z,Music Box Films,Drama,1652,180,tt1762496,tvEpisode,Edie,0,2007,\N,\N,Documentary
+375,American Dharma,2019-11-01T00:00:00Z,Utopia,Documentary,1641,178,tt8804284,movie,American Dharma,0,2018,\N,95,"Biography,Documentary"
+376,The Fox Hunter,2020-06-05T00:00:00Z,Indican Pictures,Comedy,1577,171,tt6780790,movie,The Fox Hunter,0,2020,\N,\N,Comedy
+377,Be Natural: The Untold Stor…,2019-04-19T00:00:00Z,Zeitgeist,Documentary,1467,159,NA,NA,NA,NA,NA,NA,NA,NA
+378,The Painted Bird,2020-07-17T00:00:00Z,IFC Films,Drama,1460,159,tt1667354,movie,The Painted Bird,0,2019,\N,169,"Drama,War"
+379,Little Joe,2019-12-06T00:00:00Z,Magnolia Pictures,Drama,1440,157,tt0704517,tvEpisode,Little Joe,0,1976,\N,\N,"Action,Crime,Drama"
+380,Queen of the Capital,2020-06-20T00:00:00Z,Mutiny Pictures,Documentary,1269,138,tt8084458,movie,Queen of the Capital,0,2020,\N,80,Documentary
+381,Christ Stopped at Eboli,1980-03-23T00:00:00Z,Franklin Media,Drama,1258,137,tt0079010,movie,Cristo si è fermato a Eboli,0,1979,\N,150,Drama
+382,Evergreen,2020-12-23T00:00:00Z,Indican Pictures,Drama,1193,130,tt0025094,movie,Evergreen,0,1934,\N,94,"Comedy,Musical,Romance"
+383,Fear PHarm,2020-09-11T00:00:00Z,Indican Pictures,Comedy,1157,126,NA,NA,NA,NA,NA,NA,NA,NA
+384,PLAYMOBIL,2019-12-06T00:00:00Z,STX Entertainment,Adventure,1123,122,NA,NA,NA,NA,NA,NA,NA,NA
+385,Hai Tang Hong,2020-02-21T00:00:00Z,M Star International,Drama,1107,120,tt11833592,movie,Hai Tang Hong,0,2020,\N,90,\N
+386,The Gliksmans,2019-09-27T00:00:00Z,Indican Pictures,Comedy,1086,118,tt6305892,movie,The Gliksmans,0,2017,\N,72,Comedy
+387,Parallel Policy,2020-12-20T00:00:00Z,Gathr Films,Documentary,1070,116,tt8389750,movie,Parallel Policy,0,\N,\N,\N,Documentary
+388,Ága,2019-09-04T00:00:00Z,Big World Pictures,Drama,1048,114,tt7909444,movie,Ága,0,2018,\N,96,Drama
+389,Spiral Farm,2019-12-13T00:00:00Z,Indican Pictures,Drama,1042,113,tt7365040,movie,Spiral Farm,0,2019,\N,85,Drama
+390,John Wick: Chapter 3 — Para…,2019-05-17T00:00:00Z,Lionsgate,Action,1040,113,NA,NA,NA,NA,NA,NA,NA,NA
+391,Another Round,2020-12-18T00:00:00Z,Mongrel Media,Drama,938,102,tt0228018,tvShort,Another Round,0,1993,\N,21,Short
+392,10 Days With Dad,2020-11-20T00:00:00Z,Distrib Films,Comedy,856,93,NA,NA,NA,NA,NA,NA,NA,NA
+393,Hustlers,2019-09-13T00:00:00Z,STX Entertainment,Drama,612,66,tt10950330,tvEpisode,Hustlers,0,2019,\N,\N,"Comedy,Talk-Show"
+394,Night Shift,2020-11-20T00:00:00Z,Distrib Films,Drama,534,58,tt0033953,short,Night Shift,0,1942,\N,14,"Documentary,Short"
+395,Mickey and the Bear,2019-11-15T00:00:00Z,Self Distributed,Drama,528,57,tt9614440,movie,Mickey and the Bear,0,2019,\N,88,Drama
+396,Granny Nanny,2020-11-27T00:00:00Z,Distrib Films,Comedy,432,47,tt10252330,movie,Enkel für Anfänger,0,2020,\N,104,Comedy
+397,Sol,2020-11-20T00:00:00Z,Distrib Films,Comedy,327,35,tt0177239,short,Sol,0,1965,\N,8,"Documentary,Short"
+398,Love by Drowning,2020-11-06T00:00:00Z,Dow Jazz Films,Drama,267,29,tt6192604,movie,Love by Drowning,0,\N,\N,\N,Drama
+399,St. Patrick’s Day,2020-12-18T00:00:00Z,Self Distributed,Educational,260,28,NA,NA,NA,NA,NA,NA,NA,NA
+400,It’s For Your Own Good,2020-11-27T00:00:00Z,Distrib Films,Comedy,256,27,NA,NA,NA,NA,NA,NA,NA,NA
+401,A German Youth,2019-10-11T00:00:00Z,Big World Pictures,Documentary,166,1,tt10921806,movie,A German Youth,0,2019,\N,93,Documentary
