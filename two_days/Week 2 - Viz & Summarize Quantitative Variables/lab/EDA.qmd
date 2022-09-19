@@ -1,0 +1,173 @@
+---
+title: "Exploring Numerical Variables"
+author: "Your Name Goes Here!"
+date: "The Date Goes Here!"
+format: html
+editor: visual
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+#| include: false
+
+# This is the code to load in the packages we are using!
+library(tidyverse)
+library(mosaic)
+```
+
+### Learning outcomes
+
+-   Identify and create appropriate summary statistics and plots given a data set or research question for data.
+
+-   Interpret the following summary statistics in context: median, lower quartile, upper quartile, standard deviation, interquartile range.
+
+-   Given a plot or set of plots, describe and compare the distribution(s) of a single quantitative variable (center, variability, shape, outliers).
+
+-   Use `R` to create graphs of variables.
+
+### The Integrated Postsecondary Education Data System (IPEDS)
+
+**Bolded questions will be answered on Canvas for your group.**
+
+These data are on a subset of institutions that met the following selection criteria:
+
+-   Degree granting
+
+-   United States only
+
+-   Title IV participating
+
+-   Not for profit
+
+-   2-year or 4-year or above
+
+-   Has full-time first-time undergraduates
+
+*Note:* Several variables have missing values for some institutions (denoted by "NA").
+
+![](images/IPEDS_Description.png) \### Identifying Observations & Variables
+
+**1. What are the observational units for this study?**
+
+**2. Identify in the chart above which variables are categorical (C) and which variables are quantitative (Q).**
+
+### Loading in the Data
+
+```{r data}
+#| include: false
+
+IPEDS <- read_csv(here::here("data", 
+                             "IPEDS_Data_2018.csv")
+                  )
+```
+
+For our analysis, we will look at the retention rates for *only* the 4-year institutions. In the code below I'm filtering the dataset down to only include 4-year institutions (eliminating 2-year institutions).
+
+```{r data-filter}
+
+IPEDS_fouryear <- IPEDS %>%
+  filter(Sector != "Public 2-year", 
+         Sector != "Private 2-year"
+         ) 
+```
+
+### Summarizing Retention Rates
+
+There is a great function from the **mosaic** package called `favstats()`. This function takes one or two variables and outputs the favorite statistics we are interested in!
+
+The notation for the function is:
+
+`favstats(variable1 ~ variable2, data = dataset_name)`
+
+In this case we are only interested in *one* variable, so we leave out variable1. But! We need to keep the `~` in the notation. So, the code looks like the following:
+
+```{r summarize}
+favstats(~ Retention, data = IPEDS_fouryear) 
+```
+
+3.  **Report the value for third quartile and interpret this value in context of the study.**
+
+4.  **What is the interquartile range of the retention rates?** \
+
+5.  Report and interpret the value of the standard deviation. \
+
+6.  **How many missing values are there? Is this concerning?** \
+
+### Visualizing Retention Rates
+
+#### Creating a Boxplot
+
+We will start by creating a boxplot of the retention rates for the 4-year institutions. You will get used to seeing the layout of the ggplot() code we will use to make visualizations, but since this is the first time you are seeing it I'm going to walk you through what the parts mean.
+
+The first line of code uses the `ggplot()` function to make a blank plot. Really, the plot doesn't have anything on it! What the function does is (1) specify where the data is coming from, and (2) specify what variables should be put where.
+
+The next line tells `ggplot()` what to put on the blank plot. We get a boxplot by using the `geom_boxplot()` function, it is as simple as that!
+
+The final line of code creates nicer axis labels. The default axis labels use the name of the variables in the dataset, which sometimes aren't quite what we want. Using the `labs()` function, we can specify what labels we want on our plot.
+
+7.  Fill in the code below with (1) the name of the variable you want to plot, and (2) a nice x-axis label to use.
+
+```{r boxplot}
+ggplot(data = IPEDS, 
+       mapping = aes(x = ____)
+       ) +   
+  geom_boxplot() + 
+  labs(x = "_____") 
+```
+
+7.  How would you describe the shape of the distribution of retention rates?\
+
+8.  Are there outliers present in the dataset? Describe where these outliers are located.
+
+#### Creating a Histogram
+
+Next, let's see how our impression of the distribution changes when we visualize it with a histogram.
+
+The code for a histogram is **very** similar to a boxplot. Really, all we need to change is the line saying to plot a boxplot: `geom_boxplot()`. For a histogram, we use `geom_histogram()`.
+
+Fill in the code below with (1) the name of the variable you want to plot, and (2) a nice x-axis label to use.
+
+```{r histogram}
+ggplot(data = IPEDS, 
+       mapping = aes(x = ____)
+       ) +   
+  geom_histogram(binwidth = 5) + 
+  labs(x = "_____", 
+       y = "Frequency") 
+```
+
+#### Robust Statistics
+
+Let's examine how the presence of outliers affect the values of center and spread.
+
+9.  **Report the two measures of center for retention given in the previous output from the favstats() function).** \
+
+10. **Report the two measures of spread for retention given in the previous output (from the favstats() function).** \
+
+To show the effect of outliers on the measures of center and spread, in the code below, I increase the smallest values of retention rate in the data by 30%. Highlight and run lines 30--38.
+
+```{r data-adjust}
+IPEDS_fouryear_adj <- IPEDS_fouryear %>% 
+  mutate(Retention = 
+           if_else(Retention == 0, -30, Retention), 
+         Retention = as.numeric(Retention)
+         )
+```
+
+```{r new-summaries}
+favstats(~ ____, data = IPEDS_fouryear_adj) 
+```
+
+11. **Report the two measures of center for these modified retention rates.\
+    **
+
+12. **Report the two measures of spread for these modified retention rates.\
+    **
+
+13. **Which measure of center is robust to outliers? Explain your answer.\
+    **
+
+14. Which measure of spread is robust to outliers? Explain your answer.
