@@ -38,20 +38,18 @@ pal <- brewer.pal(n = 8, name = "Purples")
 
 **Room:** 
 
-- M, T, R  -- Engineering East 0139
-- W -- Kennedy Library 0111B
+- Tuesday & Thursday -- 180 (Baker) Room 272
 
-**Times:** 
+**Time:** 
 
-- Section 07: 8:10-9:00am
-- Section 09: 9:10-10:00am
+- Section 07: 9:10 - 11:00am
 
 
 ## Office Hours
 
 Day        | Time
 -----------|------------------
-Tuesdays   | 1:45pm - 2:45pm (in-person)
+Tuesdays   | 2:30 - 3:30pm (in-person)
 Tuesdays   | 2:45pm - 3:15pm (on Zoom) 
 Thursdays  | 1:45pm - 2:45pm (in-person)
 Thursdays  | 2:45pm - 3:15pm (on Zoom)
