@@ -90,11 +90,11 @@ favstats(~ Retention, data = IPEDS_fouryear)
 
 3.  **Report the value for third quartile and interpret this value in context of the study.**
 
-4.  **What is the interquartile range of the retention rates?** \
+4.  **What is the interquartile range of the retention rates?**\
 
-5.  Report and interpret the value of the standard deviation. \
+5.  Report and interpret the value of the standard deviation.\
 
-6.  **How many missing values are there? Is this concerning?** \
+6.  **How many missing values are there? Is this concerning?**\
 
 ### Visualizing Retention Rates
 
@@ -143,9 +143,9 @@ ggplot(data = IPEDS,
 
 Let's examine how the presence of outliers affect the values of center and spread.
 
-9.  **Report the two measures of center for retention given in the previous output from the favstats() function).** \
+9.  **Report the two measures of center for retention given in the previous output from the favstats() function).**\
 
-10. **Report the two measures of spread for retention given in the previous output (from the favstats() function).** \
+10. **Report the two measures of spread for retention given in the previous output (from the favstats() function).**\
 
 To show the effect of outliers on the measures of center and spread, in the code below, I increase the smallest values of retention rate in the data by 30%. Highlight and run lines 30--38.
 
