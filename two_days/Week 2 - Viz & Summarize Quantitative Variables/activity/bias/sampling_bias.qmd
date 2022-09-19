@@ -1,7 +1,12 @@
 ---
-title: "Week 2 Day 1: American Indian Address"
+title: "Sampling Bias: American Indian Address"
 author: "Your Name: _______________"
-date: "April 4, 2022"
+date: "October 27, 2022"
+format: pdf
+editor: visual
+---
+
+---
 output: html_document
 ---
 

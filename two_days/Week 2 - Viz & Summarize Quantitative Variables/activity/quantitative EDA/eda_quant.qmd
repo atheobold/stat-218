@@ -1,25 +1,24 @@
 ---
 title: 'Week 2 Day 2 Activity: IMDb Movie Reviews --- Displaying Quantitative Variables'
-output:
-  pdf_document: default
-  html_document: default
+format: pdf
+editor: visual
 ---
 
-```{r setup, include = FALSE}
+```{r setup}
+#| include: false
+
 library(tidyverse)
 library(mosaic)
 ```
 
 \vspace{2cm}
 
-```{r movies, echo = FALSE, out.width = c("25%", "25%", "25%", "25%")}
-
-knitr::include_graphics("captain_america.jpg")
-knitr::include_graphics("deadpool.jpg")
-knitr::include_graphics("jungle_book.jpg")
-knitr::include_graphics("mr_church.jpg")
-
-```
+::: {layout-ncol=4}
+![](captain_america.jpg)
+![](deadpool.jpg)
+![](jungle_book.jpg)
+![](mr_church.jpg)
+:::
 
 \vspace{2cm}
 
@@ -67,8 +66,11 @@ the variables collected on the observational units, movies released in 2016.
 | `genres`         | Categories the movie falls into (e.g., Action, Drama, etc.) |
 | `facebook_likes` | Number of likes a movie receives on Facebook |
 
-```{r data, include = FALSE}
-movies <- read_csv(here::here("Week 2 - Viz & Summarize Quantitative Variables",
+```{r data}
+#| include: false
+
+movies <- read_csv(here::here("two_days", 
+                              "Week 2 - Viz & Summarize Quantitative Variables",
                               "activity",
                               "quantitative EDA",
                               "Movies2016.csv"
@@ -93,7 +95,10 @@ used to create a dotplot of the `imdb_scores` variable from the `movies`
 dataset. In a dotplot, the quantitative variable goes on the x-axis, which is 
 why the code says `x = imdb_score` inside of the `aes()` function.
 
-```{r dotplot, message = FALSE, warning = FALSE}
+```{r dotplot}
+#| message: false
+#| warning: false
+
 ggplot(data = movies, 
        mapping = aes(x = imdb_score)) + 
   geom_dotplot() +
