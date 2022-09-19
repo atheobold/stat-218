@@ -29,7 +29,7 @@ pal <- brewer.pal(n = 8, name = "Purples")
 
 ## Instructor Contact Information
 
-**Allison Theobold, Ph.D**
+**Dr. Allison Theobold**
 
 -	Email: atheobol@calpoly.edu
 -	Office: Building 25 Office 105 (by Statistics Department Office) 
@@ -43,9 +43,9 @@ pal <- brewer.pal(n = 8, name = "Purples")
 ## Office Hours
 
 Day        | Time
------------|------------------
-Tuesdays   | 2:30pm - 3:30pm (in-person)
-Thursdays  | 2:30pm - 3:30pm (in-person)
+-----------|:------------------:|
+Tuesdays   | 2:30pm - 3:30pm (in-person) |
+Thursdays  | 2:30pm - 3:30pm (in-person) |
 
 If you would prefer to meet on Zoom, you are welcome to schedule an appointment
 to meet here: <https://calendly.com/allisontheobold/office-hour-appointment> 
@@ -108,7 +108,7 @@ through the writing and learning center!
 
 The Writing and Learning Center offers virtual and in-person tutoring
 appointments with four locations across campus and hours available daily Sunday
-thru Friday. For more information on our hours and locations, visit the
+through Friday. For more information on our hours and locations, visit the
 [Tutoring Hours](https://writingandlearning.calpoly.edu/hours) webpage.
 
 ---
@@ -327,9 +327,9 @@ your email and resend it!
 Each week in STAT 218 will, for the most part, look something like this:
 
 ```{r, fig.align = 'center'}
-knitr::include_graphics('course images/during_week.jpg')
+knitr::include_graphics('course images/two_day_during_week.jpg')
 
-#knitr::include_graphics('course images/weekend.jpg')
+knitr::include_graphics('course images/218_weekend.jpg')
 
 ```
 
@@ -353,15 +353,13 @@ and completion of the activity counts towards this portion of your grade.
 * Printed activities will be provided for you on Tuesday, with Word and PDF 
 files posted on Canvas
 
-* Activities will be checked for completion at the **beginning of class on 
-Thursday.** 
+* Tuesday's activity will be checked for completion at the **beginning of class
+on Thursday.** 
 
 * If you have an excused absence the day the activity is due (e.g., quarantine
 or ill), you may email Dr. Theobold a scanned copy of the completed activity for
-credit. This must be received by **8pm Pacific Time on the day the activity
-would be checked in class**.
+credit. This must be received by **8pm on Thursday**.
 
-* The lowest activity grade will be dropped.
 
 ### Labs (10%)
 
@@ -372,9 +370,8 @@ explore and analyze data.
 
 * Each group will turn in selected questions from the lab to Canvas. Labs are
 due **Friday at 8pm Pacific Time each week**.
-* The lowest lab grade will be dropped.
-* Each student will also turn in the entirety of each lab for completion at the
-**beginning of class on Tuesday**.
+* Each student will also turn in the entirety of each lab for completion by 
+**Sunday at 8pm**.
 
 ### Assignments (15%)
 
@@ -382,8 +379,7 @@ You will complete weekly assignments in **Canvas**. These should be completed
 **individually** (meaning all answers should be written in your own words), but
 you may use your classmates, tutors, or your instructor for assistance. 
 
-* Weekly assignments are due **Sunday at 8pm Pacific Time each week**.
-* The lowest assignment grade will be dropped.
+* Weekly assignments are due **Sunday at 8pm**.
 
 ### Midterm & Final Projects (25%)
 
@@ -407,9 +403,9 @@ closed note.
 
 #### _Group portion_:
 
-Group midterm exam 1 will be: **Wednesday, April 27**  
+Group midterm exam 1 will be during the second half of class on **October 20**  
 
-Group midterm exam 2 will be: **Wednesday, May 18**
+Group midterm exam 2 will be during the second half of class on **November 10**
 
 * Group portions of the midterms are worth 20% of your overall midterm exam
 grade.
@@ -422,9 +418,11 @@ individually.**
 
 #### _Individual portion_:
 
-Individual midterm exam 1 will be: **Tuesday, April 26th**  
+Individual midterm exam 1 will be during the first half of class on 
+**October 20**  
 
-Individual midterm exam 2 will be: **Tuesday, May 17th**
+Individual midterm exam 2 will be during the first half of class on
+**November 10**
 
 * Individual portions of the midterms will be worth 80% of your overall midterm
 exam grade.
@@ -449,7 +447,7 @@ be divided as follows:
 
 #### _Group portion_:
 
-Group final exam will be **Wednesday, June 1st (during normal class time)**. 
+Group final exam will be **Thursday, December 1 (during normal class time)**. 
 
 * The group portion of the final exam will be worth 20% of your overall final 
 exam grade.
@@ -460,7 +458,7 @@ the exam.
 
 #### _Individual portion_:
 
-Individual final exam will be: **Wednesday, December 7, from 7:10am – 10:00am in 180-272.** 
+Individual final exam will be: **Saturday, December 3 from 10:10am to 1:00pm**. 
 
 * The individual portion of the final exam will be worth 80% of your overall 
 final exam grade.
@@ -478,28 +476,6 @@ Working in teams is beneficial for *every* student, but only if each person
 meaningfully engages in the discussions being had. Each of you will work in a
 group of 3-4 students to discuss the course concepts and complete the course
 activities and labs. 
-
-To ensure the group's work is divided equitably each week, your team will be
-rotating through a set of group roles. This ensures one person doesn't act as
-the group leader for multiple sessions of class, while someone else is always 
-the note taker. You will circulate through the following roles each week: 
-
-<!-- Modify roles to be consistent with presentation -->
-
-|  Role         | Responsibilities | 
-|---------------|------------------|
-| Manager | Responsible for organizing the team work: making sure all roles were assigned and clear, leading discussion of the activity or lab assignment problems. |
-| Recorder | Responsible for collecting, organizing, and recording answers to the assignment during the discussions, compiling the summary of the answers discussed, sending summary to Editor. |
-| Editor | During the group discussions the editor is responsible for making sure everyone has a chance to contribute, asking quiet team members to speak up, asking loud team members to listen to others, and bringing the conversation back to the lab assignment if it deviates. The Editor is also responsible for reviewing the draft summary provided by the Recorder, sharing the summary with the team, soliciting feedback from the team, and submitting the final assignment by the deadline.|
-
-If you are in a group of three, the *Manager* also acts as the *<INSERT ROLE>*,
-and is expected to both organize the team work, lead the discussion, and 
-<INSERT ROLES>. 
-
-## Behavioral Expectations 
-
-<!-- Expectations for Group work -->
-
 
 By participating in this community, students accept to abide by the classroom 
 Code of Conduct and accept the procedures by which any Code of Conduct incidents
