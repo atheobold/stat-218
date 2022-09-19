@@ -1,0 +1,179 @@
+---
+title: "Are Tenured Professors Mostly Men?"
+author: "by Dr. Theobold"
+subtitle: Example Final Project Writeup
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include = FALSE}
+# This is code to make your report format look nice! 
+# Please don't modify these options! 
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(infer)
+library(janitor)
+```
+
+```{r data}
+library(openintro)
+
+evals_ind <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1, replace = FALSE) %>% 
+  rename(sex = gender) %>% 
+  ungroup()
+```
+
+![Google search results for "professor"](professor.png)
+
+## Data Description
+
+The data for this project come from end of semester student evaluations for a
+large sample of professors from The University of Texas at Austin. The original
+data set published in *Beauty in the Classroom* (Hamermesh & Parker, 2005) are
+available through the **openintro** `R` package. 
+
+For the Midterm Project, my analysis focused on the relationship between 
+professor's attractiveness and course evaluation scores, two numerical variables.
+For this analysis, however, I will be focusing on two categorical variables:
+
+- professor's self-identified sex (M / F)
+- professor's teaching rank (teaching / tenure track / tenured)
+
+Specifically, I am interested in
+investigating if there are larger proportions of male-identifying faculty in 
+tenured positions, whereas there are larger proportions of women in teaching
+positions. 
+
+
+## Data Visualization & Summarization
+<!-- In this section you create three visualizations of your data -->
+
+### Investigating Professor's Self-Identified Sex
+
+```{r bar-plot-1}
+evals_ind %>% 
+  ggplot(mapping = aes(x = sex)
+         ) +
+  geom_bar() + 
+  labs(x = "Professor's Self-Identified Sex", 
+       y = "Number of Professors")
+
+evals_ind %>% 
+  group_by(sex) %>% 
+  count() %>% 
+  knitr::kable()
+```
+
+In the bar plot of professor's sex, we see that there are more male identifying
+professors than female identifying professors. Based on the summary table, we 
+see there are 14 more male faculty than female faculty. 
+
+### Investigating Professor's Teaching Rank
+
+```{r bar-plot-2}
+evals_ind %>% 
+  ggplot(mapping = aes(x = rank)
+         ) +
+  geom_bar() + 
+  labs(x = "Professor's Teaching Rank", 
+       y = "Number of Professors")
+
+evals_ind %>% 
+  group_by(rank) %>% 
+  count() %>% 
+  knitr::kable()
+```
+
+In the bar plot of professor's teaching rank, we see the majority of faculty 
+are tenured, over double the number of tenure track faculty at UT Austin. The
+smallest group is teaching faculty, with only 15 professors.
+
+### Investigating the Relationship between Professor's Self-Identified Sex and Teaching Rank
+
+```{r bar-plot-3}
+evals_ind %>% 
+  ggplot(mapping = aes(x = rank, fill = sex)
+         ) +
+  geom_bar(position = "fill") + 
+  labs(x = "Professor's Teaching Rank", 
+       y = "Number of Professors", 
+       fill = "Professor's Gender")
+
+```
+
+Based on the filled bar plot above, we can see that male professors make up a 
+larger percentage of the tenured faculty than for all other teaching ranks. 
+Contrary to what I expected, teaching and tenure track have about the same
+proportion of female faculty. 
+
+
+## Independence of Professor's Sex and Teaching Rank
+
+For our chi-squared analysis, we are interested in knowing if a professor's sex
+is independent of their teaching rank. If there was no relationship between 
+sex and teaching rank, we would expect to see approximately equal proportions of
+male identifying faculty across the teaching ranks. 
+
+
+### Model Conditions
+
+To conduct a chi-squared analysis, there are two conditions required to be
+checked, (1) independence of observations and (2) expected cell counts of at
+least five for every level of sex and teaching rank. 
+
+As these professors were a convenience sample of professors at UT Austin, not a
+random sample, we need to think carefully about independence. There are no
+repeated observations of professors in the dataset and knowing the sex and rank
+of one faculty member doesn't give you perfect information about another faculty
+member. Thus, I do not believe the independence of observations condition is 
+violated. 
+
+The table of observed counts is shown below. The smallest observed counts are 
+for female and male teaching faculty. To perform a parametric chi-squared 
+analysis, we are required to have five expected counts in each cell of the
+table. Based on the table, we can see that the cell which should have the lowest
+expected count is female, teaching faculty. The expected count for this cell is
+$\frac{40 \times 15}{94} = 6.382$, which is larger than 5. 
+
+```{r expected-counts}
+
+evals_ind %>% 
+  group_by(sex, rank) %>% 
+  count() %>% 
+  pivot_wider(names_from = sex, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  knitr::kable()
+
+```
+
+
+Since I have not seen any major violations of these conditions, I believe using 
+a parametric chi-squared distribution will not incorrectly estimate the p-value
+for the test of independence. 
+
+
+### Chi-Squared Analysis 
+
+The results of the chi-squared analysis are presented below. 
+
+```{r chi-sq-results}
+chisq_test(evals_ind, 
+           response = rank, 
+           explanatory = sex
+           ) %>% 
+  knitr::kable()
+```
+
+With a p-value of 0.109 (chi-squared statistic = 4.4 on 2 degrees of freedom),
+we have weak evidence against the null. At an $\alpha$ of 0.1 we fail to reject
+the null hypothesis of independence. Hence, these data do not suggest that a
+professor's sex and their teaching rank are dependent.
+

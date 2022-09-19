@@ -1,0 +1,843 @@
+---
+title: "Final Exam Question Bank"
+author: "Stat 218"
+output:
+  pdf_document:
+    extra_dependencies:
+    - multicol
+    - setspace
+    - tcolorbox
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center", 
+                      out.width = "70%")
+
+library(tidyverse)
+library(openintro)
+library(mosaic)
+library(janitor)
+library(pander)
+library(infer)
+library(praise)
+
+set.seed(1234)
+```
+
+For your final exam __60%__ of questions will be randomly selected from 
+__this__ question bank. The remainder of the exam will be __20%__ selected
+from the __Midterm 1__ question bank and __20%__ selected from the 
+__Midterm 2__ question bank.
+
+There \textbf{will not} be a solution key posted. It is your responsibility
+to discuss your ideas with your group members and / or with Dr. Theobold
+during office hours prior to the exam.
+
+\vspace{0.5cm}
+
+## Golden Ticket
+
+| Scenario | One Categorical Response | Two Categorical Variables | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
+|------------|:---------------------------:|:--------------------------:|:---------------------------------------:|:--------------------------:|:---------------------:|
+| Type of plot | Bar plot | Dodged Bar plot, Stacked Bar plot, Filled Bar plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
+|           |           |           |           |           |           |
+| Summary measure | Proportion | Difference in Proportions | Mean | Slope or Correlation | Difference in Means |
+|           |           |           |           |           |           |
+| Parameter notation | $\pi$ | $\pi_1 - \pi_2$ | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+|           |           |           |           |           |           |
+| Statistic notation | $\widehat{p}$ | $\widehat{p}_1 - \widehat{p}_2$ | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+|           |           |           |           |           |           |
+| Statistical Method(s) | $\chi^2$ Goodness of fit Test | $\chi^2$ Test of Independence, $\chi^2$ Test of Homogeneity, Permutation Test | $t$-test for One Mean, $t$-test for Paired Differences, Bootstrap Confidence Interval for One Mean | $t$-test for $\beta_1$, Permutation Test for $\beta_1$, Bootstrap Confidence Interval for $\beta_1$ | $t$-test for $\mu_1 - \mu_2$, Permutation Test for $\mu_1 - \mu_2$, Bootstrap Confidence Interval for $\mu_1 - \mu_2$ |
+|           |           |           |           |           |           |
+
+\newpage
+
+## Provided Formulas
+
+$$IQR = Q3 - Q1$$
+
+\vspace{0.25cm}
+
+__1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
+
+\vspace{0.25cm}
+
+$$\hat{y} = b_0 + b_1 \times x$$
+
+\vspace{0.25cm}
+
+$$Residual = y - \hat{y}$$ 
+
+\vspace{0.25cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+
+\vspace{0.25cm}
+
+$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+
+\vspace{0.25cm}
+
+$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
+
+\vspace{0.25cm}
+
+$$ 
+X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
+$$
+
+\newpage 
+
+## Final Exam Question Bank
+
+### Wild Mushrooms
+
+\noindent \textbf{Q1}[17 points]
+Wild mushrooms, such as chanterelles or morels, are delicious, but eating wild
+mushrooms carries the risk of accidental poisoning. Even a single bite of the
+wrong mushroom can be enough to cause fatal poisoning. An amateur mushroom
+hunter is interested in finding an easy rule to differentiate poisonous and
+edible mushrooms. They think that the mushroom’s gills (the part which holds and
+releases spores) might be related to a mushroom’s edibility. They used a data
+set of 8124 mushrooms and their descriptions. For each mushroom, the data set
+includes whether it is edible or poisonous and the spacing of the gills (Broad
+or Narrow). 
+
+**Please Note**: According to The Audubon Society Field Guide to North American
+Mushrooms, there is no simple rule for determining the edibility of a mushroom;
+no rule like "leaflets three, leave them be" for Poisonous Oak and Ivy.
+
+```{r mushroom-data, include = FALSE}
+mushrooms <- read_csv(here::here(
+  "Week 10 - Review & Final", 
+  "final", 
+  "individual", 
+  "data", 
+  "mushrooms.csv")
+  ) %>% 
+  mutate(class = if_else(class == "e", "Edible", "Poisonous"), 
+         `gill-size` = if_else(`gill-size` == "n", "Narrow", "Broad")
+         )
+
+```
+
+```{r mushroom-table}
+mushrooms %>% 
+  group_by(class, `gill-size`) %>% 
+  count() %>% 
+  pivot_wider(names_from = `gill-size`, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  pander()
+```
+
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(a)}[4 pts] Fill in each blank with one of the options in parentheses to
+best describe the variables collected. 
+
+\vspace{0.2cm}
+
+Whether the mushroom is edible or poisonous is the (explanatory / response) \underline{\hspace{1.5in}} and it is
+(categorical / quantitative) \underline{\hspace{1.5in}}. 
+
+\vspace{0.2cm}
+
+Gill size (Broad or Narrow) is the (explanatory / response) 
+\underline{\hspace{1.5in}} and it is (categorical / quantitative)
+\underline{\hspace{1.5in}}. 
+
+\vspace{0.2cm} 
+
+\noindent
+\textbf{(b)}[3 points] Calculate the proportion of mushrooms with a broad gill
+size that are poisonous. *Give appropriate notation with informative subscripts
+if necessary.* 
+
+\vspace{0.2cm}
+
+**Work:**
+
+\vspace{1cm}
+
+**Answer:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+**Notation:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+\noindent
+\textbf{(c)}[3 points] Calculate the proportion of mushrooms with a narrow gill
+size that are poisonous. *Give appropriate notation with informative subscripts
+if necessary.* 
+
+\vspace{0.2cm}
+
+**Work:**
+
+\vspace{1cm}
+
+**Answer:** \underline{\hspace{3in}}
+
+\vspace{0.2cm}
+
+**Notation:** \underline{\hspace{3in}}
+
+\newpage
+
+\noindent
+\textbf{(d)}[2 points] Using your answers to (b) and (c), fill in the correct
+names next to each color, to label the bar chart showing the relationship
+between gill size (broad or narrow) and whether the mushroom is edible. 
+
+```{r mushroom-barplot}
+ggplot(data = mushrooms, 
+       mapping = aes(x = `gill-size`, fill = class)
+       ) +
+  geom_bar() + 
+  labs(x = "Size of Mushroom Gills", 
+       y = "Number of Mushrooms", 
+       fill = "Class of Mushroom") +
+  theme(legend.text = element_blank())
+
+```
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(e)}[3 points] Based on the plot, describe the relationship between a 
+mushrooms gill size and whether it is edible or not. 
+
+\vspace{1in}
+
+\noindent
+\textbf{(f)}[2 points] Suppose the Chi-Squared test resulted in a "significant"
+p-value. Which of the following would be the correct scope of inference for this
+study?
+
+\begin{itemize}
+\item[(i)] It can be inferred for all mushrooms that gill size causes a mushroom
+to be poisonous. 
+\item[(ii)] It can be inferred for all mushrooms that gill size is associated
+with whether a mushroom is poisonous. 
+\item[(iii)] It can be inferred for this sample of mushrooms that gill size
+causes a mushroom to be poisonous. 
+\item[(iv)] It can be inferred for this sample of mushrooms that gill size is
+associated with whether a mushroom is poisonous.
+\end{itemize}
+
+\newpage
+
+### Mendelian Genetics
+
+\noindent \textbf{Q2} [18 points]
+
+Mendelian inheritance refers to certain patterns of how traits are passed from parents to offspring. These general patterns were established by the Austrian
+monk Gregor Mendel, who performed thousands of experiments with pea plants in
+the 19th century. Mendel’s discoveries of how traits (such as color and shape)
+are passed down from one generation to the next introduced the concept of
+dominant and recessive modes of inheritance.
+
+Mendelian inheritance refers to the inheritance of traits controlled by a single
+gene with two alleles, one of which may be completely dominant to the other.
+You can use a Punnett square to determine the expected ratios of 
+possible genotypes in the offspring of two parents. 
+
+In the table below, we see an example of eye color inheritance. In this case, 
+both parents are heterozygotes (Aa) for the gene. Half of the gametes produced
+by each parent will have the A allele, and half will have the a allele, shown
+on the side and the top of the Punnett square. Filling in the cells of the
+Punnett square gives the possible genotypes of their children. It also shows the
+most likely ratios of the genotypes, which in this case is 25% AA, 50% Aa, and 
+25% aa.
+
+![](figures/punnetts.png)
+
+\newpage
+
+\noindent \textbf{(a)} [2 points] When Mendel crossed his pea plants, he learned
+that tall (T) was dominant to short (t). Suppose in your Biology course you
+carried out an experiment to test if the plot offspring would follow Mendelian
+inheritance. 
+
+\noindent Fill in the table defining what the expected tallness inheritance
+for your plants should be. 
+
+|                   |         T                 |               t       |
+|-------------------|---------------------------|-----------------------|
+|       T           |                           |               |
+|                   |                   |               |
+|       t           |                   |               |
+
+
+\noindent \textbf{(b)} [3 points] If the Mendelian inheritance is true, what
+proportions would you expect for each of the following genotypes? Insert the corresponding values in each cell. 
+
+\vspace{0.25cm}
+
+| TT                          | Tt                         | tt               |
+|-----------------------------|----------------------------|------------------|
+| $p_{\text{TT}}$ =           | $p_{\text{Tt}}$ =          | $p_{\text{tt}}$ = |
+|                             |                            |                  |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(c)} [2 points] Actually, our table could be a bit simpler.
+Both the TT and Tt genotypes will present as "tall" plants, whereas tt genotypes
+will present as "short" plants.
+
+\noindent Compress your previous table into a new table with only two levels
+of tallness. 
+
+| Tall                                 | Short                              |
+|--------------------------------------|------------------------------------|
+| $p_{\text{Tall}}$ =                  | $p_{\text{Short}}$ =               |
+|                                      |                                    |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(d)} [3 points] If the table above represents what is assumed
+to be true about tallness inheritance under $H_0,$ state the alternative
+hypothesis using either words or notation. 
+
+\vspace{1in}
+
+\noindent \textbf{(e)} [1 point] After you cross your plants, you measure the
+characteristics of the 400 offspring. You note that there are 305 tall pea
+plants and 95 short pea plants. 
+
+\noindent Create a table summarizing these observations. 
+
+\newpage
+
+\noindent \textbf{(f)} [4 points] Calculate how far "off" was your observed
+number of tall and short plants were from what you expected if $H_0$ was true.
+Use these values to report the $X^2$ statistic for your experiment. 
+
+__Tall__:
+
+\vspace{0.5in}
+
+__Short:__
+
+\vspace{0.5in}
+
+__$X^2$ statistic__:
+
+\vspace{0.25in}
+
+\noindent \textbf{(g)} [3 points] The p-value associated with your $X^2$
+statistic is `r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology
+textbook suggests you interpret this value as:
+
+> *The large p-value proves that Mendelian inheritance is true.*
+
+\noindent What issue(s) to you have with this interpretation?
+
+\vspace{1in}
+
+### Seasonal Colds
+
+\noindent \textbf{Q3} [22 points]
+A local doctor suspects that there is a seasonal trend in the occurrence of the
+common cold. She estimates that 40% of the cases each year occur in the winter,
+40% in the spring, 10% in the summer and 10% in the fall. A random sample of
+1000 patient cases was collected, and the number of cold cases for each season
+was recorded. 
+
+A summary table is included below:
+
+```{r colds-data}
+colds <- tibble(Season = 
+                  c(
+                    rep("Winter", 374), 
+                    rep("Spring", 292), 
+                    rep("Summer", 169), 
+                    rep("Fall", 165)
+                  )
+                )
+```
+
+```{r colds-table}
+colds %>% 
+  count(Season) %>% 
+  rename(`Number of Patients` = n) %>% 
+  pander()
+```
+
+\noindent \textbf{(a)} [4 points] If the doctor's suspicion was correct, what
+proportions would you expect for each cell? Insert the corresponding values in
+each cell. 
+
+\vspace{0.25cm}
+
+| Fall                | Spring             | Summer             | Winter             | 
+|---------------------|--------------------|--------------------|--------------------|
+| $p_{\text{fall}}$ =  | $p_{\text{spring}}$ = | $p_{\text{summer}}$ = | $p_{\text{winter}}$ =  |
+|                     |                    |                    |                    |
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)} [3 points] If the table above represents what is assumed
+to be true under $H_0,$ state the alternative hypothesis using either words or
+notation. 
+
+\vspace{1in}
+
+\noindent \textbf{(c)} [4 points] Compute the table of expected counts.  
+
+| Fall                | Spring             | Summer             | Winter             | 
+|---------------------|--------------------|--------------------|--------------------|
+|                     |                    |                    |                    |
+|                     |                    |                    |                    |
+
+\vspace{1in}
+
+\noindent \textbf{(d)} [2 points] What is the summer cold cell's contribution to
+the $X^2$ statistic? 
+
+\vspace{1in}
+
+\noindent \textbf{(e)} [2 points] Evaluate whether the conditions required to
+use the $\chi^2$ distribution to obtain a p-value are violated. 
+
+\vspace{1in}
+
+\noindent \textbf{(f)} [3 points] An $X^2$ statistic of 124 was obtained for
+these data. Fill in the `R` code below to find the p-value for this statistic.
+*Hint:* The `lower.tail` input takes one of two options `TRUE` or `FALSE`. 
+
+```{r code-fill-in-chisq, eval = FALSE, echo= TRUE}
+pchisq(_____________, df = ______________, lower.tail = ___________)
+```
+
+\newpage
+
+\noindent \textbf{(g)} [4 points] Using the code you input above, a p-value less
+than 0.000000123 was obtained. Based on this p-value what would you conclude
+about the Doctor's hypothesis regarding the distribution of colds throughout the
+year? 
+
+\vspace{1in}
+
+
+### Professor Attractiveness
+
+\noindent \textbf{Q4} [21 points]
+Data were scraped from _ratemyprofessors.com_, a website which allows college
+and university students to assign ratings to professors and campuses of
+American, Canadian, and United Kingdom institutions. In order for the rating to
+be posted, a rater must rate the professor in the following categories: 
+`overall quality`, `level of difficulty`, and their `hotness`.  
+
+The Dean of the College of Science and Math would like to know if the difficulty
+rating of female professor's at Cal Poly is related to how attractive they are
+perceived to be. 
+
+A table of observed counts in shown below.  
+
+```{r, professor-table, echo = FALSE}
+professors <- tibble(attractiveness = 
+                       c(rep("Attractive", 172), 
+                         rep("Unattractive", 314)
+                         ), 
+                     difficulty = 
+                       c(rep("Easy", 76), 
+                         rep("Medium", 51), 
+                         rep("Hard", 45), 
+                         rep("Easy", 54), 
+                         rep("Medium", 90), 
+                         rep("Hard", 170)
+                         )
+                     )
+professors %>% 
+  group_by(attractiveness, difficulty) %>% 
+  count() %>% 
+  rename(Difficulty = difficulty) %>% 
+  pivot_wider(names_from = attractiveness, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  pander()
+
+```
+
+\noindent \textbf{(a)}[3 points] What type of test should be performed with
+these data to address the research question?  
+
+\vspace{1in}
+
+\noindent \textbf{(b)} [4 points] Write out the null and alternative hypotheses
+for the test you stated in __(a)__. 
+
+\noindent $H_0:$ 
+
+\vspace{0.5in}
+
+\noindent $H_A:$ 
+
+\newpage
+
+\noindent \textbf{(c)} [3 points] When analyzing the data, the administrators 
+chose to use a $\chi^2$ distribution to obtain their p-value. Was this an
+appropriate choice? Why or why not? 
+
+\vspace{1in}
+
+\noindent \textbf{(d)} [2 points] What distribution should be used to find the
+p-value for the hypothesis test above?
+
+\vspace{0.5in}
+
+\noindent \textbf{(e)} [4 points] A p-value less than 0.000000142 ($X^2$
+statistic = 50) was found using the distribution stated in __(d)__. Based on 
+the p-value obtained, report your conclusion to the hypothesis test
+__in the context of the problem.__ 
+
+\vspace{1in}
+
+\noindent \textbf{(f)} [2 points] Compute the relative risk of being labeled
+"Hard" for "attractive" female professors compared to "unattractive" female 
+professors.
+
+\vspace{1in}
+
+\noindent \textbf{(g)} [3 points] Interpret the relative risk you obtained in 
+__(f)__ in the context of these data. Be sure to indicate how the comparison was
+made and what the sign indicates!
+
+\vspace{1in}
+
+\newpage
+
+### Guilty Decisions
+
+\noindent
+\textbf{Q5}[11 points] 
+The effect of guilt on how a decision maker focuses on a problem was
+investigated in the *Journal of Behavioral Decision Making* (January 2007). A
+total of 155 volunteer students participated in the study, where each was
+randomly assigned to one of three emotional states (guilt, anger, or neutral)
+through a reading / writing task. Immediately after the task, the students were
+presented with a decision problem (e.g., whether or not to spend money on
+repairing a very old car). The researchers found that a higher proportion of
+students in the guilty-state group chose not to repair the car than those in the neutral-state and anger-state groups.
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(a)}[3 pts] What is the study design? Explain your reasoning. Select
+one.
+
+\begin{itemize}
+\item[(i)] Observational study. The researchers did not take a random sample of
+students.
+\item[(ii)] Observational study. There is no random assignment of students to 
+emotional state.
+\item[(iii)] Experiment. The students are a representative sample of all
+students.
+\item[(iv)] Experiment. The students were randomly assigned to emotional state.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)}[3 pts] Which types of sampling bias may be present in
+this study? Select all that are present, or if you believe there is no bias 
+present, select option 4) No bias.
+
+\begin{itemize}
+\item[(i)] Selection bias
+\item[(ii)] Non-response bias
+\item[(iii)] Response bias
+\item[(iv)] No bias
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{(c)}[3 pts] The researchers found a difference in the 
+proportion of students in the guilty-state group chose not to repair the car
+than those in the neutral-state and anger-state groups. Can we conclude that the emotional state group caused a higher proportion of students to not repair the
+car? Select one.
+
+\begin{itemize}
+\item[(i)] Yes, because these data are from a representative sample.
+\item[(ii)] No, because the students are volunteers.
+\item[(iii)] Yes, because the researchers evened out confounding variables
+across emotional state group.
+\item[(iv)] No, because the sample size is not large enough.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{(d)} [2 pts] Which type of plot would be the **most**
+appropriate to display the relationship between each level of emotional state
+and whether students choose to repair the car? Select all that apply.
+
+\begin{itemize}
+\item[(i)] Scatterplot
+\item[(ii)] Filled bar plot
+\item[(iii)] Pie chart
+\item[(iv)] Side-by-side boxplot
+\end{itemize}
+
+
+### Distribution of Fish on Blackfoot River
+
+\noindent \textbf{Q6} [19 points]
+Montana Fish, Wildlife, & Parks personnel have collected data on fish caught on
+the Blackfoot River (outside Helena, Montana) for the last 25 years. To capture
+the fish, fisheries biologists use electrofishing equipment to attract the fish
+to the boat, then dip them out of the water with nets. Each fish's length (in 
+cm) and weight (in grams) is then measured. Once the measurements are taken, 
+the fish is tossed back into the river. Biologists are often working in cold
+conditions in late autumn or early spring, so some measurement error and missing
+data are expected. 
+
+```{r fish-data}
+
+fish <- read_csv(here::here(
+  "Week 10 - Review & Final", 
+  "final", 
+  "individual", 
+  "data", 
+  "BlackfootFish.csv")
+  ) %>% 
+  drop_na(section, species) %>% 
+  mutate(species = case_when(species == "Brown" ~ "Brown Trout", 
+                             species == "Bull" ~ "Bull Trout", 
+                             species == "RBT" ~ "Rainbow Trout", 
+                             species == "WCT" ~ "Whitefish")
+         ) %>% 
+  filter(year > 1998) %>% 
+  mutate(year = as.factor(year))
+
+```
+
+These data are not from a random sample. The goal is to catch all fish within a
+section of the Blackfoot River every few years to assess the health of the
+population. Montana Fish, Wildlife, & Parks is interested in analyzing if the
+prevalence of the different species of fish has stayed relative stable over 
+the years. The dataset consists of `r nrow(fish)` observations, recorded over 
+`r distinct(fish, year) %>% nrow()` years. 
+
+```{r fish-preview}
+fish %>% 
+  select(length, weight, year, section, species) 
+```
+
+\noindent \textbf{(a)} [2 points] Based on the output above, what is the
+observational unit for this study?
+
+\vspace{0.5in}
+
+\noindent \textbf{(b)} [3 points] Based on the output above, what type of 
+variable is `year`? Given the stated analysis, is this the correct data type for
+this variable?
+
+\vspace{1in}
+
+\newpage
+
+\noindent \textbf{(c)} [3 points] Based on the bar plot below, describe the
+relationship between the sampling year and the species of captured fish. Make
+direct reference to characteristics of the plot! 
+
+```{r fish-table, include = FALSE}
+fish %>% 
+  group_by(year, species) %>% 
+  count() %>% 
+  pivot_wider(names_from = year, 
+              values_from = n) %>% 
+  adorn_totals(where = c("row", "col")) %>% 
+  pander()
+```
+
+```{r fish-plot, fig.align = "left"}
+fish %>% 
+  ggplot(
+    mapping = aes(y = year, fill = species)
+       ) +
+  geom_bar(position = "fill") +
+  labs(y = "Year of Sample", 
+       x = "Proportion of Caught Fish", 
+       fill = " ") +
+  theme(legend.position = "top")
+```
+
+\vspace{1in}
+
+\noindent \textbf{(d)} [5 points] The statistician at Montana Fish, Wildlife, &
+Parks prefers using simulation-based methods rather than theory-based methods.
+They used computer simulation to obtain the null distribution of the $X^2$ 
+statistic shown on the next page. 
+
+Fill in the steps necessary to obtain out **one** statistic on the null 
+distribution. 
+
+\vspace{0.25cm}
+
+\begin{center}
+\noindent
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{2in}} on the 
+cards.
+\end{center}
+
+\vspace{0.25in}
+
+Generate a new sample that could have happened if the null hypothesis was true
+by: 
+
+\vspace{1in}
+
+\begin{center}
+\noindent
+Calculate and plot the \underline{\hspace{4cm}} from each permutation / 
+computer simulation. 
+\end{center}
+
+\vspace{0.25in}
+
+```{r fish-null-dist, cache = TRUE, fig.align = 'left'}
+null_dist <- fish %>% 
+  specify(response = species, 
+          explanatory = year) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "Chisq")
+
+null_dist %>% 
+  visualise(type = "simulation") + 
+  labs(x = "Simulated X-Sq Statistic", 
+       title = " ")
+
+```
+
+\vspace{0.25cm}
+
+\noindent \textbf{(e)} [2 points] The observed $X^2$ statistic was 
+`r chisq_test(fish, response = species, explanatory = year)$statistic`. Use this
+statistic to draw a line and shade the direction that should be used when 
+calculating the p-value. 
+
+\vspace{0.25in}
+
+\noindent \textbf{(f)} [1 point] Approximate the p-value for this hypothesis
+test. 
+
+\vspace{0.25in}
+
+\noindent \textbf{(g)} [3 points] Using the conditions of the simulation-based
+method used, evaluate if you believe the p-value you obtained in __(f)__ is
+accurate. 
+
+\vspace{1in}
+
+
+## General Concepts
+
+\noindent \textbf{Q7}[2 points] Suppose you reject the null hypothesis at the
+0.05 level of significance. A colleague had planned to use a 0.01 level of
+significance instead. Will your colleague also reject the null hypothesis?
+
+\begin{itemize}
+\item[(a)] Yes
+\item[(b)] No
+\item[(c)] Maybe
+\item[(d)] Changing a level of significance cannot affect decisions.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\newpage
+
+\noindent \textbf{Q8}[2 points] In hypothesis testing,
+
+\begin{itemize}
+\item[(a)] a type II error occurs when you fail to reject a false null
+hypothesis.
+\item[(b)] you do not need to decide on a level of significance before you find
+a p-value; you can adjust based on the p-value you observe.
+\item[(c)] one of the main sources of type I errors is that the sample size was
+not large enough.
+\item[(d)] p-values are the probability that the null hypothesis is false.
+\end{itemize}
+
+\noindent \textbf{Q9} For each of the following, select the single most appropriate analysis for the situation described. You may use an analysis for
+more than one situation. (2 pts each)
+
+\begin{center}
+\begin{tcolorbox}
+Chi-Square Test of Independence \hspace{0.5in} One-Way ANOVA \\
+Simple Linear Regression \hspace{0.99in} Chi-Square Test of Homogeneity \\
+Chi-Squared Goodness-of-Fit test \hspace{0.5in}  Paired t-test \\
+Confidence interval for $\mu$ \hspace{1.01in} Hypothesis test for $\mu$ \\ 
+Hypothesis test for $\mu_1-\mu_2$
+\end{tcolorbox}
+\end{center}
+
+\begin{itemize}
+\item[(a)] Researchers are interested in investigating how
+the number of visitors to Yellowstone National Park in a year impacts the local
+economy in Livingston. To do this they count the number of yearly visitors to
+Yellowstone and measure the dollars spent by tourists in Livingston for the
+year.
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item[(b)] A study of honeybees looked at whether the
+proportions of different honeybee species varies by state. Ten states were used 
+in the study, and 100 honeybees were randomly sampled in each state, and 7
+different species were seen in the data set. 
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item[(c)] An attorney in Boston observes that some judges
+seem to select juries that contain few women. She collects data on 20 randomly
+selected juries from each of 10 judges, and the number of women on each jury for
+each judge. 
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item[(d)] Researchers are interested in determining if the 
+yield of a tomato plant differs among three tomato varieties.
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item[(e)] You are interested in deciding if you should rent
+a new apartment off campus. As this will be your first time living off campus,
+you are anxious to  know the average amount of time it should take you to walk
+to campus. You, a logical person, know that someone's height drastically affects
+how long it takes them to walk places. What is the best {\bf method} to answer
+his research question? Circle one.
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\item[(f)] Matchmaking data scientists are always
+investigating what characteristics of a person can produce better matches. 
+Data scientists at Tinder are interested in looking into the relationship 
+between someone's sexual orientation and whether they would date someone 
+who is taller than them.  
+
+\begin{center}
+\underline{\hspace{4in}}
+\end{center}
+
+\end{itemize}

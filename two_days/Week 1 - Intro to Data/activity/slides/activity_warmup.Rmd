@@ -1,0 +1,84 @@
+---
+title: "Stat 218 Day 1: </br>The Beginning of Statistical Inference"
+date: "September 20, 2022"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(dpi = 300, 
+                      warning = FALSE, 
+                      message = FALSE,
+                      echo = FALSE)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(png)
+
+options(show.signif.stars = FALSE)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+class: center, middle, inverse
+
+.larger[Today's Activity]
+
+![](images/bouba-kiki.png)
+
+---
+
+class: center, middle, inverse
+
+.larger[So what do you think? Are we good at speaking Martian?]
+
+---
+
+[![Everything Is AWESOME](images/ted_talk.png)](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain/transcript?language=en)

@@ -1,0 +1,160 @@
+---
+title: "Week 1 Reading Guide"
+format: html
+editor: visual
+---
+
+## Chapter 1: Data, Types of Variables & Study Design
+
+### Section 1.1 
+
+Summary statistic:
+
+</br>
+
+### Section 1.2.1: Observations, Variables & Data Matrices
+
+Case / Observational unit:
+
+</br>
+
+Variable:
+
+</br>
+
+Data:
+
+</br>
+
+Data frame:
+
+</br>
+
+Tidy data:
+
+</br>
+
+### Section 1.2.2: Types of Variables
+
+Numerical / Quantitative variable:
+
+</br>
+
+Discrete variable:
+
+</br>
+
+Examples of a discrete variable using the `county` data: 
+
+</br>
+
+Continuous variable:
+
+</br>
+
+Examples of a continuous variable using the `county` data: 
+
+</br>
+
+Example of a variable recorded as a number which **is not** a numerical
+variable: 
+
+</br>
+
+Categorical / Qualitative variable:
+
+</br>
+
+Levels of a categorical variable:
+
+</br>
+
+Ordinal variable:
+
+</br>
+
+Example of an ordinal variable using the `county` data:
+
+</br>
+
+Nominal variable:
+
+</br>
+
+Example of a nominal variables using the `county` data:
+
+</br>
+
+**Note: Ordinal and nominal variables will be treated the same in this course.
+I recommend taking more statistics courses in the future to learn better
+methods of analysis for ordinal variables!**
+
+### Section 1.2.3: Relationships Between Variables
+
+Association / Dependent variables:
+
+</br>
+
+Independent variables:
+
+</br>
+
+### Section 1.2.4: Explanatory & Response Variables
+
+Explanatory variable:
+
+</br>
+
+Response variable:
+
+</br>
+
+### Section 1.2.5: Observational Studies & Experiments
+
+Experiment:
+
+</br>
+
+Randomized Experiment:
+
+</br> 
+
+Placebo:
+
+</br>
+
+Observational study:
+
+</br>
+
+Cohort:
+
+</br>
+
+#### Notes
+
+In a data frame, rows correspond to: ___________________ 
+
+In a data frame, columns correspond to: __________________.
+
+</br>
+
+True or False: A pair of variables can be both associated AND independent.
+
+</br>
+
+True or False: Given a pair of variables, one will always be the explanatory
+variable and one the response variable.  
+
+</br>
+
+True or False: If a study does have an explanatory and a response variable,
+that means changes in the explanatory variable must **cause** changes in the
+response variable. 
+
+</br>
+
+True or False: Observational studies can show a naturally occurring association
+between variables.  
+
+</br>

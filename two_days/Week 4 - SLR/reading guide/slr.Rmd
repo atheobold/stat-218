@@ -1,0 +1,170 @@
+---
+title: "Week 4 Reading Guide Part 1: Linear regression with a single predictor"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Section 7.1 -- Fitting a line, residuals, and correlation
+
+In the equation $y = b_0 + b_1 \times x + e$ what do the following represent?
+
+__$y$__
+
+</br>
+</br>
+
+__$b_0$__
+
+</br>
+</br>
+
+__$b_1$__
+
+</br>
+</br>
+
+What then is $\beta_0$?
+
+</br>
+</br>
+
+What is $\beta_1$?
+
+</br>
+</br>
+
+__Predictor:__
+
+</br>
+</br>
+
+__Outcome:__
+
+</br>
+</br>
+
+---
+
+In the example of possum head lengths and total lengths, describe the following:
+
+__predictor variable:__
+
+</br>
+
+__outcome variable:__
+
+</br>
+
+__direction of relationship:__
+
+</br>
+
+__strength of relationship:__
+
+</br>
+
+---
+
+### 7.1.3
+
+__Residual:__
+
+</br>
+</br>
+
+### 7.1.4
+
+__Correlation:__
+
+</br>
+</br>
+
+__$\rho$:__ population correlation 
+
+__$r$:__ sample correlation
+
+</br>
+
+What values can the correlation have? 
+
+</br>
+
+What does a positive correlation suggest about the relationship between x and y?
+
+</br>
+</br>
+
+What does a negative correlation suggest about the relationship between x and y?
+
+</br>
+</br>
+
+---
+
+## 7.2 -- Least squares regression
+
+What method is used to find the "best" least squares line?
+
+</br>
+</br>
+
+__Sample slope interpretation:__ a 1 unit increase in the *x*-variable is
+associated with a $|b_1|$ unit *predicted* increase/decrease in the mean of the
+*y*-variable.
+
+</br>
+
+__Sample intercept interpretation:__ when the *x*-variable is 0, $b_0$ is the 
+*predicted* mean of the *y*-variable.
+
+</br>
+
+### 7.2.4
+
+__Extrapolation:__
+
+</br>
+</br>
+
+### 7.2.5
+
+__R-squared / Coefficient of determination:__
+
+</br>
+</br>
+
+---
+
+## 7.3 -- Outliers in linear regression
+
+Where does an outlier with "high leverage" fall on a scatterplot?
+
+</br>
+</br>
+
+What does it mean for an outlier to be "influential"?
+
+</br>
+</br>
+
+Where would an outlier with "high influence" fall on a scatterplot?
+
+</br>
+</br>
+
+---
+
+## Reminders from previous chapters
+
+__Scatterplot:__ displays two quantitative variables; one dot = two measurements
+($x$, $y$) on one observational unit.
+
+__Four characteristics of a scatterplot:__
+
+* *Form*: pattern of the dots plotted.  Is the trend generally linear (you can fit a straight line to the data) or non-linear?  
+* *Strength*: how closely do the points follow a trend?  Very closely (strong)? No pattern (weak)?  
+* *Direction*: as the $x$ values increase, do the $y$-values tend to increase (positive) or decrease (negative)?  
+* Unusual observations or *outliers*: points that do not fit the overall pattern of the data. 

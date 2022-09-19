@@ -1,0 +1,210 @@
+---
+title: "Week 7 Reading Guide Part 1: Hypothesis Testing Errors & Comparing Many Means"
+output: html_document
+---
+
+## Chapter 14: Decision Errors
+
+__A Type I error happens when:__
+
+</br>
+</br>
+
+__A Type II error happens when:__
+
+</br>
+</br>
+
+### Section 14.1: Significance-level
+
+__How do we use a "significance level" ($\alpha$) in hypothesis testing?__
+
+</br>
+</br>
+
+__How does $\alpha$ relate to a Type I error?__
+
+</br>
+</br>
+
+__How does $\alpha$ relate to a Type II error?__
+
+</br>
+</br>
+
+---
+
+## Chapter 22: Inference for Comparing Many Means
+
+__What does ANOVA stand for?__
+
+</br>
+</br>
+
+__Suppose you have three groups (A, B, and C). Write down all of the ways you
+could compare the means of these three groups (e.g., A - B)?__
+
+</br>
+</br>
+
+__Thinking about the previous chapter (on hypothesis testing errors), why
+should we not make all of the comparisons you just wrote down?__
+
+</br>
+</br>
+
+
+__What is the null hypothesis for *every* ANOVA test?__
+
+</br>
+</br>
+
+__What is the alternative hypothesis for *every* ANOVA test?__
+
+</br>
+</br>
+
+__What conditions must be checked before performing an ANOVA?__
+
+</br>
+</br>
+</br>
+
+### Section 22.2: Batting Case Study
+
+__What are the observational units in this study?__
+
+</br>
+
+__What is the explanatory variable for this study? Is it numerical or categorical?__
+
+</br>
+
+__What is the response variable for this study? Is it numerical or categorical?__
+
+</br>
+
+__State the null and alternative hypothesis for testing if the on-base
+percentage is the same across the outfield, infield, and catchers.__
+
+</br>
+</br>
+</br>
+</br>
+
+### Section 22.2: Randomization test for comparing many means
+
+__Based on the visualization in Figure 22.2, do you believe there is a 
+substantial difference in the on-base percentage between these three groups?
+What are you comparing when you make your decision?__
+
+</br>
+</br>
+
+__Looking at the plot, the largest difference is between the outfield and the
+catchers. Why would it be inappropriate to only compare those two groups instead
+of all three?__ 
+
+</br>
+</br>
+
+#### Section 22.2.1
+
+__What is the "mean square between groups" (MSG)?__
+
+</br>
+</br>
+
+__How many degrees of freedom does the MSG have?__
+
+</br>
+
+__What is the "mean square error" (MSE)?__
+
+</br>
+</br>
+
+__How many degrees of freedom does the MSE have?__
+
+</br>
+
+__What is the equation of an F-statistic?__
+
+</br>
+</br>
+
+### Section 22.2.2
+
+__The null hypothesis in an ANOVA assumes that the means of all of the groups
+are the same. How would we use cards to simulate what exam scores could have 
+happened if the exams were equally difficult?__
+
+Step 1: Write _______ on _______ cards.
+
+</br>
+
+Step 2: Assume the null hypothesis is true and _________ the cards. 
+
+</br>
+
+Step 3: Create a new dataset that could have happened if the null hypothesis
+was true by ___________. 
+
+</br>
+</br>
+
+Step 4: With the new dataset, calculate the _______. 
+
+</br>
+</br>
+
+*If you need a hint, look back to what we did for two means, since the steps 
+are nearly identical. The only aspect that has changed is how many groups we 
+are starting with!*
+
+</br>
+
+__Why does the distribution in Figure 22.5 have only positive numbers?__
+
+</br>
+</br>
+
+__To find the p-value for a simulation-based ANOVA, what do you do?__
+
+</br>
+</br>
+
+__If you reject the null in an ANOVA, what can you conclude?__
+
+</br>
+</br>
+
+
+## Section 22.3: Mathematical model for comparing many means
+
+__What distribution does a theory-based / mathematical method use to find its
+p-value?__
+*Hint:* It's not a randomization / permutation distribution! 
+
+</br>
+</br>
+
+__What components of the hypothesis testing process are the same between the 
+simulation-based and theory-based (mathematical) methods?__
+*Hint:* Think about how the p-value was found. What steps were carried out? 
+
+</br>
+</br>
+
+__What components of the hypothesis testing process are different between the 
+simulation-based and theory-based (mathematical) methods?__
+*Hint:* Think about how the p-value was found. What steps were carried out? 
+
+</br>
+</br>
+
+__Previously, to use a $t$-distribution for our analysis, we needed to check 
+additional conditions. Is that true in the case of an ANVOA?__
+
+</br>
+</br>
