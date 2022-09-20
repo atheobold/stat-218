@@ -69,6 +69,12 @@ style_duo_accent(
 
 class: center, middle, inverse
 
+.larger[What you can expect this class to look like.]
+
+---
+
+class: center, middle, inverse
+
 .larger[Today's Activity]
 
 ![](images/bouba-kiki.png)
