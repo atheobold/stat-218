@@ -1,7 +1,7 @@
 ---
 title: 'Exploring Quantitative Variables: IMDb Movie Reviews'
 author: "Your Name: _______________"
-date: "October 27, 2022"
+date: "September 27, 2022"
 format: pdf
 editor: visual
 ---

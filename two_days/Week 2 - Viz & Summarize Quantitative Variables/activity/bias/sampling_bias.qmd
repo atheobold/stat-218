@@ -1,7 +1,7 @@
 ---
 title: "Sampling Bias: American Indian Address"
 author: "Your Name: _______________"
-date: "October 27, 2022"
+date: "September 27, 2022"
 format: pdf
 editor: visual
 ---
@@ -164,7 +164,7 @@ Fill in the table below with the random numbers selected and use the Becenti.csv
 
 \vspace{1.5in}
 
-\vspace{0.2in} \vspace{0.2in} \vspace{0.2in}  
+\vspace{0.2in} \vspace{0.2in} \vspace{0.2in}
 
 4.  Where does the value 3.95, the true mean word length, fall in the distribution created in question 4?
 
@@ -238,43 +238,49 @@ The plot labeled "Statistic" displays the 1,000 randomly generated sample word l
 
 -   Which features are similar?
 
+```{=tex}
 \vspace{0.2in}
 \vspace{0.2in}
 \vspace{0.2in}
-
+```
 -   Which features differ?
 
+```{=tex}
 \vspace{0.2in} 
 \vspace{0.2in}
 \vspace{0.2in}
-
+```
 13. Compare the spreads of the plots in question 11 and in question 6. You should see that in one plot all sample means are closer to the population mean than in the other. Which plot shows this?
 
+```{=tex}
 \vspace{0.2in}
 \vspace{0.2in}
 \vspace{0.2in}
-
+```
 14. Using the evidence from your simulations, answer the following research questions.
 
 -   Does changing the sample size impact whether the sample estimates are unbiased? Explain your answer.
 
+```{=tex}
 \vspace{0.2in}
 \vspace{0.2in}
 \vspace{0.2in}
-
+```
 -   Does changing the sample size impact the variability of sample estimates? Explain your answer
 
+```{=tex}
 \vspace{0.2in}
 \vspace{0.2in}
 \vspace{0.2in}
-
+```
 15. What is the purpose of random selection of a sample from the population?
 
+```{=tex}
 \vspace{0.2in}
 \vspace{0.2in}
 \vspace{0.2in} 
-\newpage 
-
+\newpage
+```
 ## Take-home messages
 
 1.  Random selection is an unbiased method of selection.
