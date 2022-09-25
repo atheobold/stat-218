@@ -42,10 +42,10 @@ pal <- brewer.pal(n = 8, name = "Purples")
 
 ## Office Hours
 
-Day        | Time
------------|:------------------:|
-Tuesdays   | 2:30pm - 3:30pm (in-person) |
-Thursdays  | 2:30pm - 3:30pm (in-person) |
+| Day       | Time               |
+|-----------|:------------------:|
+| Tuesdays  | 2:30pm - 3:30pm (in-person) |
+| Thursdays | 2:30pm - 3:30pm (in-person) |
 
 If you would prefer to meet on Zoom, you are welcome to schedule an appointment
 to meet here: <https://calendly.com/allisontheobold/office-hour-appointment> 

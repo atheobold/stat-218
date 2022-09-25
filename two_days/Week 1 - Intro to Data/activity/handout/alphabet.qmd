@@ -1,15 +1,16 @@
 ---
 title: 'Activity 1:  Martian Alphabet'
 author: 'Your Name: ___________________________'
-date: "March 29, 2022"
-output:
-  html_document: default
-  word_document: default
-  pdf_document: default
+date: "September 20, 2022"
+format: pdf
+editor: visual
+execute: 
+  fig-align: center
+  echo: false
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup}
+#| include: false
 
 library(tidyverse)
 library(knitr)
@@ -47,7 +48,7 @@ write down whether you think Bouba is on the left or on the right.
 
 1.	Were you correct or incorrect in identifying Bouba?
 
-</br>
+\newpage
 
 ### Steps of the statistical investigation process  
 
@@ -68,11 +69,11 @@ unit.
 
 2.  What are the observational units in this study?
 
-</br>
+\vspace{0.5in}
 
 3.  How many students are in class today? This is the **sample size**.
 
-</br>
+\vspace{0.5in}
 
 ---
 
@@ -84,10 +85,9 @@ we are only measuring one variable on each observational unit.
 study, i.e., what are we measuring on each student?**  *Hint*: Your answer to
 question 1 is the outcome for the variable measured on one observational unit.
 
-</br>
-</br>
+\vspace{0.5in}
 
----
+\newpage
 
 We will look at two types of variables: **quantitative** and **categorical**. 
 
@@ -104,18 +104,23 @@ ordering are considered *nominal* variables (hair color, gender identity,
 favorite color). Although these are important differences, in this course we
 will treat all categorical variables as nominal variables. 
 
-```{r types-of-variables, fig.align = "center", fig.cap="Types of variables."}
-include_graphics(here::here("Week 1 - Intro to Data",
+```{r types-of-variables}
+#| fig-cap: "Types of variables."
+
+include_graphics(here::here("two_days", 
+                            "Week 1 - Intro to Data",
                             "activity",
+                            "handout",
+                            "images",
                             "variables.png")
 )
 ```
 
-</br>
+\vspace{0.1in}
 
 5. Is the variable identified in question 4 categorical or quantitative?
 
-</br>
+\vspace{0.5in}
 
 ---
 
@@ -126,13 +131,15 @@ visualize the data*.
 class size from question 3, calculate the proportion of students who correctly
 identified Bouba.  
 
-</br>
-</br>
+\vspace{0.1in}
 
+\begin{center}
 $\text{proportion} = \frac{\text{number of students who correctly identified Bouba}}{\text{total number of students}}$
+\end{center}
 
-</br>
-</br>
+\vspace{0.5in}
+
+\newpage
 
 The proportion in question 6 is called a **summary statistic**---a single value
 that summarizes the data set. It is important to note that a variable is
@@ -157,9 +164,16 @@ we will create two bars---one for each level.
 7. Plot the observed class data using a frequency bar plot. Be sure to add a
 scale to the $y$-axis.
 
-```{r, fig.align = "center"}
-include_graphics(here::here("Week 1 - Intro to Data",
+```{r}
+#| fig-align: center
+#| out-width: 40%
+#| out-height: 40%
+
+include_graphics(here::here("two_days", 
+                            "Week 1 - Intro to Data",
                             "activity",
+                            "handout", 
+                            "images",
                             "barplot_martian.png")
 )
 ```
@@ -171,15 +185,22 @@ plot**.  Relative frequency is the proportion calculated for each level of the c
 8. Plot the observed class data using a relative frequency bar plot. Be sure to
 add a scale to the $y$-axis.
 
-```{r, fig.align = "center"}
-include_graphics(here::here("Week 1 - Intro to Data",
+```{r}
+#| fig-align: center
+#| out-width: 40%
+#| out-height: 40%
+
+include_graphics(here::here("two_days", 
+                            "Week 1 - Intro to Data",
                             "activity",
+                            "handout", 
+                            "images",
                             "relative_barplot_martian.png")
 )
 ```
 
 
----
+\newpage
                     
 **Step 4**: Now that we've visualized and summarized what we observed in our 
 sample, the next step is to use statistical methods to draw inferences from
@@ -198,47 +219,47 @@ simulated statistics to get an idea of how often the class's result would occur
 if all of use were merely guessing. This comparison allows us to determine if
 the data provides evidence that we as a class can in fact read Martian.
 
-</br>
+\vspace{0.1in}
 
 9. If humans really don’t know Martian and are just guessing which is Bouba,
 what are the chances of getting it right?
 
-</br>
+\vspace{0.25in}
 
 10. How could we use a coin to simulate each student “just guessing” which
 Martian letter is Bouba?
 
-</br>
+\vspace{0.25in}
 
 11. How could we use coins to simulate the entire class “just guessing” which 
 Martian letter is Bouba? 
 
-</br>
+\vspace{0.5in}
 
 12. How many people in your class would you expect to choose Bouba correctly
 just by chance? Explain your reasoning.
 
-</br>
+\vspace{0.25in}
 
 13. Each student will flip a coin one time to simulate your “guess” under the
 assumption that we can't read Martian.  Let Heads = correct, Tails = incorrect.
 
 - What was the result of your one simulation?
 
-</br>
+\vspace{0.25in}
 
 - What was the result from your class’s simulation?  What proportion of
 students “guessed” correctly in the simulation?
 
-</br>
+\vspace{0.25in}
 
 14. If students really don’t know Martian and are just guessing which is Bouba,
 which seems more unusual: (1) the result from your class’s **simulation** or (2)
 the **observed proportion** of students in your class that were correct (this is
 your summary statistic from question 6)?  Explain your reasoning.
 
-</br>
-</br>
+\vspace{1in}
+
 
 ---
 
@@ -252,9 +273,8 @@ class’s second simulation?  What proportion of students “guessed” correctl
 the second simulation?  Create a plot to compare the two simulated results with
 the observed class result.
 
-</br>
-</br>
-</br>
+\vspace{1.5in}
+
 
 We still only have a couple of simulations to compare our class data to.
 It would be much better to be able to see how our class compared to *hundreds*
@@ -267,51 +287,45 @@ of random guessing with 1000 statistics.
 
 |           Probability of correct guess: _____
 
-</br>
+\vspace{0.1in}
 
 |           Sample size: _____
 
-</br>
-
+\vspace{0.1in}
 
 |           Number of repetitions: _____
 
-</br>
+\vspace{0.1in}
+
 
 Sketch the distribution displayed by your instructor here.  Label each axis
 appropriately. 
 
-</br>
-</br>
-</br>
-
+\vspace{1.5in}
 
 
 17. What does one dot on the plot above represent in context of the problem?
 
-
-</br>
-</br>
-
+\vspace{0.5in}
 
 18. Is your class particularly good or bad at Martian?  Use the plot in question
 17 to explain your answer. 
 
-</br>
-</br>
+\vspace{0.5in}
+
 
 
 19.	Is it *possible* that we could see our class results just by chance if
 everyone was just guessing?  Explain your reasoning.
 
-</br>
-</br>
+\vspace{0.5in}
 
 
 20.	Is it *likely* that we could see our class results just by chance if
 everyone was just guessing?  Explain your reasoning.
 
-</br>
+\vspace{0.5in}
+
 
 ---
 
@@ -322,16 +336,11 @@ everyone was just guessing?  Explain your reasoning.
 guessing at random? If so, what do you think is going on here?  Can we as a
 class read Martian?
 
-</br>
-</br>
-</br>
-
+\newpage
 
 If you are interested, this activity was inspired by a TED talk given by
 Vilayanur Ramachandran in 2007. The synesthesia part begins at roughly 17:30
 minutes: <https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain>.  
-
-\vspace{1in}
 
 ### Take-home messages
 

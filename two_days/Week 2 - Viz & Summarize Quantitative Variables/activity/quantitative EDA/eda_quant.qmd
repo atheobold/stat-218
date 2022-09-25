@@ -1,5 +1,7 @@
 ---
-title: 'Week 2 Day 2 Activity: IMDb Movie Reviews --- Displaying Quantitative Variables'
+title: 'Exploring Quantitative Variables: IMDb Movie Reviews'
+author: "Your Name: _______________"
+date: "September 27, 2022"
 format: pdf
 editor: visual
 ---
@@ -9,126 +11,183 @@ editor: visual
 
 library(tidyverse)
 library(mosaic)
+library(here)
 ```
 
-\vspace{2cm}
+```{r movie-images}
+#| layout-nrow: 1
+#| layout-ncol: 4
+#| out-width: 50%
+#| echo: false
 
-::: {layout-ncol=4}
-![](captain_america.jpg)
-![](deadpool.jpg)
-![](jungle_book.jpg)
-![](mr_church.jpg)
-:::
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "transcendents.jpeg")
+  )
 
-\vspace{2cm}
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "freaky.jpg")
+  )
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "flute.jpg")
+  )
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "afterward.jpg")
+  )
+
+```
 
 ## Learning outcomes
 
-* Identify and create appropriate summary statistics and plots given a data set
-or research question for quantitative data.
+-   Identify and create appropriate summary statistics and plots given a data set or research question for quantitative data.
 
-* Interpret the following summary statistics in context: median, first quartile,
-third quartile, standard deviation, interquartile range.
+-   Interpret the following summary statistics in context: median, first quartile, third quartile, standard deviation, interquartile range.
 
-* Identify and create appropriate summary statistics and plots given a data set
-or research question for a single quantitative variable.
+-   Identify and create appropriate summary statistics and plots given a data set or research question for a single quantitative variable.
 
-* Given a plot or set of plots, describe and compare the distribution(s) of a
-single quantitative variable (center, variability, shape, outliers).
+-   Given a plot or set of plots, describe and compare the distribution(s) of a single quantitative variable (center, variability, shape, outliers).
 
 \newpage
 
 ## Terminology review
 
-In today's activity, we will review summary measures and plots for quantitative
-variables.  Some terms covered in this activity are:
+In today's activity, we will review summary measures and plots for quantitative variables. Some terms covered in this activity are:
 
-* Two measures of center: mean, median
+-   Two measures of center: mean, median
 
-* Two measures of spread (variability): standard deviation, interquartile range
-(IQR)
+-   Two measures of spread (variability): standard deviation, interquartile range (IQR)
 
-* Types of graphs: box plots, dot plots, histograms
+-   Types of graphs: box plots, dot plots, histograms
 
 ## Movies released in 2016
 
-A data set was collected on movies released in 2016.  Here is a list of some of
-the variables collected on the observational units, movies released in 2016.  
+A data set was collected on movies released in 2020. Here is a list of some of the variables collected on the observational units (each movie):
 
-| **Variable** 	   | **Description**    |
-|------------------|--------------------|
-| `movie_title`    | Title of the movie |
-| `budget_mil`     | Amount of money (in US $ millions) budgeted for the production of the movie |
-| `revenue_mil`    | Amount of money (in US $ millions) the movie made after release |
-| `duration`       | Length of the movie (in minutes) |
-| `content_rating` | Rating of the movie (`"G"`, `"PG"`, `"PG-13"`, `"R"`, `"Not Rated"`)|
-| `imdb_score`     | IMDb user rating score from 1 to 10 |
-| `genres`         | Categories the movie falls into (e.g., Action, Drama, etc.) |
-| `facebook_likes` | Number of likes a movie receives on Facebook |
+| **Variable**     | **Description**                                             |
+|----------------------------------|--------------------------------------|
+| `Movie`          | Title of the movie                                          |
+| `averageRating`  | Average IMDb user rating score from 1 to 10                 |
+| `numVotes`       | Number of votes from IMDb users                             |
+| `Genre`          | Categories the movie falls into (e.g., Action, Drama, etc.) |
+| `2020 Gross`     | Gross profit from movie viewing                             |
+| `runtimeMinutes` | Length of movie (in minutes)                                |
+|                  |                                                             |
 
 ```{r data}
 #| include: false
 
-movies <- read_csv(here::here("two_days", 
+movies <- readxl::read_xlsx(here::here("two_days", 
                               "Week 2 - Viz & Summarize Quantitative Variables",
                               "activity",
                               "quantitative EDA",
-                              "Movies2016.csv"
+                              "data",
+                              "movies_2020.xlsx"
                               )
                    ) %>% 
-  distinct(movie_title, .keep_all = TRUE)
-```
+  distinct(Movie, .keep_all = TRUE)
 
+title_ids <- read_csv(here::here("two_days", 
+                               "Week 2 - Viz & Summarize Quantitative Variables",
+                               "activity",
+                               "quantitative EDA",
+                               "data",
+                               "movie_ids.csv")
+                      )
+  
+movie_ids <- left_join(movies, 
+                       title_ids, 
+                       by = 
+                         intersect(
+                           colnames(movies), 
+                           colnames(title_ids)
+                           )
+                       )
+
+ratings <- read_csv(here::here("two_days", 
+                               "Week 2 - Viz & Summarize Quantitative Variables",
+                               "activity",
+                               "quantitative EDA",
+                               "data",
+                               "ratings.csv")
+                      )
+
+movie_ratings <- left_join(movie_ids, 
+                           ratings, 
+                           by = "id"
+                           ) %>% 
+  select(Movie, 
+         Genre, 
+         `2020 Gross`, 
+         runtimeMinutes, 
+         averageRating, 
+         numVotes) %>% 
+  drop_na(averageRating)
+```
 
 ## Visualizing a Single Quantitative Variable
 
-
-1. What are the three types of plots used to plot a single quantitative
-variable?
+1.  What are the three types of plots used to plot a single quantitative variable?
 
 \newpage
 
 ## Dotplot
 
-A dotplot will plot a dot for each value in the data set. The code below was 
-used to create a dotplot of the `imdb_scores` variable from the `movies`
-dataset. In a dotplot, the quantitative variable goes on the x-axis, which is 
-why the code says `x = imdb_score` inside of the `aes()` function.
+A dotplot will plot a dot for each value in the data set. The code below was used to create a dotplot of the `averageRatings` variable from the `movies` dataset. In a dotplot, the quantitative variable goes on the x-axis, which is why the code says `x = averageRating` inside of the `aes()` function.
 
 ```{r dotplot}
 #| message: false
 #| warning: false
 
-ggplot(data = movies, 
-       mapping = aes(x = imdb_score)) + 
-  geom_dotplot() +
-  labs(title = "Score of Movies from 2016", # Title for plot
+ggplot(data = movie_ratings, 
+       mapping = aes(x = averageRating)) + 
+  geom_dotplot(dotsize = 0.5) +
+  labs(title = "Score of Movies from 2020", # Title for plot
        x = "IMDb Score", # Label for x axis
        y = "Frequency" # Label for y axis
        ) 
 ```
 
-2. What does each dot on the dotplot represent?
+2.  What does each dot on the dotplot represent?
 
 \vspace{1cm}
 
-3. How would you describe the shape of the distribution of IMDb scores?
+3.  How would you describe the shape of the distribution of IMDb scores?
 
 \newpage
 
+<!-- Question on what dotsize does -->
+
 ## Histogram
 
-To create a histogram of the IMDb scores, all we need to do is change the 
-geometric object we are displaying on our plot! In a dotplot we use dots, but in
-a histogram we use bars. Notice, in the code below there are two changes:
+To create a histogram of the IMDb scores, all we need to do is change the geometric object we are displaying on our plot! In a dotplot we use dots, but in a histogram we use bars. Notice, in the code below there are two changes:
 
-- I am using `geom_histogram()` instead of `geom_dotplot()`
-- I am specifying how wide the bins of the histogram should be using 
-`binwidth = 0.6`
+-   I am using `geom_histogram()` instead of `geom_dotplot()`
+-   I am specifying how wide the bins of the histogram should be using `binwidth = 0.6`
 
 ```{r histogram}
-ggplot(data = movies, 
-       mapping = aes(x = imdb_score)) + 
+ggplot(data = movie_ratings, 
+       mapping = aes(x = averageRating)) + 
   geom_histogram(binwidth = 0.6) +
   labs(title = "Score of Movies from 2016", # Title for plot
        x = "IMDb Score", # Label for x axis
@@ -136,146 +195,130 @@ ggplot(data = movies,
        )
 ```
 
-4. Why did I **not** need to specify a `binwidth` in the dot plot I made?
+4.  Why did I **not** need to specify a `binwidth` in the dot plot I made?
 
+```{=tex}
 \vspace{2cm}
 \vspace{2cm}
-
-5. Which range of IMDb scores have the *highest* frequency?
-
-\vspace{2cm}
-\vspace{2cm}
-
-5. What IMDB scores are movies *rarely* rated?
+```
+5.  Which range of IMDb scores have the *highest* frequency?
 
 \vspace{2cm}
+
+5.  What IMDB scores are movies *rarely* rated?
+
 \vspace{2cm}
 
-6. Are there IMDB scores that were possible but *no* movies in this sample were
-given those ratings?
+6.  Are there IMDB scores that were possible but *no* movies in this sample were given those ratings?
 
 \vspace{2cm}
 
 ## Boxplot
 
-7. Which five summary statistics are used to create a box plot? 
+7.  Which five summary statistics are used to create a box plot?
 
--
-\vspace{0.5cm}
--
-\vspace{0.5cm}
--
-\vspace{0.5cm}
--
-\vspace{0.5cm}
--
-\vspace{0.5cm}
+-   \vspace{0.5cm}
+
+-   \vspace{0.5cm}
+
+-   \vspace{0.5cm}
+
+-   \vspace{0.5cm}
+
+-   \vspace{0.5cm}
 
 \newpage
 
-In the code below I've provided you with all of the statistics you listed in #7. 
+In the code below I've provided you with all of the statistics you listed in #7.
 
 ```{r stats}
-summarize(movies,
-          min_score = min(imdb_score),
-          Q1_score = quantile(imdb_score, 0.25),
-          median_score = median(imdb_score), 
-          Q3_score = quantile(imdb_score, 0.75), 
-          max_score = max(imdb_score)
+summarize(movie_ratings,
+          min_score = min(averageRating),
+          Q1_score = quantile(averageRating, 0.25),
+          median_score = median(averageRating), 
+          Q3_score = quantile(averageRating, 0.75), 
+          max_score = max(averageRating)
           )
 ```
 
 \vspace{1cm}
 
-8. Using the summary statistics provided, sketch a box plot of IMDb scores. Be
-sure to label the axes!
+8.  Using the summary statistics provided, sketch a box plot of IMDb scores. Be sure to label the axes!
+
+```{=tex}
+\vspace{2cm}
+\vspace{2cm}
+```
+9.  How do you decide if a value is an "outlier" when creating a boxplot?
 
 \vspace{2cm}
 
-9. How do you decide if a value is an "outlier" when creating a boxplot?
+In the code below, I'm providing you with the top 3 and the bottom 3 IMDb scores.
 
-\vspace{2cm}
+**Bottom 3:**
 
-In the code below, I'm providing you with the top 3 and the bottom 3 IMDb
-scores.
-
-__Bottom 3:__
 ```{r min}
-movies %>% 
-  select(imdb_score) %>% 
-  slice_min(order_by = imdb_score, n = 3)
+movie_ratings %>% 
+  select(averageRating) %>% 
+  slice_min(order_by = averageRating, n = 3)
 
 ```
 
-\newpage
+\vspace{0.5cm}
 
-__Top 3:__
+**Top 3:**
+
 ```{r max}
-movies %>% 
-  select(imdb_score) %>% 
-  slice_max(order_by = imdb_score, n = 3)
+movie_ratings %>% 
+  select(averageRating) %>% 
+  slice_max(order_by = averageRating, n = 3)
 
 ```
 
-10. Revisit your previous boxplot to decide if any observations should be 
-plotted as outliers. 
+10. Revisit your previous boxplot to decide if any observations should be plotted as outliers.
 
-\vspace{2cm}
-
+(Modify your previous plot) \vspace{2cm}
 
 ## Plot Comparison
 
 11. Compare the three graphs of IMDb scores created above.
 
-- Which graph(s) show the shape of the distribution?
+-   Which graph(s) show the shape of the distribution?
 
 \vspace{2cm}
 
-- Which graph(s) show the outliers of the distribution?
+-   Which graph(s) show the outliers of the distribution?
 
 \vspace{2cm}
 
-- Which graph plots the *raw* data (individual observations)?
+-   Which graph plots the *raw* data (individual observations)?
 
 \vspace{2cm}
 
 ## Summarizing a single quantitative variable
 
-12. Based on the distributions provided, do you believe the *mean* IMDb score
-will be greater or less than the median? Explain why! 
+12. Based on the distributions provided, do you believe the *mean* IMDb score will be greater or less than the median? Explain why!
 
 \vspace{2cm}
 
-In the code below I've calculated the standard deviation of the IMDb scores. 
+In the code below I've calculated the standard deviation of the IMDb scores.
 
 ```{r sd}
-summarize(movies, 
-          sd_score = sd(imdb_score)
+summarize(movie_ratings, 
+          sd_score = sd(averageRating)
           )
 ```
 
+13. Interpret the value of the standard deviation in the context of these data.
 
-13. Interpret the value of the standard deviation in the context of these data. 
-
-\vspace{2cm}
-
----
+\newpage
 
 ### Take-Home Messages
 
-1. Histograms, box plots, and dot plots can all be used to graphically display
-a single quantitative variable.  
+1.  Histograms, box plots, and dot plots can all be used to graphically display a single quantitative variable.
 
-2. The box plot is created using the five number summary: the minimum value,
-Q1, median, Q3, and the maximum value. Values in the data set that are less than
-$Q_1 - 1.5*\text{IQR}$ and greater than $Q_3 + 1.5*\text{IQR}$ are considered
-outliers and are graphically represented by a dot outside of the whiskers on the
-box plot.
+2.  The box plot is created using the five number summary: the minimum value, Q1, median, Q3, and the maximum value. Values in the data set that are less than $Q_1 - 1.5*\text{IQR}$ and greater than $Q_3 + 1.5*\text{IQR}$ are considered outliers and are graphically represented by a dot outside of the whiskers on the box plot.
 
-3. Data should be summarized numerically **and** displayed graphically to give
-us information about the study.
+3.  Data should be summarized numerically **and** displayed graphically to give us information about the study.
 
-4. When comparing distributions of quantitative variables we look at the shape,
-center, spread, and for outliers. There are two measures of center: mean and
-the median and two measures of spread: standard deviation and the interquartile 
-range, $\text{IQR} = Q3 - Q1$. 
+4.  When comparing distributions of quantitative variables we look at the shape, center, spread, and for outliers. There are two measures of center: mean and the median and two measures of spread: standard deviation and the interquartile range, $\text{IQR} = Q3 - Q1$.
