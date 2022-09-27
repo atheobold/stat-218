@@ -83,11 +83,11 @@ For this activity, you will read a speech given by Jim Becenti, a member of the 
 
 \vspace{0.2in} \vspace{0.2in} \vspace{0.2in} \vspace{0.2in}
 
-9.  Based on the plot of sample mean word lengths in question 8, what is your best guess for the average word length of the population of all 359 words in the speech?
+9.  Based on the plot of sample mean word lengths in question 8, what is your best guess for the average word length of the population of all 358 words in the speech?
 
 \vspace{0.2in} \vspace{0.2in}
 
-10. The true mean word length of the population of all 359 words in the speech is 3.95 letters. Is this value a parameter or a statistic?
+10. The true mean word length of the population of all 358 words in the speech is 3.95 letters. Is this value a parameter or a statistic?
 
 \vspace{0.2in} \vspace{0.2in}
 
@@ -119,11 +119,11 @@ For this activity, you will read a speech given by Jim Becenti, a member of the 
 
 Suppose instead of attempting to select a representative sample by eye (which did not work), each student used a random number generator to select a simple random sample of 10 words. A **simple random sample** relies on a random mechanism to choose a sample, without replacement, from the population, such that every sample of size 10 is equally likely to be chosen.
 
-To use a random number generator to select a simple random sample, you first need a numbered list of all the words in the population, called a **sampling frame**. You can then generate 10 random numbers from the numbers 1 to 359 (the number of words in the population), and the chosen random numbers correspond to the chosen words in your sample.
+To use a random number generator to select a simple random sample, you first need a numbered list of all the words in the population, called a **sampling frame**. You can then generate 10 random numbers from the numbers 1 to 358 (the number of words in the population), and the chosen random numbers correspond to the chosen words in your sample.
 
-1.  Use the random number generator at <https://istats.shinyapps.io/RandomNumbers/> to select a simple random sample from the population of all 359 words in the speech.
+1.  Use the random number generator at <https://istats.shinyapps.io/RandomNumbers/> to select a simple random sample from the population of all 358 words in the speech.
 
--   Set "Choose Minimum" to 1 and "Choose Maximum" to 359 to represent the 359 words in the population (the sampling frame).
+-   Set "Choose Minimum" to 1 and "Choose Maximum" to 358 to represent the 358 words in the population (the sampling frame).
 
 -   Set "How many numbers do you want to generate?" to 10 and ensure the "No" option is selected under "Sample with Replacement?"
 
@@ -166,11 +166,11 @@ Fill in the table below with the random numbers selected and use the Becenti.csv
 
 \vspace{0.2in} \vspace{0.2in} \vspace{0.2in}
 
-4.  Where does the value 3.95, the true mean word length, fall in the distribution created in question 4?
+4.  Where does the value 3.95, the true mean word length, fall in the distribution created in question 3?
 
 \vspace{0.2in}
 
-5.  How does the plot generated in question 4 compare to the plot generated in question 8 from Activity 2a?
+5.  How does the plot generated in question 3 compare to the plot generated in question 8 from Part One?
 
 -   Which features are similar?
 
@@ -192,7 +192,7 @@ One set of randomly generated sample mean word lengths from a single class may n
 
 -   Download the Becenti.csv file from Canvas and open the spreadsheet on your computer.
 
--   Copy and paste the population of word lengths (column C) into the applet from the data set provided making sure to include the header. Click "Use Data". Verify that the mean for the data set is 3.953 with a sample size of 359. If these are not the values you got, check with Dr. Theobold for help with copying in the data set correctly.
+-   Copy and paste the population of word lengths (column C) into the applet from the data set provided making sure to include the header. Click "Use Data". Verify that the mean for the data set is 3.953 with a sample size of 358. If these are not the values you got, check with Dr. Theobold for help with copying in the data set correctly.
 
 -   Click the check-box for "Show Sampling Options"
 
@@ -200,7 +200,7 @@ One set of randomly generated sample mean word lengths from a single class may n
 
 -   Click "Draw Sample(s)".
 
-6.  The plot labeled "Statistic" displays the 1,000 randomly generated sample mean word lengths. Sketch this plot below. Include a descriptive $x$-axis label and be sure to write down the provided mean and SD (standard deviation) of the distribution.
+6.  The plot labeled "Statistics:" displays the 1,000 randomly generated sample mean word lengths. Sketch this plot below. Include a descriptive $x$-axis label and be sure to write down the provided mean and SD (standard deviation) of the distribution.
 
 \vspace{2in}
 
@@ -226,11 +226,11 @@ We will now consider the impact of sample size.
 
 11. Now we will select 20 words instead of 10 words at random.
 
--   In the "One Variable with Sampling" Rossman/Chance web applet <http://www.rossmanchance.com/applets/2021/sampling/OneSample.html?population=gettysburg>, change the Sample size to 20.
-
+-  In the "One Variable with Sampling" Rossman/Chance web applet <http://www.rossmanchance.com/applets/2021/sampling/OneSample.html?population=gettysburg>, click "Reset" (next to "Draw Samples"). 
+- Change the Sample size to 20.
 -   Click "Draw Sample(s)".
 
-The plot labeled "Statistic" displays the 1,000 randomly generated sample word lengths. Sketch this plot below. Include a descriptive $x$-axis label and be sure to write down the provided mean and SD (standard deviation) of the distribution.
+The plot labeled "Statistics:" displays the 1,000 randomly generated sample word lengths. Sketch this plot below. Include a descriptive $x$-axis label and be sure to write down the provided mean and SD (standard deviation) of the distribution.
 
 \newpage
 
