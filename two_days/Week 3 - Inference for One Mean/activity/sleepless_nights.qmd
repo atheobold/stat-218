@@ -2,7 +2,7 @@
 title: "Activity 3: Sleepless Nights"
 date: "October 4, 2022"
 author: "Name: _____________________"
-format: pdf
+format: docx
 editor: visual
 ---
 
