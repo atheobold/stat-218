@@ -2,7 +2,7 @@
 title: "Sampling Bias: American Indian Address"
 author: "Your Name: _______________"
 date: "September 27, 2022"
-format: pdf
+format: docx
 editor: visual
 ---
 
@@ -226,8 +226,8 @@ We will now consider the impact of sample size.
 
 11. Now we will select 20 words instead of 10 words at random.
 
--  In the "One Variable with Sampling" Rossman/Chance web applet <http://www.rossmanchance.com/applets/2021/sampling/OneSample.html?population=gettysburg>, click "Reset" (next to "Draw Samples"). 
-- Change the Sample size to 20.
+-   In the "One Variable with Sampling" Rossman/Chance web applet <http://www.rossmanchance.com/applets/2021/sampling/OneSample.html?population=gettysburg>, click "Reset" (next to "Draw Samples").
+-   Change the Sample size to 20.
 -   Click "Draw Sample(s)".
 
 The plot labeled "Statistics:" displays the 1,000 randomly generated sample word lengths. Sketch this plot below. Include a descriptive $x$-axis label and be sure to write down the provided mean and SD (standard deviation) of the distribution.

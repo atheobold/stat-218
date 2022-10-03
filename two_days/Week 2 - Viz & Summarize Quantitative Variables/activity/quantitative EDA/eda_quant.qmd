@@ -2,7 +2,7 @@
 title: 'Exploring Quantitative Variables: IMDb Movie Reviews'
 author: "Your Name: _______________"
 date: "September 27, 2022"
-format: pdf
+format: docx
 editor: visual
 ---
 
@@ -85,7 +85,7 @@ In today's activity, we will review summary measures and plots for quantitative 
 A data set was collected on movies released in 2020. Here is a list of some of the variables collected on the observational units (each movie):
 
 | **Variable**     | **Description**                                             |
-|------------------|-------------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | `Movie`          | Title of the movie                                          |
 | `averageRating`  | Average IMDb user rating score from 1 to 10                 |
 | `numVotes`       | Number of votes from IMDb users                             |
