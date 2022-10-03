@@ -20,18 +20,19 @@ execute:
 ```
 
 ## Data Description
+
 <!-- In this section you are to describe your dataset! -->
 
-<!-- This section has three tasks:
-1. Describe the context of your dataset in your own words!
-2. Tell me why you picked this dataset
-3. Describe the two variables you are interested in. One should be the
-explanatory variable and one should be the response.
--->
+<!-- 1. Describe the context of your dataset in your own words! -->
 
+<!-- 2. Tell me why you picked this dataset -->
 
+<!-- 3. Describe the two variables you are interested in. One should be the -->
+
+<!-- explanatory variable and one should be the response. -->
 
 ## Data Visualization
+
 <!-- In this section you create three visualizations of your data -->
 
 ### Histogram of <INSERT NAME OF RESPONSE VARIABLE>
@@ -39,14 +40,13 @@ explanatory variable and one should be the response.
 ```{r histogram-1}
 #| fig-align: center
 
-## Code to make your firsthistogram goes here! 
+## Code to make your first histogram goes here! 
 ## Don't forget to choose nice binwidths and an axis title!
 
 
 ```
+
 <!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
-
-
 
 ### Histogram of <INSERT NAME OF EXPLANATORY VARIABLE>
 
@@ -58,9 +58,8 @@ explanatory variable and one should be the response.
 
 
 ```
+
 <!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers -->
-
-
 
 ### Scatterplot of <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
 
@@ -75,12 +74,13 @@ explanatory variable and one should be the response.
 
 <!-- Here is where you describe what you see in the scatterplot. Your description must include the following components: direction, shape, strength, outliers -->
 
-## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+## Modeling the Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
 
 ### Model Conditions
-<!-- Here is where you describe the four conditions (LINE) for linear regression.  -->
-<!-- State what the condition is and if you believe it is / is not violated IN THE CONTEXT OF YOUR DATA! -->
 
+<!-- Here is where you describe the four conditions (LINE) for linear regression.  -->
+
+<!-- State what the condition is and if you believe it is / is not violated IN THE CONTEXT OF YOUR DATA! -->
 
 ### Coefficient Estimates
 
@@ -95,6 +95,4 @@ explanatory variable and one should be the response.
 
 <!-- Here is where you describe the decision for the hypothesis test for whether the slope is 0.  -->
 
-
-
-<!-- Here is where you describe the confidence interval for the true slope. -->
+<!-- Here is where you interpret the confidence interval for the true slope. -->
