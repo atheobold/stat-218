@@ -1,11 +1,14 @@
 ---
 title: 'Lab 3: Inference for a Single Mean'
-author: "Your name here!"
-output: html_document
+author: "Your group's names here!"
+format: html
+editor: visual
+execute: 
+  echo: true
+  message: false
 ---
 
-As a reminder, answer **every** question included in the lab. The questions that
-are boldface are required to be answered in Canvas. 
+As a reminder, answer **every** question included in the lab. The questions that are boldface are required to be answered in Canvas. 
 
 ## Getting set-up
 
@@ -15,9 +18,7 @@ package. I've put the code to load one package into the chunk below.
 
 1. Load in the other two packages you need.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      message = FALSE)
+```{r setup}
 library(tidyverse)
 
 # put in the other two packages you need here
@@ -32,7 +33,8 @@ The data should be inside the `data` folder in your RStudio Cloud. Just like
 before, we'll use the `read_csv()` function to read in the data. 
 
 ```{r data-load}
-GSS <- read_csv(here::here("Week 3 - Inference for One Mean", 
+GSS <- read_csv(here::here("two_days", 
+                           "Week 3 - Inference for One Mean", 
                            "lab",
                            "data", 
                            "gss.csv"
@@ -69,7 +71,7 @@ __2. In words, what does $\mu$ represent?__
 Then, we can find our point estimate (otherwise known as our sample statistic,
 or sample mean). 
 
-__3. Use the favstats() function to obtain the point estimate for $\mu$.__
+__3. Use the favstats() function to obtain the point estimate for $\mu$. (to 3 decimal places)__
 
 ```{r}
 
@@ -80,7 +82,10 @@ distribution of hours worked looks like!
 
 ## Visualizing hours worked
 
-4. Fill in the blanks to create a histogram of the `hours` variable.
+4. Fill in the blanks to create a histogram of the `hours` variable. When
+specifying your `binwidth`, think about a reasonable starting point (e.g., 1
+hour or 0.5 hours). Then, look at your histogram and see if your bins should be
+smaller (it looks too chunky) or larger (it looks like toothpicks). 
 
 ```{r viz}
 ggplot(data = GSS, 
@@ -151,8 +156,8 @@ t_test(x = GSS,
 9. Adjust my code to obtain a 90% confidence interval.
 
 
-10. Interpret, in the context of these data, the 90% confidence interval you
-obtained. 
+**10. Interpret, in the context of these data, the 90% confidence interval you obtained.** 
+*Hint:* Look at the prompts in Canvas to guide your interpretation. 
 
 
 ### Hypothesis test for one mean
@@ -163,8 +168,8 @@ This is a different goal from a confidence interval! A confidence
 interval provides a range of values for the population parameter, 
 whereas a hypothesis test tells you if it is or is not a certain value. 
 
-11. Based on your 90% confidence interval do you believe you would reject
-or fail to reject the null hypothesis?
+**11. Based on your 90% confidence interval do you believe you would reject or fail to reject the null hypothesis?**
+*Hint:* Look at the prompts in Canvas to guide your decision. 
 
 
 Alright, let's see! We can use the `t_test()` to obtain the p-value for our
@@ -185,6 +190,11 @@ t_test(x = GSS,
 ```
 
 
-12. Based on the p-value what would you decide to do regarding your 
-null hypothesis?
+**12. Based on the p-value what would you decide to do regarding your null hypothesis?**
+*Hint:* Look at the prompts in Canvas to guide your decision. 
+
+
+**13. Write a conclusion in the context of this study.**
+*Hint:* Look at the prompts in Canvas to guide your decision. 
+
 

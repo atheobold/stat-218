@@ -1,7 +1,4 @@
----
-title: "Lab 3 Feedback"
-output: html_document
----
+
 # Question 10
 
 ## If they say "90% chance"
