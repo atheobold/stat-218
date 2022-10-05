@@ -8,15 +8,13 @@ execute:
   message: false
 ---
 
-As a reminder, answer **every** question included in the lab. The questions that are boldface are required to be answered in Canvas. 
+As a reminder, answer **every** question included in the lab. The questions that are boldface are required to be answered in Canvas.
 
 ## Getting set-up
 
-We use three packages in this course: `tidyverse`, `mosaic`, and `infer`. To
-load a package, you use the `library()` function, wrapped around the name of a
-package. I've put the code to load one package into the chunk below. 
+We use three packages in this course: `tidyverse`, `mosaic`, and `infer`. To load a package, you use the `library()` function, wrapped around the name of a package. I've put the code to load one package into the chunk below.
 
-1. Load in the other two packages you need.
+1.  Load in the other two packages you need.
 
 ```{r setup}
 library(tidyverse)
@@ -28,9 +26,7 @@ library(tidyverse)
 
 ## Loading in data
 
-As usual, we'll load in the data we are going to work with: `GSS_clean.csv`.
-The data should be inside the `data` folder in your RStudio Cloud. Just like
-before, we'll use the `read_csv()` function to read in the data. 
+As usual, we'll load in the data we are going to work with: `GSS_clean.csv`. The data should be inside the `data` folder in your RStudio Cloud. Just like before, we'll use the `read_csv()` function to read in the data.
 
 ```{r data-load}
 GSS <- read_csv(here::here("two_days", 
@@ -50,42 +46,30 @@ GSS <- read_csv(here::here("data",
 
 ## Investigating hours worked
 
-For this lab, we'll be working with data from the General Social Survey (GSS). 
-The GSS is a high-quality survey which gathers data on American society and
-opinions, conducted since 1972.This data set is a sample of 500 entries from the
-GSS, spanning years 1973-2018, including demographic markers and some economic
-variables.
+For this lab, we'll be working with data from the General Social Survey (GSS). The GSS is a high-quality survey which gathers data on American society and opinions, conducted since 1972.This data set is a sample of 500 entries from the GSS, spanning years 1973-2018, including demographic markers and some economic variables.
 
-Specifically, we will consider the variable `hours`. Say we wanted to know if
-the true mean number of hours worked in a week is different than 40. We could
-write out our null and alternative hypotheses like so:
+Specifically, we will consider the variable `hours`. Say we wanted to know if the true mean number of hours worked in a week is different than 40. We could write out our null and alternative hypotheses like so:
 
 $$ 
 H_0: \mu = 40 \\
 H_A: \mu \neq 40
-$$
-__2. In words, what does $\mu$ represent?__
+$$ 
 
+**2. In words, what does** $\mu$ represent?
 
+Then, we can find our point estimate (otherwise known as our sample statistic, or sample mean).
 
-Then, we can find our point estimate (otherwise known as our sample statistic,
-or sample mean). 
-
-__3. Use the favstats() function to obtain the point estimate for $\mu$. (to 3 decimal places)__
+**3. Use the favstats() function to obtain the point estimate for** $\mu$. (to 3 decimal places)
 
 ```{r}
 
 ```
 
-Okay, so that's not exactly 40. But, it would be nice to know what the
-distribution of hours worked looks like! 
+Okay, so that's not exactly 40. But, it would be nice to know what the distribution of hours worked looks like!
 
 ## Visualizing hours worked
 
-4. Fill in the blanks to create a histogram of the `hours` variable. When
-specifying your `binwidth`, think about a reasonable starting point (e.g., 1
-hour or 0.5 hours). Then, look at your histogram and see if your bins should be
-smaller (it looks too chunky) or larger (it looks like toothpicks). 
+4.  Fill in the blanks to create a histogram of the `hours` variable. When specifying your `binwidth`, think about a reasonable starting point (e.g., 1 hour or 0.5 hours). Then, look at your histogram and see if your bins should be smaller (it looks too chunky) or larger (it looks like toothpicks).
 
 ```{r viz}
 ggplot(data = GSS, 
@@ -94,55 +78,42 @@ ggplot(data = GSS,
   labs(x = "____")
 ```
 
-__5. How would you describe the distribution of hours worked?__
-__Keep in mind you should address: center, spread, shape, and outliers!__
-
+**5. How would you describe the distribution of hours worked?** **Keep in mind you should address: center, spread, shape, and outliers!\
+***Hint:* Look at the prompts in Canvas to guide your interpretation.
 
 ## Sampling distribution
 
-When we're doing inference, we are interested in knowing what other statistics
-we might have gotten from other samples. If we were to record the mean hours
-worked for thousands of other samples of 500 respondents, we would be able to 
-create the sampling distribution for the mean. 
+When we're doing inference, we are interested in knowing what other statistics we might have gotten from other samples. If we were to record the mean hours worked for thousands of other samples of 500 respondents, we would be able to create the sampling distribution for the mean.
 
-However, we only have **one** sample. So, we will need to approximate the 
-sampling distribution. We have two options for how to do this (1) using the 
-t-distribution or (2) using a bootstrap distribution. Today we will focus on 
-using the t-distribution and save the bootstrap distribution for another day!
+However, we only have **one** sample. So, we will need to approximate the sampling distribution. We have two options for how to do this (1) using the t-distribution or (2) using a bootstrap distribution. Today we will focus on using the t-distribution and save the bootstrap distribution for another day!
 
 ## The t-distribution
 
-We can use the (Student's) t-distribution to approximate the sampling
-distribution, but the accuracy of this approximation depends on two key
-conditions. 
+We can use the (Student's) t-distribution to approximate the sampling distribution, but the accuracy of this approximation depends on two key conditions.
 
-_6. What are the two conditions we need to check so we know the t-distribution is a good approximation for the sampling distribution?__
+**6. What are the two conditions we need to check so we know the t-distribution is a good approximation for the sampling distribution?\
+***Hint:* Look at the prompt in Canvas to guide you!
 
-
-__7. Are these conditions reasonable to assume? Why or why not?__
-
+**7. Are these conditions reasonable to assume? Why or why not?\
+***Hint:* Think about how these conditions were discussed on Tuesday! \
 
 ### Confidence interval for one mean
 
-As I said in class, the fortunate aspect of using the t-distribution is that 
-it makes calculations much easier. In class we found our confidence interval
-by handing using:
+As I said in class, the fortunate aspect of using the t-distribution is that it makes calculations much easier. In class we found our confidence interval by handing using:
 
-- the point estimate (sample mean)
-- the standard error 
-- a t* multiplier
+-   the point estimate (sample mean)
+-   the standard error
+-   a t\* multiplier
 
-__8. How many degrees of freedom does the t-distribution we should use have?__
+**8. How many degrees of freedom does the t-distribution we should use have?**
 
+\
+Today, since we are programming in R, we will use a function to get this interval for us! The `t_test()` function is what we will use. I've filled in the necessary pieces for you, but I'll talk you through them.
 
-Today, since we are programming in R, we will use a function to get this 
-interval for us! The `t_test()` function is what we will use. I've filled in the
-necessary pieces for you, but I'll talk you through them. 
-
-- `x` tells `t_test()` where to get the data from
-- `x` tells `t_test()` what variable (from the dataset) to look at
-- `conf_int` tells `t_test()` YES (TRUE) I want a confidence interval
-- `conf_level` tells `t_test()` what percentage confidence interval you want
+-   `x` tells `t_test()` where to get the data from
+-   `response` tells `t_test()` what variable (from the dataset) to look at
+-   `conf_int` tells `t_test()` YES (`TRUE`) I want a confidence interval
+-   `conf_level` tells `t_test()` what percentage confidence interval you want (95% = `0.95`)
 
 Run the code below and see what you get!
 
@@ -153,30 +124,22 @@ t_test(x = GSS,
        conf_level = 0.95)
 ```
 
-9. Adjust my code to obtain a 90% confidence interval.
+9.  Adjust my code to obtain a 90% confidence interval.\
 
-
-**10. Interpret, in the context of these data, the 90% confidence interval you obtained.** 
-*Hint:* Look at the prompts in Canvas to guide your interpretation. 
-
+**10. Interpret, in the context of these data, the 90% confidence interval you obtained.** *Hint:* Look at the prompts in Canvas to guide your interpretation.\
 
 ### Hypothesis test for one mean
 
-Our goal in a hypothesis test is to decide if our sample provides sufficient evidence to support the claim that the mean hours worked per week in the population is different from 40. 
+Our goal in a hypothesis test is to decide if our sample provides sufficient evidence to support the claim that the mean hours worked per week in the population is different from 40.
 
-This is a different goal from a confidence interval! A confidence 
-interval provides a range of values for the population parameter, 
-whereas a hypothesis test tells you if it is or is not a certain value. 
+This is a different goal from a confidence interval! A confidence interval provides a range of values for the population parameter, whereas a hypothesis test tells you if it is or is not a certain value.
 
-**11. Based on your 90% confidence interval do you believe you would reject or fail to reject the null hypothesis?**
-*Hint:* Look at the prompts in Canvas to guide your decision. 
+**11. Based on your 90% confidence interval do you believe you would reject or fail to reject the null hypothesis?** *Hint:* Look at the prompts in Canvas to guide your decision.\
 
+Alright, let's see! We can use the `t_test()` to obtain the p-value for our hypothesis test. We can keep the code we had before, but we do need to give `t_test()` two more pieces of information:
 
-Alright, let's see! We can use the `t_test()` to obtain the p-value for our
-hypothesis test. We can keep the code we had before, but we do need to give `t_test()` two more pieces of information: 
-
-- the direction of the alternative hypothesis (two-sided, greater, or less)
-- the hypothesized null mean value
+-   the direction of the alternative hypothesis (two-sided, greater, or less)
+-   the hypothesized null mean value
 
 The code looks like this:
 
@@ -189,12 +152,6 @@ t_test(x = GSS,
        mu = 40)
 ```
 
+**12. Based on the p-value what would you decide to do regarding your null hypothesis?** *Hint:* Look at the prompts in Canvas to guide your decision.
 
-**12. Based on the p-value what would you decide to do regarding your null hypothesis?**
-*Hint:* Look at the prompts in Canvas to guide your decision. 
-
-
-**13. Write a conclusion in the context of this study.**
-*Hint:* Look at the prompts in Canvas to guide your decision. 
-
-
+**13. Write a conclusion in the context of this study.** *Hint:* Look at the prompts in Canvas to guide your conclusion.
