@@ -37,22 +37,28 @@ Emperor penguins are the most accomplished divers among birds, making routine di
 
 In this study, the researchers equipped emperor penguins with devices that record their heart rates during dives. The data set reports Dive Heart Rate (beats per minute), the Duration (minutes) of dives, and other related variables.  Is there an association between dive heart rate and the duration of the dive?
 
-```{r data, include = TRUE, echo = TRUE, messages = F, warnings = F}
+\newpage
+
+```{r data}
+#| include: true
+#| echo: true
+#| message: false
+
 diving <- read_csv("Diving_Penguins.csv")
-head(diving)
+glimpse(diving)
 ```
 
 ## Vocabulary review
 
 **1. In this study, which variable will be on the $x$-axis? Is it the response variable or the explanatory variable? Is it quantitative or categorical?**
 
-\key{The penguin's heart rate - $\text{Dive}\_\text{HeartRate}$ - will be on the $x$-axis as the explanatory variable for the study. This is quantitative (beats per minute).}
+\key{The penguin's heart rate - {\R Dive\_HeartRate} - will be on the $x$-axis as the explanatory variable for the study. This is quantitative (beats per minute).}
 
 \vspace{1cm}
 
 **2. Which variable is on the $y$-axis? Is it the response variable or the explanatory variable? Is it quantitative or categorical?**
 
-\key{The duration of the penguin's dive - Duration - will be on the $y$-axis as the response variable for the study. This is quantitative (minutes).}
+\key{The duration of the penguin's dive - {\R Duration} - will be on the $y$-axis as the response variable for the study. This is quantitative (minutes).}
 
 \vspace{1cm}
 
@@ -167,7 +173,7 @@ get_correlation(data = diving,
 
 **7. If you knew the heart rate of a penguin, what might be a way to determine how long you would expect for them to dive for based on the data?**
 
-\key{With tools we previously learned, we could take the average of dive time for penguins with that heart rate from the data set. What we essentially do is find a line that goes through the center of the points as best as possible and call that line our "predicted" dive duration across the range of heart rates.}
+\key{With tools we previously learned, we could take the average of dive time for penguins with that heart rate from the data set. But now that we are considering a line, we could input the penguin's heart rate into our equation to find what dive duration we'd expect.}
 
 \vspace{0.5cm}
 
@@ -211,17 +217,18 @@ These vertical distances are how far off your estimated duration is from what wa
 
 \vspace{0.5cm}
 
-**11. When you square small residuals what happens?** *Hint: What happens if you square a value between 0 and 1? What about a small value greater than 1?*
+**11. When you square a residual what happens?** *Hint: What happens if you square positive number? A negative number?*
 
-\key{Squaring a small residual (between 0 and 1) will result in a value smaller than your residual. Squaring a smaller value larger than 1 still results in a relatively small number (e.g. $2^2$ = 4).}
+\key{Squaring a number makes it positive, so all of the squared residuals will be positive.}
 
-\vspace{0.5cm}
-
-**12. When you square large residuals what happens?**
+**12. When you square a large residual what happens?**
 
 \key{Squaring a large residual will blow the resulting value up (e.g. $8^2$ = 64).}
 
-\vspace{0.5cm}
+**13. When you square a number between 0 and 1 what happens?**
+
+\key{Squaring a small residual (between 0 and 1) will result in a value smaller than your residual. Squaring a smaller value larger than 1 still results in a relatively small number (e.g. $2^2$ = 4).}
+
 
 ## Obtaining Coefficient Estimates from `R`
 
@@ -252,11 +259,11 @@ get_regression_table(diving_lm)
 ```
 
 
-**13. Using the output from the `R` code above, write the equation of the regression line. Note that we’ve used variable names in the equation, not generic $x$ and $y$. And put a carat (“hat”) over the $y$-variable name to emphasize that the line gives predicted values of the $y$ (response) variable.**
+**14. Using the output from the `R` code above, write the equation of the regression line. Note that we’ve used variable names in the equation, not generic $x$ and $y$. And put a carat (“hat”) over the $y$-variable name to emphasize that the line gives predicted values of the $y$ (response) variable.**
 
 \vspace{0.25cm}
 
-\key{$$\widehat{\text{Dive Duration}} = 14.758 + -0.131 \times \text{(Heart Rate)}$$}
+\key{$$\widehat{\text{Dive Duration}} = 14.8 + -0.131 \times \text{(Heart Rate)}$$}
 
 \vspace{0.25cm}
 
@@ -268,7 +275,7 @@ $\hat{y} = b_0 + b_1 \times \text{(x)}$ where
 + $x$ is a value of the explanatory variable
 + $\hat{y}$ is the predicted value for the response variable
 
-**14. Is the slope positive or negative?  Explain how the sign of the slope tells you about whether your data display a positive or a negative association.**
+**15. Is the slope positive or negative?  Explain how the sign of the slope tells you about whether your data display a positive or a negative association.**
 
 \key{The observed slope $b_1=-0.131$ is negative which tells us the data display a negative association because the line will be decreasing from left to right.}
 
@@ -284,27 +291,27 @@ For a given data set, the signs (positive or negative) for the correlation coeff
 
 Let’s investigate what the slope means in the context of heart rate and dive duration. 
 
-**15. Use the least squares regression line to predict the diving duration for penguins with a heart rate of 75 beats per minute.**
+**16. Use the least squares regression line to predict the diving duration for penguins with a heart rate of 75 beats per minute.**
 
-\key{$\widehat{\text{Dive Duration}} = 14.758 + -0.131\times 75=4.933$}
-
-\vspace{0.5cm}
-
-**16. Use the least squares regression line to predict the diving duration for penguins with a heart rate of 76 beats per minute.**
-
-\key{$\widehat{\text{Dive Duration}} = 14.758 + -0.131\times 76=4.802$}
+\key{$\widehat{\text{Dive Duration}} = 14.8 + -0.131\times 75 = 4.975$}
 
 \vspace{0.5cm}
 
-**17. By how much do your predictions in #8 and #9 differ? Does this number look familiar? Explain.**
+**17. Use the least squares regression line to predict the diving duration for penguins with a heart rate of 76 beats per minute.**
 
-\key{$4.933-4.802=0.131$, notice this is the same value as our estimated slope ($b_1$).}
+\key{$\widehat{\text{Dive Duration}} = 14.8 + -0.131\times 76 = 4.844$}
 
 \vspace{0.5cm}
 
-**18. These questions above were designed to help you interpret the slope. Interpret the slope in context:**
+**18. By how much do your predictions in #8 and #9 differ? Does this number look familiar? Explain.**
 
-\key{The slope of the regression line predicting dive duration based on heart rate is 0.131, meaning that for every 1 beat per minute increase in heart rate, the predicted dive duration (increases / decreases) by 0.131 minutes.}
+\key{$4.975 - 4.844 = 0.131$, notice this is the same value as our estimated slope ($b_1$).}
+
+\vspace{0.5cm}
+
+**19. These questions above were designed to help you interpret the slope. Interpret the slope in context:**
+
+\key{The slope of the regression line predicting dive duration based on heart rate is 0.131, meaning that for every 1 beat per minute increase in heart rate, the predicted dive duration decreases by 0.131 minutes.}
 
 \vspace{0.5cm}
 
@@ -316,17 +323,17 @@ The slope coefficient of a least squares regression model is interpreted as the 
 
 Let’s investigate the meaning of the $y$-intercept in the context of dive duration and heart rate. 
 
-**19. Use the least squares regression line to predict the diving duration for a penguin with a heart rate of 0 beats per minute.**
+**20. Use the least squares regression line to predict the diving duration for a penguin with a heart rate of 0 beats per minute.**
 
-\key{$\widehat{\text{Dive Duration}} = 14.758 + -0.131\times 0=14.758$}
+\key{$\widehat{\text{Dive Duration}} = 14.78 + -0.131\times 0 = 14.8$}
 
 \{A penguin with a heart rate of 0 bpm could theoretically dive for a durration of 14.758 minutes. Seems strange, huh? See the notes about extrapolation below!}
 
 \vspace{0.5cm}
 
-**20. Your answer to #12 should look familiar. What is this value?**
+**21. Your answer to #12 should look familiar. What is this value?**
 
-\key{$14.758$, notice this is the same value as our estimated intercept ($b_0$).}
+\key{$14.78$, notice this is the same value as our estimated intercept ($b_0$).}
 
 \vspace{0.5cm}
 
@@ -342,7 +349,7 @@ While we can make predictions using our least squares regression line, we should
 
 \fbox{\begin{minipage}{45em}
 \textbf{\large{Key Idea}} \\
-Predicting values for the response variable for values of the explanatory variable that are outside of the range of the original data is known as ***extrapolation*** and can give very misleading predictions.
+Predicting values for the response variable for values of the explanatory variable that are outside of the range of the original data is known as \textbf{\emph{extrapolation}} and can give very misleading predictions.
 \end{minipage}
 }
 
@@ -350,13 +357,13 @@ Predicting values for the response variable for values of the explanatory variab
 knitr::include_graphics("extrapolating.png")
 ```
 
-**21. What was the lowest value of heart rate observed in these data?**
+**22. What was the lowest value of heart rate observed in these data?**
 
 \key{The lowest heart rate shown on the graph is about 20 (22.8 to be exact).}
 
 \vspace{0.5cm}
 
-**22.	What heart rates do you believe would be an extrapolation?**
+**23.	What heart rates do you believe would be an extrapolation?**
 
 \key{Any heart rate below the minimum of about 20 and above a heart rate of about 135 would be extrapolation because we do not have data on the duration of a dive outside of this range.}
 
@@ -372,15 +379,15 @@ $R^2$ values are reported as proportions, but can also be thought of as a percen
 
 We calculate $R^2$ by squaring the correlation (r). 
 
-**23. Calculate the coefficient of determination ($R^2$) for the relationship between heart rate and dive duration.** *Hint: Look back at question 5.*
+**24. Calculate the coefficient of determination ($R^2$) for the relationship between heart rate and dive duration.** *Hint: Look back at question 5.*
 
 \key{$R^2 = (-0.84)^2=0.7056$.}
 
 \vspace{0.5cm}
 
-**24. Complete the following statement to interpret what this value means in the context of the data:**
+**25. Complete the following statement to interpret what this value means in the context of the data:**
 
-\key{The coefficient of determination is 70.56%, this means that 70.56% of the variation in penguin's dive duration is attributable to changes in their heart rate}.
+\key{The coefficient of determination is 70.56\%, this means that 70.56\% of the variation in penguin's dive duration is attributable to changes in their heart rate.}
 
 ## Recall the Context of Today's Exploration
 
@@ -388,7 +395,7 @@ Let's remember what the purpose of this study was. For the penguin study, resear
 
 \vspace{0.5cm}
 
-**25. Write out the null and alternative hypothesis in words.**
+**26. Write out the null and alternative hypothesis in words.**
 
 \key{Null: There is no association between a penguin's dive heart rate and the duration of their drive.}
 
@@ -396,19 +403,19 @@ Let's remember what the purpose of this study was. For the penguin study, resear
 
 \vspace{0.5cm}
 
-**26. Using the research question, rewrite the hypotheses using notation. Use the slope as the summary measure.** *Hint: What is the symbol for the population slope?*
+**27. Using the research question, rewrite the hypotheses using notation. Use the slope as the summary measure.** *Hint: What is the symbol for the population slope?*
 
 \key{$H_O: \beta_1 = 0$}
 
-\key{$H_O: \beta_1 \ne 0$}
+\key{$H_A: \beta_1 \ne 0$}
 
 \vspace{0.5cm}
 
 ## Inference for the Slope Coefficient
 
-**27. Based on the slope coefficient you reported in question 14, do you think there is convincing evidence of an association between a penguin's heart rate and the duration of their dive?**
+**28. Based on the slope coefficient you reported in question 14, do you think there is convincing evidence of an association between a penguin's heart rate and the duration of their dive?**
 
-\key{The estimated slope from the observed data is, $b_1=-0.131$. This value is not zero and indicates a negative trend, but it is not too far away from 0 so it is hard to say.}
+\key{The estimated slope from the observed data is, $b_1=-0.131$. This value is not zero and indicates a negative trend, but it is not too far away from 0, so it is hard to say.}
 
 \vspace{0.5cm}
 
@@ -441,7 +448,7 @@ Let's start by thinking about how one simulation would be created on the null di
 
 + Step 1: Write each penguin's heart rate and dive duration on 125 cards - ($x$,$y$) pairs. 
 
-\vspace{0.5}
+\vspace{0.5cm}
 
 + Step 2: Assume the null hypothesis is true - rip apart the pairs and make a pile of heart rate values and a pile of dive duration values.
 
@@ -473,11 +480,11 @@ diving %>%
   calculate(stat = " ___________")
 ```
 
-**28. What inputs should be entered for each of the following to create the simulation to test regression slope?**
+**29. What inputs should be entered for each of the following to create the simulation to test regression slope?**
 
 \vspace{.5 mm}
 
-+ Response variable (choose `Duration` or `Dive_HeartRate`): \key{Duration}
++ Response variable (choose `Duration` or `Dive_HeartRate`): \key{{\R Duration}}
 
 \vspace{0.2in}
 
@@ -485,22 +492,22 @@ diving %>%
 
 \vspace{0.2in}
 
-+ Number of repetitions: \key{N permutations - we will do 5000.}
++ Number of repetitions: \key{n permutations - we will do 5000.}
     
 \vspace{.2in}
 
 + Type of method to use when generating new samples (choose `"permute"` or
-`"bootstrap"`): \key{"permute"}
+`"bootstrap"`): \key{``permute"}
 
 \vspace{0.2cm}
 
-+ Summary measure (choose `"slope"` or `"correlation"`): \key{"slope"}
++ Summary measure (choose `"slope"` or `"correlation"`): \key{``slope"}
 
 \vspace{0.2in}
 
-**29. Suppose we wanted to complete the simulation test using correlation as the summary measure, instead of slope. Which input(s) in #4 would need to be changed to test for correlation?  What input(s) should you use instead?**
+**30. Suppose we wanted to complete the simulation test using correlation as the summary measure, instead of slope. Which input(s) in #4 would need to be changed to test for correlation?  What input(s) should you use instead?**
 
-\key{Change the Summary measure input to "correlation".}
+\key{Change the Summary measure input to ``correlation".}
 
 \vspace{0.5cm}
 
@@ -524,15 +531,15 @@ head(null_dist) %>% knitr::kable(digits = 3)
 
 \vspace{0.1in}
 
-**30. What does the `replicate` column represent?**
+**31. What does the `replicate` column represent?**
 
 \key{The replicate column represents one permutation of the observed data (replicate 1 = permutation 1, replicate 2 = permutation 2, etc.)}.
 
 \vspace{0.5cm}
 
-**31. What does the `stat` column represent?**
+**32. What does the `stat` column represent?**
 
-\key{The stat column is the calculated slope from the linear regression fit on that replicate/permutation of data.}
+\key{The stat column is the calculated slope from the linear regression fit on that replicate / permutation of data.}
 
 \vspace{0.5cm}
 
@@ -540,24 +547,15 @@ head(null_dist) %>% knitr::kable(digits = 3)
 
 Below is a null distribution of slope statistics, generated using the code you completed above. I chose to use 5000 reps, which might be slightly different from what you chose.
 
-```{r null-viz, echo = FALSE, fig.align = 'center'}
-null_dist %>% 
-  visualise() +
-  labs(y = "Count", 
-       title = "") +
-  scale_x_continuous("Simulated Slope Statistic", limits = c(-0.15, 0.15), breaks = round(seq(-0.15, 0.15, 0.05),2)) +
-  my_theme
-```
-
 \vspace{0.2in}
 
-**32. Why is the distribution centered at 0?**
+**33. Why is the distribution centered at 0?**
 
-\key{The null distribution is centered at 0 because it is simulated under the assumption there is no association between the heart rate and dive duration of a penguin.}
+\key{The null distribution is centered at 0 because it is simulated under the assumption there is no association between the heart rate and dive duration of a penguin (that the slope is 0).}
 
-\vspace{1in}
+\newpage
 
-**33. Mark where the observed slope lies on the distribution.**
+**34. Mark where the observed slope lies on the distribution.**
 
 ```{r null-viz2, echo = FALSE, fig.align = 'center'}
 null_dist %>% 
@@ -570,7 +568,7 @@ null_dist %>%
   my_theme
 ```
 
-**34. Shade or circle what area you will use to calculate the p-value.**
+**35. Shade or circle what area you will use to calculate the p-value.**
 
 ```{r, echo = F, messages = F, warnings = F}
 null_dist %>% 
@@ -581,18 +579,18 @@ null_dist %>%
   # lower tail
   geom_rect(aes(xmin=-Inf, xmax=-0.131, ymin=-Inf, ymax=Inf), alpha = 0.002, fill = "red") +
   geom_vline(aes(xintercept = -0.131), color = "red", size = 1) +
-  geom_text(aes(label = "b_0 = -0.131", x = -0.131, y = 0)) +
+  geom_text(aes(label = "b_1 = -0.131", x = -0.131, y = 0)) +
   
   # upper tail
   geom_rect(aes(xmin=0.131, xmax=Inf, ymin=-Inf, ymax=Inf), alpha = 0.002, fill = "red") +
   geom_vline(aes(xintercept = 0.131), color = "red", size = 1) +
-  geom_text(aes(label = "-b_0 = 0.131", x = 0.131, y = 0)) +
+  geom_text(aes(label = "-b_1 = 0.131", x = 0.131, y = 0)) +
 
   scale_x_continuous("Simulated Slope Statistic", limits = c(-0.15, 0.15), breaks = round(seq(-0.15, 0.15, 0.05),2)) +
   my_theme
 ```
 
-**35. Estimate what p-value we will obtain from `R`.**
+**36. Estimate what p-value we will obtain from `R`.**
 
 \key{Since none of our permutation samples resulted in an estimated slope as extreme as |-0.131|, I expect the p-value to be 0.}
 
@@ -626,13 +624,13 @@ get_p_value(null_dist,
             direction = "_________")
 ```
 
-**36. What inputs should be entered for each of the following to calculate the p-value?**
+**37. What inputs should be entered for each of the following to calculate the p-value?**
 
 + `obs_stat =` \key{$\text{obs}\_\text{slope}$}
 
 \vspace{.2cm}
 
-+ `direction =` (`"greater"`, `"less"`, or `"two-sided"`): \key{"two-sided"}
++ `direction =` (`"greater"`, `"less"`, or `"two-sided"`): \key{``two-sided"}
 
 \vspace{.2cm}
 
@@ -646,15 +644,15 @@ get_p_value(null_dist,
 
 \vspace{0.2in}
 
-**37. Why did I get a warning message from `R`? What does the warning tell me?**
+**38. Why did I get a warning message from `R`? What does the warning tell me?**
 
 Warning: Please be cautious in reporting a p-value of 0. This result is an approximation based on the number of `reps` chosen in the `generate()` step. See `?get_p_value()` for more information.
 
-\key{The warning message from R is telling us to be cautious of reporting a p-value of 0 because our result is based on permutations and theortically one could possibly have had a slope as extreme as 0.131. When a p-value is "0", we say our p-value < 0.0001.}
+\key{The warning message from R is telling us to be cautious of reporting a p-value of 0 because our result is based on permutations. If we don't have a sufficient number of permutations, saying there are no statistics as extreme as -0.131 may be inaccurate. So, rather than reporting a p-value of 0, we say our p-value < 0.0001.}
 
 ## Communicate the results and answer the research question
 
-**38. Based on the p-value and an $\alpha = 0.05$, write a conclusion in context of the problem.**
+**39. Based on the p-value and an $\alpha = 0.05$, write a conclusion in context of the problem.**
 
 \key{p-value $< 0.0001 < 0.05 \implies$ Reject the null hypothesis.}
 
@@ -662,7 +660,7 @@ Warning: Please be cautious in reporting a p-value of 0. This result is an appro
 
 \vspace{0.5cm}
 
-**39. Based on the p-value you obtained for testing the slope, what p-value do you think you would get if you tested the correlation instead?** *Hint: think about the relationship between slope and correlation!*
+**40. Based on the p-value you obtained for testing the slope, what p-value do you think you would get if you tested the correlation instead?** *Hint: think about the relationship between slope and correlation!*
 
 \key{I would expect to see a p-value < 0.0001 since testing the slope is equivalent to testing the correlation. Recall, the correlation coefficient is used to calculate the slope.}
 
@@ -670,13 +668,11 @@ Warning: Please be cautious in reporting a p-value of 0. This result is an appro
 
 ## Connection to Confidence Intervals
 
-**40. If you were to make a 95% confidence interval for the true slope ($\beta_1$), would the interval contain 0? Why or why not?**
+**41. If you were to make a 95% confidence interval for the true slope ($\beta_1$), would the interval contain 0? Why or why not?**
 
 \key{No, since we rejected our null hypothesis based on a small p-value, our null value of 0 would not fall in the confidence interval and we would also reject based on the confidence interval.}
 
 \vspace{0.5cm}
-
-\newpage
 
 ### Take-home messages
 
