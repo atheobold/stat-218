@@ -2,8 +2,8 @@
 title: "Activity 4: Diving Penguins"
 date: 10/10/2022
 #format: html
-format: pdf
-# format: docx
+#format: pdf
+format: docx
 ---
 
 ```{r setup, include = FALSE}
@@ -19,6 +19,8 @@ my_theme <- theme_bw() +
                   axis.title = element_text(size = 12))
 
 ```
+
+***If you are filling in your answers, please use a color other than black, so it is easy to find your responses.***
 
 # Terminology review
 
