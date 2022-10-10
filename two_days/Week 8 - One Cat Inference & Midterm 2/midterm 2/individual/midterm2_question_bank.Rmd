@@ -705,3 +705,25 @@ pairwise.t.test(lettuce$growth, lettuce$trt_group,
   pander()
 ```
 
+\noindent \textbf{Q8} Kinesiology professor Suzanne Phelan has been studying
+effective tools to help women return to a healthy weight after pregnancy. Dr.
+Phelan designed a study with 488 new moms. Each of the new mothers was
+assigned to either standard care postpartum, or to an intervention group that
+included being part of online social support group moderated by a dietitian and
+lifestyle coach. Over the course of the study many measurements were taken
+including the weights of moms at the time their baby was born and again 6 months
+postpartum. 
+
+\noindent \textbf{(a)} [2 points] Using information above to briefly support
+your answer, was this an experiment or an observational study?  
+
+\vspace{1in}
+
+\noindent \textbf{(b)} [2 points] Dr. Phelan could have asked the new moms to
+choose whether they wanted to part of the online social group or not rather than
+assign the moms to the standard care and intervention groups. Why would this
+have been an inferior strategy for conducting this study? Briefly explain. 
+
+\vspace{1in}
+
+
