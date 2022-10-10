@@ -44,7 +44,11 @@ In this study, the researchers equipped emperor penguins with devices that recor
 #| echo: true
 #| message: false
 
-diving <- read_csv("Diving_Penguins.csv")
+diving <- read_csv(here::here("two_days", 
+                              "Week 4 - SLR", 
+                              "activity", 
+                              "Diving_Penguins.csv")
+                   )
 glimpse(diving)
 ```
 
@@ -354,7 +358,7 @@ Predicting values for the response variable for values of the explanatory variab
 }
 
 ```{r image-extrapolate, echo = FALSE, fig.align = 'center', out.width = "50%"}
-knitr::include_graphics("extrapolating.png")
+knitr::include_graphics("./extrapolating.png")
 ```
 
 **22. What was the lowest value of heart rate observed in these data?**
