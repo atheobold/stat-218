@@ -33,7 +33,7 @@ Dr. Theobold during office hours.
 
 ## Provided Formulas
 
-$$R^2 = r^2 = \frac{s_{y}^2 - s_{residuals}^2}{s_y^2}$$ 
+$$R^2 = r^2$$ 
 
 \vspace{0.25cm}
 
@@ -53,18 +53,21 @@ $$Residual = y - \hat{y}$$
 
 \vspace{0.3cm}
 
-__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+$$SE(\bar{x}) = \frac{s}{\sqrt{n}}$$
+\vspace{0.3cm}
 
-\vspace{0.25cm}
+__general formula for a confidence interval:__ $\text{point estimate} \pm \text{multiplier} \times \text{SE(point estimate)}$
 
-$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\bar{x} \pm t^*_{df} \times SE(\bar{x})$
 
 \newpage
 
 \noindent {\textbf Q1} Dr. John Arbuthnot, an 18th century physician, writer, 
 and mathematician is famous for performing the first hypothesis test of
-significance. Dr. Arbuthnot was interested in the ratio of newborn boys to
-newborn girls, so he gathered the baptism records for children born in London
+significance. Dr. Arbuthnot was interested in the ratio of newborn males to
+newborn females, so he gathered the baptism records for children born in London
 for every year from 1629 to 1710. Artbuthnot found that in every year, the
 number of males born in London exceeded the number of females.
 
@@ -87,7 +90,7 @@ arbuthnot
 ```
 
 \begin{itemize}
-\item Identify the cases in the data set. \\
+\item Identify the observational units in the data set. \\
 
 \vspace{1cm}
 
@@ -127,9 +130,9 @@ belief!
 
 \noindent {\textbf Q2} I collected data on 512 different fast food items from
 Mcdonalds, Chick-Fil-A, Sonic, Arby's, Burger King, Dairy Queen, Subway, and
-Taco Bell. For each restaurant, I sampled 64 items from their menu and recorded
-the nutritional content of each item (e.g., calories, saturated fat, calcium, 
-protein, etc.). 
+Taco Bell. To obtain these data, for every restaurant I randomly sampled 64
+items from their entire menu and recorded the nutritional content of each item
+selected (e.g., calories, saturated fat, calcium, protein, etc.). 
 
 \noindent
 \textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
@@ -164,16 +167,16 @@ be created.  Blanks preceded by (#) should be filled in with a number, all
 other blanks should be filled in with the context of the study.
 
 \begin{center}
-On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
-cards.
+On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{1in}} and 
+\underline{\hspace{1in}} on the cards.
 
 \vspace{0.5cm}
 
-Assume the null hypothesis is true and \underline{\hspace{3in}}.
+Assume the null hypothesis is true and \underline{\hspace{4in}}.
 
 \vspace{0.5cm}
 
-Generate a new sample of 512 ordered pairs by \underline{\hspace{3in}}.
+Generate a new sample of 512 ordered pairs by \underline{\hspace{3.5in}}.
 
 \vspace{0.5cm}
 
@@ -201,7 +204,7 @@ visualise(null_dist) +
   labs(x = "Simulated Slope Statistic", 
        y = "Frequency (out of 1000 reps)", 
        title = "") +
-  xlim(c(-0.015, 0.015))
+  xlim(c(-0.02, 0.02))
 ```
 
 \noindent
@@ -211,8 +214,9 @@ where the observed statistic falls on the null distribution.
 ```{r}
 fastfood_lm <- lm(sat_fat ~ calories, data = fastfood)
 
-get_regression_table(fastfood_lm) %>% 
-  pander()
+get_regression_table(fastfood_lm) |> 
+  select(term, estimate, std_error) |> 
+  pander() 
 ```
 
 \vspace{0.25cm}
@@ -229,16 +233,17 @@ the p-value.
 \vspace{0.5cm}
 
 \noindent
-\textbf{(h)} [3 pts] Which of the following is a correct interpretation of the p-value obtained? (Circle one)
+\textbf{(h)} [3 pts] Which of the following is a correct interpretation of the
+p-value obtained? (Circle one)
 
 \begin{itemize}
-\item In less than 1 out of 1000 simulated samples, we would observe a sample
-slope of 0.017 or more extreme, if there is no linear relationship between 
-the total calories and the saturated fat of a fast food item. 
+\item If there is no linear relationship between the total calories and the
+saturated fat of a fast food item, we would observe a sample slope of 0.017 or
+more extreme with a probability of less than 1 in 1000. 
 
 \item If there is a linear relationship between the total calories and the
 saturated fat of a fast food, we would observe a sample slope of 0.017 or more
-extreme with a probability of less than 1 out of 1000.
+extreme with a probability of less than 1 in 1000.
 
 \item The probability of seeing a sample slope between the total calories and
 the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
@@ -247,11 +252,12 @@ calories and the saturated fat of a fast food item, is less than 0.1%.
 \end{itemize}
 
 \textbf{(i)} [2 points] Given the p-value for the hypothesis test, would the
-95% confidence interval for $\beta_1$ contain 0?
+95% confidence interval for $\beta_1$ contain 0? Be sure to justify your choice!
 
 \newpage
 
-\textbf{Q3} The Atlantic marsh Fiddler Crab, *Minuca pugnax*, lives in salt marshes throughout the eastern coast of the United 
+\textbf{Q3} The Atlantic marsh Fiddler Crab, *Minuca pugnax*, lives in salt
+marshes throughout the eastern coast of the United 
 States. Historically, M. pugnax were distributed from northern Florida to Cape
 Cod, Massachusetts, but like other species have expanded their range northward
 due to ocean warming.
@@ -268,25 +274,20 @@ preview to address the following questions.
 
 ```{r crab-preview}
 pie_crab %>% 
-  select(-name, -air_temp_sd, -water_temp_sd) %>% 
-  glimpse()
+  select(-name, -air_temp_sd, -water_temp_sd) 
 ```
 
 \begin{itemize}
-\item Identify the cases in the data set. \\
+\item Identify the observational units in the data set. \\
 
 \vspace{1cm}
 
 \item List the variables. Indicate whether each variable is categorical or
 quantitative. \\
 
-\vspace{2cm}
+\vspace{1cm}
 
-\item What would the dimensions of the data set be? (number of rows by number of
-columns)
 \end{itemize}
-
-\vspace{0.5cm}
 
 \textbf{(b)} [3 pts] A histogram displaying the size of the sample of fiddler
 crabs is displayed below. Describe the shape of the distribution. Be sure to 
@@ -302,8 +303,9 @@ pie_crab %>%
 
 \vspace{0.25cm}
 
-\textbf{(c)} [2 pts] When using a $t$-distribution to find a 95% confidence 
-interval for $\mu$, how many degrees of freedom should be used?
+\textbf{(c)} [2 pts] The researchers collected data on 392 total Fiddler Crabs. 
+When using a $t$-distribution to find a 95% confidence interval for $\mu$, how
+many degrees of freedom should be used?
 
 \vspace{1cm}
 
@@ -315,18 +317,19 @@ crab_ci <- t_test(pie_crab,
   select(estimate, lower_ci, upper_ci)
 ```
 
-\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of
+\textbf{(d)} [6 pts] A 95% confidence interval for the mean carapace width of
 Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`, 
 `r round(crab_ci$upper_ci, 2)`). Below is the researchers' interpretation of
 this confidence interval: 
 
 \begin{center}
-\emph{There is a 95\% chance that that every sample of Fiddler Crabs will have
-a mean carapace width between 14.31 and 15.01 millimeters.}
+\emph{There is a 95\% chance that that the observed sample mean of the 392 
+Fiddler Crabs sampled will have a mean carapace width between 14.31 and 15.01
+millimeters.}
 \end{center}
 
 \noindent
-Identify __two__ mistakes committed and fix them. Be brief but clear in your
+Identify __three__ mistakes committed and fix them. Be brief but clear in your
 description.
 
 \vspace{.15in}
@@ -340,6 +343,14 @@ Fix: \underline{\hspace{6in}}
 \vspace{0.5cm}
 
 Mistake 2: \underline{\hspace{6in}}
+
+\vspace{0.5cm}
+
+Fix: \underline{\hspace{6in}}
+
+\vspace{0.5cm}
+
+Mistake 3: \underline{\hspace{6in}}
 
 \vspace{0.5cm}
 
@@ -389,9 +400,12 @@ bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
 \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
 \item[(b)] The bootstrap resample and original sample are \textbf{both} taken
-from the population. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+directly from the population. 
 
-\item[(c)] The bootstrap resample can \textbf{only} use values that were in the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+\item[] \hspace{0.1cm} \underline{\hspace{2cm}} \\
+
+\item[(c)] The bootstrap resample can \textbf{only} use values that were in the
+original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
 \item[(d)] The bootstrap resample uses \textbf{all} of the values that were in
 the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
@@ -405,9 +419,8 @@ to: (Select all that apply)
 \begin{itemize}
 \item[(a)] Discover what statistics might have occurred if the null hypothesis
 was true.
-\item[(b)] Approximate the sampling distribution under $H_0$. 
-\item[(c)] To determine if the null hypothesis is true. 
-\item[(d)] To determine if the observed statistic is unlikely if the null was
+\item[(b)] To determine if the null hypothesis is true. 
+\item[(c)] To determine if the observed statistic is unlikely if the null was
 true. 
 \end{itemize}
 
@@ -415,9 +428,11 @@ true.
 
 \noindent \textbf{Q7} [2 points] An article in the San Luis Tribune claims that
 the average age for people who receive food stamps in SLO is 40 years. A Cal
-Poly student believes the average age is less than that. The student obtains a random sample of 100 people in SLO who receive food stamps, and finds their
+Poly student believes the average age is less than that. The student obtains a
+random sample of 100 people in SLO who receive food stamps, and finds their
 average age to be 39.2 years. Performing a hypothesis test, the student finds 
-their sample mean to be statistically significantly lower than the age of 40 stated in the article (p-value < 0.05). Indicate fore each of the following
+their sample mean to be statistically significantly lower than the age of 40 
+stated in the article (p-value < 0.05). Indicate fore each of the following
 interpretations whether they are valid or invalid.
 
 \noindent \textbf{(a)} The statistically significant result indicates that the 
@@ -438,28 +453,7 @@ majority of people who receive food stamps is younger than 40.
 
 \vspace{0.25cm}
 
-\noindent \textbf{Q8} Kinesiology professor Suzanne Phelan has been studying
-effective tools to help women return to a healthy weight after pregnancy. Dr.
-Phelan designed a study with 488 new moms. Each of the new mothers was
-assigned to either standard care postpartum, or to an intervention group that
-included being part of online social support group moderated by a dietitian and
-lifestyle coach. Over the course of the study many measurements were taken
-including the weights of moms at the time their baby was born and again 6 months
-postpartum. 
-
-\noindent \textbf{(a)} [2 points] Using information above to briefly support
-your answer, was this an experiment or an observational study?  
-
-\vspace{1in}
-
-\noindent \textbf{(b)} [2 points] Dr. Phelan could have asked the new moms to
-choose whether they wanted to part of the online social group or not rather than
-assign the moms to the standard care and intervention groups. Why would this
-have been an inferior strategy for conducting this study? Briefly explain. 
-
-\vspace{1in}
-
-\noindent \textbf{Q9} [2 points] When you change from a 90% to a 95% confidence
+\noindent \textbf{Q8} [2 points] When you change from a 90% to a 95% confidence
 interval,which part(s) of the confidence interval change? (Select all that 
 apply)
 
@@ -471,7 +465,7 @@ apply)
 
 \vspace{0.25cm}
 
-\noindent \textbf{Q10} When using a $t$-distribution to obtain a confidence
+\noindent \textbf{Q9} When using a $t$-distribution to obtain a confidence
 interval, how does the multiplier change from the 95% to the 90% confidence
 interval? (Circle the correct answer)
 
@@ -481,15 +475,15 @@ interval? (Circle the correct answer)
 \item[(c)] Multiplier stays the same
 \end{itemize}
 
-\vspace{0.25cm}
+\newpage
 
-\noindent \textbf{Q11} Based on the plots below, which is the better measure of
+\noindent \textbf{Q10} Based on the plots below, which is the better measure of
 center for this variable? (Circle one.)
 
 \begin{itemize}
-\item[(a)] The median, as the shape of the distribution is strongly skewed.
+\item[(a)] The median, as the shape of the distribution is skewed.
 \item[(b)] The mean, as the shape of the distribution is symmetric.
-\item[(c)] The mean, as the shape of the distribution is strongly skewed.
+\item[(c)] The mean, as the shape of the distribution is skewed.
 \item[(d)] The median, as the shape of the distribution is symmetric.
 \end{itemize}
 
@@ -511,7 +505,7 @@ boxplot <- penguins %>%
 gridExtra::grid.arrange(hist, boxplot, nrow = 1)
 ```
 
-\newpage
+\vspace{0.5cm}
 
 ```{r bison-filter}
 yearling_male_bison <- knz_bison %>% 
@@ -523,7 +517,7 @@ yearling_male_bison <- knz_bison %>%
 
 ```
 
-\noindent \textbf{Q12} The Konza Prairie Long-Term Ecological Research has
+\noindent \textbf{Q11} The Konza Prairie Long-Term Ecological Research has
 collected data on bison on the Konza prairie since 1994, making it the longest
 continuous record of wild ungulate weight gain anywhere in the world.
 Researchers conduct a round-up once a year at the end of the grazing season
@@ -531,7 +525,8 @@ wherein each bison is weighed, calves are vaccinated and receive unique IDs, and
 excess individuals are culled.
 
 For this investigation, we are interested in assessing if, despite the effect 
-of climate change on their habitat, the weight of yearling, male bison is what is described as "healthy" --- a weight of approximately 750 pounds. 
+of climate change on their habitat, the weight of yearling, male bison is what
+is described as "healthy" --- a weight of approximately 750 pounds. 
 
 Below are summary statistics for the 48 of the yearling, male bison captured
 in 2020. 
@@ -544,7 +539,7 @@ favstats(~ animal_weight, data = yearling_male_bison) %>%
 
 \textbf{(a)} [3 points] Define the parameter of interest, using proper notation.
 
-\vspace{0.75in}
+\pagebreak
 
 \textbf{(b)} [2 points] What type of inference should be done to answer the
 research question? (Circle one)
@@ -561,7 +556,8 @@ is 750 pounds.
 \vspace{0.25cm}
 
 \textbf{(c)} [2 points] If we decided to use inferential methods to assess if the
-true mean weight of yearling bison on the Konza Prairie was healthy, we must verify two conditions. What are these two conditions? 
+true mean weight of yearling bison on the Konza Prairie was healthy, we must
+verify two conditions. What are these two conditions? 
 
 \vspace{0.25cm}
 
@@ -571,7 +567,7 @@ Condition 1:
 
 Condition 2: 
 
-\newpage
+\vspace{1in}
 
 \textbf{(d)} [2 points] Using the plot below and the description of the data
 collection procedure, justify if you believe whether each condition is 
@@ -588,10 +584,10 @@ Condition 2:
 \vspace{1in}
 
 ```{r bison-hist}
-yearling_male_bison %>% 
+yearling_male_bison |>  
   ggplot(mapping = aes(x = animal_weight)
          ) +
-  geom_histogram(binwidth = 50, color = "white") +
+  geom_histogram(binwidth = 30, color = "white") +
   labs(x = "Bison Weight (lbs)", 
        y = "Number of Bison")
 ```

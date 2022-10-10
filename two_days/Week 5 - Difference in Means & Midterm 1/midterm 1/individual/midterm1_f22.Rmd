@@ -1,6 +1,6 @@
 ---
 title: "STAT 218 -- Midterm 1"
-date: "April 26, 2020"
+date: "October 20, 2022"
 author: "Dr. Allison Theobold"
 output: pdf_document
 ---
@@ -55,7 +55,7 @@ cell phones is strictly prohibited.
 
 \vspace{1cm}
 
-\noindent {\bf \textsf{Instructions.}}
+\noindent {\bf \textsf{Instructions}}
 
 \begin{itemize}
 \item Read and sign the honesty pledge at the top of this page. Your exam will
@@ -75,9 +75,9 @@ initial selection.
 
 \pagebreak
 
-## Provided Formulas
+\noindent {\bf \textsf{Provided Formulas}}
 
-$$R^2 = r^2 = \frac{s_{y}^2 - s_{residuals}^2}{s_y^2}$$ 
+$$R^2 = r^2$$ 
 
 \vspace{0.25cm}
 
@@ -97,42 +97,21 @@ $$Residual = y - \hat{y}$$
 
 \vspace{0.3cm}
 
-__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+$$SE(\bar{x}) = \frac{s}{\sqrt{n}}$$
+\vspace{0.3cm}
 
-\vspace{0.25cm}
+__general formula for a confidence interval:__ $\text{point estimate} \pm \text{multiplier} \times \text{SE(point estimate)}$
 
-$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+\vspace{0.3cm}
+
+__t-based confidence interval:__ \hspace{1cm} $\bar{x} \pm t^*_{df} \times SE(\bar{x})$
 
 \newpage
 
-\noindent \textbf{Q7} [2 points] An article in the San Luis Tribune claims that
-the average age for people who receive food stamps in SLO is 40 years. A Cal
-Poly student believes the average age is less than that. The student obtains a
-random sample of 100 people in SLO who receive food stamps, and finds their
-average age to be 39.2 years. Performing a hypothesis test, the student finds 
-their sample mean to be statistically significantly lower than the age of 40
-stated in the article (p-value < 0.05). Indicate whether each of the following
-interpretations are valid or invalid.
-
-\noindent \textbf{(a)} The statistically significant result indicates that the 
-majority of people who receive food stamps are younger than 40. (Circle one.)
-\begin{itemize}
-\item Valid
-\item Invalid
-\end{itemize}
 
 \vspace{0.25cm}
 
-\noindent \textbf{(b)} An error must have been made. This difference in means
-(39.2 vs. 40 years) is too small to be statistically significant. (Circle one.)
-\begin{itemize}
-\item Valid
-\item Invalid
-\end{itemize}
-
-\vspace{0.25cm}
-
-\noindent \textbf{Q9} [2 points] When you change from a 90% to a 95% confidence
+\noindent \textbf{Q8} [2 points] When you change from a 90% to a 95% confidence
 interval, which part(s) of the confidence interval change? (Select all that 
 apply)
 
@@ -140,6 +119,19 @@ apply)
 \item[(a)] Statistic (midpoint)
 \item[(b)] Multiplier
 \item[(c)] Standard error
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{Q6} [3 points] The purpose of creating a null distribution is
+to: (Select all that apply)
+
+\begin{itemize}
+\item[(a)] Discover what statistics might have occurred if the null hypothesis
+was true.
+\item[(b)] To determine if the null hypothesis is true. 
+\item[(c)] To determine if the observed statistic is unlikely if the null was
+true. 
 \end{itemize}
 
 \vspace{0.25cm}
@@ -152,15 +144,18 @@ bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
 \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
 \item[(b)] The bootstrap resample and original sample are \textbf{both} taken
-from the population. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+directly from the population. 
 
-\item[(c)] The bootstrap resample can \textbf{only} use values that were in the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
+\item[] \hspace{0.1cm} \underline{\hspace{2cm}} \\
+
+\item[(c)] The bootstrap resample can \textbf{only} use values that were in the
+original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 
 \item[(d)] The bootstrap resample uses \textbf{all} of the values that were in
 the original sample. \hspace{0.1cm} \underline{\hspace{2cm}} \\
 \end{itemize}
 
-\vspace{0.25cm}
+\newpage
 
 \textbf{Q3} The Atlantic marsh Fiddler Crab, *Minuca pugnax*, lives in salt
 marshes throughout the eastern coast of the United 
@@ -174,20 +169,19 @@ summer of 2016. The marshes spanned from northeast Florida to northeast
 Massachusetts. Researchers were able to collect between 25 and 37 adult male
 Fiddler Crabs at each marsh. 
 
-\newpage
+\vspace{0.2cm}
 
 \noindent 
 \textbf{(a)} [3 pts] A preview of the dataset is provided below. Use this
 preview to address the following questions. 
 
 ```{r crab-preview}
-pie_crab %>% 
-  select(-date, -air_temp_sd, -water_temp_sd) %>% 
-  glimpse()
+pie_crab |>  
+  select(-date, -air_temp_sd, -water_temp_sd)
 ```
 
 \begin{itemize}
-\item Identify the cases in the data set. \\
+\item Identify the observational units in the data set. \\
 
 \vspace{1cm}
 
@@ -196,17 +190,13 @@ quantitative. \\
 
 \vspace{2cm}
 
-\item What would the dimensions of the data set be? (number of rows by number of
-columns)
 \end{itemize}
-
-\vspace{0.75cm}
 
 \textbf{(b)} [3 pts] A histogram displaying the size of the sample of Fiddler
 Crabs is displayed below. Describe the shape of the distribution. Be sure to 
 address the center, spread, shape, and outliers. 
 
-```{r, fig.align = 'right'}
+```{r, fig.align = 'right', out.width = "30%"}
 pie_crab %>% 
   ggplot(aes(x = size)) +
   geom_histogram(binwidth = 1.5, color = "white") +
@@ -235,8 +225,9 @@ Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`,
 this confidence interval: 
 
 \begin{center}
-\emph{There is a 95\% chance that that every sample of Fiddler Crabs will have
-a mean carapace width between 14.31 and 15.01 millimeters.}
+\emph{There is a 95\% chance that that the observed sample mean of the 392 
+Fiddler Crabs sampled will have a mean carapace width between 14.31 and 15.01
+millimeters.}
 \end{center}
 
 \noindent
@@ -261,17 +252,27 @@ Fix: \underline{\hspace{6in}}
 
 \vspace{0.25in}
 
+\vspace{1cm}
+
+Mistake 3: \underline{\hspace{6in}}
+
+\vspace{1cm}
+
+Fix: \underline{\hspace{6in}}
+
+\vspace{0.25in}
+
 \textbf{(e)} [2 points] Can the researchers use their interval to make
 inferences about __all__ Fiddler Crabs in the United States? Justify your 
 answer!
 
-\vspace{1in}
+\newpage
 
 \noindent {\textbf Q2} I collected data on 512 different fast food items from
-McDonald's, Chick-Fil-A, Sonic, Arby's, Burger King, Dairy Queen, Subway, and
-Taco Bell. For each restaurant, I sampled 64 items from their menu and recorded
-the nutritional content of each item (e.g., calories, saturated fat, calcium, 
-protein, etc.). 
+Mcdonalds, Chick-Fil-A, Sonic, Arby's, Burger King, Dairy Queen, Subway, and
+Taco Bell. To obtain these data, for every restaurant I randomly sampled 64
+items from their entire menu and recorded the nutritional content of each item
+selected (e.g., calories, saturated fat, calcium, protein, etc.). 
 
 \vspace{1cm}
 
@@ -279,7 +280,7 @@ protein, etc.).
 \textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
 fastfood items. 
 
-\newpage
+\vspace{1in}
 
 \noindent
 \textbf{(b)} [3 pts] I am interested in studying the linear relationship between
@@ -309,8 +310,8 @@ context of the study or the procedure that would need to be carried out to
 obtain one simulated sample.
 
 \begin{center}
-On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{2in}} on the 
-cards.
+On (\#) \underline{\hspace{2in}} cards, write \underline{\hspace{1in}} and 
+\underline{\hspace{1in}} on the cards.
 
 \vspace{0.5cm}
 
@@ -346,7 +347,7 @@ visualise(null_dist) +
   labs(x = "Simulated Slope Statistic", 
        y = "Frequency (out of 1000 reps)", 
        title = "") +
-  xlim(c(-0.015, 0.015))
+  xlim(c(-0.02, 0.02))
 ```
 
 \noindent
@@ -378,9 +379,9 @@ the p-value.
 \textbf{(h)} [3 pts] Which of the following is a correct interpretation of the p-value obtained? (Circle one)
 
 \begin{itemize}
-\item In less than 1 out of 1000 simulated samples, we would observe a sample
-slope of 0.017 or more extreme, if there is no linear relationship between 
-the total calories and the saturated fat of a fast food item. 
+\item If there is no linear relationship between the total calories and the
+saturated fat of a fast food item, we would observe a sample slope of 0.017 or
+more extreme with a probability of less than 1 in 1000. 
 
 \item If there is a linear relationship between the total calories and the
 saturated fat of a fast food, we would observe a sample slope of 0.017 or more
@@ -398,6 +399,51 @@ choice!
 
 \vspace{1in}
 
+\noindent \textbf{Q11} The Konza Prairie Long-Term Ecological Research has
+collected data on bison on the Konza prairie since 1994, making it the longest
+continuous record of wild ungulate weight gain anywhere in the world.
+Researchers conduct a round-up once a year at the end of the grazing season
+wherein each bison is weighed, calves are vaccinated and receive unique IDs, and
+excess individuals are culled.
+
+For this investigation, we are interested in assessing if, despite the effect 
+of climate change on their habitat, the weight of yearling, male bison is what
+is described as "healthy" --- a weight of approximately 750 pounds. 
+
+Below are summary statistics for the 48 of the yearling, male bison captured
+in 2020. 
+
+```{r bison-stats}
+yearling_male_bison <- knz_bison %>% 
+  mutate(age = rec_year - animal_yob) %>% 
+  group_by(animal_code) %>% 
+  filter(age == 1, 
+         animal_sex == "M", 
+         rec_year == 2020)
+
+favstats(~ animal_weight, data = yearling_male_bison) %>% 
+  pander()
+```
+
+
+\textbf{(a)} [3 points] Define the parameter of interest, using proper notation.
+
+\vspace{0.75in}
+
+\textbf{(c)} [2 points] If we decided to use inferential methods to assess if the
+true mean weight of yearling bison on the Konza Prairie was healthy, we must
+verify two conditions. What are these two conditions? 
+
+\vspace{0.25cm}
+
+Condition 1:
+
+\vspace{1in}
+
+Condition 2: 
+
+\vspace{1in}
+
 \begin{center}
 
 \textbf{END OF EXAM}
@@ -406,7 +452,7 @@ choice!
 
 ---
 
-\vspace{2in}
+\vspace{1in}
 
 __Points Earned:__ \underline{\hspace{2in}}
 
