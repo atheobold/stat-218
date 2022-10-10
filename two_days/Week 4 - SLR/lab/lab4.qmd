@@ -161,7 +161,7 @@ get_regression_table(___)
 To find the value of the standardized statistic to test the slope we will use,
 
 $$
-T = \frac{\mbox{slope estimate}}{SE} = \frac{b_1}{SE(b_1)}.
+T = \frac{\mbox{slope estimate} - 0}{SE} = \frac{b_1 - 0}{SE(b_1)}.
 $$
 
 We will use the output from our regression table to obtain the estimate for slope and the standard error of the slope.
