@@ -1,0 +1,37 @@
+.tiny{font-size: 30%}
+.small{font-size: 50%}
+.smalmed{font-size:65%}
+.medium{font-size: 75%}
+.giant{font-size: 300%} 
+.left-code {
+  color: #777;
+  width: 49%;
+  height: 92%;
+  float: left;
+}
+.right-plot {
+  width: 49%;
+  float: right;
+  padding-left: 1%;
+}
+.right-code {
+  color: #777;
+  width: 40%;
+  height: 92%;
+  float: right;
+}
+.left-col {
+  width: 30%;
+  float: left;
+  height: 92%;
+}
+.middle-col {
+  width: 30%;
+  float: center;
+  height: 92%;
+}
+.right-col {
+  width: 30%;
+  float: right;
+  height: 92%;
+}

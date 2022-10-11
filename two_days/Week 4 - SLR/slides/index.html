@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Stat 218: Simple Linear Regression</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Emily Robinson" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/modal.css" type="text/css" />
+    <link rel="stylesheet" href="css/sizeformat.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class:title-slide-custom
+
+&lt;style&gt;
+p.caption {
+  font-size: 0.8em;
+}
+&lt;/style&gt;
+
+
+&lt;style&gt;
+
+/* colors: #EEB422, #114201, #191970, #00a8cc */
+/* define the new color palette here! */
+a, a &gt; code {
+  color: #114201;
+  text-decoration: none;
+}
+
+.title-slide h2::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #114201;
+  color: #114201;
+  height: 2px;
+}
+
+.remark-slide-content {
+  background-color: #FFFFFF;
+  border-top: 100px solid #114201;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.5;
+  &lt;!-- padding: 1em 2em 1em 2em --&gt;
+  &lt;!-- background-image: url(css/UNL.svg); --&gt;
+	background-position: 2% 98%;
+	background-size: 10%;
+	border-bottom: 0;
+}
+
+.inverse {
+  background-color: #114201;
+  &lt;!-- border-top: 20px solid #696969; --&gt;
+  &lt;!-- background-image: none; --&gt;
+	&lt;!-- background-position: 50% 75%; --&gt;
+  &lt;!-- background-size: 150px; --&gt;
+}
+
+.remark-slide-content &gt; h1 {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 45px;
+  margin-top: -95px;
+  margin-left: -00px;
+  color: #FFFFFF;
+}
+
+.title-slide {
+  background-color: #FFFFFF;
+  &lt;!-- border-left: 80px solid 	#114201; --&gt;
+  &lt;!-- background-image:  url(css/UNL.svg); --&gt;
+	background-position: 98% 98%;
+	&lt;!-- background-attachment: fixed, fixed; --&gt;
+	background-size: 20%;
+	border-bottom: 0;
+	border: 10px solid 	#114201;
+	&lt;!-- background: transparent; --&gt;
+}
+
+.title-slide &gt; h1  {
+  color: #111111;
+  font-size: 32px;
+  text-shadow: none;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 15px;
+  padding-top: 80px;
+}
+.title-slide &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: -20px;
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 28px;
+  text-align: left;
+  margin-left: 15px;
+}
+.title-slide &gt; h3  {
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 28px;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: -20px;
+}
+
+body {
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+.remark-slide-number {
+  font-size: 13pt;
+  font-family: 'Roboto';
+  color: #272822;
+  opacity: 1;
+}
+
+.inverse .remark-slide-number {
+  font-size: 13pt;
+  font-family: 'Roboto';
+  color: #FAFAFA;
+  opacity: 1;
+}
+
+.title-slide-custom .remark-slide-number {
+  display: none;
+}
+
+.title-slide-custom h3::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #114201;
+  color: #114201;
+  height: 2px;
+}
+
+.title-slide-custom {
+  background-color: #FFFFFF;
+  &lt;!-- border-left: 80px solid 	#114201; --&gt;
+  &lt;!-- background-image:  url(css/UNL.svg); --&gt;
+	background-position: 98% 98%;
+	&lt;!-- background-attachment: fixed, fixed; --&gt;
+	background-size: 20%;
+	border-bottom: 0;
+	border: 10px solid 	#114201;
+	&lt;!-- background: transparent; --&gt;
+}
+
+.title-slide-custom &gt; h1  {
+  color: #111111;
+  font-size: 40px;
+  text-shadow: none;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 15px;
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+.title-slide-custom &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: 30px;
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 32px;
+  text-align: left;
+  margin-left: 15px;
+}
+.title-slide-custom &gt; h3  {
+  margin-top: -25px;
+  padding-bottom: -25px;
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 32px;
+  text-align: left;
+  margin-left: 15px;
+}
+.title-slide-custom &gt; h4  {
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 28px;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: -30px;
+  padding-bottom: -25px;
+}
+.title-slide-custom &gt; h5  {
+  color: #111111;
+  text-shadow: none;
+  font-weight: 100;
+  font-size: 24px;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: -40px;
+}
+
+&lt;!-- img { --&gt;
+&lt;!--   max-width: 50%; --&gt;
+&lt;!-- } --&gt;
+
+&lt;/style&gt;
+
+
+
+
+
+
+&lt;br&gt;&lt;br&gt;
+# INTRODUCTION TO DATA &amp; STATISTICAL INFERENCE
+## Stat 218: Applied Statistics for the Life Sciences
+#### California Polytechnic State University - San Luis Obispo
+&lt;!-- ##### <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [Course GitHub Webpage](https://earobinson95.github.io/stat218-calpoly) --&gt;
+
+---
+class:inverse
+# Tuesday, OCTOBER 11, 2022
+
+ Today we will...
+
++ Statistical Inference Recap
+
++ Big Picture on Simple Linear Regression
+
++ Activity 4: Diving Penguins
+  + Checked for engagement and completion in class Thursday
+
+---
+class: primary
+# STATISTICAL INFERENCE RECAP
+
+**Big Idea:** Hypothesis testing gives us the framework to formally use statistical methods to draw inferences about our entire population from our collected data.
+
+1. Research question
+  + Set up your context
+  + Write your hypotheses/claims
+2. Find evidence against your claims
+  + p-values
+  + confidence intervals (also can just help us describe our data)
+3. Make a decision about your claim
+4. Interpret your results in context of the research question
+
+---
+class: primary
+# SETUP
+
+**Setup**
++ Observational Units
++ Variable of Interest (and type)
++ Population of Interest
++ Parameter (has a symbol - last week `\(\mu\)` (Mu) for the true population mean)
+  + think of this as a "word formula" (summary statistic + variable of interest + population)
+
+**Hypotheses**
+
++ `\((H_O)\)` Null: "innocent", "nothing is going on", "status quo" (= Null Value)
++ `\((H_A)\)` Alternative: "guilty", "something is going on", "what we are trying to prove" (&lt;, &gt;, `\(\ne\)`)
+
+---
+class: primary
+# STATISTICALLY SIGNIFICANT
+
+Let's find evidence!
+
+1. **Simulation**
+  + Bootstrapping: repeated sampling with replacement
+  + Randomization: we will do this today (we actually did this on day 1 of class!)
+2. **Theory/Math**
+  + We know certain properties of these distributions
+  
+  
+**Distributions**
+
++ Observed Data
++ Sampling Distribution (Either from Bootstrapping or from Theory)
++ Null Distribution (Either from Randomization or from Theory)
+  
+---
+class: primary
+# STATISTICAL SIGNIFICANCE
+
+How strong is our evidence? How much evidence do we need?
+
+| `\(\alpha\)`-threshold | Confidence Level |
+| -------------------|------------------|
+| 0.10 | 90% |
+| 0.05 | 95% |
+| 0.01 | 99% |
+
+We set our **significance level** at the beginning of a study.
+
+
+---
+class: primary
+# P-VALUES
+
+This is the probability of seeing your observed summary statistic (from your data) IF the null is true (aka assuming "nothing is going on").
+
+Compare this to our null distribution (either randomization or theory)
+
+If the data from your sample seems unusual compared to this, then we have evidence!
+
++ p-value `\(\le \alpha\)` `\(\implies\)` reject the null hypothesis and claim **we have** evidence in favor of the alternative hypothesis
++ p-value `\(&gt; \alpha\)` `\(\implies\)` fail to reject the null hypothesis and claim **we do not have** evidence in favor of the alternative hypothesis.
+
+*Note: We NEVER accept the null hypothesis*
+
+---
+class: primary
+# P-VALUES
+
+&lt;img src="images/p-value-logic.png" title="P-value logic: An image of a green distribution." alt="P-value logic: An image of a green distribution." width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+class: primary
+# TWO-SIDED P-VALUES
+
+&lt;img src="images/two-sided-test.png" title="P-value logic: An image of a green distribution." alt="P-value logic: An image of a green distribution." width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+class: primary
+# CONFIDENCE INTERVALS
+
+.pull-left[
+
+We have our **point estimate** from our observed summary statistic from our sample (this is our "best guess" for our population parameter).
+
+**Goal:** Find a range of plausible values for our parameter (point estimate + uncertainty).
+
+].pull-right[
+
+&lt;img src="images/confidence-interval-best-est-uncertainty.png" title="P-value logic: An image of a green distribution." alt="P-value logic: An image of a green distribution." width="85%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+class: primary
+# CONFIDENCE INTERVALS
+
+**How do we find them?** Use the quantiles (could call these percentiles) on from the **sampling distribution** either from bootstrapping or theory.
+
+`$$\text{point estimate} \pm \text{multiplier} \times \text{SE}$$`
+
+
+`$$\bar x \pm t^*_{df} \times \frac{s}{\sqrt n}$$`
+
++ If the interval falls completely above or below the **null value** `\(\implies\)` reject the null and conclude evidence in favor of the alternative!
+
++ If the interval falls contains the **null value** `\(\implies\)` fail to reject the null and conclude we do not have evidence in favor of the alternative!
+
+---
+class:primary
+# WHAT'S NEW?
+
+.pull-left[
+**Last week**
+
++ ONE quantitative/numerical variable
++ Summarize with measures of
+  + center
+      + mean/average, median/middle
+  + spread
+      + standard deviation - sd, inner quartile range - IQR = Q3 - Q1
++ Visualize with: Dot-plots, histograms, box-plots
+
+].pull-right[
+**This week**
+
++ TWO quantiative/numerical variables
++ Summarize with correlation (r) - measures strength of relationship/association
++ Visualize with scatterplots
+]
+
+
+---
+class:primary
+# SIMPLE LINEAR REGRESSION
+
+The principle of simple linear regression is to find the line (i.e., determine its equation) which passes as close as possible to the observations, that is, the set of points.
+
+&lt;img src="index_files/figure-html/linear-regression-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class:primary
+# SIMPLE LINEAR REGRESSION
+
+The principle of simple linear regression is to **find the line** (i.e., determine its equation) which passes as close as possible to the observations, that is, the set of points.
+
+&lt;img src="index_files/figure-html/linear-regression2-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class:primary
+# SIMPLE LINEAR REGRESSION
+
+The principle of simple linear regression is to **find the line** (i.e., determine its equation) **which passes as close as possible to the observations**, that is, the set of points.
+
+.pull-left[
+&lt;img src="index_files/figure-html/linear-regression3-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+].pull-right[
+
+**Equation of a line** (y = mx + b):
+
++ Estimated from sample: `\(\hat y = b_0 + b_1\times x\)`
++ Population true line: `\(y = \beta_0 + \beta_1 \times x + error\)`
+
+*Recall how `\(\bar x\)` was our point estimate for `\(\mu\)`.*
+
+]
+
+**Big Idea:** We use least squares regression (aka math) to find the "best" line.
+
+---
+class:primary
+# RESIDUALS
+
+Difference between observed points and predicted value (line) for the same `\(x\)` value.
+
+.center[
+&lt;img src="images/pca-plot.jpg" width="40%"/&gt;
+]
+
+---
+class:primary
+# INFERENCE FOR SLOPE
+
+.pull-left[
+&lt;img src="images/sampling-slr.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+**Goals:**
+
+1. Test whether there is an association between `\(x\)` and `\(y\)`
+2. Give a confidence interval for the true population slope
+]
+
+---
+class:primary
+# INFERENCE FOR SLOPE
+
+**Null:** The true slope between `\(x\)` and `\(y\)` for the population is equal to 0 `\((H_O: \beta_1 = 0)\)`
+
+
+**Alternative:** The true slope between `\(x\)` and `\(y\)` for the population is different than 0 `\((H_A: \beta_1 \ne 0)\)`
+
+Then we look for evidence (p-values &amp; confidence intervals)!
+
++ Simulation - Randomization to create our null distribution
++ Theory
+
+---
+class: primary
+# DIVING PENGUINS
+
+[Diving Penguins](https://earobinson95.github.io/stat218-calpoly/04-simple-linear-regression/activity/activity4-diving-penguins.html)
+
+.center[
+&lt;img src="images/diving-penguins.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+]
+
+Image from: [https://www.pinguins.info/Engels/Voortdiepte_eng.html](https://www.pinguins.info/Engels/Voortdiepte_eng.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightlines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
