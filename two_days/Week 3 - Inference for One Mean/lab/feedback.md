@@ -1,69 +1,24 @@
 
-# Question 10
+# Question 4
 
-## If they say "90% chance"
+## Axis Label 
 
-Careful! The true mean is either in our interval or not, but we don't know. So, 
-we can't say we are 90% sure it is in there. It's either 0% or 100%. We can't 
-estimate the chance that the parameter is in the interval. Instead, we are 
-confident that if we make lots of intervals 90% of them should contain the
-population mean. 
+Should be *Hours Worked* for Americans
 
-## If they say "90% of the people"
+### If they say "average"
 
-Our confidence interval is for the population mean, not the number of people! 
-We are 90% confident the population mean hours worked per week for all 
-working Americans is contained in our interval. 
+Careful! We are plotting the raw data, not statistics about the data. This histogram plots the hours worked for every person in the sample. 
 
-## If they reference the sample mean instead of the population mean
+### If they don't say Americans
 
-Careful! Our confidence interval is for the population mean, not the sample
-mean! We use our sample mean as the center of our confidence interval, so there
-is a 100% chance that it is capture in the interval! We don't, however, know if 
-our interval contains the true population mean. 
+What population were these observations collected from? All people? From a specific country?
 
-## If their interpretation doesn't contain context
+### If they say "hours"
 
-"Which group of people are we interested in?"
+Your axis label should make it clear what the variable being plotted is. What are the hours measured on? 
 
-"Is our interval for the number of hours worked in a day? A week? A year?"
+## Binwidth
 
-# Question 11
+If they chose a binwidth less than 5, then say:
 
-## If they don't reject the null
-
-When making a hypothesis test decision with a confidence interval, we look 
-for the null value in the interval. Is 40 contained in your 90% confidence 
-interval?
-
-## If they talk about the interval being close to 40
-
-The 90% interval already captured the uncertainty for the sample mean, so now
-we need to see whether the null value overlaps with the interval. When making 
-a decision, we're not looking at how close or far 40 is from the interval. 
-
-# Question 12
-
-## If they say "low probability of getting the null"
-
-The p-value isn't the probability of getting the null, it 
-is the probability of obtaining the results we saw or something
-more extreme **is the null was true.**
-
-## If they use 0.05 instead of 0.1
-
-Careful! Our significance level coincides with the confidence level we used.
-What percent confidence level did we use in the last problem? What significance
-level should you use?
-
-## General reminder about p-value interpretation
-
-The p-value represents the probability of obtaining the results we did (sample
-mean) or something more extreme, if the null was true. Given the p-value we 
-obtained is 3.76%, is it likely for us to have obtained a sample mean as large
-as what we saw due to chance alone?
-
-## General reminder about making a decision
-
-Remember when making a hypothesis test decision, we either reject the null or 
-fail to reject the null!
+When selecting a binwidth, we want for our histogram to appear as smooth / continuous as possible. This small of a binwidth results in a very spiked / jagged plot. I would recommend choosing a larger binwidth for a smoother plot! 
