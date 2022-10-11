@@ -1,7 +1,7 @@
 ---
-title: "STAT 218 -- Midterm 1"
+title: "STAT 218 - Midterm 1"
 date: "October 20, 2022"
-author: "Dr. Allison Theobold"
+author: "Dr. Theobold"
 output: pdf_document
 ---
 
@@ -27,7 +27,7 @@ library(palmerpenguins)
 \large{Name:} \underline{\hspace{3in}}
 \vspace{0.25cm}
 
-\large{Section (circle one):} \hspace{1cm} 8:10am \hspace{2cm} 9:10am 
+\large{Section (circle one):} \hspace{1cm} 2:10pm \hspace{2cm} 4:10pm 
 
 \end{center}
 
@@ -35,12 +35,12 @@ library(palmerpenguins)
 
 \noindent {\bf Read and Sign the Following Statement:}
 
-I understand that give or receiving help on this exam is a violation of academic
+I understand that giving or receiving help on this exam is a violation of academic
 regulations and is punishable by a grade of __F__ in this course. This
 includes looking at other students' exams and / or allowing other students,
 actively or passively, to see answers on my exam. This also includes revealing,
 actively or passively, any information about the exam to any member of 
-Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
+Dr. Robinson's STAT 218 class who has not yet taken the exam. The use of 
 cell phones is strictly prohibited.
 
 \begin{center}
@@ -116,12 +116,12 @@ interval, which part(s) of the confidence interval change? (Select all that
 apply)
 
 \begin{itemize}
-\item[(a)] Statistic (midpoint)
+\item[(a)] Point estimate (midpoint)
 \item[(b)] Multiplier
 \item[(c)] Standard error
 \end{itemize}
 
-\vspace{0.25cm}
+\vspace{0.75cm}
 
 \noindent \textbf{Q6} [3 points] The purpose of creating a null distribution is
 to: (Select all that apply)
@@ -134,7 +134,7 @@ was true.
 true. 
 \end{itemize}
 
-\vspace{0.25cm}
+\vspace{0.75cm}
 
 \noindent \textbf{Q5} [4 points] Indicate whether each statement about a 
 bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
@@ -225,13 +225,12 @@ Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`,
 this confidence interval: 
 
 \begin{center}
-\emph{There is a 95\% chance that that the observed sample mean of the 392 
-Fiddler Crabs sampled will have a mean carapace width between 14.31 and 15.01
-millimeters.}
+\emph{There is a 95\% chance that the observed sample mean carapace width of the 392
+Fiddler Crabs is between 14.31 and 15.01 millimeters.}
 \end{center}
 
 \noindent
-Identify __two__ mistakes committed and fix them. Be brief but clear in your
+Identify __three__ mistakes committed and fix them. Be brief but clear in your
 description.
 
 \vspace{1cm}
@@ -240,9 +239,9 @@ Mistake 1: \underline{\hspace{6in}}
 
 \vspace{1cm}
 
-Fix: \underline{\hspace{6in}}
+Fix: \underline{\hspace{6.2in}}
 
-\vspace{1cm}
+\vspace{1.5cm}
 
 Mistake 2: \underline{\hspace{6in}}
 
@@ -250,9 +249,7 @@ Mistake 2: \underline{\hspace{6in}}
 
 Fix: \underline{\hspace{6in}}
 
-\vspace{0.25in}
-
-\vspace{1cm}
+\vspace{1.5cm}
 
 Mistake 3: \underline{\hspace{6in}}
 
@@ -278,9 +275,9 @@ selected (e.g., calories, saturated fat, calcium, protein, etc.).
 
 \noindent
 \textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
-fastfood items. 
+fast food items. 
 
-\vspace{1in}
+\vspace{1.5in}
 
 \noindent
 \textbf{(b)} [3 pts] I am interested in studying the linear relationship between
@@ -327,7 +324,7 @@ Calculate and plot the \underline{\hspace{4cm}} from each simulated sample.
 
 \end{center}
 
-```{r null-dist-fastfood}
+```{r null-dist-fastfood, fig.height = 3.5}
 
 obs_slope <- fastfood %>% 
   specify(response = sat_fat, 
@@ -378,26 +375,27 @@ the p-value.
 \noindent
 \textbf{(h)} [3 pts] Which of the following is a correct interpretation of the p-value obtained? (Circle one)
 
-\begin{itemize}
-\item If there is no linear relationship between the total calories and the
+(a) If there is no linear relationship between the total calories and the
 saturated fat of a fast food item, we would observe a sample slope of 0.017 or
 more extreme with a probability of less than 1 in 1000. 
 
-\item If there is a linear relationship between the total calories and the
+(b) If there is a linear relationship between the total calories and the
 saturated fat of a fast food, we would observe a sample slope of 0.017 or more
 extreme with a probability of less than 1 out of 1000.
 
-\item The probability of seeing a sample slope between the total calories and
-the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
-\item  The probability that there is no linear relationship between the total
+(c) The probability of seeing a sample slope between the total calories and
+the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%.
+
+(d)  The probability that there is no linear relationship between the total
 calories and the saturated fat of a fast food item, is less than 0.1%.
-\end{itemize}
+
+\vspace{0.5cm}
 
 \textbf{(i)} [2 points] Given the p-value for the hypothesis test, would the
 95% confidence interval for $\beta_1$ contain 0? Be sure to justify your 
 choice!
 
-\vspace{1in}
+\newpage
 
 \noindent \textbf{Q11} The Konza Prairie Long-Term Ecological Research has
 collected data on bison on the Konza prairie since 1994, making it the longest
@@ -426,7 +424,7 @@ favstats(~ animal_weight, data = yearling_male_bison) %>%
 ```
 
 
-\textbf{(a)} [3 points] Define the parameter of interest, using proper notation.
+\textbf{(a)} [3 points] Define the parameter of interest in words and use proper notation to assign a symbol.
 
 \vspace{0.75in}
 

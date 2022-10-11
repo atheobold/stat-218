@@ -27,7 +27,7 @@ library(palmerpenguins)
 Your exam questions will be randomly selected from this bank of
 questions. There \textbf{will not} be a solution key posted, so it is your 
 responsibility to discuss your ideas with your group members and / or with 
-Dr. Theobold during office hours.
+Dr. Robinson during office hours.
 
 \vspace{0.5cm}
 
@@ -136,7 +136,7 @@ selected (e.g., calories, saturated fat, calcium, protein, etc.).
 
 \noindent
 \textbf{(a)} [2 pts] Describe the sampling method I used to obtain these 512 
-fastfood items. 
+fast food items. 
 
 \vspace{2cm}
 
@@ -290,7 +290,7 @@ quantitative. \\
 \end{itemize}
 
 \textbf{(b)} [3 pts] A histogram displaying the size of the sample of fiddler
-crabs is displayed below. Describe the shape of the distribution. Be sure to 
+crabs is displayed below. Describe the distribution. Be sure to 
 address the center, spread, shape, and outliers. 
 
 ```{r}
@@ -323,9 +323,8 @@ Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`,
 this confidence interval: 
 
 \begin{center}
-\emph{There is a 95\% chance that that the observed sample mean of the 392 
-Fiddler Crabs sampled will have a mean carapace width between 14.31 and 15.01
-millimeters.}
+\emph{There is a 95\% chance that the observed sample mean carapace width of the 392
+Fiddler Crabs is between 14.31 and 15.01 millimeters.}
 \end{center}
 
 \noindent
@@ -454,11 +453,11 @@ majority of people who receive food stamps is younger than 40.
 \vspace{0.25cm}
 
 \noindent \textbf{Q8} [2 points] When you change from a 90% to a 95% confidence
-interval,which part(s) of the confidence interval change? (Select all that 
+interval, which part(s) of the confidence interval change? (Select all that 
 apply)
 
 \begin{itemize}
-\item[(a)] Statistic (midpoint)
+\item[(a)] Point Estimate (midpoint)
 \item[(b)] Multiplier
 \item[(c)] Standard error
 \end{itemize}
@@ -537,7 +536,7 @@ favstats(~ animal_weight, data = yearling_male_bison) %>%
 ```
 
 
-\textbf{(a)} [3 points] Define the parameter of interest, using proper notation.
+\textbf{(a)} [3 points] Define the parameter of interest in words and use proper notation to assign a symbol.
 
 \pagebreak
 
