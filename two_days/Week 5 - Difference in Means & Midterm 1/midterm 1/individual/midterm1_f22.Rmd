@@ -206,8 +206,9 @@ pie_crab %>%
 
 \vspace{0.25cm}
 
-\textbf{(c)} [2 pts] When using a $t$-distribution to find a 95% confidence 
-interval for $\mu$, how many degrees of freedom should be used?
+\textbf{(c)} [2 pts] The researchers collected data on 392 total Fiddler Crabs. 
+When using a $t$-distribution to find a 95% confidence interval for $\mu$, how
+many degrees of freedom should be used?
 
 \vspace{1cm}
 
