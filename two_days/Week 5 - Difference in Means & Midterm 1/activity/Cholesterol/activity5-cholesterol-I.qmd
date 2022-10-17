@@ -1,9 +1,9 @@
 ---
 title: "Activity 5: Cholesterol I"
 subtitle: "Hypothesis Testing for Two Independent Means"
-format: pdf
+# format: pdf
 # format: html
-# format: docx
+format: docx
 ---
 
 ```{r setup, echo = FALSE, include = FALSE}
@@ -40,18 +40,14 @@ cholesterol_data <- tibble::tribble(
                                    "12", "3.89", "3.73",
                                    "13", "2.25", "1.84",
                                    "14", "4.24", "4.14"
-          )
-
-factorCols <- c("ID")
-cholesterol_data[,factorCols] <- lapply(cholesterol_data[,factorCols], as.factor)
-numericCols <- c("CORNFLK", "OATBRAN")
-cholesterol_data[,numericCols] <- lapply(cholesterol_data[,numericCols], as.numeric)
-
-cholesterol_data <- cholesterol_data |> 
-  mutate(cholesterolDiff = CORNFLK - OATBRAN)
+          ) |> 
+  mutate(ID = as.factor(ID), 
+         across(CORNFLK:OATBRAN, as.numeric), 
+         cholesterolDiff = CORNFLK - OATBRAN
+         )
 
 cholesterol_data_long <- cholesterol_data |> 
-  pivot_longer(cols = c(CORNFLK, OATBRAN),
+  pivot_longer(cols = CORNFLK:OATBRAN,
                names_to = "Diet",
                values_to = "Cholesterol")  |> 
        select(Diet, Cholesterol)
@@ -81,7 +77,7 @@ head(cholesterol_data_long)
 
 ## Comparing Two Groups
 
-Let's compare the cholesterol levels `Cholesterol` for participants on the corn flake `CORNFLK` diet and participants on the oat bran `OATBRAN` diet.
+Let's compare the cholesterol levels `Cholesterol` for participants on the corn flake (`CORNFLK`) diet and participants on the oat bran (`OATBRAN`) diet.
 
 ## Setup Context
 
@@ -133,11 +129,11 @@ favstats(Cholesterol ~ Diet,
 
 \vspace{0.8in}
 
-4. Report the observed mean cholesterol level for participants on the corn flake diet. *Use appropriate notation.*
+4. Report the observed mean cholesterol level for participants on the corn flake diet. *Use appropriate notation with an informative subscipt.*
 
 \vspace{0.3in}
 
-5. Report the observed mean cholesterol level for participants on the oat bran diet. *Use appropriate notation.*
+5. Report the observed mean cholesterol level for participants on the oat bran diet. *Use appropriate notation with an informative subscipt.*
 
 \vspace{0.3in}
 
@@ -189,7 +185,10 @@ Another way we can incorporate a categorical into our plots is to plot our boxpl
 
 Before, we either plotted our **one** numerical variable horizontally (using `x`) or vertically (using `y`). 
 
-```{r one-box, echo = FALSE, fig.height = 2.75}
+```{r one-box}
+#| echo: false
+#| fig.height = 2.75
+
 horizontal <- ggplot(data = cholesterol_data_long, 
              mapping = aes(x = Cholesterol)) + 
   geom_boxplot() + 
@@ -242,6 +241,7 @@ ggplot(data = cholesterol_data_long,
 12. Which orientation do you prefer?
 
 \newpage
+
 ## Statistical Inference
 
 Now that we have explored our data with summary statistics and visualizations, we want to use our data to draw inferences and make claims about the larger population.
