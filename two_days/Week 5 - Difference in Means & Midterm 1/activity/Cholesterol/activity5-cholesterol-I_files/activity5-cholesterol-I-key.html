@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Activity 5: Cholesterol I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="activity5-cholesterol-I-key_files/libs/clipboard/clipboard.min.js"></script>
+<script src="activity5-cholesterol-I-key_files/libs/quarto-html/quarto.js"></script>
+<script src="activity5-cholesterol-I-key_files/libs/quarto-html/popper.min.js"></script>
+<script src="activity5-cholesterol-I-key_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="activity5-cholesterol-I-key_files/libs/quarto-html/anchor.min.js"></script>
+<link href="activity5-cholesterol-I-key_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="activity5-cholesterol-I-key_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="activity5-cholesterol-I-key_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="activity5-cholesterol-I-key_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="activity5-cholesterol-I-key_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Activity 5: Cholesterol I</h1>
+<p class="subtitle lead">Hypothesis Testing for Two Independent Means</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>This week our focus is comparing the means of two groups. With linear regression we were able to compare the predicted mean response across different values of a continuous explanatory variable. This week, however, we are moving from a <em>continuous</em> explanatory variable to a <strong>categorical</strong> explanatory variable!</p>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<ul>
+<li><p>Summarize and visualize quantitative data for two means.</p></li>
+<li><p>Given a research question involving one categorical explanatory variable and one quantitative response variable, construct the null and alternative hypotheses in words and using appropriate statistical symbols.</p></li>
+<li><p>Describe and perform a simulation-based hypothesis test for a difference in means.</p></li>
+<li><p>Interpret and evaluate a p-value for a simulation-based hypothesis test for a difference in means.</p></li>
+</ul>
+</section>
+<section id="diet-and-cholesterol" class="level2">
+<h2 class="anchored" data-anchor-id="diet-and-cholesterol">Diet and Cholesterol</h2>
+<p>Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels. Twenty-eight (28) individuals were randomly assigned a diet that included either corn flakes (14 individuals) or oat bran (14 individuals). After two weeks, cholesterol levels (mmol/L) of the participant were recorded.</p>
+<p>The first 6 rows of the data <code>cholesterol_data_long</code> appear below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cholesterol_data_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  Diet    Cholesterol
+  &lt;chr&gt;         &lt;dbl&gt;
+1 CORNFLK        4.61
+2 OATBRAN        3.84
+3 CORNFLK        6.42
+4 OATBRAN        5.57
+5 CORNFLK        5.4 
+6 OATBRAN        5.85</code></pre>
+</div>
+</div>
+</section>
+<section id="comparing-two-groups" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-two-groups">Comparing Two Groups</h2>
+<p>Let’s compare the cholesterol levels <code>Cholesterol</code> for participants on the corn flake (<code>CORNFLK</code>) diet and participants on the oat bran (<code>OATBRAN</code>) diet.</p>
+</section>
+<section id="setup-context" class="level2">
+<h2 class="anchored" data-anchor-id="setup-context">Setup Context</h2>
+<ol type="1">
+<li>What is the observational unit for this study?</li>
+</ol>
+<p style="color:blue;">
+One study participant
+</p>
+<ol start="2" type="1">
+<li>The two variables assessed in this study are the <code>Diet</code> and <code>Cholesterol</code>. Identify the role for each variable (explanatory or response) and variable type (quantitative or categorical).</li>
+</ol>
+<strong>Explanatory:</strong>
+<p style="color:blue;">
+Diet (categorical)
+</p>
+<strong>Response:</strong>
+<p style="color:blue;">
+Cholesterol (quantitative)
+</p>
+<ol start="3" type="1">
+<li>What is the population of interest for this study?</li>
+</ol>
+<p style="color:blue;">
+It seems like the population could be all humans, since there is not additional information on who the researchers sampled from.
+</p>
+</section>
+<section id="exploratory-data-analysis-eda" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
+<p>Similar to summarizing the mean of all of the movies, we have two options to compare these two groups:</p>
+<ul>
+<li>Use summary statistics</li>
+<li>Use visualizations</li>
+</ul>
+</section>
+<section id="summary-statistics-for-two-groups" class="level2">
+<h2 class="anchored" data-anchor-id="summary-statistics-for-two-groups">Summary Statistics for Two Groups</h2>
+<p>Let’s start with summary statistics. Our familiar friend <code>favstats()</code> can help us compare summary statistics across different groups. Before when we used <code>favstats()</code> we only had one variable, but now we have two!</p>
+<p>Now, we will use two variables as a “formula”, which looks like <code>response ~ explanatory</code>. So, the cholesterol levels of the participants is the response and the diet is the explanatory variable. So, our code looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(Cholesterol <span class="sc">~</span> Diet, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> cholesterol_data_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the output from the <code>favstats()</code> function to answer the following questions:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     Diet  min     Q1 median     Q3  max     mean        sd  n missing
+1 CORNFLK 2.25 3.9125   4.44 4.9100 6.42 4.443571 0.9688344 14       0
+2 OATBRAN 1.84 3.6900   3.84 4.7025 5.85 4.080714 1.0569802 14       0</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Report the observed mean cholesterol level for participants on the corn flake diet. <em>Use appropriate notation with an informative subscript.</em></li>
+</ol>
+<p style="color:blue;">
+<span class="math inline">\(\bar{x}_{cornflake}\)</span> = 4.443571
+</p>
+<ol start="5" type="1">
+<li>Report the observed mean cholesterol level for participants on the oat bran diet. <em>Use appropriate notation with an informative subscript.</em></li>
+</ol>
+<p style="color:blue;">
+<span class="math inline">\(\bar{x}_{oatbran}\)</span> = 4.080714
+</p>
+<ol start="6" type="1">
+<li>Calculate the difference in mean cholesterol level between participants on the corn flake diet and participants on the oat bran diet. <em>(CORNFLK minus OATBRAN) Use appropriate notation with informative subscripts.</em></li>
+</ol>
+<p style="color:blue;">
+<span class="math inline">\(\bar{x}_{cornflake} - \bar{x}_{oatbran}\)</span> = 4.443571 - 4.080714 = 0.362857
+</p>
+</section>
+<section id="visualizing-two-groups" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-two-groups">Visualizing Two Groups</h2>
+<p>Let’s refresh ourselves on the different ways to plot a numerical variable.</p>
+<ol start="8" type="1">
+<li>What are the three types of plots used to plot a single quantitative variable?</li>
+</ol>
+<p style="color:blue;">
+dotplot, histogram, boxplot
+</p>
+<ol start="9" type="1">
+<li>For each type of plot, how would you include a categorical variable in the plot?</li>
+</ol>
+<p style="color:blue;">
+For all these plots, you could either color the object (dot, bar, boxplot) or you could make separate plots for the different values (levels) of the categorical variable.
+</p>
+<section id="faceted-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="faceted-histograms">Faceted Histograms</h3>
+<p>When we want to add a categorical variable (like <code>Diet</code>) to a histogram, we create separate plots for each level of the categorical variable. These separate plots are called <strong>facets</strong>. We are comparing the cholesterol levels for corn flake and oatbran diets, so we will have two facets, one per diet.</p>
+<p>The code to make a faceted histogram looks like the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cholesterol_data_long, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Cholesterol)) <span class="sc">+</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cholesterol Level (mmol/L)"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Diet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice the last line is the only new part! That line creates a faceted plot (using <code>facet_wrap()</code>) and says to facet “by” (<code>~</code>) the <code>Diet</code>.</p>
+<p>Let’s look at what this plot ends up looking like:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/facet-hist-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="side-by-side-boxplots" class="level3">
+<h3 class="anchored" data-anchor-id="side-by-side-boxplots">Side-by-Side Boxplots</h3>
+<p>Another way we can incorporate a categorical into our plots is to plot our boxplots for each group side-by-side. As opposed to faceting, these boxplots will be on the <strong>same</strong> plot. We only need to add one extra piece to our previous code: a categorical variable.</p>
+<p>Before, we either plotted our <strong>one</strong> numerical variable horizontally (using <code>x</code>) or vertically (using <code>y</code>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/one-box-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we need to plot <strong>two</strong> boxplots side-by-side. Similar to before, we can stack the plots horizontally or vertically.</p>
+<section id="horizontal-stacking" class="level4">
+<h4 class="anchored" data-anchor-id="horizontal-stacking">Horizontal Stacking</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cholesterol_data_long, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Diet, <span class="at">y =</span> Cholesterol)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Diet"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Cholesterol Level (mmol/L)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/horizontal-box-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="10" type="1">
+<li>Why are the boxplots stacked side-by-side horizontally? What part of the <code>R</code> code does this?</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="vertical-stacking" class="level4">
+<h4 class="anchored" data-anchor-id="vertical-stacking">Vertical Stacking</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cholesterol_data_long, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Cholesterol, <span class="at">y =</span> Diet)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cholesterol Level (mmol/L)"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Diet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/vertical-box-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="11" type="1">
+<li>How was the previous code changed to stack the boxplots side-by-side vertically?</li>
+</ol>
+<ol start="12" type="1">
+<li>Which orientation do you prefer?</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+</section>
+<section id="statistical-inference" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-inference">Statistical Inference</h2>
+<p>Now that we have explored our data with summary statistics and visualizations, we want to use our data to draw inferences and make claims about the larger population.</p>
+<p><strong>Step 1: Ask a research question</strong></p>
+<p><em>Recall:</em> Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels.</p>
+<ol start="13" type="1">
+<li>In words, write out the <strong>parameter</strong> of interest in context of the study. Assign a symbol and use proper notation and be sure to define your subscripts. <em>Use corn flakes minus oat bran as the order of subtraction.</em></li>
+</ol>
+<p style="color:blue;">
+Our parameter is the true difference in mean cholesterol levels between the cornflake and oatbran diets, the notation is $<em>{cornflakes} - </em>{oatbran}
+</p>
+<ol start="14" type="1">
+<li>Write out the null and alternative hypotheses in words.</li>
+</ol>
+<p style="color:blue;">
+<span class="math inline">\(H_0\)</span>: There is no difference in the mean cholesterol levels between the two diets
+</p>
+<ol start="15" type="1">
+<li>Write out the null and alternative hypotheses with notation.</li>
+</ol>
+<p style="color:blue;">
+<span class="math inline">\(H_A\)</span>: <span class="math inline">\(\mu_{cornflakes} \neq \mu_{oatbran}\)</span>
+</p>
+<p style="color:blue;">
+<strong>or</strong>
+</p>
+<p style="color:blue;">
+<span class="math inline">\(H_A\)</span>: <span class="math inline">\(\mu_{cornflakes} - \mu_{oatbran} \neq 0\)</span>
+</p>
+<p><strong>Step 2: Conduct a Hypothesis test</strong></p>
+<p>Recall in Question 6, we calculated the observed statistic of interest (difference in means) and assigned a symbol.</p>
+<p><span class="math display">\[\bar{x}_{cornflake} - \bar{x}_{oatbran} = 0.362861\]</span></p>
+<p>Remember that the null distribution is created based on the assumption the null hypothesis is true. In this study, the null hypothesis states that <strong>there is no association / relationship between the two variables</strong>. This means that the cholesterol levels observed in the data set would have been the same regardless of the diet and we would expect there to be a difference in means between the two groups of zero.</p>
+<p>I’ve provided your group with a set of cards to use to simulate a sample that could have happened if the null was true.</p>
+<ol start="16" type="1">
+<li>How many cards will we start with?</li>
+</ol>
+<p style="color:blue;">
+The same number as our sample size – 28
+</p>
+<ol start="17" type="1">
+<li>What will we write on each card?</li>
+</ol>
+<p style="color:blue;">
+The diet of the person (cornflakes / oatbran) and their cholesterol level
+</p>
+<ol start="18" type="1">
+<li>Next, we need to generate a data set that could have happened if the null hypothesis was true. How do we do this?</li>
+</ol>
+<p style="color:blue;">
+Tear the cars in half – separate the diet from the cholesterol level. Make two piles, one of the groups (cornflakes / oatbran) and one of the cholesterol. Shuffle the cards, randomly draw one card from each pile, tape the cards together. Continue this process until there are 28 new pairs of cards.
+</p>
+<ol start="19" type="1">
+<li>Once we have generated our new data set that could have happened if the null was true, what value do we calculate? <em>Hint: What statistic are we calculating from the data?</em></li>
+</ol>
+<p style="color:blue;">
+We find the means of each group (cornflake / oatbran) and we find <span class="math inline">\(\bar{x}_{cornflake} - \bar{x}_{oatbran}\)</span>. This is our statistic!
+</p>
+<ol start="20" type="1">
+<li>Create one simulation using the cards provided. Is your simulated statistic closer to the null value of zero than the difference in means calculated from the sample? Explain why this makes sense.</li>
+</ol>
+<p style="color:blue;">
+Yes, my simulation was 0.05. This makes sense because I generated this sample assuming the null hypothesis was true – that there is no difference in the mean cholesterol levels between the two diets.
+</p>
+<ol start="21" type="1">
+<li>Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered? Explain your reasoning.</li>
+</ol>
+<p style="color:blue;">
+0! Because that is the null hypothesized value for <span class="math inline">\(\mu_{cornflake} - \mu_{oatbran}\)</span>
+</p>
+</section>
+<section id="carrying-out-the-simulation-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="carrying-out-the-simulation-in-r">Carrying out the simulation in <code>R</code></h2>
+<p>We will use the <strong>infer</strong> package (again) to make our simulated null distribution. The process we used for this situation will look very similar to before, since all we are changing is the statistic we calculate!</p>
+<ol start="22" type="1">
+<li>Fill in the blanks for the code below. You might want to look back at your <code>Activity 4: Diving Penguins</code> for some help!</li>
+</ol>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+</div>
+</div>
+<p>Last time we use a <code>"slope"</code> statistic, so we didn’t need to specify the order of subtraction. But now, with a difference in means we need to specify which group should come first and which should come second.</p>
+<ol start="23" type="1">
+<li>Draw a line where the observed statistic falls on the simulated null distribution below. Shade the area that you will use to calculate the p-value.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/null-dist-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="24" type="1">
+<li>Based off the simulation, what is the approximate p-value for your hypothesis test? Based off of this p-value, write a conclusion to the hypothesis test.</li>
+</ol>
+<p style="color:blue;">
+It appears that there are about <code>75 + 40 + 15 + 5 = 135</code> simulations as or more extreme on the right side. On the left side, it looks like there are about <code>75 + 55 + 20 + 10 = 160</code> simulations as or more extreme. So, put together, there are about 295 simulations as or more extreme than our observed statistic. That makes a p-value of approximately 0.295.
+</p>
+<p style="color:blue;">
+Since our p-value of 0.295 is greater than <span class="math inline">\(\alpha = 0.05\)</span> we will fail to reject the null. We conclude there is insufficient evidence to conclude there is a difference in cholesterol levels between the two diets.
+</p>
+<ol start="25" type="1">
+<li>Can we say diet causes changes in cholesterol levels? Explain.</li>
+</ol>
+<p style="color:blue;">
+No! In order to use the word “cause” the researchers needed to randomly assign who got what treatment. Without random assignment there could be confounding variables such as participant’s age, diet, or fitness level.
+</p>
+<hr>
+</section>
+<section id="using-theoretical-methods-instead" class="level2">
+<h2 class="anchored" data-anchor-id="using-theoretical-methods-instead">Using theoretical methods instead…</h2>
+<p>What we just did used simulation to approximate what the sampling distribution of <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span> would look like if the null was true (we call this the Null Distribution). However, we don’t necessarily need to use simulation to approximate this distribution!</p>
+<p>The sampling distribution for <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span> can be modeled using a <span class="math inline">\(t\)</span>-distribution, when certain conditions are not violated. These conditions are:</p>
+<ul>
+<li><p><strong>Independence</strong>: The sample’s observations are independent</p></li>
+<li><p><strong>Normality</strong>: Each sample should be approximately normal or have a large sample size. For <em>each</em> sample:</p>
+<ul>
+<li><p><span class="math inline">\(n &lt; 30\)</span>: If the sample size <span class="math inline">\(n\)</span> is less than 30 and there are no clear outliers in the data, then we typically assume the data come from a population whose distribution is nearly normal.</p></li>
+<li><p><span class="math inline">\(n \ge 30\)</span>: If the sample size <span class="math inline">\(n\)</span> is at least 30 and there are no particularly extreme outliers, then we typically assume the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is nearly normal, even if the underlying distribution of individual observations is not.</p></li>
+</ul></li>
+</ul>
+<p>If these conditions seem reasonable, then we can use a <span class="math inline">\(t\)</span>-distribution with the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> degrees of freedom.</p>
+<p>Previously we drew our line on the null distribution at our observed difference in means. However, if we use a <span class="math inline">\(t\)</span>-distribution, we need to draw our line at the <strong>standardized statistic</strong> (<span class="math inline">\(t\)</span>-statistic) instead of the observed difference in means. To calculate a <span class="math inline">\(t\)</span>-statistic we use the following formula:</p>
+<p><span class="math display">\[
+t = \frac{\text{Point Estimate} - \text{Null Value}}{\text{SE of the Point Estimate}}=\frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}}
+\]</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     Diet  min     Q1 median     Q3  max     mean        sd  n missing
+1 CORNFLK 2.25 3.9125   4.44 4.9100 6.42 4.443571 0.9688344 14       0
+2 OATBRAN 1.84 3.6900   3.84 4.7025 5.85 4.080714 1.0569802 14       0</code></pre>
+</div>
+</div>
+<ol start="26" type="1">
+<li>Using the above formula and the summary statistics (we saw these earlier as well), calculate the <span class="math inline">\(t\)</span>-statistic for these data.</li>
+</ol>
+<p style="color:blue;">
+<span class="math display">\[t = \frac{4.443571 - 4.080714}{\sqrt{\frac{0.9688344}{14} + \frac{1.0569802}{14}}}\]</span>
+</p>
+<p style="color:blue;">
+<span class="math display">\[ = \frac{0.362857}{\sqrt{0.06920246 + 0.07549859}}\]</span>
+</p>
+<p style="color:blue;">
+<span class="math display">\[ = \frac{0.362857}{\sqrt{0.144701}}\]</span>
+</p>
+<p style="color:blue;">
+<span class="math display">\[ = \frac{0.362857}{0.3803959}\]</span>
+</p>
+<p style="color:blue;">
+<span class="math display">\[ = 0.953893\]</span>
+</p>
+<ol start="27" type="1">
+<li>Using the <span class="math inline">\(t\)</span>-distribution below, find your calculated <span class="math inline">\(t\)</span>-statistic. Shade the area that you will use to calculate the p-value.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="activity5-cholesterol-I-key_files/figure-html/t-dist-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In statistics, there are calculus methods used to find the area of this shaded region. Think of this entire curve equaling 100%; the <code>pt()</code> function will help us find this area.</p>
+<ul>
+<li><code>q</code>: the value of the t-statistic you want to shade from (the calculated standardized statistic)</li>
+<li><code>df</code>: degrees of freedom telling the specific shape of the t-distribution</li>
+<li><code>lower.tail = F</code> tells the function to shade to the right instead of the left</li>
+</ul>
+<p>We then multiply by 2 to “shade” the other side for our two-sided test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="at">q =</span> <span class="fl">0.953893</span>, <span class="at">df =</span> <span class="dv">13</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3575392</code></pre>
+</div>
+</div>
+<ol start="28" type="1">
+<li>Indicate the p-value for your hypothesis test. Is this similar to the p-value you obtained using simulation? Would your decision/conclusion change?</li>
+</ol>
+<p style="color:blue;">
+Before, we got a p-value of about 0.295, which is close to this p-value. Both p-values are larger than 0.05, so we fail to reject the null hypothesis. We would reach the same conclusion (no evidence of a difference) for both simulation and theoretical methods.
+</p>
+<p>Remember the <code>t_test()</code> function when we were comparing <strong>one mean</strong> to a “status quo” value? Similarly, we can use this to use theory based methods to test our hypotheses and compare the difference in means between our two groups.</p>
+<ul>
+<li><code>response</code> is the response variable</li>
+<li><code>explanatory</code> is the explanatory variable</li>
+<li><code>alternative</code> states the direction of the alternative hypothesis (<code>"two-sided"</code>, <code>"greater"</code>, or <code>"less"</code>)</li>
+<li><code>mu</code> is the null hypothesized value for the statistic of interest</li>
+<li><code>order</code> group 1 - group 2 (specified as <code>c("group 1", "group 2")</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(cholesterol_data_long, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">response =</span> Cholesterol, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">explanatory =</span> Diet,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two-sided"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"CORNFLK"</span>, <span class="st">"OATBRAN"</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf_int =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  statistic  t_df p_value alternative estimate
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+1     0.947  25.8   0.352 two.sided      0.363</code></pre>
+</div>
+</div>
+<ol start="29" type="1">
+<li>Where have we seen approximately the statistic and p_value before? How about the estimate?</li>
+</ol>
+<p style="color:blue;">
+The <code>estimate</code> is the statistic we calculated at the beginning of the activity! The <code>statistic</code> is about the same as the one we calculated by hand. The p-value is about the same as the one we estimated from the null distribution.
+</p>
+<hr>
+<section id="take-home-messages" class="level3">
+<h3 class="anchored" data-anchor-id="take-home-messages">Take-home messages</h3>
+<p>To create one simulated sample on the null distribution for a difference in sample means, you carry out the following steps:</p>
+<ul>
+<li>label cards with the values from the observed sample</li>
+<li>tear the explanatory <span class="math inline">\(x\)</span> and response <span class="math inline">\(y\)</span> labels/values apart</li>
+<li>shuffle the cards and make new pairs of explanatory <span class="math inline">\(x\)</span> and response <span class="math inline">\(y\)</span> labels/values</li>
+<li>calculate and plot the difference in means between the “new/permuted” groups</li>
+</ul>
+<p>If it is not unreasonable to assume that the observations from each group come from a population with a normal distribution, then the <span class="math inline">\(t\)</span>-distribution can be used (instead of a simulated null distribution) to approximate the sampling distribution.</p>
+<ul>
+<li>The <span class="math inline">\(t\)</span>-distribution uses the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> degrees of freedom</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
