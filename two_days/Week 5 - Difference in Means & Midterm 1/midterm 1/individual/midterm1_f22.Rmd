@@ -185,8 +185,8 @@ pie_crab |>
 
 \vspace{1cm}
 
-\item List the variables. Indicate whether each variable is categorical or
-quantitative. \\
+\item List the variables. Indicate whether each variable is categorical (c) or
+quantitative (q). \\
 
 \vspace{2cm}
 
@@ -226,8 +226,8 @@ Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`,
 this confidence interval: 
 
 \begin{center}
-\emph{There is a 95\% chance that the observed sample mean carapace width of the 392
-Fiddler Crabs is between 14.31 and 15.01 millimeters.}
+\emph{There is a 95\% chance that the observed sample mean carapace width of the
+392 Fiddler Crabs is between 14.31 and 15.01 millimeters.}
 \end{center}
 
 \noindent
