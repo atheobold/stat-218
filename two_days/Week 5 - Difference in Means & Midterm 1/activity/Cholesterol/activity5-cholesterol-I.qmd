@@ -1,0 +1,463 @@
+---
+title: "Activity 5: Cholesterol I"
+subtitle: "Hypothesis Testing for Two Independent Means"
+# format: pdf
+# format: html
+format: docx
+---
+
+```{r setup, echo = FALSE, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center",
+                      fig.pos = "H")
+
+library(tidyverse)
+library(patchwork)
+library(mosaic)
+library(infer)
+
+set.seed(93401)
+```
+
+```{r data-prep, echo = FALSE}
+
+# https://www.sjsu.edu/faculty/gerstman/StatPrimer/paired.pdf
+
+cholesterol_data <- tibble::tribble(
+          ~ ID, ~CORNFLK, ~OATBRAN,
+                                    "1", "4.61", "3.84",
+                                    "2", "6.42", "5.57",
+                                    "3", "5.40", "5.85",
+                                    "4", "4.54", "4.80",
+                                    "5", "3.98", "3.68",
+                                    "6", "3.82", "2.96",
+                                    "7", "5.01", "4.41",
+                                    "8", "4.34", "3.72",
+                                    "9", "3.80", "3.49",
+                                   "10", "4.56", "3.84",
+                                   "11", "5.35", "5.26",
+                                   "12", "3.89", "3.73",
+                                   "13", "2.25", "1.84",
+                                   "14", "4.24", "4.14"
+          ) |> 
+  mutate(ID = as.factor(ID), 
+         across(CORNFLK:OATBRAN, as.numeric), 
+         cholesterolDiff = CORNFLK - OATBRAN
+         )
+
+cholesterol_data_long <- cholesterol_data |> 
+  pivot_longer(cols = CORNFLK:OATBRAN,
+               names_to = "Diet",
+               values_to = "Cholesterol")  |> 
+       select(Diet, Cholesterol)
+```
+
+This week our focus is comparing the means of two groups. With linear regression we were able to compare the predicted mean response across different values of a continuous explanatory variable. This week, however, we are moving from a *continuous* explanatory variable to a **categorical** explanatory variable! 
+
+## Learning Outcomes
+
++ Summarize and visualize quantitative data for two means.
+
++ Given a research question involving one categorical explanatory variable and one quantitative response variable, construct the null and alternative hypotheses in words and using appropriate statistical symbols.
+
++ Describe and perform a simulation-based hypothesis test for a difference in means.
+
++ Interpret and evaluate a p-value for a simulation-based hypothesis test for a difference in means.
+
+## Diet and Cholesterol
+
+Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels. Twenty-eight (28) individuals were randomly assigned a diet that included either corn flakes (14 individuals) or oat bran (14 individuals). After two weeks, cholesterol levels (mmol/L) of the participant were recorded.
+
+The first 6 rows of the data `cholesterol_data_long` appear below.
+
+```{r data-long, echo = TRUE}
+head(cholesterol_data_long)
+```
+
+## Comparing Two Groups
+
+Let's compare the cholesterol levels `Cholesterol` for participants on the corn flake (`CORNFLK`) diet and participants on the oat bran (`OATBRAN`) diet.
+
+## Setup Context
+
+1. What is the observational unit for this study?
+
+\vspace{0.5in}
+
+
+2. The two variables assessed in this study are the `Diet` and `Cholesterol`. Identify the role for each variable (explanatory or response) and variable type (quantitative or categorical).
+
+\vspace{0.5in}
+
+**Explanatory:**
+
+\vspace{0.5in}
+
+**Response:**
+
+\vspace{0.5in}
+
+3. What is the population of interest for this study?
+
+\vspace{0.5in}
+
+## Exploratory Data Analysis (EDA)
+
+Similar to summarizing the mean of all of the movies, we have two options to compare these two groups: 
+
++ Use summary statistics
++ Use visualizations
+
+## Summary Statistics for Two Groups
+
+Let's start with summary statistics. Our familiar friend `favstats()` can help us compare summary statistics across different groups. Before when we used `favstats()` we only had one variable, but now we have two! 
+
+Now, we will use two variables as a "formula", which looks like `response ~ explanatory`. So, the cholesterol levels of the participants is the response and the diet is the explanatory variable. So, our code looks like: 
+
+```{r stat-comparison, eval = FALSE}
+favstats(Cholesterol ~ Diet, 
+         data = cholesterol_data_long)
+```
+
+Use the output from the `favstats()` function to answer the following questions:
+
+```{r, echo = FALSE}
+favstats(Cholesterol ~ Diet, 
+         data = cholesterol_data_long)
+```
+
+\vspace{0.8in}
+
+4. Report the observed mean cholesterol level for participants on the corn flake diet. *Use appropriate notation with an informative subscipt.*
+
+\vspace{0.3in}
+
+5. Report the observed mean cholesterol level for participants on the oat bran diet. *Use appropriate notation with an informative subscipt.*
+
+\vspace{0.3in}
+
+6. Calculate the difference in mean cholesterol level between participants on the corn flake diet and participants on the oat bran diet.  *(CORNFLK minus OATBRAN) Use appropriate notation with informative subscripts.*
+
+\vspace{0.8in}
+
+## Visualizing Two Groups
+
+Let's refresh ourselves on the different ways to plot a numerical variable. 
+
+8. What are the three types of plots used to plot a single quantitative variable?
+
+\vspace{0.8in}
+
+9. For each type of plot, how would you include a categorical variable in the plot? 
+
+\vspace{0.8in}
+
+### Faceted Histograms
+
+When we want to add a categorical variable (like `Diet`) to a histogram, we create separate plots for each level of the categorical variable. These separate plots are called **facets**. We are comparing the cholesterol levels for corn flake and oatbran diets, so we will have two facets, one per diet. 
+
+The code to make a faceted histogram looks like the following:
+
+```{r facet-preview, eval = FALSE, fig.height = 2.5}
+ggplot(data = cholesterol_data_long, 
+       mapping = aes(x = Cholesterol)) + 
+  geom_histogram(binwidth = 0.75) + 
+  labs(x = "Cholesterol Level (mmol/L)") +
+  facet_wrap(~ Diet)
+```
+
+Notice the last line is the only new part! That line creates a faceted plot (using `facet_wrap()`) and says to facet "by" (`~`) the `Diet`. 
+
+Let's look at what this plot ends up looking like:
+
+```{r facet-hist, echo = FALSE, fig.height = 2.75}
+ggplot(data = cholesterol_data_long, 
+       mapping = aes(x = Cholesterol)) + 
+  geom_histogram(binwidth = 0.75) + 
+  labs(x = "Cholesterol Level (mmol/L)") +
+  facet_wrap(~ Diet)
+```
+
+### Side-by-Side Boxplots
+
+Another way we can incorporate a categorical into our plots is to plot our boxplots for each group side-by-side. As opposed to faceting, these boxplots will be on the **same** plot. We only need to add one extra piece to our previous code: a categorical variable. 
+
+Before, we either plotted our **one** numerical variable horizontally (using `x`) or vertically (using `y`). 
+
+```{r one-box}
+#| echo: false
+#| fig.height = 2.75
+
+horizontal <- ggplot(data = cholesterol_data_long, 
+             mapping = aes(x = Cholesterol)) + 
+  geom_boxplot() + 
+  # theme(aspect.ratio = 0.5) +
+  # theme_bw() +
+  labs(x = "Cholesterol Level (mmol/L)")
+
+vertical <- ggplot(data = cholesterol_data_long, 
+                   mapping = aes(y = Cholesterol)) + 
+  geom_boxplot() + 
+  # theme(aspect.ratio = 2) +
+  # theme_bw() +
+  labs(y = "Cholesterol Level (mmol/L)")
+
+horizontal + vertical
+```
+
+Now we need to plot **two** boxplots side-by-side. Similar to before, we can stack the plots horizontally or vertically. 
+
+#### Horizontal Stacking
+
+```{r horizontal-box}
+ggplot(data = cholesterol_data_long, 
+       mapping = aes(x = Diet, y = Cholesterol)) +
+  geom_boxplot() +
+  labs(x = "Diet", 
+       y = "Cholesterol Level (mmol/L)")
+```
+
+10. Why are the boxplots stacked side-by-side horizontally? What part of the `R` code does this?
+
+\vspace{0.8in}
+
+\newpage
+
+#### Vertical Stacking
+
+```{r vertical-box}
+ggplot(data = cholesterol_data_long, 
+       mapping = aes(x = Cholesterol, y = Diet)) +
+  geom_boxplot() +
+  labs(x = "Cholesterol Level (mmol/L)", 
+       y = "Diet")
+```
+
+11. How was the previous code changed to stack the boxplots side-by-side vertically? 
+
+\vspace{0.8in}
+ 
+12. Which orientation do you prefer?
+
+\newpage
+
+## Statistical Inference
+
+Now that we have explored our data with summary statistics and visualizations, we want to use our data to draw inferences and make claims about the larger population.
+
+**Step 1: Ask a research question**
+
+*Recall:* Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels.
+
+13. In words, write out the **parameter** of interest in context of the study. Assign a symbol and use proper notation and be sure to define your subscripts. *Use corn flakes minus oat bran as the order of subtraction.*
+
+
+\vspace{1in}
+
+14. Write out the null and alternative hypotheses in words.
+ 
+
+\vspace{1in}
+
+15. Write out the null and alternative hypotheses with notation.
+ 
+
+\vspace{1in}
+
+
+**Step 2: Conduct a Hypothesis test**
+
+Recall in Question 6, we calculated the observed statistic of interest (difference in means) and assigned a symbol. 
+
+$$\bar x_{CORNFLK} - \bar x_{OATBRAN} = 0.2225$$
+
+Remember that the null distribution is created based on the assumption the null hypothesis is true.  In this study, the null hypothesis states that **there is no association / relationship between the two variables**.  This means that the cholesterol levels observed in the data set would have been the same regardless of the diet and we would expect there to be a difference in means between the two groups of zero.
+
+I've provided your group with a set of cards to use to simulate a sample that could have happened if the null was true. 
+
+16. How many cards will we start with?
+
+\vspace{0.3in}
+
+17. What will we write on each card?
+
+\vspace{0.3in}
+
+18. Next, we need to generate a data set that could have happened if the null hypothesis was true. How do we do this?
+
+\vspace{0.8in}
+
+19. Once we have generated our new data set that could have happened if the null was true, what value do we calculate? *Hint: What statistic are we calculating from the data?*
+
+\vspace{0.3in}
+
+20. Create one simulation using the cards provided. Is your simulated statistic closer to the null value of zero than the difference in means calculated from the sample?  Explain why this makes sense.
+
+\vspace{0.8in}
+
+21. Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered?  Explain your reasoning.
+
+## Carrying out the simulation in `R`
+
+We will use the **infer** package (again) to make our simulated null distribution. The process we used for this situation will look very similar to before, since all we are changing is the statistic we calculate! 
+
+22. Fill in the blanks for the code below. You might want to look back at your `Activity 4: Diving Penguins` for some help!
+
+```{r fill-in-infer, eval = FALSE}
+cholesterol_data_long %>% 
+  
+  specify(response = _____________, explanatory = _____________) %>% 
+  
+  hypothesise(null = _____________) %>% 
+  
+  generate(reps = _____________, type = _____________) %>% 
+  
+  calculate(stat = "diff in means", 
+            order = c("CORNFLK", "OATBRAN")
+            )
+
+```
+
+\vspace{0.2in}
+
+Last time we use a `"slope"` statistic, so we didn't need to specify the order of subtraction. But now, with a difference in means we need to specify which group should come first and which should come second.
+
+23. Draw a line where the observed statistic falls on the simulated null distribution below. Shade the area that you will use to calculate the p-value.
+
+```{r null-dist, echo = FALSE}
+null_dist <- cholesterol_data_long %>% 
+  specify(response = Cholesterol, explanatory = Diet) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "diff in means", 
+            order = c("CORNFLK", "OATBRAN")
+            ) 
+
+null_dist %>% 
+  visualize() +
+  labs(x = "Simulated Difference in Means (CORNFLK - OATBRAN)",
+       y = "Frequency (out of 1000)",
+       title = "") +
+  scale_x_continuous(limits = c(-1.25,1.25), breaks = seq(-1.5, 1.5, 0.25))
+```
+
+```{r p-value, include = FALSE}
+obs_diff <- cholesterol_data_long %>% 
+  specify(response = Cholesterol, explanatory = Diet) %>% 
+  calculate(stat = "diff in means", 
+            order = c("CORNFLK", "OATBRAN")
+            )
+
+get_p_value(null_dist, obs_stat = obs_diff, direction = "greater")
+```
+
+
+24.  Based off the simulation, what is the p-value for your hypothesis test. Based off of this p-value, write a conclusion to the hypothesis test.
+
+\vspace{0.2in}
+
+25. Can we say diet causes changes in cholesterol levels? Explain.
+
+\vspace{0.2in}
+
+---
+
+## Using theoretical methods instead...
+
+What we just did used simulation to approximate what the sampling distribution of $\bar{x}_1-\bar{x}_2$ would look like if the null was true (we call this the Null Distribution). However, we don't necessarily need to use simulation to approximate this distribution!
+
+The sampling distribution for $\bar{x}_1-\bar{x}_2$ can be modeled using a $t$-distribution, when certain conditions are not violated. These conditions are:
+
+* **Independence**: The sample’s observations are independent
+
+* **Normality**: Each sample should be approximately normal or have a large sample size. For *each* sample:
+
+    - $n < 30$: If the sample size $n$ is less than 30 and there are no clear outliers in the data, then we typically assume the data come from a population whose distribution is nearly normal.
+
+    - $n \ge 30$: If the sample size $n$ is at least 30 and there are no particularly extreme outliers, then we typically assume the sampling distribution of $\bar{x}$ is nearly normal, even if the underlying distribution of individual observations is not.
+
+If these conditions seem reasonable, then we can use a $t$-distribution with the smaller of $n_1 - 1$ and $n_2 - 1$ degrees of freedom. 
+
+\vspace{0.2cm}
+
+Previously we drew our line on the null distribution at our observed difference in means. However, if we use a $t$-distribution, we need to draw our line at the **standardized statistic** ($t$-statistic) instead of the observed difference in means. To calculate a $t$-statistic we use the following formula:
+
+$$
+T = \frac{\text{Point Estimate} - \text{Null Value}}{\text{SE of the Point Estimate}}=\frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}}
+$$
+
+\vspace{0.1in}
+
+```{r, echo = FALSE}
+favstats(Cholesterol ~ Diet, 
+         data = cholesterol_data_long)
+```
+
+\vspace{0.1in}
+
+26. Using the above formula and the summary statistics (we saw these earlier as well), calculate the $t$-statistic for these data. 
+
+\vspace{0.8in}
+
+27. Using the $t$-distribution below, find your calculated $t$-statistic. Shade the area that you will use to calculate the p-value. 
+
+```{r t-dist, echo = FALSE}
+cholesterol_data_long %>% 
+  specify(response = Cholesterol, explanatory = Diet) %>% 
+  assume("t") %>% 
+  visualise() +
+  labs(title = "Theoretical t-distribution", 
+       x = "t-statistic")
+```
+
+In statistics, there are calculus methods used to find the area of this shaded region. Think of this entire curve equaling 100%; the `pt()` function will help us find this area.
+
++ `q`: the value of the t-statistic you want to shade from (the calculated standardized statistic)
++ `df`: degrees of freedom telling the specific shape of the t-distribution
++ `lower.tail = F` tells the function to shade to the right instead of the left
+
+We then multiply by 2 to "shade" the other side for our two-sided test.
+
+```{r pt, echo = FALSE}
+2*pt(q = 0.953893, df = 13, lower.tail = F)
+```
+
+28. Indicate the p-value for your hypothesis test. Is this similar to the p-value you obtained using simulation? Would your decision/conclusion change?
+
+\vspace{0.8in}
+
+Remember the `t_test()` function when we were comparing **one mean** to a "status quo" value? Similarly, we can use this to use theory based methods to test our hypotheses and compare the difference in means between our two groups.
+
++ `formula` response ~ explanatory
++ `order` group 1 - group 2 (specified as ("group 1", "group 2"))
+
+```{r t_test, echo = TRUE}
+infer::t_test(cholesterol_data_long,
+       formula = Cholesterol ~ Diet,
+       alternative = "two-sided",
+       mu = 0,
+       order = c("CORNFLK", "OATBRAN"),
+       conf_int = FALSE)
+```
+
+\vspace{0.1in}
+
+29. Where have we seen approximately the statistic and p_value before? How about the estimate?
+
+\vspace{0.8in}
+
+---
+
+### Take-home messages
+
+To create one simulated sample on the null distribution for a difference in sample means, you carry out the following steps:
+
++ label cards with the values from the observed sample
++ tear the explanatory $x$ and response $y$ labels/values apart
++ shuffle the cards and make new pairs of explanatory $x$ and response $y$ labels/values
++ calculate and plot the difference in means between the "new/permuted" groups
+
+If it is not unreasonable to assume that the observations from each group come from a population with a normal distribution, then the $t$-distribution can be used (instead of a simulated null distribution) to approximate the sampling distribution.
+
+- The $t$-distribution uses the smaller of $n_1 - 1$ and $n_2 - 1$ degrees of freedom
