@@ -40,7 +40,7 @@ regulations and is punishable by a grade of __F__ in this course. This
 includes looking at other students' exams and / or allowing other students,
 actively or passively, to see answers on my exam. This also includes revealing,
 actively or passively, any information about the exam to any member of 
-Dr. Robinson's STAT 218 class who has not yet taken the exam. The use of 
+Dr. Theobold's STAT 218 class who has not yet taken the exam. The use of 
 cell phones is strictly prohibited.
 
 \begin{center}
@@ -123,7 +123,7 @@ apply)
 
 \vspace{0.75cm}
 
-\noindent \textbf{Q6} [3 points] The purpose of creating a null distribution is
+\noindent \textbf{Q6} [2 points] The purpose of creating a null distribution is
 to: (Select all that apply)
 
 \begin{itemize}
@@ -136,7 +136,7 @@ true.
 
 \vspace{0.75cm}
 
-\noindent \textbf{Q5} [4 points] Indicate whether each statement about a 
+\noindent \textbf{Q5} [2 points] Indicate whether each statement about a 
 bootstrap resample is \textbf{TRUE} or \textbf{FALSE}.
 
 \begin{itemize}
@@ -172,7 +172,7 @@ Fiddler Crabs at each marsh.
 \vspace{0.2cm}
 
 \noindent 
-\textbf{(a)} [3 pts] A preview of the dataset is provided below. Use this
+\textbf{(a)} [2 pts] A preview of the dataset is provided below. Use this
 preview to address the following questions. 
 
 ```{r crab-preview}
@@ -206,9 +206,9 @@ pie_crab %>%
 
 \vspace{0.25cm}
 
-\textbf{(c)} [2 pts] The researchers collected data on 392 total Fiddler Crabs. 
-When using a $t$-distribution to find a 95% confidence interval for $\mu$, how
-many degrees of freedom should be used?
+\textbf{(c)} [2 pts] The researchers collected data on `r nrow(pie_crab)` total
+Fiddler Crabs. When using a $t$-distribution to find a 95% confidence interval
+for $\mu$, how many degrees of freedom should be used?
 
 \vspace{1cm}
 
@@ -220,7 +220,7 @@ crab_ci <- t_test(pie_crab,
   select(estimate, lower_ci, upper_ci)
 ```
 
-\textbf{(d)} [4 pts] A 95% confidence interval for the mean carapace width of
+\textbf{(d)} [6 pts] A 95% confidence interval for the mean carapace width of
 Fiddler Crabs was found to be (`r round(crab_ci$lower_ci, 2)`, 
 `r round(crab_ci$upper_ci, 2)`). Below is the researchers' interpretation of
 this confidence interval: 
@@ -455,5 +455,5 @@ Condition 2:
 
 __Points Earned:__ \underline{\hspace{2in}}
 
-__Total Points: 46__
+__Total Points: 48__
 
