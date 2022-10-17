@@ -193,7 +193,7 @@ $$\mbox{point estimate}\pm t^*_{df} \times SE(\mbox{estimate}).$$ When the point
 
 The $t^*$ multiplier comes from a $t$-distribution with $n-2$ degrees of freedom. Recall for a 95% confidence interval, we use the 97.5% percentile (95% of the distribution is in the middle, leaving 2.5% in each tail).
 
-18. The sample size for this study is 354. How many degrees of freedom will we use?
+18. The sample size for this study is `r nrow(golf)`. How many degrees of freedom will we use?
 
 Fortunately, the regression table also outputs a 95% confidence interval. This interval was calculated using a t-distribution with the number of degrees of freedom you just calculated.
 
