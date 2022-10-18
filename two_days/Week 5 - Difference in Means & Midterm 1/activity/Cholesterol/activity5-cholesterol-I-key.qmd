@@ -1,9 +1,9 @@
 ---
 title: "Activity 5: Cholesterol I"
 subtitle: Hypothesis Testing for Two Independent Means
-#format: pdf
+format: pdf
 #format: docx
-format: html
+#format: html
 execute: 
   message: false
   warning: false
@@ -433,15 +433,15 @@ favstats(Cholesterol ~ Diet,
 
 26. Using the above formula and the summary statistics (we saw these earlier as well), calculate the $t$-statistic for these data. 
 
-<p style="color:blue;"> $$t = \frac{4.443571 - 4.080714}{\sqrt{\frac{0.9688344}{14} + \frac{1.0569802}{14}}}$$ </p>
+<p style="color:blue;"> $$t = \frac{4.443571 - 4.080714}{\sqrt{\frac{(0.9688344)^2}{14} + \frac{(1.0569802)^2}{14}}}$$ </p>
 
-<p style="color:blue;"> $$ = \frac{0.362857}{\sqrt{0.06920246 + 0.07549859}}$$ </p>
+<p style="color:blue;"> $$ = \frac{0.362857}{\sqrt{0.06704572 + 0.07980051}}$$ </p>
 
-<p style="color:blue;"> $$ = \frac{0.362857}{\sqrt{0.144701}}$$ </p>
+<p style="color:blue;"> $$ = \frac{0.362857}{\sqrt{0.1468462}}$$ </p>
 
-<p style="color:blue;"> $$ = \frac{0.362857}{0.3803959}$$ </p>
+<p style="color:blue;"> $$ = \frac{0.362857}{0.3832052}$$ </p>
 
-<p style="color:blue;"> $$ = 0.953893$$ </p>
+<p style="color:blue;"> $$ = 0.9469$$ </p>
 
 27. Using the $t$-distribution below, find your calculated $t$-statistic. Shade the area that you will use to calculate the p-value. 
 
