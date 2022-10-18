@@ -27,8 +27,6 @@ library(palmerpenguins)
 \large{Name:} \underline{\hspace{3in}}
 \vspace{0.25cm}
 
-\large{Section (circle one):} \hspace{1cm} 2:10pm \hspace{2cm} 4:10pm 
-
 \end{center}
 
 \vspace{0.8cm}
