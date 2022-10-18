@@ -1,15 +1,18 @@
 ---
 title: "Activity 5: Cholesterol I"
 subtitle: Hypothesis Testing for Two Independent Means
-#format: pdf
-format: docx
+format: pdf
+#format: docx
 #format: html
 execute: 
   message: false
   warning: false
 ---
 
-```{r setup, echo = FALSE, include = FALSE}
+```{r setup}
+#| echo: false
+#| include: false
+
 library(tidyverse)
 library(patchwork)
 library(mosaic)
@@ -18,8 +21,8 @@ library(infer)
 set.seed(93401)
 ```
 
-```{r data-prep, echo = FALSE}
-
+```{r data-prep}
+#| echo: false
 # https://www.sjsu.edu/faculty/gerstman/StatPrimer/paired.pdf
 
 cholesterol_data <- tibble::tribble(
@@ -67,6 +70,8 @@ This week our focus is comparing the means of two groups. With linear regression
 
 Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels. Twenty-eight (28) individuals were randomly assigned a diet that included either corn flakes (14 individuals) or oat bran (14 individuals). After two weeks, cholesterol levels (mmol/L) of the participant were recorded.
 
+\newpage 
+
 The first 6 rows of the data `cholesterol_data_long` appear below.
 
 ```{r data-long, echo = TRUE}
@@ -81,24 +86,24 @@ Let's compare the cholesterol levels `Cholesterol` for participants on the corn 
 
 1. What is the observational unit for this study?
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 
 2. The two variables assessed in this study are the `Diet` and `Cholesterol`. Identify the role for each variable (explanatory or response) and variable type (quantitative or categorical).
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 **Explanatory:**
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 **Response:**
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 3. What is the population of interest for this study?
 
-\vspace{0.5in}
+\vspace{0.25in}
 
 ## Exploratory Data Analysis (EDA)
 
@@ -159,7 +164,6 @@ The code to make a faceted histogram looks like the following:
 
 ```{r facet-preview}
 #| eval: false
-#| fig-height: 2.5
 ggplot(data = cholesterol_data_long, 
        mapping = aes(x = Cholesterol)) + 
   geom_histogram(binwidth = 0.75) + 
@@ -173,13 +177,15 @@ Let's look at what this plot ends up looking like:
 
 ```{r facet-hist}
 #|  echo: false
-#|  fig-height: 2.75
+#|  fig-height: 1.5
 ggplot(data = cholesterol_data_long, 
        mapping = aes(x = Cholesterol)) + 
-  geom_histogram(binwidth = 0.75) + 
+  geom_histogram(binwidth = 0.8) + 
   labs(x = "Cholesterol Level (mmol/L)") +
   facet_wrap(~ Diet)
 ```
+
+\newpage
 
 ### Side-by-Side Boxplots
 
@@ -210,9 +216,12 @@ horizontal + vertical
 
 Now we need to plot **two** boxplots side-by-side. Similar to before, we can stack the plots horizontally or vertically. 
 
+\newpage 
+
 #### Horizontal Stacking
 
 ```{r horizontal-box}
+#| fig-height: 2.75
 ggplot(data = cholesterol_data_long, 
        mapping = aes(x = Diet, y = Cholesterol)) +
   geom_boxplot() +
@@ -222,13 +231,12 @@ ggplot(data = cholesterol_data_long,
 
 10. Why are the boxplots stacked side-by-side horizontally? What part of the `R` code does this?
 
-\vspace{0.8in}
-
 \newpage
 
 #### Vertical Stacking
 
 ```{r vertical-box}
+#| fig-height: 2.75
 ggplot(data = cholesterol_data_long, 
        mapping = aes(x = Cholesterol, y = Diet)) +
   geom_boxplot() +
@@ -253,7 +261,6 @@ Now that we have explored our data with summary statistics and visualizations, w
 *Recall:* Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels.
 
 13. In words, write out the **parameter** of interest in context of the study. Assign a symbol and use proper notation and be sure to define your subscripts. *Use corn flakes minus oat bran as the order of subtraction.*
-
 
 \vspace{1in}
 
@@ -300,11 +307,13 @@ I've provided your group with a set of cards to use to simulate a sample that co
 
 21. Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered?  Explain your reasoning.
 
+\newpage
+
 ## Carrying out the simulation in `R`
 
 We will use the **infer** package (again) to make our simulated null distribution. The process we used for this situation will look very similar to before, since all we are changing is the statistic we calculate! 
 
-22. Fill in the blanks for the code below. You might want to look back at your `Activity 4: Diving Penguins` for some help!
+22. Fill in the blanks for the code below. You might want to look back at your *Activity 4: Diving Penguins* for some help!
 
 ```{r fill-in-infer}
 #| eval: false
@@ -325,6 +334,8 @@ cholesterol_data_long %>%
 \vspace{0.2in}
 
 Last time we use a `"slope"` statistic, so we didn't need to specify the order of subtraction. But now, with a difference in means we need to specify which group should come first and which should come second.
+
+\newpage
 
 23. Draw a line where the observed statistic falls on the simulated null distribution below. Shade the area that you will use to calculate the p-value.
 
@@ -360,13 +371,13 @@ get_p_value(null_dist, obs_stat = obs_diff, direction = "greater")
 
 24.  Based off the simulation, what is the approximate p-value for your hypothesis test? Based off of this p-value, write a conclusion to the hypothesis test.
 
-\vspace{0.2in}
+\vspace{1in}
 
 25. Can we say diet causes changes in cholesterol levels? Explain.
 
 \vspace{0.2in}
 
----
+\newpage
 
 ## Using theoretical methods instead...
 
@@ -389,7 +400,7 @@ If these conditions seem reasonable, then we can use a $t$-distribution with the
 Previously we drew our line on the null distribution at our observed difference in means. However, if we use a $t$-distribution, we need to draw our line at the **standardized statistic** ($t$-statistic) instead of the observed difference in means. To calculate a $t$-statistic we use the following formula:
 
 $$
-T = \frac{\text{Point Estimate} - \text{Null Value}}{\text{SE of the Point Estimate}}=\frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}}
+t = \frac{\text{Point Estimate} - \text{Null Value}}{\text{SE of the Point Estimate}}=\frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}}
 $$
 
 \vspace{0.1in}
@@ -430,7 +441,7 @@ We then multiply by 2 to "shade" the other side for our two-sided test.
 
 28. Indicate the p-value for your hypothesis test. Is this similar to the p-value you obtained using simulation? Would your decision/conclusion change?
 
-\vspace{0.8in}
+\newpage
 
 Remember the `t_test()` function when we were comparing **one mean** to a "status quo" value? Similarly, we can use this to use theory based methods to test our hypotheses and compare the difference in means between our two groups.
 
@@ -457,7 +468,7 @@ t_test(cholesterol_data_long,
 
 \vspace{0.8in}
 
----
+\newpage
 
 ### Take-home messages
 
