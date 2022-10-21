@@ -41,18 +41,14 @@ cholesterol_data <- tibble::tribble(
                                    "12", "3.89", "3.73",
                                    "13", "2.25", "1.84",
                                    "14", "4.24", "4.14"
-          )
-
-factorCols <- c("ID")
-cholesterol_data[,factorCols] <- lapply(cholesterol_data[,factorCols], as.factor)
-numericCols <- c("CORNFLK", "OATBRAN")
-cholesterol_data[,numericCols] <- lapply(cholesterol_data[,numericCols], as.numeric)
-
-cholesterol_data <- cholesterol_data |> 
-  mutate(cholesterolDiff = CORNFLK - OATBRAN)
+          ) |> 
+  mutate(ID = as.factor(ID), 
+         across(CORNFLK:OATBRAN, as.numeric), 
+         cholesterolDiff = CORNFLK - OATBRAN
+         )
 
 cholesterol_data_long <- cholesterol_data |> 
-  pivot_longer(cols = c(CORNFLK, OATBRAN),
+  pivot_longer(cols = CORNFLK:OATBRAN,
                names_to = "Diet",
                values_to = "Cholesterol")  |> 
        select(Diet, Cholesterol)
@@ -80,20 +76,17 @@ Today, we are interested in estimating what range of values the **true** differe
 
 1. Based on the p-value you obtained from *Activity 5: Cholesterol I*, do you believe 0 is a plausible value for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$? 
 
-\vspace{0.8in}
-
----
+\pagebreak
 
 ## Confidence interval
 
-A **confidence interval** represents a range of plausible values for a population parameter. In this case, our population parameter is $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$, or the true difference in mean
-cholesterol levels between corn flake and oatbran diets. 
+A **confidence interval** represents a range of plausible values for a population parameter. In this case, our population parameter is $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$, or the true difference in mean cholesterol levels between corn flake and oatbran diets. 
 
-The best way to estimate what range of values a parameter might have is to go out and collect more samples. However, that is often not feasible. So, instead we mimic this process by *resampling with replacement* from our original sample. This process is called **bootstrapping**. 
+The best way to estimate what range of values a parameter might have is to go out and collect more samples. However, that is often not feasible. So, instead we mimic this process by *resampling with replacement* from our original sample. Remember, this process has a name---**bootstrapping**. 
 
 ## Bootstrapping cholesterol & diets
 
-When bootstrapping with two groups, we're assuming that the sample within each group is *representative* of other possible values in the population. Here, we are assuming that the participants included in our sample are representative of the cholesterol of all other individiuals. 
+When bootstrapping with two groups, we're assuming that the sample within each group is *representative* of other possible values in the population. Here, we are assuming that the participants included in our sample are representative of the cholesterol of other individuals who might have been on these diets. 
 
 Because we **are not** assuming the null is true (that there is no difference in the means of these two groups), we **do not** combine the groups together. Rather, we keep the groups separate and sample from each group separately. 
 
@@ -149,7 +142,7 @@ cholesterol_data_long %>%
 
 6. What is the difference between this code and the code to generate a null distribution (what we did in *Activity 5: Cholesterol I*)?
 
-\vspace{0.8in}
+\newpage
 
 ## Obtaining a confidence interval
 
@@ -177,7 +170,7 @@ bootstrap_dist %>%
 
 8. What are the two ways we could use this distribution to obtain a confidence interval?
 
-\vspace{0.8in}
+\newpage
 
 ## Percentile method
 
@@ -211,12 +204,13 @@ bootstrap_dist %>%
 
 ## SE method
 
-A percentile confidence interval uses **only** the bootstrap distribution. The SE method on the other hand uses information from both the bootstrap distribution and the $t$-distribution. 
+A percentile confidence interval uses **only** the bootstrap distribution. The SE method, on the other hand, uses information from **both** the bootstrap distribution and the $t$-distribution. 
 
 Because this method uses a $t$-distribution it should only be used **if the bootstrap distribution is bell-shaped and symmetric**. 
 
 11. Do you believe this condition is violated? 
 
+\newpage
 
 Alright, let's see how this confidence interval works. Our formula looks like this:
 
@@ -237,6 +231,7 @@ There are three pieces to the interval:
 13. Using the table below, what is the standard deviation for the bootstrap distribution (aka the estimated standard error for the difference in mean cholesterol levels)? 
 
 ```{r bootstrap-stats}
+#| echo: true
 favstats(~stat, data = bootstrap_dist)
 ```
 
@@ -271,7 +266,7 @@ favstats(~stat, data = bootstrap_dist)
 
 ## Using the $t$-distribution to create a confidence interval
 
-So far we've found a confidence interval using the percentile and SE methods. Both of these used some aspect of the bootstrap distribution. One final option is to use the $t$-distribution only to create our confidence interval. 
+So far we've found a confidence interval using the percentile and SE methods. Both of these used some aspect of the bootstrap distribution. One final option is to use **only** the $t$-distribution only to create our confidence interval. 
 
 17. What distribution does a bootstrap distribution approximate?
 
@@ -279,7 +274,7 @@ So far we've found a confidence interval using the percentile and SE methods. Bo
 
 18. If we wanted to use a $t$-distribution to approximate this distribution, what conditions do we need to check?
 
-\vspace{0.8in}
+\newpage
 
 When we use theory-based methods to obtain our confidence interval, we use formulas to approximate the true standard error of the sampling distribution. So, where we used the standard deviation of the bootstrap distribution, now we will use a mathematical formula. 
 
@@ -296,7 +291,7 @@ favstats(Cholesterol ~ Diet, data = cholesterol_data_long)
 
 \vspace{0.1in}
 
-19. Using the formula and the summary statistics above, calculate the estimated standard error of the sampling distribution. *Hint:* $s$ is the standard deviation! 
+19. Using the formula and the summary statistics above, calculate the estimated standard error of the sampling distribution. *Hint:* In the formula above, $s$ is the standard deviation! 
 
 \vspace{0.8in}
 
@@ -307,7 +302,12 @@ $$\overline{x}_{\text{CORNFLK}} - \overline{x}_{\text{OATBRAN}}\pm t^*_{df} \tim
 
 20. Using the multiplier you found in #14, calculate a 95% confidence interval for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$.
 
----
+\vspace{0.8ind}
+
+21. Alright, you've made **three** confidence intervals. How are they similar or different? 
+
+
+\pagebreak
 
 ## Take-home messages
 
