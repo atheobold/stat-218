@@ -1,9 +1,9 @@
 ---
 title: "Activity 6B: Cholesterol III"
 subtitle: "Inference for Paired Data"
-format: pdf
+#format: pdf
 # format: html
-# format: docx
+format: docx
 ---
 
 
@@ -44,27 +44,14 @@ cholesterol_data <- tibble::tribble(
           ) |> 
   mutate(ID = as.factor(ID), 
          across(CORNFLK:OATBRAN, as.numeric), 
-         cholesterolDiff = CORNFLK - OATBRAN
+         Cholesterol_Diff = CORNFLK - OATBRAN
          )
 
 cholesterol_data_long <- cholesterol_data |> 
   pivot_longer(cols = CORNFLK:OATBRAN,
                names_to = "Diet",
                values_to = "Cholesterol")  |> 
-       select(Diet, Cholesterol)
-factorCols <- c("ID")
-cholesterol_data[,factorCols] <- lapply(cholesterol_data[,factorCols], as.factor)
-numericCols <- c("CORNFLK", "OATBRAN")
-cholesterol_data[,numericCols] <- lapply(cholesterol_data[,numericCols], as.numeric)
-
-cholesterol_data <- cholesterol_data |> 
-  mutate(CholesterolDiff = CORNFLK - OATBRAN)
-
-cholesterol_data_long <- cholesterol_data |> 
-  pivot_longer(cols = c(CORNFLK, OATBRAN),
-               names_to = "Diet",
-               values_to = "Cholesterol")  |> 
-       select(Diet, Cholesterol)
+       select(Diet, Cholesterol, Cholesterol_Diff)
 ```
 
 ### Learning outcomes
@@ -101,7 +88,7 @@ Fourteen (14) individuals were randomly assigned a diet that included either oat
 
 \vspace{0.8in}
 
-Since we can match or pair the cholesterol level measurements between the treatment groups, we call this a **paired study design**. These could be paired up by taking measurements on the same observational unit twice or taking measurements on similar observational units (e.g. identical twins, similar fields, etc.). When analyzing the data and making conclusions, we must take this design into consideration or we are violating a key assumption (independence).
+Since we can match or pair the cholesterol level measurements between the treatment groups, we call this a **paired study design**. These could be paired up by taking measurements on the same observational unit twice or taking measurements on similar observational units (e.g. identical twins, similar fields, etc.). When analyzing the data and making conclusions, we must take this design into consideration or we are violating a key assumption (independence or observations).
 
 The data set below shows the data for each participant `ID`. The `CORNLK` column indicates the cholesterol level for that individual on the corn flake diet and the `OATBRAN` column indicates the cholesterol level for that individual on the oat bran diet.
 
@@ -111,11 +98,11 @@ The data set below shows the data for each participant `ID`. The `CORNLK` column
 head(cholesterol_data)
 ```
 
-3. What does the `CholesterolDiff` column represent? Why does this calculation make sense?
+3. What does the `Cholesterol_Diff` column represent? Why does this calculation make sense?
 
 ## Ask a Research Question
 
-Researchers are still interested in whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels.
+Researchers are still interested in whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels. However, we are no longer testing the two groups separately! 
 
 4. Write the null and alternative hypothesis in **words**.
 
@@ -131,22 +118,34 @@ A histogram of the differences in cholesterol levels for the 14 individuals and 
 
 ```{r histogram}
 ggplot(data = cholesterol_data, 
-       mapping = aes(x = CholesterolDiff)) +
-  geom_histogram(binwidth = 0.25) +
-  labs(x = "Difference in cholesterol levels (Corn flake - oat bran)") 
+       mapping = aes(x = Cholesterol_Diff)) +
+  geom_histogram(binwidth = 0.5) +
+  labs(x = "Difference in Cholesterol Levels (Cornflake - Oatbran)") 
 ```
 
 Summary statistics for the cholesterol levels from the corn flake diet `CORNFLK`, cholesterol levels from the oat bran diet `OATBRAN`, and the differences in cholesterol levels between the corn flake and oat bran diets `CholesterolDiff`.
 
 ```{r, echo = F}
-favstats(Cholesterol ~ Diet, data = cholesterol_data_long)
+cholesterol <- favstats(Cholesterol ~ Diet, data = cholesterol_data_long) 
+cholesterol_diff <- favstats(~ Cholesterol_Diff, data = cholesterol_data)
 
-cbind("Variable" = "CholesterolDiff", favstats(~ CholesterolDiff, data = cholesterol_data))
+cholesterol |> 
+  bind_rows(cholesterol_diff) |> 
+  mutate(Diet = if_else(is.na(Diet), 
+                        "DIFF", 
+                        Diet)
+         )
 ```
 
 8. Report the observed statistic of interest (mean difference) for the data. Use notation to assign a symbol to this.
 
 \vspace{0.8in}
+
+9. How does this statistic relate to the previous statistic ($\bar{x}_{CORNFLK} - \bar{x}_{OATBRAN}$)? 
+
+
+\newpage 
+
 
 ## Use Statistical Methods to Draw Inferences from the Data 
 
@@ -154,19 +153,19 @@ cbind("Variable" = "CholesterolDiff", favstats(~ CholesterolDiff, data = cholest
 
 To simulate the null distribution of paired sample mean differences we need to randomly assign the cholesterol level for each participant to be either the corn flake or the oat bran cholesterol level. 
 
-Take for example participant ID 1. On the corn flake diet, their cholesterol level was 4.61 mmol/L and on the oat bran diet, it was 3.84 mmol/L. If we assume the null is true, that the mean of the differences is 0, then there is no relationship between participant 1's cholesterol level and the diet they were on. That means, Participant 1 would have been just as likely to see a cholesterol level of 3.84 mmol/L on the corn flake diet.
+Take for example participant ID 1. On the corn flake diet, their cholesterol level was `r cholesterol_data$CORNFLK[1]` mmol/L and on the oat bran diet, it was `r cholesterol_data$OATBRAN[1]` mmol/L. If we assume the null is true, that the mean of the differences is 0, then there is no relationship between participant 1's cholesterol level and the diet they were on. That means, Participant 1 would have been just as likely to see a cholesterol level of `r cholesterol_data$OATBRAN[1]` mmol/L on the corn flake diet.
 
 \vspace{0.1in}
 
-9. How can we use a coin to decide which values for each participant are randomly assigned to the corn flake diet?
+10. How can we use a coin to decide which values for each participant are randomly assigned to the corn flake diet?
 
-\vspace{0.8in}
+\vspace{2in}
 
 A simulated null distribution is shown below. 
 
 ```{r null-dist, warning = FALSE}
 null_dist <- cholesterol_data %>% 
-  specify(response = CholesterolDiff) %>% 
+  specify(response = Cholesterol_Diff) %>% 
   hypothesise(null = "point", mu = 0) %>% 
   generate(reps = 1000, type = "bootstrap") %>% 
   calculate(stat = "mean")
@@ -174,26 +173,26 @@ null_dist <- cholesterol_data %>%
 null_dist %>% 
   visualise() + 
   labs(title = "", 
-       x = "Simulated Mean Difference")
+       x = "Simulated Mean Difference (Cornflake - Oatbran)")
 ```
 
-10. Explain why the null distribution is centered at zero. 
+11. Explain why the null distribution is centered at zero. 
 
 \vspace{0.8in}
 
-11. Find the observed **mean difference** on the distribution. *Hint: Look at question 8.*
+12. Find the observed **mean difference** on the distribution. *Hint: Look at question 8.*
 
 \vspace{0.8in}
 
-12. Shade the area of the distribution you will use to calculate the p-value and estimate the p-value.
+13. Shade the area of the distribution you will use to calculate the p-value. 
 
 \vspace{0.8in}
 
-15. How much evidence does this provide for a change in cholesterol level due to diet?
+14. How much evidence does this provide for a change in cholesterol level due to diet?
 
 \vspace{0.8in}
 
-16. If evidence was found for a change in diet, could we conclude that the diet ***caused*** the change? Explain.
+15. If evidence was found for a change in diet, could we conclude that the diet ***caused*** the change? Explain.
 
 \vspace{0.8in}
 
@@ -201,7 +200,7 @@ null_dist %>%
 
 The goal of a confidence interval is to estimate a plausible range of values for the population parameter. 
 
-17. What is the population parameter in this study?
+16. What is the population parameter in this study?
 
 \vspace{0.8in}
 
@@ -211,7 +210,7 @@ I've created a bootstrap distribution below, using 1000 reps.
 
 ```{r boot-dist}
 boot_dist <- cholesterol_data %>% 
-  specify(response = CholesterolDiff) %>% 
+  specify(response = Cholesterol_Diff) %>% 
   generate(reps = 1000, type = "bootstrap") %>% 
   calculate(stat = "mean")
 
@@ -221,15 +220,17 @@ boot_dist %>%
        x = "Bootstrap Mean Difference")
 ```
 
-18. Where is the bootstrap distribution be centered? Why is it centered there?
+17. Where is the bootstrap distribution be centered? Why is it centered there?
 
 \vspace{0.5in}
 
-19. Use the table below to find a 99% confidence interval for $\mu_{\text{diff}}$. 
+18. Use the table below to find a 99% confidence interval for $\mu_{\text{diff}}$. 
 
 \vspace{0.5in}
 
 ```{r percentile-ci}
+#| echo: false
+
 boot_dist %>% 
   summarize("0.5%" = quantile(stat, 0.05), 
             "1%" = quantile(stat, 0.01),
@@ -249,12 +250,12 @@ boot_dist %>%
 
 ## Communicate the Results and Address the Research Question
 
-20. Interpret the 99% confidence interval in the context of the problem.
+19. Interpret the 99% confidence interval in the context of the problem.
 
 \vspace{1in}
 
 
-21. Do the results of your confidence interval and hypothesis test agree? What does each tell you about the null hypothesis?
+20. Do the results of your confidence interval and hypothesis test agree? What does each tell you about the null hypothesis?
 
 \vspace{1in}
 
@@ -262,9 +263,9 @@ boot_dist %>%
 
 ## Take-home messages
 
-+ The differences in a paired data set are treated like a single quantitative variable when performing a statistical analysis.  Paired data (or paired amples) occur when pairs of measurements are collected. We are only interested in the population (and sample) of **differences**, and not in the original data. 
++ The differences in a paired data set are treated like a single quantitative variable when performing a statistical analysis.  Paired data (or paired samples) occur when pairs of measurements are collected. We are only interested in the population (and sample) of **differences**, and not in the original data. 
 
-+ When analyzing paired data, the summary statistic is the "mean difference" **not** the "difference in means"^[Technically, if we calculate the differences and then take the mean (mean difference), and we calculate the two means and then take the difference (difference in means), the value will be the same. However, the *sampling variability* of the two statistics will differ, as we will see in the next activity].  This terminology will be *very* important in interpretations.
++ When analyzing paired data, the summary statistic is the "mean difference" **not** the "difference in means"^[Technically, if we calculate the differences and then take the mean (mean difference), and we calculate the two means and then take the difference (difference in means), the value will be the same. However, the *sampling variability* of the two statistics are different! Before, we failed to reject the null and now we rejected it, that's because our standard error decreased! ].  This terminology will be *very* important in interpretations.
 
 + To create one simulated sample on the null distribution for the mean difference, we focus on each observation **not** on the groups of observations. For each observation, we flip a coin to decide which response value goes first and which goes second. We do this for **every** observation. Once we've randomly
 assigned which observation comes first, we find the difference in the values for each observation. Finally, we calculate and plot the simulated mean difference.
