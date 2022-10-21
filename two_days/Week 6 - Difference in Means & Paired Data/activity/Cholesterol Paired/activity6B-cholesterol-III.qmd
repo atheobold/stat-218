@@ -41,8 +41,17 @@ cholesterol_data <- tibble::tribble(
                                    "12", "3.89", "3.73",
                                    "13", "2.25", "1.84",
                                    "14", "4.24", "4.14"
-          )
+          ) |> 
+  mutate(ID = as.factor(ID), 
+         across(CORNFLK:OATBRAN, as.numeric), 
+         cholesterolDiff = CORNFLK - OATBRAN
+         )
 
+cholesterol_data_long <- cholesterol_data |> 
+  pivot_longer(cols = CORNFLK:OATBRAN,
+               names_to = "Diet",
+               values_to = "Cholesterol")  |> 
+       select(Diet, Cholesterol)
 factorCols <- c("ID")
 cholesterol_data[,factorCols] <- lapply(cholesterol_data[,factorCols], as.factor)
 numericCols <- c("CORNFLK", "OATBRAN")
