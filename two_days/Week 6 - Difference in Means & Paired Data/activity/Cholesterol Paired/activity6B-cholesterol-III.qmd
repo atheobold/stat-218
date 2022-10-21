@@ -1,9 +1,9 @@
 ---
 title: "Activity 6B: Cholesterol III"
 subtitle: "Inference for Paired Data"
-format: pdf
+# format: pdf
 # format: html
-# format: docx
+format: docx
 ---
 
 

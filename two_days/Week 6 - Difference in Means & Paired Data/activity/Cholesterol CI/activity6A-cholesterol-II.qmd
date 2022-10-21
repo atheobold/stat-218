@@ -1,9 +1,9 @@
 ---
 title: "Activity 6A: Cholesterol II"
 subtitle: "Confidence Intervals for Two Independent Means"
-format: pdf
+#format: pdf
 # format: html
-# format: docx
+format: docx
 ---
 
 
