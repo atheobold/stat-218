@@ -128,9 +128,9 @@ Conditions for the sampling distribution of $\bar{x}$ to follow an approximate N
 
 **7. Is the condition of independence violated?**
 
-**8. Is the normality condition violated?** 
+**8. Is the normality condition violated?**
 
-**9. Would it be inappropriate to use theory-based methods for analysis? Explain your answer.**
+**9. Would it be appropriate to use theory-based methods for analysis? Explain your answer.**
 
 ## Use Statistical Methods to Draw Inferences from the Data
 
@@ -160,7 +160,7 @@ I've started the code for you, but there are two places you need to fill in valu
 
 -   For the blank after *alternative*, you need to insert what direction R should use when calculating the p-value. Your three choices are: "greater", "less", or "two-sided".
 
-12.  Fill in the code with these necessary pieces!
+12. Fill in the code with these necessary pieces!
 
 ```{r t-test}
 t_test(color, response = Difference, 
@@ -175,7 +175,7 @@ t_test(color, response = Difference,
 
 **14. What does the p-value you obtained mean, in the context of the study?** *Hint*: it is the probability of what...assuming what?
 
-**15. Report the 95% confidence interval for the mean difference.**
+**15. Report the 99% confidence interval for the mean difference.**
 
 **16. Interpret the confidence interval in context of the study.**
 
