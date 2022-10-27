@@ -2,7 +2,7 @@
 title: "Activity 6A: Cholesterol II"
 subtitle: "Confidence Intervals for Two Independent Means"
 # format: pdf
-# format: html
+format: html
 # format: docx
 ---
 
@@ -299,7 +299,7 @@ When we use theory-based methods to obtain our confidence interval, we use formu
 The formula for calculating the standard error of $\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}$ is:
 
 $$
-SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}}
+SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{OATBRAN}}^2}{n_{\text{OATBRAN}}}}
 $$
 \vspace{0.1in}
 
