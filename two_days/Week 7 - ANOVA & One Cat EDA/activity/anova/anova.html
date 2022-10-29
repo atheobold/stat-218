@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Your Name: _______________">
+<meta name="dcterms.date" content="2022-11-01">
+
+<title>Week 7: Introduction to ANalysis Of Variance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="anova_files/libs/clipboard/clipboard.min.js"></script>
+<script src="anova_files/libs/quarto-html/quarto.js"></script>
+<script src="anova_files/libs/quarto-html/popper.min.js"></script>
+<script src="anova_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="anova_files/libs/quarto-html/anchor.min.js"></script>
+<link href="anova_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="anova_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="anova_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="anova_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="anova_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 7: Introduction to ANalysis Of Variance</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name: _______________ </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 1, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../../../Week%202%20-%20Viz%20&amp;%20Summarize%20Quantitative%20Variables/activity/quantitative%20EDA/images/transcendents.jpeg" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../../../Week%202%20-%20Viz%20&amp;%20Summarize%20Quantitative%20Variables/activity/quantitative%20EDA/images/freaky.jpg" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../../../Week%202%20-%20Viz%20&amp;%20Summarize%20Quantitative%20Variables/activity/quantitative%20EDA/images/flute.jpg" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../../../Week%202%20-%20Viz%20&amp;%20Summarize%20Quantitative%20Variables/activity/quantitative%20EDA/images/afterward.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<!-- + Summarize and visualize quantitative data for two means. -->
+<!-- + Given a research question involving one categorical explanatory variable and one quantitative response variable, construct the null and alternative hypotheses in words and using appropriate statistical symbols. -->
+<!-- + Describe and perform a simulation-based hypothesis test for a difference in means. -->
+<!-- + Interpret and evaluate a p-value for a simulation-based hypothesis test for a difference in means. -->
+<div style="page-break-after: always;"></div>
+</section>
+<section id="terminology-review" class="level2">
+<h2 class="anchored" data-anchor-id="terminology-review">Terminology review</h2>
+<p>Thinking back to last week, we covered how we could do comparisons for (1) a difference in two means, and (2) the mean of the differences.</p>
+<ul>
+<li>Analyzing a difference in two means requires the observations in each group are independent</li>
+<li>Analyzing the mean difference requires there are <strong>paired</strong> (two) observations for each observational unit</li>
+</ul>
+</section>
+<section id="movies-released-in-2020" class="level2">
+<h2 class="anchored" data-anchor-id="movies-released-in-2020">Movies released in 2020</h2>
+<p>Today we’re going to use a dataset we explored in Week 2, to visualize the distribution of IMDB movie ratings. The dataset is comprised of the following variables colleged on each movie:</p>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Variable</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Movie</code></td>
+<td>Title of the movie</td>
+</tr>
+<tr class="even">
+<td><code>averageRating</code></td>
+<td>Average IMDb user rating score from 1 to 10</td>
+</tr>
+<tr class="odd">
+<td><code>numVotes</code></td>
+<td>Number of votes from IMDb users</td>
+</tr>
+<tr class="even">
+<td><code>Genre</code></td>
+<td>Categories the movie falls into (e.g., Action, Drama, etc.)</td>
+</tr>
+<tr class="odd">
+<td><code>2020 Gross</code></td>
+<td>Gross profit from movie viewing</td>
+</tr>
+<tr class="even">
+<td><code>runtimeMinutes</code></td>
+<td>Length of movie (in minutes)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparing-many-groups" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-many-groups">Comparing Many Groups</h2>
+<p>Last week, we could have used these data to investigate if there were differences in IMDb scores between <strong>two</strong> genres (e.g., Action and Drama). This week, however, we are going to expand our analysis to more than two groups!</p>
+<p>Below is a table summarizing the number of observations (movies) in the dataset for each genre. We can see that most of the movies fall in the Action, Adventure, Comedy, Documentary, Drama, Horror, and Thriller/Suspense categories. So, let’s focus our analysis with these genres (removing the others).</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Genre</th>
+<th style="text-align: center;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Action</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Adventure</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Black Comedy</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Multiple Genres</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Musical</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Romantic Comedy</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+
+</div>
+</section>
+<section id="visualizing-a-single-categorical-and-a-single-quantitative-variable" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-a-single-categorical-and-a-single-quantitative-variable">Visualizing a Single Categorical and a Single Quantitative Variable</h2>
+<p>For a categorical variable that has more than two groups, we can use the <strong>same</strong> visualization techniques as we did for a categorical variable with two groups.</p>
+<ol type="1">
+<li>Think back to last week, what were two ways we visualized one numerical variable and one categorical variable?</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="side-by-side-boxplots" class="level2">
+<h2 class="anchored" data-anchor-id="side-by-side-boxplots">Side-by-Side Boxplots</h2>
+<p>The boxplot of movie budgets (in millions) by content rating is plotted using the code below. The boxplots are presented in both orientations, horizontal stacking and vertical stacking, so you can pick whichever orientation you prefer. :)</p>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="anova_files/figure-html/anova-viz-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="anova_files/figure-html/anova-viz-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>Answer the following questions about the boxplots above.</p>
+<ol type="1">
+<li>Which genre has the highest center?</li>
+</ol>
+<ol start="2" type="1">
+<li>Which genre has the largest spread?</li>
+</ol>
+<ol start="3" type="1">
+<li>Which genre has the most skewed distribution?</li>
+</ol>
+</section>
+<section id="summary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
+<p>Let’s obtain a more complete picture of how different these groups are with summary statistics. Our familiar friend <code>favstats()</code> can help us compare summary statistics across different groups.</p>
+<p>Like before, the rating of the film is the response and the genre is the explanatory variable. So, our code looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(averageRating <span class="sc">~</span> Genre, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> movie_ratings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Genre min  Q1 median   Q3 max     mean       sd  n missing
+1            Comedy 1.9 5.8    6.8 7.35 8.1 6.413043 1.413025 23       0
+2       Documentary 2.7 6.4    7.0 7.55 8.9 6.834615 1.203974 26       0
+3             Drama 3.7 6.1    7.0 7.55 8.7 6.729333 1.148533 75       0
+4            Horror 4.6 5.7    7.2 7.90 8.7 6.826316 1.370256 19       0
+5 Thriller/Suspense 2.9 5.7    6.7 7.20 9.2 6.317241 1.536478 29       0</code></pre>
+</div>
+</div>
+<p>Use the output from the <code>favstats()</code> function to answer the following questions:</p>
+<ol start="4" type="1">
+<li>Report the mean rating for each genre. Use appropriate notation.</li>
+</ol>
+<ol start="5" type="1">
+<li>Which genres have the largest difference in their mean rating?</li>
+</ol>
+<ol start="6" type="1">
+<li>Which genre has the largest standard deviation in ratings?</li>
+</ol>
+<ol start="7" type="1">
+<li>Which genre has the smallest standard deviation in ratings?</li>
+</ol>
+<ol start="8" type="1">
+<li>How many times larger is your answer in #6 than your answer in #7?</li>
+</ol>
+<ol start="9" type="1">
+<li>Which genre has the largest sample size? What is the formula for the standard deviation of a mean? What effect does sample size have on the standard deviation?</li>
+</ol>
+</section>
+<section id="introducing-a-new-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-a-new-statistic">Introducing a New Statistic</h2>
+<p>In an ANOVA, there are more than two groups that we wish to compare how different the means are from each other. We could make every comparison of two means (Drama - Action, Horror - Documentary, Comedy - Adventure, etc.), but how would we use these numbers to summarize how different <strong>all</strong> of the groups are from each other?</p>
+<p>Enter the F-statistic! An F-statistic summarizes two quantities:</p>
+<ul>
+<li>How different the means of the groups are from each other</li>
+<li>How different the observations in each group are from the mean of their group</li>
+</ul>
+<p>To me, an F-statistic makes more sense if I visualize what these pieces mean. In the plot below, I’ve added three pieces,</p>
+<ul>
+<li>Individual points within each group (these are the movies)</li>
+<li>A red line across the entire plot</li>
+<li>A blue line across each group</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 172 rows containing missing values (geom_segment).
+Removed 172 rows containing missing values (geom_segment).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="anova_files/figure-html/anova-ss-viz-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="10" type="1">
+<li>What does the red line across the entire plot represent?</li>
+</ol>
+<ol start="11" type="1">
+<li>What do the blue lines across each group’s boxplot represent? <em>Hint:</em> The blue line is different from the black line!</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="components-of-an-f-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="components-of-an-f-statistic">Components of an F-statistic</h2>
+<p>The two components of an F-statistic are called the <em>sum of squares between groups</em> (SSG) and the <em>sum of squares of the errors</em> (SSE). Let’s break down what each of these mean.</p>
+<p>The <strong>SSG</strong> compares each group’s mean to the overall mean. As its name indicates, these differences are then <strong>squared</strong> and added together.</p>
+<ol start="12" type="1">
+<li>Draw vertical lines on the plot above, indicating which values are being compared when calculating the SSG.</li>
+</ol>
+<p>The <strong>SSE</strong> is similar to a “residual,” it measures how far an observation is from the mean of that group. As its name indicates, these differences are <strong>squared</strong> and then added together.</p>
+<ol start="13" type="1">
+<li>Draw horizontal lines on the plot above, indicating which values are being compared with calculating the SSE.</li>
+</ol>
+<p>There is one final part to an F-statistic. We take each of these quantities (SSG, SSE) and divide them by their respective degrees of freedom. The degrees of freedom are calculated based on (1) the number of items available and (2) the number of statistics that need to be calculated.</p>
+<p>For the SSG, we have <span class="math inline">\(k\)</span> groups and we need to calculate the overall mean. So, our resulting degrees of freedom are <span class="math inline">\(k - 1\)</span>.</p>
+<ol start="14" type="1">
+<li>How many degrees of freedom does the <code>Genre</code> variable have?</li>
+</ol>
+<p>For the SSE, we have <span class="math inline">\(n\)</span> observations and we need to calculate <span class="math inline">\(k\)</span> group means. So, our resulting degrees of freedom are <span class="math inline">\(n - k\)</span>.</p>
+<ol start="15" type="1">
+<li>How many degrees of freedom does the SSE for our content rating analysis have?</li>
+</ol>
+<p>Now, putting all of these pieces together, we can obtain the magical F-statistic using the following formula:</p>
+<p><span class="math display">\[\frac{\frac{SSG}{k-1}}{\frac{SSE}{n-k}} = \frac{MSG}{MSE}\]</span></p>
+<ol start="16" type="1">
+<li>Can an F-statistic be negative?</li>
+</ol>
+</section>
+<section id="calculating-an-f-statistic-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-an-f-statistic-in-r">Calculating an F-statistic in <code>R</code></h2>
+<p>Calculating these quantities by hand would be terrible! Instead, we will use <code>R</code> to output these values.</p>
+<p>The <code>aov()</code> function in <code>R</code> stands for <strong>a</strong>nalysis <strong>o</strong>f <strong>v</strong>ariance. Why they didn’t call it <code>anova()</code> is beyond me!</p>
+<p>The <code>aov()</code> function takes two inputs, the first is a “formula” similar to what you’ve seen in the <code>favstats()</code> function. The response variable comes first, then the explanatory variable. The second input is the dataset that should be used.</p>
+<p>Let’s give the code and the output a look!</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">sumsq</th>
+<th style="text-align: right;">meansq</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Genre</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6.445565</td>
+<td style="text-align: right;">1.611391</td>
+<td style="text-align: right;">0.9691143</td>
+<td style="text-align: right;">0.425987</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">277.678621</td>
+<td style="text-align: right;">1.662746</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="17" type="1">
+<li>What is the sum of squares for <code>Genre</code>?</li>
+</ol>
+<ol start="18" type="1">
+<li>What is the sum of squares for the errors?</li>
+</ol>
+<ol start="19" type="1">
+<li>How was the mean squares for <code>Genre</code> found?</li>
+</ol>
+<ol start="20" type="1">
+<li>How was the mean squares for the errors found?</li>
+</ol>
+<ol start="21" type="1">
+<li>What is the resulting F-statistic?</li>
+</ol>
+<ol start="22" type="1">
+<li>Why is there an NA in the <code>statistic</code> column for the <code>Residuals</code>?</li>
+</ol>
+</section>
+<section id="inference-for-an-anova" class="level2">
+<h2 class="anchored" data-anchor-id="inference-for-an-anova">Inference for an ANOVA</h2>
+<ol start="23" type="1">
+<li>Based on the p-value associated with the F-statistic you found in #18, do you think this is a small F-statistic or a large F-statistic?</li>
+</ol>
+<ol start="24" type="1">
+<li>Do you believe this statistic is likely to occur if the null hypothesis is true?</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 7: Hypothesis Testing, Decision Errors, &amp; Multiple Comparisons</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="mcp_files/libs/clipboard/clipboard.min.js"></script>
+<script src="mcp_files/libs/quarto-html/quarto.js"></script>
+<script src="mcp_files/libs/quarto-html/popper.min.js"></script>
+<script src="mcp_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="mcp_files/libs/quarto-html/anchor.min.js"></script>
+<link href="mcp_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="mcp_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="mcp_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="mcp_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="mcp_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 7: Hypothesis Testing, Decision Errors, &amp; Multiple Comparisons</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="inference-for-many-means-anova" class="level2">
+<h2 class="anchored" data-anchor-id="inference-for-many-means-anova">Inference for Many Means (ANOVA)</h2>
+<p>Alright, so we just learned about how we can analyze the differences in <strong>many</strong> means using ANOVA (<strong>AN</strong>alysis <strong>O</strong>f <strong>VA</strong>riance). As a refresher, with an ANOVA, we’re comparing the variability <em>within</em> groups (MSE) to the variability <em>between</em> groups (MSG).</p>
+<p>If we believe that the mean of at least one group is different from the others, ideally in a visualization we’d like to see:</p>
+<ul>
+<li>large differences in the means <strong>between</strong> the groups</li>
+<li>small amounts of variability <strong>within</strong> each group</li>
+</ul>
+<ol type="1">
+<li>Sketch an example of three boxplots that exhibit the characteristics above.</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="hypotheses-in-an-anova" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses-in-an-anova">Hypotheses in an ANOVA</h2>
+<p>In an ANOVA, we only do hypothesis testing (no confidence intervals until after ANOVA), and the hypotheses are always the same:</p>
+<p><span class="math display">\[
+H_0: \mu_1 = \mu_2 = \dots = \mu_k
+\]</span></p>
+<p><span class="math display">\[
+H_A: \text{At least one of the means } (\mu_k) \text{ is different}
+\]</span></p>
+<p>Let’s refresh what we saw for the differences in <code>averageRating</code> between the <code>Genre</code>s. d</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Genre</th>
+<th style="text-align: center;">min</th>
+<th style="text-align: center;">Q1</th>
+<th style="text-align: center;">median</th>
+<th style="text-align: center;">Q3</th>
+<th style="text-align: center;">max</th>
+<th style="text-align: center;">mean</th>
+<th style="text-align: center;">sd</th>
+<th style="text-align: center;">n</th>
+<th style="text-align: center;">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">1.9</td>
+<td style="text-align: center;">5.8</td>
+<td style="text-align: center;">6.8</td>
+<td style="text-align: center;">7.35</td>
+<td style="text-align: center;">8.1</td>
+<td style="text-align: center;">6.413</td>
+<td style="text-align: center;">1.413</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">2.7</td>
+<td style="text-align: center;">6.4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7.55</td>
+<td style="text-align: center;">8.9</td>
+<td style="text-align: center;">6.835</td>
+<td style="text-align: center;">1.204</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">3.7</td>
+<td style="text-align: center;">6.1</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7.55</td>
+<td style="text-align: center;">8.7</td>
+<td style="text-align: center;">6.729</td>
+<td style="text-align: center;">1.149</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">4.6</td>
+<td style="text-align: center;">5.7</td>
+<td style="text-align: center;">7.2</td>
+<td style="text-align: center;">7.9</td>
+<td style="text-align: center;">8.7</td>
+<td style="text-align: center;">6.826</td>
+<td style="text-align: center;">1.37</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">2.9</td>
+<td style="text-align: center;">5.7</td>
+<td style="text-align: center;">6.7</td>
+<td style="text-align: center;">7.2</td>
+<td style="text-align: center;">9.2</td>
+<td style="text-align: center;">6.317</td>
+<td style="text-align: center;">1.536</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol type="1">
+<li>How many groups do we have in our ANOVA?</li>
+</ol>
+<ol start="2" type="1">
+<li>Rewrite the null an alternative hypotheses above to reflect the number of groups in our analysis. <em>It would be nice to know what groups the means correspond with!</em></li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="visualizing-an-anova" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-an-anova">Visualizing an ANOVA</h2>
+<p>By plotting the data <strong>before</strong> we do a hypothesis test, we get a better understanding of <em>why</em> we got a small / medium / large p-value!</p>
+<p>Here are faceted histograms visualizing the distribution of movie ratings across the different genres.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="mcp_files/figure-html/movie-histograms-1.png" class="img-fluid" style="width:80.0%"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>How different are the centers of these groups from each other?</li>
+</ol>
+<ol start="4" type="1">
+<li>How different are the spreads of these groups from each other?</li>
+</ol>
+<p>You might like to have the side-by-side boxplots to answer #4, so here you go!</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="mcp_files/figure-html/movie-boxplots-1.png" class="img-fluid" style="width:80.0%"></p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Overall, do you believe any of the genres stand out as <strong>really</strong> different from the others?</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="conditions-of-an-anova" class="level2">
+<h2 class="anchored" data-anchor-id="conditions-of-an-anova">Conditions of an ANOVA</h2>
+<p>Like every statistical analysis we’ve done in this class, when conducting an ANOVA you have two types of methods, (1) a simulation-based method or (2) a theory-based (mathematical) method. The book describes both options, but today we are going to focus on <strong>theory-based</strong> methods.</p>
+<p>In an ANOVA there are two conditions that we need to evaluation regardless of which method we use:</p>
+<ul>
+<li>independence of observations within <strong>and</strong> between groups</li>
+<li>equal variance across every group</li>
+</ul>
+<ol start="6" type="1">
+<li>Evaluate if you believe the independence condition is or is not violated. Keep in mind that there are <strong>two</strong> components to this condition you need to discuss!</li>
+</ol>
+<ol start="7" type="1">
+<li>Evaluate if you believe the equal variance condition is or is not violated. Make specific reference to the visualizations and the summary statistics presented previously!</li>
+</ol>
+<p><strong>Additional Condition for Theory-Based Methods:</strong></p>
+<p>As we have seen before, with a theory-based method we have one additional condition:</p>
+<blockquote class="blockquote">
+<p>nearly normal distributions across every group</p>
+</blockquote>
+<ol start="8" type="1">
+<li>Why should we use faceted histograms to assess this condition rather than side-by-side boxplots?</li>
+</ol>
+<ol start="9" type="1">
+<li>Evaluate if you believe the normality condition is or is not violated. Make specific reference to the visualization you stated in #8!</li>
+</ol>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="carrying-out-an-anova-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="carrying-out-an-anova-in-r">Carrying Out an ANOVA in <code>R</code></h2>
+<p>Now that we’ve checked the conditions of an ANOVA, we are ready to perform the analysis! Earlier today, you were introduced to the <code>aov()</code> function. The <code>aov()</code> function is the tool we use to perform an ANOVA in <code>R</code>.</p>
+<ol start="10" type="1">
+<li>Fill in the necessary components of the code below.</li>
+</ol>
+<div class="cell">
+
+</div>
+<p>Alright, if we ran the code you just input, we’d get the following table:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">term</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">sumsq</th>
+<th style="text-align: center;">meansq</th>
+<th style="text-align: center;">statistic</th>
+<th style="text-align: center;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Genre</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6.446</td>
+<td style="text-align: center;">1.611</td>
+<td style="text-align: center;">0.9691</td>
+<td style="text-align: center;">0.426</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residuals</td>
+<td style="text-align: center;">167</td>
+<td style="text-align: center;">277.7</td>
+<td style="text-align: center;">1.663</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="11" type="1">
+<li>What is the mean squares of <code>Genre</code>?</li>
+</ol>
+<ol start="12" type="1">
+<li>What is the mean squares of the errors?</li>
+</ol>
+<ol start="13" type="1">
+<li>How was the <code>statistic</code> of 0.969 found? What is the name of that statistic?</li>
+</ol>
+<ol start="14" type="1">
+<li>What is the p-value associated with that statistic?</li>
+</ol>
+<ol start="15" type="1">
+<li>Based on the p-value, at an <span class="math inline">\(\alpha = 0.05\)</span> significance level, what decision would you reach regarding your hypotheses?</li>
+</ol>
+<ol start="16" type="1">
+<li>Based on your decision in #15, what would you conclude regarding the mean movie rating across these genres?</li>
+</ol>
+<div style="page-break-after: always;"></div>
+<p>Let’s revisit the statistics we first saw. It’s entirely possible that in #5 you said that you didn’t believe there were “substantial” difference across these groups.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              Genre min  Q1 median   Q3 max     mean       sd  n missing
+1            Comedy 1.9 5.8    6.8 7.35 8.1 6.413043 1.413025 23       0
+2       Documentary 2.7 6.4    7.0 7.55 8.9 6.834615 1.203974 26       0
+3             Drama 3.7 6.1    7.0 7.55 8.7 6.729333 1.148533 75       0
+4            Horror 4.6 5.7    7.2 7.90 8.7 6.826316 1.370256 19       0
+5 Thriller/Suspense 2.9 5.7    6.7 7.20 9.2 6.317241 1.536478 29       0</code></pre>
+</div>
+</div>
+<ol start="17" type="1">
+<li>How does this connect with the p-value you obtained in #14?</li>
+</ol>
+</section>
+<section id="hypothesis-testing-errors" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-testing-errors">Hypothesis Testing Errors</h2>
+<p>In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span> is True</th>
+<th><span class="math inline">\(H_0\)</span> is False</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td>Type I Error</td>
+<td>Good Decision!</td>
+</tr>
+<tr class="even">
+<td>Fail to Reject <span class="math inline">\(H_0\)</span></td>
+<td>Good Decision!</td>
+<td>Type II Error</td>
+</tr>
+</tbody>
+</table>
+<ol start="18" type="1">
+<li>Based on the decision you reached in #15, what type of error could you have made?</li>
+</ol>
+<ol start="19" type="1">
+<li>With an <span class="math inline">\(\alpha = 0.05\)</span>, what percent of the time would we expect to make a Type I error?</li>
+</ol>
+<ol start="20" type="1">
+<li>How does <span class="math inline">\(\alpha\)</span> relate to the probability of making a Type II error?</li>
+</ol>
+</section>
+<section id="inference-after-anova" class="level2">
+<h2 class="anchored" data-anchor-id="inference-after-anova">Inference after ANOVA</h2>
+<p>If we had found a “significant” p-value, we could have concluded that at least one of the genres had a different mean movie rating. However, an ANOVA <strong>does not</strong> tell us which group(s) is(are) driving the differences.</p>
+<p>What we could do is compare all possible combinations of two means. With five groups, that would result in 10 different hypothesis tests for a difference in means (e.g., <span class="math inline">\(\mu_{\text{Comedy}} - \mu_{\text{Documentary}}\)</span>, <span class="math inline">\(\mu_{\text{Comedy}} - \mu_{\text{Drama}}\)</span>, <span class="math inline">\(\mu_{\text{Horror}} - \mu_{\text{Thriller}}\)</span>, etc.).</p>
+<p>However, for each hypothesis test we do at an <span class="math inline">\(\alpha\)</span> of 0.05, we risk making a Type I error 5% of the time. In fact, we can make a mathematical equation for the probability of making a Type I Error, based on the number of tests we perform.</p>
+<p><span class="math display">\[
+\text{Probability of Making a Type I Error} = 1 - \text{Probability of Not Making a Type I Error}
+\]</span></p>
+<p><span class="math display">\[
+= 1 - (0.95)^{\text{\# of tests}}
+\]</span></p>
+<ol start="21" type="1">
+<li>If we do 10 hypothesis tests, what is the probability of us making a Type I Error?</li>
+</ol>
+</section>
+<section id="remedy-to-type-i-error-inflation" class="level2">
+<h2 class="anchored" data-anchor-id="remedy-to-type-i-error-inflation">Remedy to Type I Error Inflation</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Bonferroni.jpg" class="img-fluid figure-img" style="width:40.0%"></p>
+<p></p><figcaption class="figure-caption">Carlo Emilio Bonferroni (1892 - 1960)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One solution to the problem of multiple comparisons is called the Bonferroni correction. Essentially, you take your <span class="math inline">\(\alpha\)</span> threshold and divide it by the number of tests you are going to perform. This is referred to as <span class="math inline">\(\alpha^*\)</span>.</p>
+<p>You then use this <span class="math inline">\(\alpha^*\)</span> value as the new threshold value for <strong>every</strong> pairwise comparison. If a comparison’s p-value is less than <span class="math inline">\(\alpha^*\)</span>, then you reject <span class="math inline">\(H_0\)</span>. If a comparison’s p-value is greater than <span class="math inline">\(\alpha^*\)</span>, then you fail to reject <span class="math inline">\(H_0\)</span></p>
+<ol start="22" type="1">
+<li>If our original <span class="math inline">\(\alpha\)</span> was 0.05, what value should we use for <span class="math inline">\(\alpha^*\)</span>?</li>
+</ol>
+</section>
+<section id="post-hoc-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="post-hoc-comparisons">Post-Hoc Comparisons</h2>
+<p>Below is a table of all 10 of the hypothesis tests we could do when comparing the means of two groups.</p>
+<ol start="23" type="1">
+<li>Using the <span class="math inline">\(\alpha^*\)</span> you found in #22, circle the hypothesis tests whose p-values are less than <span class="math inline">\(\alpha^*\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 19%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Group 1</th>
+<th style="text-align: center;">Group 2</th>
+<th style="text-align: center;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">0.255</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">0.3049</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">0.7202</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">0.3027</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">0.983</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">0.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">Comedy</td>
+<td style="text-align: center;">0.7905</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">Documentary</td>
+<td style="text-align: center;">0.1393</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">Drama</td>
+<td style="text-align: center;">0.1458</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Thriller/Suspense</td>
+<td style="text-align: center;">Horror</td>
+<td style="text-align: center;">0.1828</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Your <span class="math inline">\(\alpha^*\)</span> value should be much less than your original <span class="math inline">\(\alpha\)</span> of 0.05, which makes it <strong>harder</strong> to reject the null.</p>
+<ol start="24" type="1">
+<li>When the number of comparisons gets larger, what happens to the probability of making a Type II error?</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

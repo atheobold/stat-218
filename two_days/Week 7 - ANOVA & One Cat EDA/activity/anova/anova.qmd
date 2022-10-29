@@ -1,0 +1,464 @@
+---
+title: 'Week 7: Introduction to ANalysis Of Variance'
+author: "Your Name: _______________"
+date: "November 1, 2022"
+format: html
+editor: visual
+execute: 
+  message: false
+  echo: false
+---
+
+```{r setup}
+#| include: false
+
+library(tidyverse)
+library(mosaic)
+library(here)
+library(pander)
+library(broom)
+```
+
+```{r movie-images}
+#| layout-nrow: 1
+#| layout-ncol: 4
+#| out-width: 50%
+#| echo: false
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "transcendents.jpeg")
+  )
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "freaky.jpg")
+  )
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "flute.jpg")
+  )
+
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "afterward.jpg")
+  )
+
+```
+
+## Learning outcomes
+
+<!-- + Summarize and visualize quantitative data for two means. -->
+
+<!-- + Given a research question involving one categorical explanatory variable and one quantitative response variable, construct the null and alternative hypotheses in words and using appropriate statistical symbols. -->
+
+<!-- + Describe and perform a simulation-based hypothesis test for a difference in means. -->
+
+<!-- + Interpret and evaluate a p-value for a simulation-based hypothesis test for a difference in means. -->
+
+
+\newpage
+
+## Terminology review
+
+Thinking back to last week, we covered how we could do comparisons for (1) a difference in two means, and (2) the mean of the differences. 
+
+- Analyzing a difference in two means requires the observations in each group are independent 
+- Analyzing the mean difference requires there are **paired** (two) observations for each observational unit
+
+
+## Movies released in 2020
+
+Today we're going to use a dataset we explored in Week 2, to visualize the distribution of IMDB movie ratings. The dataset is comprised of the following variables colleged on each movie: 
+
+| **Variable**     | **Description**                                             |
+|-------------------|-----------------------------------------------------|
+| `Movie`          | Title of the movie                                          |
+| `averageRating`  | Average IMDb user rating score from 1 to 10                 |
+| `numVotes`       | Number of votes from IMDb users                             |
+| `Genre`          | Categories the movie falls into (e.g., Action, Drama, etc.) |
+| `2020 Gross`     | Gross profit from movie viewing                             |
+| `runtimeMinutes` | Length of movie (in minutes)                                |
+|                  |                                                             |
+
+```{r data-cleaning}
+#| include: false
+
+movies <- readxl::read_xlsx(here::here("two_days", 
+                              "Week 2 - Viz & Summarize Quantitative Variables",
+                              "activity",
+                              "quantitative EDA",
+                              "data",
+                              "movies_2020.xlsx"
+                              )
+                   ) |>  
+  distinct(Movie, .keep_all = TRUE)
+
+title_ids <- read_csv(here::here("two_days", 
+                               "Week 2 - Viz & Summarize Quantitative Variables",
+                               "activity",
+                               "quantitative EDA",
+                               "data",
+                               "movie_ids.csv")
+                      )
+  
+movie_ids <- left_join(movies, 
+                       title_ids, 
+                       by = 
+                         intersect(
+                           colnames(movies), 
+                           colnames(title_ids)
+                           )
+                       )
+
+ratings <- read_csv(here::here("two_days", 
+                               "Week 2 - Viz & Summarize Quantitative Variables",
+                               "activity",
+                               "quantitative EDA",
+                               "data",
+                               "ratings.csv")
+                      )
+
+movie_ratings <- left_join(movie_ids, 
+                           ratings, 
+                           by = "id"
+                           ) |> 
+  select(Movie, 
+         Genre, 
+         `2020 Gross`, 
+         runtimeMinutes, 
+         averageRating, 
+         numVotes) |> 
+  drop_na(averageRating)
+```
+
+## Comparing Many Groups
+
+Last week, we could have used these data to investigate if there were differences in IMDb scores between **two** genres (e.g., Action and Drama). This week, however, we are going to expand our analysis to more than two groups! 
+
+Below is a table summarizing the number of observations (movies) in the dataset for each genre. We can see that most of the movies fall in the Action, Adventure, Comedy, Documentary, Drama, Horror, and Thriller/Suspense categories. So, let's focus our analysis with these genres (removing the others). 
+
+```{r genre-table}
+#| echo: false
+
+movie_ratings |> 
+  count(Genre) |> 
+  pander()
+
+```
+
+```{r data-filtering}
+
+genres <- tibble(Genre = c("Comedy", 
+                           "Documentary", "Drama", "Horror", 
+                           "Thriller/Suspense")
+                 )
+
+movie_ratings <- movie_ratings |> 
+  semi_join(genres, by = "Genre")
+```
+
+
+## Visualizing a Single Categorical and a Single Quantitative Variable
+
+For a categorical variable that has more than two groups, we can use the **same** visualization techniques as we did for a categorical variable with two groups. 
+
+1. Think back to last week, what were two ways we visualized one numerical variable and one categorical variable?
+
+\pagebreak
+
+## Side-by-Side Boxplots
+
+The boxplot of movie budgets (in millions) by content rating is plotted using
+the code below. The boxplots are presented in both orientations, horizontal 
+stacking and vertical stacking, so you can pick whichever orientation you 
+prefer. :) 
+
+```{r anova-viz}
+#| layout-nrow: 1
+
+ggplot(data = movie_ratings, 
+             mapping = aes(y = averageRating, x = Genre)) + 
+  geom_boxplot() + 
+  theme_bw() +
+  labs(x = "Genre of Movie", 
+       y = "Average IMDb Rating"
+       )
+
+ggplot(data = movie_ratings, 
+             mapping = aes(x = averageRating, y = Genre)) + 
+  geom_boxplot() + 
+  theme_bw() +
+  labs(y = "Genre of Movie", 
+       x = "Average IMDb Rating"
+       )
+
+```
+
+Answer the following questions about the boxplots above.
+
+1. Which genre has the highest center?
+
+\vspace{0.2in}
+
+2. Which genre has the largest spread?
+
+\vspace{0.2in}
+
+3. Which genre has the most skewed distribution?
+
+\vspace{.2in}
+
+## Summary Statistics
+
+Let's obtain a more complete picture of how different these groups are with 
+summary statistics. Our familiar friend `favstats()` can help us compare summary statistics across different groups. 
+
+Like before, the rating of the film is the response and the genre is
+the explanatory variable. So, our code looks like: 
+
+```{r stat-comparison}
+#| echo: true
+
+favstats(averageRating ~ Genre, 
+         data = movie_ratings)
+```
+
+Use the output from the `favstats()` function to answer the following questions:
+
+\vspace{0.2in}
+
+4. Report the mean rating for each genre.  Use appropriate notation.
+
+\vspace{0.8in}
+
+5. Which genres have the largest difference in their mean rating?
+
+\vspace{0.8in}
+
+6. Which genre has the largest standard deviation in ratings? 
+
+\vspace{0.25in}
+
+7. Which genre has the smallest standard deviation in ratings?
+
+\vspace{0.25in}
+
+8. How many times larger is your answer in #6 than your answer in #7?
+
+\vspace{0.8in}
+
+9. Which genre has the largest sample size? What is the formula for 
+the standard deviation of a mean? What effect does sample size have on the 
+standard deviation? 
+
+\vspace{0.5in}
+
+## Introducing a New Statistic
+
+In an ANOVA, there are more than two groups that we wish to compare how
+different the means are from each other. We could make every comparison of two
+means (Drama - Action, Horror - Documentary, Comedy - Adventure, etc.), but how
+would we use these numbers to summarize how different **all** of the groups are
+from each other?
+
+Enter the F-statistic! An F-statistic summarizes two quantities:
+
+- How different the means of the groups are from each other
+- How different the observations in each group are from the mean of their group
+
+To me, an F-statistic makes more sense if I visualize what these pieces mean. 
+In the plot below, I've added three pieces, 
+
+- Individual points within each group (these are the movies)
+- A red line across the entire plot
+- A blue line across each group
+
+```{r anova-ss-viz, echo = FALSE, fig.align= 'center'}
+
+overall_mean <- movie_ratings |> 
+  summarize(mean(averageRating)) |> 
+  pull()
+
+group_means <- movie_ratings |> 
+  group_by(Genre) |> 
+  summarize(mean(averageRating)) |> 
+  pull()
+
+movie_ratings |> 
+  ggplot(mapping = aes(y = Genre, 
+                       x = averageRating, 
+                       fill = Genre)
+         ) + 
+  geom_boxplot(alpha = 0.1) + 
+  geom_jitter(width = 0.1, alpha = 0.75) +
+  geom_vline(xintercept = overall_mean, 
+             color = "red", 
+             linetype = "dashed", 
+             lwd = 1.5) +
+  geom_segment(y = 0.5, yend = 1.5, x = group_means[1], xend = group_means[1],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 1.5, yend = 2.5, x = group_means[2], xend = group_means[2],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 2.5, yend = 3.5, x = group_means[3], xend = group_means[3],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 3.5, yend = 4.5, x = group_means[4], xend = group_means[4],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 4.5, yend = 5.5, x = group_means[5], xend = group_means[5],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 5.5, yend = 6.5, x = group_means[6], xend = group_means[6],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  geom_segment(y = 6.5, yend = 7.5, x = group_means[7], xend = group_means[7],
+               color = "blue", lwd = 2, linetype = "dashed") +
+  theme_bw() +
+  theme(legend.position = "none", 
+        axis.title = element_text(size = 16), 
+        axis.text.x = element_text(size = 14)
+        ) +
+  labs(y = "Movie Budget (in Millions)", 
+       x = "Content Rating of Movie")
+```
+
+10. What does the red line across the entire plot represent?
+
+\vspace{0.5in}
+
+11. What do the blue lines across each group's boxplot represent? *Hint:* The blue line is different from the black line!
+
+\newpage
+
+## Components of an F-statistic
+
+The two components of an F-statistic are called the *sum of squares between
+groups* (SSG) and the *sum of squares of the errors* (SSE). Let's break down
+what each of these mean. 
+
+The __SSG__ compares each group's mean to the overall mean. As its name
+indicates, these differences are then **squared** and added together. 
+
+12. Draw vertical lines on the plot above, indicating which values are being
+compared when calculating the SSG. 
+
+\vspace{0.25in}
+
+The __SSE__ is similar to a "residual," it measures how far an observation is
+from the mean of that group. As its name indicates, these differences are
+**squared** and then added together. 
+
+13. Draw horizontal lines on the plot above, indicating which values are being
+compared with calculating the SSE. 
+
+\vspace{0.25in}
+
+There is one final part to an F-statistic. We take each of these quantities 
+(SSG, SSE) and divide them by their respective degrees of freedom. The degrees
+of freedom are calculated based on (1) the number of items available and (2) 
+the number of statistics that need to be calculated. 
+
+For the SSG, we have $k$ groups and we need to calculate the overall mean. So, 
+our resulting degrees of freedom are $k - 1$. 
+
+14. How many degrees of freedom does the `Genre` variable have?
+
+\vspace{0.5in}
+
+For the SSE, we have $n$ observations and we need to calculate $k$ group means.
+So, our resulting degrees of freedom are $n - k$. 
+
+15. How many degrees of freedom does the SSE for our content rating analysis
+have?
+
+\vspace{0.5in}
+
+Now, putting all of these pieces together, we can obtain the magical 
+F-statistic using the following formula:
+
+$$\frac{\frac{SSG}{k-1}}{\frac{SSE}{n-k}} = \frac{MSG}{MSE}$$
+
+16. Can an F-statistic be negative?
+
+\vspace{0.5in}
+
+## Calculating an F-statistic in `R`
+
+Calculating these quantities by hand would be terrible! Instead, we will use
+`R` to output these values. 
+
+The `aov()` function in `R` stands for **a**nalysis **o**f **v**ariance. Why 
+they didn't call it `anova()` is beyond me!
+
+The `aov()` function takes two inputs, the first is a "formula" similar to what
+you've seen in the `favstats()` function. The response variable comes first,
+then the explanatory variable. The second input is the dataset that should be 
+used. 
+
+Let's give the code and the output a look! 
+
+```{r aov-code, eval = FALSE}
+aov(averageRating ~ Genre, data = movie_ratings)
+```
+
+```{r aov-output, echo = FALSE}
+aov(averageRating ~ Genre, data = movie_ratings) |> 
+  tidy() |> 
+  knitr::kable()
+```
+
+\vspace{0.25in}
+
+17. What is the sum of squares for `Genre`?
+
+\vspace{0.25in}
+
+18. What is the sum of squares for the errors?
+
+\vspace{0.25in}
+
+19. How was the mean squares for `Genre` found?
+
+\vspace{0.25in}
+
+20. How was the mean squares for the errors found?
+
+\vspace{0.25in}
+
+21. What is the resulting F-statistic?
+
+\vspace{0.25in}
+
+22. Why is there an NA in the `statistic` column for the `Residuals`?
+
+\vspace{0.5in}
+
+
+## Inference for an ANOVA
+
+23. Based on the p-value associated with the F-statistic you found in #21, do 
+you think this is a small F-statistic or a large F-statistic?
+
+\vspace{0.5in}
+
+24. Do you believe this statistic is likely to occur if the null hypothesis 
+is true?
+
+\vspace{1in}
+
+
+
