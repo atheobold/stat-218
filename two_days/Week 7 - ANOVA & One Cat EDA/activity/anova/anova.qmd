@@ -62,11 +62,13 @@ knitr::include_graphics(here::here("two_days",
 )
 ```
 
-## Learning outcomes
+## Learning Outcomes
 
 + Summarize and visualize quantitative data for three or more groups.
 
-+ Given a research question involving one categorical explanatory variable with three or more groups and one quantitative response variable, construct the null and alternative hypotheses in words and using appropriate statistical symbols.
++ Compare the centers and spreads between three or more groups.
+
++ Understand the components of an F-statistic, both visually and computationally.
 
 ## Terminology review
 
@@ -78,9 +80,9 @@ Thinking back to last week, we covered how we could do comparisons for
 (2) the mean of the differences.
 -   Analyzing the mean difference requires there are **paired** (two) observations for each observational unit
 
-## Movies released in 2020
+## Movies Released in 2020
 
-Today we're going to use a data set we explored in Week 2, to visualize the distribution of IMDB movie ratings. The dataset is comprised of the following variables colleged on each movie:
+Today we're going to use a data set we explored in Week 2, to visualize the distribution of IMDB movie ratings. The dataset is comprised of the following variables collected on each movie:
 
 | **Variable**     | **Description**                                             |
 |----------------------|--------------------------------------------------|
@@ -178,6 +180,8 @@ For a categorical variable that has more than two groups, we can use the **same*
 
 1.  Think back to last week, what were two ways we visualized one numerical variable and one categorical variable?
 
+\vspace{1in}
+
 ## Side-by-Side Boxplots
 
 The boxplot of movie budgets (in millions) by content rating is plotted using the code below. The boxplots are presented in both orientations, horizontal stacking and vertical stacking, so you can pick whichever orientation you prefer. :)
@@ -209,20 +213,20 @@ Answer the following questions about the box-plots above.
 
 <!-- \key{Horror genre movies have the highest median IMDb rating}. -->
 
-\vspace{0.1in}
+\vspace{0.2in}
 
 3.  Which genre has the largest spread?
 
 <!-- \key{The spread appears similar across all movie genres, but Thriller/Suspense and Horror appear to have the largerst spread.}. -->
 
 
-\vspace{0.1in}
+\vspace{0.2in}
 
 3.  Which genre has the most skewed distribution?
 
 <!-- \key{Drama and Comedy movies appear to both be skewed left (longer whisker to the left).} -->
 
-\vspace{.1in}
+\newpage
 
 ## Summary Statistics
 
@@ -254,31 +258,31 @@ Use the output from the `favstats()` function to answer the following questions:
 
 <!-- \key{$\bar x_\text{Comedy}=6.413$, $\bar x_\text{Documentary}=6.834$, $\bar x_\text{Drama}=6.729$, $\bar x_\text{Horror} =6.826$, $\bar x_\text{Thriller/Suspense}=6.317$} -->
 
-\vspace{0.1in}
+\vspace{1in}
 
 5.  Which genres have the largest difference in their mean rating?
 
 <!-- \key{Documentaries have the highest mean rating at 6.835 while Thriller/Suspense movies have the lowest mean ratings at 6.317 for a difference in mean ratings of 0.518.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 6.  Which genre has the largest standard deviation in ratings?
 
 <!-- \key{Thriller/Suspense movies have the largest standard deviation in ratings ($s_\text{Thriller/Suspense}=1.536$).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 7.  Which genre has the smallest standard deviation in ratings?
 
 <!-- \key{Drama movies have the smallest standard deviation in ratings ($s_\text{Drama}=1.149$).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 8.  How many times larger is your answer in #6 than your answer in #7?
 
 <!-- \key{$\frac{s_\text{Thriller/Suspense}}{s_\text{Drama}}=\frac{1.536}{1.149}=1.337$ times larger.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 9.  Which genre has the largest sample size? What is the formula for the standard deviation of a mean (aka standard error)? What effect does sample size have on the standard error?
 
@@ -286,7 +290,7 @@ Use the output from the `favstats()` function to answer the following questions:
 
 <!-- \key{The standard deviation of the mean is our standard error calculated by $SE = \frac{sd}{\sqrt n}$. Therefore, with a larger sample size, you are dividing by a larger number and your standard error is decreasing / smaller.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 ## Introducing a New Statistic
 
@@ -362,7 +366,7 @@ movie_ratings |>
 
 <!-- \key{The orange line is the overall mean IMDB rating across all genres.} -->
 
-\vspace{0.1in}
+\vspace{0.5in}
 
 11. What do the purple lines across each group's boxplot represent? *Hint:* The purple dashed line is different from the black solid line!
 
@@ -407,7 +411,7 @@ For the SSG, we have $k$ groups and we need to calculate the overall mean. So, o
 
 <!-- \key{$\text{df}_\text{Genre}=k-1 =5 \text{ Genres} - 1 = 4$.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 For the SSE, we have $n$ observations and we need to calculate $k$ group means. So, our resulting degrees of freedom are $n - k$.
 
@@ -415,7 +419,7 @@ For the SSE, we have $n$ observations and we need to calculate $k$ group means. 
 
 <!-- \key{$\text{df}_\text{Error}=n-k =172 \text{ total movies} - 5 \text{ Genres} = 167$.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 Now, putting all of these pieces together, we can obtain the magical F-statistic using the following formula:
 
@@ -455,32 +459,32 @@ aov(averageRating ~ Genre, data = movie_ratings) |>
 
 <!-- \key{The sum of squares for Genre is 6.446 (SSG).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 18. What is the sum of squares for the errors?
 
 <!-- \key{The sum of squares for error is 277.679 (SSE).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 19. How was the mean squares for `Genre` found?
 
 <!-- \key{The mean squares for Genre (MSG) is found by diving the SSG by 4 (the degrees of freedom for Genre).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 20. How was the mean squares for the errors found?
 
 <!-- \key{The mean squares for the errors (MSE) is found by diving the SSE by 167 (the degrees of freedom for the errors).} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 
 21. What is the resulting F-statistic?
 
 <!-- \key{F = 0.969} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 22. Why is there an NA in the `statistic` column for the `Residuals`?
 
@@ -494,7 +498,7 @@ aov(averageRating ~ Genre, data = movie_ratings) |>
 
 <!-- \key{We have a p-value of 0.426; therefore the F-statistic is a small F-statistic since there is a 42\% chance of seeing an F-statistic of 0.969 or larger on an F-distribution with 4 numerator degrees of freedom and 167 denominator degrees of freedom.} -->
 
-\vspace{0.1in}
+\vspace{0.25in}
 
 24. Do you believe this statistic is likely to occur if the null hypothesis is true?
 

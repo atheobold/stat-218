@@ -1,9 +1,9 @@
 ---
-title: "Week 7: Hypothesis Testing, Decision Errors, & Multiple Comparisons"
-#format: html
+title: "Activity 7B: IMDB Movies III"
+subtitle: "Hypothesis Testing, Decision Errors, & Multiple Comparisons"
+author: "Your Name: ________________________"
 format: pdf
-#format: docx
-editor: visual
+editor: source
 execute: 
   echo: false
   message: false
@@ -24,21 +24,20 @@ library(broom)
 #| include: false
 
 movies <- readxl::read_xlsx(here::here("two_days", 
-                              "Week 2 - Viz & Summarize Quantitative Variables",
-                              "activity",
-                              "quantitative EDA",
-                              "data",
-                              "movies_2020.xlsx"
-                              )
-                   ) |>  
+                                   "Week 2 - Viz & Summarize Quantitative Variables", 
+                                   "activity",
+                                   "quantitative EDA",
+                                   "data", 
+                                   "movies_2020.xlsx")
+                            ) |>  
   distinct(Movie, .keep_all = TRUE)
 
 title_ids <- read_csv(here::here("two_days", 
-                               "Week 2 - Viz & Summarize Quantitative Variables",
-                               "activity",
-                               "quantitative EDA",
-                               "data",
-                               "movie_ids.csv")
+                                   "Week 2 - Viz & Summarize Quantitative Variables", 
+                                   "activity",
+                                   "quantitative EDA",
+                                   "data", 
+                                   "movie_ids.csv")
                       )
   
 movie_ids <- left_join(movies, 
@@ -51,12 +50,12 @@ movie_ids <- left_join(movies,
                        )
 
 ratings <- read_csv(here::here("two_days", 
-                               "Week 2 - Viz & Summarize Quantitative Variables",
-                               "activity",
-                               "quantitative EDA",
-                               "data",
-                               "ratings.csv")
-                      )
+                                   "Week 2 - Viz & Summarize Quantitative Variables", 
+                                   "activity",
+                                   "quantitative EDA",
+                                   "data", 
+                                   "ratings.csv")
+                    )
 
 movie_ratings <- left_join(movie_ids, 
                            ratings, 
@@ -71,7 +70,9 @@ movie_ratings <- left_join(movie_ids,
   drop_na(averageRating)
 
 genres <- tibble(Genre = c("Comedy", 
-                           "Documentary", "Drama", "Horror", 
+                           "Documentary", 
+                           "Drama", 
+                           "Horror", 
                            "Thriller/Suspense")
                  )
 
@@ -79,42 +80,43 @@ movie_ratings <- movie_ratings |>
   semi_join(genres, by = "Genre")
 ```
 
-
 ## Inference for Many Means (ANOVA)
 
-Alright, so we just learned about how we can analyze the differences in **many** means using ANOVA (**AN**alysis **O**f **VA**riance). As a refresher, with an
-ANOVA, we're comparing the variability *within* groups (MSE) to the variability
-*between* groups (MSG). 
+Alright, so we just learned about how we can analyze the differences in **many** means using ANOVA (**AN**alysis **O**f **VA**riance). As a refresher, with an ANOVA, we're comparing the variability *within* groups (MSE) to the variability *between* groups (MSG).
 
-If we believe that the mean of at least one group is different from the others, 
-ideally in a visualization we'd like to see:
+If we believe that the mean of at least one group is different from the others, ideally in a visualization we'd like to see:
 
-- large differences in the means **between** the groups
-- small amounts of variability **within** each group
+-   large differences in the means **between** the groups
+-   small amounts of variability **within** each group
 
 \vspace{0.25in}
 
-1. Sketch an example of three boxplots that exhibit the characteristics above. 
+1.  Sketch an example of three box plots that exhibit the characteristics above.
+
+<!-- \key{We want the observations/points within a group to be close together -- low variability wtihin groups -- and the points between groups to be far apart -- high variability between groups.} -->
+
+```{r}
+#| eval: false
+knitr::include_graphics('images/question1-sketch.PNG')
+```
 
 \newpage
 
 ## Hypotheses in an ANOVA
 
-In an ANOVA, we only do hypothesis testing (no confidence intervals until after
-ANOVA), and the hypotheses are always the same:
+In an ANOVA, we only do hypothesis testing (no confidence intervals until after ANOVA), and the hypotheses are always the same:
 
 $$
 H_0: \mu_1 = \mu_2 = \dots = \mu_k
 $$
 
 $$
-H_A: \text{At least one of the means } (\mu_k) \text{ is different}
+H_A: \text{At least one of the means } (\mu_i) \text{ is different}
 $$
 
 \vspace{0.25cm}
 
-Let's refresh what we saw for the differences in `averageRating` between the
-`Genre`s.
+Let's refresh what we saw for the differences in `averageRating` between the `Genre`s.
 
 \vspace{0.25cm}
 
@@ -126,22 +128,31 @@ favstats(averageRating ~ Genre,
 
 \vspace{0.25cm}
 
-2. How many groups do we have in our ANOVA? 
+2.  How many groups do we have in our ANOVA?
+
+<!-- \key{We have 5 groups (movie genres) in our ANOVA: (1) Comedy, (2) Documentary, (3) Drama, (4) Horror, and (5) Thriller/Suspense.} -->
 
 \vspace{0.25in}
 
-3. Rewrite the null an alternative hypotheses above to reflect the number of 
-groups in our analysis. *It would be nice to know what groups the means correspond with!*
+3.  Rewrite the null an alternative hypotheses above to reflect the number of groups in our analysis. *It would be nice to know what groups the means correspond with!*
+
+<!-- \key{ -->
+<!-- $$ -->
+<!-- H_0: \mu_\text{Comedy} = \mu_\text{Documentary} = \mu_\text{Drama} = \mu_\text{Horror} = \mu_\text{Thriller/Suspense} -->
+<!-- $$ -->
+
+<!-- $$ -->
+<!-- H_A: \text{At least one of the means } (\mu_i) \text{ is different} -->
+<!-- $$ -->
+<!-- } -->
 
 \newpage
 
 ## Visualizing an ANOVA
 
-By plotting the data **before** we do a hypothesis test, we get a better 
-understanding of *why* we got a small / medium / large p-value! 
+By plotting the data **before** we do a hypothesis test, we get a better understanding of *why* we got a small / medium / large p-value!
 
-Here are faceted histograms visualizing the distribution of movie ratings across
-the different genres. 
+Here are faceted histograms visualizing the distribution of movie ratings across the different genres.
 
 ```{r movie-histograms}
 #| out-width: 80%
@@ -151,22 +162,21 @@ ggplot(data = movie_ratings,
        mapping = aes(x = averageRating)
        ) +
   geom_histogram(binwidth = 1) + 
-  facet_wrap(~ Genre, scales = "free") + 
-  labs(x = "Average Movie Rating (from IMDb)") 
+  facet_wrap(~ Genre, ncol = 3) + 
+  theme(aspect.ratio = 0.5) +
+  labs(x = "Movie Rating (from IMDb)")+
+  scale_x_continuous(breaks = seq(0,10,1))
 ```
 
-\vspace{0.25cm}
+\vspace{0.15cm}
 
-4. How different are the centers of these groups from each other? 
+4.  How different are the centers of these groups from each other?
 
-\vspace{0.5in}
+<!-- \key{Horror movies have a slightly higher median IMDb moving rating than the others while Thriller/Suspense movies have a slightly lower median IMDb movie rating.} -->
 
-5. How different are the spreads of these groups from each other?
+\vspace{1in}
 
-\vspace{0.5in}
-
-You might like to have the side-by-side boxplots to answer #4, so 
-here you go! 
+You might like to have the side-by-side boxplots to answer #5, so here you go!
 
 ```{r movie-boxplots}
 #| out-width: 60%
@@ -176,71 +186,77 @@ ggplot(data = movie_ratings,
                      y = Genre)
        ) +
   geom_boxplot() + 
-  labs(x = "Average Movie Rating (from IMDb)", 
+  labs(x = "Movie Rating (from IMDb)", 
        title = "Genre of Movie", 
        y = "IMDb Moving Ratings by Movie Genre") 
 ```
 
 
-6. Overall, do you believe any of the genres stand out as **really** different
-from the others?
+5.  How different are the spreads of these groups from each other?
 
-\vspace{1in}
-
-## Conditions of an ANOVA
-
-Like every statistical analysis we've done in this class, when conducting an 
-ANOVA you have two types of methods, (1) a simulation-based method or (2) a 
-theory-based (mathematical) method. The book describes both options, but today
-we are going to focus on **theory-based** methods. 
-
-In an ANOVA there are two conditions that we need to evaluation regardless of 
-which method we use:
-
-- independence of observations within **and** between groups
-- equal variance across every group
-
-7. Evaluate if you believe the independence condition is or is not violated. 
-Keep in mind that there are **two** components to this condition you need to 
-discuss! 
-
-\newpage
-
-8. Evaluate if you believe the equal variance condition is or is not violated. 
-Make specific reference to the visualizations and the summary statistics 
-presented previously!
-
-\vspace{1in}
-
-__Additional Condition for Theory-Based Methods:__
-
-As we have seen before, with a theory-based method we have one additional 
-condition:
-
-> nearly normal distributions across every group
-
-\vspace{0.25cm}
-
-9. Why should we use faceted histograms to assess this condition rather than 
-side-by-side boxplots? 
+<!-- \key{The spreads of the groups are similar (all span from ratings about 4ish to 8ish.)} -->
 
 \vspace{0.5in}
 
-10. Evaluate if you believe the normality condition is or is not violated. Make
-specific reference to the visualization you stated in #8!
+
+6.  Overall, do you believe any of the genres stand out as **really** different from the others?
+
+<!-- \key{No, all of the Genre's appear to have similar movie ratings.} -->
+
+\vspace{0.5in}
+
+## Conditions of an ANOVA
+
+Like every statistical analysis we've done in this class, when conducting an ANOVA you have two types of methods, (1) a simulation-based method or (2) a theory-based (mathematical) method. The book describes both options, but today we are going to focus on **theory-based** methods.
+
+In an ANOVA there are two conditions that we need to evaluate regardless of which method we use:
+
+-   independence of observations within **and** between groups
+-   equal variance across every group
+
+7.  Evaluate if you believe the independence condition is or is not violated. Keep in mind that there are **two** components to this condition you need to discuss!
+
+<!-- \key{The independence condition is not violated because the IMDb rating for a movie does not affect the IMDb rating for another movie within that Genre as well as in a different Genre.} -->
+
+\vspace{0.5in}
+
+8.  Evaluate if you believe the equal variance condition is or is not violated. Make specific reference to the visualizations and the summary statistics presented previously!
+
+<!-- \key{The equal variance condition is met. The standard devitation of IMDb movie ratings for each Genre is about 1.2 - 1.5; therefore, there appear to be equal variances between groups.} -->
+
+\vspace{0.5in}
+
+\newpage
+
+**Additional Condition for Theory-Based Methods:**
+
+As we have seen before, with a theory-based method we have one additional condition:
+
+> nearly normal distributions of response variables across every group
+
+\vspace{0.25cm}
+
+9.  Why should we use faceted histograms to assess this condition rather than side-by-side boxplots?
+
+<!-- \key{The histograms show us where peaks occur and if symmetry is achieved -- we can see the shape of the distribution better.} -->
+
+\vspace{0.5in}
+
+10. Evaluate if you believe the normality condition is or is not violated. Make specific reference to the visualization you stated in #8!
+
+<!-- \key{The histograms for each Genre appear to have one peak and are approximately symmetric.} -->
 
 \vspace{0.5in}
 
 ## Carrying Out an ANOVA in `R`
 
-Now that we've checked the conditions of an ANOVA, we are ready to perform the
-analysis! Earlier today, you were introduced to the `aov()` function. The 
-`aov()` function is the tool we use to perform an ANOVA in `R`. 
+Now that we've checked the conditions of an ANOVA, we are ready to perform the analysis! Earlier today, you were introduced to the `aov()` function. The `aov()` function is the tool we use to perform an ANOVA in `R`.
 
-11. Fill in the necessary components of the code below. 
+11. Fill in the necessary components of the code below.
 
-```{r aov-code, eval = FALSE}
-aov(_______________________________ ~ __________________________,
+```{r aov-code}
+#| eval: false
+aov(averageRating ~ Genre,
     data = movie_ratings)
 ```
 
@@ -261,36 +277,41 @@ pander(model)
 
 12. What is the mean squares of `Genre`?
 
-\vspace{0.25in}
-
-13. What is the mean squares of the errors? 
+<!-- \key{MSGenre = 1.611} -->
 
 \vspace{0.25in}
 
-14. How was the `statistic` of `r round(model$statistic[1], digits = 3)` found?
-What is the name of that statistic?
+13. What is the mean squares of the errors?
 
-\vspace{0.5in}
+<!-- \key{MSE = 1.663} -->
+
+\vspace{0.25in}
+
+14. How was the `statistic` of `r round(model$statistic[1], digits = 3)` found? What is the name of that statistic?
+
+<!-- \key{F-statistic = $\frac{MSGenre}{MSE}=0.9691$} -->
+
+\vspace{0.25in}
 
 15. What is the p-value associated with that statistic?
 
-\vspace{0.25in}
-
-16. Based on the p-value, at an $\alpha = 0.05$ significance level, what 
-decision would you reach regarding your hypotheses?
+<!-- \key{p-value = 0.426} -->
 
 \vspace{0.25in}
 
-17. Based on your decision in #15, what would you conclude regarding the 
-mean movie rating across these genres?
+16. Based on the p-value, at an $\alpha = 0.05$ significance level, what decision would you reach regarding your hypotheses?
 
-\vspace{0.5in}
+<!-- \key{We would fail to reject the null hypothesis that all mean IMDb movie ratings are equal across the 5 Genres since our p-value 0.426 > 0.05.} -->
 
-\newpage 
+\vspace{0.25in}
 
-Let's revisit the statistics we first saw. It's entirely possible that in #5 you
-said that you didn't believe there were "substantial" difference across 
-these groups. 
+17. Based on your decision in #15, what would you conclude regarding the mean movie rating across these genres?
+
+<!-- \key{We do not have evidence to conclude that at least one mean IMDb movie rating differs.} -->
+
+\vspace{1in}
+
+Let's revisit the statistics we first saw. It's entirely possible that in #5 you said that you didn't believe there were "substantial" difference across these groups.
 
 ```{r favstats-again}
 #| echo: false
@@ -300,65 +321,64 @@ favstats(averageRating ~ Genre,
 
 18. How does this connect with the p-value you obtained in #14?
 
+<!-- \key{The intuitive answer that the mean's don't appear to differ aligns with our p-value in \#14 because we failed to reject the null that all mean IMDb movie ratings are equal.} -->
+
 \vspace{1in}
 
 ## Hypothesis Testing Errors
 
-In a hypothesis test, there are two competing hypotheses: the null and the
-alternative. We make a statement about which one might be true, but we might 
-choose incorrectly. There are four possible scenarios in a hypothesis test:
+In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test:
 
-|                      | $H_0$ is True  | $H_0$ is False  |
-|----------------------|----------------|-----------------|
-| Reject $H_0$         | Type I Error   | Good Decision!  |
-| Fail to Reject $H_0$ | Good Decision! | Type II Error   |
+|                      | $H_0$ is True  | $H_0$ is False |
+|----------------------|----------------|----------------|
+| Reject $H_0$         | Type I Error   | Good Decision! |
+| Fail to Reject $H_0$ | Good Decision! | Type II Error  |
 
-19. Based on the decision you reached in #15, what type of error could you have
-made?
+19. Based on the decision you reached in #15, what type of error could you have made?
 
-\vspace{0.25in}
+<!-- \key{We could have made a Type II erorr since we Failed to Reject the null hypothesis; if the null is actually false, we would have made an error.} -->
 
-20. With an $\alpha = 0.05$, what percent of the time would we expect to make a
-Type I error?
+\vspace{0.1in}
+
+20. With an $\alpha = 0.05$, what percent of the time would we expect to make a Type I error?
+
+<!-- \key{We expect to make a Type I error 5\% of the time since we set our $\alpha = 0.05$.} -->
 
 \vspace{0.25in}
 
 21. How does $\alpha$ relate to the probability of making a Type II error?
 
-\vspace{0.5in}
+<!-- \key{As $\alpha$ decreases, the probability of making a Type II error increases.} -->
+
+\vspace{1in}
 
 ## Inference after ANOVA
 
-If we had found a "significant" p-value, we could have concluded that at least one
-of the genres had a different mean movie rating. However, an ANOVA **does not**
-tell us which group(s) is(are) driving the differences. 
+If we had found a "significant" p-value, we could have concluded that at least one of the genres had a different mean movie rating. However, an ANOVA **does not** tell us which group(s) is(are) driving the differences.
 
-What we could do is compare all possible combinations of two means. With five 
-groups, that would result in 10 different hypothesis tests for a difference in
-means (e.g., $\mu_{\text{Comedy}} - \mu_{\text{Documentary}}$, 
-$\mu_{\text{Comedy}} - \mu_{\text{Drama}}$, 
-$\mu_{\text{Horror}} - \mu_{\text{Thriller}}$, etc.). 
+What we could do is compare all possible combinations of two means. With five groups, that would result in 10 different hypothesis tests for a difference in means (e.g., $\mu_{\text{Comedy}} - \mu_{\text{Documentary}}$, $\mu_{\text{Comedy}} - \mu_{\text{Drama}}$, $\mu_{\text{Horror}} - \mu_{\text{Thriller}}$, etc.).
 
-However, for each hypothesis test we do at an $\alpha$ of 0.05, we risk making a
-Type I error 5% of the time. In fact, we can make a mathematical equation for 
-the probability of making a Type I Error, based on the number of tests we 
-perform. 
+However, for each hypothesis test we do at an $\alpha$ of 0.05, we risk making a Type I error 5% of the time. In fact, we can make a mathematical equation for the probability of making a Type I Error, based on the number of tests we perform.
 
 \vspace{0.25cm}
 
 $$
 \text{Probability of Making a Type I Error} = 1 - \text{Probability of Not Making a Type I Error}
-$$
-\vspace{-0.2cm}
+$$ 
+
+\vspace{-0.2cm} 
+
 $$
 \text{Probability of Making a Type I Error} = 1 - (0.95)^{\text{\# of tests}}
-$$
+$$ 
+
 \vspace{0.2cm}
 
-22. If we do 10 hypothesis tests, what is the probability of us making a Type 
-I Error?
+22. If we do 10 hypothesis tests (think of 10 pairwise comparisons between Genres), what is the probability of us making a Type I Error?
 
-\vspace{0.5in}
+<!-- \key{With 10 hypothesis tests, there is a 40.1\% chance of us making a Type I Error since $1-(0.95)^{10}=0.401$} -->
+
+\newpage
 
 ## Remedy to Type I Error Inflation
 
@@ -366,27 +386,30 @@ I Error?
 #| out-width: 10%
 #| fig-align: left
 
-knitr::include_graphics("images/Bonferroni.jpg")
+knitr::include_graphics(here::here("two_days", 
+                                   "Week 7 - ANOVA & One Cat EDA", 
+                                   "activity", 
+                                   "anova", 
+                                   "images", 
+                                   "Bonferroni.jpg")
+                        )
 ```
 
-One solution to the problem of multiple comparisons is called the Bonferroni correction. Essentially, you take your $\alpha$ threshold and divide it by the number of tests you are going to perform. This is referred to as $\alpha^*$. 
+One solution to the problem of multiple comparisons is called the Bonferroni correction. Essentially, you take your $\alpha$ threshold and divide it by the number of tests you are going to perform. This is referred to as $\alpha^*$.
 
-You then use this $\alpha^*$ value as the new threshold value for **every** 
-pairwise comparison. If a comparison's p-value is less than $\alpha^*$, then 
-you reject $H_0$. If a comparison's p-value is greater than $\alpha^*$, then 
-you fail to reject $H_0$
+You then use this $\alpha^*$ value as the new threshold value for **every** pairwise comparison. If a comparison's p-value is less than $\alpha^*$, then you reject $H_0$. If a comparison's p-value is greater than $\alpha^*$, then you fail to reject $H_0$
 
 23. If our original $\alpha$ was 0.05, what value should we use for $\alpha^*$?
+
+<!-- \key{$\alpha^*=\frac{\alpha}{10} = 0.005$} -->
 
 \vspace{0.5in}
 
 ## Post-Hoc Comparisons
 
-Below is a table of all 10 of the hypothesis tests we could do when comparing
-the means of two groups. 
+Below is a table of all 10 of the hypothesis tests we could do when comparing the means of two groups.
 
-24. Using the $\alpha^*$ you found in #22, circle the hypothesis tests whose 
-p-values are less than $\alpha^*$. 
+24. Using the $\alpha^*$ you found in #22, circle the hypothesis tests whose p-values are less than $\alpha^*$.
 
 ```{r post-hoc, echo = FALSE}
 #| echo: false
@@ -401,9 +424,8 @@ pairwise.t.test(x = movie_ratings$averageRating,
   pander()
 ```
 
-Your $\alpha^*$ value should be much less than your original $\alpha$ of 0.05, which makes it **harder** to reject the null. 
+Your $\alpha^*$ value should be much less than your original $\alpha$ of 0.05, which makes it **harder** to reject the null.
 
-25. When the number of comparisons gets larger, what happens to the probability of making a Type II error? 
+25. When the number of comparisons gets larger, what happens to the probability of making a Type II error?
 
-
-
+<!-- \key{Your probability of making a Type II error increases because you are rejecting less often. Therefore, you are failing to reject more often (Type II error is failing to reject when the null is false).} -->
