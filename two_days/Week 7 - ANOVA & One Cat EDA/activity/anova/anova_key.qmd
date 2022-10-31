@@ -1,7 +1,7 @@
 ---
 title: 'Activity 7A: Introduction to ANalysis Of VAriance'
 subtitle: 'Introduction to ANalysis Of VAriance'
-author: "Your Name: ___________________________"
+author: "Key by Dr. Theobold"
 format:
   pdf:
     include-in-header:
@@ -30,39 +30,43 @@ library(broom)
 #| layout-ncol: 4
 #| out-width: 50%
 #| echo: false
-#| eval: false
 
-knitr::include_graphics(here::here("two_days", 
-                                   "Week 2 - Viz & Summarize Quantitative Variables", 
-                                   "activity",
-                                   "quantitative EDA",
-                                   "images", 
-                                   "transcendents.jpg")
-)
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "transcendents.jpeg")
+  )
 
-knitr::include_graphics(here::here("two_days", 
-                                   "Week 2 - Viz & Summarize Quantitative Variables", 
-                                   "activity",
-                                   "quantitative EDA",
-                                   "images", 
-                                   "afterward.jpg")
-)
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "freaky.jpg")
+  )
 
-knitr::include_graphics(here::here("two_days", 
-                                   "Week 2 - Viz & Summarize Quantitative Variables", 
-                                   "activity",
-                                   "quantitative EDA",
-                                   "images", 
-                                   "flute.jpg")
-)
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "flute.jpg")
+  )
 
-knitr::include_graphics(here::here("two_days", 
-                                   "Week 2 - Viz & Summarize Quantitative Variables", 
-                                   "activity",
-                                   "quantitative EDA",
-                                   "images", 
-                                   "freaky.jpeg")
-)
+knitr::include_graphics(
+  here("two_days", 
+       "Week 2 - Viz & Summarize Quantitative Variables", 
+       "activity", 
+       "quantitative EDA",
+       "images",
+       "afterward.jpg")
+  )
+
 ```
 
 ## Learning Outcomes
@@ -183,7 +187,7 @@ For a categorical variable that has more than two groups, we can use the **same*
 
 1.  Think back to last week, what were two ways we visualized one numerical variable and one categorical variable?
 
-\vspace{1in}
+\key{We used side-by-side boxplots and faceted histograms!}
 
 ## Side-by-Side Boxplots
 
@@ -214,20 +218,20 @@ Answer the following questions about the box-plots above.
 
 2.  Which genre has the highest center?
 
-<!-- \key{Horror genre movies have the highest median IMDb rating}. -->
+\key{Horror genre movies have the highest median IMDb rating}.
 
 \vspace{0.2in}
 
 3.  Which genre has the largest spread?
 
-<!-- \key{The spread appears similar across all movie genres, but Thriller/Suspense and Horror appear to have the largerst spread.}. -->
+\key{The spread appears similar across all movie genres, but Thriller/Suspense and Horror appear to have the largerst spread.}.
 
 
 \vspace{0.2in}
 
 3.  Which genre has the most skewed distribution?
 
-<!-- \key{Drama and Comedy movies appear to both be skewed left (longer whisker to the left).} -->
+\key{Drama and Comedy movies appear to both be skewed left (longer whisker to the left).}
 
 \newpage
 
@@ -259,39 +263,39 @@ Use the output from the `favstats()` function to answer the following questions:
 
 4.  Report the mean rating for each genre. Use appropriate notation.
 
-<!-- \key{$\bar x_\text{Comedy}=6.413$, $\bar x_\text{Documentary}=6.834$, $\bar x_\text{Drama}=6.729$, $\bar x_\text{Horror} =6.826$, $\bar x_\text{Thriller/Suspense}=6.317$} -->
+\key{$\bar x_\text{Comedy} = 6.413$, $\bar x_\text{Documentary} = 6.834$, $\bar x_\text{Drama} = 6.729$, $\bar x_\text{Horror} = 6.826$, $\bar x_\text{Thriller/Suspense} = 6.317$}
 
 \vspace{1in}
 
 5.  Which genres have the largest difference in their mean rating?
 
-<!-- \key{Documentaries have the highest mean rating at 6.835 while Thriller/Suspense movies have the lowest mean ratings at 6.317 for a difference in mean ratings of 0.518.} -->
+\key{Documentaries have the highest mean rating at 6.835 while Thriller/Suspense movies have the lowest mean ratings at 6.317 for a difference in mean ratings of 0.518.}
 
 \vspace{0.25in}
 
 6.  Which genre has the largest standard deviation in ratings?
 
-<!-- \key{Thriller/Suspense movies have the largest standard deviation in ratings ($s_\text{Thriller/Suspense}=1.536$).} -->
+\key{Thriller/Suspense movies have the largest standard deviation in ratings ($s_\text{Thriller/Suspense} = 1.536$).}
 
 \vspace{0.25in}
 
 7.  Which genre has the smallest standard deviation in ratings?
 
-<!-- \key{Drama movies have the smallest standard deviation in ratings ($s_\text{Drama}=1.149$).} -->
+\key{Drama movies have the smallest standard deviation in ratings ($s_\text{Drama} = 1.149$).}
 
 \vspace{0.25in}
 
 8.  How many times larger is your answer in #6 than your answer in #7?
 
-<!-- \key{$\frac{s_\text{Thriller/Suspense}}{s_\text{Drama}}=\frac{1.536}{1.149}=1.337$ times larger.} -->
+\key{$\frac{s_\text{Thriller/Suspense}}{s_\text{Drama}}=\frac{1.536}{1.149}=1.337$ times larger.}
 
 \vspace{0.25in}
 
 9.  Which genre has the largest sample size? What is the formula for the standard deviation of a mean (aka standard error)? What effect does sample size have on the standard error?
 
-<!-- \key{Drama movies has the largest sample size ($n_\text{Drama} = 75$).} -->
+\key{Drama movies has the largest sample size ($n_\text{Drama} = 75$).}
 
-<!-- \key{The standard deviation of the mean is our standard error calculated by $SE = \frac{sd}{\sqrt n}$. Therefore, with a larger sample size, you are dividing by a larger number and your standard error is decreasing / smaller.} -->
+\key{The standard deviation of the mean is our standard error calculated by $SE = \frac{sd}{\sqrt n}$. Therefore, with a larger sample size, you are dividing by a larger number and your standard error is decreasing / smaller.}
 
 \vspace{0.25in}
 
@@ -367,13 +371,13 @@ movie_ratings |>
 
 10. What does the orange line across the entire plot represent?
 
-<!-- \key{The orange line is the overall mean IMDB rating across all genres.} -->
+\key{The orange line is the overall mean IMDB rating across all genres.}
 
 \vspace{0.5in}
 
 11. What do the purple lines across each group's boxplot represent? *Hint:* The purple dashed line is different from the black solid line!
 
-<!-- \key{The purple line is the mean IMDB rating for each group individually (note: the black solid line is the median IMDB rating).} -->
+\key{The purple line is the mean IMDB rating for each group individually (note: the black solid line is the median IMDB rating).}
 
 ## Components of an F-statistic
 
@@ -382,19 +386,20 @@ The two components of an F-statistic are called the *sum of squares between grou
 The **SSG** compares each group's mean to the overall mean. As its name indicates, these differences are then **squared** and added together.
 
 ```{r}
-#| eval: false
 #| fig-align: "center"
-knitr::include_graphics("here::here("two_days", 
-                                   "Week 2 - Viz & Summarize Quantitative Variables", 
+knitr::include_graphics(here::here("two_days", 
+                                   "Week 7 - ANOVA & One Cat EDA", 
                                    "activity",
-                                   "quantitative EDA",
+                                   "anova",
                                    "images", 
-                                   "movies_2020.xlsx")images/vertical-lines-key.png")
+                                   "vertical-lines-key.png")
+                                   )
+
 ```
 
 12. Draw vertical lines on the plot above, indicating which values are being compared when calculating the SSG.
 
-<!-- \key{See vertical purple lines on sketch above from the mean of each group to the overall mean.} -->
+\key{See vertical purple lines on sketch above from the mean of each group to the overall mean.}
 
 \vspace{0.1in}
 
@@ -402,7 +407,7 @@ The **SSE** is similar to a "residual," it measures how far an observation is fr
 
 13. Draw vertical lines on the plot above, indicating which values are being compared with calculating the SSE.
 
-<!-- \key{See vertical orange lines on sketch above from each individual point/observation to the group mean for that observation's group.} -->
+\key{See vertical orange lines on sketch above from each individual point/observation to the group mean for that observation's group.}
 
 \vspace{0.1in}
 
@@ -412,7 +417,7 @@ For the SSG, we have $k$ groups and we need to calculate the overall mean. So, o
 
 14. How many degrees of freedom does the `Genre` variable have?
 
-<!-- \key{$\text{df}_\text{Genre}=k-1 =5 \text{ Genres} - 1 = 4$.} -->
+\key{$\text{df}_\text{Genre}=k-1 =5 \text{ Genres} - 1 = 4$.}
 
 \vspace{0.25in}
 
@@ -420,7 +425,7 @@ For the SSE, we have $n$ observations and we need to calculate $k$ group means. 
 
 15. How many degrees of freedom does the SSE for our content rating analysis have?
 
-<!-- \key{$\text{df}_\text{Error}=n-k =172 \text{ total movies} - 5 \text{ Genres} = 167$.} -->
+\key{$\text{df}_\text{Error}=n-k =172 \text{ total movies} - 5 \text{ Genres} = 167$.}
 
 \vspace{0.25in}
 
@@ -430,7 +435,7 @@ $$\frac{\frac{SSG}{k-1}}{\frac{SSE}{n-k}} = \frac{MSG}{MSE}$$
 
 16. Can an F-statistic be negative?
 
-<!-- \key{No, an F-statistic cannot be negative because we square the distances between the group means and overall means as well as square the distances between the individual observations and the group means and squared values are always positive.} -->
+\key{No, an F-statistic cannot be negative because we square the distances between the group means and overall means as well as square the distances between the individual observations and the group means and squared values are always positive.}
 
 \vspace{0.5in}
 
@@ -460,38 +465,38 @@ aov(averageRating ~ Genre, data = movie_ratings) |>
 
 17. What is the sum of squares for `Genre`?
 
-<!-- \key{The sum of squares for Genre is 6.446 (SSG).} -->
+\key{The sum of squares for Genre is 6.446 (SSG).}
 
 \vspace{0.25in}
 
 18. What is the sum of squares for the errors?
 
-<!-- \key{The sum of squares for error is 277.679 (SSE).} -->
+\key{The sum of squares for error is 277.679 (SSE).}
 
 \vspace{0.25in}
 
 19. How was the mean squares for `Genre` found?
 
-<!-- \key{The mean squares for Genre (MSG) is found by diving the SSG by 4 (the degrees of freedom for Genre).} -->
+\key{The mean squares for Genre (MSG) is found by diving the SSG by 4 (the degrees of freedom for Genre).}
 
 \vspace{0.25in}
 
 20. How was the mean squares for the errors found?
 
-<!-- \key{The mean squares for the errors (MSE) is found by diving the SSE by 167 (the degrees of freedom for the errors).} -->
+\key{The mean squares for the errors (MSE) is found by diving the SSE by 167 (the degrees of freedom for the errors).}
 
 \vspace{0.25in}
 
 
 21. What is the resulting F-statistic?
 
-<!-- \key{F = 0.969} -->
+\key{F = 0.969}
 
 \vspace{0.25in}
 
 22. Why is there an NA in the `statistic` column for the `Residuals`?
 
-<!-- \key{The Residuals column aligns with the errors, we are testing the difference between groups; therefore the Residuals MSE is our denominator for our test to compare Genres.} -->
+\key{The Residuals column aligns with the errors, we are testing the difference between groups; therefore the Residuals MSE is our denominator for our test to compare Genres.}
 
 \vspace{0.1in}
 
@@ -499,17 +504,22 @@ aov(averageRating ~ Genre, data = movie_ratings) |>
 
 23. Based on the p-value associated with the F-statistic you found in #21, do you think this is a small F-statistic or a large F-statistic?
 
-<!-- \key{We have a p-value of 0.426; therefore the F-statistic is a small F-statistic since there is a 42\% chance of seeing an F-statistic of 0.969 or larger on an F-distribution with 4 numerator degrees of freedom and 167 denominator degrees of freedom.} -->
+\key{We have a p-value of 0.426; therefore the F-statistic is a small F-statistic since there is a 42\% chance of seeing an F-statistic of 0.969 or larger on an F-distribution with 4 numerator degrees of freedom and 167 denominator degrees of freedom.}
 
 \vspace{0.25in}
 
 24. Do you believe this statistic is likely to occur if the null hypothesis is true?
 
-<!-- \key{Yes, since our p-value of 0.426 > 0.05, we would fail to reject the null and say there is a 42.6\% chance of seeing an F-statistic of 0.969 or larger if the null hypothesis is true.} -->
+\key{Yes, since our p-value of 0.426 > 0.05, we would fail to reject the null and say there is a 42.6\% chance of seeing an F-statistic of 0.969 or larger if the null hypothesis is true.}
 
 \vspace{0.1in}
 
 ```{r}
-#| eval: false
-knitr::include_graphics("images/F-distribution.PNG")
+knitr::include_graphics(here::here("two_days", 
+                                   "Week 7 - ANOVA & One Cat EDA", 
+                                   "activity",
+                                   "anova",
+                                   "images", 
+                                   "F-distribution.PNG")
+                        )
 ```

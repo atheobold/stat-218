@@ -2,8 +2,10 @@
 title: "Activity 7B: IMDB Movies III"
 subtitle: "Hypothesis Testing, Decision Errors, & Multiple Comparisons"
 author: "Your Name: ________________________"
-format: docx
-#format: pdf
+format:
+  pdf:
+    include-in-header:
+      - keycol.tex
 editor: source
 execute: 
   echo: false
@@ -94,7 +96,7 @@ If we believe that the mean of at least one group is different from the others, 
 
 1.  Sketch an example of three box plots that exhibit the characteristics above.
 
-<!-- \key{We want the observations/points within a group to be close together -- low variability wtihin groups -- and the points between groups to be far apart -- high variability between groups.} -->
+\key{We want the observations/points within a group to be close together -- low variability wtihin groups -- and the points between groups to be far apart -- high variability between groups.}
 
 ```{r}
 #| eval: false
@@ -131,21 +133,21 @@ favstats(averageRating ~ Genre,
 
 2.  How many groups do we have in our ANOVA?
 
-<!-- \key{We have 5 groups (movie genres) in our ANOVA: (1) Comedy, (2) Documentary, (3) Drama, (4) Horror, and (5) Thriller/Suspense.} -->
+\key{We have 5 groups (movie genres) in our ANOVA: (1) Comedy, (2) Documentary, (3) Drama, (4) Horror, and (5) Thriller/Suspense.}
 
 \vspace{0.25in}
 
 3.  Rewrite the null an alternative hypotheses above to reflect the number of groups in our analysis. *It would be nice to know what groups the means correspond with!*
 
-<!-- \key{ -->
-<!-- $$ -->
-<!-- H_0: \mu_\text{Comedy} = \mu_\text{Documentary} = \mu_\text{Drama} = \mu_\text{Horror} = \mu_\text{Thriller/Suspense} -->
-<!-- $$ -->
+\key{
+$$
+H_0: \mu_\text{Comedy} = \mu_\text{Documentary} = \mu_\text{Drama} = \mu_\text{Horror} = \mu_\text{Thriller/Suspense}
+$$
 
-<!-- $$ -->
-<!-- H_A: \text{At least one of the means } (\mu_i) \text{ is different} -->
-<!-- $$ -->
-<!-- } -->
+$$
+H_A: \text{At least one of the means } (\mu_i) \text{ is different}
+$$
+}
 
 \newpage
 
@@ -173,7 +175,7 @@ ggplot(data = movie_ratings,
 
 4.  How different are the centers of these groups from each other?
 
-<!-- \key{Horror movies have a slightly higher median IMDb moving rating than the others while Thriller/Suspense movies have a slightly lower median IMDb movie rating.} -->
+\key{Horror movies have a slightly higher median IMDb moving rating than the others while Thriller/Suspense movies have a slightly lower median IMDb movie rating.}
 
 \vspace{1in}
 
@@ -195,14 +197,14 @@ ggplot(data = movie_ratings,
 
 5.  How different are the spreads of these groups from each other?
 
-<!-- \key{The spreads of the groups are similar (all span from ratings about 4ish to 8ish.)} -->
+\key{The spreads of the groups are similar (all span from ratings about 4ish to 8ish.)}
 
 \vspace{0.5in}
 
 
 6.  Overall, do you believe any of the genres stand out as **really** different from the others?
 
-<!-- \key{No, all of the Genre's appear to have similar movie ratings.} -->
+\key{No, all of the Genre's appear to have similar movie ratings.}
 
 \vspace{0.5in}
 
@@ -217,13 +219,13 @@ In an ANOVA there are two conditions that we need to evaluate regardless of whic
 
 7.  Evaluate if you believe the independence condition is or is not violated. Keep in mind that there are **two** components to this condition you need to discuss!
 
-<!-- \key{The independence condition is not violated because the IMDb rating for a movie does not affect the IMDb rating for another movie within that Genre as well as in a different Genre.} -->
+\key{The independence condition is not violated because the IMDb rating for a movie does not affect the IMDb rating for another movie within that Genre as well as in a different Genre.}
 
 \vspace{0.5in}
 
 8.  Evaluate if you believe the equal variance condition is or is not violated. Make specific reference to the visualizations and the summary statistics presented previously!
 
-<!-- \key{The equal variance condition is met. The standard devitation of IMDb movie ratings for each Genre is about 1.2 - 1.5; therefore, there appear to be equal variances between groups.} -->
+\key{The equal variance condition is met. The standard devitation of IMDb movie ratings for each Genre is about 1.2 - 1.5; therefore, there appear to be equal variances between groups.}
 
 \vspace{0.5in}
 
@@ -239,13 +241,13 @@ As we have seen before, with a theory-based method we have one additional condit
 
 9.  Why should we use faceted histograms to assess this condition rather than side-by-side boxplots?
 
-<!-- \key{The histograms show us where peaks occur and if symmetry is achieved -- we can see the shape of the distribution better.} -->
+\key{The histograms show us where peaks occur and if symmetry is achieved -- we can see the shape of the distribution better.}
 
 \vspace{0.5in}
 
 10. Evaluate if you believe the normality condition is or is not violated. Make specific reference to the visualization you stated in #8!
 
-<!-- \key{The histograms for each Genre appear to have one peak and are approximately symmetric.} -->
+\key{The histograms for each Genre appear to have one peak and are approximately symmetric.}
 
 \vspace{0.5in}
 
@@ -278,37 +280,37 @@ pander(model)
 
 12. What is the mean squares of `Genre`?
 
-<!-- \key{MSGenre = 1.611} -->
+\key{MSGenre = 1.611}
 
 \vspace{0.25in}
 
 13. What is the mean squares of the errors?
 
-<!-- \key{MSE = 1.663} -->
+\key{MSE = 1.663}
 
 \vspace{0.25in}
 
 14. How was the `statistic` of `r round(model$statistic[1], digits = 3)` found? What is the name of that statistic?
 
-<!-- \key{F-statistic = $\frac{MSGenre}{MSE}=0.9691$} -->
+\key{F-statistic = $\frac{MSGenre}{MSE}=0.9691$}
 
 \vspace{0.25in}
 
 15. What is the p-value associated with that statistic?
 
-<!-- \key{p-value = 0.426} -->
+\key{p-value = 0.426}
 
 \vspace{0.25in}
 
 16. Based on the p-value, at an $\alpha = 0.05$ significance level, what decision would you reach regarding your hypotheses?
 
-<!-- \key{We would fail to reject the null hypothesis that all mean IMDb movie ratings are equal across the 5 Genres since our p-value 0.426 > 0.05.} -->
+\key{We would fail to reject the null hypothesis that all mean IMDb movie ratings are equal across the 5 Genres since our p-value 0.426 > 0.05.}
 
 \vspace{0.25in}
 
 17. Based on your decision in #15, what would you conclude regarding the mean movie rating across these genres?
 
-<!-- \key{We do not have evidence to conclude that at least one mean IMDb movie rating differs.} -->
+\key{We do not have evidence to conclude that at least one mean IMDb movie rating differs.}
 
 \vspace{1in}
 
@@ -322,7 +324,7 @@ favstats(averageRating ~ Genre,
 
 18. How does this connect with the p-value you obtained in #14?
 
-<!-- \key{The intuitive answer that the mean's don't appear to differ aligns with our p-value in \#14 because we failed to reject the null that all mean IMDb movie ratings are equal.} -->
+\key{The intuitive answer that the mean's don't appear to differ aligns with our p-value in \#14 because we failed to reject the null that all mean IMDb movie ratings are equal.}
 
 \vspace{1in}
 
@@ -337,19 +339,19 @@ In a hypothesis test, there are two competing hypotheses: the null and the alter
 
 19. Based on the decision you reached in #15, what type of error could you have made?
 
-<!-- \key{We could have made a Type II erorr since we Failed to Reject the null hypothesis; if the null is actually false, we would have made an error.} -->
+\key{We could have made a Type II erorr since we Failed to Reject the null hypothesis; if the null is actually false, we would have made an error.}
 
 \vspace{0.1in}
 
 20. With an $\alpha = 0.05$, what percent of the time would we expect to make a Type I error?
 
-<!-- \key{We expect to make a Type I error 5\% of the time since we set our $\alpha = 0.05$.} -->
+\key{We expect to make a Type I error 5\% of the time since we set our $\alpha = 0.05$.}
 
 \vspace{0.25in}
 
 21. How does $\alpha$ relate to the probability of making a Type II error?
 
-<!-- \key{As $\alpha$ decreases, the probability of making a Type II error increases.} -->
+\key{As $\alpha$ decreases, the probability of making a Type II error increases.}
 
 \vspace{1in}
 
@@ -377,7 +379,7 @@ $$
 
 22. If we do 10 hypothesis tests (think of 10 pairwise comparisons between Genres), what is the probability of us making a Type I Error?
 
-<!-- \key{With 10 hypothesis tests, there is a 40.1\% chance of us making a Type I Error since $1-(0.95)^{10}=0.401$} -->
+\key{With 10 hypothesis tests, there is a 40.1\% chance of us making a Type I Error since $1-(0.95)^{10}=0.401$}
 
 \newpage
 
@@ -402,7 +404,7 @@ You then use this $\alpha^*$ value as the new threshold value for **every** pair
 
 23. If our original $\alpha$ was 0.05, what value should we use for $\alpha^*$?
 
-<!-- \key{$\alpha^*=\frac{\alpha}{10} = 0.005$} -->
+\key{$\alpha^*=\frac{\alpha}{10} = 0.005$}
 
 \vspace{0.5in}
 
@@ -429,4 +431,4 @@ Your $\alpha^*$ value should be much less than your original $\alpha$ of 0.05, w
 
 25. When the number of comparisons gets larger, what happens to the probability of making a Type II error?
 
-<!-- \key{Your probability of making a Type II error increases because you are rejecting less often. Therefore, you are failing to reject more often (Type II error is failing to reject when the null is false).} -->
+\key{Your probability of making a Type II error increases because you are rejecting less often. Therefore, you are failing to reject more often (Type II error is failing to reject when the null is false).}
