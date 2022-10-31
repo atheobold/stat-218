@@ -42,21 +42,25 @@ cholesterol_data <- tibble::tribble(
                                    "12", "3.89", "3.73",
                                    "13", "2.25", "1.84",
                                    "14", "4.24", "4.14"
-          )
-
-factorCols <- c("ID")
-cholesterol_data[,factorCols] <- lapply(cholesterol_data[,factorCols], as.factor)
-numericCols <- c("CORNFLK", "OATBRAN")
-cholesterol_data[,numericCols] <- lapply(cholesterol_data[,numericCols], as.numeric)
-
-cholesterol_data <- cholesterol_data |> 
-  mutate(cholesterolDiff = CORNFLK - OATBRAN)
+          ) |> 
+  mutate(ID = as.factor(ID), 
+         across(CORNFLK:OATBRAN, as.numeric), 
+         cholesterolDiff = CORNFLK - OATBRAN
+         )
 
 cholesterol_data_long <- cholesterol_data |> 
-  pivot_longer(cols = c(CORNFLK, OATBRAN),
+  pivot_longer(cols = CORNFLK:OATBRAN,
                names_to = "Diet",
                values_to = "Cholesterol")  |> 
        select(Diet, Cholesterol)
+
+
+diff_in_means_test <- infer::t_test(cholesterol_data_long,
+                                    formula = Cholesterol ~ Diet,
+                                    alternative = "two-sided",
+                                    mu = 0,
+                                    order = c("CORNFLK", "OATBRAN"),
+                                    conf_int = TRUE) 
 ```
 
 ### Learning outcomes
@@ -75,7 +79,7 @@ cholesterol_data_long <- cholesterol_data |>
 
 Researchers investigated whether eating corn flakes compared to oat bran had an effect on serum cholesterol levels. Twenty-eight (28) individuals were randomly assigned a diet that included either corn flakes (14 individuals) or oat bran (14 individuals). After two weeks, cholesterol levels (mmol/L) of the participant were recorded.
 
-Last week we used cards to simulate what differences in mean cholesterol levels we might have seen if the null hypothesis was true. However, today we're not interested in deciding if we believe the means of these two groups are similar or different.
+Last week we used cards to simulate what differences in mean cholesterol levels we might have seen if the null hypothesis was true. However, today we're not interested in deciding if we believe the means of these two groups are similar or different. 
 
 Today, we are interested in estimating what range of values the **true** difference in means might take on. 
 
@@ -83,24 +87,19 @@ Today, we are interested in estimating what range of values the **true** differe
 
 ```{r echo = F}
 head(cholesterol_data_long) %>%
-  knitr::kable()
+  pander::pander()
 ```
 
 **Reminder - Output from `t_test()`**
 
 ```{r, echo = F}
-infer::t_test(cholesterol_data_long,
-formula = Cholesterol ~ Diet,
-alternative = "two-sided",
-mu = 0,
-order = c("CORNFLK", "OATBRAN"),
-conf_int = FALSE) %>%
-  knitr::kable(digits = 3)
+diff_in_means_test %>%
+  pander::pander()
 ```
 
 1. Based on the p-value you obtained from *Activity 5: Cholesterol I*, do you believe 0 is a plausible value for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$? 
 
-\key{Yes, with our p-value of 0.352, we failed to reject the null hypothesis with an $\alpha$ cutoff of 0.05 (aka 0.352 > 0.05 $\implies$ fail to reject) and thus **did not** have evidence to conclude the difference in population mean cholesterol levels between corn flakes and oat bran is different from 0. Therefore, 0 is a plausible value for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$.}
+\key{Yes, with our p-value of `r round(diff_in_means_test$p_value, digits = 3)`, we failed to reject the null hypothesis with an $\alpha$ cutoff of 0.05 (aka `r round(diff_in_means_test$p_value, digits = 3)` > 0.05 $\implies$ fail to reject) and thus **did not** have evidence to conclude the difference in population mean cholesterol levels between corn flakes and oat bran is different from 0. Therefore, 0 is a plausible value for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$.}
 
 \vspace{0.1in}
 
@@ -143,13 +142,13 @@ Because we **are not** assuming the null is true (that there is no difference in
 
 3. What statistic do we have after step 4?
 
-\key{We need the observed difference in mean cholesterol levels between corn flakes and oat bran for our new resample $(\bar x_{\text{CORNFLK}}-\bar x_{\text{OATBRAN}})_{\text{bootstrap sim}}$.}
+\key{We need the observed difference in mean cholesterol levels between corn flakes and oat bran for our new resample $(\bar x_{\text{CORNFLK}}-\bar x_{\text{OATBRAN}})$.}
 
 \vspace{0.1in}
 
 4.  Once we create a bootstrap distribution of 1000 simulations, at what value do you expect the distribution to be centered? Explain your reasoning.
 
-\key{We expect the bootstrap sampling distribution to be centered at our original observed sample statistic $(\bar x_{\text{CORNFLK}}-\bar x_{\text{OATBRAN}})$ of 0.363, because this is our point estimate / best guess for our population parameter.}
+\key{We expect the bootstrap sampling distribution to be centered at our original observed sample statistic $(\bar x_{\text{CORNFLK}}-\bar x_{\text{OATBRAN}})$ of `r round(diff_in_means_test$estimate, digits = 3)`, because this is our point estimate / best guess for our population parameter.}
 
 \vspace{0.1in}
 
@@ -159,7 +158,9 @@ We will use the **infer** package (again) to make our bootstrap distribution. Th
 
 5. Fill in the blanks for the code below. 
 
-```{r fill-in-infer, eval = TRUE, echo = TRUE}
+```{r fill-in-infer}
+#| eval: false
+
 cholesterol_data_long %>% 
   
   specify(response = Cholesterol, explanatory = Diet) %>% 
@@ -167,16 +168,15 @@ cholesterol_data_long %>%
   generate(reps = 1000, type = "bootstrap") %>% 
   
   calculate(stat = "diff in means", 
-            order = c("CORNFLK", "OATBRAN")) %>%
-  head() %>%
-  knitr::kable(digits = 3)
+            order = c("CORNFLK", "OATBRAN")
+            )
 ```
 
 \vspace{0.1in}
 
 6. What is the difference between this code and the code to generate a null distribution (what we did in *Activity 5: Cholesterol I*)?
 
-\key{When creating our null distribution in Activity 5, we set our type = "permute" instead of "bootstrap".}
+\key{When creating our null distribution in Activity 5, we set our `type = "permute"` instead of `type = "bootstrap"`.}
 
 \vspace{0.1in}
 
@@ -202,13 +202,13 @@ bootstrap_dist %>%
 
 7. Where is this distribution centered? Why does this make sense? How does it compare to our Null Distribution from the previous activity?
 
-\key{The distribution is centered at about 0.363; this makes sense because it is our observed summary statistic from our original sample. Our null distribution was centered at 0 because were were simulating the sampling distribution **if** the null was true.}
+\key{The distribution is centered at about `r round(diff_in_means_test$estimate, digits = 3)`; this makes sense because it is our observed summary statistic from our original sample. Our null distribution was centered at 0 because were were simulating the sampling distribution **if** the null was true.}
 
 \vspace{0.1in}
 
 8. What are the two ways we could use this distribution to obtain a confidence interval?
 
-\key{We can use this distribution to (1) find the values associated with quantiles that correspond to our confidence level; aka percentile method or (2) use the bootstrap sampling distribution to estimate our standard error for the difference in means; aka the standard deviation (sd) of our bootstrap sampling distribution is our standard error for the difference in means.}
+\key{We can use this distribution to (1) find the values associated with quantiles that correspond to our confidence level; aka "percentile method" or (2) use the bootstrap sampling distribution to estimate our standard error for the difference in means; aka the "standard error method".}
 
 \vspace{0.1in}
 
@@ -217,7 +217,7 @@ bootstrap_dist %>%
 I've provided a table of different percentiles to help you create your confidence interval. 
 
 ```{r percentile-CI, echo = FALSE}
-bootstrap_dist %>% 
+bootstrap_table <- bootstrap_dist %>% 
   summarize("0.5%" = quantile(stat, 0.005), 
             "1%" = quantile(stat, 0.01),
             "2.5%" = quantile(stat, 0.025),
@@ -231,20 +231,22 @@ bootstrap_dist %>%
             ) %>% 
   pivot_longer(cols = everything(), 
                names_to = "Quantile", 
-               values_to = "Value") %>% 
+               values_to = "Value")
+
+bootstrap_table %>% 
   knitr::kable(digits = 3)
 ```
 
 
 9. Suppose we are interested in constructing a 95% confidence interval. Using the table above, report the end points of this confidence interval.
 
-\key{To construct a 95\% confidence interval, we select our 2.5th and 97.5th quantile values so there is 2.5\% in both tails and 95\% in the middle of our distribution: (-0.400, 	1.083).}
+\key{To construct a 95\% confidence interval, we select our 2.5th and 97.5th quantile values so there is 2.5\% in both tails and 95\% in the middle of our distribution: (`r filter(bootstrap_table, Quantile == "2.5%")$Value |> round(digits = 3)`, `r filter(bootstrap_table, Quantile == "97.5%")$Value |> round(digits = 3)`).}
 
 \vspace{0.1in}
 
 10. Interpret the confidence interval in the context of this investigation.
 
-\key{We are 95\% confident the true difference in mean cholesterol level between corn flakes and oat bran is between -0.4 mmol/L and 1.083 mmol/L.}
+\key{We are 95\% confident the true difference in mean cholesterol level between corn flakes and oat bran is between `r filter(bootstrap_table, Quantile == "2.5%")$Value |> round(digits = 3)` mmol/L and `r filter(bootstrap_table, Quantile == "97.5%")$Value |> round(digits = 3)` mmol/L ($\mu_{cornflakes} - \mu_{oatbran}$).}
 
 \vspace{0.1in}
 
@@ -273,7 +275,7 @@ There are three pieces to the interval:
 
 12. What is the observed statistic (aka point estimate) for this investigation?
 
-\key{$\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}=0.363$}
+\key{$\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}} = $ `r diff_in_means_test$estimate`}
 
 \vspace{0.1in}
 
@@ -283,7 +285,7 @@ There are three pieces to the interval:
 favstats(~stat, data = bootstrap_dist)
 ```
 
-\key{$SE_{\text{boot}}=0.396$}
+\key{$SE_{\text{boot}} = $ `r round(sd(bootstrap_dist$stat), digits = 3)`}
 
 \vspace{0.1in}
 
@@ -306,19 +308,19 @@ favstats(~stat, data = bootstrap_dist)
 
 \vspace{0.1in}
 
-\key{We are looking for a 95\% confidence interval; thus we need the 97.5th quantile from the t-distribution with 13 degrees of freedom (smallest of $n_{CORNFLK}-1 and n_{OATBRAN}-1)$: $t^*_{13}=2.16$}
+\key{We are looking for a 95\% confidence interval; thus we need the 97.5th quantile from the t-distribution with 13 degrees of freedom (smallest of $n_{CORNFLK} - 1$ and $n_{OATBRAN} - 1$: $t^*_{13} = $ `r round(qt(0.975, df = 13), digits = 3)`.}
 
 \vspace{0.1in}
 
 15. Using your answers to questions 12, 13, and 14, create a 95% confidence interval for the difference in mean cholesterol levels between the corn flake and oat bran diet.
 
-\key{$(\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}) \pm t^*_{df} \times SE_{boot}=0.363 \pm 2.16\times 0.396 = (-0.492, 1.218)$}
+\key{$(\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}) \pm t^*_{df} \times SE_{boot} = $ `r round(diff_in_means_test$estimate, digits = 3)`  $\pm$ `r round(qt(0.975, df = 13), digits = 3)` $\times$ `r round(sd(bootstrap_dist$stat), digits = 3)` = (-0.492, 1.218)}
 
 \vspace{0.1in}
 
 16. What value do check to see if this interval contains? Does our interval contain this value?
 
-\key{We look to see if our null value of 0 (aka no difference in means) falls within our confidence interval. Our interval contains 0, therefore we fail to reject the null hypothesis.}
+\key{We look to see if our null value of 0 (aka no difference in means) falls within our confidence interval. Our interval contains 0, therefore we fail to reject the null hypothesis of $\mu_{cornflakes} - \mu_{oatbran} = 0$.}
 
 \vspace{0.1in}
 
@@ -328,7 +330,7 @@ So far we've found a confidence interval using the percentile and SE methods. Bo
 
 17. What distribution does a bootstrap distribution approximate?
 
-\key{The bootstrap distribution approximates the sampling distribution from our population.}
+\key{The bootstrap distribution approximates the tue sampling distribution from our population. That is, it approximates the distribution of statistics that could have happened if we would have collected many many samples from the population.}
 
 \vspace{0.1in}
 
@@ -343,7 +345,7 @@ When we use theory-based methods to obtain our confidence interval, we use formu
 The formula for calculating the standard error of $\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}$ is:
 
 $$
-SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}}
+SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{CORNFLK}}}{} + \frac{s_{\text{OATBRAN}}^2}{n_{\text{OATBRAN}}}}
 $$
 \vspace{0.1in}
 
@@ -351,13 +353,11 @@ $$
 favstats(Cholesterol ~ Diet, data = cholesterol_data_long)
 ```
 
-$SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}}= \sqrt{\frac{0.969^2}{14}+\frac{1.057^2}{14}}=\sqrt{0.067+0.0798}=0.383$
-
 \vspace{0.1in}
 
 19. Using the formula and the summary statistics above, calculate the estimated standard error of the sampling distribution. *Hint:* $s$ is the standard deviation! 
 
-\key{$SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}}= \sqrt{\frac{0.969^2}{14}+\frac{1.057^2}{14}}=\sqrt{0.067+0.0798}=0.383$}
+\key{$SE = \sqrt{\frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}{} + \frac{s_{\text{CORNFLK}}^2}{n_{\text{OATBRAN}}}}= \sqrt{\frac{0.969^2}{14}+\frac{1.057^2}{14}}=\sqrt{0.067+0.0798} = 0.383$}
 
 \vspace{0.1in}
 
@@ -368,7 +368,11 @@ $$\overline{x}_{\text{CORNFLK}} - \overline{x}_{\text{OATBRAN}}\pm t^*_{df} \tim
 
 20. Using the multiplier you found in #14, calculate a 95% confidence interval for $\mu_{\text{CORNFLK}} - \mu_{\text{OATBRAN}}$.
 
-\key{$(\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}) \pm t^*_{df} \times SE_{boot}=0.363 \pm 2.16\times 0.383 = (-0.464, 1.190)$}
+\key{$(\bar{x}_{\text{CORNFLK}} - \bar{x}_{\text{OATBRAN}}) \pm t^*_{df} \times SE_{boot} = 0.363 \pm 2.16 \times 0.383 = (-0.464, 1.190)$}
+
+21. Alright, you've made **three** confidence intervals. How are they similar or different? 
+
+\key{The percentile interval was (-0.446, 1.097). The SE interval was (-0.492, 1.218). The t-distribution intervale was (-0.464, 1.190). Overall, these confidence intervals are quite similar. The SE interval is the widest and the percentile interval is the narrowest.  }
 
 ---
 
