@@ -13,7 +13,6 @@ execute:
 #| include: false
 ## Load in the packages necessary for our analysis: tidyverse
 library(tidyverse)
-library(patchwork)
 library(janitor)
 ```
 
@@ -28,7 +27,7 @@ In this study, there were two variables studied:
 
 **1. Which variable is the explanatory variable? Which is the response variable?**
 
-Let's load the data in!
+## Load the data
 
 ```{r data}
 myopia <- read_csv(here::here("two_days", 
@@ -49,7 +48,7 @@ If we wanted to know how many children in our data set were in each level of myo
 
 **Step 1:** Set-up the data and the variable(s) of interest
 
-**Step 2:** Define what geometric object should be plotted on the plot
+**Step 2:** Define what geometric object should be plotted on the plot -- now we're using bars!
 
 **Step 3:** Declare nice x- and y-axis labels
 
@@ -64,10 +63,10 @@ ggplot(data = myopia,
        y = "____")
 ```
 
-**3. Which sight group has the largest number of observations?**
+**3. Which sight group has the largest number of observations?\
+**
 
-4.  Using the bar plot, estimate how many children have some level of myopia.
-
+4.  Using the bar plot, estimate how many children have *some* level of myopia.
 
 Using the skills you just acquired, make a bar plot visualizing how many children in our data set slept with a nightlight (`Light`).
 
@@ -76,8 +75,8 @@ Using the skills you just acquired, make a bar plot visualizing how many childre
 
 ```
 
-**5. Which light group has the largest number of observations?**
-
+**5. Which light group has the largest number of observations?\
+**
 
 ### Relative Frequency Bar Plots
 
@@ -85,13 +84,11 @@ We could also choose to display the data as a proportion in a **relative frequen
 
 To get *proportions* instead of *counts* we need to override the default statistic `geom_bar()` wants to use. To do this, we tell it we want proportions on the y-axis. We do this using the following code:
 
-```
-geom_bar(aes(y = ..prop.., group = 1))
-```
+    geom_bar(aes(y = ..prop.., group = 1))
 
-Notice, there are two periods (..) before **and** after prop. These periods are necessary to define a new statistic that should be used for the y-axis.
+Notice, there are two periods (**..**) before **and** after prop. These periods are necessary to define a new statistic that should be used for the y-axis.
 
-6.  Use this new code to modify the code you had previously. Copy-and-paste your code from the myopia bar plot above and change the y-axis to plot proportions instead of counts. Make sure to change your y-axis label to match proportions rather than counts.
+6.  Use this new code to modify the code you had previously. Copy-and-paste your code from the [myopia]{.underline} bar plot above and change the y-axis to plot proportions instead of counts. Make sure to change your y-axis label to match proportions rather than counts!
 
 ```{r light-prop-barplot}
 # Copy-and-paste your code from #4
@@ -100,20 +97,16 @@ Notice, there are two periods (..) before **and** after prop. These periods are 
 
 ```
 
-7.  Try removing the `group = 1` input from `geom_bar()`. What happens? What do your bars look like? Make sure to put the `group = 1` back in to your code!
-
-
+7.  Try removing the `group = 1` input from `geom_bar()`. What happens? What do your bars look like? Once you've answered the question, make sure to put the `group = 1` back in to your code!\
 
 ## Summary statistics for categorical variables
 
 The other part of Exploratory Data Analysis (EDA) is making summary statistics. For a categorical variable, this means making frequency tables and relative frequency tables. Let's explore how to do that.
 
-For this piece you are going to learn more about a tool you've seen previously -- "the pipe." This is a special operator written as `|>`. The pipe is used as a connecting piece to keep your data flowing through a pipeline. We will use the pipe to string together three R functions:
+For this piece you are going to learn more about a tool you've seen previously -- "the pipe." This is a special operator written as `|>`. The pipe is used as a connecting piece to keep your data flowing through a pipeline. We will use the pipe to string together two R functions:
 
 -   `count()`, which counts the number of observations (rows) for each group of a categorical variable
 -   `mutate()`, which modifies our dataset by adding new variables or changing existing variables
-
-If I use `group_by()` in my analysis, it is nearly always paired with `summarize()` -- they are function friends!
 
 Let's start with a short data pipeline.
 
@@ -124,7 +117,7 @@ myopia |>
 
 **8. What does the variable n tell us?**
 
-We can add another piece to the pipeline to make it a bit more interesting. Let's add `Sight` into the `count()` function and see what we get! 
+We can add another piece to the pipeline to make it a bit more interesting. Let's add the `Sight` variable into the `count()` function and see what we get!
 
 ```{r group-by-summarize}
 myopia |>
@@ -132,7 +125,6 @@ myopia |>
 ```
 
 **9. How many observations are in the Myopia and High Myopia groups?**
-
 
 Finally, we might want to add one more piece to the pipeline to create a `proportion` variable of the relative frequencies of each level of `Sight`. *Hint:* Think about what your numerator for your proportion should be based on your resulting code chunk output above.
 
@@ -143,7 +135,6 @@ myopia |>
 ```
 
 **10. What proportion of children have high myopia?**
-
 
 Now, take the code you just filled in and address the following question about the `Light` variable!
 
@@ -197,9 +188,7 @@ ggplot(data = myopia,
 
 12. The code above creates the stacked, filled, and dodged barplot. What part of the code changes the way the bars are displayed between the three types of plots?
 
-
-We can summarize two numerical variables with a contingency table. The `count()` function we used before provided a table of counts for each Sight and Light group, but it wasn't in the format we want for a contingency table. For a contengency table, we want one variable to be on the rows and one variable to be on the columns. The `count()` function puts both variables in the rows, so we need to pivot one of the variables into the columns! This is where a handy tool `pivot_wider()` comes in! 
-
+We can summarize two numerical variables with a contingency table. The `count()` function we used before provided a table of counts for each Sight and Light group, but it wasn't in the format we want for a contingency table. For a contingency table, we want one variable to be on the rows and one variable to be on the columns. The `count()` function puts both variables in the rows, so we need to pivot one of the variables into the columns! This is where a handy tool `pivot_wider()` comes in!
 
 13. Fill in the code below to generate `count()`s of the `Light` and `Sight` variables. Once you've filled in the code, click the play button to get a contingency table of the counts!
 
@@ -212,9 +201,7 @@ myopia |>
 
 **14. How many children slept with a nightlight?**
 
-
 **15. How many children who slept with a nightlight have Myopia?**
-
 
 **16. What proportion of children who slept with a nightlight have Myopia?** *You can use the code chunk below as a calculator.*
 
@@ -222,14 +209,15 @@ myopia |>
 
 ```
 
-If we want to display our contingency tables in proportions based on the row sums, we can use the function `prop.table()` where margin = 2 uses the column sum as the denominator.
+If we want to display our contingency tables in proportions, we can change the code above to use the `adorn_percentages()` function instead of the `adorn_totals()` function. It's as simple as that! We do, however, need to tell `adorn_percentages()` how the percentages should be calculated. To calculate the percentage, we need to specify if the denominator (for the percentage) should come from the `"row"` total or from the `"col"` total.
 
 ```{r}
 myopia |> 
-  count(____, ____) |> 
+  count(Light, Sight) |> 
   pivot_wider(names_from = Sight, values_from = n) |> 
-  adorn_percentages(denominator = "row") 
+  adorn_percentages(denominator = "____") 
 ```
 
-17. Using the filled bar plot and the proportion contingency table above, do you think the proportion of people with Myopia differs between the different levels of light? Explain your answer in detail.
-
+17. Fill in the code, specifying how the percentages should be calculated. *Hint: You can use your calculation in #16 to check if you made the correct choice!\
+    *
+18. Using the filled bar plot and the proportion contingency table above, do you think the proportion of people with Myopia differs between the different levels of light? Explain your answer [in detail]{.underline}.
