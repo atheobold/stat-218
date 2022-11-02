@@ -4,8 +4,6 @@ author: "Stat 218"
 output:
   pdf_document:
     extra_dependencies: ["multicol", "setspace"]
-  html_document:
-    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -28,12 +26,13 @@ library(broom)
 Your exam questions will be randomly selected from this bank of
 questions. There \textbf{will not} be a solution key posted. It is your 
 responsibility to discuss your ideas with your group members and / or with 
-Dr. Theobold during office hours prior to the exam.
+Dr. Robinson during office hours prior to the exam.
 
 \vspace{0.5cm}
 
 ## Golden Ticket
 
+*Note you may need to think critically about how to extend some of this information to specific situations not listed.*
 
 | Scenario | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
 |----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
@@ -48,28 +47,26 @@ Dr. Theobold during office hours prior to the exam.
 
 $$IQR = Q3 - Q1$$
 
-\vspace{0.25cm}
+\vspace{0.1cm}
 
 __1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
 
-\vspace{0.25cm}
+\vspace{0.1cm}
 
-$$\hat{y} = b_0 + b_1 \times x$$
+$$\hat{y} = b_0 + b_1 \times x \hspace{5cm} Residual = y - \hat{y}$$
 
-\vspace{0.2cm}
-
-$$Residual = y - \hat{y}$$ 
-
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
 
-\vspace{0.25cm}
+\vspace{0.1cm}
 
-$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
-\vspace{0.25cm}
+$$SE(\bar x) = \frac{s}{\sqrt{n}} \hspace{5cm} SE(\bar x_1 - \bar x_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
 
-$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1}{n_1} + \frac{\sigma_2}{n_2}}$$
+\vspace{0.1cm}
+
+$$F = \frac{\text{MSG}}{\text{MSE}} \hspace{5cm} \alpha^* = \frac{\alpha}{\text{\# of comparisons}}$$
+
 
 \newpage 
 
@@ -88,26 +85,29 @@ The researchers were interested in investigating if there was a difference
 between how far male and female butterflies travel, on average, between landing
 sites. 
 
+\vspace{0.5cm}
+
 \noindent
-\textbf{(a)}[4 pts] Fill in each blank with one of the options in parentheses to
+\textbf{(a)} [4 pts] Fill in each blank with one of the options in parentheses to
 best describe the variables collected. 
 
-\vspace{0.2cm}
+\vspace{0.25cm}
 
-Step distance is the (explanatory/response) \underline{\hspace{3in}} and it is
-(categorical/quantitative) \underline{\hspace{3in}}. 
+Step distance is the (explanatory/response) \underline{\hspace{3in}} and it is (categorical/quantitative) \underline{\hspace{3in}}. 
 
-\vspace{0.2cm} 
+\vspace{0.25cm} 
 
 Sex is the (explanatory/response) \underline{\hspace{3in}} and it is
 (categorical/quantitative) \underline{\hspace{3in}}.
 
-\vspace{0.25cm}
+\vspace{0.5cm}
 
 \noindent
-\textbf{(b)}[3 pts] Which visualizations would be most appropriate to display
+\textbf{(b)} [3 pts] Which visualizations would be most appropriate to display
 the relationship between step distance and sex of the butterfly? Select all that 
 apply. 
+
+\vspace{0.15cm}
 
 \begin{itemize}
 \item[(i)] Segmented Bar plot \\
@@ -116,10 +116,14 @@ apply.
 \item[(iv)] Faceted histograms 
 \end{itemize}
 
+\vspace{0.5cm}
+
 \noindent
 \textbf{(c)} [3 pts] Assuming a statistical difference in step distance is
 found between the male and female butterflies in the sample, what is the scope
 of inference for this study? Select one. 
+
+\vspace{0.15cm}
 
 \begin{itemize}
 \item[(i)] Sex causes a difference in average step distance for all grassland
@@ -190,23 +194,20 @@ dataset.
 
 \noindent
 \textbf{(a)}[3 points] Hospital administration at Duke University Hospital are
-interested in the difference in the mean baby birth weight between mothers who
-smoke and mothers who do not smoke. Using the table below, report the observed
+interested in the difference in the mean baby birth weight between mothers who do not
+smoke and mothers who do smoke. Using the table below, report the observed
 statistic for this comparison. Indicate in your answer what notation should be
 used for this statistic. 
 
 \vspace{0.25cm}
 
-\textbf{Answer:}
-
-\vspace{0.5in}
-
-\textbf{Notation:}
+$$\underset{\text{(notation)}}{\underline{\hspace{8cm}}} = \underset{\text{(value)}}{\underline{\hspace{3cm}}}$$
 
 \vspace{0.25in}
 
 ```{r favstats-smoking}
-favstats(weight ~ habit, data = births14)
+favstats(weight ~ habit, data = births14) %>%
+  pander()
 ```
 
 \vspace{0.5in}
@@ -227,8 +228,8 @@ births14 %>%
 \noindent
 \textbf{(b)}[4 points] These hospital administrators are
 interested in estimating the true difference in mean birth weight between
-mothers who smoke and mothers who do not smoke. The administrators learned in
-their Statistics class how obtain a confidence interval for a difference in
+mothers who do not smoke and mothers who do smoke. The administrators learned in
+their Statistics class how to obtain a confidence interval for a difference in
 means using a $t$-distribution. Using the plots above and your knowledge of how
 the data were collected evaluate whether it would be appropriate for the
 administrators to use a $t$-distribution to obtain a confidence interval for the
@@ -243,22 +244,19 @@ they use bootstrapping instead of a $t$-distribution to obtain a confidence
 interval. Fill in the blanks below to explain to the administrators how one
 bootstrap (re)sample is found. 
 
-\begin{center}
 \noindent
-On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{2in}} on the 
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{1.5in}} and \underline{\hspace{1.5in}} on the 
 cards.
-\end{center}
 
 \vspace{0.25in}
 
-Generate a new sample by: 
+\noindent
+Generate a new sample by:
 
 \vspace{0.5in}
 
-\begin{center}
 \noindent
 Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
-\end{center}
 
 \vspace{0.25in}
 
@@ -272,6 +270,7 @@ at that value?
 
 ```{r bootstrap-births, out.width = "60%", fig.align = 'left'}
 bootstrap_dist <- births14 %>% 
+  filter(!is.na(habit)) %>% 
   specify(response = weight, explanatory = habit) %>% 
   generate(reps = 1000, type = "bootstrap") %>% 
   calculate(stat = "diff in means", 
@@ -283,7 +282,8 @@ bootstrap_dist %>%
   labs(x = "Bootstrap Difference in Means (Nonsmoker - Smoker)", 
        title = "", 
        y = "Frequency") + 
-  theme_bw()
+  theme_bw() +
+  scale_x_continuous(breaks = seq(0,2, 0.25))
 ```
 
 \newpage
@@ -587,8 +587,8 @@ aov(growth ~ trt_group, data = lettuce) %>%
                            "Growing Method" = "trt_group"
                            ), 
          df = c("___", 31), 
-         statistic = c("___", NA)
-         ) %>% 
+         statistic = c("___", NA),
+         p.value = scales::pvalue(p.value, accuracy = 0.0001)) %>%
   pander()
   
 ```
@@ -610,10 +610,18 @@ above?
 \vspace{0.5in}
 
 \noindent
-\textbf{(c)}[2 points] Rewrite the null hypothesis above to use notation for the
+\textbf{(c)}[2 points] Rewrite the null hypothesis above to use **notation** for the
 parameters that are being tested. 
 
-\vspace{1in}
+\vspace{0.25cm}
+
+\textbf{$H_0$:}
+
+\vspace{0.25in}
+
+\textbf{$H_A$:}
+
+\vspace{0.25in}
 
 \noindent
 \textbf{(d)}[2 points] The alternative hypothesis investigated in the ANOVA 
@@ -693,37 +701,10 @@ pairwise.t.test(lettuce$growth, lettuce$trt_group,
          group2 = fct_recode(group2, 
                              "Hydroponic A" = "hydro_A", 
                              "Hydroponic B" = "hydro_B"), 
-         p.value = if_else(p.value < 5e-10, 
-                           " < 0.000001", 
-                           as.character(
-                             round(p.value, 4)
-                             )
-                           )
+         p.value = scales::pvalue(p.value, accuracy = 0.0001)
          ) %>% 
   rename(`Group 1` = group1, 
          `Group 2` = group2) %>% 
   pander()
 ```
-
-\noindent \textbf{Q8} Kinesiology professor Suzanne Phelan has been studying
-effective tools to help women return to a healthy weight after pregnancy. Dr.
-Phelan designed a study with 488 new moms. Each of the new mothers was
-assigned to either standard care postpartum, or to an intervention group that
-included being part of online social support group moderated by a dietitian and
-lifestyle coach. Over the course of the study many measurements were taken
-including the weights of moms at the time their baby was born and again 6 months
-postpartum. 
-
-\noindent \textbf{(a)} [2 points] Using information above to briefly support
-your answer, was this an experiment or an observational study?  
-
-\vspace{1in}
-
-\noindent \textbf{(b)} [2 points] Dr. Phelan could have asked the new moms to
-choose whether they wanted to part of the online social group or not rather than
-assign the moms to the standard care and intervention groups. Why would this
-have been an inferior strategy for conducting this study? Briefly explain. 
-
-\vspace{1in}
-
 
