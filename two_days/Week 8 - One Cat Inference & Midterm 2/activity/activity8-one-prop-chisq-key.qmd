@@ -1,7 +1,11 @@
 ---
 title: "Activity 8: Revisiting the Martian Alphabet"
 subtitle: "One Proportion Goodness-of-fit"
-author: "Dr. Robinson's Key"
+author: "Dr. Theobold's Key"
+execute: 
+  echo: false
+  warning: false
+  message: false
 format:
   pdf:
     include-in-header:
@@ -9,10 +13,6 @@ format:
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                      warning = FALSE, 
-                      message = FALSE)
-
 library(tidyverse)
 library(knitr)
 library(readxl)
@@ -23,7 +23,13 @@ library(readxl)
 In week one of this course we did an activity exploring if you could correctly identify the letters of the Martian alphabet. You were presented with the two figures below and asked to decide which was "Bouba" and which was "Kiki" (Ramachandran, 2007). 
 
 ```{r}
-knitr::include_graphics("images/Bouba-Kiki.png")
+knitr::include_graphics(here::here("two_days", 
+                                   "Week 1 - Intro to Data",
+                                   "activity",
+                                   "slides",
+                                   "images",
+                                   "bouba-kiki.png")
+                        )
 ```
 
 We tabulated how many students correctly guessed that "Kiki" was the figure on the left. Next, we simulated what we would have expected to see if everyone was randomly guessing which figure went with which word. 
@@ -69,7 +75,7 @@ Once we have each of these, we can create a table of what frequencies we would h
 
 **4. Fill out the expected table below!**
 
-\key{Assuming 35 students in the class: $30\cdot 0.5 = 17.5$.}
+\key{Assuming we have 35 students in the class: $35 \cdot 0.5 = 17.5$.}
 
 
 | Expected # of Correct Guesses | Expected # of Incorrect Guesses |
@@ -94,14 +100,15 @@ This formula should look similar to calculating the percent change, except that 
 
 **6. Using the formula above, calculate how far "off" the observed frequencies for our class' guesses are from what we expected under $H_0$.**
 
-\key{$\frac{(34-17.5)^2}{1} = 15.56$ and $\frac{(1-17.5)^2}{1} = 15.56$}
+\key{$\frac{(34-17.5)^2}{17.5} = 15.56$ and $\frac{(1-17.5)^2}{17.5} = 15.56$}
 
 ```{r include = F}
-(34-17.5)^2/17.5
+(34-17.5)^2 / 17.5
 
-(1-17.5)^2/17.5
+(1-17.5)^2 / 17.5
 
-obs_xsq <- (34-17.5)^2/17.5 + (1-17.5)^2/17.5
+obs_xsq <- (34-17.5)^2 / 17.5 + 
+  (1-17.5)^2 / 17.5
 obs_xsq
 ```
 
@@ -111,7 +118,7 @@ By adding the two values from #6 together, you have the Chi-Squared (or $X^2$) s
 
 **7. Calculate the value of the $X^2$ statistic for our classes guesses.**
 
-$X^2 = $ \key{$15.56 + 15.56 = 31.11$}
+$X^2 =$ \key{$15.56 + 15.56 = 31.11$}
 
 \vspace{0.25in}
 
@@ -150,7 +157,9 @@ To carry out **one** simulation we need to do the following steps:
 
 \vspace{0.25in}
 
-**Step 3:** Specify which response goes with each side of a coin: \key{Heads = "Correct Guess", Tails = "Incorrect Guess"}
+**Step 3:** Specify which response goes with each side of a coin: 
+
+\key{Heads = ``Correct Guess", Tails = ``Incorrect Guess"}
 
 \vspace{0.25in}
 
@@ -164,7 +173,7 @@ To carry out **one** simulation we need to do the following steps:
 
 **Step 5:** Calculate the $X^2$ statistic for the simulation
 
-\key{$\frac{(16-17.5)^2}{17.5}+\frac{(19-17.5)^2}{17.5}=0.257$}
+\key{$\frac{(16-17.5)^2}{17.5}+\frac{(19-17.5)^2}{17.5} = 0.257$}
 
 ```{r include = F}
 sim_xsq <- (16-17.5)^2/17.5 + (19-17.5)^2/17.5
@@ -179,7 +188,9 @@ sim_xsq
 
 Alright, after carrying out this process, I obtained the following distribution.
 
-```{r null-X2, cache = TRUE, out.width = "60%"}
+```{r null-X2}
+#| cache: true
+#| out-width: "60%"
 
 get_null_X2 <- function(n){
   rerun(n, 
@@ -199,14 +210,14 @@ get_null_X2 <- function(n){
   flatten_dbl() 
 }
 
-get_null_X2(1000) %>% 
-  tibble(X2 = .) %>% 
-  ggplot(mapping = aes(x = X2)) +
-  geom_histogram() +
-  labs(x = "Simulated X2 Statistic", 
-       y = "Number of Simulations") +
-  theme_bw() + 
-  scale_x_continuous(limits = c(-1,40), breaks = seq(0,35,5))
+# get_null_X2(1000) %>% 
+#   tibble(X2 = .) %>% 
+#   ggplot(mapping = aes(x = X2)) +
+#   geom_histogram() +
+#   labs(x = "Simulated X2 Statistic", 
+#        y = "Number of Simulations") +
+#   theme_bw() + 
+#   scale_x_continuous(limits = c(-1,40), breaks = seq(0,35,5))
 
 ```
 
@@ -231,13 +242,13 @@ get_null_X2(1000) %>%
 
 **10. Estimate the p-value for testing if we were all randomly guessing which figure was "Kiki."**
 
-\key{SInce our p-value falls far to the right of the chi-square distribution, our p-value is estimated to be about 0 or (<0.0001).}
+\key{Our observed statistic falls far to the right of the chi-square distribution, with 0 (out of 1000) simulations as large or larger than it. For this reason, our p-value is estimated to be about 0 or (< 0.001).}
 
 \vspace{0.1in}
 
 **11. Based on your p-value, what would you conclude for your null and alternative hypotheses from #2 and #3?**
 
-\key{Since our p-value is small (less than 0.05), we would reject the null hypthesis that there is an equal chance of correctly and incorrectly guessing and conclude there is evidence the probability of correctly identifying "Kiki" is not equal to 50\%.}
+\key{Since our p-value is small (< 0.001) and it is less 0.05, we would reject the null hypthesis that there is an equal chance of correctly and incorrectly guessing. We would conclude that it seems more likely that the probability of correctly identifying ``Kiki" is not equal to 50\%.}
 
 \vspace{0.1in}
 
@@ -306,7 +317,7 @@ If the condition about expected cell counts is violated, we are forced to use a 
 
 **12. Are the conditions for using a $\chi^2$ distribution to approximate the sampling distribution violated?**
 
-\key{The observations are independent because each student's response does not tell us information about another student's response. Therefore, independence is met. We do not have a "large enough" sample size since there is only 1 student who incorrectly identified "Kiki". Therefore, the large sample size is violated.}
+\key{The observations are independent because each student's response does not tell us information about another student's response. Therefore, independence is not violated. We \emph{do} have a ``large enough" sample size, as the expected counts are both larger than 5! Therefore, we can use the $\chi^2$ distribution to approximate the true sampling distribution. }
 
 \vspace{0.1in}
 
@@ -332,13 +343,13 @@ Running the code you just wrote in `R` gave me a p-value of `r pchisq(7.36, df =
 
 **14. Based on this p-value what conclusion would you reach regarding the null hypothesis?**
 
-\key{With a p-value < 0.0001 (2.43 x $10^{-8}$) we would reject the null hypothesis that there is an equal probability of correctly and incorrectly guessing.}
+\key{With a p-value of 0.0067 we would reject the null hypothesis that there is an equal probability of correctly and incorrectly guessing, as our p-value is smaller than our $\alpha$ of 0.05.}
 
 \vspace{0.1in}
 
 **15. Did you reach similar conclusions using simulation-based methods? Why do you believe that is the case?**
 
-\key{Yes, our conclusion with the simulation based method is similar to that of the theory based method. They should be simular because the theory based method is using a $\chi^2$ distribution to approximate the simulated null distribution of simulated $X^2$ statistics from earlier.}
+\key{Yes, our conclusion with the simulation based method is similar to that of the theory based method, as both methods led us to reject the null hypothesis. These results should be simular because we did not violate the ``large sample" condition (expected counts > 5). If we had violated this condition, using a $\chi^2$ distribution would have incorrectly estimated our p-value and the two methods would have produced different results.}
 
 \vspace{0.1in}
 
@@ -358,7 +369,12 @@ They divided the area into four sections:
 4. The area outside of the burned area
 
 ```{r}
-knitr::include_graphics("images/fire_schematic.png")
+knitr::include_graphics(
+  here::here("two_days", 
+             "Week 8 - One Cat Inference & Midterm 2",
+             "activity",
+             "fire_schematic.png")
+  )
 ```
 
 \vspace{0.25cm}
@@ -371,9 +387,9 @@ Under the null hypothesis, if deer were randomly distributed over the 3,000 acre
 
 | Region         | Acres | Proportion of Total Area |
 |----------------|-------|--------------------------|
-| Inner Burn     | 520   | `r 520/3000`             |
+| Inner Burn     | 520   | \key{520 / 3000 = 0.1733}|
 | Inner Edge     | 210   | 0.070                    |
-| Outer Edge     | 240   | `r 240/3000`             |
+| Outer Edge     | 240   | \key{240 / 3000 = 0.08}  |
 | Outer Unburned | 2,030 | 0.677                    |
 
 \vspace{0.25in}
@@ -403,22 +419,22 @@ Researchers observed a total of 75 deer in the 3,000 acre parcel. The table belo
 
 **19. Now, calculate the $X^2$ statistic for these data.**
 
-\key{$\frac{(2-13)^2}{13}+\frac{(12-5.25)^2}{5.25}+\frac{(18-6)^2}{6}+\frac{(43-50.75)^2}{50.75}=43.17$}
+\key{$\frac{(2-13)^2}{13} + \frac{(12-5.25)^2}{5.25} + \frac{(18-6)^2}{6} + \frac{(43-50.75)^2}{50.75} = 43.17$}
 
 ```{r, include = F}
-(2-13)^2/13 + (12-5.25)^2/5.25 + (18-6)^2/6 +(43-50.75)^2/50.75
+(2-13)^2/13 + (12-5.25)^2/5.25 + (18-6)^2/6 + (43-50.75)^2/50.75
 ```
 
 \vspace{0.1in}
 
 **20. Which distribution should be used to find the p-value for this test statistic? How many degrees of freedom do we have?**
 
-\key{We should use a $\chi^2$ with 4 regions - 1 degrees of freedom.}
+\key{We should use a $\chi^2$ with 3 degrees of freedom (4 regions - 1).}
 
 \vspace{0.1in}
 
 **21. Suppose the p-value for the $X^2$ statistic you calculated in #19 was less than 0.0001. What conclusion could the researchers conclude about the distribution of deer on the parcel?**
 
-\key{The p-value of less than 0.0001 is less than the alpha threshold cuttoff of 0.05; therefore we reject the null hypothesis that the deer show no preference for any specific region and the frequencies of dear are proportional to the size of the region.}
+\key{The p-value of less than 0.0001 is less than the alpha threshold cutoff of 0.05; therefore we reject the null hypothesis that the deer show no preference for any specific region and the frequencies of dear are proportional to the size of the region. We would conclude that there is evidence the deer have preference for at least one parcel more than what is expected for its size. }
 
 \vspace{1in}

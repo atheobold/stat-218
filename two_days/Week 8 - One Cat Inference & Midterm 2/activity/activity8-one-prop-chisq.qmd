@@ -1,16 +1,17 @@
 ---
 title: "Activity 8: Revisiting the Martian Alphabet"
 subtitle: "One Proportion Goodness-of-fit"
-format: html
-# format: pdf
-# format: docx
+#format: html
+#format: pdf
+format: docx
+execute: 
+  echo: false
+  warning: false
+  message: false
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                      warning = FALSE, 
-                      message = FALSE)
-
+```{r}
+#| include: false
 library(tidyverse)
 library(knitr)
 library(readxl)
@@ -21,7 +22,13 @@ library(readxl)
 In week one of this course we did an activity exploring if you could correctly identify the letters of the Martian alphabet. You were presented with the two figures below and asked to decide which was "Bouba" and which was "Kiki" (Ramachandran, 2007). 
 
 ```{r}
-knitr::include_graphics("images/Bouba-Kiki.png")
+knitr::include_graphics(here::here("two_days", 
+                                   "Week 1 - Intro to Data",
+                                   "activity",
+                                   "slides",
+                                   "images",
+                                   "bouba-kiki.png")
+                        )
 ```
 
 We tabulated how many students correctly guessed that "Kiki" was the figure on the left. Next, we simulated what we would have expected to see if everyone was randomly guessing which figure went with which word. 
@@ -52,7 +59,7 @@ In our case, we are assuming that there is an equal chance at guessing correctly
 
 ### Chi-Squared Statistic 
 
-The idea behind the Chi-Squared statistic is to compare the frequencies (of correct and incorrect guesses) we observed to what we would have expected to see if $H_0$ was true. 
+The idea behind the Chi-Squared statistic is to compare the frequencies (of correct and incorrect guesses) we **observed** to what we would have **expected** to see if $H_0$ was true. 
 
 This calculation requires two pieces of information:
 
@@ -68,6 +75,8 @@ Once we have each of these, we can create a table of what frequencies we would h
 |-------------------------------|---------------------------------|
 |                               |                                 |
 |                               |                                 |
+
+\newpage 
 
 Next, we compare each of our observed frequencies to what we would have expected if $H_0$ was true. We compare how far "off" our observed frequencies are from what was expected in a very specific way, using the following calculation:
 
@@ -198,7 +207,7 @@ get_null_X2(1000) %>%
 
 ## Theory-based Null Distribution
 
-For the Chi-Squared goodness-of-fit test we've been discussing, it can be mathematically shown that the distribution of $X^2$ statistics is approximately a $\chi^2$ distribution with $k - 1$ degrees of freedom. Similar to an ANOVA, $k$ represents the number of groups in our explanatory variable.
+For the Chi-Squared goodness-of-fit test we've been discussing, it can be mathematically shown that the distribution of $X^2$ statistics is approximately a $\chi^2$ (Chi-Squared) distribution with $k - 1$ degrees of freedom. Similar to an ANOVA, $k$ represents the number of groups in our explanatory variable.
 
 Degrees of freedom represent the amount of "free" information in a given situation. In our situation, we have two groups, so $k - 1$ would be 1. Since  we have two proportions and we know they must sum to 1, only one proportion is "free" or unconstrained. Once I know the proportion of the time someone would guess incorrectly, I also know the proportion of time they would guess correctly!
 
@@ -308,7 +317,12 @@ They divided the area into four sections:
 4. The area outside of the burned area
 
 ```{r}
-knitr::include_graphics("images/fire_schematic.png")
+knitr::include_graphics(
+  here::here("two_days", 
+             "Week 8 - One Cat Inference & Midterm 2",
+             "activity",
+             "fire_schematic.png")
+  )
 ```
 
 \vspace{0.25cm}
@@ -322,13 +336,13 @@ Under the null hypothesis, if deer were randomly distributed over the 3,000 acre
 | Region         | Acres | Proportion of Total Area |
 |----------------|-------|--------------------------|
 | Inner Burn     | 520   |                          |
-| Inner Edge     | 210   | 0.070                    |
+| Inner Edge     | 210   | 210 / 3000 = 0.070       |
 | Outer Edge     | 240   |                          |
-| Outer Unburned | 2,030 | 0.677                    |
+| Outer Unburned | 2030 | 2030 / 3000 = 0.677      |
 
 \vspace{0.25in}
 
-These proportions are the null hypothesis! 
+These proportions comprise our null hypothesis! 
 
 **17. What would be the alternative hypothesis?** *Hint: Think about an ANOVA, what was the alternative hypothesis when the null hypothesis said that all of the means were equal?*
 
@@ -349,13 +363,13 @@ Researchers observed a total of 75 deer in the 3,000 acre parcel. The table belo
 
 \vspace{0.25in}
 
-**19. Now, calculate the $X^2$ statistic for these data.**
+**19. Now, calculate the $X^2$ statistic for these data.** *Note: You will have four components you need to add together!*
 
 \vspace{1in}
 
 **20. Which distribution should be used to find the p-value for this test statistic? How many degrees of freedom do we have?**
 
-\vspace{0.25in}
+\vspace{0.5in}
 
 **21. Suppose the p-value for the $X^2$ statistic you calculated in #19 was less than 0.0001. What conclusion could the researchers conclude about the distribution of deer on the parcel?**
 
