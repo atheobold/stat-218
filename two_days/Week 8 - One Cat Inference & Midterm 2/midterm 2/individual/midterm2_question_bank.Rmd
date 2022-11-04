@@ -37,7 +37,7 @@ Dr. Robinson during office hours prior to the exam.
 | Scenario | One Quantitative Response | Two Quantitative Variables | Quant. Response and Categ. Explanatory | 
 |----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
 | Type of plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
-| Summary measure | Mean | Slope or Correlation | Difference in Means |
+| Summary measure | Mean or Mean Difference | Slope or Correlation | Difference in Means |
 | Parameter notation | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
 | Statistic notation | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
 
