@@ -45,7 +45,7 @@ You've explored these data before in Midterm 1, investigating the relationship b
 ## Exploring the Data
 
 Click on the GSS dataset in your Environment window (upper right hand corner) to
-open up a preview of the datset. 
+open up a preview of the dataset. 
 
 __1. How many observations are included in this sample?__
 
@@ -95,7 +95,7 @@ GSS <- GSS |>
 
 Now, we can use the `political_party_affiliation` variable to visualize the
 distribution of highest year of school between these two groups (Republicans & 
-Deomcrats). 
+Democrats). 
 
 __5. Complete the code below to created faceted histograms of the distribution of highest year of school completed between the two political groups.__
 *Extra Credit:* Select a binwidth that makes the histograms look as continuous
