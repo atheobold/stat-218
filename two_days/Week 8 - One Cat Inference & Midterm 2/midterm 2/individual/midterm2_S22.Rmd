@@ -1,7 +1,7 @@
 ---
 title: "STAT 218 - Midterm Exam 2"
-date: "November 9, 2020"
-author: "Dr. Robinson"
+date: "November 10, 2020"
+author: "Dr. Theobold"
 output:
   pdf_document:
     extra_dependencies: ["multicol", "setspace"]
@@ -24,10 +24,9 @@ library(broom)
 ```
 
 \begin{center}
+
 \large{Name:} \underline{\hspace{3in}}
 \vspace{0.25cm}
-
-\large{Section (circle one):} \hspace{1cm} 2:10am \hspace{2cm} 4:10am 
 
 \end{center}
 
@@ -40,7 +39,7 @@ regulations and is punishable by a grade of __F__ in this course. This
 includes looking at other students' exams and / or allowing other students,
 actively or passively, to see answers on my exam. This also includes revealing,
 actively or passively, any information about the exam to any member of 
-Professor Robinson's STAT 218 class who has not yet taken the exam. The use of 
+Professor Theobold's STAT 218 class who has not yet taken the exam. The use of 
 cell phones is strictly prohibited.
 
 \begin{center}
@@ -82,11 +81,11 @@ initial selection.
 |----------|:-------------------------:|:--------------------------:|:---------------------------------------:|
 | Type of plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
 |           |           |           |
-| Summary measure | Mean | Slope or Correlation | Difference in Means |
+| Summary measure | Mean or Mean Difference | Slope or Correlation | Difference in Means |
 |           |           |           |
-| Parameter notation | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+| Parameter notation | $\mu$ or $\mu_d$  | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
 |           |           |           |
-| Statistic notation | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+| Statistic notation | $\bar{x}$ or $\bar{x}_d$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
 
 \vspace{0.5cm}
 
@@ -94,23 +93,23 @@ initial selection.
 
 $$IQR = Q3 - Q1$$
 
-\vspace{0.1cm}
+\vspace{0.25cm}
 
 __1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)$
 
-\vspace{0.1cm}
+\vspace{0.25cm}
 
 $$\hat{y} = b_0 + b_1 \times x \hspace{5cm} Residual = y - \hat{y}$$
 
-\vspace{0.1cm}
+\vspace{0.25cm}
 
 __t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
 
-\vspace{0.1cm}
+\vspace{0.25cm}
 
 $$SE(\bar x) = \frac{s}{\sqrt{n}} \hspace{5cm} SE(\bar x_1 - \bar x_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
 
-\vspace{0.1cm}
+\vspace{0.25cm}
 
 $$F = \frac{\text{MSG}}{\text{MSE}} \hspace{5cm} \alpha^* = \frac{\alpha}{\text{\# of comparisons}}$$
 
@@ -150,7 +149,7 @@ Sex is the (explanatory/response) \underline{\hspace{3in}} and it is
 \vspace{0.5cm}
 
 \noindent
-\textbf{(b)} [3 pts] Which visualizations would be most appropriate to display
+\textbf{(b)} [2 pts] Which visualizations would be most appropriate to display
 the relationship between step distance and sex of the butterfly? Select all that 
 apply. 
 
@@ -287,7 +286,7 @@ parameters that are being tested.
 
 \textbf{$H_A$:}
 
-\vspace{0.25in}
+\newpage
 
 \noindent
 \textbf{(d)} [2 pts] The alternative hypothesis investigated in the ANOVA 
@@ -307,7 +306,8 @@ table above is $H_A$: $\mu_{\text{Soil}} \neq \mu_{\text{Hydroponic A}} \neq
 \vspace{0.5in}
 
 \noindent
-\textbf{(f)} [2 pts] What is the value of the F-statistic?  
+\textbf{(f)} [2 pts] What is the value of the F-statistic? Write your answer as 
+a \emph{fraction}, not as a decimal. 
 
 \vspace{0.5in}
 
@@ -350,11 +350,15 @@ and (c)?
 
 \noindent
 \textbf{(k)} [3 pts] The table below presents all comparisons of soil 
-treatment. What value of $\alpha$ should the researchers use to determine
+treatment. What value of $\alpha^*$ should the researchers use to determine
 which of these tests produced "significant" results, so that the overall Type I
 error rate for these tests is less than 5\%?
 
-\vspace{0.5in}
+\vspace{0.1in}
+\begin{center}
+$\alpha^*= $
+\end{center}
+\vspace{0.1in}
 
 ```{r}
 pairwise.t.test(lettuce$growth, lettuce$trt_group, 
@@ -407,7 +411,7 @@ as well as the difference in glucose results for each subject is shown below.
 \vspace{0.5cm}
 
 \noindent
-\textbf{(a)} [4 pts] For simplicity, Dr. Hagobian could have given all
+\textbf{(a)} [2 pts] For simplicity, Dr. Hagobian could have given all
 subjects the BPA cookie on their first visit in December, and the Placebo cookie
 on the second visit in February, but he didn’t. Instead, when a subject came for
 their first visit, he flipped a coin. If it was heads, they received BPA on that
@@ -448,7 +452,7 @@ indicate the order of subtraction being used!*
 
 \newpage
 \noindent
-\textbf{(d)} [3 pts] To perform the analyses you selected in (b), what conditions does
+\textbf{(d)} [4 pts] To perform the analyses you selected in (b), what conditions does
 Dr. Hagobian need to check before obtaining a p-value? Circle all that apply. 
 
 \begin{multicols}{2}
@@ -561,8 +565,8 @@ evidence to reject the null hypothesis, which would mean that our confidence
 interval would not contain 0.
 
 \item[(iii)] The results of the hypothesis test and the confidence interval are 
-conflicting at the 5\% significance level. There's a 95% chance that a statistic
-of 0.0425 would be in the interval (-1.129, 0.0437). 
+conflicting at the 5\% significance level. There's a 95\% chance that a
+statistic of 0.0425 would be in the interval (-1.129, 0.0437). 
 
 \item[(vi)] The results of the hypothesis test and the confidence interval seem to 
 agree with one another at the 5\% significance level. With a p-value of 0.0425
