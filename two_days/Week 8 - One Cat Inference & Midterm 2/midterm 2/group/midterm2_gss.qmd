@@ -19,7 +19,7 @@ library(infer)
 
 ## GSS Dataset
 
-For this exam, we'll be working with data from Midterm 1 --- the General Social Survey (GSS). The GSS is a high-quality survey which gathers data on American society and opinions, conducted since 1972. This data set is a sample of 500 entries from the GSS, spanning years 1973-2018, including demographic markers and some economic variables.
+For this exam, we'll be working with data from Midterm 1 --- the General Social Survey (GSS). The GSS is a high-quality survey which gathers data on American society and opinions, conducted since 1972.
 
 ```{r load-data}
 GSS <- read_csv(here::here("two_days", 
@@ -39,27 +39,21 @@ GSS <- read_csv(here::here("data",
 
 ## Investigating Education & Political Affiliation
 
-You've explored these data before in Midterm 1, investigating the relationship between the highest year of school a person's spouse completed and their own education. For this exam, we will investigate if the highest year of school a person completed (`highest_year_of_school_completed`) differs based on their political party
-(`political_party_affiliation`). 
+You've explored these data before in Midterm 1, investigating the relationship between the highest year of school a person's spouse completed and their own education. For this exam, we will investigate if the highest year of school a person completed (`highest_year_of_school_completed`) differs based on their political party (`political_party_affiliation`).
 
 ## Exploring the Data
 
-Click on the GSS dataset in your Environment window (upper right hand corner) to
-open up a preview of the dataset. 
+Click on the GSS dataset in your Environment window (upper right hand corner) to open up a preview of the dataset.
 
-__1. How many observations are included in this sample?__
-
+**1. How many observations are included in this sample?**
 
 ## Exploratory Data Analysis
 
-We will first start by analyzing the highest year of school completed by the 
-participants. This is recorded in the variable `highest_year_of_school_completed`.
+We will first start by analyzing the highest year of school completed by the participants. This is recorded in the variable `highest_year_of_school_completed`.
 
-### Visualizing the Distribution of Highest Year of School 
+### Visualizing the Distribution of Highest Year of School
 
-__2. Create a histogram visualizing the distribution of the highest year of school completed for this sample.__
-*Extra Credit:* Select a binwidth that makes the histogram look as continuous as
-possible!
+**2. Create a histogram visualizing the distribution of the highest year of school completed for this sample.** *Extra Credit:* Select a binwidth that makes the histogram look as continuous as possible!
 
 ```{r education-histogram}
 ## Code to make a histogram of the highest year of school here!
@@ -69,7 +63,7 @@ possible!
 
 ### Summarizing Education
 
-__3. Using the favstats() function, find summary statistics for the highest year of school completed for this sample.__
+**3. Using the favstats() function, find summary statistics for the highest year of school completed for this sample.**
 
 ```{r weight-favstats}
 ## Code to find summary statistics of the highest year of school goes here!
@@ -77,12 +71,11 @@ __3. Using the favstats() function, find summary statistics for the highest year
 
 ```
 
-__4.  How many observations are we missing the highest year of school completed from?__
-
+**4. How many observations are we missing the highest year of school completed from?**
 
 ### Comparing Highest Year of Education Across Political Parties
 
-Next, we will consider the possible relationship between a person's political party and the number of years of school they completed. For our investigation, we will focus on comparing Republicans and Democrats, so we need to remove the Independents from our dataset. 
+Next, we will consider the possible relationship between a person's political party and the number of years of school they completed. For our investigation, we will focus on comparing Republicans and Democrats, so we need to remove the Independents from our dataset.
 
 Run the code below to remove the Independent voters from our dataset!
 
@@ -93,13 +86,9 @@ GSS <- GSS |>
 
 ### Visualizing Distributions of Weight between Activity Groups
 
-Now, we can use the `political_party_affiliation` variable to visualize the
-distribution of highest year of school between these two groups (Republicans & 
-Democrats). 
+Now, we can use the `political_party_affiliation` variable to visualize the distribution of highest year of school between these two groups (Republicans & Democrats).
 
-__5. Complete the code below to created faceted histograms of the distribution of highest year of school completed between the two political groups.__
-*Extra Credit:* Select a binwidth that makes the histograms look as continuous
-as possible!
+**5. Complete the code below to created faceted histograms of the distribution of highest year of school completed between the two political groups.** *Extra Credit:* Select a binwidth that makes the histograms look as continuous as possible!
 
 ```{r faceted-histograms-}
 ggplot(data = GSS, 
@@ -108,35 +97,29 @@ ggplot(data = GSS,
   facet_wrap(~ ____) 
 ```
 
-__6. Describe the relationship between a person's political party and the highest year of school they completed. Is this relationship what you expected to see?__
-
+**6. Describe the relationship between a person's political party and the highest year of school they completed. Is this relationship what you expected to see?**
 
 ### Summarizing the Differences in Mean Weight
 
-__7. Use the favstats() function to find summary statistics for the highest year of school completed for each group of the `political_party_affiliation` variable.__
+**7. Use the favstats() function to find summary statistics for the highest year of school completed for each group of the `political_party_affiliation` variable.**
 
 ```{r weight-favstats-groups}
 favstats(____ ~ ____, data = GSS)
 ```
 
-__8. What is the observed difference in mean years of school completed between Republicans and Democrats (take Republican - Democrat in your calculation)?__
-
-
+**8. What is the observed difference in mean years of school completed between Republicans and Democrats (take Republican - Democrat in your calculation)?**
 
 ## Statistical Inference
 
-__9.  Write (in words NOT notation) the hypotheses for testing if the average highest year of school completed for Republicans is different from Democrats.__
+**9. Write (in words NOT notation) the hypotheses for testing if the average highest year of school completed for Republicans is different from Democrats.**
 
-*H0:* 
+*H0:*
 
-*HA:* 
+*HA:*
 
-__10. Evaluate if you believe any of the *three* conditions required for using the t-distribution to obtain our p-value are violated.__
+**10. Evaluate if you believe any of the *three* conditions required for using the t-distribution to obtain our p-value are violated.**
 
-
-
-
-__11. Complete the code below to find the p-value for testing if the highest year of school completed for Republicans is different from Democrats.__
+**11. Complete the code below to find the p-value for testing if the highest year of school completed for Republicans is different from Democrats.**
 
 ```{r t-test}
 t_test(GSS, 
@@ -146,6 +129,4 @@ t_test(GSS,
        alternative = ____)
 ```
 
-__12. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #11?__
-
-
+**12. Based on the p-value you obtained, what conclusion would you reach for the hypotheses you stated in #11?**
