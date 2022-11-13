@@ -24,44 +24,24 @@ set.seed(1234)
 
 ### Learning outcomes
 
-* Understand the differences between a Chi-Square Test of Independence and 
-a Chi-Square Test of Homogeneity
+-   Understand the differences between a Chi-Square Test of Independence and a Chi-Square Test of Homogeneity
 
-* Construct the null and alternative hypotheses for a Chi-Square Test of 
-Homogeneity in words and using appropriate statistical symbols.
-  
-* Describe and perform a simulation-based Chi-Square Test of Homogeneity.
-  - Identify the steps required to simulate what could have happened if $H_0$
-  was true
-  - Describe how these steps could be carried out with cards
+-   Construct the null and alternative hypotheses for a Chi-Square Test of Homogeneity in words and using appropriate statistical symbols.
 
-* Describe the conditions required to use a $\chi^2$ distribution to obtain a
-p-value for a Chi-Square Test of Homogeneity
+-   Describe and perform a simulation-based Chi-Square Test of Homogeneity.
 
-* Interpret and evaluate the p-value obtained in the context of a Chi-Square
-Test of Homogeneity
+    -   Identify the steps required to simulate what could have happened if $H_0$ was true
+    -   Describe how these steps could be carried out with cards
+
+-   Describe the conditions required to use a $\chi^2$ distribution to obtain a p-value for a Chi-Square Test of Homogeneity
+
+-   Interpret and evaluate the p-value obtained in the context of a Chi-Square Test of Homogeneity
 
 ### The Good Samaritan
 
-Researchers at the Princeton University wanted to investigate influences on 
-behavior (Darley, 1973). The researchers randomly selected 67 students from the
-Princeton Theological Seminary to participate in a study. Only 47 students chose
-to participate in the study, and the data below includes 40 of those students (7
-students were removed from the study for various reasons). As all participants
-were theology majors planning a career as a preacher, the expectation was that
-all would have a similar disposition when it comes to helping behavior. Each
-student was then shown a 5-minute presentation on the Good Samaritan, a parable
-in the Bible which emphasizes the importance of helping others. After the 
-presentation, the students were told they needed to give a talk on the Good
-Samaritan parable at a building across campus. Half the students were told they
-were late for the presentation; the other half told they could take their time
-getting across campus (the condition was randomly assigned). On the way between
-buildings, an actor pretending to be a homeless person in distress asked the
-student for help. The researchers recorded whether the student helped the actor 
-or not. 
+Researchers at the Princeton University wanted to investigate influences on behavior (Darley, 1973). The researchers randomly selected 67 students from the Princeton Theological Seminary to participate in a study. Only 47 students chose to participate in the study, and the data below includes 40 of those students (7 students were removed from the study for various reasons). As all participants were theology majors planning a career as a preacher, the expectation was that all would have a similar disposition when it comes to helping behavior. Each student was then shown a 5-minute presentation on the Good Samaritan, a parable in the Bible which emphasizes the importance of helping others. After the presentation, the students were told they needed to give a talk on the Good Samaritan parable at a building across campus. Half the students were told they were late for the presentation; the other half told they could take their time getting across campus (the condition was randomly assigned). On the way between buildings, an actor pretending to be a homeless person in distress asked the student for help. The researchers recorded whether the student helped the actor or not.
 
-The researchers were interested in investigating whether these data provide
-evidence of a difference in how often someone will help people in need. 
+The researchers were interested in investigating whether these data provide evidence of a difference in how often someone will help people in need.
 
 ```{r data}
 #| include: false
@@ -88,103 +68,76 @@ good_sam |>
   knitr::kable()
 ```
 
-
 ## Vocabulary review
 
-1. Based on the data preview, what is the name of the explanatory variable? 
-What are its categories?
+1.  Based on the data preview, what is the name of the explanatory variable? What are its categories?
 
-\vspace{0.25in}
+[The explanatory variable is `Condition`. It has two levels: `Hurry` and `No hurry`.]{style="color: red;"}
 
-2. Based on the data preview, what is the response variable? What are its
-categories?
+2.  Based on the data preview, what is the response variable? What are its categories?
 
-\vspace{0.25in}
+[The response variable is `Behavior`. It has two levels: `Help` and `No help`. ]{style="color: red;"}
 
-3. Fill in the blanks with one answer from each set of parentheses:
+3.  Fill in the blanks with one answer from each set of parentheses:
 
-This is an ________________ (experiment / observational study) because
-______________ (hurry or no hurry / help or no help) _______ (was / was not) 
-randomly ____________ (assigned / selected).
+This is an [experiment ]{style="color: red;"} because [hurry or no hurry was]{style="color: red;"} randomly [assigned]{style="color: red;"}.
 
 \newpage
 
-4.  Put an X in the box that represents the appropriate scope of inference for
-this study.
+4.  Put an X in the box that represents the appropriate scope of inference for this study.
 
-|               | Random / Representative Sample | No Random / Representative Sample |
-|---------------|--------------------------------|---------------------------------------|
-| No Random Assignment of Explanatory Variable |     |         |
-|                                              |     |         |
-| Random Assignment of Explanatory Variable    |     |         |
+|                                              | Random / Representative Sample | No Random / Representative Sample |
+|-----------------|-------------------------|-------------------------------|
+| No Random Assignment of Explanatory Variable |                                |                                   |
+| Random Assignment of Explanatory Variable    |                                |    [This one! This is our scope of inference! ]{style="color: red;"}       |
 
 \vspace{0.25in}
 
 ## Chi-Square Test of Homogeneity vs. Independence
 
-Yesterday, we explored a Chi-Square Test of Independence. We compared what we 
-saw in the data to what we expected if the null hypothesis was true---that
-there was no association / relationship between the two variables. 
+In the last activity, we explored a Chi-Square Test of Independence. We compared what we saw in the data to what we expected if the null hypothesis was true---that there was no association / relationship between the two variables.
 
-In the case that the explanatory variable in a study was randomly assigned, we
-are able to perform a test that is more specific than a test of independence. 
-We are able to test if the proportion of successes are **homogeneous** across
-the levels of our categorical variable. 
+In the case that the explanatory variable in a study was randomly assigned, we are able to perform a test that is more specific than a test of independence. We are able to test if the proportion of successes are **homogeneous** across the levels of our categorical variable.
 
-A Chi-Square Test of Homogeneity is more specific because our hypotheses are
-about **proportions**, rather than general relationships between two variables. 
+A Chi-Square Test of Homogeneity is more specific because our hypotheses are about **proportions**, rather than general relationships between two variables.
 
 ### Setting Up the Research Question
 
-The research question as stated by the researchers is: Do these data provide
-evidence of a difference in how often someone will help people in need?
+The research question as stated by the researchers is: Do these data provide evidence of a difference in how often someone will help people in need?
 
-In order to set up our hypotheses, we need to express this research question in
-terms of parameters. 
+In order to set up our hypotheses, we need to express this research question in terms of parameters.
 
-For a proportion, we write the sample proportion as $\hat{p}$ and the population
-proportion as $\pi$. In general, we will be comparing the proportion of 
-observational units that are labeled as a "success" in the response variable.
-Here, a "success" would be a person choosing to "Help" the homeless person. 
+For a proportion, we write the sample proportion as $\hat{p}$ and the population proportion as $\pi$. In general, we will be comparing the proportion of observational units that are labeled as a "success" in the response variable. Here, a "success" would be a person choosing to "Help" the homeless person.
 
 \newpage
 
-5. Fill in the details regarding the two parameters of interest for this study. 
+5.  Fill in the details regarding the two parameters of interest for this study.
 
-$\pi_{\underline{\hspace{0.5in}}}$: The true proportion of people who are in a
-hurry who \underline{\hspace{1in}}
-
-\vspace{0.5in}
-
-$\pi_{\underline{\hspace{0.5in}}}$: 
+$\pi_{\text{hurry}}$: The true proportion of people who were told they were in a hurry who [chose to help the homeless person ]{style="color: red;"}
 
 \vspace{0.5in}
 
-When comparing two groups, we assume the two parameters are equal in the null hypothesis. 
+$\pi_{\text{no hurry}}$: [The proportion of people who were told they were not in a hurry who chose to help the homeless person]{style="color: red;"} 
+
+\vspace{0.5in}
+
+When comparing two groups, we assume the two parameters are equal in the null hypothesis.
 
 6.  Write the null hypothesis out in words using your answers to Question 5.
 
-\vspace{1in}
+[$\pi_{\text{hurry}} = \pi_{\text{no hurry}}$, the proportion of students who choose to help a homeless person is the same between those who are in a hurry and who are not.]{style="color: red;"}
 
+7.  Based on the research question, what is an appropriate alternative hypothesis?
 
-7. Based on the research question, what is an appropriate alternative
-hypothesis?  
-
-\vspace{0.5in}
-
+[$\pi_{\text{hurry}} \neq \pi_{\text{no hurry}}$, the proportion of students who choose to help a homeless person differs between those who are told they are in a hurry versus not in a hurry.]{style="color: red;"}
 
 ## Visualize and Summarize the Data
 
-In the last activity, we learned how to add a second categorical variable into
-our bar plot. We learned there are three orientations for bar plots with two 
-categorical variables: stacked, dodged, and filled. 
+In the last activity, we learned how to add a second categorical variable into our bar plot. We learned there are three orientations for bar plots with two categorical variables: stacked, dodged, and filled.
 
-Generally, **dodged** barplots are used for Chi-Square tests of 
-**independence**.
+Generally, **dodged** barplots are used for Chi-Square tests of **independence**.
 
-For Chi-Square tests of **homogeneity** we use **filled** bar plots instead.
-In a filled bar plot the proportions are on the y-axis, which connects with 
-what we are testing in the null hypothesis---if the proportions are the same.
+For Chi-Square tests of **homogeneity** we use **filled** bar plots instead. In a filled bar plot the proportions are on the y-axis, which connects with what we are testing in the null hypothesis---if the proportions are the same.
 
 ```{r filled-barplot}
 ggplot(data = good_sam, 
@@ -195,17 +148,13 @@ ggplot(data = good_sam,
        y = "Proportion of Students")
 ```
 
-8. Based on the plot does there appear to be an association between the
-variables? Explain your answer.
+8.  Based on the plot does there appear to be an association between the variables? Explain your answer.
 
-\vspace{1in}
+[Yes! There are clearly different proportions of people who help a homeless person between the hurry and no hurry groups, as the height of the pink bar (help) is very different between the two groups.]{style="color: red;"}
 
+### Summarizing the Data
 
-### Summarizing the Data 
-
-Similar to what we did yesterday, we can create a two-way table summarizing the 
-number of students at each of the levels of the two variables. A two-way table
-of the results of this study is presented below.
+Similar to what we did yesterday, we can create a two-way table summarizing the number of students at each of the levels of the two variables. A two-way table of the results of this study is presented below.
 
 ```{r observed-counts}
 #| echo: false
@@ -217,115 +166,106 @@ good_sam |>
   knitr::kable()
 ```
 
+9.  Using the two-way table, calculate the proportion of students who were told they were in a hurry who helped the actor.
 
-9. Using the two-way table, calculate the proportion of students who were told 
-they were in a hurry who helped the actor.
+[$\frac{2}{20} = 0.1$ ]{style="color: red;"}
 
-\vspace{0.3in}
+10. Using the two-way table, calculate the proportion of students who were told they could take their time (no hurry) who helped the actor.
 
-10. Using the two-way table, calculate the proportion of students who were told
-they could take their time (no hurry) who helped the actor.
+[$\frac{11}{20} = 0.55$ ]{style="color: red;"}
 
-\vspace{0.3in}
+11. Based on these proportions, do you believe there is a relationship between being in a hurry and helping someone?
 
-11. Based on these proportions, do you believe there is a relationship between
-being in a hurry and helping someone? 
-
-\vspace{0.4in}
+[Yes! These proportions are **really** different! ]{style="color: red;"}
 
 ## Carrying out a Chi-Square Test of Homogeneity
 
-Similar to what we did last week with one categorical variable, we will be 
-performing a Chi-Squared test to compare what we saw in the data to what
-we would have expected to see if the null hypothesis was true.
+Similar to what we did last week with one categorical variable, we will be performing a Chi-Squared test to compare what we saw in the data to what we would have expected to see if the null hypothesis was true.
 
-### Expected Counts Under $H_0$ 
+### Expected Counts Under $H_0$
 
-Remember from yesterday, to find the expected count for each cell in our two
-variable table, we use three pieces of information:
+Remember from yesterday, to find the expected count for each cell in our two variable table, we use three pieces of information:
 
-- the row total for that cell
-- the column total for that cell
-- the total sample size 
+-   the row total for that cell
+-   the column total for that cell
+-   the total sample size
 
 We find the expected value of a cell using the following formula:
 
 $$
-\frac{\text{row total} \times \text{column total}}{\text{total sample size}}
+\frac{\text{row}_i \text{ total} \times \text{column}_j \text{ total}}{\text{total sample size}}
 $$
 
 \vspace{0.25cm}
 
-Once we have each of these, we can create a table of what frequencies we would
-have expected to see if $H_0$ was true. 
+Once we have each of these, we can create a table of what frequencies we would have expected to see if $H_0$ was true.
 
-12. Fill out the table of expected values below. 
-
+12. Fill out the table of expected values below.
 
 | Behavior | Hurry | No Hurry |
 |----------|-------|----------|
-| Help     |       |          |
-|          |       |          |
-| No Help  |       |          |
-
+| Help     | [$\frac{13*20}{40} = 6.5$ ]{style="color: red;"} | [$\frac{13*20}{40} = 6.5$ ]{style="color: red;"}  |
+| No Help  | [$\frac{27*20}{40} = 13.5$ ]{style="color: red;"} |  [$\frac{27*20}{40} = 13.5$ ]{style="color: red;"} |
 
 ### Chi-Squared Statistic
 
-Next, we compare each of our observed frequencies to what we would have expected
-if $H_0$ was true. We compare how far "off" our observed frequencies are from 
-what was expected in a very specific way, using the following calculation:
+Next, we compare each of our observed frequencies to what we would have expected if $H_0$ was true. We compare how far "off" our observed frequencies are from what was expected in a very specific way, using the following calculation:
 
 $$
 \frac{(\text{observed} - \text{expected})^2}{\text{expected}}
 $$
 
-13. Using the formula above, calculate how far "off" each of the cells in our
-observed table is from what was expected under the null hypothesis. 
+13. Using the formula above, calculate how far "off" each of the cells in our observed table is from what was expected under the null hypothesis.
 
-\vspace{0.5in}
+:::: {.columns}
+:::{.column width="45%"}
+[$\frac{(2 - 6.5)^2}{6.5} = 3.12$]{style="color: red;"}
 
+[$\frac{(11 - 6.5)^2}{6.5} = 3.12$]{style="color: red;"}
+:::
 
-14. Adding all of these differences together to obtain our observed $X^2$
-statistic. 
+:::{.column width="10%"}
+:::
 
-|       $X^2 =$
+:::{.column width="45%"}
+[$\frac{(18 - 13.5)^2}{13.5} = 1.5$]{style="color: red;"}
 
-\vspace{0.5in}
+[$\frac{(9 - 13.5)^2}{13.5} = 1.5$]{style="color: red;"}
+:::
+::::
+
+14. Adding all of these differences together to obtain our observed $X^2$ statistic.
+
+[$X^2 = 3.12 + 3.12 + 1.5 + 1.5 = 9.24$]{style="color: red;"}
 
 ## Sampling Distribution of $X^2$
 
-In order for us to calculate our p-value---the probability of observing an $X^2$
-statistic as or more extreme than what we got, if the null was true---we need a 
-distribution of $X^2$ statistics that could have happened if $H_0$ was true.
+In order for us to calculate our p-value---the probability of observing an $X^2$ statistic as or more extreme than what we got, if the null was true---we need a distribution of $X^2$ statistics that could have happened if $H_0$ was true.
 
-Like we saw yesterday, there are two ways we can obtain this 
-**sampling distribution**:
+Like we saw yesterday, there are two ways we can obtain this **sampling distribution**:
 
-- using a $\chi^2$ distribution
-- using computer simulation
+-   using a $\chi^2$ distribution
+-   using computer simulation
 
-Let's see which option is a better choice. 
+Let's see which option is a better choice.
 
+15. Based on your table of expected counts, which method should you use for approximating the sampling distribution? Why?
 
-15. Based on your table of expected counts, which method should you use for 
-approximating the sampling distribution? Why?
+[Since all the expected counts are over 5, we can use the theory-based method with a $\chi^2$ distribution.]{style="color: red;"}
 
 \newpage
 
 ## Theory-based Null Distribution
 
-If you chose a $\chi^2$ distribution this is where you should be! Similar to 
-what we did yesterday, we will use a $\chi^2$ distribution with 
-$(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and
-$c$ is the number of columns in the table.
+If you chose a $\chi^2$ distribution this is where you should be! Similar to what we did yesterday, we will use a $\chi^2$ distribution with $(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and $c$ is the number of columns in the table.
 
 16. How many degrees of freedom would be use for our $\chi^2$ distribution?
 
-\vspace{0.5in}
+[$(2 - 1) * (2 - 1) = 1$ ]{style="color: red;"}
 
 ### Using a $\chi^2$ Distribution to Find the p-value
 
-To find a p-value for a given $X^2$ statistic, we use the `pchisq()` function. 
+To find a p-value for a given $X^2$ statistic, we use the `pchisq()` function.
 
 17. Using the values you calculated before, fill in the code below:
 
@@ -333,78 +273,52 @@ To find a p-value for a given $X^2$ statistic, we use the `pchisq()` function.
 #| echo: true
 #| eval: false
 
-pchisq(_________, df = _____, lower.tail = FALSE)
+pchisq(9.24, df = 1, lower.tail = FALSE)
 ```
 
 \vspace{0.25in}
 
-Running the code you just wrote in `R` gave me a p-value of approximately
-`r round(pchisq(7.29, df = 1, lower.tail = FALSE), 6)`. 
+Running the code you just wrote in `R` gave me a p-value of approximately `r round(pchisq(9.24, df = 1, lower.tail = FALSE), 6)`.
 
-18. Based on this p-value what conclusion would you reach regarding the null
-hypothesis?
-*Hint:* Go back and see what you wrote for your null and alternative
-hypotheses in #11 and #12!
+18. Based on this p-value what conclusion would you reach regarding the null hypothesis? *Hint:* Go back and see what you wrote for your null and alternative hypotheses in #11 and #12!
 
-\vspace{1in}
+[With a p-value of 0.007 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry. ]{style="color: red;"}
 
-19. Write a paragraph summarizing the results of the study as if writing a press release.  Be sure to describe:
+19. Write a paragraph summarizing the results of the study as if writing a press release. Be sure to describe:
 
-* Summary statistic and interpretation
-
-* P-value and interpretation
-
-* Conclusion (written to answer the research question)
-
-* Scope of inference
+[In a study of the goodwill of seminary students, researcher randomly assigned a "hurried state" to 20 students (out of 40 students) by telling them they were late to give a presentation across campus. Researchers then compared how many students helped a homeless person (actor), planted on the student's path to their presentation. A Chi-Squared Homogeneity Test found a test statistic of 9.24 with an associated p-value of 0.007, suggesting there were substantial differences in the proportion of students who helped the homeless person compared to what would have been expected if both groups were equally likely to help. Therefore, the researchers concluded that the hurried state cause differences in the proportion of students who would help a homeless person, for the sample of students at their seminary. ]{style="color: red;"}
 
 \newpage
 
 ## Simulated / Permuted Null Distribution
 
-If you chose a simulation-based method this is where you should be! If there 
-are not at least 5 expected counts in each cell of our table, we cannot use a
-$\chi^2$ distribution to approximate what the true sampling distribution looks
-like. Instead, we need to use computer simulation to obtain our p-value. 
+If you chose a simulation-based method this is where you should be! If there are not at least 5 expected counts in each cell of our table, we cannot use a $\chi^2$ distribution to approximate what the true sampling distribution looks like. Instead, we need to use computer simulation to obtain our p-value.
 
-Like all of the previous times, we can think about what the computer is doing
-using cards. Keep in mind, we are assuming that someone is equally likely to 
-provide help to someone in need regardless of whether they are in a hurry or 
-not. 
+Like all of the previous times, we can think about what the computer is doing using cards. Keep in mind, we are assuming that someone is equally likely to provide help to someone in need regardless of whether they are in a hurry or not.
 
 \vspace{0.25in}
 
 To carry out **one** simulation we need to do the following steps:
 
-__Step 1:__ Write the response (______________) and the explanatory variable (_________________) on ______ cards. 
+**Step 1:** Write the response [(Behavior) ]{style="color: red;"} and the explanatory variable ([Condition]{style="color: red;"}) on [40]{style="color: red;"} cards.
+
+**Step 2:** Assume the null hypothesis is true and: [rip the cards in half, separating the condition from the behavior]{style="color: red;"}
+
+**Step 3:** Create a new dataset that could have happened if $H_0$ was true by: [randomly pairing a condition card with a behavior card until 40 new pairs of cards have been made ]{style="color: red;"}
+
+**Step 4:** Create a table of the simulated counts for the shuffled cards.
+
+Keep in mind the column and row totals will stay the **same** (there were only 20 people in a hurry and only 13 people who helped the stranger). However, the **cell values** will **change** (we won't always have 2 people who helped and were in a hurry).
 
 \vspace{0.25cm}
 
-__Step 2:__ Assume the null hypothesis is true and: 
+**Step 5:** Calculate the $X^2$ statistic for the simulation.
 
-\vspace{1in}
-
-__Step 3:__ Create a new dataset that could have happened if $H_0$ was true by:
-
-\vspace{1in}
-
-__Step 4:__ Create a table of the simulated counts for the shuffled cards. 
-
-Keep in mind the column and row totals will stay the **same** (there were only
-20 people in a hurry and only 13 people who helped the stranger). However, the
-**cell values** will **change** (we won't always have 2 people who helped and 
-were in a hurry). 
-
-\vspace{0.25cm}
-
-__Step 5:__ Calculate the $X^2$ statistic for the simulation. 
-
-Because the row and column totals stay the same, the table of expected counts
-will be the same for **every** simulation!
+Because the row and column totals stay the same, the table of expected counts will be the same for **every** simulation!
 
 \vspace{0.25in}
 
-__Step 6:__ Plot the simulated $X^2$ statistic on the distribution
+**Step 6:** Plot the simulated $X^2$ statistic on the distribution
 
 \vspace{0.25in}
 
@@ -426,9 +340,26 @@ good_sam |>
   adorn_totals(where = c("row", "col"))
 ```
 
-16. Calculate the $X^2$ statistic for this simulation. 
+16. Calculate the $X^2$ statistic for this simulation.
 
-\vspace{1in}
+:::: {.columns}
+:::{.column width="45%"}
+[$\frac{(7 - 6.5)^2}{6.5} = 0.038$]{style="color: red;"}
+
+[$\frac{(6 - 6.5)^2}{6.5} = 0.038$]{style="color: red;"}
+:::
+
+:::{.column width="10%"}
+:::
+
+:::{.column width="45%"}
+[$\frac{(13 - 13.5)^2}{13.5} = 0.019$]{style="color: red;"}
+
+[$\frac{(14 - 13.5)^2}{13.5} = 0.019$]{style="color: red;"}
+:::
+::::
+
+[$X^2 =  0.0019$]{style="color: red;"}
 
 Alright, after carrying out this process, I obtained the following distribution.
 
@@ -445,35 +376,31 @@ good_sam |>
   visualize( ) + 
   labs(title = " ", 
             x = "Simulated X-Squared Statistics", 
-            y = "Number of Simulations (out of 1000 reps)")
+            y = "Number of Simulations (out of 1000 reps)") + 
+  geom_vline(xintercept = 9.24, 
+             color = "red", 
+             lwd = 2, 
+             lty = "dashed")
 ```
 
 17. Draw a line where the observed $X^2$ statistic falls on this distribution.
 
-\vspace{0.25in}
+18. Estimate the p-value for testing if the proportion of students who helped is the same between the two groups (hurry / no hurry).
 
-18. Estimate the p-value for testing if the proportion of students who helped
-is the same between the two groups (hurry / no hurry). 
+[It looks like the largest statistic on the null distribution is around 7. Thus, there are **zero** statistics as large or larger than 9.24, resulting in a p-value of less than 0.001.]{style="color: red;"}
 
-\vspace{0.25in}
+19. Based on your p-value, what would you conclude for your null and alternative hypotheses? (Look back at what you said for #11 and #12)!
 
-19. Based on your p-value, what would you conclude for your null and alternative
-hypotheses? (Look back at what you said for #11 and #12)!
+[With a p-value < 0.001 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry. ]{style="color: red;"}
 
-\vspace{1in}
+20. Write a paragraph summarizing the results of the study as if writing a press release. Be sure to describe:
 
-20. Write a paragraph summarizing the results of the study as if writing a
-press release.  Be sure to describe:
+-   Summary statistic and interpretation
 
-* Summary statistic and interpretation
+-   P-value and interpretation
 
-* P-value and interpretation
+-   Conclusion (written to answer the research question)
 
-* Conclusion (written to answer the research question)
+-   Scope of inference
 
-* Scope of inference
-
-**Note:** Please only do either this question or question #19 for the previous 
-section. They are the same question!
-
-
+**Note:** Please only do either this question or question #19 for the previous section. They are the same question!
