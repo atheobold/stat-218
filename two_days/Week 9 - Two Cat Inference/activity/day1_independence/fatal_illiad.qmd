@@ -1,7 +1,8 @@
 ---
 title: 'Chi-Square Test of Independence: Fatal Injuries in the Iliad'
-#format: pdf  
-format: docx
+author: "Your name:"
+format: pdf  
+#format: docx
 #  html:
 #    self-contained: true 
 editor: visual
@@ -132,10 +133,8 @@ Bar plots are an excellent tool for giving us a bigger picture of the relationsh
 
 Like the bar plots, we will be adding to what we learned previously. In Lab 7, we made one variable tables using the following process:
 
-```
-myopia |>
-  count(Light)
-```
+    myopia |>
+      count(Light)
 
 This gave us a table of how many observations (children) in the dataset slept with no light, a nightlight, or full light.
 
@@ -295,8 +294,7 @@ $$
 \frac{(\text{observed} - \text{expected})^2}{\text{expected}}
 $$
 
-14. Using the formula above, calculate how far "off" each of the cells in our observed table is from what was expected under the null hypothesis. *Hint:* You
-should be adding up **eight** numbers for your $X^2$ statistic!
+14. Using the formula above, calculate how far "off" each of the cells in our observed table is from what was expected under the null hypothesis. *Hint:* You should be adding up **eight** numbers for your $X^2$ statistic!
 
 \vspace{1in}
 
@@ -319,8 +317,7 @@ Let's see how each of these works!
 
 ## Theory-based Null Distribution
 
-For the Chi-Squared test of independence we've been discussing, it can be mathematically shown that the distribution of $X^2$ statistics follows a $\chi^2$ distribution with $(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and $c$ is the number of columns in the table. Keep in mind the 
-total row and column don't count!
+For the Chi-Squared test of independence we've been discussing, it can be mathematically shown that the distribution of $X^2$ statistics follows a $\chi^2$ distribution with $(r - 1) \times (c - 1)$ degrees of freedom, where $r$ is the number of rows and $c$ is the number of columns in the table. Keep in mind the total row and column don't count!
 
 16. How many degrees of freedom would be use for our $\chi^2$ distribution?
 
@@ -336,8 +333,7 @@ In order for the $\chi^2$ distribution to be a good approximation of the true sa
 
 -   The observations are independent
 -   We have a "large enough" sample size
-    -   This is checked by verifying there are **at least 5** 
-    [expected counts]{.underline} in each cell
+    -   This is checked by verifying there are **at least 5** [expected counts]{.underline} in each cell
 
 If the condition about expected cell counts is violated, we are forced to use a simulation-based method.
 
@@ -349,8 +345,7 @@ If the condition about expected cell counts is violated, we are forced to use a 
 
 If we decided in #17 that it is not unreasonable for us to use the $\chi^2$ distribution, then we can use `R` to find our p-value.
 
-We will use the `pchisq()` function (which you saw last week). This function 
-has three inputs:
+We will use the `pchisq()` function (which you saw last week). This function has three inputs:
 
 -   the observed $X^2$ statistic
 -   how many degrees of freedom should be used for the $\chi^2$ distribution
@@ -374,10 +369,7 @@ Running the code you just wrote in `R` gave me a p-value of approximately `r rou
 
 If the condition for expected counts is violated, we cannot use a $\chi^2$ distribution to approximate what the true sampling distribution looks like. Instead, we need to use computer simulation to obtain our p-value.
 
-Like all of the previous times, we can think about what the computer is doing
-using cards. Keep in mind, we are **assuming the null hypothesis is true**,
-which suggests there is no relationship between the location of someone's injury
-and whether they lived or died.
+Like all of the previous times, we can think about what the computer is doing using cards. Keep in mind, we are **assuming the null hypothesis is true**, which suggests there is no relationship between the location of someone's injury and whether they lived or died.
 
 \newpage
 
