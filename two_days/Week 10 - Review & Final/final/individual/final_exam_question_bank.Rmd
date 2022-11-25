@@ -11,7 +11,7 @@ output:
     df_print: paged
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
                       warning = FALSE, 
@@ -29,16 +29,16 @@ library(praise)
 set.seed(1234)
 ```
 
-For your final exam __60%__ of questions will be randomly selected from 
-__this__ question bank. The remainder of the exam will be __20%__ selected
-from the __Midterm 1__ question bank and __20%__ selected from the 
+\vspace{-0.25cm}
+
+For your final exam __50%__ of questions will be randomly selected from 
+__this__ question bank. The remainder of the exam will be __25%__ selected
+from the __Midterm 1__ question bank and __25%__ selected from the 
 __Midterm 2__ question bank.
 
 There \textbf{will not} be a solution key posted. It is your responsibility
 to discuss your ideas with your group members and / or with Dr. Theobold
 during office hours prior to the exam.
-
-\vspace{0.5cm}
 
 ## Golden Ticket
 
@@ -46,13 +46,13 @@ during office hours prior to the exam.
 |------------|:---------------------------:|:--------------------------:|:---------------------------------------:|:--------------------------:|:---------------------:|
 | Type of plot | Bar plot | Dodged Bar plot, Stacked Bar plot, Filled Bar plot | Dot plot, Histogram, Boxplot | Scatterplot | Faceted Histograms, Side-by-side Boxplots |
 |           |           |           |           |           |           |
-| Summary measure | Proportion | Difference in Proportions | Mean | Slope or Correlation | Difference in Means |
+| Summary measure | Proportion | Deviation between Observed Counts and Expected Counts ($X^2$) | Mean or Mean of Differences | Slope or Correlation | Difference in Means |
 |           |           |           |           |           |           |
-| Parameter notation | $\pi$ | $\pi_1 - \pi_2$ | $\mu$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
+| Parameter notation | $\pi$ | $\pi_1, \pi_2, \hdots , \pi_k$ | $\mu$ or $\mu_{diff}$ | Slope: $\beta_1$; Correlation: $\rho$ | $\mu_1 - \mu_2$ |
 |           |           |           |           |           |           |
-| Statistic notation | $\widehat{p}$ | $\widehat{p}_1 - \widehat{p}_2$ | $\bar{x}$ | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
+| Statistic notation | $\widehat{p}$ | $\widehat{p}_1, \widehat{p}_2, \hdots, \widehat{p}_k$ | $\bar{x}$ or $\bar{x}_{diff}$  | Slope: $b_1$; Correlation: $r$ | $\bar{x}_1 - \bar{x}_2$ | 
 |           |           |           |           |           |           |
-| Statistical Method(s) | $\chi^2$ Goodness of fit Test | $\chi^2$ Test of Independence, $\chi^2$ Test of Homogeneity, Permutation Test | $t$-test for One Mean, $t$-test for Paired Differences, Bootstrap Confidence Interval for One Mean | $t$-test for $\beta_1$, Permutation Test for $\beta_1$, Bootstrap Confidence Interval for $\beta_1$ | $t$-test for $\mu_1 - \mu_2$, Permutation Test for $\mu_1 - \mu_2$, Bootstrap Confidence Interval for $\mu_1 - \mu_2$ |
+| Statistical Method(s) | $\chi^2$ \newline Goodness of fit Test | $\chi^2$ Test of Independence, $\chi^2$ Test of Homogeneity, Permutation Test for $X^2$ | $t$-test for One Mean, $t$-test for Paired Differences, Bootstrap Confidence Interval for One Mean | $t$-test for $\beta_1$, Permutation Test for $\beta_1$, Bootstrap Confidence Interval for $\beta_1$ | $t$-test for $\mu_1 - \mu_2$, Permutation Test for $\mu_1 - \mu_2$, Bootstrap Confidence Interval for $\mu_1 - \mu_2$ |
 |           |           |           |           |           |           |
 
 \newpage
@@ -67,29 +67,57 @@ __1.5 IQR Rule:__ above $Q3 + (1.5 \times IQR)$  or below $Q1 - (1.5 \times IQR)
 
 \vspace{0.25cm}
 
-$$\hat{y} = b_0 + b_1 \times x$$
+$$\hat{y} = b_0 + b_1 \times$$
+
+\vspace{0.25cm} 
+
+$$\text{Residual} = y - \hat{y}$$
 
 \vspace{0.25cm}
 
-$$Residual = y - \hat{y}$$ 
+$$R^2 = r^2$$ 
+
+\vspace{0.25cm} 
+
+__general formula for a confidence interval:__ $\text{point estimate} \pm \text{multiplier} \times \text{SE(point estimate)}$
 
 \vspace{0.25cm}
 
-__t-based confidence interval:__ \hspace{1cm} $\text{point estimate} \pm t^*_{df} \times SE$
+__t-based confidence interval:__ \hspace{1cm} $\bar{x} \pm t^*_{df} \times SE(\bar{x})$
 
 \vspace{0.25cm}
 
-$$SE(\mu) = \frac{\sigma}{\sqrt{n}}$$
+$$SE(\bar x) = \frac{s}{\sqrt{n}}$$
+
+\vspace{0.25cm} 
+
+$$SE(\bar x_1 - \bar x_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
 
 \vspace{0.25cm}
 
-$$SE(\mu_1 - \mu_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
+$$F = \frac{\text{MSG}}{\text{MSE}}$$
+\vspace{0.25cm} 
+
+$$\alpha^* = \frac{\alpha}{\text{\# of comparisons}}$$
 
 \vspace{0.25cm}
+
+\textbf{Expected Counts for One Categorical Variable}
+
+$$ \text{Expected Count} = \text{total sample size } \times \text{null proportion for group k}$$
+
+\vspace{0.3cm}
+
+\textbf{Expected Counts for Two Categorical Variables}
+
+$$ \text{Expected Count} = \frac{\text{(row i total)} \times \text{(column j total)}}{\text{total sample size}} $$
+
+__Chi-Square Test Statistic__
 
 $$ 
 X^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}} 
 $$
+
 
 \newpage 
 
@@ -114,6 +142,7 @@ no rule like "leaflets three, leave them be" for Poisonous Oak and Ivy.
 
 ```{r mushroom-data, include = FALSE}
 mushrooms <- read_csv(here::here(
+  "two_days", 
   "Week 10 - Review & Final", 
   "final", 
   "individual", 
@@ -128,7 +157,8 @@ mushrooms <- read_csv(here::here(
 
 ```{r mushroom-table}
 mushrooms %>% 
-  group_by(class, `gill-size`) %>% 
+  rename(Class = class) |> 
+  group_by(Class, `gill-size`) %>% 
   count() %>% 
   pivot_wider(names_from = `gill-size`, 
               values_from = n) %>% 
@@ -158,40 +188,21 @@ Gill size (Broad or Narrow) is the (explanatory / response)
 
 \noindent
 \textbf{(b)}[3 points] Calculate the proportion of mushrooms with a broad gill
-size that are poisonous. *Give appropriate notation with informative subscripts
-if necessary.* 
+size that are poisonous. *Leave your value in __unreduced__ fraction form.* 
 
 \vspace{0.2cm}
 
-**Work:**
+$$\underset{\text{(notation)}}{\underline{\hspace{8cm}}} = \underset{\text{(value)}}{\underline{\hspace{3cm}}}$$
 
-\vspace{1cm}
-
-**Answer:** \underline{\hspace{3in}}
-
-\vspace{0.2cm}
-
-**Notation:** \underline{\hspace{3in}}
-
-\vspace{0.2cm}
+\vspace{0.5cm}
 
 \noindent
 \textbf{(c)}[3 points] Calculate the proportion of mushrooms with a narrow gill
-size that are poisonous. *Give appropriate notation with informative subscripts
-if necessary.* 
+size that are poisonous. *Leave your value in __unreduced__ fraction form.* 
 
 \vspace{0.2cm}
 
-**Work:**
-
-\vspace{1cm}
-
-**Answer:** \underline{\hspace{3in}}
-
-\vspace{0.2cm}
-
-**Notation:** \underline{\hspace{3in}}
-
+$$\underset{\text{(notation)}}{\underline{\hspace{8cm}}} = \underset{\text{(value)}}{\underline{\hspace{3cm}}}$$
 \newpage
 
 \noindent
@@ -269,8 +280,8 @@ that tall (T) was dominant to short (t). Suppose in your Biology course you
 carried out an experiment to test if the plot offspring would follow Mendelian
 inheritance. 
 
-\noindent Fill in the table defining what the expected tallness inheritance
-for your plants should be. 
+\noindent Fill in the cells of Punnett square to give the possible genotypes for
+plant tallness. 
 
 |                   |         T                 |               t       |
 |-------------------|---------------------------|-----------------------|
@@ -286,7 +297,7 @@ proportions would you expect for each of the following genotypes? Insert the cor
 
 | TT                          | Tt                         | tt               |
 |-----------------------------|----------------------------|------------------|
-| $p_{\text{TT}}$ =           | $p_{\text{Tt}}$ =          | $p_{\text{tt}}$ = |
+| $\pi_{\text{TT}}$ =           | $\pi_{\text{Tt}}$ =          | $\pi_{\text{tt}}$ = |
 |                             |                            |                  |
 
 \vspace{0.25cm}
@@ -300,26 +311,38 @@ of tallness.
 
 | Tall                                 | Short                              |
 |--------------------------------------|------------------------------------|
-| $p_{\text{Tall}}$ =                  | $p_{\text{Short}}$ =               |
+| $\pi_{\text{Tall}}$ =                  | $\pi_{\text{Short}}$ =               |
 |                                      |                                    |
 
 \vspace{0.25cm}
 
-\noindent \textbf{(d)} [3 points] If the table above represents what is assumed
-to be true about tallness inheritance under $H_0,$ state the alternative
-hypothesis using either words or notation. 
+\noindent \textbf{(d)} [3 points] If the table above represents what Mendelian 
+inheritance assumes to be true about tallness under $H_0,$ state the alternative
+hypothesis using words. 
 
 \vspace{1in}
 
-\noindent \textbf{(e)} [1 point] After you cross your plants, you measure the
+\noindent \textbf{(e)} [2 point] After you cross your plants, you measure the
 characteristics of the 400 offspring. You note that there are 305 tall pea
 plants and 95 short pea plants. 
 
-\noindent Create a table summarizing these observations. 
+\noindent Fill in the table summarizing these observed counts. 
+
+| $\underline{\hspace{1in}}$ | $\underline{\hspace{1in}}$ | Total       |
+|----------------------------|----------------------------|-------------|
+|                            |                            |    400      |
 
 \newpage
 
-\noindent \textbf{(f)} [4 points] Calculate how far "off" was your observed
+\noindent \textbf{(f)} [4 points] Fill in the table below, summarizing the
+expected counts for these 400 plants. 
+
+| $\underline{\hspace{1in}}$ | $\underline{\hspace{1in}}$ | Total       |
+|----------------------------|----------------------------|-------------|
+|                            |                            |    400      |
+
+
+\noindent \textbf{(g)} [4 points] Calculate how far "off" was your observed
 number of tall and short plants were from what you expected if $H_0$ was true.
 Use these values to report the $X^2$ statistic for your experiment. 
 
@@ -335,7 +358,7 @@ __$X^2$ statistic__:
 
 \vspace{0.25in}
 
-\noindent \textbf{(g)} [3 points] The p-value associated with your $X^2$
+\noindent \textbf{(h)} [3 points] The p-value associated with your $X^2$
 statistic is `r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology
 textbook suggests you interpret this value as:
 
@@ -354,7 +377,7 @@ common cold. She estimates that 40% of the cases each year occur in the winter,
 1000 patient cases was collected, and the number of cold cases for each season
 was recorded. 
 
-A summary table is included below:
+A summary table of the observed counts is included below:
 
 ```{r colds-data}
 colds <- tibble(Season = 
@@ -371,8 +394,12 @@ colds <- tibble(Season =
 colds %>% 
   count(Season) %>% 
   rename(`Number of Patients` = n) %>% 
+  pivot_wider(names_from = Season, values_from = `Number of Patients`) |>
+  adorn_totals(where = "col") |> 
   pander()
 ```
+
+\newpage 
 
 \noindent \textbf{(a)} [4 points] If the doctor's suspicion was correct, what
 proportions would you expect for each cell? Insert the corresponding values in
@@ -382,14 +409,13 @@ each cell.
 
 | Fall                | Spring             | Summer             | Winter             | 
 |---------------------|--------------------|--------------------|--------------------|
-| $p_{\text{fall}}$ =  | $p_{\text{spring}}$ = | $p_{\text{summer}}$ = | $p_{\text{winter}}$ =  |
+| $\pi_{\text{fall}}$ =  | $\pi_{\text{spring}}$ = | $\pi_{\text{summer}}$ = | $\pi_{\text{winter}}$ =  |
 |                     |                    |                    |                    |
 
 \vspace{0.25cm}
 
 \noindent \textbf{(b)} [3 points] If the table above represents what is assumed
-to be true under $H_0,$ state the alternative hypothesis using either words or
-notation. 
+to be true under $H_0,$ state the alternative hypothesis using words. 
 
 \vspace{1in}
 
@@ -412,20 +438,20 @@ use the $\chi^2$ distribution to obtain a p-value are violated.
 
 \vspace{1in}
 
-\noindent \textbf{(f)} [3 points] An $X^2$ statistic of 124 was obtained for
+\noindent \textbf{(f)} [3 points] A $X^2$ statistic of 124 was obtained for
 these data. Fill in the `R` code below to find the p-value for this statistic.
 *Hint:* The `lower.tail` input takes one of two options `TRUE` or `FALSE`. 
 
-```{r code-fill-in-chisq, eval = FALSE, echo= TRUE}
+```{r code-fill-in-chisq, eval = FALSE, echo = TRUE}
 pchisq(_____________, df = ______________, lower.tail = ___________)
 ```
 
 \newpage
 
-\noindent \textbf{(g)} [4 points] Using the code you input above, a p-value less
-than 0.000000123 was obtained. Based on this p-value what would you conclude
-about the Doctor's hypothesis regarding the distribution of colds throughout the
-year? 
+\noindent \textbf{(g)} [4 points] Using the code you input above, a p-value of
+`r scales::pvalue(pchisq(124, df = 3, lower.tail = FALSE), accuracy = 0.00001)`
+was obtained. Based on this p-value what would you conclude about the Doctor's
+hypothesis regarding the distribution of colds throughout the year? 
 
 \vspace{1in}
 
@@ -492,31 +518,15 @@ appropriate choice? Why or why not?
 
 \vspace{1in}
 
-\noindent \textbf{(d)} [2 points] What distribution should be used to find the
-p-value for the hypothesis test above?
+\noindent \textbf{(d)} [2 points] What $\chi^2$ distribution did the
+administrators use to find their p-value?
 
 \vspace{0.5in}
 
-\noindent \textbf{(e)} [4 points] A p-value less than 0.000000142 ($X^2$
-statistic = 50) was found using the distribution stated in __(d)__. Based on 
-the p-value obtained, report your conclusion to the hypothesis test
-__in the context of the problem.__ 
+\noindent \textbf{(e)} [4 points] A p-value of `r pchisq(50, 2, lower.tail = FALSE) |> scales::pvalue(accuracy = 0.00001)` ($X^2$ statistic = 50) was found using the distribution stated in __(d)__. Based on the p-value obtained, report your
+conclusion to the hypothesis test __in the context of the problem.__ 
 
 \vspace{1in}
-
-\noindent \textbf{(f)} [2 points] Compute the relative risk of being labeled
-"Hard" for "attractive" female professors compared to "unattractive" female 
-professors.
-
-\vspace{1in}
-
-\noindent \textbf{(g)} [3 points] Interpret the relative risk you obtained in 
-__(f)__ in the context of these data. Be sure to indicate how the comparison was
-made and what the sign indicates!
-
-\vspace{1in}
-
-\newpage
 
 ### Guilty Decisions
 
@@ -534,8 +544,7 @@ students in the guilty-state group chose not to repair the car than those in the
 \vspace{0.25in}
 
 \noindent
-\textbf{(a)}[3 pts] What is the study design? Explain your reasoning. Select
-one.
+\textbf{(a)}[3 pts] What is the study design? Select one.
 
 \begin{itemize}
 \item[(i)] Observational study. The researchers did not take a random sample of
@@ -551,7 +560,7 @@ students.
 
 \noindent \textbf{(b)}[3 pts] Which types of sampling bias may be present in
 this study? Select all that are present, or if you believe there is no bias 
-present, select option 4) No bias.
+present, select option (iv) No bias.
 
 \begin{itemize}
 \item[(i)] Selection bias
@@ -571,7 +580,7 @@ car? Select one.
 \item[(i)] Yes, because these data are from a representative sample.
 \item[(ii)] No, because the students are volunteers.
 \item[(iii)] Yes, because the researchers evened out confounding variables
-across emotional state group.
+across emotional state group by randomly assigning emotional state.
 \item[(iv)] No, because the sample size is not large enough.
 \end{itemize}
 
@@ -579,7 +588,7 @@ across emotional state group.
 
 \noindent \textbf{(d)} [2 pts] Which type of plot would be the **most**
 appropriate to display the relationship between each level of emotional state
-and whether students choose to repair the car? Select all that apply.
+and whether students choose to repair the car? Select one. 
 
 \begin{itemize}
 \item[(i)] Scatterplot
@@ -604,6 +613,7 @@ data are expected.
 ```{r fish-data}
 
 fish <- read_csv(here::here(
+  "two_days",
   "Week 10 - Review & Final", 
   "final", 
   "individual", 
@@ -644,8 +654,6 @@ this variable?
 
 \vspace{1in}
 
-\newpage
-
 \noindent \textbf{(c)} [3 points] Based on the bar plot below, describe the
 relationship between the sampling year and the species of captured fish. Make
 direct reference to characteristics of the plot! 
@@ -672,9 +680,9 @@ fish %>%
   theme(legend.position = "top")
 ```
 
-\vspace{1in}
+\newpage
 
-\noindent \textbf{(d)} [5 points] The statistician at Montana Fish, Wildlife, &
+\noindent \textbf{(d)} [5 points] The Statistician at Montana Fish, Wildlife, &
 Parks prefers using simulation-based methods rather than theory-based methods.
 They used computer simulation to obtain the null distribution of the $X^2$ 
 statistic shown on the next page. 
@@ -686,8 +694,8 @@ distribution.
 
 \begin{center}
 \noindent
-On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{2in}} on the 
-cards.
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{1in}} and 
+\underline{\hspace{1in}} on the cards.
 \end{center}
 
 \vspace{0.25in}
@@ -716,23 +724,23 @@ null_dist <- fish %>%
 null_dist %>% 
   visualise(type = "simulation") + 
   labs(x = "Simulated X-Sq Statistic", 
-       title = " ")
+       title = " ") + 
+  scale_x_continuous(limits = c(0, 60), breaks = seq(0, 60, by = 5))
 
 ```
 
 \vspace{0.25cm}
 
 \noindent \textbf{(e)} [2 points] The observed $X^2$ statistic was 
-`r chisq_test(fish, response = species, explanatory = year)$statistic`. Use this
-statistic to draw a line and shade the direction that should be used when 
-calculating the p-value. 
+`r chisq_test(fish, response = species, explanatory = year)$statistic |> round(digits = 2)`. Use this statistic to draw a line and shade the direction that should be
+used when calculating the p-value. 
 
 \vspace{0.25in}
 
 \noindent \textbf{(f)} [1 point] Approximate the p-value for this hypothesis
 test. 
 
-\vspace{0.25in}
+\newpage
 
 \noindent \textbf{(g)} [3 points] Using the conditions of the simulation-based
 method used, evaluate if you believe the p-value you obtained in __(f)__ is
@@ -756,8 +764,6 @@ significance instead. Will your colleague also reject the null hypothesis?
 
 \vspace{0.25cm}
 
-\newpage
-
 \noindent \textbf{Q8}[2 points] In hypothesis testing,
 
 \begin{itemize}
@@ -769,6 +775,8 @@ a p-value; you can adjust based on the p-value you observe.
 not large enough.
 \item[(d)] p-values are the probability that the null hypothesis is false.
 \end{itemize}
+
+\newpage 
 
 \noindent \textbf{Q9} For each of the following, select the single most appropriate analysis for the situation described. You may use an analysis for
 more than one situation. (2 pts each)
@@ -794,10 +802,10 @@ year.
 \underline{\hspace{4in}}
 \end{center}
 
-\item[(b)] A study of honeybees looked at whether the
-proportions of different honeybee species varies by state. Ten states were used 
-in the study, and 100 honeybees were randomly sampled in each state, and 7
-different species were seen in the data set. 
+\item[(b)] A study of honeybees looked at whether the species of honeybees 
+varied by state. Ten states were used in the study, and 100 honeybees were
+randomly sampled in each state, and 7 different species were seen in the data
+set. 
 
 \begin{center}
 \underline{\hspace{4in}}
@@ -822,9 +830,8 @@ yield of a tomato plant differs among three tomato varieties.
 \item[(e)] You are interested in deciding if you should rent
 a new apartment off campus. As this will be your first time living off campus,
 you are anxious to  know the average amount of time it should take you to walk
-to campus. You, a logical person, know that someone's height drastically affects
-how long it takes them to walk places. What is the best {\bf method} to answer
-his research question? Circle one.
+to campus. What is the best {\bf method} to estimate the average time it will 
+take you to walk to campus? 
 
 \begin{center}
 \underline{\hspace{4in}}

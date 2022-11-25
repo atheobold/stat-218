@@ -280,7 +280,7 @@ Once we have each of these, we can create a table of what frequencies we would h
 13. I've gotten you started with the expected value table. Fill out the remainder of the table below!
 
 | Lethal   | Body                         | Head/neck                  | Limb                       | Unknown |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|------------------------------|----------------------------|----------------------------|---------|
 | Fatal    | $\frac{155*67}{184} = 56.44$ |                            |                            |         |
 | Nonfatal |                              | $\frac{29*45}{184} = 7.09$ | $\frac{29*34}{184} = 5.36$ |         |
 
