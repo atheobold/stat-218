@@ -1,0 +1,183 @@
+---
+title: 'Lab 9: Malaria'
+author: "Present Group Member's Names Go Here!"
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+#| include: false
+## Load in the packages necessary for our analysis: tidyverse
+
+library(tidyverse)
+library(infer)
+library(janitor)
+```
+
+An article that appeared in the journal Lancet in May of 2021 (Datoo, et al.)
+described a study that investigated a potential vaccine that might protect 
+children against malaria. Researchers recruited children between the ages of 5 
+and 17 months in Burkina Faso, a country in western Africa, as participants. Th
+e children were randomly assigned into one of three groups: one group received a
+large dose of the potential vaccine, another group received a small dose, and a
+third group received a placebo. Researchers observed the children for the next
+18 months, keeping track of whether or not the child developed malaria.
+Researchers hoped, of course, that children who received a vaccine would be less
+likely to develop malaria than children who received a placebo.
+
+## Setup
+
+```{r, load-data}
+
+malaria_data <- read_csv(here("data", "malaria_data.csv"))
+
+malaria_data <- read_csv(here::here("two_days", 
+                              "Week 9 - Two Cat Inference", 
+                              "lab", 
+                              "malaria_data.csv"))
+
+
+```
+
+**1. Click on the dataset to open the previewer. What is the observational unit for the study?**
+
+**2. Which is the explanatory variable and which is the response variable? Specify the levels / units of each variable!**
+
+-   Explanatory:
+
+-   Response:
+
+**3. Should you do a Chi-square test of Independence or test of Homogeneity for these data? Justify how you know.**
+
+## Visualize & Summarize the Data
+
+4.  Fill in the code below to make a **filled** bar plot of the data. What do you see in your filled-bar plot?
+
+```{r filled-barplot}
+ggplot(data = __________,
+       mapping = aes(x = _________, fill = _______)) +
+  geom_bar(position = "______") +
+  labs(x = "____________",
+       y = "____________")
+```
+
+**5.  Why do we want to make a filled bar plot instead of a stacked or dodged bar plot?**
+
+6.  Finish the code below to make a two-way contingency table. Note: we want our **explanatory variable** to be indicated in the columns.
+
+```{r two-way-table}
+malaria_data |> 
+   count(_____________, _____________) |> 
+   pivot_wider(names_from = _______________, 
+               values_from = n) |> 
+   adorn_totals(where = c("row", "col"))
+
+malaria_data |> 
+   count(Malaria, Vaccine) |> 
+   pivot_wider(names_from = Vaccine, 
+               values_from = n) |> 
+   adorn_totals(where = c("row", "col"))
+```
+
+**7. What proportion of children who received the high dose vaccine contracted malaria?**
+
+**8. What proportion of children who received the low dose vaccine contracted malaria?**
+
+**9. What proportion of children who received the placebo contracted malaria?**
+
+## Theory-based Chi-square
+
+**10. Write the null and alternative hypothesis for this study in words.**
+
+-   Null:
+
+-   Alternative:
+
+Recall, in order for the $\chi^2$ distribution to be a good approximation of the true sampling distribution, we need to verify two conditions:
+
+-   The observations are independent
+-   We have a "large enough" sample size
+    -   This is checked by verifying there are at least 5 expected counts in each cell
+
+11. Is the independent observation condition violated? Justify your answer!
+
+
+The equation for calculating expected counts is:
+
+$$\frac{\text{row } i \text{ total count}\times \text{column } j \text{ total count}}{\text{total count}}$$ Our table is only a 2 x 3 table, but what if you
+had a 6 x 8 or worse, 20 x 42 table? Checking each cell's expected count would
+be very tedious. We only need to check the cell which will have the smallest
+expected count.
+
+12. Which row in your two-way contingency table from #6 has the smallest total count?
+
+13. Which column in your two-way contingency table from #6 has the smallest total count?
+
+**14. Using the equation above calculate the expected count for the cell in the row and column you specified in #9 and #10.**
+
+**15. Is the "large enough" sample size condition violated?**
+
+**16. Can we use the $\chi^2$ distribution to approximate the true sampling distribution?**
+
+17. Fill in the code below to perform a theory-based Chi-square test of independence.
+
+```{r chi-square-test-theory}
+chisq_test(x = malaria_data, 
+           response = ________________, 
+           explanatory = ________________)
+```
+
+18. What conclusion would you reach based on your results? *Make sure to address (1) Chi-square test statistic and associated degrees of freedom, (2) p-value, (3)* $\alpha$ threshold, (4) your decision about the null hypothesis, and (5) your conclusion in context of the data.
+
+
+
+## Simulated Chi-square
+
+What if the large enough sample size condition was violated? We would have
+needed to use a simulation-based approach instead of a theory-based approach! 
+Let's walk through what this would look like.
+
+**19. First, we need to calculate the observed chi-square test statistic from our data. We did this by hand during the activities, but it can be tedious so let's make R do it for us. Fill in the code below to calculate your observed chi-square test statistic.**
+
+*Hint:* The statistic you want to calculate is abbreviated `"Chisq"`. 
+
+```{r observed-chisq}
+obs_xsq <- malaria_data |>
+  specify(response = _____________________,
+          explanatory = __________________) |> 
+  calculate(stat = "_______")
+
+```
+
+20. What value of the observed chi-square test statistic did you obtain? Where have you previously seen this?
+
+**21. Now we need to generate what the sampling distribution would look like if the null were true (aka null distribution of our chi-square statistics). Fill in the code below to generate and visualize the null distribution.**
+
+```{r null-distribution}
+null_dist <- malaria_data |>
+  specify(response = Malaria, 
+          explanatory = Vaccine) |> 
+  hypothesize(null = "______________") |>
+  generate(reps = 1000, type = "__________") |>
+  calculate(stat = "Chisq")
+
+visualize(data = null_dist, 
+          method = "simulation")
+```
+
+**22. Once we have our null distribution, we can use this to calculate our simulated p-value.**
+
+```{r simulated-pvalue}
+get_pvalue(x = null_dist,
+           obs_stat = obs_xsq,
+           direction = "__________")
+```
+
+23. What conclusion would you reach with the simulated chi-square test? Does this differ from your answer in #17?
+

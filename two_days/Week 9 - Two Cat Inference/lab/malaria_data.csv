@@ -1,0 +1,440 @@
+ID,Vaccine,Malaria
+1,Low Dose,Did Not Develop Malaria
+2,High Dose,Did Not Develop Malaria
+3,High Dose,Did Not Develop Malaria
+4,Low Dose,Developed Malaria
+5,Placebo,Developed Malaria
+6,High Dose,Developed Malaria
+7,Placebo,Developed Malaria
+8,Placebo,Developed Malaria
+9,Low Dose,Did Not Develop Malaria
+10,Placebo,Did Not Develop Malaria
+11,Low Dose,Did Not Develop Malaria
+12,High Dose,Did Not Develop Malaria
+13,Low Dose,Did Not Develop Malaria
+14,High Dose,Developed Malaria
+15,High Dose,Did Not Develop Malaria
+16,Low Dose,Did Not Develop Malaria
+17,Low Dose,Did Not Develop Malaria
+18,Placebo,Developed Malaria
+19,Placebo,Did Not Develop Malaria
+20,High Dose,Developed Malaria
+21,Low Dose,Did Not Develop Malaria
+22,Low Dose,Did Not Develop Malaria
+23,Placebo,Did Not Develop Malaria
+24,Low Dose,Did Not Develop Malaria
+25,Low Dose,Did Not Develop Malaria
+26,High Dose,Did Not Develop Malaria
+27,High Dose,Did Not Develop Malaria
+28,Low Dose,Did Not Develop Malaria
+29,Low Dose,Did Not Develop Malaria
+30,Low Dose,Did Not Develop Malaria
+31,Placebo,Developed Malaria
+32,Low Dose,Did Not Develop Malaria
+33,Placebo,Did Not Develop Malaria
+34,Low Dose,Did Not Develop Malaria
+35,High Dose,Did Not Develop Malaria
+36,Low Dose,Developed Malaria
+37,Low Dose,Did Not Develop Malaria
+38,High Dose,Did Not Develop Malaria
+39,High Dose,Did Not Develop Malaria
+40,Placebo,Developed Malaria
+41,Placebo,Developed Malaria
+42,Low Dose,Did Not Develop Malaria
+43,High Dose,Did Not Develop Malaria
+44,Low Dose,Developed Malaria
+45,Low Dose,Developed Malaria
+46,Placebo,Developed Malaria
+47,Low Dose,Did Not Develop Malaria
+48,Placebo,Did Not Develop Malaria
+49,Placebo,Did Not Develop Malaria
+50,Placebo,Developed Malaria
+51,High Dose,Did Not Develop Malaria
+52,Placebo,Developed Malaria
+53,Placebo,Developed Malaria
+54,Placebo,Did Not Develop Malaria
+55,Placebo,Did Not Develop Malaria
+56,Low Dose,Developed Malaria
+57,Placebo,Did Not Develop Malaria
+58,High Dose,Did Not Develop Malaria
+59,High Dose,Developed Malaria
+60,Low Dose,Developed Malaria
+61,Low Dose,Did Not Develop Malaria
+62,High Dose,Did Not Develop Malaria
+63,Placebo,Did Not Develop Malaria
+64,Placebo,Developed Malaria
+65,Placebo,Developed Malaria
+66,Low Dose,Did Not Develop Malaria
+67,High Dose,Did Not Develop Malaria
+68,Placebo,Developed Malaria
+69,High Dose,Developed Malaria
+70,Low Dose,Did Not Develop Malaria
+71,Placebo,Developed Malaria
+72,Placebo,Developed Malaria
+73,Placebo,Did Not Develop Malaria
+74,Low Dose,Developed Malaria
+75,High Dose,Did Not Develop Malaria
+76,Placebo,Developed Malaria
+77,High Dose,Did Not Develop Malaria
+78,Placebo,Developed Malaria
+79,High Dose,Did Not Develop Malaria
+80,Low Dose,Developed Malaria
+81,Placebo,Did Not Develop Malaria
+82,Placebo,Developed Malaria
+83,Placebo,Developed Malaria
+84,Low Dose,Did Not Develop Malaria
+85,High Dose,Did Not Develop Malaria
+86,Placebo,Developed Malaria
+87,High Dose,Did Not Develop Malaria
+88,Placebo,Developed Malaria
+89,Placebo,Developed Malaria
+90,Placebo,Developed Malaria
+91,Placebo,Developed Malaria
+92,Low Dose,Developed Malaria
+93,Low Dose,Did Not Develop Malaria
+94,High Dose,Did Not Develop Malaria
+95,Low Dose,Developed Malaria
+96,High Dose,Developed Malaria
+97,Placebo,Developed Malaria
+98,High Dose,Did Not Develop Malaria
+99,Placebo,Developed Malaria
+100,Low Dose,Did Not Develop Malaria
+101,Low Dose,Did Not Develop Malaria
+102,High Dose,Did Not Develop Malaria
+103,Placebo,Developed Malaria
+104,High Dose,Did Not Develop Malaria
+105,Low Dose,Developed Malaria
+106,High Dose,Developed Malaria
+107,High Dose,Did Not Develop Malaria
+108,Low Dose,Developed Malaria
+109,Placebo,Developed Malaria
+110,Low Dose,Did Not Develop Malaria
+111,High Dose,Did Not Develop Malaria
+112,Placebo,Did Not Develop Malaria
+113,High Dose,Did Not Develop Malaria
+114,High Dose,Did Not Develop Malaria
+115,High Dose,Did Not Develop Malaria
+116,Low Dose,Did Not Develop Malaria
+117,High Dose,Did Not Develop Malaria
+118,High Dose,Developed Malaria
+119,High Dose,Developed Malaria
+120,Placebo,Developed Malaria
+121,Low Dose,Did Not Develop Malaria
+122,Low Dose,Did Not Develop Malaria
+123,Low Dose,Did Not Develop Malaria
+124,High Dose,Did Not Develop Malaria
+125,Low Dose,Did Not Develop Malaria
+126,Placebo,Developed Malaria
+127,Placebo,Developed Malaria
+128,Low Dose,Developed Malaria
+129,High Dose,Did Not Develop Malaria
+130,High Dose,Developed Malaria
+131,Low Dose,Developed Malaria
+132,High Dose,Developed Malaria
+133,Placebo,Developed Malaria
+134,Placebo,Developed Malaria
+135,Placebo,Developed Malaria
+136,Placebo,Developed Malaria
+137,Placebo,Developed Malaria
+138,Placebo,Developed Malaria
+139,Low Dose,Developed Malaria
+140,Placebo,Developed Malaria
+141,Placebo,Did Not Develop Malaria
+142,Low Dose,Did Not Develop Malaria
+143,Placebo,Did Not Develop Malaria
+144,Low Dose,Did Not Develop Malaria
+145,Placebo,Developed Malaria
+146,High Dose,Did Not Develop Malaria
+147,High Dose,Did Not Develop Malaria
+148,High Dose,Did Not Develop Malaria
+149,Placebo,Did Not Develop Malaria
+150,High Dose,Did Not Develop Malaria
+151,High Dose,Did Not Develop Malaria
+152,Placebo,Did Not Develop Malaria
+153,Placebo,Developed Malaria
+154,Placebo,Did Not Develop Malaria
+155,Placebo,Developed Malaria
+156,Low Dose,Did Not Develop Malaria
+157,Placebo,Developed Malaria
+158,Placebo,Did Not Develop Malaria
+159,High Dose,Did Not Develop Malaria
+160,Low Dose,Developed Malaria
+161,Placebo,Developed Malaria
+162,Low Dose,Did Not Develop Malaria
+163,Low Dose,Did Not Develop Malaria
+164,Low Dose,Did Not Develop Malaria
+165,Placebo,Did Not Develop Malaria
+166,Placebo,Developed Malaria
+167,High Dose,Did Not Develop Malaria
+168,Placebo,Developed Malaria
+169,High Dose,Developed Malaria
+170,High Dose,Developed Malaria
+171,Placebo,Developed Malaria
+172,Low Dose,Did Not Develop Malaria
+173,Low Dose,Developed Malaria
+174,Low Dose,Did Not Develop Malaria
+175,Low Dose,Did Not Develop Malaria
+176,High Dose,Did Not Develop Malaria
+177,Placebo,Developed Malaria
+178,Low Dose,Did Not Develop Malaria
+179,Placebo,Did Not Develop Malaria
+180,Low Dose,Developed Malaria
+181,Low Dose,Did Not Develop Malaria
+182,High Dose,Developed Malaria
+183,Low Dose,Did Not Develop Malaria
+184,Placebo,Developed Malaria
+185,High Dose,Did Not Develop Malaria
+186,High Dose,Did Not Develop Malaria
+187,High Dose,Did Not Develop Malaria
+188,Low Dose,Did Not Develop Malaria
+189,Low Dose,Did Not Develop Malaria
+190,Low Dose,Did Not Develop Malaria
+191,Placebo,Developed Malaria
+192,Placebo,Developed Malaria
+193,Placebo,Developed Malaria
+194,Placebo,Developed Malaria
+195,Low Dose,Did Not Develop Malaria
+196,High Dose,Developed Malaria
+197,High Dose,Did Not Develop Malaria
+198,Low Dose,Did Not Develop Malaria
+199,Low Dose,Did Not Develop Malaria
+200,Placebo,Developed Malaria
+201,Low Dose,Did Not Develop Malaria
+202,Low Dose,Developed Malaria
+203,Low Dose,Did Not Develop Malaria
+204,High Dose,Developed Malaria
+205,Placebo,Developed Malaria
+206,Placebo,Did Not Develop Malaria
+207,Placebo,Did Not Develop Malaria
+208,High Dose,Did Not Develop Malaria
+209,Low Dose,Developed Malaria
+210,High Dose,Did Not Develop Malaria
+211,Low Dose,Did Not Develop Malaria
+212,Placebo,Developed Malaria
+213,Low Dose,Developed Malaria
+214,Placebo,Developed Malaria
+215,Low Dose,Developed Malaria
+216,Low Dose,Did Not Develop Malaria
+217,Low Dose,Did Not Develop Malaria
+218,High Dose,Developed Malaria
+219,Low Dose,Did Not Develop Malaria
+220,Placebo,Developed Malaria
+221,High Dose,Did Not Develop Malaria
+222,Placebo,Developed Malaria
+223,Low Dose,Developed Malaria
+224,High Dose,Did Not Develop Malaria
+225,Low Dose,Developed Malaria
+226,High Dose,Did Not Develop Malaria
+227,Placebo,Developed Malaria
+228,Placebo,Developed Malaria
+229,High Dose,Did Not Develop Malaria
+230,Low Dose,Did Not Develop Malaria
+231,Placebo,Developed Malaria
+232,Placebo,Developed Malaria
+233,Low Dose,Did Not Develop Malaria
+234,Low Dose,Did Not Develop Malaria
+235,High Dose,Did Not Develop Malaria
+236,Low Dose,Did Not Develop Malaria
+237,High Dose,Did Not Develop Malaria
+238,Placebo,Developed Malaria
+239,Placebo,Developed Malaria
+240,Placebo,Developed Malaria
+241,High Dose,Developed Malaria
+242,Placebo,Did Not Develop Malaria
+243,High Dose,Did Not Develop Malaria
+244,High Dose,Did Not Develop Malaria
+245,Placebo,Developed Malaria
+246,High Dose,Did Not Develop Malaria
+247,High Dose,Did Not Develop Malaria
+248,Low Dose,Did Not Develop Malaria
+249,High Dose,Did Not Develop Malaria
+250,Placebo,Developed Malaria
+251,Placebo,Developed Malaria
+252,Placebo,Did Not Develop Malaria
+253,High Dose,Did Not Develop Malaria
+254,Placebo,Developed Malaria
+255,Low Dose,Did Not Develop Malaria
+256,Low Dose,Did Not Develop Malaria
+257,High Dose,Did Not Develop Malaria
+258,Low Dose,Developed Malaria
+259,High Dose,Did Not Develop Malaria
+260,Placebo,Developed Malaria
+261,High Dose,Developed Malaria
+262,Low Dose,Did Not Develop Malaria
+263,High Dose,Did Not Develop Malaria
+264,High Dose,Did Not Develop Malaria
+265,High Dose,Did Not Develop Malaria
+266,High Dose,Did Not Develop Malaria
+267,Low Dose,Did Not Develop Malaria
+268,High Dose,Did Not Develop Malaria
+269,Placebo,Developed Malaria
+270,Low Dose,Did Not Develop Malaria
+271,Placebo,Did Not Develop Malaria
+272,High Dose,Developed Malaria
+273,Low Dose,Did Not Develop Malaria
+274,Low Dose,Did Not Develop Malaria
+275,Placebo,Developed Malaria
+276,Placebo,Developed Malaria
+277,Placebo,Developed Malaria
+278,Placebo,Did Not Develop Malaria
+279,Placebo,Developed Malaria
+280,High Dose,Developed Malaria
+281,Low Dose,Did Not Develop Malaria
+282,Placebo,Developed Malaria
+283,Low Dose,Did Not Develop Malaria
+284,Low Dose,Developed Malaria
+285,Low Dose,Developed Malaria
+286,High Dose,Developed Malaria
+287,Placebo,Did Not Develop Malaria
+288,High Dose,Did Not Develop Malaria
+289,High Dose,Did Not Develop Malaria
+290,Low Dose,Did Not Develop Malaria
+291,Low Dose,Did Not Develop Malaria
+292,Placebo,Did Not Develop Malaria
+293,Low Dose,Did Not Develop Malaria
+294,Low Dose,Developed Malaria
+295,Low Dose,Did Not Develop Malaria
+296,Placebo,Developed Malaria
+297,Low Dose,Developed Malaria
+298,High Dose,Developed Malaria
+299,Placebo,Did Not Develop Malaria
+300,High Dose,Did Not Develop Malaria
+301,Low Dose,Developed Malaria
+302,Low Dose,Did Not Develop Malaria
+303,High Dose,Did Not Develop Malaria
+304,Placebo,Did Not Develop Malaria
+305,Low Dose,Did Not Develop Malaria
+306,High Dose,Did Not Develop Malaria
+307,High Dose,Did Not Develop Malaria
+308,High Dose,Did Not Develop Malaria
+309,High Dose,Developed Malaria
+310,Low Dose,Did Not Develop Malaria
+311,Low Dose,Did Not Develop Malaria
+312,Placebo,Developed Malaria
+313,Placebo,Developed Malaria
+314,High Dose,Developed Malaria
+315,High Dose,Developed Malaria
+316,Placebo,Did Not Develop Malaria
+317,Placebo,Developed Malaria
+318,High Dose,Did Not Develop Malaria
+319,Low Dose,Developed Malaria
+320,High Dose,Did Not Develop Malaria
+321,High Dose,Did Not Develop Malaria
+322,Placebo,Developed Malaria
+323,Placebo,Did Not Develop Malaria
+324,High Dose,Did Not Develop Malaria
+325,Placebo,Developed Malaria
+326,Placebo,Developed Malaria
+327,Placebo,Did Not Develop Malaria
+328,High Dose,Did Not Develop Malaria
+329,Low Dose,Developed Malaria
+330,High Dose,Developed Malaria
+331,Low Dose,Did Not Develop Malaria
+332,Placebo,Developed Malaria
+333,Placebo,Developed Malaria
+334,High Dose,Developed Malaria
+335,High Dose,Did Not Develop Malaria
+336,Low Dose,Did Not Develop Malaria
+337,High Dose,Did Not Develop Malaria
+338,Placebo,Developed Malaria
+339,Placebo,Developed Malaria
+340,High Dose,Did Not Develop Malaria
+341,Low Dose,Developed Malaria
+342,High Dose,Did Not Develop Malaria
+343,High Dose,Did Not Develop Malaria
+344,Placebo,Did Not Develop Malaria
+345,Low Dose,Did Not Develop Malaria
+346,Placebo,Developed Malaria
+347,High Dose,Did Not Develop Malaria
+348,High Dose,Did Not Develop Malaria
+349,Low Dose,Did Not Develop Malaria
+350,High Dose,Developed Malaria
+351,Low Dose,Did Not Develop Malaria
+352,Low Dose,Did Not Develop Malaria
+353,Low Dose,Did Not Develop Malaria
+354,Low Dose,Did Not Develop Malaria
+355,Placebo,Developed Malaria
+356,Placebo,Developed Malaria
+357,Placebo,Developed Malaria
+358,High Dose,Did Not Develop Malaria
+359,High Dose,Did Not Develop Malaria
+360,Placebo,Developed Malaria
+361,Placebo,Developed Malaria
+362,Placebo,Developed Malaria
+363,High Dose,Did Not Develop Malaria
+364,Low Dose,Did Not Develop Malaria
+365,High Dose,Developed Malaria
+366,Placebo,Developed Malaria
+367,High Dose,Developed Malaria
+368,High Dose,Did Not Develop Malaria
+369,Placebo,Did Not Develop Malaria
+370,Placebo,Did Not Develop Malaria
+371,Low Dose,Developed Malaria
+372,Low Dose,Did Not Develop Malaria
+373,High Dose,Developed Malaria
+374,Low Dose,Developed Malaria
+375,Low Dose,Developed Malaria
+376,Low Dose,Did Not Develop Malaria
+377,Placebo,Developed Malaria
+378,High Dose,Did Not Develop Malaria
+379,Low Dose,Developed Malaria
+380,Low Dose,Did Not Develop Malaria
+381,Low Dose,Developed Malaria
+382,Low Dose,Developed Malaria
+383,Placebo,Developed Malaria
+384,Low Dose,Developed Malaria
+385,High Dose,Did Not Develop Malaria
+386,High Dose,Developed Malaria
+387,High Dose,Did Not Develop Malaria
+388,Placebo,Developed Malaria
+389,Placebo,Did Not Develop Malaria
+390,High Dose,Developed Malaria
+391,High Dose,Did Not Develop Malaria
+392,High Dose,Did Not Develop Malaria
+393,Low Dose,Did Not Develop Malaria
+394,Low Dose,Did Not Develop Malaria
+395,High Dose,Did Not Develop Malaria
+396,High Dose,Developed Malaria
+397,Low Dose,Did Not Develop Malaria
+398,Low Dose,Did Not Develop Malaria
+399,Placebo,Did Not Develop Malaria
+400,Placebo,Did Not Develop Malaria
+401,High Dose,Did Not Develop Malaria
+402,Low Dose,Did Not Develop Malaria
+403,Low Dose,Did Not Develop Malaria
+404,High Dose,Did Not Develop Malaria
+405,Low Dose,Did Not Develop Malaria
+406,High Dose,Did Not Develop Malaria
+407,Low Dose,Did Not Develop Malaria
+408,Low Dose,Developed Malaria
+409,Placebo,Developed Malaria
+410,Low Dose,Did Not Develop Malaria
+411,High Dose,Did Not Develop Malaria
+412,Low Dose,Developed Malaria
+413,Placebo,Developed Malaria
+414,Low Dose,Developed Malaria
+415,Low Dose,Did Not Develop Malaria
+416,High Dose,Did Not Develop Malaria
+417,Placebo,Did Not Develop Malaria
+418,High Dose,Developed Malaria
+419,Placebo,Did Not Develop Malaria
+420,High Dose,Did Not Develop Malaria
+421,Placebo,Developed Malaria
+422,Low Dose,Did Not Develop Malaria
+423,High Dose,Did Not Develop Malaria
+424,High Dose,Did Not Develop Malaria
+425,High Dose,Did Not Develop Malaria
+426,High Dose,Did Not Develop Malaria
+427,Low Dose,Did Not Develop Malaria
+428,Placebo,Developed Malaria
+429,Low Dose,Did Not Develop Malaria
+430,Placebo,Developed Malaria
+431,High Dose,Did Not Develop Malaria
+432,High Dose,Did Not Develop Malaria
+433,Placebo,Developed Malaria
+434,High Dose,Did Not Develop Malaria
+435,High Dose,Developed Malaria
+436,High Dose,Did Not Develop Malaria
+437,Low Dose,Did Not Develop Malaria
+438,High Dose,Did Not Develop Malaria
+439,High Dose,Developed Malaria
