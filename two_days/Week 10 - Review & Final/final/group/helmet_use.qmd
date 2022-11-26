@@ -1,0 +1,160 @@
+---
+title: "Final Exam -- Group Portion"
+format: 
+  html:
+    self-contained: true
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+#| include: false
+
+library(tidyverse)
+library(infer)
+library(janitor)
+```
+
+## Investigating the Relationship between Helmet Use and Head Injuries
+
+Although using a helmet is assumed to reduce the risk of head injuries in alpine
+sports, this effect is questioned. In contrast to bicycling or inline skating,
+there is no policy of mandatory helmet use for recreational alpine skiers and
+snowboarders. Sullheim et al. (2017) investigated the relationship between 
+helmet use and head injury, at eight major Norwegian ski resorts during the 
+2022 winter season.
+
+An injury was recorded when a skier or snowboarder was treated by the ski patrol
+or first aid room. A total of 725 skier or snowboarder injuries were recorded.
+As a control group, 2992 noninjured skiers or snowboarders were interviewed at
+the same eight resorts. Every 10th skier or snowboarder waiting in line was
+interviewed to achieve a systematic sample of the population. The interviews
+were done every Wednesday and Saturday during the 4 winter months of 2002 by
+personnel who were not told the purpose of the study.
+
+Sullheim et al. were interested in using these data to test if there is a 
+relationship between head injury and helmet use. 
+
+```{r data, include = FALSE}
+#| include: false
+helmet <- read_csv(here::here(
+  "two_days",
+  "Week 10 - Review & Final", 
+  "final", 
+  "group", 
+  "data",
+  "HeadInjuries.csv")
+  )
+
+helmet <- read_csv(here::here(
+  "data",
+  "HeadInjuries.csv")
+  )
+
+```
+
+# Exploratory Data Analysis
+
+## Visualizing the Frequency of Injuries
+
+__1. Let's start by creating a bar plot, visualizing the frequency of head injuries in the dataset.__
+
+```{r injury-bar-plot}
+
+```
+
+__2. Describe what you see in the bar plot.__
+
+
+
+## Visualizing the Frequency of Helmet Use
+
+__3. Next, let's visualize the frequency of helmet use in the dataset.__ 
+
+```{r helmet-bar-plot}
+
+```
+
+__4. Describe what you see in the bar plot.__
+
+
+
+## Visualizing the Relationship between Helmet Use and Head Injury
+
+__5. Create a *stacked* bar plot visualizing the relationship between helmet use and head injury.__
+
+```{r helmet-injury-barplot}
+
+```
+
+__6. Describe what you see in the stacked bar plot.__
+
+
+
+## Summarizing with Statistics
+
+Now that we've visualized the data, let's calculate some summary statistics.
+
+__7. Create a table summarizing the frequency of people who were / were not injured.__
+
+```{r injury-table}
+
+```
+
+__8. Create a table summarizing the frequency of people who did / did not wear a helmet.__
+
+```{r helmet-table}
+
+```
+
+I've written the code to produce the two-way table for you. Run the code to
+answer the subsequent questions. 
+
+```{r two-way-table}
+helmet |> 
+  group_by(Helmet, Outcome) |> 
+  summarise(n = n(), .groups = "drop") |> 
+  pivot_wider(names_from = Outcome, 
+              values_from = n) |> 
+  adorn_totals(where = c("row", "col")) 
+```
+
+__9. What proportion of people wearing a helmet had head injuries?__
+
+
+
+__10. What proportion of people not wearing a helmet had head injuries?__
+
+
+
+## Performing a Chi-Square Analysis
+
+__11. Based on the design of the study, what type of Chi-Square Test should be performed?__
+
+
+
+__12. Write out the hypotheses for addressing the research question, based on your answer to #11.__
+
+
+
+
+__13. Assess if you believe the condition of independence is violated. Justify your answer!__
+
+
+
+__14. Assess if you believe the condition of a large enough sample size is violated. Justify your answer!__
+
+
+
+__15. Fill in the code below to carry out a Chi-Squared analysis.__
+
+```{r chi-sq}
+chisq_test()
+```
+
+__16. Based on the analysis above, write a conclusion for the hypothesis test stated in #12.__
+
+
+
