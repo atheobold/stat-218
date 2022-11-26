@@ -24,7 +24,6 @@ library(mosaic)
 library(janitor)
 library(pander)
 library(infer)
-library(praise)
 
 set.seed(1234)
 ```
