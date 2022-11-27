@@ -338,8 +338,8 @@ notation.__
 one.
 
 \begin{itemize} 
-\item One-sided \\
-\item Two-sided
+\item[(i)] One-sided \\
+\item[(ii)] Two-sided
 \end{itemize}
 
 \noindent
@@ -423,17 +423,18 @@ the p-value.
 p-value obtained? (Circle one)
 
 \begin{itemize}
-\item If there is no linear relationship between the total calories and the
+\item[(i)] If there is no linear relationship between the total calories and the
 saturated fat of a fast food item, we would observe a sample slope of 0.017 or
 more extreme with a probability of less than 1 in 1000. 
 
-\item If there is a linear relationship between the total calories and the
+\item[(ii)] If there is a linear relationship between the total calories and the
 saturated fat of a fast food, we would observe a sample slope of 0.017 or more
 extreme with a probability of less than 1 in 1000.
 
-\item The probability of seeing a sample slope between the total calories and
-the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%. 
-\item  The probability that there is no linear relationship between the total
+\item[(iii)] The probability of seeing a sample slope between the total calories and
+the saturated fat of a fast food item of 0.017 or more extreme is less than 0.1%.
+
+\item[(iv)]  The probability that there is no linear relationship between the total
 calories and the saturated fat of a fast food item, is less than 0.1%.
 \end{itemize}
 
