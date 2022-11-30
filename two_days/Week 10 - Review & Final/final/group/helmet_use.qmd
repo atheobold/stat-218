@@ -116,7 +116,7 @@ answer the subsequent questions.
 helmet |> 
   group_by(Helmet, Outcome) |> 
   summarise(n = n(), .groups = "drop") |> 
-  pivot_wider(names_from = Outcome, 
+  pivot_wider(names_from = Helmet, 
               values_from = n) |> 
   adorn_totals(where = c("row", "col")) 
 ```
