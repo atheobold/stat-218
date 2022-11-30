@@ -1,7 +1,6 @@
 ---
 title: "STAT 218 -- Final Exam"
 date: "December 3, 2020"
-author: "Dr. Allison Theobold"
 output:
   pdf_document:
     extra_dependencies:
@@ -27,6 +26,8 @@ library(janitor)
 library(praise)
 library(lterdatasampler)
 library(palmerpenguins)
+
+set.seed(93401)
 ```
 
 \begin{center}
@@ -173,7 +174,7 @@ $$
 <!-- Questions 1-12 -->
 <!-- Picked for midterm 1: 1, 2, 4, 5, 6, 8 -->
 
-\noindent \textbf{Q8} [2 pts] When you change from a 90% to a 95% confidence
+\noindent \textbf{Q8} [3 pts] When you change from a 90% to a 95% confidence
 interval, which part(s) of the confidence interval change? (Select all that 
 apply)
 
@@ -249,7 +250,7 @@ columns)
 
 \vspace{1cm}
 
-\textbf{(d)} [3 pts] A scatterplot displaying the number of girls born over time
+\textbf{(d)} [2 pts] A scatterplot displaying the number of girls born over time
 is displayed below. Describe the relationship you see in the scatterplot. Be
 sure to address the form, direction, strength, and outliers present.
 
@@ -530,7 +531,7 @@ Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample.
 \vspace{0.25in}
 
 \noindent
-\textbf{(d)} [3 pts] The Statistician carried out a simulation with 1000 
+\textbf{(d)} [2 pts] The Statistician carried out a simulation with 1000 
 bootstrap resamples using the order (`nonsmoker` - `smoker`) and obtained the
 bootstrap distribution below. 
 
@@ -558,7 +559,7 @@ bootstrap_dist %>%
 \newpage
 
 \noindent
-\textbf{(e)} [3 pts] The table below presents percentiles for the bootstrap 
+\textbf{(e)} [2 pts] The table below presents percentiles for the bootstrap 
 distribution shown above. Circle the two values which will construct a 99%
 confidence interval. 
 
@@ -585,7 +586,7 @@ bootstrap_dist %>%
 \vspace{0.25cm}
 
 \noindent
-\textbf{(f)} [4 pts] Interpret the 99% confidence interval found in part (f)
+\textbf{(f)} [5 pts] Interpret the 99% confidence interval found in part (f)
 \textbf{in the context of this study}. 
 
 \vspace{1in}
@@ -666,7 +667,7 @@ indicate the order of subtraction being used!*
 \vspace{0.25in}
 
 \noindent
-\textbf{(d)} [3 pts] To perform the analyses you selected in (b), what conditions does
+\textbf{(d)} [4 pts] To perform the analyses you selected in (b), what conditions does
 Dr. Hagobian need to check before obtaining a p-value? Circle all that apply. 
 
 \begin{multicols}{2}
@@ -778,8 +779,8 @@ evidence to reject the null hypothesis, which would mean that our confidence
 interval would not contain 0.
 
 \item[(iii)] The results of the hypothesis test and the confidence interval are 
-conflicting at the 5\% significance level. There's a 95% chance that a statistic
-of 0.0425 would be in the interval (-1.129, 0.0437). 
+conflicting at the 5\% significance level. There's a 95\% chance that a
+statistic of 0.0425 would be in the interval (-1.129, 0.0437). 
 
 \item[(vi)] The results of the hypothesis test and the confidence interval seem to 
 agree with one another at the 5\% significance level. With a p-value of 0.0425
@@ -964,6 +965,8 @@ plant tallness.
 \noindent \textbf{(b)} [3 pts] If the Mendelian inheritance is true, what
 proportions would you expect for each of the following genotypes? Insert the corresponding values in each cell. 
 
+**Please Note**: Genotypes Tt and tT can be considered equivalent.  
+
 \vspace{0.25cm}
 
 | TT                          | Tt                         | tt               |
@@ -1030,7 +1033,7 @@ __$X^2$ statistic__:
 
 \vspace{0.25in}
 
-\noindent \textbf{(h)} [3 pts] The p-value associated with your $X^2$
+\noindent \textbf{(h)} [2 pts] The p-value associated with your $X^2$
 statistic is `r pchisq(0.3319, df = 1, lower.tail = FALSE)`. Your Biology
 textbook suggests you interpret this value as:
 
@@ -1069,7 +1072,7 @@ students.
 
 \vspace{0.25cm}
 
-\noindent \textbf{(b)} [3 pts] Which types of sampling bias may be present in
+\noindent \textbf{(b)} [2 pts] Which types of sampling bias may be present in
 this study? Select all that are present, or if you believe there is no bias 
 present, select option (iv) No bias.
 
