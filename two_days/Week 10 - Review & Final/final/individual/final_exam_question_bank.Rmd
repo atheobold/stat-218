@@ -394,7 +394,11 @@ colds %>%
   count(Season) %>% 
   rename(`Number of Patients` = n) %>% 
   pivot_wider(names_from = Season, values_from = `Number of Patients`) |>
-  adorn_totals(where = "col") |> 
+  rowwise() |> 
+  mutate(Total = sum(
+    c(Fall, Spring, Summer, Winter)
+    )
+    ) |> 
   pander()
 ```
 
