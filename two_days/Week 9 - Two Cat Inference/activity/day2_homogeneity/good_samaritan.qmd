@@ -1,8 +1,8 @@
 ---
 title: 'Chi-Square Test of Homogeneity: The Good Samaritan'
 author: "Your name: __________"
-#format: pdf
-format: docx
+format: pdf
+#format: docx
 editor: visual
 execute: 
   warning: false
@@ -86,7 +86,7 @@ This is an \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ (experiment / observational study) b
 4.  Put an X in the box that represents the appropriate scope of inference for this study.
 
 |                                              | Random / Representative Sample | No Random / Representative Sample |
-|-----------------|-------------------------|-------------------------------|
+|------------------|------------------------|------------------------------|
 | No Random Assignment of Explanatory Variable |                                |                                   |
 |                                              |                                |                                   |
 | Random Assignment of Explanatory Variable    |                                |                                   |
@@ -145,7 +145,8 @@ ggplot(data = good_sam,
                      fill = Behavior)) + 
   geom_bar(position = "fill") + 
   labs(x = "Condition of Student Heading to Presentation", 
-       y = "Proportion of Students")
+       y = "Proportion of Students", 
+       fill = "Decision to Help Homeless Person")
 ```
 
 8.  Based on the plot does there appear to be an association between the variables? Explain your answer.

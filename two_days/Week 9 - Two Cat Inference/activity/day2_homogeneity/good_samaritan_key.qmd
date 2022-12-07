@@ -76,20 +76,20 @@ good_sam |>
 
 2.  Based on the data preview, what is the response variable? What are its categories?
 
-[The response variable is `Behavior`. It has two levels: `Help` and `No help`. ]{style="color: red;"}
+[The response variable is `Behavior`. It has two levels: `Help` and `No help`.]{style="color: red;"}
 
 3.  Fill in the blanks with one answer from each set of parentheses:
 
-This is an [experiment ]{style="color: red;"} because [hurry or no hurry was]{style="color: red;"} randomly [assigned]{style="color: red;"}.
+This is an [experiment]{style="color: red;"} because [hurry or no hurry was]{style="color: red;"} randomly [assigned]{style="color: red;"}.
 
 \newpage
 
 4.  Put an X in the box that represents the appropriate scope of inference for this study.
 
-|                                              | Random / Representative Sample | No Random / Representative Sample |
-|-----------------|-------------------------|-------------------------------|
-| No Random Assignment of Explanatory Variable |                                |                                   |
-| Random Assignment of Explanatory Variable    |                                |    [This one! This is our scope of inference! ]{style="color: red;"}       |
+|                                              | Random / Representative Sample | No Random / Representative Sample                                |
+|------------------|------------------------|------------------------------|
+| No Random Assignment of Explanatory Variable |                                |                                                                  |
+| Random Assignment of Explanatory Variable    |                                | [This one! This is our scope of inference!]{style="color: red;"} |
 
 \vspace{0.25in}
 
@@ -113,11 +113,11 @@ For a proportion, we write the sample proportion as $\hat{p}$ and the population
 
 5.  Fill in the details regarding the two parameters of interest for this study.
 
-$\pi_{\text{hurry}}$: The true proportion of people who were told they were in a hurry who [chose to help the homeless person ]{style="color: red;"}
+$\pi_{\text{hurry}}$: The true proportion of people who were told they were in a hurry who [chose to help the homeless person]{style="color: red;"}
 
 \vspace{0.5in}
 
-$\pi_{\text{no hurry}}$: [The proportion of people who were told they were not in a hurry who chose to help the homeless person]{style="color: red;"} 
+$\pi_{\text{no hurry}}$: [The proportion of people who were told they were not in a hurry who chose to help the homeless person]{style="color: red;"}
 
 \vspace{0.5in}
 
@@ -145,7 +145,8 @@ ggplot(data = good_sam,
                      fill = Behavior)) + 
   geom_bar(position = "fill") + 
   labs(x = "Condition of Student Heading to Presentation", 
-       y = "Proportion of Students")
+       y = "Proportion of Students", 
+       fill = "Decision to Help Homeless Person")
 ```
 
 8.  Based on the plot does there appear to be an association between the variables? Explain your answer.
@@ -168,15 +169,15 @@ good_sam |>
 
 9.  Using the two-way table, calculate the proportion of students who were told they were in a hurry who helped the actor.
 
-[$\frac{2}{20} = 0.1$ ]{style="color: red;"}
+[$\frac{2}{20} = 0.1$]{style="color: red;"}
 
 10. Using the two-way table, calculate the proportion of students who were told they could take their time (no hurry) who helped the actor.
 
-[$\frac{11}{20} = 0.55$ ]{style="color: red;"}
+[$\frac{11}{20} = 0.55$]{style="color: red;"}
 
 11. Based on these proportions, do you believe there is a relationship between being in a hurry and helping someone?
 
-[Yes! These proportions are **really** different! ]{style="color: red;"}
+[Yes! These proportions are **really** different!]{style="color: red;"}
 
 ## Carrying out a Chi-Square Test of Homogeneity
 
@@ -202,10 +203,10 @@ Once we have each of these, we can create a table of what frequencies we would h
 
 12. Fill out the table of expected values below.
 
-| Behavior | Hurry | No Hurry |
-|----------|-------|----------|
-| Help     | [$\frac{13*20}{40} = 6.5$ ]{style="color: red;"} | [$\frac{13*20}{40} = 6.5$ ]{style="color: red;"}  |
-| No Help  | [$\frac{27*20}{40} = 13.5$ ]{style="color: red;"} |  [$\frac{27*20}{40} = 13.5$ ]{style="color: red;"} |
+| Behavior | Hurry                                            | No Hurry                                         |
+|---------------------------|-------------------|---------------------------|
+| Help     | [$\frac{13*20}{40} = 6.5$]{style="color: red;"}  | [$\frac{13*20}{40} = 6.5$]{style="color: red;"}  |
+| No Help  | [$\frac{27*20}{40} = 13.5$]{style="color: red;"} | [$\frac{27*20}{40} = 13.5$]{style="color: red;"} |
 
 ### Chi-Squared Statistic
 
@@ -217,22 +218,22 @@ $$
 
 13. Using the formula above, calculate how far "off" each of the cells in our observed table is from what was expected under the null hypothesis.
 
-:::: {.columns}
-:::{.column width="45%"}
+::: columns
+::: {.column width="45%"}
 [$\frac{(2 - 6.5)^2}{6.5} = 3.12$]{style="color: red;"}
 
 [$\frac{(11 - 6.5)^2}{6.5} = 3.12$]{style="color: red;"}
 :::
 
-:::{.column width="10%"}
+::: {.column width="10%"}
 :::
 
-:::{.column width="45%"}
+::: {.column width="45%"}
 [$\frac{(18 - 13.5)^2}{13.5} = 1.5$]{style="color: red;"}
 
 [$\frac{(9 - 13.5)^2}{13.5} = 1.5$]{style="color: red;"}
 :::
-::::
+:::
 
 14. Adding all of these differences together to obtain our observed $X^2$ statistic.
 
@@ -261,7 +262,7 @@ If you chose a $\chi^2$ distribution this is where you should be! Similar to wha
 
 16. How many degrees of freedom would be use for our $\chi^2$ distribution?
 
-[$(2 - 1) * (2 - 1) = 1$ ]{style="color: red;"}
+[$(2 - 1) * (2 - 1) = 1$]{style="color: red;"}
 
 ### Using a $\chi^2$ Distribution to Find the p-value
 
@@ -282,11 +283,11 @@ Running the code you just wrote in `R` gave me a p-value of approximately `r rou
 
 18. Based on this p-value what conclusion would you reach regarding the null hypothesis? *Hint:* Go back and see what you wrote for your null and alternative hypotheses in #11 and #12!
 
-[With a p-value of 0.007 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry. ]{style="color: red;"}
+[With a p-value of 0.007 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry.]{style="color: red;"}
 
 19. Write a paragraph summarizing the results of the study as if writing a press release. Be sure to describe:
 
-[In a study of the goodwill of seminary students, researcher randomly assigned a "hurried state" to 20 students (out of 40 students) by telling them they were late to give a presentation across campus. Researchers then compared how many students helped a homeless person (actor), planted on the student's path to their presentation. A Chi-Squared Homogeneity Test found a test statistic of 9.24 with an associated p-value of 0.007, suggesting there were substantial differences in the proportion of students who helped the homeless person compared to what would have been expected if both groups were equally likely to help. Therefore, the researchers concluded that the hurried state cause differences in the proportion of students who would help a homeless person, for the sample of students at their seminary. ]{style="color: red;"}
+[In a study of the goodwill of seminary students, researcher randomly assigned a "hurried state" to 20 students (out of 40 students) by telling them they were late to give a presentation across campus. Researchers then compared how many students helped a homeless person (actor), planted on the student's path to their presentation. A Chi-Squared Homogeneity Test found a test statistic of 9.24 with an associated p-value of 0.007, suggesting there were substantial differences in the proportion of students who helped the homeless person compared to what would have been expected if both groups were equally likely to help. Therefore, the researchers concluded that the hurried state cause differences in the proportion of students who would help a homeless person, for the sample of students at their seminary.]{style="color: red;"}
 
 \newpage
 
@@ -300,11 +301,11 @@ Like all of the previous times, we can think about what the computer is doing us
 
 To carry out **one** simulation we need to do the following steps:
 
-**Step 1:** Write the response [(Behavior) ]{style="color: red;"} and the explanatory variable ([Condition]{style="color: red;"}) on [40]{style="color: red;"} cards.
+**Step 1:** Write the response [(Behavior)]{style="color: red;"} and the explanatory variable ([Condition]{style="color: red;"}) on [40]{style="color: red;"} cards.
 
 **Step 2:** Assume the null hypothesis is true and: [rip the cards in half, separating the condition from the behavior]{style="color: red;"}
 
-**Step 3:** Create a new dataset that could have happened if $H_0$ was true by: [randomly pairing a condition card with a behavior card until 40 new pairs of cards have been made ]{style="color: red;"}
+**Step 3:** Create a new dataset that could have happened if $H_0$ was true by: [randomly pairing a condition card with a behavior card until 40 new pairs of cards have been made]{style="color: red;"}
 
 **Step 4:** Create a table of the simulated counts for the shuffled cards.
 
@@ -342,24 +343,24 @@ good_sam |>
 
 16. Calculate the $X^2$ statistic for this simulation.
 
-:::: {.columns}
-:::{.column width="45%"}
+::: columns
+::: {.column width="45%"}
 [$\frac{(7 - 6.5)^2}{6.5} = 0.038$]{style="color: red;"}
 
 [$\frac{(6 - 6.5)^2}{6.5} = 0.038$]{style="color: red;"}
 :::
 
-:::{.column width="10%"}
+::: {.column width="10%"}
 :::
 
-:::{.column width="45%"}
+::: {.column width="45%"}
 [$\frac{(13 - 13.5)^2}{13.5} = 0.019$]{style="color: red;"}
 
 [$\frac{(14 - 13.5)^2}{13.5} = 0.019$]{style="color: red;"}
 :::
-::::
+:::
 
-[$X^2 =  0.0019$]{style="color: red;"}
+[$X^2 = 0.0019$]{style="color: red;"}
 
 Alright, after carrying out this process, I obtained the following distribution.
 
@@ -391,7 +392,7 @@ good_sam |>
 
 19. Based on your p-value, what would you conclude for your null and alternative hypotheses? (Look back at what you said for #11 and #12)!
 
-[With a p-value < 0.001 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry. ]{style="color: red;"}
+[With a p-value \< 0.001 and an $\alpha$ of 0.05, we would reject the null hypothesis. There is convincing evidence that the proportion of students who help a homeless person when told they are in a hurry differs from those who are not in a hurry.]{style="color: red;"}
 
 20. Write a paragraph summarizing the results of the study as if writing a press release. Be sure to describe:
 
