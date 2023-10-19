@@ -1,12 +1,13 @@
 ---
 title: "Midterm 1 -- Group Portion"
 author: "Your group's names here!"
-format: pdf 
+format: html
 execute: 
   echo: true
   message: false
   warning: false
-  error: true
+  eval: false
+embed-resources: true
 ---
 
 ```{r setup, include = FALSE}
@@ -20,15 +21,6 @@ library(moderndive)
 For this exam, we'll be working with data from Lab 3 --- the General Social Survey (GSS). The GSS is a high-quality survey which gathers data on American society and opinions, conducted since 1972. This data set is a sample of 500 entries from the GSS, spanning years 1973-2018, including demographic markers and some economic variables.
 
 ```{r data-load}
-GSS <- read_csv(here::here("Week 5 - Difference in Means & Midterm 1", 
-                           "midterm 1",
-                           "group", 
-                           "data",
-                           "gss.csv"
-                           )
-                )
-
-
 GSS <- read_csv(here::here("data", 
                            "gss.csv"
                            )
