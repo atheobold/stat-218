@@ -219,6 +219,7 @@ myopia |>
   adorn_percentages(denominator = "____") 
 ```
 
-**17. Fill in the code, specifying how the percentages should be calculated. \*Hint: You can use your calculation in #16 to check if you made the correct choice!**
+**17. Fill in the code, specifying how the percentages should be calculated.** 
+Hint: You can use your calculation in #16 to check if you made the correct choice!
 
 **18. Using the filled bar plot and the proportion contingency table above, do you think the proportion of people with Myopia differs between the different levels of light? Explain your answer [in detail]{.underline}.**
