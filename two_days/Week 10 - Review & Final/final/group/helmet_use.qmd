@@ -7,6 +7,7 @@ execute:
   echo: true
   message: false
   warning: false
+  eval: false
 ---
 
 ```{r setup}
@@ -37,16 +38,7 @@ personnel who were not told the purpose of the study.
 Sullheim et al. were interested in using these data to test if there is a 
 relationship between head injury and helmet use. 
 
-```{r data, include = FALSE}
-#| include: false
-helmet <- read_csv(here::here(
-  "two_days",
-  "Week 10 - Review & Final", 
-  "final", 
-  "group", 
-  "data",
-  "HeadInjuries.csv")
-  )
+```{r data}
 
 helmet <- read_csv(here::here(
   "data",
