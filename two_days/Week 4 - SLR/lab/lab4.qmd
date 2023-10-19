@@ -6,6 +6,7 @@ execute:
   echo: true
   message: false
   warning: false
+embed-resources: true
 ---
 
 ```{r setup}
@@ -25,9 +26,11 @@ library(moderndive)
 In golf the goal is to complete a hole with as few strokes as possible. A long driving distance to start a hole can help minimize the strokes necessary to complete the hole, as long as that drive stays on the fairway. Data were collecting on 354 PGA and LGPA players in 2008. For each player, the average driving distance (yards), fairway accuracy (percentage), and sex was measured. Use these data to assess, "Is there a relationship between driving distance and accuracy for professional golfers?".
 
 ```{r data}
-golf <- read_csv(here::here("data", 
-                            "golf.csv")
-                 )
+#| echo: false
+
+# golf <- read_csv(here::here("data", 
+#                             "golf.csv")
+#                  )
 
 golf <- read_csv(here::here("two_days", 
                             "Week 4 - SLR", 
@@ -50,6 +53,8 @@ $H_A$:
 Use the skeleton R code below, fill in the remaining pieces to create a scatterplot to examine the relationship between the driving distance and percent accuracy. You should use `Driving_Distance` and `Percent_Accuracy` for `x` and `y`, respectively.
 
 ```{r scatterplot}
+#| eval: false
+
 ggplot(data = golf, 
        mapping = aes(x = ____, y = ____)
        ) +  
@@ -82,9 +87,7 @@ When performing inference on a least squares line, the follow conditions are gen
 
     -   Check this assumption by examining the scatterplot of the two variables, the relationship on the scatterplot should appear linear.
 
-**5. Do you believe the condition of linearity is violated? Why or why not?\
-\
-**
+**5. Do you believe the condition of linearity is violated? Why or why not?**
 
 -   *Constant variability* (for theory-based methods only): the variability of points around the least squares line remains roughly constant
 
@@ -107,12 +110,16 @@ To find the equation of the regression line, we use the `lm()` function. This fu
 Using the skeleton code below, fill in the explanatory and response variables for our regression.
 
 ```{r regression-line}
+#| eval: false
+
 golf_lm <- lm(____ ~ ____, data = golf)
 ```
 
 Alright, now that we've found the equation of the regression line, we can find the values of the residuals. To obtain the residuals, we use the `get_regression_points()` function.
 
 ```{r residuals}
+#| eval: false
+
 get_regression_points(golf_lm) |>  
   ggplot(mapping = aes(x = residual)) +
   geom_histogram(binwidth = 2.5)
@@ -120,9 +127,11 @@ get_regression_points(golf_lm) |>
 
 Let's compare this to the distribution of the Percent Accuracy!
 
-8.  Create a histogram of the Percent Accuracy variable.
+**8.  Create a histogram of the Percent Accuracy variable.**
 
 ```{r histogram}
+#| eval: false
+
 ggplot(data = golf, 
        mapping = aes(x = ____)
        ) +  
@@ -131,28 +140,23 @@ ggplot(data = golf,
 
 ```
 
-**9. Based on these histograms, do you believe the condition of normality is violated? Why or why not?\
-\
-**
+**9. Based on these histograms, do you believe the condition of normality is violated? Why or why not?**
 
-**10. Do you believe it is "safe" to use the** $t$-distribution to approximate the sampling distribution?\
-\
+**10. Do you believe it is "safe" to use the $t$-distribution to approximate the sampling distribution?**
 
 ## Obtaining the regression line, p-value, and confidence interval
 
 To obtain information about the regression line, we will use the `get_regression_table()` function. The function takes one input, the name of the linear regression. Remember, we stored our linear regression in an object named, `golf_lm`, so that is what we will input here!
 
 ```{r regression-equation}
+#| eval: false
+
 get_regression_table(___)
 ```
 
-**11. Using the output from the code above, write the equation of the regression line in the context of the problem.\
-\
-**
+**11. Using the output from the code above, write the equation of the regression line in the context of the problem.**
 
-**12. Interpret the estimated slope in context of the problem.\
-\
-**
+**12. Interpret the estimated slope in context of the problem.**
 
 ## Use statistical inferential methods to draw inferences from the data
 
@@ -166,24 +170,15 @@ $$
 
 We will use the output from our regression table to obtain the estimate for slope and the standard error of the slope.
 
-**13. What are the values of** $b_1$ **and** $SE(b_1)$**?\
-\
-**
+**13. What are the values of** $b_1$ **and** $SE(b_1)$?
 
-**14. Calculate the t-statistic for slope. Where is this value located on the regression table?\
-\
-**
+**14. Calculate the t-statistic for slope. Where is this value located on the regression table?**
 
-**15. The p-value reported in the regression table is the two-sided p-value for testing if the slope is different from 0. Report the p-value for this test.\
-\
-**
+**15. The p-value reported in the regression table is the two-sided p-value for testing if the slope is different from 0. Report the p-value for this test.**
 
-**16. Based on the p-value, how much evidence is there against the null hypothesis?\
-\
-**
+**16. Based on the p-value, how much evidence is there against the null hypothesis?**
 
-**17. Based on the p-value, what decision would you make regarding your null hypothesis?** **\
-**
+**17. Based on the p-value, what decision would you make regarding your null hypothesis?**
 
 ### Confidence interval
 
@@ -193,12 +188,12 @@ $$\mbox{point estimate}\pm t^*_{df} \times SE(\mbox{estimate}).$$ When the point
 
 The $t^*$ multiplier comes from a $t$-distribution with $n-2$ degrees of freedom. Recall for a 95% confidence interval, we use the 97.5% percentile (95% of the distribution is in the middle, leaving 2.5% in each tail).
 
-18. The sample size for this study is `r nrow(golf)`. How many degrees of freedom will we use?
+**18. The sample size for this study is `r nrow(golf)`. How many degrees of freedom will we use?**
 
 Fortunately, the regression table also outputs a 95% confidence interval. This interval was calculated using a t-distribution with the number of degrees of freedom you just calculated.
 
-19. Report the 95% confidence interval for the true slope.
+**19. Report the 95% confidence interval for the true slope.**
 
-20. Interpret the 95% confidence interval in context of the problem.
+**20. Interpret the 95% confidence interval in context of the problem.**
 
 **21. Does your confidence interval match the decision you made based on your p-value in question 17?**
