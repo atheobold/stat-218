@@ -5,9 +5,9 @@ format:
     self-contained: true
 editor: visual
 execute: 
-  echo: false
   warning: false
   message: false
+  eval: false
 ---
 
 ```{r setup}
@@ -22,15 +22,6 @@ library(infer)
 For this exam, we'll be working with data from Midterm 1 --- the General Social Survey (GSS). The GSS is a high-quality survey which gathers data on American society and opinions, conducted since 1972.
 
 ```{r load-data}
-GSS <- read_csv(here::here("two_days", 
-                           "Week 8 - One Cat Inference & Midterm 2", 
-                           "midterm 2",
-                           "group", 
-                           "data",
-                           "GSS_clean.csv"
-                           )
-                ) 
-
 GSS <- read_csv(here::here("data", 
                            "gss.csv"
                            )
@@ -88,7 +79,8 @@ GSS <- GSS |>
 
 Now, we can use the `political_party_affiliation` variable to visualize the distribution of highest year of school between these two groups (Republicans & Democrats).
 
-**5. Complete the code below to created faceted histograms of the distribution of highest year of school completed between the two political groups.** *Extra Credit:* Select a binwidth that makes the histograms look as continuous as possible!
+**5. Complete the code below to created faceted histograms of the distribution of highest year of school completed between the two political groups.**   
+*Extra Credit:* Select a binwidth that makes the histograms look as continuous as possible!
 
 ```{r faceted-histograms-}
 ggplot(data = GSS, 
